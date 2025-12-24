@@ -1,6 +1,80 @@
 <?php
 load_theme_textdomain('origintheme', get_template_directory() . '/languages');
 
+
+/*------------------------------------*\
+	headからいらない項目を削除する
+\*------------------------------------*/
+
+function removed_scripts_styles()
+{
+  if (!is_admin()) {
+    remove_action('wp_head', 'wp_print_scripts');
+    remove_action('wp_head', 'wp_print_head_scripts', 9);
+    remove_action('wp_head', 'wp_enqueue_scripts', 1);
+    remove_action('wp_head', 'www-widgetapi');
+    remove_action('wp_head', 'wp_generator');
+    remove_action('wp_head', 'rsd_link');
+    remove_action('wp_head', 'wlwmanifest_link');
+    remove_action('wp_head', 'index_rel_link');
+    remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+    remove_action('wp_head', 'parent_post_rel_link', 10, 0);
+    remove_action('wp_head', 'start_post_rel_link', 10, 0);
+    remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+    remove_action('wp_head', 'feed_links', 2);
+    remove_action('wp_head', 'feed_links_extra', 3);
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('admin_print_scripts', 'print_emoji_detection_script');
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    remove_action('admin_print_styles', 'print_emoji_styles');
+    add_filter('emoji_svg_url', '__return_false');
+  }
+}
+add_action('wp_enqueue_scripts', 'removed_scripts_styles');
+
+
+/*------------------------------------*\
+	絵文字無効化
+\*------------------------------------*/
+add_action('init', function () {
+  remove_action('wp_head', 'print_emoji_detection_script', 7);
+  remove_action('wp_print_styles', 'print_emoji_styles');
+  remove_action('admin_print_scripts', 'print_emoji_detection_script');
+  remove_action('admin_print_styles', 'print_emoji_styles');
+  add_filter('tiny_mce_plugins', function ($plugins) {
+    return is_array($plugins) ? array_diff($plugins, ['wpemoji']) : [];
+  });
+  add_filter('wp_mail', 'wp_staticize_emoji_for_email'); // 必要なら外す
+});
+
+/*------------------------------------*\
+	oEmbed のJS（wp-embed.min.js）を読み込ませない
+\*------------------------------------*/
+add_action('wp_footer', function () {
+  wp_dequeue_script('wp-embed');
+}, 100);
+
+/*------------------------------------*\
+	管理用アイコン（dashicons）をフロントで読み込まない
+\*------------------------------------*/
+add_action('wp_enqueue_scripts', function () {
+  if (! is_user_logged_in()) {
+    wp_deregister_style('dashicons');
+  }
+});
+
+/*------------------------------------*\
+Gutenberg用のCSSを読み込まない
+\*------------------------------------*/
+
+function my_delete_plugin_files()
+{
+  //IDを指定し解除
+  wp_deregister_style('wp-block-library');
+}
+add_action('wp_enqueue_scripts', 'my_delete_plugin_files');
+
+
 /*------------------------------------*\
 	外部のファイル・モジュールの読み込み External files
 \*------------------------------------*/
@@ -57,107 +131,165 @@ if (function_exists('add_theme_support')) {
   add_filter('document_title_parts', 'edit_document_title_parts');
 }
 
+
+
 /*------------------------------------*\
-    読み込まれるcss/js関連　wp_enqueue_style, wp_enqueue_script
+    読み込まれるcss関連
 \*------------------------------------*/
-// 管理画面・フロント側共通で呼び出すCSS JavaScript
-// CSSは基本的にこっち
-function allsite_style_script()
-{
-  //テーマ情報css
-  wp_register_style('theme', get_template_directory_uri() . '/style.css', array());
-  wp_enqueue_style('theme');
 
-  //リセットcss
-  wp_register_style('reset', get_template_directory_uri() . '/css/reset.css', array());
-  wp_enqueue_style('reset');
+add_action('wp_enqueue_scripts', function () {
+  $uri  = function ($file) {
+    return get_theme_file_uri($file);
+  };
+  $path = function ($file) {
+    return get_theme_file_path($file);
+  };
+  $ver  = function ($file) use ($path) {
+    $p = $path($file);
+    return file_exists($p) ? (string) filemtime($p) : null;
+  };
 
-  wp_register_style('swipercss', get_template_directory_uri() . '/css/swiper-bundle.min.css', array());
-  wp_enqueue_style('swipercss');
+  wp_enqueue_style(
+    'reset',
+    $uri('/css/reset.css'),
+    [],                                 // 依存なし（先頭で読む）
+    $ver('/css/reset.css')
+  );
 
-  //プラグインやwebフォントなど追加のCSSはこの辺に書きます。
+  wp_enqueue_style(
+    'theme',
+    $uri('/style.css'),
+    ['reset'],                           // テーマはリセットに依存
+    $ver('/style.css')
+  );
 
-  //カスタムcss
-  wp_register_style('custom', get_template_directory_uri() . '/css/style.css', array());
-  wp_enqueue_style('custom');
-}
+  wp_enqueue_style(
+    'custom',
+    $uri('/css/style.css'),
+    ['theme'],                           // カスタムはテーマに依存
+    $ver('/css/style.css')
+  );
 
-add_action('wp_enqueue_scripts', 'allsite_style_script');
+  wp_enqueue_style(
+    'swipercss',
+    $uri('/css/swiper-bundle.min.css'),
+    [],                                // 依存なし
+    $ver('/css/swiper-bundle.min.css')
+  );
+}, 5);
 
-
-// フロント側のみに呼び出すCSSとJavaScript
-// jsファイルは基本的にこっち
-function header_style_script()
-{
-  if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
-
-    //swiper-bundle.min.jsの読み込み
-    wp_register_script('swiperjs', get_template_directory_uri() . '/js/swiper-bundle.min.js', array('jquery'));
-    wp_enqueue_script('swiperjs');
-
-    //テーマ用のjsファイルを読み込み
-    wp_register_script('mainscripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'));
-    wp_enqueue_script('mainscripts');
-
-    //swiper用のjsファイルを読み込み
-    wp_register_script('slider', get_template_directory_uri() . '/js/slider.js', array('jquery'));
-    wp_enqueue_script('slider');
-
-    // ページ専用jsの読み込みが必要な時は下記のように使う。
-    //    wp_register_script('scriptname', get_template_directory_uri().'/js/scriptname.js', array('jquery'));
-    //    wp_register_style('stylename', get_template_directory_uri().'/css/stylename.css', array());
-    //
-    //    if(is_front_page()) {
-    //      wp_enqueue_script('scriptname');
-    //      wp_enqueue_style('stylename');
-    //    }elseif(is_page('pagenamehere')){
-    //      wp_enqueue_script('scriptname');
-    //      wp_enqueue_style('stylename');
-    //    }
-  }
-}
-
-add_action('wp_enqueue_scripts', 'header_style_script');
-
-
-//指定のjsにdefer（レンダリングブロック防止の記述）をつける。
-//★deferだと動作しない場合は、jquery-coreについてはdeferをやめると良い。
-function add_defer_script($tag, $handle, $url)
-{
-  if ('jquery-migrate' === $handle || 'mainscripts' === $handle || 'slider' === $handle) {
-    $tag = '<script src="' . esc_url($url) . '" defer></script>';
-  }
-  return $tag;
-}
-
-add_filter('script_loader_tag', 'add_defer_script', 10, 3);
-
-
-// 登録したcssの出力時に 'text/css' は消す。
-function style_type_remove($tag)
-{
+// ===== type='text/css' を削除（任意・微小な省バイト）=====
+add_filter('style_loader_tag', function ($tag) {
   return preg_replace('~\s+type=["\'][^"\']++["\']~', '', $tag);
-}
+}, 9);
 
-add_filter('style_loader_tag', 'style_type_remove');
+// ===== 非クリティカルCSSを非ブロッキング化（プリロード + noscript）=====
+add_filter('style_loader_tag', function ($html, $handle, $href, $media) {
+  if (is_admin()) return $html;
 
+  // 本当に初期描画に必要なものだけを列挙
+  // 例: "custom" はUI調整が多く初期描画に関与しがち
+  $preload_handles = ['custom'];
 
-//指定のCSSを非同期で読み込む
-function load_css_async_top($html, $handle, $href, $media)
-{
-  if ('wp-block-library' === $handle) {
-    //元の link 要素の HTML（改行が含まれているようなので前後の空白文字を削除）
-    $default_html = trim($html);
-    //HTML を変更
-    $html = <<<EOT
-<link rel="stylesheet" id="{$handle}-css" href="$href" media="print" onload="this.media='all'">
-<noscript>{$default_html}</noscript>\n
-EOT;
+  if (!in_array($handle, $preload_handles, true)) {
+    return $html; // それ以外は通常のブロッキングCSSとして読み込み
   }
-  return $html;
-}
 
-add_filter('style_loader_tag', 'load_css_async_top', 10, 4);
+  $orig  = trim($html);
+  $href  = esc_url($href);
+  $id    = esc_attr("{$handle}-css");
+  $media = $media ? ' media="' . esc_attr($media) . '"' : '';
+
+  // rel=preload で先に取得し、onloadで stylesheet に切替
+  // JS無効時は <noscript> でフォールバック
+  return "<link rel=\"preload\" id=\"{$id}\" href=\"{$href}\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\"{$media}>\n"
+    . "<noscript>{$orig}</noscript>\n";
+}, 10, 4);
+
+
+
+
+/*------------------------------------*\
+読み込まれるjs関連
+\*------------------------------------*/
+if (! function_exists('theme_enqueue_js_only_optimized_assets')) {
+
+  // フロント専用のスクリプト登録・読み込み（全て footer に配置）
+  function theme_enqueue_js_only_optimized_assets()
+  {
+    // 管理画面・ログイン画面・REST/AJAX 等には影響させない
+    if (is_admin() || (defined('WP_CLI') && WP_CLI) || $GLOBALS['pagenow'] === 'wp-login.php') {
+      return;
+    }
+
+    $theme_dir = get_template_directory();
+    $theme_uri = get_template_directory_uri();
+
+    // ヘルパー：ファイルの最終更新時刻を version に使う
+    $register_script = function ($handle, $relative_path, $deps = array()) use ($theme_dir, $theme_uri) {
+      $relative_path = ltrim($relative_path, '/');
+      $full_path = $theme_dir . '/' . $relative_path;
+      $src = $theme_uri . '/' . $relative_path;
+      $ver = file_exists($full_path) ? filemtime($full_path) : null;
+
+      // footer に読み込む（最後の引数 true）
+      wp_register_script($handle, $src, $deps, $ver, true);
+      wp_enqueue_script($handle);
+    };
+
+    // スクリプト登録 — 必要に応じてハンドル名／パス／依存を調整してください
+    $register_script('swiperjs',    'js/swiper-bundle.min.js', array());
+    $register_script('mainscripts', 'js/scripts.js',           array('jquery'));
+    $register_script('animationjs', 'js/animation.js',         array('jquery'));
+    $register_script('slider',      'js/slider.js',            array('jquery', 'swiperjs'));
+
+    // ページごとの条件付き読み込み例（コメント解除して使用）
+    // if ( is_front_page() ) {
+    //     $register_script( 'frontpage', 'js/frontpage.js', array( 'jquery' ) );
+    // }
+  }
+  add_action('wp_enqueue_scripts', 'theme_enqueue_js_only_optimized_assets', 20);
+
+  // script タグに defer を付与（安全性考慮：jQuery 等は除外）
+  function theme_add_defer_attribute_safe($tag, $handle, $src)
+  {
+    // フロント以外、Ajax、REST リクエストなどでは触らない
+    if (is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) {
+      return $tag;
+    }
+
+    // defer を付けたくないハンドル（コアや互換性リスクがあるもの）
+    $exclude_handles = array(
+      'jquery',
+      'jquery-core',
+      'jquery-migrate',
+      'wp-emoji-release',
+      'wp-embed'   // 例: 必要に応じて追加
+    );
+
+    if (in_array($handle, $exclude_handles, true)) {
+      return $tag;
+    }
+
+    // defer を付けたいハンドル（ここに該当するハンドルのみ付与）
+    $defer_handles = array('mainscripts', 'slider', 'animationjs', 'swiperjs');
+
+    if (! in_array($handle, $defer_handles, true)) {
+      return $tag;
+    }
+
+    // 既に defer / async / module 指定があれば二重付与しない
+    if (stripos($tag, ' defer') !== false || stripos($tag, ' async') !== false || stripos($tag, 'type="module"') !== false) {
+      return $tag;
+    }
+
+    // 最小限の置換で defer 属性を付与（互換性優先）
+    $tag = preg_replace('/<script(\s)/i', '<script defer$1', $tag, 1);
+
+    return $tag;
+  }
+  add_filter('script_loader_tag', 'theme_add_defer_attribute_safe', 10, 3);
+}
 
 
 /*------------------------------------*\
@@ -233,7 +365,7 @@ remove_filter('the_excerpt', 'wpautop'); // 自動挿入のpタグを抜粋欄�
 function custom_view_more($more)
 {
   global $post;
-  return '... <a class="link_more" href="' . get_permalink($post->ID) . '">' . '続きを読む' . '</a>';
+  return '<a class="link_more" href="' . get_permalink($post->ID) . '">' . '' . '</a>';
 }
 
 add_filter('excerpt_more', 'custom_view_more');
@@ -241,7 +373,7 @@ add_filter('excerpt_more', 'custom_view_more');
 // 抜粋文字数設定（不具合時は WP Multibyte Patch プラグインを入れる）
 function custom_excerpt_length($length)
 {
-  return 20; //単語数：日本語の場合は2倍の文字数
+  return 40; //単語数：日本語の場合は2倍の文字数
 }
 
 add_filter('excerpt_length', 'custom_excerpt_length', 999);
@@ -427,3 +559,9 @@ add_action(
   },
   11 // 優先度を少し高く設定 (デフォルトは10)
 );
+
+
+// -------------------------------------
+// YubinBangoライブラリ（郵便番号と住所連動）
+// -------------------------------------
+wp_enqueue_script('yubinbango', 'https://yubinbango.github.io/yubinbango/yubinbango.js', array(), null, true);
