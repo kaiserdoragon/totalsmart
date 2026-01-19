@@ -15,6 +15,7 @@ body {
   font-weight: 500;
   line-height: 1.6;
   color: $color-body;
+  letter-spacing: 0.05em;
 }
 
 .wrap {
@@ -32,6 +33,14 @@ body {
   width: min(1350px, 100%); // デザインの幅 + padding
   padding: 0 min(4vw, 25px);
   margin: auto;
+
+  &.-md {
+    width: min(1150px, 100%); // デザインの幅 + padding
+  }
+
+  &.-sm {
+    width: min(1050px, 100%); // デザインの幅 + padding
+  }
 }
 
 main {
