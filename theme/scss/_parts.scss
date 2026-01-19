@@ -27,6 +27,19 @@ img {
 
 .sec {
   padding: 120px 0;
+
+  &.-md {
+    padding: 120px 0;
+  }
+
+  &.-sm {
+    padding: 80px 0;
+  }
+}
+
+.lead_txt {
+  color: #ff3198;
+  background: linear-gradient(to bottom, transparent 0%, transparent 70%, #fff100 70%, #fff100 100%);
 }
 
 // レスポンシブ table　表

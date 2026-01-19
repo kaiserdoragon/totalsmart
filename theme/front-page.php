@@ -71,5 +71,34 @@
       </ul>
     </div>
   </section>
+  <section class="lead_solution bg_gray sec">
+    <div class="lead_solution--inner container sec">
+      <div class="container -sm">
+        <div class="lead_solution--ttl">
+          <h2>
+            <p>これらの<span>悩み</span>は</p>
+            <img class="lead_solution--logo" src="<?php echo get_template_directory_uri(); ?>/img/top/solution_logo.png" alt="トータルスマート株式会社" width="353" height="42">が<span>スマート</span>に解決します！
+          </h2>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/top/solution_txt.png" alt="トータルスマート株式会社" width="1024" height="213">
+        </div>
+        <div class="lead_solution--txt">
+          <p>オフィス関連をトータルにお任せ！</p>
+          <p>保守・メンテナンスをスマート解決！</p>
+        </div>
+        <p class="u-mb30">
+          トータルスマート株式会社はオフィスに係ること全てトータルで依頼可能！<br>
+          OA機器・インターネット回線・電気ガスはもちろん<br>
+          全て一本化することができコスト削減につながります。
+        </p>
+        <div class="lead_solution--txt">
+          <span>複数の業者に電話して、たらい回しにあう…</span>
+          <p>もうそんな必要はありません！</p>
+        </div>
+        <p>一本化により、沢山の業者に連絡する手間を省き</p>
+        <strong>一本の電話で全て<span>解決！</span></strong>
+        <p>となるトータルサポートを可能にしています。</p>
+      </div>
+    </div>
+  </section>
 </main>
 <?php get_footer(); ?>
