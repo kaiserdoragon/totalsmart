@@ -5,25 +5,112 @@
 //  トップ専用
 // ---------------------------------------------
 
-/* 見やすくするためのcss 不要のためコピーしなくてOK */
-.swiper {
-  max-width: 300px;
-  height: 300px;
-  margin-inline: auto;
+
+/* === 流れるテキストアニメーション === */
+
+.mv {
+  position: relative;
+  height: 100vh;
+
+  h2 {
+    position: absolute;
+    top: 15%;
+    left: 6%;
+    font-size: 5vw;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 30px rgb(255 255 255 / 43.9%);
+    letter-spacing: 0.1em;
+    transform: translate(0, 0);
+
+    span {
+      display: block;
+      font-size: 2.5vw;
+    }
+  }
+
+  // .mv--scroll_txt {
+  &--scroll_txt {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 8rem;
+    margin: 0 auto;
+  }
 }
 
-.swiper-slide {
-  line-height: 300px;
-  text-align: center;
-  background: red;
+
+
+.scroll .left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
 }
 
-.swiper-slide:nth-child(2) {
+.scroll .right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.scroll p {
+  position: absolute;
+  bottom: 15%;
+  width: auto;
+  font-family: "Michroma", sans-serif;
+  font-size: 14rem;
+  font-weight: 900;
+  white-space: nowrap;
+  animation: animate 1000s linear infinite;
+}
+
+.scroll .left p {
+  left: 200%;
+  color: #208fff;
+}
+
+.scroll .right p {
+  left: 100%;
   color: #fff;
-  background: blue;
 }
 
-.swiper-slide:nth-child(3) {
-  color: #fff;
-  background: green;
+/* アニメーションキーフレーム */
+@keyframes animate {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-300%);
+  }
+}
+
+
+
+.parallax-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  width: 177.77777778vh;
+  min-width: 100%;
+  height: 56.25vw;
+  min-height: 100%;
+  filter: brightness(80%);
+  transform: translate(-50%, -50%);
 }

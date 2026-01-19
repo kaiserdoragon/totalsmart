@@ -16,6 +16,19 @@ img {
   vertical-align: bottom;
 }
 
+
+.bg_white {
+  background: #fff;
+}
+
+.bg_gray {
+  background: #f6f6f6;
+}
+
+.sec {
+  padding: 120px 0;
+}
+
 // レスポンシブ table　表
 table {
   width: 100%;
@@ -55,8 +68,15 @@ table {
 
 .bold {
   // font-weight: boldのとき、文字がにじんで見える場合はこのclassで太字にする（YuGothic Midiumを使わないようにする）
-  font-family: "Helvetica Neue", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "YuGothic",
-    "Yu Gothic", "Meiryo", sans-serif;
+  font-family:
+    "Helvetica Neue",
+    "Arial",
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    "YuGothic",
+    "Yu Gothic",
+    "Meiryo",
+    sans-serif;
   font-weight: bold;
 }
 
@@ -104,36 +124,5 @@ table {
 
   &:empty {
     display: none;
-  }
-}
-
-// タブ切り替え
-.tab_select {
-  // .tab_select--nav
-  &--nav {
-    display: flex;
-  }
-
-  // .tab_select--tab_wrap
-  &--tab_wrap {
-    position: relative;
-  }
-
-  // .tab_select--tab
-  &--tab {
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    visibility: hidden;
-    opacity: 0;
-
-    &.is-show {
-      position: relative;
-      pointer-events: fill;
-      visibility: visible;
-      opacity: 1;
-      transition: 0.8s;
-    }
   }
 }

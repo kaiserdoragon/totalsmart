@@ -11,15 +11,11 @@ html {
 
 body {
   position: relative;
-  font-family: $font-sans;
-  font-size: var(--fz16);
-  font-weight: 400; // ※游ゴシックのときは500
+  font-size: var(--fz18);
+  font-weight: 500;
   line-height: 1.6;
   color: $color-body;
 }
-
-// font-sizeは下記の用に指定
-// font-size: var(--fz14);
 
 .wrap {
   // min-width: 1200px;
@@ -33,13 +29,14 @@ body {
 
 .container {
   box-sizing: border-box;
-  width: min(1050px, 100%); // デザインの幅 + padding
+  width: min(1350px, 100%); // デザインの幅 + padding
   padding: 0 min(4vw, 25px);
   margin: auto;
 }
 
 main {
   display: block;
+  padding-top: 140px;
 
   // for ipad portrait mode
 
@@ -89,6 +86,102 @@ main {
 // ---------------------------------------------
 //  ヘッダー関連 header
 // ---------------------------------------------
+
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 1111111;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 0 8px #808080;
+
+  // .header--logo
+  &--logo {
+    padding: 15px 0;
+    margin-left: 40px;
+    text-align: center;
+
+    small {
+      display: block;
+      margin-bottom: 10px;
+      font-size: var(--fz10);
+    }
+
+    @media (width <= 1550px) {
+      margin-left: 0;
+    }
+  }
+
+  // .header--inner
+  &--inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (width <= 1550px) {
+      padding: 0 min(4vw, 25px);
+    }
+  }
+
+  // .header--btn
+  &--btn {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+
+    @media (width <= 1550px) {
+      gap: 15px;
+    }
+  }
+
+  // header--tel
+  &--tel {
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    width: 275px;
+    padding: 13px 0;
+    padding-left: 20px;
+    font-size: var(--fz28);
+    line-height: 1;
+    color: #fff;
+    background: url(../img/common/icon_tel.png) no-repeat left 27px top 17px / 7%, #0054a4;
+    border-radius: 1000px;
+
+    span {
+      display: block;
+      margin-top: 5px;
+      font-size: var(--fz12);
+    }
+  }
+
+  // .header--contact
+  &--contact {
+    box-sizing: border-box;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 145px;
+    height: 140px;
+    padding-top: 30px;
+    font-size: var(--fz20);
+    color: #fff;
+    text-align: center;
+    background: url(../img/common/icon_mail.png) no-repeat top 40px center / 28px 20px, #ff8206;
+
+    @media (width <= 1550px) {
+      box-sizing: border-box;
+      width: 275px;
+      height: 71px;
+      padding-top: 0;
+      padding-left: 20px;
+      font-size: var(--fz25);
+      background: url(../img/common/icon_mail.png) no-repeat center left 35px / 28px 20px, #ff8206;
+      border-radius: 1000px;
+    }
+  }
+}
 
 // ---------------------------------------------
 //  グローバルナビゲーション関連 gnav
@@ -150,7 +243,7 @@ main {
     }
   }
 
-  @include min-mq {
+  @media (1024px <= width) {
     display: none; // PC時非表示
   }
 }
@@ -161,15 +254,45 @@ main {
   ul {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    margin-right: 1vw;
+  }
+
+  li {
+    a {
+      padding: 0 15px;
+      border-right: 1px #333 solid;
+    }
   }
 
   a {
     display: block;
-    padding: 15px 0;
   }
 
-  @include max-mq {
+  // .gnav--inner
+  &--inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+
+    @media (width <= 1550px) {
+      flex-direction: column;
+      gap: 15px;
+      padding: 10px 0;
+    }
+  }
+
+  @media (width <= 1650px) {
+    li {
+      a {
+        font-size: var(--fz14);
+      }
+    }
+  }
+
+  @include tb-mq {
     position: fixed;
     top: 0;
     right: -110%;
