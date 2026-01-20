@@ -71,7 +71,7 @@
       </ul>
     </div>
   </section>
-  <section class="lead_solution bg_gray sec">
+  <section class="lead_solution bg_gray">
     <div class="lead_solution--inner container sec">
       <div class="container -sm">
         <div class="lead_solution--ttl">
@@ -98,6 +98,7 @@
         <strong>一本の電話で全て<span>解決！</span></strong>
         <p>となるトータルサポートを可能にしています。</p>
       </div>
+      <img src="<?php echo get_template_directory_uri(); ?>/img/top/solution_catch.png" alt="" width="724" height="489">
     </div>
   </section>
 </main>

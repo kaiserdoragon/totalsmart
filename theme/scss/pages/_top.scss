@@ -6,26 +6,25 @@
 // ---------------------------------------------
 
 
-/* === 流れるテキストアニメーション === */
-
 .mv {
   position: relative;
   height: 100vh;
 
   h2 {
     position: absolute;
-    top: 15%;
+    top: 50%;
     left: 6%;
-    font-size: 5vw;
+    font-size: 90px;
     font-weight: 900;
+    line-height: 1.4;
     color: #fff;
     text-shadow: 0 0 30px rgb(255 255 255 / 43.9%);
     letter-spacing: 0.1em;
-    transform: translate(0, 0);
+    transform: translate(0%, -80%);
 
     span {
       display: block;
-      font-size: 2.5vw;
+      font-size: 45px;
     }
   }
 }
@@ -68,13 +67,13 @@
 
     p {
       position: absolute;
-      bottom: 15%;
+      bottom: 10%;
       width: auto;
       font-family: "Michroma", sans-serif;
       font-size: 14rem;
       font-weight: 900;
       white-space: nowrap;
-      animation: animate 1000s linear infinite;
+      animation: animate 2800s linear infinite;
     }
   }
 }
@@ -108,11 +107,10 @@
     min-width: 100%;
     height: 56.25vw;
     min-height: 100%;
-    filter: brightness(80%);
+    filter: brightness(70%);
     transform: translate(-50%, -50%);
   }
 }
-
 
 .lead_worry {
   h2 {
@@ -174,20 +172,12 @@
 }
 
 .lead_solution {
-  .container {
-    background: #fff;
-
-    &.-sm {
-      background: url(../img/top/solution_bg.png) no-repeat center center /contain, #fff;
-    }
-  }
-
-
+  padding: 120px 0 250px;
 
   strong {
     display: block;
     width: fit-content;
-    padding: 5px 10px;
+    padding: 5px 30px;
     margin: 10px auto;
     font-size: var(--fz45);
     font-weight: bold;
@@ -203,15 +193,39 @@
     text-align: center;
   }
 
+  .container {
+    &.-sm {
+      padding: 0 min(4vw, 25px) 300px;
+      background: url(../img/top/solution_bg.png) no-repeat top 300px center / contain, #fff;
+
+      + img {
+        position: absolute;
+        bottom: -200px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
   // .lead_solution--ttl
   &--ttl {
     position: relative;
 
     h2 {
+      position: relative;
+      z-index: 1;
       margin-bottom: 60px;
       font-size: var(--fz50);
       font-weight: 900;
       text-align: center;
+
+      + img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 0;
+        transform: translate(-50%, -50%);
+      }
     }
 
     p {
@@ -243,13 +257,16 @@
 
   // .lead_solution--inner
   &--inner {
+    position: relative;
     padding: 80px 0;
+    background: #fff;
   }
 
   // .lead_solution--txt
   &--txt {
     p {
       width: fit-content;
+      padding: 0 10px;
       margin: auto;
       font-size: var(--fz35);
       font-weight: 900;
@@ -264,7 +281,7 @@
     span {
       display: block;
       width: fit-content;
-      padding: 5px 10px;
+      padding: 10px 20px;
       margin: 0 auto 30px;
       font-size: var(--fz23);
       color: #fff;
