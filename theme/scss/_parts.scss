@@ -16,6 +16,62 @@ img {
   vertical-align: bottom;
 }
 
+.ttl {
+  position: relative;
+  margin-bottom: 70px;
+  font-size: var(--fz45);
+  font-weight: 900;
+  line-height: 1.3;
+  color: #0052a7;
+  text-align: center;
+
+  span {
+    display: block;
+    font-size: var(--fz25);
+    color: #333;
+  }
+
+  &::before {
+    position: absolute;
+    bottom: -15px;
+    left: calc(50% - 30px);
+    width: 60px;
+    height: 5px;
+    content: "";
+    background: #ff3198;
+    border-radius: 3px;
+  }
+
+  // .attention--lead
+  &--lead {
+    margin-bottom: 60px;
+    font-size: var(--fz25);
+    font-weight: 600;
+    text-align: center;
+  }
+}
+
+.underline {
+  width: fit-content;
+  padding: 0 10px;
+  margin: auto;
+  font-size: var(--fz35);
+  font-weight: 900;
+  color: #0052a7;
+  background: linear-gradient(to bottom, transparent 0%, transparent 70%, #fff100 70%, #fff100 100%);
+}
+
+.btn_link {
+  box-sizing: border-box;
+  display: block;
+  width: fit-content;
+  padding: 15px 60px 15px 30px;
+  margin: auto;
+  font-weight: 700;
+  color: #fff;
+  background: url(../img/common/btn_arrow.png) no-repeat right 15px center / 40px, #0052a7;
+  border-radius: 1000px;
+}
 
 .bg_white {
   background: #fff;

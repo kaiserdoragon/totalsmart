@@ -272,6 +272,12 @@ main {
       padding: 0 15px;
       border-right: 1px #333 solid;
     }
+
+    &:last-child {
+      a {
+        border-right: none;
+      }
+    }
   }
 
   a {
