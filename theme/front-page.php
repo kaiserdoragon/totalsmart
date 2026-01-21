@@ -233,5 +233,38 @@
       </ul>
     </div>
   </section>
+
+  <section class="cv_area">
+    <div class="cv_area--inner">
+      <h2>小さな見直しが<span>大きな成果</span>につながる。</h2>
+      <p>
+        成果を伸ばす最適な業務改善を！<br>
+        今の業務に潜む可能性を一緒に探しましょう！
+      </p>
+      <span>受付時間　平日9：00～18：00</span>
+      <div class="cv_area--btns">
+        <a class="cv_area--mail" href="">メールで問い合わせ</a>
+        <a class="cv_area--tel" href="">電話で問い合わせ</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="service bg_white sec">
+    <div class="container">
+      <h2 class="ttl">
+        サービス
+        <span>SERVICE</span>
+      </h2>
+      <p>
+        当社のサービスは企業におけるあらゆる課題を解決するために<br class="is-hidden_sp">
+        設計された革新的なソリューションです。<br>
+        最新の技術を活用し、業務プロセスの自動化と効率化を図ることで、<br class="is-hidden_sp">
+        従業員の負担を軽減し、顧客満足度の向上に寄与します。<br>
+        また、厳格な管理体制と先進の安全対策を融合し、安心してご利用いただける環境を提供します。
+        これにより、企業の競争力強化と持続的な成長を実現し、<br class="is-hidden_sp">
+        多様な業種のお客様から高い評価をいただいております。<br>
+      </p>
+    </div>
+  </section>
 </main>
 <?php get_footer(); ?>

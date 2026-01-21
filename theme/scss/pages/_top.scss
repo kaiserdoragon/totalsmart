@@ -480,3 +480,58 @@
     }
   }
 }
+
+.cv_area {
+  color: #fff;
+  text-align: center;
+
+  h2 {
+    position: relative;
+    display: inline-block;
+    padding: 10px 30px;
+    margin: 0 15px;
+    font-size: var(--fz35);
+
+    span {
+      position: relative;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 0 15px;
+      font-size: var(--fz35);
+
+      &::before,
+      &::after {
+        position: absolute;
+        display: inline-block;
+        width: 20px;
+        height: 25px;
+        content: "";
+      }
+
+      &::before {
+        top: 0;
+        left: 0;
+        border-top: 5px solid #fff975;
+        border-left: 5px solid #fff975;
+      }
+
+      &::after {
+        right: 0;
+        bottom: 0;
+        border-right: 5px solid #fff975;
+        border-bottom: 5px solid #fff975;
+      }
+    }
+  }
+
+  // .cv_area--inner
+  &--inner {
+    box-sizing: border-box;
+    width: min(900px, 100%);
+    padding: 70px min(4vw, 25px);
+    margin: auto;
+    background: url(../img/top/cvarea_bg.jpg) no-repeat center / cover;
+    border-radius: 15px;
+  }
+}
+
