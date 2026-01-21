@@ -14,7 +14,7 @@
     position: absolute;
     top: 50%;
     left: 6%;
-    font-size: 90px;
+    font-size: var(--fz160);
     font-weight: 900;
     line-height: 1.4;
     color: #fff;
@@ -24,7 +24,7 @@
 
     span {
       display: block;
-      font-size: 45px;
+      font-size: var(--fz65);
     }
   }
 }
@@ -280,7 +280,6 @@
 
 .attention {
   text-align: center;
-  background: #fffaf6;
 
   // .attention--inner
   &--inner {
@@ -326,7 +325,6 @@
   }
 }
 
-
 .feature {
   h3 {
     width: fit-content;
@@ -347,7 +345,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    margin-bottom: 60px;
+    margin-bottom: 100px;
   }
 
   li {
@@ -374,11 +372,15 @@
   &--inner {
     position: relative;
     width: fit-content;
-    margin: 0 auto 40px;
+    padding-bottom: 80px;
+    margin: 0 auto;
 
     p {
-      margin-bottom: 15px;
       text-align: center;
+
+      &:first-child {
+        margin-bottom: 15px;
+      }
     }
 
     strong {
@@ -412,6 +414,69 @@
       aspect-ratio: 110/ 186;
       background: url(../img/top/feature_possible_02.png) no-repeat center center /contain;
       transform: translateY(-50%);
+    }
+
+    + img {
+      position: relative;
+      display: block;
+      margin: -92px auto 60px;
+    }
+  }
+}
+
+.reason {
+  h2 {
+    + p {
+      margin-bottom: 100px;
+      text-align: center;
+    }
+  }
+
+  h3 {
+    font-size: var(--fz30);
+    font-weight: 700;
+    color: #0052a7;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 100px;
+    counter-reset: num;
+  }
+
+  li {
+    position: relative;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 5;
+    padding: 60px 30px 30px;
+    text-align: center;
+    counter-increment: num;
+    background: #fff;
+
+    span {
+      color: #ff8000;
+    }
+
+    img {
+      display: block;
+      margin: auto;
+    }
+
+    &::before {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      padding: 5px 20px;
+      font-size: var(--fz30);
+      font-weight: 700;
+      color: #fff;
+      content: "POINT" counter(num, decimal-leading-zero);
+      background: #063064;
+      transform: translateX(-50%);
     }
   }
 }

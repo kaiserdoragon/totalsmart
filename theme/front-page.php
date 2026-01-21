@@ -108,7 +108,7 @@
   $page_data = get_page_by_path('attention');
   if ($page_data && !empty($page_data->post_content)) :
   ?>
-    <section class="attention sec">
+    <section class="attention sec bg_orange">
       <div class="container">
         <h2 class="ttl">
           注目情報
@@ -156,7 +156,7 @@
             技術スタッフのパソコンに表示し、
             画面を確認しながらご対応します。
           </p>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_icon_02.png" alt="" width="245" height="105 ">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_icon_02.png" alt="" width="245" height="105">
         </li>
         <li>
           <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_catch_03.png" alt="" width="400" height="210">
@@ -176,9 +176,62 @@
         <strong class="underline">一本の電話ですべて解決する</strong>
         <p>お客様にとってストレスのない業務形態です。</p>
       </div>
+      <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_anima.png" alt="" width="900" height="1088">
       <a class="btn_link" href="#">トータルスマートについて詳しく知る</a>
     </div>
   </section>
 
+  <section class="reason sec bg_orange">
+    <div class="container">
+      <h2 class="ttl">
+        トータルスマートが選ばれる理由
+        <span>REASON</span>
+      </h2>
+      <p>
+        最新のテクノロジーと革新的なソリューションを融合し、<br class="is-hidden_sp">
+        企業の成長を力強く支援するパートナーです。<br>
+        市場の変化に柔軟に対応し、企業に最適なシステムとカスタマイズ可能なサービスを提供することで、<br class="is-hidden_sp">
+        業務の効率化と持続的な発展を実現します。<br>
+        豊富な導入実績と継続的な技術革新に裏打ちされた信頼性が私たちの大きな魅力です。<br>
+        未来を切り拓く確かな基盤として、あらゆる企業の成功をサポートします。<br>
+      </p>
+      <ul>
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/top/reason_02.png" alt="" width="136" height="117">
+          <h3>一括契約の提供</h3>
+          <p>
+            工事を行った後に発生する保守やメンテナ
+            ンスなどのサービスも含めて、<span>一つの契約で
+              提供しています。</span><br>
+            工事の費用と保守の費用を別々に考える必要
+            はありません。
+          </p>
+        </li>
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/top/reason_03.png" alt="" width="171" height="103">
+          <h3>総合的なサポート</h3>
+          <p>
+            工事だけでなく、その後の保守や修理、サポー
+            トも含めて一括で対応することで、<span>便利で経済
+              的な提案をいたします。</span><br>
+            別々の業者との契約や交渉をする手間を省くこ
+            とができます。
+          </p>
+
+        </li>
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/top/reason_01.png" alt="" width="129" height="129">
+          <h3>透明性と予測可能性</h3>
+          <p>
+            一括契約の場合、費用が明確に提示されるた
+            め、将来の費用や予算をより<span>正確に見積もる
+              ことができます。</span><br>
+            リースと保守金額が一緒になることで、予測
+            可能性が高まります。
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
 </main>
 <?php get_footer(); ?>
