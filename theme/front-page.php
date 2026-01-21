@@ -181,13 +181,13 @@
     </div>
   </section>
 
-  <section class="reason sec bg_orange">
+  <section class="reason bg_orange">
     <div class="container">
       <h2 class="ttl">
         トータルスマートが選ばれる理由
         <span>REASON</span>
       </h2>
-      <p>
+      <p class="reason--lead">
         最新のテクノロジーと革新的なソリューションを融合し、<br class="is-hidden_sp">
         企業の成長を力強く支援するパートナーです。<br>
         市場の変化に柔軟に対応し、企業に最適なシステムとカスタマイズ可能なサービスを提供することで、<br class="is-hidden_sp">
@@ -232,24 +232,22 @@
         </li>
       </ul>
     </div>
-  </section>
-
-  <section class="cv_area">
-    <div class="cv_area--inner">
-      <h2>小さな見直しが<span>大きな成果</span>につながる。</h2>
-      <p>
-        成果を伸ばす最適な業務改善を！<br>
-        今の業務に潜む可能性を一緒に探しましょう！
-      </p>
-      <span>受付時間　平日9：00～18：00</span>
-      <div class="cv_area--btns">
-        <a class="cv_area--mail" href="">メールで問い合わせ</a>
-        <a class="cv_area--tel" href="">電話で問い合わせ</a>
+    <section class="cv_area">
+      <div class="cv_area--inner">
+        <h2>小さな見直しが<b>大きな成果</b>につながる。</h2>
+        <p class="cv_area--lead">
+          成果を伸ばす最適な業務改善を！<br>
+          今の業務に潜む可能性を一緒に探しましょう！
+        </p>
+        <span>受付時間　平日9：00～18：00</span>
+        <div class="cv_area--btns">
+          <a class="cv_area--mail" href="">メールで問い合わせ</a>
+          <a class="cv_area--tel" href="">お電話で問い合わせ</a>
+        </div>
       </div>
-    </div>
+    </section>
   </section>
-
-  <section class="service bg_white sec">
+  <section class="service bg_white">
     <div class="container">
       <h2 class="ttl">
         サービス
@@ -260,10 +258,159 @@
         設計された革新的なソリューションです。<br>
         最新の技術を活用し、業務プロセスの自動化と効率化を図ることで、<br class="is-hidden_sp">
         従業員の負担を軽減し、顧客満足度の向上に寄与します。<br>
-        また、厳格な管理体制と先進の安全対策を融合し、安心してご利用いただける環境を提供します。
+        また、厳格な管理体制と先進の安全対策を融合し、安心してご利用いただける環境を提供します。<br>
         これにより、企業の競争力強化と持続的な成長を実現し、<br class="is-hidden_sp">
         多様な業種のお客様から高い評価をいただいております。<br>
       </p>
+      <ul>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_01.png" alt="" width="212" height="212">
+              <figcaption>配膳ロボット</figcaption>
+            </figure>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_02.png" alt="" width="212" height="212">
+              <figcaption>デジタルサイネージ</figcaption>
+            </figure>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_03.png" alt="" width="212" height="212">
+              <figcaption>
+                POSレジ/<br>
+                キャッシュレス/<br>
+                オーダーシステム
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_04.png" alt="" width="212" height="212">
+              <figcaption>エアコン</figcaption>
+            </figure>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_05.png" alt="" width="212" height="212">
+              <figcaption>防犯セキュリティー</figcaption>
+            </figure>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_06.png" alt="" width="212" height="212">
+              <figcaption>WIFIセキュリティー</figcaption>
+            </figure>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_07.png" alt="" width="212" height="212">
+              <figcaption>防犯カメラ</figcaption>
+            </figure>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_08.png" alt="" width="212" height="212">
+              <figcaption>電話回線＆ネット回線</figcaption>
+            </figure>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_09.png" alt="" width="212" height="212">
+              <figcaption>
+                スマートフォン＆<br>
+                タブレット
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_10.png" alt="" width="212" height="212">
+              <figcaption>電気代＆ガス代</figcaption>
+            </figure>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_11.png" alt="" width="212" height="212">
+              <figcaption>
+                ホームページ制作/<br>
+                チラシ
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_12.png" alt="" width="212" height="212">
+              <figcaption>オンデマンド</figcaption>
+            </figure>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_13.png" alt="" width="212" height="212">
+              <figcaption>USEN</figcaption>
+            </figure>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_14.png" alt="" width="212" height="212">
+              <figcaption>SNS</figcaption>
+            </figure>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_15.png" alt="" width="212" height="212">
+              <figcaption>LED</figcaption>
+            </figure>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_16.png" alt="" width="212" height="212">
+              <figcaption>電子ブレーカー</figcaption>
+            </figure>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_17.png" alt="" width="212" height="212">
+              <figcaption>Googleマイビジネス</figcaption>
+            </figure>
+          </a>
+        </li>
+      </ul>
+      <a class="btn_link" href="#">サービス一覧を見る</a>
     </div>
   </section>
 </main>

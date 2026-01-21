@@ -425,12 +425,8 @@
 }
 
 .reason {
-  h2 {
-    + p {
-      margin-bottom: 100px;
-      text-align: center;
-    }
-  }
+  position: relative;
+  padding: 120px 0 340px;
 
   h3 {
     font-size: var(--fz30);
@@ -442,7 +438,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    margin-bottom: 100px;
     counter-reset: num;
   }
 
@@ -479,20 +474,32 @@
       transform: translateX(-50%);
     }
   }
+
+  // .reason--lead
+  &--lead {
+    margin-bottom: 100px;
+    text-align: center;
+  }
 }
 
 .cv_area {
+  position: absolute;
+  bottom: -16%;
+  left: 50%;
+  width: 100%;
+  max-width: 900px;
   color: #fff;
   text-align: center;
+  transform: translate(-50%, 0);
 
   h2 {
     position: relative;
     display: inline-block;
     padding: 10px 30px;
     margin: 0 15px;
-    font-size: var(--fz35);
+    font-size: var(--fz25);
 
-    span {
+    b {
       position: relative;
       display: inline-block;
       padding: 5px 20px;
@@ -524,14 +531,113 @@
     }
   }
 
+  span {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-bottom: 40px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+  }
+
+  //.cv_area--lead
+  &--lead {
+    position: relative;
+    margin-bottom: 15px;
+    text-align: center;
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 20px;
+      display: inline-block;
+      content: "";
+    }
+
+    &::before {
+      left: 10%;
+      width: 100px;
+      aspect-ratio: 1 / 1;
+      background: url(../img/top/cvarea_01.png) no-repeat center /contain;
+    }
+
+    &::after {
+      right: 10%;
+      width: 100px;
+      aspect-ratio: 1 / 1;
+      background: url(../img/top/cvarea_02.png) no-repeat center /contain;
+    }
+  }
+
   // .cv_area--inner
   &--inner {
+    position: relative;
     box-sizing: border-box;
-    width: min(900px, 100%);
     padding: 70px min(4vw, 25px);
     margin: auto;
     background: url(../img/top/cvarea_bg.jpg) no-repeat center / cover;
     border-radius: 15px;
+
+    &::after {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      bottom: 20px;
+      left: 20px;
+      content: "";
+      border: 3px solid #fff;
+      border-radius: 15px;
+    }
+  }
+
+  // .cv_area--mail
+  &--mail {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 240px;
+    padding: 15px 15px 15px 45px;
+    background: url(../img/common/icon_mail.png) no-repeat left 10% center / 11%, #f9a731;
+    border-radius: 1000px;
+  }
+
+  // .cv_area--tel
+  &--tel {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 240px;
+    padding: 15px 15px 15px 45px;
+    background: url(../img/common/icon_tel_02.png) no-repeat left 10% center / 11%, #31c2f9;
+    border-radius: 1000px;
+  }
+}
+
+.service {
+  padding: 340px 0 120px;
+
+  p {
+    margin-bottom: 80px;
+    text-align: center;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+  }
+
+  li {
+    font-weight: 700;
+    color: #0052a7;
+    text-align: center;
+  }
+
+  figcaption {
+    text-decoration: underline;
+    text-underline-offset: 10px;
+  }
+
+  img {
+    margin-bottom: 15px;
   }
 }
 
