@@ -247,6 +247,7 @@
       </div>
     </section>
   </section>
+
   <section class="service bg_white">
     <div class="container">
       <h2 class="ttl">
@@ -413,5 +414,87 @@
       <a class="btn_link" href="#">サービス一覧を見る</a>
     </div>
   </section>
+
+  <section class="work sec bg_white">
+    <div class="container">
+      <h2 class="ttl">
+        導入実績
+        <span>WORKS</span>
+      </h2>
+      <p class="work--lead">
+        私たちの最新店舗設備を導入いただいた様々なお店の体験談が掲載されています。<br>
+        実際にご利用いただいた企業の成功事例や具体的な活用方法、<br class="is-hidden_sp">
+        改善された業務効率やお客様満足度の向上など、リアルな声をぜひご覧ください。<br>
+        あなたの会社の未来を変えるヒントがここにあります！<br>
+      </p>
+    </div>
+
+    <div class="work--inner">
+      <?php
+      $args = array(
+        'post_type' => 'introduction',
+        'posts_per_page' => -1,
+        'order' => 'DESC',
+      );
+      $custom_query = new WP_Query($args);
+
+      if ($custom_query->have_posts()) :
+      ?>
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <?php while ($custom_query->have_posts()) : $custom_query->the_post(); ?>
+              <article class="post-item swiper-slide">
+                <a href="<?php the_permalink(); ?>" class="post-link">
+                  <?php if (has_post_thumbnail()) : ?>
+                    <div class="post-thumbnail">
+                      <?php the_post_thumbnail(); ?>
+                    </div>
+                  <?php endif; ?>
+                  <div class="post-content">
+                    <div class="post-meta">
+                      <time class="post-date"><?php echo get_the_date('Y.m.d'); ?></time>
+                      <?php
+                      $terms = get_the_terms(get_the_ID(), 'introduction_cat');
+                      if ($terms && !is_wp_error($terms)) :
+                        $top_term = $terms[0];
+                        while ($top_term->parent != 0) {
+                          $top_term = get_term($top_term->parent, 'introduction_cat');
+                        }
+                      ?>
+                        <span class="post-taxonomy">
+                          <?php echo esc_html($top_term->name); ?>
+                        </span>
+                      <?php endif; ?>
+                    </div>
+                    <h2 class="post-title"><?php the_title(); ?></h2>
+                    <div class="post-child-categories">
+                      <?php
+                      if ($terms && !is_wp_error($terms)) :
+                        foreach ($terms as $term) {
+                          // 親IDが0ではない＝子カテゴリーのみ表示
+                          if ($term->parent != 0) {
+                            echo '<span class="child-term">' . esc_html($term->name) . '</span>';
+                          }
+                        }
+                      endif;
+                      ?>
+                    </div>
+                  </div>
+                </a>
+              </article>
+            <?php endwhile; ?>
+            <?php wp_reset_postdata(); ?>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      <?php else : ?>
+        <p>表示する投稿がありません。</p>
+      <?php endif; ?>
+    </div>
+
+    <a class="btn_link" href="<?php echo esc_url(home_url('/introduction')); ?>">導入実績一覧を見る</a>
+  </section>
+
+
 </main>
 <?php get_footer(); ?>

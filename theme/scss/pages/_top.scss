@@ -641,3 +641,43 @@
   }
 }
 
+
+
+.work {
+  // .work--lead
+  &--lead {
+    margin-bottom: 80px;
+    text-align: center;
+  }
+
+  // .work--inner
+  &--inner {
+    position: relative;
+    margin-bottom: 140px;
+  }
+
+  .post-thumbnail {
+    img {
+      width: 100%;
+      aspect-ratio: 400 / 350;
+      border-radius: 15px;
+      object-fit: cover;
+    }
+  }
+
+  .swiper-slide {
+    opacity: 0.3; /* 左右のスライドを薄くする */
+    transition: 0.7s; /* ゆっくり小さくさせる */
+    transform: scale(0.8); /* 左右のスライドを小さくする */
+  }
+
+  .swiper-slide-active {
+    z-index: 1; /* 中央のスライドを一番上にする */
+    opacity: 1; /* 中央のスライドは薄くしない */
+    transform: scale(1); /* 中央のスライドは小さくしない */
+  }
+
+  .swiper-pagination {
+    bottom: -45px !important;
+  }
+}
