@@ -250,6 +250,7 @@ if (! function_exists('theme_enqueue_js_only_optimized_assets')) {
   }
   add_action('wp_enqueue_scripts', 'theme_enqueue_js_only_optimized_assets', 20);
 
+
   // script タグに defer を付与（安全性考慮：jQuery 等は除外）
   function theme_add_defer_attribute_safe($tag, $handle, $src)
   {

@@ -1,64 +1,33 @@
 <?php get_header(); ?>
 <main>
   <div class="mv">
-    <h2>
+    <h1>
       <span>賢く安く簡単に最適なコスト削減</span>
       ワンストップで<br>全部解決！
-    </h2>
-    <div class="mv_scroll">
+    </h1>
+
+    <div class="mv_scroll" aria-hidden="true">
       <div class="mv_scroll--inner">
         <div class="mv_scroll--left">
           <p>
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
+            <?php echo str_repeat('Total Smartは経費削減を専門とする会社です。 ', 20); ?>
           </p>
         </div>
         <div class="mv_scroll--right">
           <p>
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
-            Total Smartは経費削減を専門とする会社です。
+            <?php echo str_repeat('Total Smartは経費削減を専門とする会社です。 ', 20); ?>
           </p>
         </div>
       </div>
     </div>
+
     <div class="mv_parallax_bg">
-      <video src="<?php echo get_template_directory_uri(); ?>/video/video.mp4" playsinline autoplay muted loop></video>
+      <video
+        src="<?php echo get_template_directory_uri(); ?>/video/video.mp4"
+        poster="<?php echo get_template_directory_uri(); ?>/img/top/mv_video.jpg"
+        playsinline autoplay muted loop
+        title="トータルスマート サービス紹介動画">
+      </video>
     </div>
   </div>
 
@@ -177,7 +146,7 @@
         <p>お客様にとってストレスのない業務形態です。</p>
       </div>
       <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_anima.png" alt="" width="900" height="1088">
-      <a class="btn_link" href="#">トータルスマートについて詳しく知る</a>
+      <a class="btn_link" href="#" target="_blank">トータルスマートについて詳しく知る</a>
     </div>
   </section>
 
@@ -241,8 +210,8 @@
         </p>
         <span>受付時間　平日9：00～18：00</span>
         <div class="cv_area--btns">
-          <a class="cv_area--mail" href="">メールで問い合わせ</a>
-          <a class="cv_area--tel" href="">お電話で問い合わせ</a>
+          <a class="cv_area--mail" href="" target="_blank">メールで問い合わせ</a>
+          <a class="cv_area--tel" href="tel:052-932-5450">お電話で問い合わせ</a>
         </div>
       </div>
     </section>
@@ -261,7 +230,7 @@
         従業員の負担を軽減し、顧客満足度の向上に寄与します。<br>
         また、厳格な管理体制と先進の安全対策を融合し、安心してご利用いただける環境を提供します。<br>
         これにより、企業の競争力強化と持続的な成長を実現し、<br class="is-hidden_sp">
-        多様な業種のお客様から高い評価をいただいております。<br>
+        多様な業種のお客様から高い評価をいただいております。
       </p>
       <ul>
         <li>
@@ -411,17 +380,17 @@
           </a>
         </li>
       </ul>
-      <a class="btn_link" href="#">サービス一覧を見る</a>
+      <a class="btn_link" href="#" target="_blank">サービス一覧を見る</a>
     </div>
   </section>
 
-  <section class="work sec bg_white">
+  <section class="works bg_white sec">
     <div class="container">
       <h2 class="ttl">
         導入実績
-        <span>WORKS</span>
+        <span>worksS</span>
       </h2>
-      <p class="work--lead">
+      <p class="works--lead">
         私たちの最新店舗設備を導入いただいた様々なお店の体験談が掲載されています。<br>
         実際にご利用いただいた企業の成功事例や具体的な活用方法、<br class="is-hidden_sp">
         改善された業務効率やお客様満足度の向上など、リアルな声をぜひご覧ください。<br>
@@ -429,7 +398,7 @@
       </p>
     </div>
 
-    <div class="work--inner">
+    <div class="works--inner">
       <?php
       $args = array(
         'post_type' => 'introduction',
@@ -443,16 +412,16 @@
         <div class="swiper">
           <div class="swiper-wrapper">
             <?php while ($custom_query->have_posts()) : $custom_query->the_post(); ?>
-              <article class="post-item swiper-slide">
-                <a href="<?php the_permalink(); ?>" class="post-link">
+              <article class="swiper-slide">
+                <a href="<?php the_permalink(); ?>" target="_blank">
                   <?php if (has_post_thumbnail()) : ?>
-                    <div class="post-thumbnail">
+                    <div class="works--thumbnail">
                       <?php the_post_thumbnail(); ?>
                     </div>
                   <?php endif; ?>
-                  <div class="post-content">
-                    <div class="post-meta">
-                      <time class="post-date"><?php echo get_the_date('Y.m.d'); ?></time>
+                  <div class="works--contents">
+                    <div>
+                      <time><?php echo get_the_date('Y.m.d'); ?></time>
                       <?php
                       $terms = get_the_terms(get_the_ID(), 'introduction_cat');
                       if ($terms && !is_wp_error($terms)) :
@@ -461,24 +430,25 @@
                           $top_term = get_term($top_term->parent, 'introduction_cat');
                         }
                       ?>
-                        <span class="post-taxonomy">
+                        <span class="works--cat">
                           <?php echo esc_html($top_term->name); ?>
                         </span>
                       <?php endif; ?>
                     </div>
-                    <h2 class="post-title"><?php the_title(); ?></h2>
-                    <div class="post-child-categories">
-                      <?php
-                      if ($terms && !is_wp_error($terms)) :
-                        foreach ($terms as $term) {
-                          // 親IDが0ではない＝子カテゴリーのみ表示
-                          if ($term->parent != 0) {
-                            echo '<span class="child-term">' . esc_html($term->name) . '</span>';
-                          }
-                        }
-                      endif;
-                      ?>
-                    </div>
+                    <p><?php the_title(); ?></p>
+
+                    <?php
+                    // 1. $terms が有効かチェックし、その中から親IDが0ではない（子カテゴリー）ものだけを抽出
+                    $child_terms = ($terms && !is_wp_error($terms)) ? wp_list_filter($terms, array('parent' => 0), 'NOT') : array();
+
+                    // 2. 子カテゴリーが存在する場合のみ、HTMLを出力
+                    if (!empty($child_terms)) : ?>
+                      <div>
+                        <?php foreach ($child_terms as $term) : ?>
+                          <span class="works--cat_child"><?php echo esc_html($term->name); ?></span>
+                        <?php endforeach; ?>
+                      </div>
+                    <?php endif; ?>
                   </div>
                 </a>
               </article>
@@ -491,10 +461,109 @@
         <p>表示する投稿がありません。</p>
       <?php endif; ?>
     </div>
-
-    <a class="btn_link" href="<?php echo esc_url(home_url('/introduction')); ?>">導入実績一覧を見る</a>
+    <a class="btn_link" href="<?php echo esc_url(home_url('/introduction')); ?>" target="_blank">導入実績一覧を見る</a>
   </section>
 
+  <section class="company bg_white sec">
+    <div class="container">
+      <h2 class="ttl">
+        導入実績
+        <span>COMPANY</span>
+      </h2>
+      <p>
+        最新のテクノロジーと革新的なソリューションを駆使し、<br class="is-hidden_sp">
+        企業の効率化と安全・快適な環境の実現を目指す企業です。<br>
+        お客様の多様なニーズに応えるため、柔軟な導入プランと確かな技術力で、<br class="is-hidden_sp">
+        未来を切り拓くパートナーとしての信頼と実績を築いております。
+      </p>
+      <div class="company--inner">
+        <div>
+          <ul>
+            <li><a href="">企業理念</a></li>
+            <li><a href="">沿革</a></li>
+            <li><a href="">アクセス</a></li>
+          </ul>
+          <a class="btn_link" href="#" target="_blank">会社概要の詳細はこちらから</a>
+        </div>
+        <img src="<?php echo get_template_directory_uri(); ?>/img/top/company.png" alt="" width="415" height="407">
+      </div>
+    </div>
+  </section>
+
+  <section class="recruit sec">
+    <div class="container">
+      <h2 class="ttl">
+        採用情報
+        <span>RECRUIT</span>
+      </h2>
+      <div class="recruit--inner">
+        <div>
+          <dl>
+            <dt>自由な発想とチームワークを<br>最大限に高める企業風土の創出</dt>
+            <dd>ベンチャー企業として日々新事業を展開する弊社では、<br class="is-hidden_sp">
+              決められたマニュアルはなく自分なりのルールで行動し、提案ができる社風です。<br>
+              その為人間性を重視し、「誰と働くか」ということを大切にしています。<br>
+              また働き方や雇用形態には縛られず、リモートワークなどを積極的に取り入れ、<br class="is-hidden_sp">
+              成果に対してしっかりと還元をする独自の評価システムを構築することによって<br class="is-hidden_sp">
+              チームワークを強化し、お客様はもちろん従業員がよりよい環境で働けることを目指します。
+            </dd>
+          </dl>
+          <a class="btn_link" href="#" target="_blank">採用情報はこちらから</a>
+        </div>
+        <img src="<?php echo get_template_directory_uri(); ?>/img/top/recruit_catch.png" alt="" width="477" height="492">
+      </div>
+    </div>
+  </section>
+
+  <?php
+  /**
+   * お知らせ一覧
+   */
+  $paged = get_query_var('paged') ? get_query_var('paged') : (get_query_var('page') ? get_query_var('page') : 1);
+  $args = array(
+    'post_type'      => 'post',
+    'posts_per_page' => 3,
+    'paged'          => $paged,
+  );
+
+  $the_query = new WP_Query($args);
+
+  if ($the_query->have_posts()) : ?>
+    <section class="front-news bg_white sec">
+      <div class="container">
+        <h2 class="ttl">
+          <?php esc_html_e('お知らせ', 'text-domain'); ?>
+          <span>NEWS</span>
+        </h2>
+        <ul>
+          <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+            <li>
+              <a href="<?php the_permalink(); ?>">
+                <time datetime="<?php echo get_the_date('c'); ?>">
+                  <?php echo get_the_date('Y.m.d'); ?>
+                </time>
+                <?php
+                $categories = get_the_category();
+                if (!empty($categories)) : ?>
+                  <?php foreach ($categories as $category) : ?>
+                    <span href="<?php echo esc_url(get_category_link($category->term_id)); ?>"
+                      class="front-news--cat_label -<?php echo esc_attr($category->slug); ?>">
+                      <?php echo esc_html($category->name); ?>
+                    </span>
+                  <?php endforeach; ?>
+                <?php endif; ?>
+                <p><?php the_title(); ?></p>
+              </a>
+            </li>
+          <?php endwhile; ?>
+        </ul>
+      </div>
+      <a class="btn_link" href="<?php echo esc_url(home_url('/news')); ?>" target="_blank">お知らせ一覧はこちらから</a>
+    </section>
+  <?php
+  endif;
+  wp_reset_postdata();
+  ?>
 
 </main>
 <?php get_footer(); ?>

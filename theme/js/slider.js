@@ -2,12 +2,11 @@ const swiper = new Swiper(".swiper", {
   centeredSlides: true,
   loop: true,
   speed: 700,
-  slidesPerView: 7,
+  slidesPerView: 5.5,
   autoplay: {
     delay: 3500,
     disableOnInteraction: false,
   },
-
 
   // ページネーション
   pagination: {
