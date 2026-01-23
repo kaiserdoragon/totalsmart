@@ -654,7 +654,7 @@
   // .works--inner
   &--inner {
     position: relative;
-    margin-bottom: 140px;
+    margin-bottom: 40px;
   }
 
   // .works--thumbnail
@@ -695,6 +695,19 @@
     background: #fff;
     border: 1px solid #063064;
     border-radius: 5px;
+  }
+
+  /* スライダーが読み込まれる前から高さを確保しておく */
+  .swiper {
+    width: 100%;
+    min-height: 456px;
+    aspect-ratio: 1880 / 400;
+  }
+
+  /* 読み込み完了までスライドが縦に並ぶのを防ぐ */
+  .swiper:not(.swiper-initialized) .swiper-wrapper {
+    display: flex;
+    overflow: hidden;
   }
 
   .swiper-slide {
@@ -832,3 +845,18 @@
     }
   }
 }
+
+.infomation {
+  .container {
+    width: min(1150px, 100%);
+  }
+
+  // .infomation--list
+  &--list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+}
+

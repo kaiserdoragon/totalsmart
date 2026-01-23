@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <main>
-  <div class="mv">
+  <section class="mv">
     <h1>
       <span>賢く安く簡単に最適なコスト削減</span>
       ワンストップで<br>全部解決！
@@ -30,7 +30,7 @@
         title="トータルスマート サービス紹介動画">
       </video>
     </div>
-  </div>
+  </section>
 
   <section class="lead_worry bg_white sec">
     <div class="container -md">
@@ -235,7 +235,7 @@
       </p>
       <ul>
         <li>
-          <a href="">
+          <a href="<?php echo esc_url(home_url('/service/robot')); ?>">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_01.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>配膳ロボット</figcaption>
@@ -381,15 +381,25 @@
           </a>
         </li>
       </ul>
-      <a class="btn_link" href="#" target="_blank">サービス一覧を見る</a>
+      <a class="btn_link" href="<?php echo esc_url(home_url('/service')); ?>" target="_blank">サービス一覧を見る</a>
     </div>
   </section>
 
+
+  <?php
+  /**
+   * 導入実績スライダーセクション
+   * * 改善点:
+   * 1. WP_Query のパラメータ最適化 (no_found_rows)
+   * 2. 最初の数枚の画像から loading="lazy" を除外し LCP を向上
+   * 3. ターミナル取得処理の効率化
+   */
+  ?>
   <section class="works bg_white sec">
     <div class="container">
       <h2 class="ttl">
         導入実績
-        <span>worksS</span>
+        <span>WORKS</span>
       </h2>
       <p class="works--lead">
         私たちの最新店舗設備を導入いただいた様々なお店の体験談が掲載されています。<br>
@@ -402,48 +412,64 @@
     <div class="works--inner">
       <?php
       $args = array(
-        'post_type' => 'introduction',
-        'posts_per_page' => 13,
-        'order' => 'DESC',
+        'post_type'              => 'introduction',
+        'posts_per_page'         => 13,
+        'orderby'                => 'date',
+        'order'                  => 'DESC',
+        'no_found_rows'          => true,  // ページネーション不要なため計算をスキップ（高速化）
+        'update_post_meta_cache' => false, // カスタムフィールドを使わない場合は false
+        'update_post_term_cache' => true,  // タクソノミーを使用するため true
       );
       $custom_query = new WP_Query($args);
 
       if ($custom_query->have_posts()) :
+        $post_count = 0; // ループカウンター
       ?>
         <div class="swiper">
           <div class="swiper-wrapper">
-            <?php while ($custom_query->have_posts()) : $custom_query->the_post(); ?>
+            <?php while ($custom_query->have_posts()) : $custom_query->the_post();
+              $post_count++;
+              // 最初の3枚（ビューポートに入る可能性が高い）は lazy-load を無効化して表示を早める
+              $attr = ($post_count <= 3) ? ['loading' => 'eager', 'fetchpriority' => 'high'] : ['loading' => 'lazy'];
+            ?>
               <article class="swiper-slide">
-                <a href="<?php the_permalink(); ?>" target="_blank">
-                  <?php if (has_post_thumbnail()) : ?>
-                    <div class="works--thumbnail">
-                      <?php the_post_thumbnail(); ?>
-                    </div>
-                  <?php endif; ?>
+                <a href="<?php echo esc_url(get_permalink()); ?>" target="_blank" rel="noopener">
+                  <div class="works--thumbnail">
+                    <?php if (has_post_thumbnail()) : ?>
+                      <?php the_post_thumbnail('medium', $attr); ?>
+                    <?php else : ?>
+                      <img
+                        src="<?php echo esc_url(get_template_directory_uri()); ?>/img/top/works.jpg"
+                        alt="<?php the_title_attribute(); ?>"
+                        width="352"
+                        height="308"
+                        <?php echo ($post_count <= 3) ? 'loading="eager"' : 'loading="lazy"'; ?>>
+                    <?php endif; ?>
+                  </div>
+
                   <div class="works--contents">
                     <div>
-                      <time><?php echo get_the_date('Y.m.d'); ?></time>
+                      <time datetime="<?php echo get_the_date('c'); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
 
                       <?php
                       $terms = get_the_terms(get_the_ID(), 'introduction_cat');
                       if ($terms && !is_wp_error($terms)) :
-                        $top_term = $terms[0];
-                        while ($top_term->parent != 0) {
-                          $top_term = get_term($top_term->parent, 'introduction_cat');
+                        // 親カテゴリー取得の最適化
+                        $root_term = $terms[0];
+                        while ($root_term->parent != 0) {
+                          $root_term = get_term($root_term->parent, 'introduction_cat');
                         }
                       ?>
                         <span class="works--cat">
-                          <?php echo esc_html($top_term->name); ?>
+                          <?php echo esc_html($root_term->name); ?>
                         </span>
                       <?php endif; ?>
                     </div>
                     <p><?php the_title(); ?></p>
 
                     <?php
-                    // 1. $terms が有効かチェックし、その中から親IDが0ではない（子カテゴリー）ものだけを抽出
+                    // 子カテゴリー抽出
                     $child_terms = ($terms && !is_wp_error($terms)) ? wp_list_filter($terms, array('parent' => 0), 'NOT') : array();
-
-                    // 2. 子カテゴリーが存在する場合のみ、HTMLを出力
                     if (!empty($child_terms)) : ?>
                       <div>
                         <?php foreach ($child_terms as $term) : ?>
@@ -455,15 +481,14 @@
                 </a>
               </article>
             <?php endwhile; ?>
-            <?php wp_reset_postdata(); ?>
           </div>
         </div>
-        <div class="swiper-pagination"></div>
+        <?php wp_reset_postdata(); ?>
       <?php else : ?>
         <p>表示する投稿がありません。</p>
       <?php endif; ?>
     </div>
-    <a class="btn_link" href="<?php echo esc_url(home_url('/introduction')); ?>" target="_blank">導入実績一覧を見る</a>
+    <a class="btn_link" href="<?php echo esc_url(home_url('/introduction')); ?>" target="_blank" rel="noopener">導入実績一覧を見る</a>
   </section>
 
   <section class="company bg_white sec">
@@ -487,7 +512,7 @@
           </ul>
           <a class="btn_link" href="#" target="_blank">会社概要の詳細はこちらから</a>
         </div>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/top/company.png" alt="" width="415" height="407">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/top/company.png" alt="" width="415" height="407" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
@@ -512,7 +537,7 @@
           </dl>
           <a class="btn_link" href="#" target="_blank">採用情報はこちらから</a>
         </div>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/top/recruit_catch.png" alt="" width="477" height="492">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/top/recruit_catch.png" alt="" width="477" height="492" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
@@ -566,6 +591,80 @@
   endif;
   wp_reset_postdata();
   ?>
+
+  <section class="infomation bg_white sec">
+    <div class="container">
+      <h2 class="ttl">
+        お役立ち情報
+        <span>INFORMATION</span>
+      </h2>
+
+      <?php
+      $args = array(
+        'post_type'      => 'infomation',
+        'posts_per_page' => 6,
+        'order'          => 'DESC',
+        'no_found_rows'  => true, // ページネーション不要な場合はtrueに設定してDB負荷を軽減
+      );
+      $custom_query = new WP_Query($args);
+      if ($custom_query->have_posts()) :
+      ?>
+        <div class="infomation--list">
+          <?php while ($custom_query->have_posts()) : $custom_query->the_post(); ?>
+            <article> <a href="<?php the_permalink(); ?>" class="infomation--link">
+
+                <div class="infomation--image">
+                  <?php if (has_post_thumbnail()) : ?>
+                    <?php
+                    the_post_thumbnail('info-thumb', [
+                      'alt'      => the_title_attribute(['echo' => false]),
+                      'loading'  => 'lazy',
+                      'decoding' => 'async', // 画像デコードを非同期にしてINPを改善
+                    ]);
+                    ?>
+                  <?php else : ?>
+                    <img
+                      src="<?php echo esc_url(get_theme_file_uri('/img/top/infomation.jpg')); ?>"
+                      alt=""
+                      width="345"
+                      height="220"
+                      loading="lazy"
+                      decoding="async">
+                  <?php endif; ?>
+                </div>
+
+                <div class="infomation--meta">
+
+
+                  <?php
+                  $terms = get_the_terms(get_the_ID(), 'infomation_cat');
+                  if ($terms && !is_wp_error($terms)) :
+                    $top_term = $terms[0];
+                    while ($top_term->parent != 0) {
+                      $top_term = get_term($top_term->parent, 'infomation_cat');
+                    }
+                  ?>
+                    <span class="infomation--cat">
+                      <?php echo esc_html($top_term->name); ?>
+                    </span>
+                  <?php endif; ?>
+
+                  <time datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
+
+                </div>
+                <h3 class="infomation--title"><?php the_title(); ?></h3>
+              </a>
+            </article>
+          <?php endwhile; ?>
+        </div>
+        <?php wp_reset_postdata(); ?>
+      <?php else : ?>
+        <p>現在、お役立ち情報はありません。</p>
+      <?php endif; ?>
+
+      <a class="btn_link" href="<?php echo esc_url(home_url('/infomation')); ?>">お役立ち情報一覧を見る</a>
+    </div>
+  </section>
 
 </main>
 <?php get_footer(); ?>

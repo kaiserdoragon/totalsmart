@@ -120,8 +120,11 @@ if (!isset($content_width)) {
 if (function_exists('add_theme_support')) {
   // アップロード画像のサムネイル設定
   add_theme_support('post-thumbnails');
+
   // 特定の大きさのサムネイルが必要なとき用使い方→ the_post_thumbnail('custom-size');
   add_image_size('custom-size', 300, 200, true); // 任意の数値を設定
+
+  add_image_size('info-thumb', 345, 220, true);
 
   /*------------------------------------*\
       タイトルタグ　title-tag
