@@ -851,6 +851,12 @@
     width: min(1150px, 100%);
   }
 
+  h3 {
+    font-size: var(--fz20);
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
   // .infomation--list
   &--list {
     display: grid;
@@ -858,5 +864,113 @@
     gap: 30px;
     margin-bottom: 60px;
   }
+
+  // .infomation--meta
+  &--meta {
+    margin: 15px 0 5px;
+  }
+
+  // .infomation--cat
+  &--cat {
+    display: inline-block;
+    width: fit-content;
+    min-width: 50px;
+    padding: 4px 20px;
+    margin-right: 10px;
+    font-size: var(--fz16);
+    color: #fff;
+    text-align: center;
+    background: #063064;
+    border-radius: 1000px;
+  }
 }
 
+
+.flow {
+  ul {
+    counter-reset: num;
+  }
+
+  li {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1000px;
+    padding: 40px 0 40px 210px;
+    margin: auto;
+    counter-increment: num;
+    border: 3px solid #3889c8;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgb(61 182 255 / 25.1%);
+
+    &:not(:last-child) {
+      margin: 0 auto 120px;
+
+      &::after {
+        position: absolute;
+        bottom: -80px;
+        left: 50%;
+        display: inline-block;
+        width: 60px;
+        aspect-ratio: 1 / 1;
+        content: "";
+        background: url(../img/top/flow_triangle.png) no-repeat center / contain;
+        transform: translateX(-50%);
+      }
+    }
+
+    &:nth-child(1) {
+      background: url(../img/top/flow_01.png) no-repeat left 4% center/15%, #fff;
+    }
+
+    &:nth-child(2) {
+      background: url(../img/top/flow_02.png) no-repeat left 4% center/15%, #fff;
+    }
+
+    &:nth-child(3) {
+      background: url(../img/top/flow_03.png) no-repeat left 4% center/15%, #fff;
+    }
+  }
+
+  h3 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 60px;
+    margin-bottom: 30px;
+    font-size: var(--fz25);
+    font-weight: 800;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      font-size: var(--fz20);
+      font-weight: bold;
+      color: #fff;
+      text-align: center;
+      content: counter(num, decimal-leading-zero);
+      background: #0052a7;
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+
+    &::after {
+      width: 60px;
+      height: 3px;
+      margin-left: 15px;
+      content: "";
+      background: #0052a7;
+    }
+  }
+
+  p {
+    font-size: var(--fz16);
+  }
+}

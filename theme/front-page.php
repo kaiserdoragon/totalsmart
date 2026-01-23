@@ -313,6 +313,8 @@
     </div>
   </section>
 
+
+
   <?php
   /**
    * 導入実績スライダー
@@ -579,7 +581,7 @@
                   <time datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
 
                 </div>
-                <h3 class="infomation--title"><?php the_title(); ?></h3>
+                <h3><?php the_title(); ?></h3>
               </a>
             </article>
           <?php endwhile; ?>
@@ -590,6 +592,41 @@
       <?php endif; ?>
 
       <a class="btn_link" href="<?php echo esc_url(home_url('/infomation')); ?>">お役立ち情報一覧を見る</a>
+    </div>
+  </section>
+
+  <section class="flow bg_gray sec">
+    <div class="container">
+      <h2 class="ttl">
+        導入の流れ
+        <span>FLOW</span>
+      </h2>
+      <ul>
+        <li>
+          <h3>ご提案</h3>
+          <p>
+            まずは、お客様の現状やお悩みをしっかりとお伺いし、最適なソリューションをご提案いたします。<br>
+            最新の製品やシステムの特徴、導入することで得られるメリットを分かりやすくご説明し、<br class="is-hidden_sp">
+            お客様のニーズに合ったプランをお届けします。
+          </p>
+        </li>
+        <li>
+          <h3>ご商談</h3>
+          <p>
+            具体的な導入方法やお見積もり、スケジュールなど詳細な条件について商談を進めます。<br>
+            お客様との対話を通じて、ご不明な点やご要望を丁寧にお伺いし、双方納得のいくプランを練り上げて<br class="is-hidden_sp">
+            まいります。
+          </p>
+        </li>
+        <li>
+          <h3>ご契約</h3>
+          <p>
+            商談内容にご同意いただけましたら、正式な契約手続きに進みます。<br>
+            契約書のご説明や必要書類のご案内を通じて、安心してお手続きいただけるようサポートいたします。<br>
+            ご契約後も、導入後のフォローアップやアフターサポートをしっかりと行っていきます。
+          </p>
+        </li>
+      </ul>
     </div>
   </section>
 
