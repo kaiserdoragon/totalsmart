@@ -23,9 +23,10 @@
 
     <div class="mv_parallax_bg">
       <video
-        src="<?php echo get_template_directory_uri(); ?>/video/video.mp4"
-        poster="<?php echo get_template_directory_uri(); ?>/img/top/mv_video.jpg"
+        src="<?php echo get_theme_file_uri('/video/video.mp4'); ?>"
+        poster="<?php echo get_theme_file_uri('/img/top/mv_video.jpg'); ?>"
         playsinline autoplay muted loop
+        preload="metadata"
         title="トータルスマート サービス紹介動画">
       </video>
     </div>
@@ -33,8 +34,8 @@
 
   <section class="lead_worry bg_white sec">
     <div class="container -md">
-      <h2>こんな<span class="lead_txt">お悩み</span>ありませんか？？</h2>
-      <ul>
+      <h2>オフィス運営の<span class="lead_txt">お悩み</span>を解決します！</h2>
+      <ul role="list">
         <li>業務が忙しすぎる…<br>もっと<span class="lead_txt">効率化</span>をしたい！！</li>
         <li>無駄な<br><span class="lead_txt">コスト・費用</span>を削りたい</li>
         <li>情報の<span class="lead_txt">セキュリティ管理</span>を<br>徹底したい！</li>
@@ -48,9 +49,9 @@
         <div class="lead_solution--ttl">
           <h2>
             <p>これらの<span>悩み</span>は</p>
-            <img class="lead_solution--logo" src="<?php echo get_template_directory_uri(); ?>/img/top/solution_logo.png" alt="トータルスマート株式会社" width="353" height="42">が<span>スマート</span>に解決します！
+            <img class="lead_solution--logo" src="<?php echo get_template_directory_uri(); ?>/img/top/solution_logo.png" alt="トータルスマート株式会社" width="353" height="42" loading="lazy" decoding="async">が<span>スマート</span>に解決します！
           </h2>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/solution_txt.png" alt="トータルスマート株式会社" width="1024" height="213">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/top/solution_txt.png" alt="トータルスマート株式会社" width="1024" height="213" loading="lazy" decoding="async">
         </div>
         <div class="lead_solution--txt">
           <p class="underline">オフィス関連をトータルにお任せ！</p>
@@ -69,7 +70,7 @@
         <strong>一本の電話で全て<span>解決！</span></strong>
         <p>となるトータルサポートを可能にしています。</p>
       </div>
-      <img src="<?php echo get_template_directory_uri(); ?>/img/top/solution_catch.png" alt="" width="724" height="489">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/top/solution_catch.png" alt="" width="724" height="489" loading="lazy" decoding="async">
     </div>
   </section>
 
@@ -100,13 +101,13 @@
   <section class="feature bg_white sec">
     <div class="container">
       <h2 class="ttl">
-        トータルスマートでできること
+        トータルスマートの主なサービス
         <span>FEATURE</span>
       </h2>
       <p class="ttl--lead">コストを抑えて成果を伸ばす、最適な業務改善をご提案します！！</p>
       <ul>
         <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_catch_01.png" alt="" width="400" height="210">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_catch_01.png" alt="" width="400" height="210" loading="lazy" decoding="async">
           <h3>コスト削減</h3>
           <p>
             オフィスで必須なOA機器やインターネット回線
@@ -114,10 +115,10 @@
             お得に経費削減。<br>
             面倒な初期の手続き工事もお任せで安心。
           </p>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_icon_01.png" alt="" width="246" height="87">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_icon_01.png" alt="" width="246" height="87" loading="lazy" decoding="async">
         </li>
         <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_catch_02.png" alt="" width="400" height="210">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_catch_02.png" alt="" width="400" height="210" loading="lazy" decoding="async">
           <h3>業務効率化</h3>
           <p>
             リモートサポートはブロードバンド回線を
@@ -125,10 +126,10 @@
             技術スタッフのパソコンに表示し、
             画面を確認しながらご対応します。
           </p>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_icon_02.png" alt="" width="245" height="105">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_icon_02.png" alt="" width="245" height="105" loading="lazy" decoding="async">
         </li>
         <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_catch_03.png" alt="" width="400" height="210">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_catch_03.png" alt="" width="400" height="210" loading="lazy" decoding="async">
           <h3>売上・収益向上</h3>
           <p>
             ITを駆使して、企業の可能性を見極め、
@@ -136,7 +137,7 @@
             データに基づいた継続的な進化を通じて、
             企業の成長や売上増加を支援します。
           </p>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_icon_03.png" alt="" width="164" height="117">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_icon_03.png" alt="" width="164" height="117" loading="lazy" decoding="async">
         </li>
       </ul>
       <div class="feature--inner">
@@ -145,7 +146,7 @@
         <strong class="underline">一本の電話ですべて解決する</strong>
         <p>お客様にとってストレスのない業務形態です。</p>
       </div>
-      <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_anima.png" alt="" width="900" height="1088">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_anima.png" alt="" width="900" height="1088" loading="lazy" decoding="async">
       <a class="btn_link" href="#" target="_blank">トータルスマートについて詳しく知る</a>
     </div>
   </section>
@@ -166,7 +167,7 @@
       </p>
       <ul>
         <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/reason_02.png" alt="" width="136" height="117">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/top/reason_02.png" alt="" width="136" height="117" loading="lazy" decoding="async">
           <h3>一括契約の提供</h3>
           <p>
             工事を行った後に発生する保守やメンテナ
@@ -177,7 +178,7 @@
           </p>
         </li>
         <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/reason_03.png" alt="" width="171" height="103">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/top/reason_03.png" alt="" width="171" height="103" loading="lazy" decoding="async">
           <h3>総合的なサポート</h3>
           <p>
             工事だけでなく、その後の保守や修理、サポー
@@ -189,7 +190,7 @@
 
         </li>
         <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/reason_01.png" alt="" width="129" height="129">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/top/reason_01.png" alt="" width="129" height="129" loading="lazy" decoding="async">
           <h3>透明性と予測可能性</h3>
           <p>
             一括契約の場合、費用が明確に提示されるた
@@ -236,7 +237,7 @@
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_01.png" alt="" width="212" height="212">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_01.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>配膳ロボット</figcaption>
             </figure>
           </a>
@@ -244,7 +245,7 @@
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_02.png" alt="" width="212" height="212">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_02.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>デジタルサイネージ</figcaption>
             </figure>
           </a>
@@ -252,7 +253,7 @@
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_03.png" alt="" width="212" height="212">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_03.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>
                 POSレジ/<br>
                 キャッシュレス/<br>
@@ -264,7 +265,7 @@
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_04.png" alt="" width="212" height="212">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_04.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>エアコン</figcaption>
             </figure>
           </a>
@@ -272,7 +273,7 @@
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_05.png" alt="" width="212" height="212">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_05.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>防犯セキュリティー</figcaption>
             </figure>
           </a>
@@ -280,7 +281,7 @@
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_06.png" alt="" width="212" height="212">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_06.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>WIFIセキュリティー</figcaption>
             </figure>
           </a>
@@ -288,7 +289,7 @@
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_07.png" alt="" width="212" height="212">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_07.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>防犯カメラ</figcaption>
             </figure>
           </a>
@@ -296,7 +297,7 @@
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_08.png" alt="" width="212" height="212">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_08.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>電話回線＆ネット回線</figcaption>
             </figure>
           </a>
@@ -304,7 +305,7 @@
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_09.png" alt="" width="212" height="212">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_09.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>
                 スマートフォン＆<br>
                 タブレット
@@ -315,7 +316,7 @@
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_10.png" alt="" width="212" height="212">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_10.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>電気代＆ガス代</figcaption>
             </figure>
           </a>
@@ -323,7 +324,7 @@
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_11.png" alt="" width="212" height="212">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_11.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>
                 ホームページ制作/<br>
                 チラシ
@@ -334,7 +335,7 @@
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_12.png" alt="" width="212" height="212">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_12.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>オンデマンド</figcaption>
             </figure>
           </a>
@@ -342,7 +343,7 @@
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_13.png" alt="" width="212" height="212">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_13.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>USEN</figcaption>
             </figure>
           </a>
@@ -350,7 +351,7 @@
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_14.png" alt="" width="212" height="212">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_14.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>SNS</figcaption>
             </figure>
           </a>
@@ -358,7 +359,7 @@
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_15.png" alt="" width="212" height="212">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_15.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>LED</figcaption>
             </figure>
           </a>
@@ -366,7 +367,7 @@
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_16.png" alt="" width="212" height="212">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_16.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>電子ブレーカー</figcaption>
             </figure>
           </a>
@@ -374,7 +375,7 @@
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_17.png" alt="" width="212" height="212">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_17.png" alt="" width="212" height="212" loading="lazy" decoding="async">
               <figcaption>Googleマイビジネス</figcaption>
             </figure>
           </a>
@@ -402,7 +403,7 @@
       <?php
       $args = array(
         'post_type' => 'introduction',
-        'posts_per_page' => -1,
+        'posts_per_page' => 13,
         'order' => 'DESC',
       );
       $custom_query = new WP_Query($args);
@@ -422,6 +423,7 @@
                   <div class="works--contents">
                     <div>
                       <time><?php echo get_the_date('Y.m.d'); ?></time>
+
                       <?php
                       $terms = get_the_terms(get_the_ID(), 'introduction_cat');
                       if ($terms && !is_wp_error($terms)) :

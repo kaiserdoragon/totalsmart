@@ -1,6 +1,20 @@
 <?php
 load_theme_textdomain('origintheme', get_template_directory() . '/languages');
 
+/*------------------------------------*\
+  セキュリティヘッダーの送信（.htaccessでも可だがPHPでも可能）
+\*------------------------------------*/
+function add_security_headers()
+{
+  if (!is_admin()) {
+    header("X-Content-Type-Options: nosniff");
+    header("X-Frame-Options: SAMEORIGIN");
+    header("X-XSS-Protection: 1; mode=block");
+    header("Strict-Transport-Security: max-age=31536000; includeSubDomains; preload");
+  }
+}
+add_action('send_headers', 'add_security_headers');
+
 
 /*------------------------------------*\
 	headからいらない項目を削除する
@@ -566,3 +580,32 @@ add_action(
 // YubinBangoライブラリ（郵便番号と住所連動）
 // -------------------------------------
 wp_enqueue_script('yubinbango', 'https://yubinbango.github.io/yubinbango/yubinbango.js', array(), null, true);
+
+
+// -------------------------------------
+// フロントページ専用の 「LocalBusiness構造化データ（JSON-LD）」
+// -------------------------------------
+function add_home_schema_markup()
+{
+  if (is_front_page()) {
+    $json_ld = [
+      "@context" => "https://schema.org",
+      "@type" => "LocalBusiness",
+      "name" => "トータルスマート株式会社",
+      "image" => get_theme_file_uri('/img/common/logo.png'),
+      "telephone" => "052-932-5450",
+      "address" => [
+        "@type" => "PostalAddress",
+        "streetAddress" => "住所詳細",
+        "addressLocality" => "名古屋市",
+        "addressRegion" => "愛知県",
+        "postalCode" => "郵便番号",
+        "addressCountry" => "JP"
+      ],
+      "priceRange" => "¥¥",
+      "description" => "OA機器、通信インフラ、セキュリティ対策などオフィス課題をワンストップで解決するコスト削減の専門会社です。"
+    ];
+    echo '<script type="application/ld+json">' . json_encode($json_ld, JSON_UNESCAPED_UNICODE) . '</script>';
+  }
+}
+add_action('wp_head', 'add_home_schema_markup');
