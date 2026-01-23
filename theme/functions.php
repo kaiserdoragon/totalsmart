@@ -126,6 +126,10 @@ if (function_exists('add_theme_support')) {
 
   add_image_size('info-thumb', 345, 220, true);
 
+  add_image_size('service-thumb', 212, 212, true);
+
+  add_image_size('works-thumb', 352, 308, true);
+
   /*------------------------------------*\
       タイトルタグ　title-tag
   \*------------------------------------*/

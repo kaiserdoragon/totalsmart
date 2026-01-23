@@ -218,181 +218,104 @@
     </section>
   </section>
 
-  <section class="service bg_white">
-    <div class="container">
-      <h2 class="ttl">
-        サービス
-        <span>SERVICE</span>
-      </h2>
-      <p>
-        当社のサービスは企業におけるあらゆる課題を解決するために<br class="is-hidden_sp">
-        設計された革新的なソリューションです。<br>
-        最新の技術を活用し、業務プロセスの自動化と効率化を図ることで、<br class="is-hidden_sp">
-        従業員の負担を軽減し、顧客満足度の向上に寄与します。<br>
-        また、厳格な管理体制と先進の安全対策を融合し、安心してご利用いただける環境を提供します。<br>
-        これにより、企業の競争力強化と持続的な成長を実現し、<br class="is-hidden_sp">
-        多様な業種のお客様から高い評価をいただいております。
-      </p>
-      <ul>
-        <li>
-          <a href="<?php echo esc_url(home_url('/service/robot')); ?>">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_01.png" alt="" width="212" height="212" loading="lazy" decoding="async">
-              <figcaption>配膳ロボット</figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_02.png" alt="" width="212" height="212" loading="lazy" decoding="async">
-              <figcaption>デジタルサイネージ</figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_03.png" alt="" width="212" height="212" loading="lazy" decoding="async">
-              <figcaption>
-                POSレジ/<br>
-                キャッシュレス/<br>
-                オーダーシステム
-              </figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_04.png" alt="" width="212" height="212" loading="lazy" decoding="async">
-              <figcaption>エアコン</figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_05.png" alt="" width="212" height="212" loading="lazy" decoding="async">
-              <figcaption>防犯セキュリティー</figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_06.png" alt="" width="212" height="212" loading="lazy" decoding="async">
-              <figcaption>WIFIセキュリティー</figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_07.png" alt="" width="212" height="212" loading="lazy" decoding="async">
-              <figcaption>防犯カメラ</figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_08.png" alt="" width="212" height="212" loading="lazy" decoding="async">
-              <figcaption>電話回線＆ネット回線</figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_09.png" alt="" width="212" height="212" loading="lazy" decoding="async">
-              <figcaption>
-                スマートフォン＆<br>
-                タブレット
-              </figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_10.png" alt="" width="212" height="212" loading="lazy" decoding="async">
-              <figcaption>電気代＆ガス代</figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_11.png" alt="" width="212" height="212" loading="lazy" decoding="async">
-              <figcaption>
-                ホームページ制作/<br>
-                チラシ
-              </figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_12.png" alt="" width="212" height="212" loading="lazy" decoding="async">
-              <figcaption>オンデマンド</figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_13.png" alt="" width="212" height="212" loading="lazy" decoding="async">
-              <figcaption>USEN</figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_14.png" alt="" width="212" height="212" loading="lazy" decoding="async">
-              <figcaption>SNS</figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_15.png" alt="" width="212" height="212" loading="lazy" decoding="async">
-              <figcaption>LED</figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_16.png" alt="" width="212" height="212" loading="lazy" decoding="async">
-              <figcaption>電子ブレーカー</figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/top/service_17.png" alt="" width="212" height="212" loading="lazy" decoding="async">
-              <figcaption>Googleマイビジネス</figcaption>
-            </figure>
-          </a>
-        </li>
-      </ul>
-      <a class="btn_link" href="<?php echo esc_url(home_url('/service')); ?>" target="_blank">サービス一覧を見る</a>
-    </div>
-  </section>
-
 
   <?php
   /**
-   * 導入実績スライダーセクション
-   * * 改善点:
-   * 1. WP_Query のパラメータ最適化 (no_found_rows)
-   * 2. 最初の数枚の画像から loading="lazy" を除外し LCP を向上
-   * 3. ターミナル取得処理の効率化
+   * サービス一覧
+   */
+  ?>
+  <section class="service bg_white">
+    <div class="container">
+      <h2 class="ttl">
+        サービス一覧
+        <span>SERVICE</span>
+      </h2>
+
+      <?php
+      // 1. タクソノミーの取得
+      $terms = get_terms([
+        'taxonomy'   => 'service_cat',
+        'orderby'    => 'description',
+        'order'      => 'ASC',
+        'hide_empty' => true,
+      ]);
+
+      if (!empty($terms) && !is_wp_error($terms)) :
+        $json_ld_services = [];
+
+        // ★ここを -1 にすれば無制限、20 にすれば最大20個まで出ます
+        $display_limit = -1;
+        $current_count = 0;
+      ?>
+        <ul class="service--list">
+          <?php
+          foreach ($terms as $term) :
+            // 合計表示数が上限に達したら終了
+            if ($display_limit !== -1 && $current_count >= $display_limit) break;
+
+            $args = [
+              'post_type'      => 'service',
+              'posts_per_page' => ($display_limit === -1) ? -1 : ($display_limit - $current_count),
+              'no_found_rows'  => true,
+              'tax_query'      => [
+                [
+                  'taxonomy' => 'service_cat',
+                  'field'    => 'term_id',
+                  'terms'    => $term->term_id,
+                ],
+              ],
+            ];
+
+            $service_query = new WP_Query($args);
+
+            if ($service_query->have_posts()) :
+              while ($service_query->have_posts()) : $service_query->the_post();
+                $current_count++;
+
+                $json_ld_services[] = [
+                  '@type' => 'ListItem',
+                  'position' => $current_count,
+                  'name' => get_the_title(),
+                  'url' => get_permalink(),
+                ];
+          ?>
+                <li>
+                  <article>
+                    <a href="<?php the_permalink(); ?>" rel="bookmark">
+                      <figure>
+                        <?php if (has_post_thumbnail()) : ?>
+                          <?php the_post_thumbnail('service-thumb', [
+                            'alt'      => the_title_attribute(['echo' => false]),
+                            'loading'  => 'lazy',
+                            'decoding' => 'async',
+                            'width'    => '212',
+                            'height'   => '212',
+                          ]); ?>
+                        <?php else : ?>
+                          <img src="<?php echo esc_url(get_theme_file_uri('/img/top/service.jpg')); ?>" alt="" width="212" height="212" loading="lazy">
+                        <?php endif; ?>
+                        <figcaption>
+                          <h3><?php echo wp_kses_post(get_the_title()); ?></h3>
+                        </figcaption>
+                      </figure>
+                    </a>
+                  </article>
+                </li>
+          <?php
+              endwhile;
+              wp_reset_postdata();
+            endif;
+          endforeach;
+          ?>
+        </ul>
+      <?php endif; ?>
+      <a class="btn_link" href="<?php echo esc_url(home_url('/service')); ?>">サービス一覧を見る</a>
+    </div>
+  </section>
+
+  <?php
+  /**
+   * 導入実績スライダー
    */
   ?>
   <section class="works bg_white sec">
@@ -429,14 +352,20 @@
           <div class="swiper-wrapper">
             <?php while ($custom_query->have_posts()) : $custom_query->the_post();
               $post_count++;
-              // 最初の3枚（ビューポートに入る可能性が高い）は lazy-load を無効化して表示を早める
-              $attr = ($post_count <= 3) ? ['loading' => 'eager', 'fetchpriority' => 'high'] : ['loading' => 'lazy'];
+              // 最初の6枚（ビューポートに入る可能性が高い）は lazy-load を無効化して表示を早める
+              $attr = ($post_count <= 6) ? ['loading' => 'eager', 'fetchpriority' => 'high'] : ['loading' => 'lazy'];
             ?>
               <article class="swiper-slide">
                 <a href="<?php echo esc_url(get_permalink()); ?>" target="_blank" rel="noopener">
                   <div class="works--thumbnail">
                     <?php if (has_post_thumbnail()) : ?>
-                      <?php the_post_thumbnail('medium', $attr); ?>
+                      <?php
+                      the_post_thumbnail('works-thumb', [
+                        'alt'      => the_title_attribute(['echo' => false]),
+                        'loading'  => 'lazy',
+                        'decoding' => 'async',
+                      ]);
+                      ?>
                     <?php else : ?>
                       <img
                         src="<?php echo esc_url(get_template_directory_uri()); ?>/img/top/works.jpg"
@@ -619,7 +548,7 @@
                     the_post_thumbnail('info-thumb', [
                       'alt'      => the_title_attribute(['echo' => false]),
                       'loading'  => 'lazy',
-                      'decoding' => 'async', // 画像デコードを非同期にしてINPを改善
+                      'decoding' => 'async',
                     ]);
                     ?>
                   <?php else : ?>
@@ -634,8 +563,6 @@
                 </div>
 
                 <div class="infomation--meta">
-
-
                   <?php
                   $terms = get_the_terms(get_the_ID(), 'infomation_cat');
                   if ($terms && !is_wp_error($terms)) :
