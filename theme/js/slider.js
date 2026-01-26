@@ -1,63 +1,61 @@
-/**
- * 導入実績スライダーの初期化関数
- */
-function initWorksSwiper() {
-  // 1. スライダーの要素を取得
-  const swiperElement = document.querySelector(".swiper");
+function initWorksSwiperOnView() {
+  const swiperElement = document.querySelector(".works .swiper");
+  if (!swiperElement) return;
 
-  // 2. 要素が存在しない場合は、ここで処理を終了（エラー防止）
-  if (!swiperElement) {
+  let swiper;
+
+  const buildOptions = () => {
+    const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    return {
+      centeredSlides: true,
+      loop: true,
+      speed: 700,
+      slidesPerView: 1.5,
+      spaceBetween: 5,
+      autoplay: prefersReducedMotion
+        ? false
+        : {
+            delay: 3500,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          },
+      // 使っていないなら false 推奨（後述）
+      watchSlidesProgress: false,
+      breakpoints: {
+        500: { slidesPerView: 1.8, spaceBetween: 5 },
+        768: { slidesPerView: 3.5, spaceBetween: 10 },
+        1025: { slidesPerView: 5.5, spaceBetween: 10 },
+      },
+      a11y: {
+        prevSlideMessage: "前のスライドへ",
+        nextSlideMessage: "次のスライドへ",
+        paginationBulletMessage: "{{index}}枚目のスライドへ",
+      },
+    };
+  };
+
+  const init = () => {
+    if (swiper) return;
+    swiper = new Swiper(swiperElement, buildOptions());
+  };
+
+  // IntersectionObserver がなければ従来どおり初期化
+  if (!("IntersectionObserver" in window)) {
+    init();
     return;
   }
 
-  // 3. Swiperを初期化
-  const swiper = new Swiper(swiperElement, {
-    // 基本設定
-    centeredSlides: true,
-    loop: true,
-    speed: 700,
-    slidesPerView: 1.5, // モバイルのデフォルト枚数
-    spaceBetween: 5, // スライド間の余白
-
-    // 自動再生の設定
-    autoplay: {
-      delay: 3500,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true, // マウスを乗せたら一時停止
+  // 200px 手前で初期化（スクロールでカクつきにくい）
+  const io = new IntersectionObserver(
+    (entries) => {
+      if (!entries[0].isIntersecting) return;
+      init();
+      io.disconnect();
     },
+    { rootMargin: "200px 0px" }
+  );
 
-    // 表示パフォーマンスの最適化
-    watchSlidesProgress: true,
-
-    // レスポンシブ（画面幅による切り替え）
-    breakpoints: {
-      // 500px以上（大きめのスマホなど）
-      500: {
-        slidesPerView: 1.8,
-        spaceBetween: 5,
-      },
-      // 768px以上（タブレット）
-      768: {
-        slidesPerView: 3.5,
-        spaceBetween: 10,
-      },
-      // 1025px以上（PC）
-      1025: {
-        slidesPerView: 5.5,
-        spaceBetween: 10,
-      },
-    },
-
-    // アクセシビリティ（読み上げ対応）
-    a11y: {
-      prevSlideMessage: "前のスライドへ",
-      nextSlideMessage: "次のスライドへ",
-      paginationBulletMessage: "{{index}}枚目のスライドへ",
-    },
-  });
+  io.observe(swiperElement);
 }
 
-/**
- * 画面の読み込みが終わったら実行
- */
-document.addEventListener("DOMContentLoaded", initWorksSwiper);
+document.addEventListener("DOMContentLoaded", initWorksSwiperOnView);

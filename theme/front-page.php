@@ -354,19 +354,20 @@
           <div class="swiper-wrapper">
             <?php while ($custom_query->have_posts()) : $custom_query->the_post();
               $post_count++;
-              // 最初の6枚（ビューポートに入る可能性が高い）は lazy-load を無効化して表示を早める
-              $attr = ($post_count <= 6) ? ['loading' => 'eager', 'fetchpriority' => 'high'] : ['loading' => 'lazy'];
+              $thumb_attr = [
+                'alt'      => the_title_attribute(['echo' => false]),
+                'loading'  => 'lazy',
+                'decoding' => 'async',
+                // 表示幅がほぼ決まっているなら付ける（後述）
+                'sizes'    => '(max-width: 768px) 90vw, 352px',
+              ];
             ?>
               <article class="swiper-slide">
                 <a href="<?php echo esc_url(get_permalink()); ?>" target="_blank" rel="noopener">
                   <div class="works--thumbnail">
                     <?php if (has_post_thumbnail()) : ?>
                       <?php
-                      the_post_thumbnail('works-thumb', [
-                        'alt'      => the_title_attribute(['echo' => false]),
-                        'loading'  => 'lazy',
-                        'decoding' => 'async',
-                      ]);
+                      the_post_thumbnail('works-thumb', $thumb_attr);
                       ?>
                     <?php else : ?>
                       <img
@@ -421,6 +422,7 @@
     </div>
     <a class="btn_link" href="<?php echo esc_url(home_url('/introduction')); ?>" target="_blank" rel="noopener">導入実績一覧を見る</a>
   </section>
+
 
   <section class="company bg_white sec">
     <div class="container">
@@ -627,6 +629,53 @@
           </p>
         </li>
       </ul>
+    </div>
+  </section>
+
+  <section class="question sec bg_white">
+    <div class="container">
+      <h2 class="ttl">
+        よくある質問
+        <span>QUESTION</span>
+      </h2>
+      <p>皆様からのご質問を回答させていただいています。</p>
+      <dl>
+        <dt>法人契約でないと契約は出来ないのですか？</dt>
+        <dd>商品サービスによって異なりますが､ご商売をされているお客さまでしたらお申込いただけます｡</dd>
+        <dt>料金はいくらですか？</dt>
+        <dd>ご利用企業様の利用計画に応じて、さまざまな料金プランをご用意しております。詳しくはお問い合わせください。</dd>
+        <dt>導入までにどれくらい時間がかかりますか？</dt>
+        <dd>お申し込み後、数日でご利用を開始していただけます。契約後は専任のスタッフにより、開設・ご利用方法をご説明いたします。</dd>
+      </dl>
+      <a class="btn_link" href="<?php echo esc_url(home_url('/question')); ?>">よくある質問の一覧を見る</a>
+    </div>
+  </section>
+
+  <section class="cv_contact sec">
+    <div class="container">
+      <div class="cv_contact--ttl">
+        <h2 class="ttl">
+          お問い合わせ
+          <span>CONTACT</span>
+        </h2>
+        <img src="<?php echo get_template_directory_uri(); ?>/img/top/contact_logo.png" alt="トータルスマート株式会社" width="1100" height="117" loading="lazy" decoding="async">
+      </div>
+      <p>ご不明な点やご質問、または詳細な情報をお求めの場合は、どうぞお気軽にお問い合わせください。<br>
+        専門のスタッフが迅速にサポートします。</p>
+      <div class="cv_contact--inner">
+        <ul>
+          <li>
+            <a href="">メールで問い合わせ</a>
+          </li>
+          <li>
+            <a href="">LINEで問い合わせ</a>
+          </li>
+        </ul>
+        <a href="tel:052-932-5450" class="cv_contact--btn">
+          052-932-5450
+          <span>受付時間<br>平日9:00～18:00</span>
+        </a>
+      </div>
     </div>
   </section>
 

@@ -54,19 +54,6 @@ main {
   }
 }
 
-.totop {
-  position: fixed;
-  right: 10px;
-  bottom: 10px;
-  cursor: pointer;
-
-  // display: none; fadeInを利用するときに必要
-
-  @include max-mq {
-    width: 44px;
-    height: 44px;
-  }
-}
 
 // グーグルマップ
 .googlemap {
@@ -335,10 +322,58 @@ main {
 // ---------------------------------------------
 
 .footer {
-  // .footer--copy
-  &--copy {
-    padding: 10px;
-    line-height: 1;
+  padding: 120px 0 0;
+  color: #fff;
+  background: url(../img/common/footer_bg.jpg) no-repeat center /cover;
+
+  small {
+    display: block;
+    padding-bottom: 30px;
+    margin-top: 80px;
     text-align: center;
+  }
+
+  // .footer--txt
+  &--txt {
+    margin-top: -20px;
+  }
+
+  // .footer--lead
+  &--lead {
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 30px 30px;
+    margin: 0 auto 30px;
+    margin-bottom: 80px;
+    line-height: 2;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+  }
+
+  // .footer--inner
+  &--inner {
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: min(1450px, 100%);
+    padding: 0 min(4vw, 25px);
+    margin: auto;
+
+    img {
+      margin-bottom: 30px;
+    }
+
+    address {
+      margin-bottom: 15px;
+    }
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: flex-end;
+      width: 55%;
+    }
   }
 }
