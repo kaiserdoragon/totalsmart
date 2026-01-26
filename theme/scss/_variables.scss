@@ -69,11 +69,14 @@ $tablet-breakpoints: (
   .example {
     display: block;
   }
+
+  .is-hidden_sp {
+    display: none;
+  }
 }
 
 @include max-mq {
-  // 767px以下
-  .is-hidden_sp {
-    display: none;
+  .example {
+    display: block;
   }
 }

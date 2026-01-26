@@ -26,6 +26,12 @@
       font-size: 3vw;
     }
   }
+
+  @media (max-width: 1440px) {
+    h1 {
+      font-size: 11rem;
+    }
+  }
 }
 
 .mv_scroll {
@@ -308,18 +314,32 @@
 
     &::before {
       bottom: -100px;
-      left: -80px;
+      left: -45px;
       width: 218px;
-      height: 473px;
+      aspect-ratio: 218 / 473;
       background: url(../img/top/solution_left.png) no-repeat left center/contain;
     }
 
     &::after {
-      right: -80px;
+      right: -35px;
       bottom: -100px;
       width: 199px;
-      height: 486px;
+      aspect-ratio: 199 / 486;
       background: url(../img/top/solution_right.png) no-repeat left center/contain;
+    }
+
+    @media (max-width: 1280px) {
+      &::before {
+        bottom: -40px;
+        left: 0;
+        width: 170px;
+      }
+
+      &::after {
+        right: 15px;
+        bottom: -40px;
+        width: 150px;
+      }
     }
   }
 }
@@ -390,35 +410,46 @@
       }
     }
 
-    &::before,
-    &::after {
-      position: absolute;
-      display: inline-block;
-      content: "";
-    }
 
-    &::before {
-      top: 50%;
-      left: -140px;
-      width: 131px;
-      aspect-ratio: 131/ 196;
-      background: url(../img/top/feature_possible_01.png) no-repeat center center / contain;
-      transform: translateY(-50%);
-    }
-
-    &::after {
-      top: 50%;
-      right: -120px;
-      width: 110px;
-      aspect-ratio: 110/ 186;
-      background: url(../img/top/feature_possible_02.png) no-repeat center center / contain;
-      transform: translateY(-50%);
-    }
 
     + img {
       position: relative;
       display: block;
       margin: -92px auto 60px;
+    }
+
+    @include min-mq {
+      &::before,
+      &::after {
+        position: absolute;
+        display: inline-block;
+        content: "";
+      }
+
+      &::before {
+        top: 50%;
+        left: -140px;
+        width: 131px;
+        aspect-ratio: 131/ 196;
+        background: url(../img/top/feature_possible_01.png) no-repeat center center / contain;
+        transform: translateY(-50%);
+      }
+
+      &::after {
+        top: 50%;
+        right: -120px;
+        width: 110px;
+        aspect-ratio: 110/ 186;
+        background: url(../img/top/feature_possible_02.png) no-repeat center center / contain;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  @include max-mq {
+    ul {
+      grid-template-columns: repeat(1, 1fr);
+      margin-bottom: 100px;
     }
   }
 }
@@ -478,6 +509,12 @@
   &--lead {
     margin-bottom: 100px;
     text-align: center;
+  }
+
+  @include max-mq {
+    ul {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 }
 
@@ -699,11 +736,8 @@
     border-radius: 5px;
   }
 
-  /* スライダーが読み込まれる前から高さを確保しておく */
   .swiper {
     width: 100%;
-    min-height: 456px;
-    aspect-ratio: 1880 / 400;
   }
 
   /* 読み込み完了までスライドが縦に並ぶのを防ぐ */
@@ -762,6 +796,7 @@
   // .company--inner
   &--inner {
     display: flex;
+    flex-wrap: wrap;
     gap: 155px;
     justify-content: center;
   }
@@ -865,6 +900,10 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-bottom: 60px;
+
+    @include max-mq {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 
   // .infomation--meta
@@ -1069,10 +1108,10 @@
     margin: auto;
     background: #fff;
 
-
     ul {
       position: relative;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
       margin-bottom: 30px;
@@ -1132,6 +1171,15 @@
       bottom: 0;
       border-right: 5px solid #063064;
       border-bottom: 5px solid #063064;
+    }
+
+    @include max-mq {
+      ul {
+        &::before {
+          bottom: 135px;
+          width: 200px;
+        }
+      }
     }
   }
 

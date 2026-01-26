@@ -3,7 +3,7 @@
   <section class="mv">
     <h1>
       <span>賢く安く簡単に最適なコスト削減</span>
-      ワンストップで<br>全部解決！
+      ワンストップで<br class="is-hidden_sp">全部解決！
     </h1>
 
     <div class="mv_scroll" aria-hidden="true">
