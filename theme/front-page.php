@@ -34,7 +34,7 @@
 
   <section class="lead_worry bg_white sec">
     <div class="container -md">
-      <h2>オフィス運営の<span class="lead_txt">お悩み</span>を解決します！</h2>
+      <h2>店舗・オフィス運営の<span class="lead_txt">お悩み</span>を解決します！</h2>
       <ul role="list">
         <li>業務が忙しすぎる…<br>もっと<span class="lead_txt">効率化</span>をしたい！！</li>
         <li>無駄な<br><span class="lead_txt">コスト・費用</span>を削りたい</li>

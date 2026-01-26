@@ -30,6 +30,45 @@
   @media (max-width: 1440px) {
     h1 {
       font-size: 11rem;
+
+      span {
+        font-size: 2.7rem;
+      }
+    }
+  }
+
+  @media (max-width: 1280px) {
+    h1 {
+      font-size: 9rem;
+
+      span {
+        font-size: 4rem;
+      }
+    }
+  }
+
+  @include max-mq {
+    height: 70vh;
+
+    h1 {
+      left: 50%;
+      width: 95%;
+      font-size: 13vw;
+      transform: translate(-50%, -60%);
+
+      span {
+        font-size: 3.1rem;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 6rem;
+
+      span {
+        font-size: 2.5rem;
+      }
     }
   }
 }
@@ -80,6 +119,13 @@
       white-space: nowrap;
       animation: animate 2800s linear infinite;
     }
+
+    @media (max-width: 767px) {
+      p {
+        bottom: 30%;
+        font-size: 6.5rem;
+      }
+    }
   }
 }
 
@@ -123,9 +169,13 @@
     align-items: flex-end;
     justify-content: center;
     margin-bottom: 60px;
-    font-size: var(--fz45);
+    font-size: var(--fz40);
     font-weight: 800;
     line-height: 1.3;
+
+    .lead_txt {
+      font-size: var(--fz45);
+    }
 
     &::before,
     &::after {
@@ -163,15 +213,35 @@
     box-shadow: 0 0 15px #3db6ff40;
 
     &:nth-child(1) {
-      background: url(../img/top/worry_01.png) no-repeat top 20px center / 55%;
+      background: url(../img/top/worry_01.png) no-repeat top 20px center / 180px;
     }
 
     &:nth-child(2) {
-      background: url(../img/top/worry_02.png) no-repeat top 20px center / 55%;
+      background: url(../img/top/worry_02.png) no-repeat top 20px center / 180px;
     }
 
     &:nth-child(3) {
-      background: url(../img/top/worry_03.png) no-repeat top 20px center / 55%;
+      background: url(../img/top/worry_03.png) no-repeat top 20px center / 180px;
+    }
+  }
+
+  @include max-mq {
+    ul {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    li {
+      &:nth-child(1) {
+        background: url(../img/top/worry_01.png) no-repeat top 30px center / 170px;
+      }
+
+      &:nth-child(2) {
+        background: url(../img/top/worry_02.png) no-repeat top 30px center / 170px;
+      }
+
+      &:nth-child(3) {
+        background: url(../img/top/worry_03.png) no-repeat top 30px center / 170px;
+      }
     }
   }
 }
@@ -676,6 +746,14 @@
 
   img {
     margin-bottom: 15px;
+  }
+
+  @include max-mq {
+    ul {
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      row-gap: 30px;
+      column-gap: 10px;
+    }
   }
 }
 

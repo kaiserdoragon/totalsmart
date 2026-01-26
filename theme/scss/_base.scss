@@ -128,6 +128,10 @@ main {
     @media (width <= 1550px) {
       gap: 15px;
     }
+
+    @media (width <= 1024px) {
+      flex-direction: column;
+    }
   }
 
   // header--tel
@@ -192,7 +196,7 @@ main {
   width: 44px;
   height: 44px;
   cursor: pointer;
-  background: $color-primary;
+  background: #0052a7;
   border: solid 2px #fff;
 
   span {
@@ -247,6 +251,7 @@ main {
 .gnav {
   display: block;
 
+
   ul {
     display: flex;
     flex-wrap: wrap;
@@ -284,6 +289,10 @@ main {
       gap: 15px;
       padding: 10px 0;
     }
+
+    @include tb-mq {
+      padding: 120px 0 0;
+    }
   }
 
   @media (width <= 1650px) {
@@ -301,6 +310,8 @@ main {
     z-index: 99;
     width: 100%;
     height: 100%;
+    color: #fff;
+    background: rgb(6 48 100 / 100%);
     transition: 0.5s;
 
     &.is-open {
@@ -309,6 +320,19 @@ main {
 
     ul {
       display: block;
+      margin-right: 0;
+    }
+
+    li {
+      margin-bottom: 15px;
+
+      a {
+        padding: 0 15px 5px;
+        font-size: var(--fz18);
+        text-align: center;
+        border-right: none;
+        border-bottom: 1px #fff solid;
+      }
     }
 
     a {
