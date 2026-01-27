@@ -25,7 +25,7 @@
 <body <?php body_class(); ?>> <?php wp_body_open(); ?> <div class="wrap">
     <header class="header">
       <div class="header--inner">
-        <?php $tag = is_front_page() ? 'h1' : 'div'; ?>
+        <?php $tag = is_front_page() ? 'h1' : 'p'; ?>
         <<?php echo $tag; ?> class="header--logo">
           <small>【愛知県・岐阜県・三重県・静岡県対応】<br>防犯・通信・省エネをまとめて任せて、コスト削減ならトータルスマート株式会社</small>
           <a href="<?php echo esc_url(home_url('/')); ?>">
@@ -46,7 +46,7 @@
         <nav id="js-gnav" class="gnav" aria-label="グローバルナビゲーション">
           <div class="gnav--inner">
             <ul>
-              <li><a href="<?php echo esc_url(home_url('/business')); ?>">事業内容</a></li>
+              <li><a href="<?php echo esc_url(home_url('/about')); ?>">事業内容</a></li>
               <li><a href="<?php echo esc_url(home_url('/service')); ?>">サービス</a></li>
               <li><a href="<?php echo esc_url(home_url('/introduction')); ?>">導入実績</a></li>
               <li><a href="<?php echo esc_url(home_url('/company')); ?>">会社概要</a></li>

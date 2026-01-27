@@ -46,20 +46,39 @@ body {
 }
 
 main {
-  display: block;
-  padding-top: 140px;
+  padding-top: 0;
 
-  // for ipad portrait mode
+  // トップページ（.home または .front-page）の場合のみ 140px
+  .home & {
+    padding-top: 140px;
 
-  @media (min-width: 768px) and (max-width: 769px) and (orientation: portrait) {
-    min-height: 95vh;
-  }
+    // iPadポトレ用の設定もここに入れる
+    @media (min-width: 768px) and (max-width: 769px) and (orientation: portrait) {
+      min-height: 95vh;
+    }
 
-  @include max-mq {
-    padding-top: 0;
+    @include max-mq {
+      padding-top: 0;
+    }
   }
 }
 
+
+.eyecatch {
+  position: relative;
+  padding-top: 140px;
+
+  h1 {
+    position: absolute;
+    top: 50%;
+    left: 135px;
+    font-size: var(--fz80);
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 30px rgb(255 255 255 / 44%);
+    letter-spacing: 0.1em;
+  }
+}
 
 // グーグルマップ
 .googlemap {
