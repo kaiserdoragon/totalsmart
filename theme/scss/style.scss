@@ -8,11 +8,12 @@
 @use "parts"; // 共通装飾パーツ
 @use "base"; // header,footerやmainなど
 
-// index
+// TOPページ
 @use "pages/top";
 
-// 下層ページ
 
+// 下層ページ
+@use "pages/business";
 @use "pages/contact";
 @use "pages/notfound"; // 404ページ見つかりません
 

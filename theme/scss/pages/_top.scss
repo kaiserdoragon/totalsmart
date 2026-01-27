@@ -371,7 +371,7 @@
   // .lead_solution--inner
   &--inner {
     position: relative;
-    padding: 80px 0;
+    padding: 120px 0 80px;
     background: #fff;
   }
 
@@ -876,8 +876,10 @@
 
   ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fit, 210px);
+    gap: 15px;
+    justify-content: center;
     margin-bottom: 80px;
   }
 
@@ -900,8 +902,7 @@
     padding: 550px 0 120px;
 
     ul {
-      // grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, 45%);
       row-gap: 30px;
       column-gap: 10px;
     }

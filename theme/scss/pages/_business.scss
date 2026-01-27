@@ -1,0 +1,22 @@
+@charset "UTF-8";
+@use "../variables" as *;
+
+// ---------------------------------------------
+//  事業内容　専用
+// ---------------------------------------------
+
+
+.about_lead {
+  p {
+    margin-bottom: 100px;
+    line-height: 2;
+    text-align: center;
+  }
+
+  // .about_lead--item
+  &--item {
+    display: grid;
+    grid-template-columns: auto 500px;
+    gap: 30px;
+  }
+}

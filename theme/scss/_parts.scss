@@ -126,6 +126,41 @@ img {
   background: linear-gradient(to bottom, transparent 0%, transparent 70%, #fff100 70%, #fff100 100%);
 }
 
+
+.page_ttl {
+  position: relative;
+  width: fit-content;
+  padding: 0 50px 5px;
+  margin: auto;
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+  border-bottom: 3px solid #0052a7;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 13px;
+    height: 13px;
+    content: "";
+    background: #0052a7;
+    transform: rotate(55deg);
+  }
+
+  &::after {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    width: 10px;
+    height: 10px;
+    content: "";
+    background: #0052a7;
+    transform: rotate(15deg);
+  }
+}
+
+
 // レスポンシブ table　表
 table {
   width: 100%;
