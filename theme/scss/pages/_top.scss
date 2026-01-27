@@ -527,6 +527,10 @@
     border: 5px solid #333;
     border-radius: 15px;
     box-shadow: 5px 5px 0 #333;
+
+    img {
+      margin: auto;
+    }
   }
 
   p {
@@ -963,22 +967,17 @@
     width: 100%;
   }
 
-  /* 読み込み完了までスライドが縦に並ぶのを防ぐ */
-  .swiper:not(.swiper-initialized) .swiper-wrapper {
-    display: flex;
-    overflow: hidden;
-  }
-
   .swiper-slide {
-    opacity: 0.3; /* 左右のスライドを薄くする */
-    transition: 0.7s; /* ゆっくり小さくさせる */
-    transform: scale(0.8); /* 左右のスライドを小さくする */
+    opacity: 0.3;
+    transition: transform 0.7s, opacity 0.7s;
+    transform: scale(0.8);
   }
 
-  .swiper-slide-active {
-    z-index: 1; /* 中央のスライドを一番上にする */
-    opacity: 1; /* 中央のスライドは薄くしない */
-    transform: scale(1); /* 中央のスライドは小さくしない */
+  .swiper-slide-active,
+  .swiper-slide-duplicate-active {
+    z-index: 1;
+    opacity: 1;
+    transform: scale(1);
   }
 
   .swiper-pagination {
@@ -1523,6 +1522,12 @@
       padding: 5px 35px 10px 65px !important;
       font-size: var(--fz30);
       background: url(../img/top/contact_tel.png) no-repeat left 25px center / 30px, #0052a7;
+    }
+  }
+
+  @include max-mq {
+    p {
+      margin-bottom: 80px;
     }
   }
 }

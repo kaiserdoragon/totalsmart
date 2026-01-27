@@ -385,6 +385,7 @@ main {
 
     @include tb-mq {
       margin-top: 15px;
+      font-size: var(--fz16);
 
       p {
         text-align: center;
@@ -403,8 +404,9 @@ main {
     border-bottom: 1px solid #fff;
 
     @include max-mq {
-      margin: 0 auto 60px;
-      font-size: var(--fz16);
+      padding: 0 0 15px;
+      margin: 0 auto 40px;
+      font-size: var(--fz14);
     }
   }
 
@@ -440,14 +442,21 @@ main {
     }
 
     @include tb-mq {
-      flex-direction: column-reverse;
+      flex-direction: column;
       gap: 30px;
       align-items: center;
+      padding: 0;
 
       ul {
+        row-gap: 20px;
+        column-gap: 15px;
         justify-content: center;
         width: 100%;
       }
     }
+  }
+
+  @include tb-mq {
+    padding: 60px 0 0;
   }
 }
