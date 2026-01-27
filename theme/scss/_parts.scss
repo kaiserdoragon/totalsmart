@@ -50,16 +50,26 @@ img {
     font-weight: 600;
     text-align: center;
   }
+
+  @include max-mq {
+    font-size: var(--fz40);
+  }
 }
 
 .underline {
-  width: fit-content;
+  display: inline;
   padding: 0 10px;
   margin: auto;
   font-size: var(--fz35);
   font-weight: 900;
   color: #0052a7;
   background: linear-gradient(to bottom, transparent 0%, transparent 70%, #fff100 70%, #fff100 100%);
+  background-repeat: repeat-y;
+  background-size: 100% 50px;
+
+  @include tb-mq {
+    padding: 0;
+  }
 }
 
 .btn_link {
@@ -72,6 +82,10 @@ img {
   color: #fff;
   background: url(../img/common/btn_arrow.png) no-repeat right 15px center / 40px, #0052a7;
   border-radius: 1000px;
+
+  @include max-mq {
+    font-size: var(--fz16);
+  }
 }
 
 .bg_white {

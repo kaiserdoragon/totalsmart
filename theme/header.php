@@ -5,9 +5,7 @@
   <meta charset="<?php bloginfo('charset'); ?>" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="format-detection" content="telephone=no">
-
   <link rel="preload" as="image" href="<?php echo get_theme_file_uri('/img/common/logo.png'); ?>" fetchpriority="high">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -29,13 +27,14 @@
       <div class="header--inner">
         <?php $tag = is_front_page() ? 'h1' : 'div'; ?>
         <<?php echo $tag; ?> class="header--logo">
+          <small>【愛知県・岐阜県・三重県・静岡県対応】<br>防犯・通信・省エネをまとめて任せて、コスト削減ならトータルスマート株式会社</small>
           <a href="<?php echo esc_url(home_url('/')); ?>">
-            <small>【愛知県・岐阜県・三重県・静岡県対応】<br>防犯・通信・省エネをまとめて任せて、コスト削減ならトータルスマート株式会社</small>
             <img src="<?php echo get_theme_file_uri('/img/common/logo.png'); ?>"
               alt="トータルスマート株式会社"
               width="325" height="68"
               fetchpriority="high"
-              decoding="async" /> </a>
+              decoding="async" />
+          </a>
         </<?php echo $tag; ?>>
 
         <button id="js-gnav_btn" class="gnav_btn" aria-label="メニューを開く" aria-controls="js-gnav">

@@ -23,7 +23,7 @@
 
     <div class="mv_parallax_bg">
       <video
-        src="<?php echo get_theme_file_uri('/video/video.mp4'); ?>"
+        src="<?php echo get_theme_file_uri('/video/video2.mp4'); ?>"
         poster="<?php echo get_theme_file_uri('/img/top/mv_video.jpg'); ?>"
         playsinline autoplay muted loop
         preload="metadata"
@@ -54,12 +54,12 @@
           <img src="<?php echo get_template_directory_uri(); ?>/img/top/solution_txt.png" alt="トータルスマート株式会社" width="1024" height="213" loading="lazy" decoding="async">
         </div>
         <div class="lead_solution--txt">
-          <p class="underline">オフィス関連をトータルにお任せ！</p>
+          <p class="underline">オフィス関連をトータルにお任せ！</p><br>
           <p class="underline">保守・メンテナンスをスマート解決！</p>
         </div>
         <p class="u-mb30">
           トータルスマート株式会社はオフィスに係ること全てトータルで依頼可能！<br>
-          OA機器・インターネット回線・電気ガスはもちろん<br>
+          OA機器・インターネット回線・電気ガスはもちろん<br class="is-hidden_sp">
           全て一本化することができコスト削減につながります。
         </p>
         <div class="lead_solution--txt">
@@ -142,7 +142,7 @@
       </ul>
       <div class="feature--inner">
         <p>OA機器や配線など、オフィスに関わること全て</p>
-        <strong class="underline">トータルで依頼可能！</strong>
+        <strong class="underline">トータルで依頼可能！</strong><br>
         <strong class="underline">一本の電話ですべて解決する</strong>
         <p>お客様にとってストレスのない業務形態です。</p>
       </div>
@@ -204,7 +204,7 @@
     </div>
     <section class="cv_area">
       <div class="cv_area--inner">
-        <h2>小さな見直しが<b>大きな成果</b>につながる。</h2>
+        <h2>小さな見直しが<b>大きな成果</b>につながる</h2>
         <p class="cv_area--lead">
           成果を伸ばす最適な業務改善を！<br>
           今の業務に潜む可能性を一緒に探しましょう！

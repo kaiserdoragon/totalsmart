@@ -48,7 +48,7 @@
   }
 
   @include max-mq {
-    height: 70vh;
+    height: 75vh;
 
     h1 {
       left: 50%;
@@ -64,7 +64,7 @@
 
   @media (max-width: 480px) {
     h1 {
-      font-size: 6rem;
+      font-size: 5rem;
 
       span {
         font-size: 2.5rem;
@@ -123,7 +123,7 @@
     @media (max-width: 767px) {
       p {
         bottom: 30%;
-        font-size: 6.5rem;
+        font-size: 6rem;
       }
     }
   }
@@ -166,6 +166,7 @@
 .lead_worry {
   h2 {
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-end;
     justify-content: center;
     margin-bottom: 60px;
@@ -225,7 +226,23 @@
     }
   }
 
-  @include max-mq {
+  @include tb-mq {
+    h2 {
+      flex-direction: column;
+      gap: 5px;
+      align-items: center;
+      font-size: var(--fz35);
+
+      .lead_txt {
+        font-size: var(--fz50);
+      }
+
+      &::before,
+      &::after {
+        content: none;
+      }
+    }
+
     ul {
       grid-template-columns: repeat(1, 1fr);
     }
@@ -257,6 +274,7 @@
     font-size: var(--fz45);
     font-weight: bold;
     color: #fff;
+    text-align: center;
     background: #0052a7;
 
     span {
@@ -313,6 +331,7 @@
       background: #0052a7;
 
       span {
+        display: inline-block;
         color: #fff975;
         border-bottom: none;
       }
@@ -321,6 +340,25 @@
     span {
       color: #ff3198;
       border-bottom: 2px solid #ff3198;
+    }
+
+    @include max-mq {
+      h2 {
+        margin-bottom: 40px;
+        font-size: var(--fz35);
+      }
+
+      p {
+        margin: 0 auto 30px;
+
+        span {
+          padding: 0 5px;
+        }
+      }
+
+      span {
+        padding: 0 5px;
+      }
     }
   }
 
@@ -340,6 +378,7 @@
   // .lead_solution--txt
   &--txt {
     margin-bottom: 60px;
+    text-align: center;
 
     span {
       display: block;
@@ -349,6 +388,29 @@
       font-size: var(--fz23);
       color: #fff;
       background: #063064;
+    }
+
+    @include max-mq {
+      margin-bottom: 40px;
+    }
+  }
+
+  @include max-mq {
+    padding: 120px 0;
+
+    strong {
+      font-size: var(--fz40);
+    }
+
+    .container {
+      &.-sm {
+        padding: 0 min(4vw, 25px) 210px;
+
+        + img {
+          bottom: -40px;
+          width: 95%;
+        }
+      }
     }
   }
 }
@@ -361,7 +423,7 @@
     position: relative;
     box-sizing: border-box;
     width: min(950px, 100%);
-    padding: 60px 0;
+    padding: 60px min(4vw, 25px);
     margin: auto;
     background: #fff;
     border: 3px solid #ff3198;
@@ -409,6 +471,18 @@
         right: 15px;
         bottom: -40px;
         width: 150px;
+      }
+    }
+
+    @include max-mq {
+      &::before {
+        bottom: -80px;
+        width: 100px;
+      }
+
+      &::after {
+        bottom: -80px;
+        width: 90px;
       }
     }
   }
@@ -463,23 +537,17 @@
     width: fit-content;
     padding-bottom: 80px;
     margin: 0 auto;
+    text-align: center;
 
     p {
-      text-align: center;
-
       &:first-child {
-        margin-bottom: 15px;
+        margin-bottom: 10px;
+      }
+
+      &:last-child {
+        margin-top: 15px;
       }
     }
-
-    strong {
-      display: block;
-
-      &:last-of-type {
-        margin-bottom: 15px;
-      }
-    }
-
 
 
     + img {
@@ -520,6 +588,10 @@
     ul {
       grid-template-columns: repeat(1, 1fr);
       margin-bottom: 100px;
+    }
+
+    li {
+      padding: 15px;
     }
   }
 }
@@ -584,6 +656,13 @@
   @include max-mq {
     ul {
       grid-template-columns: repeat(1, 1fr);
+    }
+
+    li {
+      &::before {
+        top: -25px;
+        font-size: var(--fz25);
+      }
     }
   }
 }
@@ -672,6 +751,25 @@
       aspect-ratio: 1 / 1;
       background: url(../img/top/cvarea_02.png) no-repeat center / contain;
     }
+
+    @include max-mq {
+      padding: 0 15px;
+
+      &::before,
+      &::after {
+        top: -75px;
+      }
+
+      &::before {
+        left: 7%;
+        width: 65px;
+      }
+
+      &::after {
+        right: 7%;
+        width: 65px;
+      }
+    }
   }
 
   // .cv_area--inner
@@ -693,6 +791,26 @@
       border: 3px solid #fff;
       border-radius: 15px;
     }
+
+    @include max-mq {
+      width: 95%;
+      padding: 60px min(4vw, 25px) 70px;
+
+      &::after {
+        top: 15px;
+        right: 15px;
+        bottom: 15px;
+        left: 15px;
+      }
+    }
+  }
+
+  // .cv_area--btns
+  &--btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
   }
 
   // .cv_area--mail
@@ -715,6 +833,27 @@
     padding: 15px 15px 15px 35px;
     background: url(../img/common/icon_tel_02.png) no-repeat left 10% center / 11%, #31c2f9;
     border-radius: 1000px;
+  }
+
+  @include max-mq {
+    h2 {
+      font-size: var(--fz30);
+
+      b {
+        display: block;
+        font-size: var(--fz40);
+
+        &::before {
+          top: 5px;
+          left: 5px;
+        }
+
+        &::after {
+          right: 5px;
+          bottom: 2px;
+        }
+      }
+    }
   }
 }
 
@@ -749,6 +888,8 @@
   }
 
   @include max-mq {
+    padding: 550px 0 120px;
+
     ul {
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       row-gap: 30px;
@@ -1151,7 +1292,6 @@
     }
   }
 }
-
 
 .cv_contact {
   background: #f1f1f1;
