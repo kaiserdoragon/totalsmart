@@ -63,7 +63,7 @@
           全て一本化することができコスト削減につながります。
         </p>
         <div class="lead_solution--txt">
-          <span>複数の業者に電話して、たらい回しにあう…</span>
+          <span>複数の業者に電話して、<br class="is-hidden_pc">たらい回しにあう…</span>
           <p class="underline">もうそんな必要はありません！</p>
         </div>
         <p>一本化により、沢山の業者に連絡する手間を省き</p>
@@ -499,19 +499,21 @@
           <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
             <li>
               <a href="<?php the_permalink(); ?>">
-                <time datetime="<?php echo get_the_date('c'); ?>">
-                  <?php echo get_the_date('Y.m.d'); ?>
-                </time>
-                <?php
-                $categories = get_the_category();
-                if (!empty($categories)) : ?>
-                  <?php foreach ($categories as $category) : ?>
-                    <span href="<?php echo esc_url(get_category_link($category->term_id)); ?>"
-                      class="front-news--cat_label -<?php echo esc_attr($category->slug); ?>">
-                      <?php echo esc_html($category->name); ?>
-                    </span>
-                  <?php endforeach; ?>
-                <?php endif; ?>
+                <div class="front-news--info">
+                  <time datetime="<?php echo get_the_date('c'); ?>">
+                    <?php echo get_the_date('Y.m.d'); ?>
+                  </time>
+                  <?php
+                  $categories = get_the_category();
+                  if (!empty($categories)) : ?>
+                    <?php foreach ($categories as $category) : ?>
+                      <span href="<?php echo esc_url(get_category_link($category->term_id)); ?>"
+                        class="front-news--cat_label -<?php echo esc_attr($category->slug); ?>">
+                        <?php echo esc_html($category->name); ?>
+                      </span>
+                    <?php endforeach; ?>
+                  <?php endif; ?>
+                </div>
                 <p><?php the_title(); ?></p>
               </a>
             </li>
@@ -673,7 +675,7 @@
         </ul>
         <a href="tel:052-932-5450" class="cv_contact--btn">
           052-932-5450
-          <span>受付時間<br>平日9:00～18:00</span>
+          <span>受付時間<br class="is-hidden_sp">平日9:00～18:00</span>
         </a>
       </div>
     </div>

@@ -69,6 +69,8 @@ img {
 
   @include tb-mq {
     padding: 0;
+    font-size: var(--fz27);
+    background-size: 100% 40px;
   }
 }
 
@@ -84,7 +86,9 @@ img {
   border-radius: 1000px;
 
   @include max-mq {
+    padding: 15px 45px 15px 20px !important;
     font-size: var(--fz16);
+    background: url(../img/common/btn_arrow.png) no-repeat right 10px center / 30px, #0052a7;
   }
 }
 
@@ -109,6 +113,10 @@ img {
 
   &.-sm {
     padding: 80px 0;
+  }
+
+  @include max-mq {
+    padding: 100px 0;
   }
 }
 

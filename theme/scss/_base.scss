@@ -54,6 +54,10 @@ main {
   @media (min-width: 768px) and (max-width: 769px) and (orientation: portrait) {
     min-height: 95vh;
   }
+
+  @include max-mq {
+    padding-top: 0;
+  }
 }
 
 
@@ -194,6 +198,10 @@ main {
       background: url(../img/common/icon_mail.png) no-repeat center left 35px / 28px 20px, #ff8206;
       border-radius: 1000px;
     }
+  }
+
+  @include max-mq {
+    position: relative;
   }
 }
 
@@ -374,6 +382,14 @@ main {
   // .footer--txt
   &--txt {
     margin-top: -20px;
+
+    @include tb-mq {
+      margin-top: 15px;
+
+      p {
+        text-align: center;
+      }
+    }
   }
 
   // .footer--lead
@@ -381,17 +397,22 @@ main {
     width: 100%;
     max-width: 1400px;
     padding: 0 30px 30px;
-    margin: 0 auto 30px;
-    margin-bottom: 80px;
+    margin: 0 auto 80px;
     line-height: 2;
     text-align: center;
     border-bottom: 1px solid #fff;
+
+    @include max-mq {
+      margin: 0 auto 60px;
+      font-size: var(--fz16);
+    }
   }
 
   // .footer--inner
   &--inner {
     box-sizing: border-box;
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-between;
     width: min(1450px, 100%);
@@ -412,6 +433,21 @@ main {
       gap: 30px;
       justify-content: flex-end;
       width: 55%;
+
+      a {
+        text-decoration: underline;
+      }
+    }
+
+    @include tb-mq {
+      flex-direction: column-reverse;
+      gap: 30px;
+      align-items: center;
+
+      ul {
+        justify-content: center;
+        width: 100%;
+      }
     }
   }
 }
