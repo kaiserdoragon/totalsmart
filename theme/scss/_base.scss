@@ -300,7 +300,6 @@ main {
 .gnav {
   display: block;
 
-
   ul {
     display: flex;
     flex-wrap: wrap;
@@ -349,6 +348,12 @@ main {
       a {
         font-size: var(--fz14);
       }
+    }
+  }
+
+  @media (width <= 1180px) {
+    ul {
+      margin-right: 0;
     }
   }
 

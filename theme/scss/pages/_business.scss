@@ -5,7 +5,6 @@
 //  事業内容　専用
 // ---------------------------------------------
 
-
 .about_lead {
   p {
     margin-bottom: 100px;
@@ -50,8 +49,20 @@
 
   // .about_lead--item
   &--item {
-    display: grid;
-    grid-template-columns: auto 500px;
-    gap: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px;
+    align-items: flex-start;
+    justify-content: center;
+
+    &:not(:last-of-type) {
+      margin-bottom: 60px;
+    }
+
+    @include tb-mq {
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+    }
   }
 }

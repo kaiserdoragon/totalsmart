@@ -27,6 +27,7 @@
           <h3>
             <span>業務効率化</span>＆<span>コスト・経費</span>削減
           </h3>
+          <img class="" src="<?php echo get_template_directory_uri(); ?>/img/business/lead_01.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
           <ul>
             <li>
               配膳ロボット、サイネージ、POSレジなど<br>
@@ -42,9 +43,51 @@
             </li>
           </ul>
         </div>
-        <div class="about_lead--img">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/business/lead_01.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
+        <img class="" src="<?php echo get_template_directory_uri(); ?>/img/business/lead_01.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
+      </article>
+      <article class="about_lead--item">
+        <div>
+          <h3>
+            <span>業務効率化</span>＆<span>コスト・経費</span>削減
+          </h3>
+          <ul>
+            <li>
+              配膳ロボット、サイネージ、POSレジなど<br>
+              <span>作業の自動化とな会計処理で、操作をスマートに！</span>
+            </li>
+            <li>
+              キャッシュレス決済、オーダーシステム<br>
+              <span>お客様の支払いと注文がスムーズに完了し、<br class="is-hidden_sp">手間解消とミス防止に貢献！</span>
+            </li>
+            <li>
+              電話回線＆ネット回線、スマホ＆タブレット提供<br>
+              <span>安定した通信環境で、社内外の情報連携を強化し<br class="is-hidden_sp">経費も削減！</span>
+            </li>
+          </ul>
         </div>
+        <img src="<?php echo get_template_directory_uri(); ?>/img/business/lead_02.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
+      </article>
+      <article class="about_lead--item">
+        <div>
+          <h3>
+            <span>業務効率化</span>＆<span>コスト・経費</span>削減
+          </h3>
+          <ul>
+            <li>
+              配膳ロボット、サイネージ、POSレジなど<br>
+              <span>作業の自動化とな会計処理で、操作をスマートに！</span>
+            </li>
+            <li>
+              キャッシュレス決済、オーダーシステム<br>
+              <span>お客様の支払いと注文がスムーズに完了し、<br class="is-hidden_sp">手間解消とミス防止に貢献！</span>
+            </li>
+            <li>
+              電話回線＆ネット回線、スマホ＆タブレット提供<br>
+              <span>安定した通信環境で、社内外の情報連携を強化し<br class="is-hidden_sp">経費も削減！</span>
+            </li>
+          </ul>
+        </div>
+        <img src="<?php echo get_template_directory_uri(); ?>/img/business/lead_03.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
       </article>
       <h2 class="page_ttl">下層ページの共通見出し</h2>
     </div>
