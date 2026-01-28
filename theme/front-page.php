@@ -21,6 +21,9 @@
       </div>
     </div>
 
+    <div class="mv--scroll_down">
+      <span>Scroll</span>
+    </div>
     <div class="mv_parallax_bg">
       <video
         src="<?php echo get_theme_file_uri('/video/video2.mp4'); ?>"
