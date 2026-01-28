@@ -13,6 +13,41 @@
     text-align: center;
   }
 
+  h3 {
+    padding: 7px 0 10px 55px;
+    margin-bottom: 30px;
+    font-size: var(--fz25);
+    font-weight: 700;
+    color: #fff;
+    background: url(../img/business/lead_icon.png) no-repeat left 20px center / 23px, #0052a7;
+
+    span {
+      color: #fff975;
+    }
+  }
+
+  li {
+    font-weight: 700;
+
+    span {
+      display: inline-block;
+      padding-left: 27px;
+      font-weight: 400;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+
+    &::before {
+      margin-right: 10px;
+      font-size: 15px;
+      color: #ff8000;
+      vertical-align: baseline;
+      content: "⚫︎";
+    }
+  }
+
   // .about_lead--item
   &--item {
     display: grid;

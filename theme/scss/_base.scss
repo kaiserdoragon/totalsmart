@@ -52,14 +52,14 @@ main {
   .home & {
     padding-top: 140px;
 
-    // iPadポトレ用の設定もここに入れる
-    @media (min-width: 768px) and (max-width: 769px) and (orientation: portrait) {
-      min-height: 95vh;
-    }
-
     @include max-mq {
       padding-top: 0;
     }
+  }
+
+  // iPadポトレ用の設定もここに入れる
+  @media (min-width: 768px) and (max-width: 769px) and (orientation: portrait) {
+    min-height: 95vh;
   }
 }
 
@@ -77,6 +77,12 @@ main {
     color: #fff;
     text-shadow: 0 0 30px rgb(255 255 255 / 44%);
     letter-spacing: 0.1em;
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 1920 / 400;
+    object-fit: cover;
   }
 }
 
