@@ -141,18 +141,21 @@
       </p>
       <ul class="about_plan--list">
         <li>
+          <span>レンタルプラン</span>
           <img src="<?php echo get_template_directory_uri(); ?>/img/business/plan_01.png" alt="" width="220" height="117" loading="lazy" decoding="async">
           初期投資を抑えつつ、最新テクノロジーを<br class="is-hidden_sp">
           すぐにご利用いただけます。<br>
           当面の導入や柔軟なアップグレードが可能です。
         </li>
         <li>
+          <span>リースプラン</span>
           <img src="<?php echo get_template_directory_uri(); ?>/img/business/plan_02.png" alt="" width="150" height="112" loading="lazy" decoding="async">
           長期的な運用を見据えたプランで、<br class="is-hidden_sp">
           月々のお支払いにより最新の設備を維持します。<br>
           成長段階に合わせた最適なサポートを提供します。
         </li>
         <li>
+          <span>販売プラン</span>
           <img src="<?php echo get_template_directory_uri(); ?>/img/business/plan_03.png" alt="" width="220" height="117" loading="lazy" decoding="async">
           直接購入による全てのメリット。<br>
           最新設備を安心に自社の資産として導入し、<br class="is-hidden_sp">
@@ -163,19 +166,19 @@
         サービスについて、機器の操作方法や不明な点など、電話や訪問してサポートするだけでなく、<br class="is-hidden_sp">
         どこでも遠隔サポートが可能。無駄な時間を省いて業務を効率化。
       </p>
-      <ul>
+      <ul class="about_plan--support">
         <li>リモートサポート</li>
         <li>訪問サポート</li>
         <li>電話サポート</li>
       </ul>
-      <div>
+      <div class="about_plan--link">
         <a href="">
           リモートサポート<br>
-          REMOTE SUPPORT
+          <span>REMOTE SUPPORT</span>
         </a>
         <a href="">
           よくある質問<br>
-          QUESTION
+          <span>QUESTION</span>
         </a>
       </div>
     </div>
