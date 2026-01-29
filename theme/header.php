@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> class="<?php echo implode(' ', get_body_class()); ?>">
 
 <head>
   <meta charset="<?php bloginfo('charset'); ?>" />
@@ -22,48 +22,97 @@
   <?php wp_head(); ?>
 </head>
 
-<div class="loadinganimation" id="js_loadinganimation">
-  <!-- 背景グリッド -->
-  <div class="loadinganimation--grid"></div>
 
-  <!-- 粒子エフェクト -->
-  <div class="loadinganimation--particles">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
+
+<?php if (is_home() || is_front_page()) : ?>
+  <div class="loadinganimation" id="js_loadinganimation">
+    <!-- 背景エフェクト層 -->
+    <div class="loadinganimation--bg-effects">
+      <!-- ハニカムパターン -->
+      <div class="loadinganimation--honeycomb"></div>
+
+      <!-- スキャンライン -->
+      <div class="loadinganimation--scanline"></div>
+
+      <!-- パルスウェーブ -->
+      <div class="loadinganimation--pulse-wave"></div>
+      <div class="loadinganimation--pulse-wave" style="animation-delay: 1s;"></div>
+      <div class="loadinganimation--pulse-wave" style="animation-delay: 2s;"></div>
+    </div>
+
+    <!-- レーザービーム -->
+    <div class="loadinganimation--laser-beams">
+      <div class="loadinganimation--laser loadinganimation--laser-1"></div>
+      <div class="loadinganimation--laser loadinganimation--laser-2"></div>
+      <div class="loadinganimation--laser loadinganimation--laser-3"></div>
+      <div class="loadinganimation--laser loadinganimation--laser-4"></div>
+    </div>
+
+    <!-- データストリーム -->
+    <div class="loadinganimation--data-stream">
+      <div class="loadinganimation--stream loadinganimation--stream-1">01001010</div>
+      <div class="loadinganimation--stream loadinganimation--stream-2">11010110</div>
+      <div class="loadinganimation--stream loadinganimation--stream-3">00110101</div>
+      <div class="loadinganimation--stream loadinganimation--stream-4">10101100</div>
+      <div class="loadinganimation--stream loadinganimation--stream-5">01110011</div>
+      <div class="loadinganimation--stream loadinganimation--stream-6">11001001</div>
+    </div>
+
+    <!-- 爆発的な粒子エフェクト -->
+    <div class="loadinganimation--particles">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- 回転リング群（5つに増量） -->
+    <div class="loadinganimation--rings">
+      <div class="loadinganimation--ring loadinganimation--ring-1"></div>
+      <div class="loadinganimation--ring loadinganimation--ring-2"></div>
+      <div class="loadinganimation--ring loadinganimation--ring-3"></div>
+      <div class="loadinganimation--ring loadinganimation--ring-4"></div>
+      <div class="loadinganimation--ring loadinganimation--ring-5"></div>
+
+      <!-- 光の軌跡 -->
+      <div class="loadinganimation--orbit-light loadinganimation--orbit-light-1"></div>
+      <div class="loadinganimation--orbit-light loadinganimation--orbit-light-2"></div>
+      <div class="loadinganimation--orbit-light loadinganimation--orbit-light-3"></div>
+    </div>
+
+    <!-- ロゴ（ホログラム風） -->
+    <div class="loadinganimation--logo-wrapper">
+      <div class="loadinganimation--hologram-effect"></div>
+      <img src="<?php echo get_template_directory_uri(); ?>/img/common/logo_white.png" alt="トータルスマート株式会社" width="1034" height="216" loading="lazy" decoding="async">
+    </div>
+
+    <!-- ステータステキスト -->
+    <div class="loadinganimation--status">
+      <p id="status">SYSTEM CHECK...</p>
+      <div class="loadinganimation--status-bars">
+        <div class="loadinganimation--status-bar"></div>
+        <div class="loadinganimation--status-bar"></div>
+        <div class="loadinganimation--status-bar"></div>
+      </div>
+    </div>
+
+    <!-- プログレスバー -->
+    <div class="loadinganimation--progress">
+      <div class="loadinganimation--progress-bar" id="progress-bar"></div>
+      <div class="loadinganimation--progress-glow"></div>
+    </div>
+
+    <!-- コーナーデコレーション -->
+    <div class="loadinganimation--corner loadinganimation--corner-tl"></div>
+    <div class="loadinganimation--corner loadinganimation--corner-tr"></div>
+    <div class="loadinganimation--corner loadinganimation--corner-bl"></div>
+    <div class="loadinganimation--corner loadinganimation--corner-br"></div>
   </div>
-
-  <!-- 回転リング群 -->
-  <div class="loadinganimation--rings">
-    <div class="loadinganimation--ring loadinganimation--ring-outer"></div>
-    <div class="loadinganimation--ring loadinganimation--ring-middle"></div>
-    <div class="loadinganimation--ring loadinganimation--ring-inner"></div>
-  </div>
-
-  <!-- ロゴ -->
-  <div class="loadinganimation--logo-wrapper">
-    <img src="<?php echo get_template_directory_uri(); ?>/img/common/logo_white.png" alt="トータルスマート株式会社" width="1034" height="216" loading="lazy" decoding="async">
-  </div>
-
-  <!-- ステータステキスト -->
-  <div class="loadinganimation--status">
-    <p id="status">SYSTEM CHECK...</p>
-    <p class="loadinganimation--hex" id="hex-code">0x00FF00A1</p>
-  </div>
-
-  <!-- プログレスバー -->
-  <div class="loadinganimation--progress">
-    <div class="loadinganimation--progress-bar" id="progress-bar"></div>
-  </div>
-</div>
+<?php endif; ?>
 
 
-<body <?php body_class(); ?>> <?php wp_body_open(); ?> <div class="wrap" id="main-content">
+<body>
+  <div class="wrap" id="main-content">
     <header class="header">
       <div class="header--inner">
         <?php $tag = is_front_page() ? 'h1' : 'p'; ?>

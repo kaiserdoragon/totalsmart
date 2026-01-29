@@ -89,56 +89,6 @@ window.addEventListener("load", () => {
   }
 });
 
-
-// ローディングアニメーション
-window.addEventListener('load', function () {
-  // const loader = document.getElementById('js_loadinganimation');
-  const content = document.getElementById('main-content');
-  const status = document.getElementById('status');
-  const hexCode = document.getElementById('hex-code');
-  const progressBar = document.getElementById('progress-bar');
-
-  // ランダムなHEXコードを生成
-  function generateHexCode() {
-    const hex = Math.floor(Math.random() * 0xFFFFFFFF).toString(16).toUpperCase().padStart(8, '0');
-    return '0x' + hex;
-  }
-
-  // HEXコードを定期的に更新
-  const hexInterval = setInterval(function () {
-    hexCode.innerText = generateHexCode();
-  }, 200);
-
-  // 段階的なステータス更新
-  setTimeout(function () {
-    status.innerText = "LOADING MODULES...";
-  }, 800);
-
-  setTimeout(function () {
-    status.innerText = "INITIALIZING SYSTEM...";
-  }, 1600);
-
-  setTimeout(function () {
-    status.innerText = "ACCESS GRANTED";
-    clearInterval(hexInterval);
-    hexCode.innerText = "0x00FF00A1";
-  }, 2800);
-
-  // 3秒後にローディング終了
-  setTimeout(function () {
-    // フェードアウト開始
-    loader.classList.add('is_load-delete');
-    content.classList.add('is_show');
-
-    // アニメーション完了後に要素を削除（任意）
-    setTimeout(function () {
-      loader.remove();
-    }, 1000);
-  }, 3800);
-});
-
-
-
 // (function ($, root, undefined) {
 //   // ------------------------------
 //   // jqueryはここに記載

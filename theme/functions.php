@@ -265,9 +265,9 @@ if (! function_exists('theme_enqueue_js_only_optimized_assets')) {
     $register_script('slider',      'js/slider.js',            array('jquery', 'swiperjs'));
 
     // ページごとの条件付き読み込み例（コメント解除して使用）
-    // if ( is_front_page() ) {
-    //     $register_script( 'frontpage', 'js/frontpage.js', array( 'jquery' ) );
-    // }
+    if (is_front_page()) {
+      $register_script('loadinganimation', 'js/loadinganimation.js', array('jquery'));
+    }
   }
   add_action('wp_enqueue_scripts', 'theme_enqueue_js_only_optimized_assets', 20);
 
@@ -294,7 +294,7 @@ if (! function_exists('theme_enqueue_js_only_optimized_assets')) {
     }
 
     // defer を付けたいハンドル（ここに該当するハンドルのみ付与）
-    $defer_handles = array('mainscripts', 'slider', 'animationjs', 'swiperjs');
+    $defer_handles = array('mainscripts', 'slider', 'animationjs', 'swiperjs', 'loadinganimation');
 
     if (! in_array($handle, $defer_handles, true)) {
       return $tag;
