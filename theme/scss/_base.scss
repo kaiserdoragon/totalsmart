@@ -339,7 +339,7 @@ main {
     }
 
     @include tb-mq {
-      padding: 120px 0 0;
+      padding: 80px 0 0;
     }
   }
 
@@ -508,6 +508,7 @@ main {
     z-index: 11111111;
     display: flex;
     flex-direction: column;
+    gap: 20px;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -535,16 +536,6 @@ main {
       background-size: 80px 140px;
       opacity: 0.5;
       animation: honeycomb-wave 8s ease-in-out infinite;
-    }
-
-    /* スキャンライン */
-    &--scanline {
-      position: absolute;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, #00d2ff, transparent);
-      box-shadow: 0 0 20px #00d2ff, 0 0 40px #00d2ff;
-      animation: scanline-move 3s linear infinite;
     }
 
     /* パルスウェーブ */
@@ -596,54 +587,6 @@ main {
     &--laser-4 {
       left: 80%;
       animation: laser-flicker 2s ease-in-out infinite 1.5s;
-    }
-
-    /* データストリーム */
-    &--data-stream {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-
-    &--stream {
-      position: absolute;
-      font-family: "Courier New", monospace;
-      font-size: 14px;
-      font-weight: bold;
-      color: #00d2ff;
-      text-shadow: 0 0 10px #00d2ff;
-      opacity: 0;
-      animation: stream-fall 4s linear infinite;
-    }
-
-    &--stream-1 {
-      left: 10%;
-      animation-delay: 0s;
-    }
-
-    &--stream-2 {
-      left: 25%;
-      animation-delay: 0.8s;
-    }
-
-    &--stream-3 {
-      left: 45%;
-      animation-delay: 1.6s;
-    }
-
-    &--stream-4 {
-      left: 60%;
-      animation-delay: 2.4s;
-    }
-
-    &--stream-5 {
-      left: 75%;
-      animation-delay: 3.2s;
-    }
-
-    &--stream-6 {
-      left: 90%;
-      animation-delay: 1.2s;
     }
 
     /* 粒子エフェクト（爆発的） */
@@ -791,7 +734,6 @@ main {
         width: 100%;
         aspect-ratio: 1034 / 216;
         filter: drop-shadow(0 0 30px rgb(0 210 255 / 90%));
-        animation: logo-pulse-intense 3s ease-in-out infinite;
         object-fit: cover;
       }
     }
@@ -808,32 +750,17 @@ main {
       animation: hologram-glitch 3s ease-in-out infinite;
     }
 
-    /* ステータステキストエリア */
     &--status {
-      position: absolute;
-      bottom: 140px;
-      text-align: center;
-
-      #status {
+      p {
         margin: 0 0 10px;
-        font-family: "Courier New", monospace;
-        font-size: var(--fz20);
-        font-weight: bold;
-        color: #00d2ff;
+        font-size: var(--fz25);
+        font-weight: 900;
+        color: #fff;
+        text-align: center;
         text-shadow: 0 0 15px rgb(0 210 255 / 100%), 0 0 30px rgb(0 210 255 / 80%);
         letter-spacing: 4px;
         animation: text-glitch 2s infinite;
       }
-    }
-
-    /* HEXコード */
-    &--hex {
-      margin: 0 0 15px;
-      font-family: "Courier New", monospace;
-      font-size: 14px;
-      color: #66e0ff;
-      text-shadow: 0 0 10px rgb(102 224 255 / 80%);
-      letter-spacing: 3px;
     }
 
     /* ステータスバー */
@@ -870,78 +797,6 @@ main {
       &:nth-child(3)::after {
         animation-delay: 0.6s;
       }
-    }
-
-    /* プログレスバー */
-    &--progress {
-      position: absolute;
-      bottom: 100px;
-      width: 400px;
-      height: 6px;
-      overflow: visible;
-      background: rgb(0 210 255 / 20%);
-      border-radius: 3px;
-      box-shadow: 0 0 20px rgb(0 210 255 / 50%), inset 0 0 10px rgb(0 210 255 / 30%);
-    }
-
-    &--progress-bar {
-      position: relative;
-      width: 0;
-      height: 100%;
-      background: linear-gradient(90deg, #00d2ff, #66e0ff, #0fc, #00d2ff);
-      background-size: 300% 100%;
-      border-radius: 3px;
-      box-shadow: 0 0 25px #00d2ff, 0 0 50px #00d2ff;
-      animation: progress-fill 3s ease-out forwards, progress-shimmer-fast 1s linear infinite;
-    }
-
-    &--progress-glow {
-      position: absolute;
-      top: -10px;
-      left: 0;
-      width: 0;
-      height: 26px;
-      background: radial-gradient(ellipse, rgb(0 210 255 / 80%), transparent);
-      filter: blur(10px);
-      animation: progress-fill 3s ease-out forwards;
-    }
-
-    /* コーナーデコレーション */
-    &--corner {
-      position: absolute;
-      width: 80px;
-      height: 80px;
-      border: 3px solid #00d2ff;
-      box-shadow: 0 0 20px rgb(0 210 255 / 60%);
-      animation: corner-pulse 2s ease-in-out infinite;
-    }
-
-    &--corner-tl {
-      top: 30px;
-      left: 30px;
-      border-right: none;
-      border-bottom: none;
-    }
-
-    &--corner-tr {
-      top: 30px;
-      right: 30px;
-      border-bottom: none;
-      border-left: none;
-    }
-
-    &--corner-bl {
-      bottom: 30px;
-      left: 30px;
-      border-top: none;
-      border-right: none;
-    }
-
-    &--corner-br {
-      right: 30px;
-      bottom: 30px;
-      border-top: none;
-      border-left: none;
     }
   }
 

@@ -27,7 +27,7 @@
           <h3>
             <span>業務効率化</span>＆<span>コスト・経費</span>削減
           </h3>
-          <img class="" src="<?php echo get_template_directory_uri(); ?>/img/business/lead_01.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
+          <img class="about_lead--img_sp" src="<?php echo get_template_directory_uri(); ?>/img/business/lead_01.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
           <ul>
             <li>
               配膳ロボット、サイネージ、POSレジなど<br>
@@ -43,7 +43,7 @@
             </li>
           </ul>
         </div>
-        <img class="" src="<?php echo get_template_directory_uri(); ?>/img/business/lead_01.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
+        <img class="about_lead--img_pc" src="<?php echo get_template_directory_uri(); ?>/img/business/lead_01.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
       </article>
       <article class="about_lead--item">
         <div>

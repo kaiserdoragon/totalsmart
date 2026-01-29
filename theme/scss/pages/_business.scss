@@ -65,4 +65,21 @@
       align-items: center;
     }
   }
+
+  //.about_lead--img_pc
+  &--img_pc {
+    @include tb-mq {
+      display: none;
+    }
+  }
+
+  //.about_lead--img_sp
+  &--img_sp {
+    display: none;
+
+    @include tb-mq {
+      display: block;
+      margin: 0 auto 30px;
+    }
+  }
 }

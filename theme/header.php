@@ -26,18 +26,18 @@
 
 <?php if (is_home() || is_front_page()) : ?>
   <div class="loadinganimation" id="js_loadinganimation">
+
     <!-- 背景エフェクト層 -->
     <div class="loadinganimation--bg-effects">
+
       <!-- ハニカムパターン -->
       <div class="loadinganimation--honeycomb"></div>
-
-      <!-- スキャンライン -->
-      <div class="loadinganimation--scanline"></div>
 
       <!-- パルスウェーブ -->
       <div class="loadinganimation--pulse-wave"></div>
       <div class="loadinganimation--pulse-wave" style="animation-delay: 1s;"></div>
       <div class="loadinganimation--pulse-wave" style="animation-delay: 2s;"></div>
+
     </div>
 
     <!-- レーザービーム -->
@@ -46,16 +46,6 @@
       <div class="loadinganimation--laser loadinganimation--laser-2"></div>
       <div class="loadinganimation--laser loadinganimation--laser-3"></div>
       <div class="loadinganimation--laser loadinganimation--laser-4"></div>
-    </div>
-
-    <!-- データストリーム -->
-    <div class="loadinganimation--data-stream">
-      <div class="loadinganimation--stream loadinganimation--stream-1">01001010</div>
-      <div class="loadinganimation--stream loadinganimation--stream-2">11010110</div>
-      <div class="loadinganimation--stream loadinganimation--stream-3">00110101</div>
-      <div class="loadinganimation--stream loadinganimation--stream-4">10101100</div>
-      <div class="loadinganimation--stream loadinganimation--stream-5">01110011</div>
-      <div class="loadinganimation--stream loadinganimation--stream-6">11001001</div>
     </div>
 
     <!-- 爆発的な粒子エフェクト -->
@@ -80,33 +70,22 @@
       <div class="loadinganimation--orbit-light loadinganimation--orbit-light-3"></div>
     </div>
 
-    <!-- ロゴ（ホログラム風） -->
     <div class="loadinganimation--logo-wrapper">
       <div class="loadinganimation--hologram-effect"></div>
       <img src="<?php echo get_template_directory_uri(); ?>/img/common/logo_white.png" alt="トータルスマート株式会社" width="1034" height="216" loading="lazy" decoding="async">
     </div>
 
-    <!-- ステータステキスト -->
     <div class="loadinganimation--status">
-      <p id="status">SYSTEM CHECK...</p>
+      <p>
+        トータルスマート株式会社の<br>
+        ホームページへようこそ
+      </p>
       <div class="loadinganimation--status-bars">
         <div class="loadinganimation--status-bar"></div>
         <div class="loadinganimation--status-bar"></div>
         <div class="loadinganimation--status-bar"></div>
       </div>
     </div>
-
-    <!-- プログレスバー -->
-    <div class="loadinganimation--progress">
-      <div class="loadinganimation--progress-bar" id="progress-bar"></div>
-      <div class="loadinganimation--progress-glow"></div>
-    </div>
-
-    <!-- コーナーデコレーション -->
-    <div class="loadinganimation--corner loadinganimation--corner-tl"></div>
-    <div class="loadinganimation--corner loadinganimation--corner-tr"></div>
-    <div class="loadinganimation--corner loadinganimation--corner-bl"></div>
-    <div class="loadinganimation--corner loadinganimation--corner-br"></div>
   </div>
 <?php endif; ?>
 
@@ -118,7 +97,7 @@
         <?php $tag = is_front_page() ? 'h1' : 'p'; ?>
         <<?php echo $tag; ?> class="header--logo">
           <small>【愛知県・岐阜県・三重県・静岡県対応】<br>防犯・通信・省エネをまとめて任せて、コスト削減ならトータルスマート株式会社</small>
-          <a href="<?php echo esc_url(home_url('/')); ?>">
+          <a href="<?php echo esc_url(home_url('/')); ?>" data-skip-top-loader="1">
             <img src="<?php echo get_theme_file_uri('/img/common/logo.png'); ?>"
               alt="トータルスマート株式会社"
               width="325" height="68"
