@@ -11,7 +11,7 @@
 
 <?php $slug_name = $post->post_name; ?>
 <main class="<?php echo $slug_name; ?>_page">
-  <section class="about_lead sec">
+  <section class="business_lead sec">
     <div class="container -md">
       <h2 class="ttl">
         事業内容
@@ -22,12 +22,12 @@
         経費の見直しと業務効率化をワンストップで支援し、日々のムダを可視化して削減します。<br>
         時間も支出もスマートに抑え、組織全体の生産性とパフォーマンスを着実に引き上げます。
       </p>
-      <article class="about_lead--item">
+      <article class="business_lead--item">
         <div>
           <h3>
             <span>業務効率化</span>＆<span>コスト・経費</span>削減
           </h3>
-          <img class="about_lead--img_sp" src="<?php echo get_template_directory_uri(); ?>/img/business/lead_01.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
+          <img class="business_lead--img_sp" src="<?php echo get_template_directory_uri(); ?>/img/business/lead_01.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
           <ul>
             <li>
               配膳ロボット、サイネージ、POSレジなど<br>
@@ -43,9 +43,9 @@
             </li>
           </ul>
         </div>
-        <img class="about_lead--img_pc" src="<?php echo get_template_directory_uri(); ?>/img/business/lead_01.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
+        <img class="business_lead--img_pc" src="<?php echo get_template_directory_uri(); ?>/img/business/lead_01.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
       </article>
-      <article class="about_lead--item">
+      <article class="business_lead--item">
         <div>
           <h3>
             <span>業務効率化</span>＆<span>コスト・経費</span>削減
@@ -67,7 +67,7 @@
         </div>
         <img src="<?php echo get_template_directory_uri(); ?>/img/business/lead_02.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
       </article>
-      <article class="about_lead--item">
+      <article class="business_lead--item">
         <div>
           <h3>
             <span>業務効率化</span>＆<span>コスト・経費</span>削減
@@ -92,10 +92,10 @@
     </div>
   </section>
 
-  <section class="feature about_strong sec bg_gray">
-    <div class="about_strong--inner">
+  <section class="feature business_strong sec bg_gray">
+    <div class="business_strong--inner">
       <h2 class="page_ttl">私たちの強み</h2>
-      <p class="about_strong--lead">
+      <p class="business_strong--lead">
         私たちは最新のテクノロジーと革新的なソリューションを融合し、<br class="is-hidden_sp">
         企業の成長を力強く支援するパートナーです。<br>
         市場の変化に柔軟に対応し、店舗に最適なシステムとカスタマイズ可能なサービスを提供することで、<br class="is-hidden_sp">
@@ -133,13 +133,13 @@
     </div>
   </section>
 
-  <section class="about_plan sec">
-    <div class="about_plan--inner">
+  <section class="business_plan sec">
+    <div class="business_plan--inner">
       <h2 class="page_ttl">選べる3つのプラン</h2>
-      <p class="about_strong--lead">
+      <p class="business_strong--lead">
         導入前のご相談から、設置、運用、導入後のフォローアップまで専任スタッフが集中サポートさせていただきます。
       </p>
-      <ul class="about_plan--list">
+      <ul class="business_plan--list">
         <li>
           <span>レンタルプラン</span>
           <img src="<?php echo get_template_directory_uri(); ?>/img/business/plan_01.png" alt="" width="220" height="117" loading="lazy" decoding="async">
@@ -166,12 +166,12 @@
         サービスについて、機器の操作方法や不明な点など、電話や訪問してサポートするだけでなく、<br class="is-hidden_sp">
         どこでも遠隔サポートが可能。無駄な時間を省いて業務を効率化。
       </p>
-      <ul class="about_plan--support">
+      <ul class="business_plan--support">
         <li>リモートサポート</li>
         <li>訪問サポート</li>
         <li>電話サポート</li>
       </ul>
-      <div class="about_plan--link">
+      <div class="business_plan--link">
         <a href="">
           リモートサポート<br>
           <span>REMOTE SUPPORT</span>
@@ -181,6 +181,12 @@
           <span>QUESTION</span>
         </a>
       </div>
+    </div>
+  </section>
+
+  <section class="business_flow sec bg_gray">
+    <div class="business_flow--inner">
+      <h2 class="page_ttl">導入の流れ</h2>
     </div>
   </section>
 

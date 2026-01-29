@@ -5,7 +5,7 @@
 //  事業内容　専用
 // ---------------------------------------------
 
-.about_lead {
+.business_lead {
   p {
     margin-bottom: 100px;
     line-height: 2;
@@ -47,7 +47,7 @@
     }
   }
 
-  // .about_lead--item
+  // .business_lead--item
   &--item {
     display: flex;
     flex-wrap: wrap;
@@ -66,14 +66,14 @@
     }
   }
 
-  //.about_lead--img_pc
+  //.business_lead--img_pc
   &--img_pc {
     @include tb-mq {
       display: none;
     }
   }
 
-  //.about_lead--img_sp
+  //.business_lead--img_sp
   &--img_sp {
     display: none;
 
@@ -84,7 +84,7 @@
   }
 }
 
-.about_strong {
+.business_strong {
   ul {
     counter-reset: num;
   }
@@ -126,13 +126,13 @@
     background-size: 100% 25px;
   }
 
-  // .about_strong--lead
+  // .business_strong--lead
   &--lead {
     margin-bottom: 100px;
     text-align: center;
   }
 
-  // .about_strong--inner
+  // .business_strong--inner
   &--inner {
     box-sizing: border-box;
     width: min(1250px, 100%);
@@ -141,8 +141,8 @@
   }
 }
 
-.about_plan {
-  // .about_plan--inner
+.business_plan {
+  // .business_plan--inner
   &--inner {
     box-sizing: border-box;
     width: min(1550px, 100%);
@@ -150,7 +150,7 @@
     margin: auto;
   }
 
-  // .about_plan--list
+  // .business_plan--list
   &--list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -206,7 +206,7 @@
     }
   }
 
-  // .about_plan--support
+  // .business_plan--support
   &--support {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -233,7 +233,7 @@
     }
   }
 
-  // .about_plan--link
+  // .business_plan--link
   &--link {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -276,3 +276,15 @@
     }
   }
 }
+
+
+.business_flow {
+  // .business_flow--inner
+  &--inner {
+    box-sizing: border-box;
+    width: min(1550px, 100%);
+    padding: 0 min(4vw, 25px);
+    margin: auto;
+  }
+}
+
