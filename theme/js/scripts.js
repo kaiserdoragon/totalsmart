@@ -92,7 +92,7 @@ window.addEventListener("load", () => {
 
 // 1. 指定時間（3秒〜5秒）後に終了させる演出
 window.addEventListener('load', () => {
-  const loader = document.getElementById('loading-screen');
+  const loader = document.getElementById('js_loadinganimation');
   const content = document.getElementById('main-content');
   const status = document.getElementById('status');
 

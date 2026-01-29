@@ -22,11 +22,12 @@
   <?php wp_head(); ?>
 </head>
 
-<div id="loading-screen">
+<div class="loadinganimation" id="js_loadinganimation">
   <div class="scanner-ring"></div>
-  <img class="logo-img" src="<?php echo get_template_directory_uri(); ?>/img/common/logo_white.png" alt="トータルスマート株式会社" width="1034" height="216" loading="lazy" decoding="async">
+  <img src="<?php echo get_template_directory_uri(); ?>/img/common/logo_white.png" alt="トータルスマート株式会社" width="1034" height="216" loading="lazy" decoding="async">
   <p id="status">SYSTEM CHECK...</p>
 </div>
+
 
 <body <?php body_class(); ?>> <?php wp_body_open(); ?> <div class="wrap" id="main-content">
     <header class="header">
