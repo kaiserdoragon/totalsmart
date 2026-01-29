@@ -89,9 +89,56 @@
         </div>
         <img src="<?php echo get_template_directory_uri(); ?>/img/business/lead_03.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
       </article>
-      <h2 class="page_ttl">下層ページの共通見出し</h2>
     </div>
   </section>
+
+  <section class="feature about_strong sec bg_gray">
+    <div class="about_strong--inner">
+      <h2 class="page_ttl">私たちの強み</h2>
+      <p class="about_strong--lead">
+        私たちは最新のテクノロジーと革新的なソリューションを融合し、<br class="is-hidden_sp">
+        企業の成長を力強く支援するパートナーです。<br>
+        市場の変化に柔軟に対応し、店舗に最適なシステムとカスタマイズ可能なサービスを提供することで、<br class="is-hidden_sp">
+        業務の効率化と持続的な発展を実現します。<br>
+        豊富な導入実績と継続的な技術革新に裏打ちされた信頼性が大きな魅力です。<br>
+        未来を切り拓く確かな基盤として、あらゆる店舗の成功をサポートします。<br>
+      </p>
+      <ul>
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/business/strong_01.png" alt="" width="315" height="210" loading="lazy" decoding="async">
+          <p>
+            あなたの会社をより強く、<br class="is-hidden_sp">
+            より快適に。最新設備と技術で、<br class="is-hidden_sp">
+            経営を刷新します。<br>
+            私たちは、御社の成長を設備面から<br class="is-hidden_sp">
+            支え続けます。
+          </p>
+        </li>
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/business/strong_02.png" alt="" width="315" height="210" loading="lazy" decoding="async">
+          <p>
+            企業の成長と売上をしっかり支<br class="is-hidden_sp">
+            える、最適なソリューションで<br class="is-hidden_sp">
+            す。柔軟なシステムで業務効率<br class="is-hidden_sp">
+            を向上させ、着実な売上アップ<br class="is-hidden_sp">
+            を実現します。
+          </p>
+        </li>
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/business/strong_03.png" alt="" width="315" height="210" loading="lazy" decoding="async">
+          <p>
+            あなたの会社を時代に合わせて<br class="is-hidden_sp">
+            革新します。急速に変化する現<br class="is-hidden_sp">
+            代において最新設備を導入、効<br class="is-hidden_sp">
+            率的なシステムの活用で、競争<br class="is-hidden_sp">
+            力と快適さを実現します。
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <h2 class="page_ttl">下層ページの共通見出し</h2>
 </main>
 
 <?php get_footer(); ?>

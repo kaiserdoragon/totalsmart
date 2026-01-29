@@ -83,3 +83,54 @@
     }
   }
 }
+
+
+.about_strong {
+  ul {
+    counter-reset: num;
+  }
+
+  li {
+    position: relative;
+    display: block;
+    grid-row: auto;
+    padding: 40px 30px;
+    counter-increment: num;
+    background: #fff;
+    border: 5px solid #333;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0 #333;
+
+    &::before {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      padding: 5px 20px;
+      font-size: var(--fz23);
+      font-weight: 700;
+      color: #fff;
+      content: "POINT" counter(num, decimal-leading-zero);
+      background: #0052a7;
+      border-radius: 1000px;
+      transform: translateX(-50%);
+    }
+  }
+
+  img {
+    margin: 0 auto 30px !important;
+  }
+
+  // .about_strong--lead
+  &--lead {
+    margin-bottom: 80px;
+    text-align: center;
+  }
+
+  // .about_strong--inner
+  &--inner {
+    box-sizing: border-box;
+    width: min(1250px, 100%);
+    padding: 0 min(4vw, 25px);
+    margin: auto;
+  }
+}
