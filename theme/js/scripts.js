@@ -90,23 +90,51 @@ window.addEventListener("load", () => {
 });
 
 
-// 1. 指定時間（3秒〜5秒）後に終了させる演出
-window.addEventListener('load', () => {
-  const loader = document.getElementById('js_loadinganimation');
+// ローディングアニメーション
+window.addEventListener('load', function () {
+  // const loader = document.getElementById('js_loadinganimation');
   const content = document.getElementById('main-content');
   const status = document.getElementById('status');
+  const hexCode = document.getElementById('hex-code');
+  const progressBar = document.getElementById('progress-bar');
 
-  // 擬似的な読み込み待ち（3秒後に実行）
-  setTimeout(() => {
+  // ランダムなHEXコードを生成
+  function generateHexCode() {
+    const hex = Math.floor(Math.random() * 0xFFFFFFFF).toString(16).toUpperCase().padStart(8, '0');
+    return '0x' + hex;
+  }
+
+  // HEXコードを定期的に更新
+  const hexInterval = setInterval(function () {
+    hexCode.innerText = generateHexCode();
+  }, 200);
+
+  // 段階的なステータス更新
+  setTimeout(function () {
+    status.innerText = "LOADING MODULES...";
+  }, 800);
+
+  setTimeout(function () {
+    status.innerText = "INITIALIZING SYSTEM...";
+  }, 1600);
+
+  setTimeout(function () {
     status.innerText = "ACCESS GRANTED";
+    clearInterval(hexInterval);
+    hexCode.innerText = "0x00FF00A1";
+  }, 2800);
 
-    // 少し遅らせて画面を消す
-    setTimeout(() => {
-      loader.classList.add('loaded'); // ローディングを消す
-      content.classList.add('show');   // メインを表示
+  // 3秒後にローディング終了
+  setTimeout(function () {
+    // フェードアウト開始
+    loader.classList.add('is_load-delete');
+    content.classList.add('is_show');
+
+    // アニメーション完了後に要素を削除（任意）
+    setTimeout(function () {
+      loader.remove();
     }, 1000);
-
-  }, 3000);
+  }, 3800);
 });
 
 

@@ -23,9 +23,43 @@
 </head>
 
 <div class="loadinganimation" id="js_loadinganimation">
-  <div class="scanner-ring"></div>
-  <img src="<?php echo get_template_directory_uri(); ?>/img/common/logo_white.png" alt="トータルスマート株式会社" width="1034" height="216" loading="lazy" decoding="async">
-  <p id="status">SYSTEM CHECK...</p>
+  <!-- 背景グリッド -->
+  <div class="loadinganimation--grid"></div>
+
+  <!-- 粒子エフェクト -->
+  <div class="loadinganimation--particles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- 回転リング群 -->
+  <div class="loadinganimation--rings">
+    <div class="loadinganimation--ring loadinganimation--ring-outer"></div>
+    <div class="loadinganimation--ring loadinganimation--ring-middle"></div>
+    <div class="loadinganimation--ring loadinganimation--ring-inner"></div>
+  </div>
+
+  <!-- ロゴ -->
+  <div class="loadinganimation--logo-wrapper">
+    <img src="<?php echo get_template_directory_uri(); ?>/img/common/logo_white.png" alt="トータルスマート株式会社" width="1034" height="216" loading="lazy" decoding="async">
+  </div>
+
+  <!-- ステータステキスト -->
+  <div class="loadinganimation--status">
+    <p id="status">SYSTEM CHECK...</p>
+    <p class="loadinganimation--hex" id="hex-code">0x00FF00A1</p>
+  </div>
+
+  <!-- プログレスバー -->
+  <div class="loadinganimation--progress">
+    <div class="loadinganimation--progress-bar" id="progress-bar"></div>
+  </div>
 </div>
 
 
