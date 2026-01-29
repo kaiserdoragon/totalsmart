@@ -89,6 +89,28 @@ window.addEventListener("load", () => {
   }
 });
 
+
+// 1. 指定時間（3秒〜5秒）後に終了させる演出
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loading-screen');
+  const content = document.getElementById('main-content');
+  const status = document.getElementById('status');
+
+  // 擬似的な読み込み待ち（3秒後に実行）
+  setTimeout(() => {
+    status.innerText = "ACCESS GRANTED";
+
+    // 少し遅らせて画面を消す
+    setTimeout(() => {
+      loader.classList.add('loaded'); // ローディングを消す
+      content.classList.add('show');   // メインを表示
+    }, 1000);
+
+  }, 3000);
+});
+
+
+
 // (function ($, root, undefined) {
 //   // ------------------------------
 //   // jqueryはここに記載

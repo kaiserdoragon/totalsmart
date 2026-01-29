@@ -22,7 +22,13 @@
   <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>> <?php wp_body_open(); ?> <div class="wrap">
+<div id="loading-screen">
+  <div class="scanner-ring"></div>
+  <img class="logo-img" src="<?php echo get_template_directory_uri(); ?>/img/common/logo_white.png" alt="トータルスマート株式会社" width="1034" height="216" loading="lazy" decoding="async">
+  <p id="status">SYSTEM CHECK...</p>
+</div>
+
+<body <?php body_class(); ?>> <?php wp_body_open(); ?> <div class="wrap" id="main-content">
     <header class="header">
       <div class="header--inner">
         <?php $tag = is_front_page() ? 'h1' : 'p'; ?>
