@@ -106,35 +106,78 @@
       <ul>
         <li>
           <img src="<?php echo get_template_directory_uri(); ?>/img/business/strong_01.png" alt="" width="315" height="210" loading="lazy" decoding="async">
-          <p>
-            あなたの会社をより強く、<br class="is-hidden_sp">
-            より快適に。最新設備と技術で、<br class="is-hidden_sp">
-            経営を刷新します。<br>
-            私たちは、御社の成長を設備面から<br class="is-hidden_sp">
-            支え続けます。
-          </p>
+          あなたの会社を
+          <span class="underline">より強く、<br class="is-hidden_sp">より快適に。</span>
+          最新設備と技術で、<br class="is-hidden_sp">
+          経営を刷新します。<br>
+          私たちは、御社の成長を設備面から<br class="is-hidden_sp">
+          支え続けます。
         </li>
         <li>
           <img src="<?php echo get_template_directory_uri(); ?>/img/business/strong_02.png" alt="" width="315" height="210" loading="lazy" decoding="async">
-          <p>
-            企業の成長と売上をしっかり支<br class="is-hidden_sp">
-            える、最適なソリューションで<br class="is-hidden_sp">
-            す。柔軟なシステムで業務効率<br class="is-hidden_sp">
-            を向上させ、着実な売上アップ<br class="is-hidden_sp">
-            を実現します。
-          </p>
+          企業の成長と売上をしっかり支<br class="is-hidden_sp">
+          える、最適なソリューションで<br class="is-hidden_sp">
+          す。柔軟なシステムで業務効率<br class="is-hidden_sp">
+          を向上させ、<span class="underline">着実な売上アップ</span><br class="is-hidden_sp">
+          を実現します。
         </li>
         <li>
           <img src="<?php echo get_template_directory_uri(); ?>/img/business/strong_03.png" alt="" width="315" height="210" loading="lazy" decoding="async">
-          <p>
-            あなたの会社を時代に合わせて<br class="is-hidden_sp">
-            革新します。急速に変化する現<br class="is-hidden_sp">
-            代において最新設備を導入、効<br class="is-hidden_sp">
-            率的なシステムの活用で、競争<br class="is-hidden_sp">
-            力と快適さを実現します。
-          </p>
+          あなたの会社を時代に合わせて<br class="is-hidden_sp">
+          革新します。急速に変化する現<br class="is-hidden_sp">
+          代において最新設備を導入、効<br class="is-hidden_sp">
+          率的なシステムの活用で、<span class="underline">競争<br class="is-hidden_sp">
+            力と快適さ</span>を実現します。
         </li>
       </ul>
+    </div>
+  </section>
+
+  <section class="about_plan sec">
+    <div class="about_plan--inner">
+      <h2 class="page_ttl">選べる3つのプラン</h2>
+      <p class="about_strong--lead">
+        導入前のご相談から、設置、運用、導入後のフォローアップまで専任スタッフが集中サポートさせていただきます。
+      </p>
+      <ul class="about_plan--list">
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/business/plan_01.png" alt="" width="220" height="117" loading="lazy" decoding="async">
+          初期投資を抑えつつ、最新テクノロジーを<br class="is-hidden_sp">
+          すぐにご利用いただけます。<br>
+          当面の導入や柔軟なアップグレードが可能です。
+        </li>
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/business/plan_02.png" alt="" width="150" height="112" loading="lazy" decoding="async">
+          長期的な運用を見据えたプランで、<br class="is-hidden_sp">
+          月々のお支払いにより最新の設備を維持します。<br>
+          成長段階に合わせた最適なサポートを提供します。
+        </li>
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/business/plan_03.png" alt="" width="220" height="117" loading="lazy" decoding="async">
+          直接購入による全てのメリット。<br>
+          最新設備を安心に自社の資産として導入し、<br class="is-hidden_sp">
+          業務の効率化と売上向上を実現します。
+        </li>
+      </ul>
+      <p>
+        サービスについて、機器の操作方法や不明な点など、電話や訪問してサポートするだけでなく、<br class="is-hidden_sp">
+        どこでも遠隔サポートが可能。無駄な時間を省いて業務を効率化。
+      </p>
+      <ul>
+        <li>リモートサポート</li>
+        <li>訪問サポート</li>
+        <li>電話サポート</li>
+      </ul>
+      <div>
+        <a href="">
+          リモートサポート<br>
+          REMOTE SUPPORT
+        </a>
+        <a href="">
+          よくある質問<br>
+          QUESTION
+        </a>
+      </div>
     </div>
   </section>
 
