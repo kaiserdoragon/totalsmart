@@ -142,14 +142,6 @@
 }
 
 .business_plan {
-  // .business_plan--inner
-  &--inner {
-    box-sizing: border-box;
-    width: min(1550px, 100%);
-    padding: 0 min(4vw, 25px);
-    margin: auto;
-  }
-
   // .business_plan--list
   &--list {
     display: grid;
@@ -163,9 +155,8 @@
       grid-template-rows: subgrid;
       grid-row: span 2;
       gap: 30px;
-      padding: 30px;
+      padding: 50px 30px 30px;
       text-align: center;
-      background: transparent;
       border: 3px solid #0052a7;
       border-radius: 15px;
 
@@ -190,6 +181,8 @@
         position: absolute;
         top: -21px;
         left: 50%;
+        width: 100%;
+        max-width: 235px;
         padding: 5px 42px;
         font-size: var(--fz20);
         font-weight: 800;
@@ -277,14 +270,93 @@
   }
 }
 
-
 .business_flow {
-  // .business_flow--inner
-  &--inner {
-    box-sizing: border-box;
-    width: min(1550px, 100%);
-    padding: 0 min(4vw, 25px);
-    margin: auto;
+  p {
+    margin-bottom: 100px;
+    text-align: center;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  li {
+    position: relative;
+    padding: 40px 30px;
+    background: #fff;
+    border: 5px solid #333;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0 #333;
+
+    &:nth-child(1) {
+      dt {
+        background: url(../img/business/flow_icon_01.png) no-repeat left 37% top 3px / 22px;
+      }
+    }
+
+    &:nth-child(2) {
+      dt {
+        background: url(../img/business/flow_icon_02.png) no-repeat left 37% top 3px / 22px;
+      }
+    }
+
+    &:nth-child(3) {
+      dt {
+        background: url(../img/business/flow_icon_03.png) no-repeat left 37% top 3px / 22px;
+      }
+    }
+  }
+
+  img {
+    display: block;
+    margin: 0 auto 30px;
+  }
+
+  dt {
+    display: grid;
+    place-content: center;
+    place-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    font-size: var(--fz20);
+    font-weight: 800;
+    color: #0052a7;
+
+    span {
+      font-size: var(--fz14);
+      font-weight: 600;
+    }
+  }
+
+  dd {
+    font-size: var(--fz16);
+    line-height: 1.8;
+    text-align: center;
+  }
+
+  // .business_flow--step
+  &--step {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    display: block;
+    padding: 5px 39px;
+    font-size: var(--fz23);
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    background: #0052a7;
+    border-radius: 1000px;
+    transform: translateX(-50%);
+
+    span {
+      margin-left: 5px;
+      font-size: var(--fz30);
+      line-height: 1;
+      color: #fff975;
+    }
   }
 }
 

@@ -11,6 +11,7 @@
 
 <?php $slug_name = $post->post_name; ?>
 <main class="<?php echo $slug_name; ?>_page">
+
   <section class="business_lead sec">
     <div class="container -md">
       <h2 class="ttl">
@@ -134,7 +135,7 @@
   </section>
 
   <section class="business_plan sec">
-    <div class="business_plan--inner">
+    <div class="container">
       <h2 class="page_ttl">選べる3つのプラン</h2>
       <p class="business_strong--lead">
         導入前のご相談から、設置、運用、導入後のフォローアップまで専任スタッフが集中サポートさせていただきます。
@@ -158,7 +159,7 @@
           <span>販売プラン</span>
           <img src="<?php echo get_template_directory_uri(); ?>/img/business/plan_03.png" alt="" width="220" height="117" loading="lazy" decoding="async">
           直接購入による全てのメリット。<br>
-          最新設備を安心に自社の資産として導入し、<br class="is-hidden_sp">
+          最新設備を安心に自社の資産として導入し、
           業務の効率化と売上向上を実現します。
         </li>
       </ul>
@@ -185,8 +186,83 @@
   </section>
 
   <section class="business_flow sec bg_gray">
-    <div class="business_flow--inner">
+    <div class="container">
       <h2 class="page_ttl">導入の流れ</h2>
+      <p>導入前のご相談から、設置、運用、導入後のフォローアップまで専任スタッフが集中サポートさせていただきます。</p>
+      <ul>
+        <li>
+          <span class="business_flow--step">STEP<span>1</span></span>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/business/flow_01.png" alt="" width="340" height="200" loading="lazy" decoding="async">
+          <dl>
+            <dt>
+              ご提案
+              <span>～設備の効果～</span>
+            </dt>
+            <dd>
+              お客様の現状やお悩みをしっかりとお伺いし最適なソリューションをご提案いたします。<br>
+              最新の製品やシステムの特徴、導入することで得られるメリットを分かりやすくご説明し、お客様のニーズに合ったプランを<br class="is-hidden_sp">
+              お届けします。
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <span class="business_flow--step">STEP<span>2</span></span>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/business/flow_02.png" alt="" width="340" height="200" loading="lazy" decoding="async">
+          <dl>
+            <dt>
+              ご商談
+              <span>～見積もりの提示と調整～</span>
+            </dt>
+            <dd>
+              提案内容にご興味をお持ちいただけたら、具体的な導入方法やお見積もり、スケジュールなど詳細な条件についてお話をいたします。<br>
+              お客様との対話を通じて、ご不明な点やご要望を丁寧にお伺いし、双方納得のいくプランを練り上げてまいります。
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <span class="business_flow--step">STEP<span>3</span></span>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/business/flow_03.png" alt="" width="340" height="200" loading="lazy" decoding="async">
+          <dl>
+            <dt>
+              ご契約
+              <span>～ご契約後の流れについて</span>
+            </dt>
+            <dd>
+              商談内容にご同意いただけましたら、正式な契約手続きに進みます。<br>
+              契約書のご説明や必要書類のご案内を通じて、安心してお手続きいただけるようサポートいたします。<br>
+              ご契約後も、導入後のフォローアップやアフターサポートをしっかりと行います。
+            </dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cv_contact sec -page">
+    <div class="container">
+      <div class="cv_contact--ttl">
+        <h2 class="ttl">
+          お問い合わせ
+          <span>CONTACT</span>
+        </h2>
+        <img src="<?php echo get_template_directory_uri(); ?>/img/page/contact_logo_page.png" alt="トータルスマート株式会社" width="1100" height="117" loading="lazy" decoding="async">
+      </div>
+      <p>ご不明な点やご質問、または詳細な情報をお求めの場合は、どうぞお気軽にお問い合わせください。<br>
+        専門のスタッフが迅速にサポートします。</p>
+      <div class="cv_contact--inner">
+        <ul>
+          <li>
+            <a href="">メールで問い合わせ</a>
+          </li>
+          <li>
+            <a href="">LINEで問い合わせ</a>
+          </li>
+        </ul>
+        <a href="tel:052-932-5450" class="cv_contact--btn">
+          052-932-5450
+          <span>受付時間<br class="is-hidden_sp">平日9:00～18:00</span>
+        </a>
+      </div>
     </div>
   </section>
 

@@ -1,17 +1,16 @@
 // ローディングアニメーション
-window.addEventListener('load', function () {
-  const loader = document.getElementById('js_loadinganimation');
-  const content = document.getElementById('main-content');
+window.addEventListener("load", function () {
+  const loader = document.getElementById("js_loadinganimation");
+  const content = document.getElementById("main-content");
 
-  // 1秒後にローディング終了
+  // 1. 読み込み完了後、すぐにクラスを付与してアニメーション開始
+  loader.classList.add("is_load-delete");
+
+  if (content) {
+    content.classList.add("is_show");
+  }
+
   setTimeout(function () {
-    loader.classList.add('is_load-delete');
-    content.classList.add('is_show');
-
-    setTimeout(function () {
-      loader.remove();
-    }, 870);
-  }, 870);
+    loader.remove();
+  });
 });
-
-

@@ -97,7 +97,7 @@
         <?php $tag = is_front_page() ? 'h1' : 'p'; ?>
         <<?php echo $tag; ?> class="header--logo">
           <small>【愛知県・岐阜県・三重県・静岡県対応】<br>防犯・通信・省エネをまとめて任せて、コスト削減ならトータルスマート株式会社</small>
-          <a href="<?php echo esc_url(home_url('/')); ?>" data-skip-top-loader="1">
+          <a href="<?php echo esc_url(home_url('/')); ?>">
             <img src="<?php echo get_theme_file_uri('/img/common/logo.png'); ?>"
               alt="トータルスマート株式会社"
               width="325" height="68"

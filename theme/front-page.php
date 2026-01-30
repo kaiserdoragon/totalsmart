@@ -663,7 +663,7 @@
           お問い合わせ
           <span>CONTACT</span>
         </h2>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/top/contact_logo.png" alt="トータルスマート株式会社" width="1100" height="117" loading="lazy" decoding="async">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/page/contact_logo.png" alt="トータルスマート株式会社" width="1100" height="117" loading="lazy" decoding="async">
       </div>
       <p>ご不明な点やご質問、または詳細な情報をお求めの場合は、どうぞお気軽にお問い合わせください。<br>
         専門のスタッフが迅速にサポートします。</p>
