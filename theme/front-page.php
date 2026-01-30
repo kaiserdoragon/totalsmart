@@ -149,7 +149,7 @@
         <strong class="underline">一本の電話ですべて解決する</strong>
         <p>お客様にとってストレスのない業務形態です。</p>
       </div>
-      <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_anima.png" alt="" width="900" height="1088" loading="lazy" decoding="async">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_anima.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
       <a class="btn_link" href="#" target="_blank">トータルスマートについて詳しく知る</a>
     </div>
   </section>
