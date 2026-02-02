@@ -434,12 +434,13 @@ if (function_exists('bcn_display_list')) {
 \*------------------------------------*/
 function my_customize_query_total_posts($query)
 {
+  // 管理画面、またはメインクエリではない場合は何もしない
   if (is_admin() || ! $query->is_main_query()) {
     return;
   }
 
-  // 対象とする投稿タイプを指定
-  $post_types = ['question', 'service', 'information', 'introduction', 'post'];
+  // 2. その他の投稿タイプとホーム（is_home）は 9件に設定
+  $post_types = ['question', 'information', 'introduction', 'post'];
 
   if (is_post_type_archive($post_types) || is_home()) {
     $query->set('posts_per_page', 9);
@@ -636,3 +637,53 @@ function add_home_schema_markup()
   }
 }
 add_action('wp_head', 'add_home_schema_markup');
+
+
+
+// -------------------------------------
+// サービス一覧（service）の制御
+// -------------------------------------
+add_action('pre_get_posts', function ($q) {
+  if (is_admin() || !$q->is_main_query()) return;
+
+  // archive-service.php（post_type=service のアーカイブ）だけ
+  if ($q->is_post_type_archive('service')) {
+    $q->set('posts_per_page', 15);
+
+    // 並び替え用SQLを追加
+    add_filter('posts_clauses', 'service_archive_orderby_service_cat_description', 10, 2);
+  }
+});
+
+function service_archive_orderby_service_cat_description($clauses, $q)
+{
+  if (is_admin() || !$q->is_main_query() || !$q->is_post_type_archive('service')) {
+    return $clauses;
+  }
+
+  global $wpdb;
+
+  // service_cat の term_taxonomy.description を join
+  $clauses['join'] .= "
+    LEFT JOIN {$wpdb->term_relationships} AS tr_sc
+      ON ({$wpdb->posts}.ID = tr_sc.object_id)
+    LEFT JOIN {$wpdb->term_taxonomy} AS tt_sc
+      ON (tr_sc.term_taxonomy_id = tt_sc.term_taxonomy_id AND tt_sc.taxonomy = 'service_cat')
+  ";
+
+  // 1投稿=複数タームでも壊れないように集約（1投稿=1ターム運用ならそのままでOK）
+  $clauses['fields']  .= ", MIN(tt_sc.description) AS service_cat_desc";
+  $clauses['groupby'] = "{$wpdb->posts}.ID";
+
+  // NULL（ターム未設定）を後ろにしたい場合
+  $clauses['orderby'] = "
+    (service_cat_desc IS NULL) ASC,
+    service_cat_desc ASC,
+    {$wpdb->posts}.post_date DESC
+  ";
+
+  // description を数字で運用しているなら、上の orderby をこれに置換（01,02…運用でもOK）
+  // $clauses['orderby'] = "CAST(service_cat_desc AS UNSIGNED) ASC, {$wpdb->posts}.post_date DESC";
+
+  return $clauses;
+}

@@ -284,7 +284,7 @@
           ?>
                 <li>
                   <article>
-                    <a href="<?php the_permalink(); ?>" rel="bookmark">
+                    <a href="<?php the_permalink(); ?>">
                       <figure>
                         <?php if (has_post_thumbnail()) : ?>
                           <?php the_post_thumbnail('service-thumb', [
@@ -425,7 +425,6 @@
     </div>
     <a class="btn_link" href="<?php echo esc_url(home_url('/introduction')); ?>" target="_blank" rel="noopener">導入実績一覧を見る</a>
   </section>
-
 
   <section class="company bg_white sec">
     <div class="container">

@@ -5,7 +5,7 @@ $post_type = get_post_type();
 
 // 設定を配列にまとめる
 $type_settings = [
-  'introduction' => ['title' => '導入実績',     'img' => 'eyecatch_introduction.jpg', 'slug' => 'introduction'],
+  'information'  => ['title' => 'お役立ち情報', 'img' => 'eyecatch_information.jpg', 'slug' => 'information'],
 ];
 
 $title = $type_settings[$post_type]['title'] ?? 'お知らせ';
@@ -28,12 +28,6 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
           <?php echo esc_html($title); ?>
           <span><?php echo esc_html(strtoupper($slug)); ?></span>
         </h2>
-        <p class="<?php echo $slug . '_page--txt'; ?>">
-          私たちの最新設備を導入いただいた様々な企業の体験談が掲載されています。<br>
-          実際にご利用いただいた企業の成功事例や具体的な活用方法、<br class="is-hidden_sp">
-          改善された業務効率やお客様満足度の向上など、リアルな声をぜひご覧ください。<br>
-          あなたのお店の未来を変えるヒントがここにあります！
-        </p>
         <?php if (have_posts()) : ?>
           <ul class="<?php echo $slug . '_page--inner'; ?>">
             <?php while (have_posts()) : the_post(); ?>
@@ -73,31 +67,25 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
                   }
                   ?>
 
-                  <div class="front-news--info">
-                    <?php /* --- ここに子カテゴリーを出力 --- */ ?>
-                    <?php if (!empty($child_terms)) : ?>
-                      <div class="introduction_page--child_labels">
-                        <?php foreach ($child_terms as $child) : ?>
-                          <span class="child_labels <?php echo esc_attr($child->slug); ?>">
-                            <?php echo esc_html($child->name); ?>
-                          </span>
-                        <?php endforeach; ?>
-                      </div>
+                  <div class="information--meta">
+                    <?php
+                    $terms = get_the_terms(get_the_ID(), 'information_cat');
+                    if ($terms && !is_wp_error($terms)) :
+                      $top_term = $terms[0];
+                      while ($top_term->parent != 0) {
+                        $top_term = get_term($top_term->parent, 'information_cat');
+                      }
+                    ?>
+                      <span class="information--cat">
+                        <?php echo esc_html($top_term->name); ?>
+                      </span>
                     <?php endif; ?>
-                    <?php /* --- 親カテゴリーのみここに出力 --- */ ?>
-                    <?php if (!empty($parent_terms)) : ?>
-                      <?php foreach ($parent_terms as $parent) : ?>
-                        <span class="introduction_page--parent_labels <?php echo esc_attr($parent->slug); ?>">
-                          <?php echo esc_html($parent->name); ?>
-                        </span>
-                      <?php endforeach; ?>
-                    <?php endif; ?>
+
+                    <time datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
+
                   </div>
 
                   <p><?php the_title(); ?></p>
-
-
-
                 </a>
               </li>
             <?php endwhile; ?>

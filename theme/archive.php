@@ -6,7 +6,7 @@ $post_type = get_post_type();
 // 設定を配列にまとめる
 $type_settings = [
   'question'     => ['title' => 'よくあるご質問', 'img' => 'eyecatch_question.jpg', 'slug' => 'question'],
-  'service'      => ['title' => 'サービス紹介', 'img' => 'eyecatch_service.jpg', 'slug' => 'service'],
+  'service'      => ['title' => 'サービス', 'img' => 'eyecatch_service.jpg', 'slug' => 'service'],
   'information'  => ['title' => 'お役立ち情報', 'img' => 'eyecatch_information.jpg', 'slug' => 'information'],
   'introduction' => ['title' => '導入実績',     'img' => 'eyecatch_introduction.jpg', 'slug' => 'introduction'],
 ];

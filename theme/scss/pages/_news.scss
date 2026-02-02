@@ -62,6 +62,10 @@
 }
 
 
+// ---------------------------------------------
+//  導入実績　専用
+// ---------------------------------------------
+
 .introduction_page {
   // .introduction_page--txt
   &--txt {
@@ -71,15 +75,89 @@
 
   // .introduction_page--inner
   &--inner {
-    ul {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 60px;
+    column-gap: 30px;
+
+    img {
+      width: 100%;
+      aspect-ratio: 345 / 220;
+      object-fit: cover;
     }
   }
 
-  .child-labels {
-    color: #fff;
-    background: #063064;
+  // .introduction_page--parent_labels
+  &--parent_labels {
+    color: #bbb;
+  }
+
+  // .introduction_page--child_labels
+  &--child_labels {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-top: 5px;
+
+    .child_labels {
+      width: fit-content;
+      padding: 3px 11px;
+      color: #fff;
+      background: #063064;
+      border-radius: 5px;
+    }
+  }
+}
+
+
+
+// ---------------------------------------------
+//  お役立ち情報　専用
+// ---------------------------------------------
+.information_page {
+  // .information_page--inner
+  &--inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 60px;
+    column-gap: 30px;
+
+    p {
+      font-size: var(--fz20);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    img {
+      width: 100%;
+      aspect-ratio: 345 / 220;
+      object-fit: cover;
+    }
+  }
+}
+
+
+// ---------------------------------------------
+//  お役立ち情報　専用
+// ---------------------------------------------
+.service_page {
+  p {
+    margin-bottom: 80px;
+    text-align: center;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 210px);
+    gap: 15px;
+    justify-content: center;
+  }
+
+  figcaption {
+    font-weight: 800;
+    color: #0052a7;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 5px;
   }
 }

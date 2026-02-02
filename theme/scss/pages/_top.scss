@@ -923,7 +923,6 @@
 
   ul {
     display: grid;
-    flex-wrap: wrap;
     grid-template-columns: repeat(auto-fit, 210px);
     gap: 15px;
     justify-content: center;
