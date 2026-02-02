@@ -405,27 +405,47 @@ add_filter('excerpt_length', 'custom_excerpt_length', 999);
   プラグイン関連設定  settings for plugin
 \*------------------------------------*/
 
-/* Breadcrumb NavXT https://ja.wordpress.org/plugins/breadcrumb-navxt/ */
 if (function_exists('bcn_display_list')) {
-  //デフォルトのHOMEパンくずを除去
+  // デフォルトのHOMEパンくずを除去
   add_action('bcn_after_fill', 'foo_pop');
   function foo_pop($trail)
   {
     array_pop($trail->breadcrumbs);
   }
 
-  //静的にパンくずを追加
+  // 静的にパンくずを追加
   add_action('bcn_after_fill', 'my_static_breadcrumb_adder');
   function my_static_breadcrumb_adder($breadcrumb_trail)
   {
-    if (is_post_type_archive('post') || is_singular('post')) {
-      //投稿タイプ post の時、2番目に/news/のパンくず
-      $breadcrumb_trail->add(new bcn_breadcrumb('お知らせ', '<a title="%ftitle%." href="%link%">%htitle%</a>', array(), '/news/'));
+    // 【修正箇所】is_post_type_archive('post') を削除し、is_singular('post') のみにする
+    // また、カテゴリーやタグページでも「お知らせ」を入れたい場合は is_archive() を考慮します
+    if (is_singular('post') || is_category() || is_tag()) {
+      // 記事詳細ページやカテゴリー一覧の時だけ、親階層として「お知らせ」リンクを追加
+      $breadcrumb_trail->add(new bcn_breadcrumb('お知らせ', '<a title="%ftitle%." href="%link%">%htitle%</a>', array(), home_url('/news/')));
     }
-    //1つめ
+
+    // 1つめ（常に表示されるTOP）
     $breadcrumb_trail->add(new bcn_breadcrumb('TOP', '<a title="%ftitle%." href="%link%">%htitle%</a>', array('home'), home_url()));
   }
 }
+
+/*------------------------------------*\
+　投稿タイプごとに表示件数を変更する
+\*------------------------------------*/
+function my_customize_query_total_posts($query)
+{
+  if (is_admin() || ! $query->is_main_query()) {
+    return;
+  }
+
+  // 対象とする投稿タイプを指定
+  $post_types = ['question', 'service', 'information', 'introduction', 'post'];
+
+  if (is_post_type_archive($post_types) || is_home()) {
+    $query->set('posts_per_page', 9);
+  }
+}
+add_action('pre_get_posts', 'my_customize_query_total_posts');
 
 
 /*------------------------------------*\

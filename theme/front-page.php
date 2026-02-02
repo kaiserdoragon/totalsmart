@@ -530,7 +530,13 @@
   wp_reset_postdata();
   ?>
 
-  <section class="infomation bg_white sec">
+
+  <?php
+  /**
+   * お役立ち情報
+   */
+  ?>
+  <section class="information bg_white sec">
     <div class="container">
       <h2 class="ttl">
         お役立ち情報
@@ -539,7 +545,7 @@
 
       <?php
       $args = array(
-        'post_type'      => 'infomation',
+        'post_type'      => 'information',
         'posts_per_page' => 6,
         'order'          => 'DESC',
         'no_found_rows'  => true, // ページネーション不要な場合はtrueに設定してDB負荷を軽減
@@ -547,11 +553,11 @@
       $custom_query = new WP_Query($args);
       if ($custom_query->have_posts()) :
       ?>
-        <div class="infomation--list">
+        <div class="information--list">
           <?php while ($custom_query->have_posts()) : $custom_query->the_post(); ?>
-            <article> <a href="<?php the_permalink(); ?>" class="infomation--link">
+            <article> <a href="<?php the_permalink(); ?>" class="information--link">
 
-                <div class="infomation--image">
+                <div class="information--image">
                   <?php if (has_post_thumbnail()) : ?>
                     <?php
                     the_post_thumbnail('info-thumb', [
@@ -562,7 +568,7 @@
                     ?>
                   <?php else : ?>
                     <img
-                      src="<?php echo esc_url(get_theme_file_uri('/img/top/infomation.jpg')); ?>"
+                      src="<?php echo esc_url(get_theme_file_uri('/img/top/information.jpg')); ?>"
                       alt=""
                       width="345"
                       height="220"
@@ -571,16 +577,16 @@
                   <?php endif; ?>
                 </div>
 
-                <div class="infomation--meta">
+                <div class="information--meta">
                   <?php
-                  $terms = get_the_terms(get_the_ID(), 'infomation_cat');
+                  $terms = get_the_terms(get_the_ID(), 'information_cat');
                   if ($terms && !is_wp_error($terms)) :
                     $top_term = $terms[0];
                     while ($top_term->parent != 0) {
-                      $top_term = get_term($top_term->parent, 'infomation_cat');
+                      $top_term = get_term($top_term->parent, 'information_cat');
                     }
                   ?>
-                    <span class="infomation--cat">
+                    <span class="information--cat">
                       <?php echo esc_html($top_term->name); ?>
                     </span>
                   <?php endif; ?>
@@ -598,7 +604,7 @@
         <p>現在、お役立ち情報はありません。</p>
       <?php endif; ?>
 
-      <a class="btn_link" href="<?php echo esc_url(home_url('/infomation')); ?>">お役立ち情報一覧を見る</a>
+      <a class="btn_link" href="<?php echo esc_url(home_url('/information')); ?>">お役立ち情報一覧を見る</a>
     </div>
   </section>
 

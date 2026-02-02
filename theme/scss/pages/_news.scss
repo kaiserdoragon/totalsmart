@@ -1,0 +1,85 @@
+@charset "UTF-8";
+@use "../variables" as *;
+
+// ---------------------------------------------
+//  お知らせ　専用
+// ---------------------------------------------
+
+
+.archive {
+  // .archive--wrap
+  &--wrap {
+    width: 90%;
+    padding: 20px 0 100px;
+    margin: auto;
+  }
+
+  // .archive--inner
+  &--inner {
+    a {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #d1d1d1;
+    }
+  }
+}
+
+.detail_page {
+  padding: 100px 0;
+
+  h2 {
+    padding-bottom: 15px;
+    margin: 5px auto 15px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #767676;
+    border-bottom: 4px solid rgb(28 73 122 / 28%);
+  }
+
+  .cat_label {
+    display: block;
+    width: 130px;
+    padding: 5px 0;
+    font-size: 16px;
+    color: #0052a7;
+    text-align: center;
+    border: 2px solid #0052a7;
+    border-radius: 10px;
+
+    &.cat_pr {
+      color: #ff903a;
+      border: 2px solid #ff903a;
+    }
+  }
+
+  // .detail_page--cat
+  &--cat {
+    margin-bottom: 40px;
+  }
+}
+
+
+.introduction_page {
+  // .introduction_page--txt
+  &--txt {
+    margin-bottom: 100px;
+    text-align: center;
+  }
+
+  // .introduction_page--inner
+  &--inner {
+    ul {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+  }
+
+  .child-labels {
+    color: #fff;
+    background: #063064;
+  }
+}

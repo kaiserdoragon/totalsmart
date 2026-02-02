@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: テストテンプレート
+Template Name: サービス詳細用テンプレート
 Template Post Type:service
 */
 ?>

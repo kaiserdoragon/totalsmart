@@ -160,6 +160,7 @@ img {
 }
 
 
+
 // レスポンシブ table　表
 table {
   width: 100%;
@@ -217,8 +218,6 @@ table {
 
 // パンくずリスト
 .breadcrumbs {
-  padding: 5px 0;
-
   li {
     display: inline-block;
     line-height: 1;
@@ -238,18 +237,27 @@ table {
 // ページネーション／ページャ
 .pagination {
   display: flex;
+  align-items: center;
   justify-content: center;
+  margin-top: 60px;
 
   & > span,
   a {
-    display: inline-block !important;
     width: 2em;
     padding: 6px 0;
     line-height: 1;
     text-align: center;
 
     &.current {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
       font-weight: bold;
+      color: #fff;
+      background: #0052a7;
+      border-radius: 1000px;
     }
   }
 
@@ -257,3 +265,38 @@ table {
     display: none;
   }
 }
+
+
+.paging {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+
+  a {
+    text-decoration: underline;
+  }
+
+  // .paging--item
+  &--item {
+    width: 100%;
+    max-width: 330px;
+  }
+
+  // .paging--item-gotolist
+  &--item-gotolist {
+    max-width: 180px;
+    padding: 10px 0;
+    color: #fff;
+    background: #0052a7;
+    border-radius: 1000px;
+  }
+}
+
+
+

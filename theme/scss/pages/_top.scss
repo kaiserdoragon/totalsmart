@@ -1192,6 +1192,10 @@
       border: 2px solid #ff6494;
     }
 
+    .service_page & {
+      width: 200px;
+    }
+
     @include max-mq {
       width: 100px;
       padding: 3px 0;
@@ -1209,7 +1213,7 @@
   }
 }
 
-.infomation {
+.information {
   .container {
     width: min(1150px, 100%);
   }

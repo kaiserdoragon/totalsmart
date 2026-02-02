@@ -1,8 +1,9 @@
 <?php get_header(); ?>
 <div class="eyecatch">
-  <?php if (has_post_thumbnail()): // サムネイルを持っているとき 
-  ?><?php the_post_thumbnail(); ?><?php else: // サムネイルを持っていない 
-                                  ?><?php endif; ?>
+  <?php if (has_post_thumbnail()): ?>
+    <?php the_post_thumbnail(); ?>
+  <?php else: ?>
+  <?php endif; ?>
   <h1><?php the_title(); ?></h1>
 </div>
 
@@ -245,7 +246,7 @@
           お問い合わせ
           <span>CONTACT</span>
         </h2>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/page/contact_logo_page.png" alt="トータルスマート株式会社" width="1100" height="117" loading="lazy" decoding="async">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/page/contact_logo.png" alt="トータルスマート株式会社" width="1100" height="117" loading="lazy" decoding="async">
       </div>
       <p>ご不明な点やご質問、または詳細な情報をお求めの場合は、どうぞお気軽にお問い合わせください。<br>
         専門のスタッフが迅速にサポートします。</p>

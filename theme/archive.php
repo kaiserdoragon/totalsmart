@@ -1,40 +1,76 @@
 <?php get_header(); ?>
-<div class="eyecatch">
-  <h1>お知らせ</h1>
-</div>
-<?php get_template_part('include/common', 'breadcrumb'); //　Breadcrumb NavXTを使わないときは削除
+
+<?php
+$post_type = get_post_type();
+
+// 設定を配列にまとめる
+$type_settings = [
+  'question'     => ['title' => 'よくあるご質問', 'img' => 'eyecatch_question.jpg', 'slug' => 'question'],
+  'service'      => ['title' => 'サービス紹介', 'img' => 'eyecatch_service.jpg', 'slug' => 'service'],
+  'information'  => ['title' => 'お役立ち情報', 'img' => 'eyecatch_information.jpg', 'slug' => 'information'],
+  'introduction' => ['title' => '導入実績',     'img' => 'eyecatch_introduction.jpg', 'slug' => 'introduction'],
+];
+
+$title = $type_settings[$post_type]['title'] ?? 'お知らせ';
+$img_file = $type_settings[$post_type]['img'] ?? 'eyecatch_default.jpg';
+$slug = $type_settings[$post_type]['slug'] ?? 'news';
 ?>
-<div class="has_sidebar news_page">
-  <main>
-    <?php if (have_posts()) : ?><?php while (have_posts()) : the_post(); ?>
-    <section class="post_excerpt">
-      <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-      <div class="post_excerpt--img">
-        <?php if (has_post_thumbnail()): // サムネイルを持っているとき 
-        ?>
-          <a href="<?php the_permalink(); ?>">
-            <?php the_post_thumbnail(); ?>
-          </a>
-          <?php else: // サムネイルを持っていない 
-          ?><?php endif; ?>
-      </div>
-      <div class="post_excerpt--txt">
-        <div class="post_meta">
-          <time class="post_meta--date" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.m.d'); ?></time>
-          <ul class="post_meta--cat_list">
-            <?php categories_label() ?>
-          </ul>
-          <p class="post_meta--tag">
-            <?php echo get_the_tag_list('#', ' #', ''); ?>
-          </p>
-        </div>
-        <?php the_excerpt(); ?>
-      </div>
-    </section>
-    <?php endwhile; ?><?php endif; ?>
-    <div class="pagination">
-      <?php wp_pagination(); ?>
-    </div>
-  </main>
+
+<div class="eyecatch -archive">
+  <h1><?php echo $title; ?></h1>
+  <img src="<?php echo get_template_directory_uri(); ?>/img/page/<?php echo $img_file; ?>" alt="<?php echo $title; ?>" width="1920" height="600" loading="lazy" decoding="async">
 </div>
+
+
+<div class="archive--wrap">
+  <?php get_template_part('include/common', 'breadcrumb'); ?>
+  <div class="archive container">
+    <main class="<?php echo $slug . '_page'; ?>">
+      <h2 class="ttl">
+        <?php echo esc_html($title); ?>
+        <span><?php echo esc_html(strtoupper($slug)); ?></span>
+      </h2>
+
+      <?php if (have_posts()) : ?>
+        <section class="archive--inner">
+          <ul>
+            <?php while (have_posts()) : the_post(); ?>
+              <?php
+              $current_post_type = get_post_type();
+              $taxonomy = ($current_post_type === 'post') ? 'category' : (get_object_taxonomies($current_post_type)[0] ?? '');
+              $terms = ($taxonomy) ? get_the_terms(get_the_ID(), $taxonomy) : [];
+              ?>
+              <li>
+                <a href="<?php the_permalink(); ?>">
+                  <div class="front-news--info">
+                    <time datetime="<?php echo get_the_date('c'); ?>">
+                      <?php echo get_the_date('Y.m.d'); ?>
+                    </time>
+
+                    <?php if (!empty($terms) && !is_wp_error($terms)) : ?>
+                      <?php foreach ($terms as $term) : ?>
+                        <span class="front-news--cat_label -<?php echo esc_attr($term->slug); ?>">
+                          <?php echo esc_html($term->name); ?>
+                        </span>
+                      <?php endforeach; ?>
+                    <?php endif; ?>
+                  </div>
+                  <p><?php the_title(); ?></p>
+                </a>
+              </li>
+            <?php endwhile; ?>
+          </ul>
+        </section>
+      <?php else : ?>
+        <p>記事が見つかりませんでした。</p>
+      <?php endif; ?>
+
+      <div class="pagination">
+        <?php wp_pagination(); ?>
+      </div>
+    </main>
+
+  </div>
+</div>
+
 <?php get_footer(); ?>

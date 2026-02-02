@@ -57,6 +57,10 @@ main {
     }
   }
 
+  .archive & {
+    padding-top: 100px;
+  }
+
   // iPadポトレ用の設定もここに入れる
   @media (min-width: 768px) and (max-width: 769px) and (orientation: portrait) {
     min-height: 95vh;
@@ -80,7 +84,7 @@ main {
 
   img {
     width: 100%;
-    aspect-ratio: 1920 / 400;
+    aspect-ratio: 1920 / 500;
     object-fit: cover;
   }
 }
@@ -492,14 +496,12 @@ main {
   }
 }
 
-
-
 // ---------------------------------------------
 //  フッター近郊のコンバージョンエリア
 // ---------------------------------------------
 
 .cv_contact {
-  background: #f1f1f1;
+  background: #fff;
 
   .ttl {
     z-index: 1;
@@ -518,7 +520,8 @@ main {
     img {
       position: absolute;
       top: 50%;
-      transform: translateY(-50%);
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 
@@ -530,6 +533,10 @@ main {
     padding: 60px 10px;
     margin: auto;
     background: #fff;
+
+    .-page & {
+      background: #f6f6f6;
+    }
 
     ul {
       position: relative;
@@ -644,10 +651,6 @@ main {
       font-size: var(--fz30);
       background: url(../img/page/contact_tel.png) no-repeat left 25px center / 30px, #0052a7;
     }
-  }
-
-  &.-page {
-    background: #fff;
   }
 
   @include max-mq {
