@@ -19,6 +19,7 @@
 @use "pages/company"; // 会社概要
 @use "pages/remote"; // リモートサポート
 @use "pages/notfound"; // 404
+@use "pages/privacy"; // プライバシー・情報セキュリティ
 
 // wordpress用 ブログ記事をリッチテキストエディタ
 @use "post";

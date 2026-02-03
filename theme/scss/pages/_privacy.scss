@@ -1,0 +1,40 @@
+@charset "UTF-8";
+@use "../variables" as *;
+
+// ---------------------------------------------
+//  プライバシー・情報セキュリティ　専用
+// ---------------------------------------------
+
+.security_page {
+  // .security_page --inner
+  &--inner {
+    box-sizing: border-box;
+    width: min(1150px, 100%);
+    padding: 0 min(4vw, 25px);
+    margin: auto;
+
+    p {
+      margin-top: 15px;
+      font-weight: 500;
+    }
+
+    li {
+      margin-bottom: 30px;
+      font-weight: 800;
+
+
+      &:last-child {
+        margin-bottom: 60px;
+      }
+    }
+  }
+}
+
+.privacy_page {
+  // .privacy_page--inner
+  &--inner {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+  }
+}

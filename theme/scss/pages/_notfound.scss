@@ -5,23 +5,15 @@
 //  404ページ専用
 // ---------------------------------------------
 .notfound_page {
-  text-align: center;
+  padding: 0 min(4vw, 25px) 120px;
 
-  // notfound_page--ttl
-  &--ttl {
-    margin-bottom: 30px;
-    font-size: var(--fz20);
+  .ttl + p {
+    margin-bottom: 60px;
+    text-align: center;
   }
 
-  // notfound_page--paragraph
-  &--paragraph {
-    margin-bottom: 1em;
-  }
-
-  // notfound_page--link
-  &--link {
-    a {
-      text-decoration: underline;
-    }
+  .container {
+    padding: 80px min(4vw, 25px);
+    background: #fff;
   }
 }
