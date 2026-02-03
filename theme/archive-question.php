@@ -7,74 +7,71 @@
 <?php get_header(); ?>
 
 <?php
-$post_type = get_post_type();
+// taxonomyページで get_post_type() が期待通り取れないケースがあるので補正
+$post_type = is_tax('question_cat') ? 'question' : get_post_type();
 
 // 設定を配列にまとめる
 $type_settings = [
-  'question' => ['title' => 'よくある質問',     'img' => 'eyecatch_question.jpg', 'slug' => 'question'],
+  'question' => ['title' => 'よくある質問', 'img' => 'eyecatch_question.jpg', 'slug' => 'question'],
 ];
 
-$title = $type_settings[$post_type]['title'] ?? 'お知らせ';
-$img_file = $type_settings[$post_type]['img'] ?? 'eyecatch_default.jpg';
-$slug = $type_settings[$post_type]['slug'] ?? 'news';
+$title    = $type_settings[$post_type]['title'] ?? 'お知らせ';
+$img_file  = $type_settings[$post_type]['img'] ?? 'eyecatch_default.jpg';
+$slug     = $type_settings[$post_type]['slug'] ?? 'news';
+
+// カテゴリ一覧は「投稿が0件でも」出す
+$taxonomy_slug = 'question_cat';
+$categories = get_terms([
+  'taxonomy' => $taxonomy_slug,
+  'orderby'  => 'description',
+  'order'    => 'ASC',
+]);
+$all_url    = home_url('/question/');
+$is_all_act = (is_post_type_archive('question') && !is_tax($taxonomy_slug));
 ?>
 
 <div class="eyecatch -archive">
-  <h1><?php echo $title; ?></h1>
-  <img src="<?php echo get_template_directory_uri(); ?>/img/page/<?php echo $img_file; ?>" alt="<?php echo $title; ?>" width="1920" height="600" loading="lazy" decoding="async">
+  <h1><?php echo esc_html($title); ?></h1>
+  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/page/<?php echo esc_attr($img_file); ?>" alt="<?php echo esc_attr($title); ?>" width="1920" height="600" loading="lazy" decoding="async">
 </div>
-
 
 <div class="archive--wrap">
   <?php get_template_part('include/common', 'breadcrumb'); ?>
   <div class="archive container">
-    <main class="<?php echo $slug . '_page'; ?>">
+    <main class="<?php echo esc_attr($slug . '_page'); ?>">
       <h2 class="ttl">
         <?php echo esc_html($title); ?>
         <span><?php echo esc_html(strtoupper($slug)); ?></span>
       </h2>
 
-      <?php if (have_posts()) : ?>
-        <?php
-        $taxonomy_slug = 'question_cat';
+      <ul class="category_list">
+        <li<?php echo $is_all_act ? ' class="is-active"' : ''; ?>>
+          <a href="<?php echo esc_url($all_url); ?>">すべて</a>
+          </li>
 
-        // 2. データの取得
-        $args = [
-          'taxonomy' => $taxonomy_slug,
-          'orderby'  => 'description',
-          'order'    => 'ASC',
-        ];
-        $categories = get_terms($args);
-        $all_url    = home_url('/question/');
-        $is_all_act = is_post_type_archive('question') && !is_tax($taxonomy_slug);
-        ?>
+          <?php if (!empty($categories) && !is_wp_error($categories)) : ?>
+            <?php foreach ($categories as $cat) :
+              $url       = get_term_link($cat);
+              $is_active = is_tax($taxonomy_slug, $cat->term_id);
+            ?>
+              <li<?php echo $is_active ? ' class="is-active"' : ''; ?>>
+                <a href="<?php echo esc_url($url); ?>"><?php echo esc_html($cat->name); ?></a>
+                </li>
+              <?php endforeach; ?>
+            <?php endif; ?>
+      </ul>
 
-        <ul class="category_list">
-          <li<?php echo $is_all_act ? ' class="is-active"' : ''; ?>>
-            <a href="<?php echo esc_url($all_url); ?>">すべて</a>
-            </li>
+      <!-- 検索フォーム（常に表示） -->
+      <div class="question-search">
+        <input type="search" id="js-question-search" placeholder="検索したいキーワードを入力してください" autocomplete="off">
+      </div>
 
-            <?php if (!empty($categories) && !is_wp_error($categories)) : ?>
-              <?php foreach ($categories as $cat) :
-                $url       = get_term_link($cat);
-                $is_active = is_tax($taxonomy_slug, $cat->term_id);
-              ?>
-                <li<?php echo $is_active ? ' class="is-active"' : ''; ?>>
-                  <a href="<?php echo esc_url($url); ?>">
-                    <?php echo esc_html($cat->name); ?>
-                  </a>
-                  </li>
-                <?php endforeach; ?>
-              <?php endif; ?>
-        </ul>
-
-        <section class="archive--inner">
-          <ul>
+      <section class="archive--inner">
+        <ul id="js-question-results">
+          <?php if (have_posts()) : ?>
             <?php while (have_posts()) : the_post(); ?>
               <?php
-              $current_post_type = get_post_type();
-              $taxonomy = ($current_post_type === 'post') ? 'category' : (get_object_taxonomies($current_post_type)[0] ?? '');
-              $terms = ($taxonomy) ? get_the_terms(get_the_ID(), $taxonomy) : [];
+              $terms = get_the_terms(get_the_ID(), $taxonomy_slug);
               ?>
               <li>
                 <a href="<?php the_permalink(); ?>">
@@ -87,21 +84,20 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
                       <?php endforeach; ?>
                     <?php endif; ?>
                   </div>
-                  <p><?php the_title(); ?></p>
+                  <p><?php echo esc_html(get_the_title()); ?></p>
                 </a>
               </li>
             <?php endwhile; ?>
-          </ul>
-        </section>
-      <?php else : ?>
-        <p>記事が見つかりませんでした。</p>
-      <?php endif; ?>
+          <?php else : ?>
+            <li class="no-result">記事が見つかりませんでした。</li>
+          <?php endif; ?>
+        </ul>
+      </section>
 
       <div class="pagination">
         <?php wp_pagination(); ?>
       </div>
     </main>
-
   </div>
 </div>
 

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="<?php bloginfo('charset'); ?>" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover maximum-scale=1.0">
   <meta name="format-detection" content="telephone=no">
   <link rel="preload" as="image" href="<?php echo get_theme_file_uri('/img/common/logo.png'); ?>" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">

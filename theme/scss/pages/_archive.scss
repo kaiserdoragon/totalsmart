@@ -58,8 +58,6 @@
 //  お知らせ　専用
 // ---------------------------------------------
 
-
-
 // 詳細ページ
 .detail_page {
   padding: 100px 0;
@@ -96,6 +94,36 @@
 }
 
 
+// ---------------------------------------------
+//  サービス　専用
+// ---------------------------------------------
+
+.service_page {
+  p {
+    margin-bottom: 80px;
+    text-align: center;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 210px);
+    row-gap: 40px;
+    column-gap: 15px;
+    justify-content: center;
+  }
+
+  figcaption {
+    font-weight: 800;
+    color: #0052a7;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+
+  img {
+    margin-bottom: 5px;
+  }
+}
 
 
 // ---------------------------------------------
@@ -177,31 +205,21 @@
 }
 
 // ---------------------------------------------
-//  お役立ち情報　専用
+//  よくある質問　専用
 // ---------------------------------------------
-.service_page {
-  p {
-    margin-bottom: 80px;
-    text-align: center;
-  }
 
-  ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 210px);
-    row-gap: 40px;
-    column-gap: 15px;
-    justify-content: center;
-  }
+.question-search {
+  text-align: center;
 
-  figcaption {
+  input {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    padding: 10px 25px;
+    margin: 0 auto 40px;
+    font-size: var(--fz13);
     font-weight: 800;
-    color: #0052a7;
     text-align: center;
-    text-decoration: underline;
-    text-underline-offset: 5px;
-  }
-
-  img {
-    margin-bottom: 5px;
+    border-radius: 1000px;
   }
 }

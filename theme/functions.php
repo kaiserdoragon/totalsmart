@@ -580,7 +580,7 @@ add_action(
       }
     );
   </script>
-<?php
+  <?php
     // バッファリングしたJavaScriptコードを取得
     $data = ob_get_clean();
 
@@ -685,4 +685,127 @@ function service_archive_orderby_service_cat_description($clauses, $q)
   // $clauses['orderby'] = "CAST(service_cat_desc AS UNSIGNED) ASC, {$wpdb->posts}.post_date DESC";
 
   return $clauses;
+}
+
+
+// -------------------------------------
+// よくある質問のリアルタイム検索機能
+// -------------------------------------
+
+
+add_action('wp_enqueue_scripts', function () {
+
+  if (is_post_type_archive('question') || is_tax('question_cat') || is_page('question')) {
+
+    $rel_path  = '/js/question-live-search.js';
+    $file_path = get_theme_file_path($rel_path);
+    $ver       = file_exists($file_path) ? filemtime($file_path) : false;
+
+    wp_enqueue_script(
+      'question-live-search',
+      get_theme_file_uri($rel_path),
+      [],
+      $ver,   // nullにしない（キャッシュが残りやすい） :contentReference[oaicite:6]{index=6}
+      true
+    );
+
+    $term_slug = '';
+    if (is_tax('question_cat')) {
+      $qo = get_queried_object();
+      $term_slug = !empty($qo->slug) ? $qo->slug : '';
+    }
+
+    wp_localize_script('question-live-search', 'QuestionSearch', [
+      'ajaxurl' => admin_url('admin-ajax.php'),
+      'nonce'   => wp_create_nonce('question_search'),
+      'term'    => $term_slug,
+      // JS側の挙動調整用
+      'minLen'  => 1,
+      'limit'   => 30,
+    ]);
+  }
+});
+
+
+// ===== リアルタイム検索：AJAX受け口 =====
+add_action('wp_ajax_question_live_search', 'question_live_search');
+add_action('wp_ajax_nopriv_question_live_search', 'question_live_search'); // 非ログイン対応 :contentReference[oaicite:7]{index=7}
+
+function question_live_search()
+{
+  check_ajax_referer('question_search', 'nonce'); // nonce検証 :contentReference[oaicite:8]{index=8}
+
+  $keyword = isset($_POST['keyword']) ? sanitize_text_field(wp_unslash($_POST['keyword'])) : '';
+  $term    = isset($_POST['term'])    ? sanitize_text_field(wp_unslash($_POST['term']))    : '';
+
+  $keyword = trim($keyword);
+
+  // 超短時間キャッシュ（同じ検索語の連打対策）
+  $cache_key = 'q_live_' . md5($term . '|' . $keyword);
+  $cached = get_transient($cache_key);
+  if ($cached !== false) {
+    wp_send_json_success(['html' => $cached]); // JSON返して終了 :contentReference[oaicite:9]{index=9}
+  }
+
+  $args = [
+    'post_type'              => 'question',
+    'post_status'            => 'publish',
+    'posts_per_page'         => 30,
+    'no_found_rows'          => true,
+    'ignore_sticky_posts'    => true,
+    'update_post_meta_cache' => false,
+  ];
+
+  // 空文字なら「最新30件」、キーワードありなら通常検索
+  if ($keyword !== '') {
+    $args['s'] = $keyword;
+  } else {
+    $args['orderby'] = 'date';
+    $args['order']   = 'DESC';
+  }
+
+  if ($term !== '') {
+    $args['tax_query'] = [[
+      'taxonomy' => 'question_cat',
+      'field'    => 'slug',
+      'terms'    => $term,
+    ]];
+  }
+
+  $q = new WP_Query($args);
+
+  ob_start();
+  if ($q->have_posts()) {
+    while ($q->have_posts()) {
+      $q->the_post();
+      $terms = get_the_terms(get_the_ID(), 'question_cat');
+  ?>
+      <li>
+        <a href="<?php the_permalink(); ?>">
+          <div class="front-news--info">
+            <?php if (!empty($terms) && !is_wp_error($terms)) : ?>
+              <?php foreach ($terms as $t) : ?>
+                <span class="front-news--cat_label -<?php echo esc_attr($t->slug); ?>">
+                  <?php echo esc_html($t->name); ?>
+                </span>
+              <?php endforeach; ?>
+            <?php endif; ?>
+          </div>
+          <p><?php echo esc_html(get_the_title()); ?></p>
+        </a>
+      </li>
+<?php
+    }
+  } else {
+    echo '<li class="no-result">該当する記事がありません。</li>';
+  }
+
+  wp_reset_postdata();
+
+  $html = ob_get_clean();
+
+  // 60秒だけキャッシュ（必要なら短く/長く調整）
+  set_transient($cache_key, $html, 60);
+
+  wp_send_json_success(['html' => $html]); // :contentReference[oaicite:10]{index=10}
 }
