@@ -108,7 +108,7 @@ img {
   padding: 120px 0;
 
   &.-md {
-    padding: 120px 0;
+    padding: 100px 0;
   }
 
   &.-sm {
@@ -131,7 +131,7 @@ img {
   width: fit-content;
   padding: 0 50px 5px;
   margin: 0 auto 60px;
-  font-size: 30px;
+  font-size: var(--fz30);
   font-weight: bold;
   color: #333;
   border-bottom: 3px solid #0052a7;
@@ -156,6 +156,36 @@ img {
     content: "";
     background: #0052a7;
     transform: rotate(15deg);
+  }
+}
+
+.page_detail_ttl {
+  position: relative;
+  width: fit-content;
+  padding: 0 35px 10px;
+  margin: auto;
+  margin-bottom: 0.3em;
+  font-size: var(--fz30);
+  font-weight: bold;
+  border-bottom: 3px solid #0052a7;
+
+  &::before,
+  &::after {
+    position: absolute;
+    bottom: -10px;
+    width: 3px;
+    height: 20px;
+    content: "";
+    background-color: #0052a7;
+    transform: rotate(30deg);
+  }
+
+  &::before {
+    right: 15px;
+  }
+
+  &::after {
+    right: 30px;
   }
 }
 
@@ -248,12 +278,13 @@ table {
     text-align: center;
 
     &.current {
-      display: flex !important;
+      box-sizing: border-box;
+      display: flex;
       align-items: center;
       justify-content: center;
       width: 40px;
       height: 40px;
-      padding: 2px 0 3px;
+      padding: 0 0 3px;
       font-weight: bold;
       color: #fff;
       background: #0052a7;
@@ -265,7 +296,6 @@ table {
     display: none;
   }
 }
-
 
 .paging {
   display: flex;

@@ -924,7 +924,8 @@
   ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, 210px);
-    gap: 15px;
+    row-gap: 30px;
+    column-gap: 15px;
     justify-content: center;
     margin-bottom: 80px;
   }
@@ -941,7 +942,7 @@
   }
 
   img {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
   }
 
   @include max-mq {

@@ -5,7 +5,6 @@
 //  お知らせ　専用
 // ---------------------------------------------
 
-
 .archive {
   // .archive--wrap
   &--wrap {
@@ -67,6 +66,11 @@
 // ---------------------------------------------
 
 .introduction_page {
+  // .front-news--info
+  .front-news--info {
+    margin-top: 10px;
+  }
+
   // .introduction_page--txt
   &--txt {
     margin-bottom: 100px;
@@ -97,19 +101,17 @@
     display: flex;
     gap: 5px;
     align-items: center;
-    margin-top: 5px;
 
     .child_labels {
       width: fit-content;
       padding: 3px 11px;
+      font-size: var(--fz16);
       color: #fff;
       background: #063064;
       border-radius: 5px;
     }
   }
 }
-
-
 
 // ---------------------------------------------
 //  お役立ち情報　専用
@@ -131,11 +133,11 @@
     img {
       width: 100%;
       aspect-ratio: 345 / 220;
+      margin-bottom: 5px;
       object-fit: cover;
     }
   }
 }
-
 
 // ---------------------------------------------
 //  お役立ち情報　専用
@@ -149,7 +151,8 @@
   ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, 210px);
-    gap: 15px;
+    row-gap: 40px;
+    column-gap: 15px;
     justify-content: center;
   }
 
@@ -159,5 +162,9 @@
     text-align: center;
     text-decoration: underline;
     text-underline-offset: 5px;
+  }
+
+  img {
+    margin-bottom: 5px;
   }
 }

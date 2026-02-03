@@ -12,5 +12,5 @@ window.addEventListener("load", function () {
 
   setTimeout(function () {
     loader.remove();
-  });
+  }, 1000);
 });

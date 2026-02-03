@@ -13,9 +13,10 @@
 
 
 // 下層ページ
-@use "pages/business";
-@use "pages/news";
-@use "pages/contact";
+@use "pages/business"; // 事業内容
+@use "pages/archive"; // 一覧系のページ
+@use "pages/contact"; // お問い合わせ
+@use "pages/company"; // 会社概要
 @use "pages/notfound"; // 404ページ見つかりません
 
 // wordpress用 ブログ記事をリッチテキストエディタ
