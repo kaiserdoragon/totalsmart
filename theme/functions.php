@@ -439,15 +439,14 @@ function my_customize_query_total_posts($query)
     return;
   }
 
-  // 2. その他の投稿タイプとホーム（is_home）は 9件に設定
+  // 対象とする投稿タイプ
   $post_types = ['question', 'information', 'introduction', 'post'];
 
-  if (is_post_type_archive($post_types) || is_home()) {
-    $query->set('posts_per_page', 9);
+  if (is_post_type_archive($post_types) || is_home() || is_category()) {
+    $query->set('posts_per_page', 2);
   }
 }
 add_action('pre_get_posts', 'my_customize_query_total_posts');
-
 
 /*------------------------------------*\
   カスタム追加設定 additional functions

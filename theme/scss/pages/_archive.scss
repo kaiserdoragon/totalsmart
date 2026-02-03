@@ -1,8 +1,9 @@
 @charset "UTF-8";
 @use "../variables" as *;
 
+
 // ---------------------------------------------
-//  お知らせ　専用
+//  一覧ページ共通
 // ---------------------------------------------
 
 .archive {
@@ -26,6 +27,40 @@
   }
 }
 
+.category_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 80px;
+
+  li {
+    width: 100%;
+    max-width: 140px;
+    text-align: center;
+    background: #f6f6f6;
+    border-radius: 1000px;
+
+    a {
+      display: block;
+      padding: 5px 0;
+    }
+
+    &.is-active {
+      color: #fff;
+      background: #0052a7;
+    }
+  }
+}
+
+// ---------------------------------------------
+//  お知らせ　専用
+// ---------------------------------------------
+
+
+
+// 詳細ページ
 .detail_page {
   padding: 100px 0;
 
@@ -59,6 +94,8 @@
     margin-bottom: 40px;
   }
 }
+
+
 
 
 // ---------------------------------------------

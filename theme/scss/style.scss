@@ -17,7 +17,8 @@
 @use "pages/archive"; // 一覧系のページ
 @use "pages/contact"; // お問い合わせ
 @use "pages/company"; // 会社概要
-@use "pages/notfound"; // 404ページ見つかりません
+@use "pages/remote"; // リモートサポート
+@use "pages/notfound"; // 404
 
 // wordpress用 ブログ記事をリッチテキストエディタ
 @use "post";

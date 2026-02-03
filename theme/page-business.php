@@ -174,11 +174,11 @@
         <li>電話サポート</li>
       </ul>
       <div class="business_plan--link">
-        <a href="">
+        <a href="<?php echo esc_url(home_url('/remote/')); ?>">
           リモートサポート<br>
           <span>REMOTE SUPPORT</span>
         </a>
-        <a href="">
+        <a href="<?php echo esc_url(home_url('/question/')); ?>">
           よくある質問<br>
           <span>QUESTION</span>
         </a>
