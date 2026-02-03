@@ -115,8 +115,16 @@ img {
     padding: 80px 0;
   }
 
+  &.-bottom {
+    padding: 0 0 120px;
+  }
+
   @include max-mq {
     padding: 100px 0;
+
+    &.-bottom {
+      padding: 0 0 80px;
+    }
   }
 }
 

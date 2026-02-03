@@ -128,4 +128,46 @@
   }
 }
 
+.company_date {
+  img {
+    display: block;
+    margin: 0 auto 30px;
+  }
 
+  p {
+    margin-bottom: 40px;
+    line-height: 1.9;
+    text-align: center;
+  }
+
+  // .company_date--list
+  &--list {
+    width: fit-content;
+    margin: auto;
+    font-weight: 700;
+    color: #0052a7;
+
+    li {
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
+
+      &::before {
+        display: inline-block;
+        width: 20px;
+        aspect-ratio: 14 / 11;
+        content: "";
+        background: url(../img/company/checkbox.png) no-repeat left center / contain;
+      }
+    }
+  }
+
+  // .company_date--partners
+  &--partners {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: baseline;
+    justify-content: center;
+  }
+}

@@ -120,7 +120,8 @@
               <li><a href="<?php echo esc_url(home_url('/introduction')); ?>">導入実績</a></li>
               <li><a href="<?php echo esc_url(home_url('/company')); ?>">会社概要</a></li>
               <li><a href="<?php echo esc_url(home_url('/information')); ?>">お役立ち情報</a></li>
-              <li><a href="<?php echo esc_url(home_url('/recruit')); ?>">採用情報</a></li>
+              <!-- <li><a href="<?php echo esc_url(home_url('/recruit')); ?>">採用情報</a></li> -->
+              <li><a href="https://recruit.jobcan.jp/totalsmart">採用情報</a></li>
             </ul>
             <div class="header--btn">
               <a href="tel:052-932-5450" class="header--tel"> 052-932-5450

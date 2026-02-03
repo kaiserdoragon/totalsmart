@@ -72,7 +72,7 @@
           </td>
         </tr>
       </table>
-      <img src="<?php echo get_template_directory_uri(); ?>/img/company/exterior.png" alt="" width="900" height="500" loading="lazy" decoding="async">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/company/exterior.jpg" alt="" width="900" height="500" loading="lazy" decoding="async">
     </div>
   </section>
 
@@ -110,6 +110,76 @@
       </div>
     </div>
   </section>
+
+  <section class="company_date sec">
+    <div class="container -sm">
+      <h2 class="page_ttl">企業理念</h2>
+      <img src="<?php echo get_template_directory_uri(); ?>/img/company/philosophy.png" alt="" width="261" height="200" loading="lazy" decoding="async">
+      <p>
+        お得・快適・安心を軸に、お客様の生涯に寄り添う“信頼されるパートナー”となる。<br>
+        最適なコスト削減と効率化を提案し、進化するサービスを磨いて提供。全国展開で多様な課題に応え、<br class="is-hidden_sp">
+        個性を活かした提案力で期待を超えていきます。
+      </p>
+      <ul class="company_date--list">
+        <li>
+          地域密着企業として、お客様に満足・喜び・感動を与える商品とサービスを提供いたします。
+        </li>
+        <li>
+          社員一人一人が自主性・主体性をもち、考え・行動・協力できる社員を育成します。
+        </li>
+        <li>
+          今に感謝し、明るく前向きに素直な心で日々勉強をし、昨日の自分より成長します。
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="company_date sec -bottom">
+    <div class="container -sm">
+      <h2 class="page_ttl">沿革</h2>
+      <img src="<?php echo get_template_directory_uri(); ?>/img/company/history.png" alt="" width="307" height="200" loading="lazy" decoding="async">
+      <p>
+        創業以来、当社は常に革新と成長を追求し、最新技術の導入を積極的に進めてまいりました。<br>
+        市場の変化に柔軟に対応するため、数々の先進ソリューションを提供し業界内での信頼と実績を築いております。<br>
+        これまでの歩みは、社員一人ひとりの努力とお客様・パートナー様との強固な連携の賜物です。<br>
+        今後も新たな挑戦を続け、未来を切り拓いていきます。
+      </p>
+    </div>
+  </section>
+
+  <section class="company_date sec -bottom">
+    <div class="container -sm">
+      <h2 class="page_ttl">お取引先様</h2>
+      <img src="<?php echo get_template_directory_uri(); ?>/img/company/transaction.png" alt="" width="263" height="155" loading="lazy" decoding="async">
+      <p>
+        弊社は、優れた仕入先および提供パートナーとの強固な連携を基盤に、<br class="is-hidden_sp">
+        高品質な製品とサービスの供給体制を構築しております。<br>
+        大手メーカーや専門ベンダーをはじめとする信頼性の高いパートナーと協業し、<br class="is-hidden_sp">
+        最新技術を駆使した革新的なソリューションの提供に努めています。<br>
+        これにより、常に市場の多様なニーズに柔軟かつ迅速に対応し、お客様に安心と満足をお届けしています。<br>
+        今後もパートナーシップを一層強化し、さらなる品質向上とサービス充実を目指してまいります。
+      </p>
+      <ul class="company_date--partners">
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/company/logo_01.png" alt="" width="232" height="39" loading="lazy" decoding="async">
+          <p>株式会社日立製作所様</p>
+        </li>
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/company/logo_02.png" alt="" width="212" height="46" loading="lazy" decoding="async">
+          <p>ダイキン工業株式会社様</p>
+        </li>
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/company/logo_03.png" alt="" width="239" height="66" loading="lazy" decoding="async">
+          <p>株式会社日立製作所様</p>
+        </li>
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/company/logo_04.png" alt="" width="228" height="40" loading="lazy" decoding="async">
+          <p>株式会社USEN様</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
 </main>
 
 <?php get_footer(); ?>
