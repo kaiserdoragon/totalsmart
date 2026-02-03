@@ -4,7 +4,6 @@
 \*------------------------------------*/
 ?>
 
-
 <?php get_header(); ?>
 
 <?php
@@ -36,6 +35,39 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
       </h2>
 
       <?php if (have_posts()) : ?>
+        <?php
+        $taxonomy_slug = 'question_cat';
+
+        // 2. データの取得
+        $args = [
+          'taxonomy' => $taxonomy_slug,
+          'orderby'  => 'description',
+          'order'    => 'ASC',
+        ];
+        $categories = get_terms($args);
+        $all_url    = home_url('/question/');
+        $is_all_act = is_post_type_archive('question') && !is_tax($taxonomy_slug);
+        ?>
+
+        <ul class="category_list">
+          <li<?php echo $is_all_act ? ' class="is-active"' : ''; ?>>
+            <a href="<?php echo esc_url($all_url); ?>">すべて</a>
+            </li>
+
+            <?php if (!empty($categories) && !is_wp_error($categories)) : ?>
+              <?php foreach ($categories as $cat) :
+                $url       = get_term_link($cat);
+                $is_active = is_tax($taxonomy_slug, $cat->term_id);
+              ?>
+                <li<?php echo $is_active ? ' class="is-active"' : ''; ?>>
+                  <a href="<?php echo esc_url($url); ?>">
+                    <?php echo esc_html($cat->name); ?>
+                  </a>
+                  </li>
+                <?php endforeach; ?>
+              <?php endif; ?>
+        </ul>
+
         <section class="archive--inner">
           <ul>
             <?php while (have_posts()) : the_post(); ?>
