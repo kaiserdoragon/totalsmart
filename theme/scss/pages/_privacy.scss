@@ -31,6 +31,31 @@
 }
 
 .privacy_page {
+  h3 {
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+
+  dd {
+    margin-bottom: 60px;
+  }
+
+  ol {
+    margin-top: 30px;
+
+    >li {
+      margin-bottom: 15px;
+    }
+  }
+
+  ul {
+    margin-top: 5px;
+  }
+
+  article {
+    margin-bottom: 60px;
+  }
+
   // .privacy_page--inner
   &--inner {
     width: 100%;
