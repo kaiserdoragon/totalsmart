@@ -76,7 +76,7 @@
     </div>
   </section>
 
-  <section class="company_access sec -md bg_gray">
+  <section class="company_access sec -md bg_gray" id="access">
     <div class="company_access--inner">
       <h2 class="page_ttl">アクセス</h2>
       <a href="https://maps.app.goo.gl/Dh57s5aHyVMs9oi68">愛知県名古屋市東区代官町16-17 アーク代官町ビルディング2F</a>
@@ -111,7 +111,7 @@
     </div>
   </section>
 
-  <section class="company_date sec">
+  <section class="company_date sec -top" id="philosophy">
     <div class="container -sm">
       <h2 class="page_ttl">企業理念</h2>
       <img src="<?php echo get_template_directory_uri(); ?>/img/company/philosophy.png" alt="" width="261" height="200" loading="lazy" decoding="async">
@@ -134,7 +134,7 @@
     </div>
   </section>
 
-  <section class="company_date sec -bottom">
+  <section class="company_date sec -top" id="history">
     <div class="container -sm">
       <h2 class="page_ttl">沿革</h2>
       <img src="<?php echo get_template_directory_uri(); ?>/img/company/history.png" alt="" width="307" height="200" loading="lazy" decoding="async">

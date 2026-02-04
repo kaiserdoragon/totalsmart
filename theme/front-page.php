@@ -150,7 +150,7 @@
         <p>お客様にとってストレスのない業務形態です。</p>
       </div>
       <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_anima.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
-      <a class="btn_link" href="#" target="_blank">トータルスマートについて詳しく知る</a>
+      <a class="btn_link" href="<?php echo esc_url(home_url('/company')); ?>" rel="noopener">トータルスマートについて詳しく知る</a>
     </div>
   </section>
 
@@ -312,7 +312,7 @@
           ?>
         </ul>
       <?php endif; ?>
-      <a class="btn_link" href="<?php echo esc_url(home_url('/service')); ?>">サービス一覧を見る</a>
+      <a class="btn_link" href="<?php echo esc_url(home_url('/service')); ?>" rel="noopener">サービス一覧を見る</a>
     </div>
   </section>
 
@@ -423,7 +423,7 @@
         <p>表示する投稿がありません。</p>
       <?php endif; ?>
     </div>
-    <a class="btn_link" href="<?php echo esc_url(home_url('/introduction')); ?>" target="_blank" rel="noopener">導入実績一覧を見る</a>
+    <a class="btn_link" href="<?php echo esc_url(home_url('/introduction')); ?>" rel="noopener">導入実績一覧を見る</a>
   </section>
 
   <section class="company bg_white sec">
@@ -441,11 +441,11 @@
       <div class="company--inner">
         <div>
           <ul>
-            <li><a href="">企業理念</a></li>
-            <li><a href="">沿革</a></li>
-            <li><a href="">アクセス</a></li>
+            <li><a href="<?php echo esc_url(home_url('/company/#philosophy')); ?>">企業理念</a></li>
+            <li><a href="<?php echo esc_url(home_url('/company/#history')); ?>">沿革</a></li>
+            <li><a href="<?php echo esc_url(home_url('/company/#access')); ?>">アクセス</a></li>
           </ul>
-          <a class="btn_link" href="#" target="_blank">会社概要の詳細はこちらから</a>
+          <a class="btn_link" href="<?php echo esc_url(home_url('/company')); ?>" rel="noopener">会社概要の詳細はこちらから</a>
         </div>
         <img src="<?php echo get_template_directory_uri(); ?>/img/top/company.png" alt="" width="415" height="407" loading="lazy" decoding="async">
       </div>
@@ -470,7 +470,7 @@
               チームワークを強化し、お客様はもちろん従業員がよりよい環境で働けることを目指します。
             </dd>
           </dl>
-          <a class="btn_link" href="#" target="_blank">採用情報はこちらから</a>
+          <a class="btn_link" href="https://recruit.jobcan.jp/totalsmart" target="_blank" rel="noopener">採用情報はこちらから</a>
         </div>
         <img src="<?php echo get_template_directory_uri(); ?>/img/top/recruit_catch.png" alt="" width="477" height="492" loading="lazy" decoding="async">
       </div>
@@ -603,7 +603,7 @@
         <p>現在、お役立ち情報はありません。</p>
       <?php endif; ?>
 
-      <a class="btn_link" href="<?php echo esc_url(home_url('/information')); ?>">お役立ち情報一覧を見る</a>
+      <a class="btn_link" href="<?php echo esc_url(home_url('/information')); ?>" rel="noopener">お役立ち情報一覧を見る</a>
     </div>
   </section>
 
@@ -657,7 +657,7 @@
         <dt>導入までにどれくらい時間がかかりますか？</dt>
         <dd>お申し込み後、数日でご利用を開始していただけます。契約後は専任のスタッフにより、開設・ご利用方法をご説明いたします。</dd>
       </dl>
-      <a class="btn_link" href="<?php echo esc_url(home_url('/question')); ?>">よくある質問の一覧を見る</a>
+      <a class="btn_link" href="<?php echo esc_url(home_url('/question')); ?>" rel="noopener">よくある質問の一覧を見る</a>
     </div>
   </section>
 
