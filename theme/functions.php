@@ -452,16 +452,64 @@ add_action('pre_get_posts', 'my_customize_query_total_posts');
   カスタム追加設定 additional functions
 \*------------------------------------*/
 
-//category-label　カテゴリslugをclass名として出力
 function categories_label()
 {
-  $cats = get_the_category();
-  foreach ($cats as $cat) {
-    echo '<li><a href="' . get_category_link($cat->term_id) . '" ';
-    echo 'class="cat_label cat_' . esc_attr($cat->slug) . '">';
-    echo esc_html($cat->name);
-    echo '</a></li>';
+  global $post;
+
+  // 1. 設定マップ：投稿タイプ => [タクソノミー名, 追加クラス名]
+  $post_type_settings = [
+    'introduction' => [
+      'taxonomy'    => 'introduction_cat',
+      'extra_class' => 'introduction_cat'
+    ],
+    'information'  => [
+      'taxonomy'    => 'information_cat',
+      'extra_class' => 'information_cat'
+    ],
+    'question'  => [
+      'taxonomy'    => 'question_cat',
+      'extra_class' => 'question_cat'
+    ],
+    // 新しい投稿タイプが増えたらここに行を追加するだけ
+    // 'gallery' => ['taxonomy' => 'gallery_cat', 'extra_class' => 'gallery_cat'],
+  ];
+
+  // 2. 現在の投稿タイプ設定を取得（未登録ならデフォルトの「category/news_cat」を使用）
+  $current_type = get_post_type($post);
+  $setting = isset($post_type_settings[$current_type])
+    ? $post_type_settings[$current_type]
+    : ['taxonomy' => 'category', 'extra_class' => 'news_cat'];
+
+  $taxonomy    = $setting['taxonomy'];
+  $extra_class = $setting['extra_class'];
+
+  // 3. タームの取得
+  $terms = get_the_terms($post->ID, $taxonomy);
+
+  if (!$terms || is_wp_error($terms)) {
+    return;
   }
+
+  // 4. 親カテゴリーが先に来るように並び替え
+  usort($terms, function ($a, $b) {
+    return $a->parent - $b->parent;
+  });
+
+  // 5. HTML出力
+  $output = '';
+  foreach ($terms as $term) {
+    $class_attr = sprintf('cat_label cat_%s %s', esc_attr($term->slug), esc_attr($extra_class));
+    $term_link  = get_term_link($term);
+
+    $output .= sprintf(
+      '<li><a href="%s" class="%s">%s</a></li>',
+      esc_url($term_link),
+      $class_attr,
+      esc_html($term->name)
+    );
+  }
+
+  echo $output;
 }
 
 // -------------------------------------

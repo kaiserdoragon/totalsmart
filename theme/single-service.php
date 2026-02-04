@@ -34,7 +34,7 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
             <?php endif; ?>
           </li>
           <li class="paging--item paging--item-gotolist">
-            <a href="<?php echo home_url(); ?>/news/">一覧へ戻る</a>
+            <a href="<?php echo home_url(); ?>/service">一覧へ戻る</a>
           </li>
           <li class="paging--item paging--item-prev">
             <?php if (get_previous_post()): ?>
