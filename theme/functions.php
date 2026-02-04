@@ -640,7 +640,7 @@ add_action('wp_head', 'add_home_schema_markup');
 
 
 // -------------------------------------
-// サービス一覧（service）の制御
+// サービス一覧（service）ページの並び替えの制御
 // -------------------------------------
 add_action('pre_get_posts', function ($q) {
   if (is_admin() || !$q->is_main_query()) return;

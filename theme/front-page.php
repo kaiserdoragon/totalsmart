@@ -522,7 +522,7 @@
           <?php endwhile; ?>
         </ul>
       </div>
-      <a class="btn_link" href="<?php echo esc_url(home_url('/news')); ?>" target="_blank">お知らせ一覧はこちらから</a>
+      <a class="btn_link" href="<?php echo esc_url(home_url('/news')); ?>">お知らせ一覧はこちらから</a>
     </section>
   <?php
   endif;
