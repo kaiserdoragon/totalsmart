@@ -180,6 +180,38 @@
     </div>
   </section>
 
+  <section class="company_message sec -bottom">
+    <div class="container">
+      <h2 class="ttl">
+        代表挨拶
+        <span>MESSAGE</span>
+      </h2>
+      <img class="company_message--logo" src="<?php echo get_theme_file_uri('/img/common/logo.png'); ?>" alt="トータルスマート株式会社" width="325" height="68" fetchpriority="high" decoding="async" />
+      <p>
+        自由でみずみずしい発想を原動力に。<br>個人の想像力とチームワークの強みを最大限に高める企業風土をつくる。
+      </p>
+
+      <dl>
+        <dt class="page_ttl">名前の由来</dt>
+        <dd>
+          経費節減がメインの会社ななので、全ての経費を（トータルに）節減（スマートに）するお手伝いをする会社です。
+        </dd>
+      </dl>
+
+      <dl>
+        <dt class="page_ttl">代表挨拶</dt>
+        <dd>
+          現在のオフィスを取り巻く環境は、新しいシステムや技術がとても早いスピードで変化しており、導入コストが上がっている状況になります。<br>
+          その中でも特にコスト削減や業務の効率化は重要視されているのではないかと思います。<br>
+          常にお客様目線で、その企業様にあった削減方法や業務の効率化を提案していきたいと思っております。<br>
+          また導入後のアフターフォローが1番大事だと思っておりますので、自社工事やコールセンターを活用して、お客様の問題点をいち早く解決していける体制を取っております。<br>
+          企業様のお困り事に寄り添える企業として、縁の下の力持ちのような存在を目指しております。
+        </dd>
+      </dl>
+      <img class="company_message--illust" src="<?php echo get_theme_file_uri('/img/company/illust.jpg'); ?>" alt="トータルスマート株式会社" width="800" height="1200" fetchpriority="high" decoding="async" />
+    </div>
+  </section>
+
 </main>
 
 <?php get_footer(); ?>

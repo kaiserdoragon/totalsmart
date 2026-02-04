@@ -171,3 +171,39 @@
     justify-content: center;
   }
 }
+
+.company_message {
+  p {
+    margin-bottom: 80px;
+    font-size: var(--fz23);
+    text-align: center;
+  }
+
+  dl {
+    &:not(:last-child) {
+      margin-bottom: 80px;
+    }
+  }
+
+  dd {
+    text-align: center;
+  }
+
+  strong {
+    display: block;
+    text-align: center;
+  }
+
+  // .company_message--logo
+  &--logo {
+    display: block;
+    width: 60%;
+    margin: 0 auto 40px;
+  }
+
+  // .company_message--illust
+  &--illust {
+    display: block;
+    margin: 0 auto;
+  }
+}
