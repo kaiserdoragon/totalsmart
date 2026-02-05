@@ -810,7 +810,7 @@ add_action('wp_enqueue_scripts', function () {
 
 // ===== リアルタイム検索：AJAX受け口 =====
 add_action('wp_ajax_question_live_search', 'question_live_search');
-add_action('wp_ajax_nopriv_question_live_search', 'question_live_search'); // 非ログイン対応 :contentReference[oaicite:7]{index=7}
+add_action('wp_ajax_nopriv_question_live_search', 'question_live_search');
 
 function question_live_search()
 {
@@ -886,7 +886,7 @@ function question_live_search()
   $html = ob_get_clean();
 
   // 60秒だけキャッシュ（必要なら短く/長く調整）
-  set_transient($cache_key, $html, 60);
+  set_transient($cache_key, $html, 30);
 
-  wp_send_json_success(['html' => $html]); // :contentReference[oaicite:10]{index=10}
+  wp_send_json_success(['html' => $html]); //
 }

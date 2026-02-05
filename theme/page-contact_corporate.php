@@ -30,7 +30,7 @@
         <a href="tel:052-932-5451">052-932-5451</a>
         <span class="contact_corporate--time"><span>受付時間</span>9:00〜18:00</span>
       </div>
-      <?php echo apply_shortcodes('[contact-form-7 id="9a1f333" title="お問い合わせ（コーポレートサイト）"]'); ?>
+      <?php echo apply_shortcodes('[contact-form-7 id="9a1f333" title="お問い合わせ（コーポレートサイト）" html_class="h-adr"]'); ?>
     </div>
   </section>
 
