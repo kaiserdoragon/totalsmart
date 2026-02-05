@@ -361,12 +361,10 @@
                 'alt'      => the_title_attribute(['echo' => false]),
                 'loading'  => 'lazy',
                 'decoding' => 'async',
-                // 表示幅がほぼ決まっているなら付ける（後述）
-                'sizes'    => '(max-width: 768px) 90vw, 352px',
               ];
             ?>
               <article class="swiper-slide">
-                <a href="<?php echo esc_url(get_permalink()); ?>" target="_blank" rel="noopener">
+                <a href="<?php echo esc_url(get_permalink()); ?>" rel="noopener">
                   <div class="works--thumbnail">
                     <?php if (has_post_thumbnail()) : ?>
                       <?php
@@ -429,7 +427,7 @@
   <section class="company bg_white sec">
     <div class="container">
       <h2 class="ttl">
-        導入実績
+        会社概要
         <span>COMPANY</span>
       </h2>
       <p>

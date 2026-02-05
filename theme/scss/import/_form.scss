@@ -70,6 +70,12 @@
     gap: 10px;
   }
 
+  // .contact_form--confirm
+  &--confirm {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+  }
 
   // .contact_form--table
   &--table {
@@ -102,7 +108,7 @@
         position: absolute;
         top: 50%;
         left: 0;
-        padding: 4px 5px;
+        padding: 6px 8px;
         font-size: var(--fz14);
         font-weight: normal;
         line-height: 1;
@@ -124,6 +130,10 @@
       border-radius: 5px;
     }
 
+    .contact_corporate-confirm_page & {
+      max-width: 300px;
+    }
+
     @include max-mq {
       td {
         padding: 10px 5px;
@@ -142,22 +152,17 @@
 
   // .contact_form--btn
   &--btn {
-    margin-top: 30px;
-    overflow: hidden;
-    text-align: center;
-
     input[type="submit"],
     input[type="button"],
     button[type="submit"] {
       box-sizing: border-box;
       display: block;
-      width: 100%;
-      max-width: 320px;
+      width: 280px;
       padding: 20px 0;
       margin: auto;
       color: #fff;
       cursor: pointer;
-      background: #0052a7;
+      background: url(../img/contact/arrow.png) no-repeat right 30px center / 11px, #0052a7;
       border: none;
       border-radius: 1000px;
       transition: 0.3s;
