@@ -406,28 +406,91 @@ add_filter('excerpt_length', 'custom_excerpt_length', 999);
 \*------------------------------------*/
 
 if (function_exists('bcn_display_list')) {
-  // デフォルトのHOMEパンくずを除去
+
+  // デフォルトのHOMEパンくずを除去（HOMEが最後に入っている前提）
   add_action('bcn_after_fill', 'foo_pop');
   function foo_pop($trail)
   {
     array_pop($trail->breadcrumbs);
   }
 
-  // 静的にパンくずを追加
+  // 静的にパンくずを追加／特定固定ページは作り直す
   add_action('bcn_after_fill', 'my_static_breadcrumb_adder');
   function my_static_breadcrumb_adder($breadcrumb_trail)
   {
-    // 【修正箇所】is_post_type_archive('post') を削除し、is_singular('post') のみにする
-    // また、カテゴリーやタグページでも「お知らせ」を入れたい場合は is_archive() を考慮します
+
+    // ---- ここから：ご希望の固定ページフロー（TOP > ○○ のみ） ----
+    if (is_page()) {
+      $page_id = get_queried_object_id();
+      $slug    = $page_id ? get_post_field('post_name', $page_id) : '';
+
+      // thanks / confirm / contact_ の優先順（slugが複合するケース対策）
+      $label = '';
+      if ($slug !== '') {
+        if (strpos($slug, 'thanks') !== false) {
+          $label = 'お問い合わせありがとうございました';
+        } elseif (strpos($slug, 'confirm') !== false) {
+          $label = '確認画面';
+        } elseif (strpos($slug, 'contact_') !== false) {
+          $label = 'お問い合わせ';
+        }
+      }
+
+      if ($label !== '') {
+        // いったん全消しして、2階層だけ作り直す（空のままreturnしない）
+        $breadcrumb_trail->breadcrumbs = array();
+
+        // 現在ページ（リンクなし）
+        // bcn_breadcrumb は引数末尾で linked を指定できる（例: trueでリンクあり） :contentReference[oaicite:3]{index=3}
+        $breadcrumb_trail->add(
+          new bcn_breadcrumb($label, null, array('page'), null, null, false)
+        );
+
+        // TOP（リンクあり）※最後にaddすると表示上は先頭（TOP）になりやすい
+        $breadcrumb_trail->add(
+          new bcn_breadcrumb(
+            'TOP',
+            '<a title="%title%." href="%link%">%htitle%</a>',
+            array('home'),
+            home_url('/'),
+            null,
+            true
+          )
+        );
+        return; // ここで終了（下の「お知らせ」等を混ぜない）
+      }
+    }
+    // ---- ここまで：ご希望の固定ページフロー ----
+
+
+    // 既存：投稿詳細／カテゴリ／タグに「お知らせ」を挿入
     if (is_singular('post') || is_category() || is_tag()) {
-      // 記事詳細ページやカテゴリー一覧の時だけ、親階層として「お知らせ」リンクを追加
-      $breadcrumb_trail->add(new bcn_breadcrumb('お知らせ', '<a title="%ftitle%." href="%link%">%htitle%</a>', array(), home_url('/news/')));
+      $breadcrumb_trail->add(
+        new bcn_breadcrumb(
+          'お知らせ',
+          '<a title="%title%." href="%link%">%htitle%</a>',
+          array(),
+          home_url('/news/'),
+          null,
+          true
+        )
+      );
     }
 
     // 1つめ（常に表示されるTOP）
-    $breadcrumb_trail->add(new bcn_breadcrumb('TOP', '<a title="%ftitle%." href="%link%">%htitle%</a>', array('home'), home_url()));
+    $breadcrumb_trail->add(
+      new bcn_breadcrumb(
+        'TOP',
+        '<a title="%title%." href="%link%">%htitle%</a>',
+        array('home'),
+        home_url('/'),
+        null,
+        true
+      )
+    );
   }
 }
+
 
 /*------------------------------------*\
 　投稿タイプごとに表示件数を変更する
@@ -856,4 +919,12 @@ function question_live_search()
   set_transient($cache_key, $html, 60);
 
   wp_send_json_success(['html' => $html]); // :contentReference[oaicite:10]{index=10}
+}
+
+
+// Contact Form 7 の自動 p / br タグ挿入を無効化
+add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
+function wpcf7_autop_return_false()
+{
+  return false;
 }

@@ -253,7 +253,7 @@
       <div class="cv_contact--inner">
         <ul>
           <li>
-            <a href="">メールで問い合わせ</a>
+            <a href="<?php echo esc_url(home_url('/contact_corporate')); ?>">メールで問い合わせ</a>
           </li>
           <li>
             <a href="">LINEで問い合わせ</a>
@@ -266,10 +266,6 @@
       </div>
     </div>
   </section>
-
-  <h2 class="page_ttl">下層ページの共通見出し</h2>
-
-  <h2 class="page_detail_ttl">詳細ページの共通見出し</h2>
 </main>
 
 <?php get_footer(); ?>

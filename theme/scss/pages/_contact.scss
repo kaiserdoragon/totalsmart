@@ -6,17 +6,38 @@
 // ---------------------------------------------
 
 // contact form
-
-                                                                                            
-@forward "../import/form_monkey";
+@forward "../import/form";
 
 // エラーメッセージ用ツールチップ
-
 @forward "../import/form-tooltip";
 
 // ---------------------------------------------
 //  contact用の追加クラス
 // ---------------------------------------------
+
+
+.contact_corporate {
+  p {
+    line-height: 1.9;
+    text-align: center;
+  }
+
+  .header--btn {
+    justify-content: center;
+    margin-top: 60px;
+  }
+
+  .header--tel {
+    width: 100%;
+    max-width: 345px;
+    font-size: 35px;
+    font-weight: 800;
+
+    span {
+      font-size: var(--fz16);
+    }
+  }
+}
 
 #loading {
   display: none;

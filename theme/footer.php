@@ -13,15 +13,15 @@
         <p>TEL：052-932-5450 FAX：052-932-5451</p>
       </div>
       <ul>
-        <li><a href="<?php echo esc_url(home_url('/business/')); ?>">事業内容</a></li>
-        <li><a href="<?php echo esc_url(home_url('/service/')); ?>">サービス</a></li>
-        <li><a href="<?php echo esc_url(home_url('/introduction/')); ?>">導入実績</a></li>
-        <li><a href="<?php echo esc_url(home_url('/company/')); ?>">会社概要</a></li>
+        <li><a href="<?php echo esc_url(home_url('/business')); ?>">事業内容</a></li>
+        <li><a href="<?php echo esc_url(home_url('/service')); ?>">サービス</a></li>
+        <li><a href="<?php echo esc_url(home_url('/introduction')); ?>">導入実績</a></li>
+        <li><a href="<?php echo esc_url(home_url('/company')); ?>">会社概要</a></li>
         <li><a href="https://recruit.jobcan.jp/totalsmart">採用情報</a></li>
-        <li><a href="<?php echo esc_url(home_url('/information/')); ?>">お役立ち情報</a></li>
-        <li><a href="<?php echo esc_url(home_url('/contact/')); ?>">お問い合わせ</a></li>
-        <li><a href="<?php echo esc_url(home_url('/security/')); ?>">情報セキュリティ方針</a></li>
-        <li><a href="<?php echo esc_url(home_url('/privacy/')); ?>">プライバシーポリシー</a></li>
+        <li><a href="<?php echo esc_url(home_url('/information')); ?>">お役立ち情報</a></li>
+        <li><a href="<?php echo esc_url(home_url('/contact_corporate')); ?>">お問い合わせ</a></li>
+        <li><a href="<?php echo esc_url(home_url('/security')); ?>">情報セキュリティ方針</a></li>
+        <li><a href="<?php echo esc_url(home_url('/privacy')); ?>">プライバシーポリシー</a></li>
       </ul>
     </div>
     <small>Copyright © Total Smart株式会社 All Rights Reserved.</small>

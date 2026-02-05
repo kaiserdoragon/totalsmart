@@ -675,7 +675,7 @@
       <div class="cv_contact--inner">
         <ul>
           <li>
-            <a href="">メールで問い合わせ</a>
+            <a href="<?php echo esc_url(home_url('/contact')); ?>">メールで問い合わせ</a>
           </li>
           <li>
             <a href="">LINEで問い合わせ</a>
