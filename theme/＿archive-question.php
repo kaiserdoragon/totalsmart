@@ -25,7 +25,7 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
 </div>
 
 
-<div class="archive--wrap">
+<div class="breadcrumbs--wrap">
   <?php get_template_part('include/common', 'breadcrumb'); ?>
   <div class="archive container">
     <main class="<?php echo $slug . '_page'; ?>">

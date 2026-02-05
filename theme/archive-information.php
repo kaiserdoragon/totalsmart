@@ -25,9 +25,12 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
 </div>
 
 
-<div class="archive--wrap">
+<div class="breadcrumbs--wrap">
   <?php get_template_part('include/common', 'breadcrumb'); ?>
-  <main class="<?php echo $slug . '_page'; ?>">
+</div>
+
+<main class="<?php echo $slug . '_page'; ?>">
+  <div class="archive">
     <div class="container -md">
       <section>
         <h2 class="ttl">
@@ -104,7 +107,8 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
         <?php wp_pagination(); ?>
       </div>
     </div>
-  </main>
-</div>
+  </div>
+</main>
+
 
 <?php get_footer(); ?>

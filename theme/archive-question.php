@@ -35,10 +35,13 @@ $is_all_act = (is_post_type_archive('question') && !is_tax($taxonomy_slug));
   <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/page/<?php echo esc_attr($img_file); ?>" alt="<?php echo esc_attr($title); ?>" width="1920" height="600" loading="lazy" decoding="async">
 </div>
 
-<div class="archive--wrap">
+<div class="breadcrumbs--wrap">
   <?php get_template_part('include/common', 'breadcrumb'); ?>
-  <div class="archive container">
-    <main class="<?php echo esc_attr($slug . '_page'); ?>">
+</div>
+
+<main class="<?php echo esc_attr($slug . '_page'); ?>">
+  <div class="archive">
+    <div class="container">
       <h2 class="ttl">
         <?php echo esc_html($title); ?>
         <span><?php echo esc_html(strtoupper($slug)); ?></span>
@@ -82,6 +85,8 @@ $is_all_act = (is_post_type_archive('question') && !is_tax($taxonomy_slug));
                           <?php echo esc_html($term->name); ?>
                         </span>
                       <?php endforeach; ?>
+                    <?php else : ?>
+                      <span class="front-news--cat_label -other">その他</span>
                     <?php endif; ?>
                   </div>
                   <p><?php echo esc_html(get_the_title()); ?></p>
@@ -97,8 +102,10 @@ $is_all_act = (is_post_type_archive('question') && !is_tax($taxonomy_slug));
       <div class="pagination">
         <?php wp_pagination(); ?>
       </div>
-    </main>
+    </div>
   </div>
-</div>
+</main>
+
+
 
 <?php get_footer(); ?>

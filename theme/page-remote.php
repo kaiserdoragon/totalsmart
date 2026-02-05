@@ -6,7 +6,7 @@
   <h1><?php the_title(); ?></h1>
 </div>
 
-<div class="archive--wrap">
+<div class="breadcrumbs--wrap">
   <?php get_template_part('include/common', 'breadcrumb'); ?>
 </div>
 

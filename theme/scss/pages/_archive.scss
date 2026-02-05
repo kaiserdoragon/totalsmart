@@ -7,13 +7,6 @@
 // ---------------------------------------------
 
 .archive {
-  // .archive--wrap
-  &--wrap {
-    width: 90%;
-    padding: 20px 0 100px;
-    margin: auto;
-  }
-
   // .archive--inner
   &--inner {
     a {
@@ -24,6 +17,10 @@
       margin-bottom: 30px;
       border-bottom: 1px solid #d1d1d1;
     }
+  }
+
+  .container {
+    padding: 0 min(4vw, 25px) 100px;
   }
 }
 
@@ -60,7 +57,7 @@
 
 // 詳細ページ
 .detail_page {
-  padding: 100px 0;
+  padding: 0 0 100px;
 
   p {
     margin: 0 0 1rem;

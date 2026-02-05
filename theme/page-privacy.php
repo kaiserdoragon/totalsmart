@@ -5,7 +5,7 @@
   <img src="<?php echo get_template_directory_uri(); ?>/img/page/eyecatch_404.jpg" alt="404 NOT FOUND" width="1920" height="600" loading="lazy" decoding="async">
 </div>
 <main class="notfound_page bg_gray privacy_page">
-  <div class="archive--wrap">
+  <div class="breadcrumbs--wrap">
     <?php get_template_part('include/common', 'breadcrumb'); ?>
   </div>
   <div class="container">

@@ -17,9 +17,10 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
   <img src="<?php echo get_template_directory_uri(); ?>/img/page/<?php echo $img_file; ?>" alt="<?php echo $title; ?>" width="1920" height="600" loading="lazy" decoding="async">
 </div>
 
-<div class="archive--wrap">
+<div class="breadcrumbs--wrap">
   <?php get_template_part('include/common', 'breadcrumb'); ?>
 </div>
+
 <div class="single_service">
   <main>
     <?php if (have_posts()): while (have_posts()) : the_post(); ?>

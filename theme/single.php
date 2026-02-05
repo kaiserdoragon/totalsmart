@@ -21,43 +21,40 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
   <img src="<?php echo get_template_directory_uri(); ?>/img/page/<?php echo $img_file; ?>" alt="<?php echo $title; ?>" width="1920" height="600" loading="lazy" decoding="async">
 </div>
 
-<div class="archive--wrap">
+<div class="breadcrumbs--wrap">
   <?php get_template_part('include/common', 'breadcrumb'); ?>
-  <div>
-    <main class="<?php echo $slug . '_page'; ?>">
-      <?php if (have_posts()): while (have_posts()) : the_post(); ?>
-          <article class="detail_page">
-            <div class="container">
-              <time class="post_meta--date" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.m.d'); ?></time>
-              <h2 class="detail_page--ttl"><?php the_title(); ?></h2>
-              <ul class="detail_page--cat">
-                <?php categories_label() ?>
-              </ul>
-              <div>
-                <?php the_content(); ?>
-              </div>
-            </div>
-          </article>
-
-          <ul class="paging">
-            <li class="paging--item paging--item-next">
-              <?php if (get_next_post()): ?>
-                <?php next_post_link('%link', '%title', false); ?>
-              <?php endif; ?>
-            </li>
-            <li class="paging--item paging--item-gotolist">
-              <a href="<?php echo home_url(); ?>/news/">一覧へ戻る</a>
-            </li>
-            <li class="paging--item paging--item-prev">
-              <?php if (get_previous_post()): ?>
-                <?php previous_post_link('%link', '%title', false); ?>
-              <?php endif; ?>
-            </li>
+</div>
+<div class="archive container">
+  <main class="<?php echo $slug . '_page'; ?>">
+    <?php if (have_posts()): while (have_posts()) : the_post(); ?>
+        <article class="detail_page">
+          <time class="post_meta--date" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.m.d'); ?></time>
+          <h2 class="detail_page--ttl"><?php the_title(); ?></h2>
+          <ul class="detail_page--cat">
+            <?php categories_label() ?>
           </ul>
+          <div>
+            <?php the_content(); ?>
+          </div>
+        </article>
 
-        <?php endwhile; ?>
-      <?php endif; ?>
-    </main>
-  </div>
+        <ul class="paging">
+          <li class="paging--item paging--item-next">
+            <?php if (get_next_post()): ?>
+              <?php next_post_link('%link', '%title', false); ?>
+            <?php endif; ?>
+          </li>
+          <li class="paging--item paging--item-gotolist">
+            <a href="<?php echo home_url(); ?>/news/">一覧へ戻る</a>
+          </li>
+          <li class="paging--item paging--item-prev">
+            <?php if (get_previous_post()): ?>
+              <?php previous_post_link('%link', '%title', false); ?>
+            <?php endif; ?>
+          </li>
+        </ul>
+      <?php endwhile; ?>
+    <?php endif; ?>
+  </main>
 </div>
 <?php get_footer(); ?>

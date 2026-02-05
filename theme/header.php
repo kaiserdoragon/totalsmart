@@ -90,7 +90,7 @@
 <?php endif; ?>
 
 
-<body>
+<body <?php body_class(); ?>>
   <div class="wrap" id="main-content">
     <header class="header">
       <div class="header--inner">
