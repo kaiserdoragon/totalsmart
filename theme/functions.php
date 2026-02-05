@@ -457,10 +457,9 @@ if (function_exists('bcn_display_list')) {
             true
           )
         );
-        return; // ここで終了（下の「お知らせ」等を混ぜない）
+        return;
       }
     }
-    // ---- ここまで：ご希望の固定ページフロー ----
 
 
     // 既存：投稿詳細／カテゴリ／タグに「お知らせ」を挿入
@@ -493,7 +492,7 @@ if (function_exists('bcn_display_list')) {
 
 
 /*------------------------------------*\
-　投稿タイプごとに表示件数を変更する
+　投稿タイプごとに一覧・アーカイブページにて表示件数を変更する
 \*------------------------------------*/
 function my_customize_query_total_posts($query)
 {
@@ -506,7 +505,7 @@ function my_customize_query_total_posts($query)
   $post_types = ['question', 'information', 'introduction', 'post'];
 
   if (is_post_type_archive($post_types) || is_home() || is_category()) {
-    $query->set('posts_per_page', 2);
+    $query->set('posts_per_page', 6);
   }
 }
 add_action('pre_get_posts', 'my_customize_query_total_posts');
@@ -720,39 +719,10 @@ add_action(
 wp_enqueue_script('yubinbango', 'https://yubinbango.github.io/yubinbango/yubinbango.js', array(), null, true);
 
 
-// -------------------------------------
-// フロントページ専用の 「LocalBusiness構造化データ（JSON-LD）」
-// -------------------------------------
-function add_home_schema_markup()
-{
-  if (is_front_page()) {
-    $json_ld = [
-      "@context" => "https://schema.org",
-      "@type" => "LocalBusiness",
-      "name" => "トータルスマート株式会社",
-      "image" => get_theme_file_uri('/img/common/logo.png'),
-      "telephone" => "052-932-5450",
-      "address" => [
-        "@type" => "PostalAddress",
-        "streetAddress" => "住所詳細",
-        "addressLocality" => "名古屋市",
-        "addressRegion" => "愛知県",
-        "postalCode" => "郵便番号",
-        "addressCountry" => "JP"
-      ],
-      "priceRange" => "¥¥",
-      "description" => "OA機器、通信インフラ、セキュリティ対策などオフィス課題をワンストップで解決するコスト削減の専門会社です。"
-    ];
-    echo '<script type="application/ld+json">' . json_encode($json_ld, JSON_UNESCAPED_UNICODE) . '</script>';
-  }
-}
-add_action('wp_head', 'add_home_schema_markup');
 
-
-
-// -------------------------------------
-// サービス一覧（service）ページの並び替えの制御
-// -------------------------------------
+// ---------------------------------------------------------
+// サービス一覧（service）ページの並び替えの制御と表示件数の制御
+// ---------------------------------------------------------
 add_action('pre_get_posts', function ($q) {
   if (is_admin() || !$q->is_main_query()) return;
 
@@ -919,12 +889,4 @@ function question_live_search()
   set_transient($cache_key, $html, 60);
 
   wp_send_json_success(['html' => $html]); // :contentReference[oaicite:10]{index=10}
-}
-
-
-// Contact Form 7 の自動 p / br タグ挿入を無効化
-add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
-function wpcf7_autop_return_false()
-{
-  return false;
 }

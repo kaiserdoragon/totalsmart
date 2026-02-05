@@ -24,7 +24,7 @@
 
   .header--btn {
     justify-content: center;
-    margin-top: 60px;
+    margin-top: 30px;
   }
 
   .header--tel {
@@ -88,6 +88,14 @@
       background: #0052a7;
       border-radius: 5px;
     }
+  }
+
+  // .contact_corporate--time
+  &--totop {
+    display: block;
+    width: fit-content;
+    margin: 40px auto 0;
+    text-decoration: underline;
   }
 }
 

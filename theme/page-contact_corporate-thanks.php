@@ -35,6 +35,7 @@
           <span>営業時間 9:00～18:00</span>
         </a>
       </div>
+      <a class="contact_corporate--totop" href="<?php echo esc_url(home_url('/')); ?>">TOPページにもどる</a>
     </div>
   </section>
 

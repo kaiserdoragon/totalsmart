@@ -29,7 +29,7 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
           <article class="detail_page">
             <div class="container">
               <time class="post_meta--date" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.m.d'); ?></time>
-              <h2><?php the_title(); ?></h2>
+              <h2 class="detail_page--ttl"><?php the_title(); ?></h2>
               <ul class="detail_page--cat">
                 <?php categories_label() ?>
               </ul>

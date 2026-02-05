@@ -647,7 +647,7 @@
     }
 
     li {
-      padding: 15px;
+      padding: 30px;
     }
   }
 }
@@ -712,6 +712,7 @@
   @include max-mq {
     ul {
       grid-template-columns: repeat(1, 1fr);
+      gap: 60px;
     }
 
     li {
@@ -808,22 +809,10 @@
       background: url(../img/top/cvarea_02.png) no-repeat center / contain;
     }
 
-    @include max-mq {
-      padding: 0 15px;
-
+    @include tb-mq {
       &::before,
       &::after {
-        top: -65px;
-      }
-
-      &::before {
-        left: 15px;
-        width: 55px;
-      }
-
-      &::after {
-        right: 15px;
-        width: 55px;
+        content: none;
       }
     }
   }
@@ -848,7 +837,7 @@
       border-radius: 15px;
     }
 
-    @include max-mq {
+    @include tb-mq {
       width: 95%;
       padding: 60px min(4vw, 25px) 70px;
 
@@ -1103,15 +1092,15 @@
   &--inner {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 25px;
     justify-content: center;
 
-    @include max-mq {
+    @media (width <= 1450px) {
       gap: 60px;
     }
   }
 
-  @include max-mq {
+  @media (width <= 1450px) {
     dl {
       text-align: center;
     }

@@ -62,13 +62,58 @@
 .detail_page {
   padding: 100px 0;
 
-  h2 {
-    padding-bottom: 15px;
-    margin: 5px auto 15px;
-    font-size: 25px;
+  p {
+    margin: 0 0 1rem;
+  }
+
+  strong {
     font-weight: bold;
-    color: #767676;
-    border-bottom: 4px solid rgb(28 73 122 / 28%);
+  }
+
+  h2.wp-block-heading {
+    padding-left: 10px;
+    margin-bottom: 60px;
+    font-size: var(--fz25);
+    font-weight: 800;
+    color: #002669;
+    border-left: solid 6px #4472c4;
+  }
+
+  ul.wp-block-list,
+  ol.wp-block-list {
+    padding-left: 1em;
+    list-style: none; // デフォルトの記号を共通で消去
+
+    li {
+      margin-bottom: 10px;
+    }
+  }
+
+  ul.wp-block-list {
+    li {
+      &::before {
+        display: inline-block;
+        margin: 0 8px 3px 0;
+        font-size: 8px;
+        color: #0054a4;
+        vertical-align: middle;
+        content: "●";
+      }
+    }
+  }
+
+  ol.wp-block-list {
+    counter-reset: item-count;
+
+    li {
+      counter-increment: item-count;
+
+      &::before {
+        margin-right: 5px;
+        font-weight: bold;
+        content: counter(item-count) ". ";
+      }
+    }
   }
 
   .cat_label {
@@ -87,6 +132,16 @@
     }
   }
 
+  // .detail_page--ttl
+  &--ttl {
+    padding-bottom: 15px;
+    margin: 5px auto 15px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #767676;
+    border-bottom: 4px solid rgb(28 73 122 / 28%);
+  }
+
   // .detail_page--cat
   &--cat {
     display: flex;
@@ -95,7 +150,6 @@
     margin-bottom: 40px;
   }
 }
-
 
 // ---------------------------------------------
 //  導入実績　専用
