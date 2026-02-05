@@ -7,7 +7,7 @@
 
 .contact_form {
   textarea {
-    height: 130px;
+    height: 280px;
   }
 
   input[type="text"],
@@ -19,14 +19,13 @@
   textarea {
     box-sizing: border-box;
     width: 100%;
-    padding: 4px;
+    padding: 15px;
     font-family: inherit;
-    font-size: var(--fz16);
+    font-size: 16px;
     font-weight: normal;
-    color: #000;
-    background: #e6edf2;
-    border: solid 1px #e6edf2;
-    border-radius: 3px;
+    color: #333;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
     box-shadow: none;
 
     &:focus {
@@ -34,6 +33,12 @@
       border: solid 1px #e6edf2;
       outline: none;
     }
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #d9d7d7;
+    opacity: 1;
   }
 
   input[type="checkbox"]:checked,
@@ -44,9 +49,10 @@
   }
 
   select {
-    padding: 2px 0 4px 4px;
+    width: 100%;
+    padding: 10px;
     margin-right: 2px;
-    border: solid 1px #345372;
+    border: solid 1px #e1e1e1;
     border-radius: 3px;
 
     option {
@@ -54,53 +60,68 @@
     }
   }
 
-  // MW WP form向け
-  .mwform-tel-field input[type="text"],
-  .mwform-zip-field input[type="text"] {
-    width: 5em;
+  .wpcf7-list-item {
+    margin: 0;
   }
 
-  // contact_form--table
+  .your-checkbox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+
+  // .contact_form--table
   &--table {
     width: 100%;
-    margin-top: 30px;
-    border-collapse: collapse;
+    max-width: 900px;
+    margin: 0 auto 40px;
     background: #fff;
 
+    tr {
+      display: block;
+
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    }
+
     td {
-      padding: 10px;
-      vertical-align: middle;
+      display: block;
     }
 
     th {
       position: relative;
-      width: 225px;
+      display: block;
+      width: fit-content;
+      padding-left: 55px;
+      margin-bottom: 10px;
       font-weight: bold;
-      text-align: left;
-      vertical-align: top;
-      background-clip: padding-box !important;
 
       &::after {
         position: absolute;
-        top: 17px;
-        right: 15px;
+        top: 50%;
+        left: 0;
         padding: 4px 5px;
-        font-size: var(--fz12);
+        font-size: var(--fz14);
         font-weight: normal;
         line-height: 1;
+        transform: translate(0, -50%);
       }
     }
 
     .is-required::after {
-      color: #fff;
+      color: #ea0437;
       content: "必須";
-      background: #c90000;
+      border: 1px solid #ea0437;
+      border-radius: 5px;
     }
 
     .is-option::after {
-      color: #fff;
+      color: #6f6f6f;
       content: "任意";
-      background: #999;
+      border: 1px solid #6f6f6f;
+      border-radius: 5px;
     }
 
     @include max-mq {
@@ -119,7 +140,7 @@
     }
   }
 
-  // contact_form--btn
+  // .contact_form--btn
   &--btn {
     margin-top: 30px;
     overflow: hidden;
@@ -128,17 +149,19 @@
     input[type="submit"],
     input[type="button"],
     button[type="submit"] {
-      display: inline-block;
-      width: 220px;
-      height: 60px;
-      margin: 10px;
-      overflow: hidden;
-      font-weight: bold;
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      padding: 20px 0;
+      margin: auto;
       color: #fff;
       cursor: pointer;
-      background: #000;
+      background: #0052a7;
       border: none;
+      border-radius: 1000px;
       transition: 0.3s;
+      appearance: none;
 
       &:hover {
         opacity: 0.8;

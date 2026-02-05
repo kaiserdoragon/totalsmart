@@ -13,7 +13,7 @@
 <?php $slug_name = $post->post_name; ?>
 <main class="<?php echo $slug_name; ?>_page">
 
-  <section class="sec -sm">
+  <section class="sec -sm" id="confirm">
     <div class="container -md">
       <h2 class="ttl">
         お問い合わせ内容の確認です
