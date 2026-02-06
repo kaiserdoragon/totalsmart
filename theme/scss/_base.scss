@@ -45,7 +45,7 @@ body {
   }
 
   .single & {
-    padding: 0 min(4vw, 25px) 80px;
+    padding: 120px min(4vw, 25px) 80px;
   }
 }
 
@@ -96,9 +96,9 @@ main {
       top: 30%;
       left: 50%;
       width: 100%;
-      max-width: 300px;
+      max-width: 350px;
       margin: auto;
-      font-size: var(--fz45);
+      font-size: var(--fz35);
       text-align: center;
       transform: translate(-50%, 0);
     }

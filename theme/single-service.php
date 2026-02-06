@@ -21,8 +21,8 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
   <?php get_template_part('include/common', 'breadcrumb'); ?>
 </div>
 
-<div class="single_service">
-  <main>
+<main>
+  <div class="single_service">
     <?php if (have_posts()): while (have_posts()) : the_post(); ?>
         <article>
           <h2 class="page_detail_ttl"><?php the_title(); ?></h2>
@@ -43,10 +43,9 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
             <?php endif; ?>
           </li>
         </ul>
-
       <?php endwhile; ?>
     <?php endif; ?>
-  </main>
-</div>
+  </div>
+</main>
 
 <?php get_footer(); ?>

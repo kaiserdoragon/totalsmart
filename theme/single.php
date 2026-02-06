@@ -21,12 +21,16 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
   <img src="<?php echo get_template_directory_uri(); ?>/img/page/<?php echo $img_file; ?>" alt="<?php echo $title; ?>" width="1920" height="600" loading="lazy" decoding="async">
 </div>
 
-<div class="breadcrumbs--wrap">
-  <?php get_template_part('include/common', 'breadcrumb'); ?>
-</div>
-<div class="archive container">
-  <main class="<?php echo $slug . '_page'; ?>">
+
+
+<main class="<?php echo $slug . '_page'; ?>">
+
+  <div class="breadcrumbs--wrap">
+    <?php get_template_part('include/common', 'breadcrumb'); ?>
+  </div>
+  <div class="container">
     <?php if (have_posts()): while (have_posts()) : the_post(); ?>
+
         <article class="detail_page">
           <time class="post_meta--date" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.m.d'); ?></time>
           <h2 class="detail_page--ttl"><?php the_title(); ?></h2>
@@ -53,8 +57,10 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
             <?php endif; ?>
           </li>
         </ul>
+
       <?php endwhile; ?>
     <?php endif; ?>
-  </main>
-</div>
+  </div>
+</main>
+
 <?php get_footer(); ?>

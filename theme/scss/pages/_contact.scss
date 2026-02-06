@@ -16,6 +16,13 @@
 // ---------------------------------------------
 
 
+.contact_page {
+  .container {
+    padding: 80px min(4vw, 25px);
+    background: #fff;
+  }
+}
+
 .contact_corporate {
   p {
     line-height: 1.9;
@@ -37,6 +44,8 @@
       font-size: var(--fz16);
     }
   }
+
+
 
   // .contact_corporate--consent
   &--consent {
@@ -97,14 +106,4 @@
     margin: 40px auto 0;
     text-decoration: underline;
   }
-}
-
-#loading {
-  display: none;
-}
-
-.thanks {
-  padding: 20px;
-  font-size: var(--fz18);
-  text-align: center;
 }

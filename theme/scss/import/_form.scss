@@ -82,7 +82,6 @@
     width: 100%;
     max-width: 900px;
     margin: 0 auto 40px;
-    background: #fff;
 
     tr {
       display: block;
@@ -128,10 +127,6 @@
       content: "任意";
       border: 1px solid #6f6f6f;
       border-radius: 5px;
-    }
-
-    .contact_corporate-confirm_page & {
-      max-width: 300px;
     }
 
     @include max-mq {

@@ -27,6 +27,7 @@ img {
 
   span {
     display: block;
+    margin-top: 5px;
     font-size: var(--fz25);
     color: #333;
     letter-spacing: 0;
@@ -52,7 +53,7 @@ img {
   }
 
   @include max-mq {
-    font-size: var(--fz40);
+    font-size: var(--fz35);
   }
 }
 

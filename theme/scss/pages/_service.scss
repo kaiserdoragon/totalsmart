@@ -5,6 +5,7 @@
 //  サービス　専用
 // ---------------------------------------------
 
+// サービス一覧
 .service_page {
   p {
     margin-bottom: 80px;
@@ -38,7 +39,10 @@
   }
 }
 
+// サービス詳細
 .single_service {
+  margin-top: 120px;
+
   dl {
     box-sizing: border-box;
     max-width: 765px;
@@ -77,6 +81,7 @@
     margin: 100px auto 120px;
   }
 
+
   // .single_service--img
   &--img {
     width: 100%;
@@ -102,6 +107,33 @@
       content: "";
       background: url(../img/service/catch.png) no-repeat center / contain;
       transform: translate(-50%, 0);
+    }
+
+    @include max-mq {
+      &::before {
+        top: -175px;
+        width: 300px;
+      }
+    }
+  }
+
+  @include max-mq {
+    .wp-block-image img {
+      display: block;
+      width: 95%;
+      margin: auto;
+    }
+
+    p {
+      width: 95%;
+      max-width: none;
+      margin: 0 auto 280px;
+    }
+
+    dl {
+      width: 95%;
+      padding: 30px;
+      margin: 0 auto 60px;
     }
   }
 }
