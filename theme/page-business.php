@@ -108,28 +108,30 @@
       <ul>
         <li>
           <img src="<?php echo get_template_directory_uri(); ?>/img/business/strong_01.png" alt="" width="315" height="210" loading="lazy" decoding="async">
-          あなたの会社を
-          <span class="underline">より強く、<br class="is-hidden_sp">より快適に。</span>
-          最新設備と技術で、<br class="is-hidden_sp">
-          経営を刷新します。<br>
-          私たちは、御社の成長を設備面から<br class="is-hidden_sp">
-          支え続けます。
+          <p>
+            あなたの会社を
+            <span class="underline">より強く、<br class="is-hidden_sp">より快適に。</span>
+            最新設備と技術で、<br class="is-hidden_sp">
+            経営を刷新します。<br>
+            私たちは、御社の成長を設備面から<br class="is-hidden_sp">
+            支え続けます。
+          </p>
         </li>
         <li>
           <img src="<?php echo get_template_directory_uri(); ?>/img/business/strong_02.png" alt="" width="315" height="210" loading="lazy" decoding="async">
-          企業の成長と売上をしっかり支<br class="is-hidden_sp">
-          える、最適なソリューションで<br class="is-hidden_sp">
-          す。柔軟なシステムで業務効率<br class="is-hidden_sp">
-          を向上させ、<span class="underline">着実な売上アップ</span><br class="is-hidden_sp">
-          を実現します。
+          <p>
+            企業の成長と売上をしっかり支える、最適なソリューションです。<br>
+            柔軟なシステムで業務効率を向上させ、<span class="underline">着実な売上アップ</span><br class="is-hidden_sp">
+            を実現します。
+          </p>
         </li>
         <li>
           <img src="<?php echo get_template_directory_uri(); ?>/img/business/strong_03.png" alt="" width="315" height="210" loading="lazy" decoding="async">
-          あなたの会社を時代に合わせて<br class="is-hidden_sp">
-          革新します。急速に変化する現<br class="is-hidden_sp">
-          代において最新設備を導入、効<br class="is-hidden_sp">
-          率的なシステムの活用で、<span class="underline">競争<br class="is-hidden_sp">
-            力と快適さ</span>を実現します。
+          <p>
+            あなたの会社を時代に合わせて革新します。<br>
+            急速に変化する現代において最新設備を導入、<br class="is-hidden_sp">
+            効率的なシステムの活用で、<span class="underline">競争力と快適さ</span>を実現します。
+          </p>
         </li>
       </ul>
     </div>
@@ -196,7 +198,7 @@
           <img src="<?php echo get_template_directory_uri(); ?>/img/business/flow_01.png" alt="" width="340" height="200" loading="lazy" decoding="async">
           <dl>
             <dt>
-              ご提案
+              <span>ご提案</span>
               <span>～設備の効果～</span>
             </dt>
             <dd>
@@ -211,7 +213,7 @@
           <img src="<?php echo get_template_directory_uri(); ?>/img/business/flow_02.png" alt="" width="340" height="200" loading="lazy" decoding="async">
           <dl>
             <dt>
-              ご商談
+              <span>ご商談</span>
               <span>～見積もりの提示と調整～</span>
             </dt>
             <dd>
@@ -225,7 +227,7 @@
           <img src="<?php echo get_template_directory_uri(); ?>/img/business/flow_03.png" alt="" width="340" height="200" loading="lazy" decoding="async">
           <dl>
             <dt>
-              ご契約
+              <span>ご契約</span>
               <span>～ご契約後の流れについて</span>
             </dt>
             <dd>

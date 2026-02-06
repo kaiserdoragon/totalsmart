@@ -30,6 +30,12 @@
   img {
     margin-bottom: 5px;
   }
+
+  @include max-mq {
+    ul {
+      grid-template-columns: repeat(auto-fit, 45%);
+    }
+  }
 }
 
 .single_service {

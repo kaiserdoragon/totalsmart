@@ -13,7 +13,7 @@
     position: absolute;
     top: 50%;
     left: 6%;
-    font-size: 5.5vw;
+    font-size: 150px;
     font-weight: 900;
     line-height: 1.4;
     color: #fff;
@@ -23,7 +23,7 @@
 
     span {
       display: block;
-      font-size: 3vw;
+      font-size: 60px;
     }
   }
 
@@ -76,20 +76,20 @@
 
   @media (max-width: 1440px) {
     h1 {
-      font-size: 11rem;
+      font-size: 120px;
 
       span {
-        font-size: 2.7rem;
+        font-size: 50px;
       }
     }
   }
 
   @media (max-width: 1280px) {
     h1 {
-      font-size: 9rem;
+      font-size: 95px;
 
       span {
-        font-size: 4rem;
+        font-size: 50px;
       }
     }
   }
@@ -104,7 +104,7 @@
       transform: translate(-50%, -60%);
 
       span {
-        font-size: 3.1rem;
+        font-size: 40px;
       }
     }
   }
@@ -814,6 +814,9 @@
       &::after {
         content: none;
       }
+
+      width: 95%;
+      margin: 0 auto 30px;
     }
   }
 
@@ -1213,22 +1216,21 @@
     text-decoration: underline;
   }
 
-  // .infomation--list
+  // .information--list
   &--list {
     display: flex;
     flex-wrap: wrap;
-    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     justify-content: center;
     margin-bottom: 60px;
   }
 
-  // .infomation--meta
+  // .information--meta
   &--meta {
     margin: 15px 0 5px;
   }
 
-  // .infomation--cat
+  // .information--cat
   &--cat {
     display: inline-block;
     width: fit-content;
@@ -1367,7 +1369,7 @@
 
   dt {
     position: relative;
-    padding: 13px 0 13px 60px;
+    padding: 13px 20px 13px 60px;
     margin-bottom: 15px;
     font-size: var(--fz20);
     color: #fff;
@@ -1381,7 +1383,7 @@
       width: 30px;
       height: 30px;
       font-weight: 600;
-      line-height: 30px;
+      line-height: 1.25;
       color: #0052a7;
       text-align: center;
       content: "Q";
