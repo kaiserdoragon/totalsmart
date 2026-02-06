@@ -1,9 +1,10 @@
 <?php
 load_theme_textdomain('origintheme', get_template_directory() . '/languages');
 
-/*------------------------------------*\
-  セキュリティヘッダーの送信（.htaccessでも可だがPHPでも可能）
-\*------------------------------------*/
+// -------------------------------------
+// セキュリティヘッダーの送信
+// -------------------------------------
+
 function add_security_headers()
 {
   if (!is_admin()) {
@@ -16,9 +17,10 @@ function add_security_headers()
 add_action('send_headers', 'add_security_headers');
 
 
-/*------------------------------------*\
-	headからいらない項目を削除する
-\*------------------------------------*/
+
+// -------------------------------------
+// 	headからいらない項目を削除する
+// -------------------------------------
 
 function removed_scripts_styles()
 {
@@ -47,9 +49,10 @@ function removed_scripts_styles()
 add_action('wp_enqueue_scripts', 'removed_scripts_styles');
 
 
-/*------------------------------------*\
-	絵文字無効化
-\*------------------------------------*/
+// -------------------------------------
+// 		絵文字無効化
+// -------------------------------------
+
 add_action('init', function () {
   remove_action('wp_head', 'print_emoji_detection_script', 7);
   remove_action('wp_print_styles', 'print_emoji_styles');
@@ -61,25 +64,31 @@ add_action('init', function () {
   add_filter('wp_mail', 'wp_staticize_emoji_for_email'); // 必要なら外す
 });
 
-/*------------------------------------*\
-	oEmbed のJS（wp-embed.min.js）を読み込ませない
-\*------------------------------------*/
+
+
+// -------------------------------------
+//　oEmbed のJS（wp-embed.min.js）を読み込ませない
+// -------------------------------------
+
 add_action('wp_footer', function () {
   wp_dequeue_script('wp-embed');
 }, 100);
 
-/*------------------------------------*\
-	管理用アイコン（dashicons）をフロントで読み込まない
-\*------------------------------------*/
+
+// -------------------------------------
+//　管理用アイコン（dashicons）をフロントで読み込まない
+// -------------------------------------
+
 add_action('wp_enqueue_scripts', function () {
   if (! is_user_logged_in()) {
     wp_deregister_style('dashicons');
   }
 });
 
-/*------------------------------------*\
-Gutenberg用のCSSを読み込まない
-\*------------------------------------*/
+
+// -------------------------------------
+//　Gutenberg用のCSSを読み込まない
+// -------------------------------------
 
 function my_delete_plugin_files()
 {
@@ -89,9 +98,10 @@ function my_delete_plugin_files()
 add_action('wp_enqueue_scripts', 'my_delete_plugin_files');
 
 
-/*------------------------------------*\
-	外部のファイル・モジュールの読み込み External files
-\*------------------------------------*/
+// -------------------------------------
+//　外部のファイル・モジュールの読み込み External files
+// -------------------------------------
+
 //カスタムブロック呼び出し
 require_once locate_template('block/functions-include.php', true);
 
@@ -107,17 +117,23 @@ require_once locate_template('settings/settings-import.php', true);
 // 通常投稿にサンプル投稿を自動追加
 require_once locate_template('settings/sample-post.php', true);
 
-/*------------------------------------*\
-	テーマ機能設定 add_theme_support
-\*------------------------------------*/
+
+// -------------------------------------
+//　テーマ機能設定 add_theme_support
+// -------------------------------------
+
 if (!isset($content_width)) {
   $content_width = 1000; //テーマ内任意のoEmbedsや画像の最大許容幅
 }
 
-/*------------------------------------*\
-	画像のサムネイルサイズ設定 post-thumbnails
-\*------------------------------------*/
+
+// -------------------------------------
+//　画像のサムネイルサイズ設定 post-thumbnails
+// -------------------------------------
+
 if (function_exists('add_theme_support')) {
+
+
   // アップロード画像のサムネイル設定
   add_theme_support('post-thumbnails');
 
@@ -130,9 +146,8 @@ if (function_exists('add_theme_support')) {
 
   add_image_size('works-thumb', 352, 308, true);
 
-  /*------------------------------------*\
-      タイトルタグ　title-tag
-  \*------------------------------------*/
+
+
   //タイトルタグ使用をサポート（wp_headに自動でtitleタグが入ります）
   add_theme_support('title-tag');
   //タイトルタグ内のセパレーター設定
@@ -154,9 +169,9 @@ if (function_exists('add_theme_support')) {
 
 
 
-/*------------------------------------*\
-    読み込まれるcss関連
-\*------------------------------------*/
+// -------------------------------------
+//　読み込まれるcss関連
+// -------------------------------------
 
 add_action('wp_enqueue_scripts', function () {
   $uri  = function ($file) {
@@ -199,12 +214,20 @@ add_action('wp_enqueue_scripts', function () {
   );
 }, 5);
 
-// ===== type='text/css' を削除（任意・微小な省バイト）=====
+
+// -------------------------------------
+//　type='text/css' を削除（任意・微小な省バイト）
+// -------------------------------------
+
 add_filter('style_loader_tag', function ($tag) {
   return preg_replace('~\s+type=["\'][^"\']++["\']~', '', $tag);
 }, 9);
 
-// ===== 非クリティカルCSSを非ブロッキング化（プリロード + noscript）=====
+
+// -------------------------------------
+//　非クリティカルCSSを非ブロッキング化（プリロード + noscript）
+// -------------------------------------
+
 add_filter('style_loader_tag', function ($html, $handle, $href, $media) {
   if (is_admin()) return $html;
 
@@ -228,11 +251,9 @@ add_filter('style_loader_tag', function ($html, $handle, $href, $media) {
 }, 10, 4);
 
 
-
-
-/*------------------------------------*\
-読み込まれるjs関連
-\*------------------------------------*/
+// -------------------------------------
+//　読み込まれるjs関連
+// -------------------------------------
 if (! function_exists('theme_enqueue_js_only_optimized_assets')) {
 
   // フロント専用のスクリプト登録・読み込み（全て footer に配置）
@@ -314,9 +335,10 @@ if (! function_exists('theme_enqueue_js_only_optimized_assets')) {
 }
 
 
-/*------------------------------------*\
-    管理画面で変更可能なメニュー機能
-\*------------------------------------*/
+// -------------------------------------
+//   管理画面で変更可能なメニュー機能
+// -------------------------------------
+
 // メニューの場所名登録（管理画面に表示する名前）
 function register_menu()
 {
@@ -347,9 +369,10 @@ function add_globalmenu()
 }
 
 
-/*------------------------------------*\
-    投稿機能設定 post functions
-\*------------------------------------*/
+// -------------------------------------
+//  投稿機能設定 post functions
+// -------------------------------------
+
 // ====== newsを通常投稿のアーカイブページにする ======
 /*
  * 投稿にアーカイブ(投稿一覧)を持たせるようにします。
@@ -378,9 +401,9 @@ function wp_pagination()
 add_action('init', 'wp_pagination');
 
 
-/*------------------------------------*\
-    抜粋表示設定 the_excerpt();
-\*------------------------------------*/
+// -------------------------------------
+//  抜粋表示設定 the_excerpt();
+// -------------------------------------
 remove_filter('the_excerpt', 'wpautop'); // 自動挿入のpタグを抜粋欄から消す
 
 // 抜粋表示時のリンク表示を設定
@@ -401,9 +424,9 @@ function custom_excerpt_length($length)
 add_filter('excerpt_length', 'custom_excerpt_length', 999);
 
 
-/*------------------------------------*\
-  プラグイン関連設定  settings for plugin
-\*------------------------------------*/
+// -------------------------------------
+//  プラグイン関連設定  settings for plugin
+// -------------------------------------
 
 if (function_exists('bcn_display_list')) {
 
@@ -490,10 +513,10 @@ if (function_exists('bcn_display_list')) {
   }
 }
 
+// ---------------------------------------------
+//  投稿タイプごとに一覧・アーカイブページにて表示件数を変更する
+// ---------------------------------------------
 
-/*------------------------------------*\
-　投稿タイプごとに一覧・アーカイブページにて表示件数を変更する
-\*------------------------------------*/
 function my_customize_query_total_posts($query)
 {
   // 管理画面、またはメインクエリではない場合は何もしない
@@ -505,14 +528,15 @@ function my_customize_query_total_posts($query)
   $post_types = ['question', 'information', 'introduction', 'post'];
 
   if (is_post_type_archive($post_types) || is_home() || is_category()) {
-    $query->set('posts_per_page', 6);
+    $query->set('posts_per_page', 3);
   }
 }
 add_action('pre_get_posts', 'my_customize_query_total_posts');
 
-/*------------------------------------*\
-  カスタム追加設定 additional functions
-\*------------------------------------*/
+
+// ---------------------------------------------
+//  カスタム追加設定 additional functions
+// ---------------------------------------------
 
 function categories_label()
 {
@@ -574,9 +598,9 @@ function categories_label()
   echo $output;
 }
 
-// -------------------------------------
-// カスタム投稿表示件数変更
-// -------------------------------------
+// ---------------------------------------------
+//  カスタム投稿表示件数変更
+// ---------------------------------------------
 // function change_posts_per_page($query) {
 //   if ( is_admin() || ! $query->is_main_query() )
 //       return;

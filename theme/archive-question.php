@@ -35,12 +35,15 @@ $is_all_act = (is_post_type_archive('question') && !is_tax($taxonomy_slug));
   <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/page/<?php echo esc_attr($img_file); ?>" alt="<?php echo esc_attr($title); ?>" width="1920" height="600" loading="lazy" decoding="async">
 </div>
 
-<div class="breadcrumbs--wrap">
-  <?php get_template_part('include/common', 'breadcrumb'); ?>
-</div>
+
 
 <main class="<?php echo esc_attr($slug . '_page'); ?>">
-  <div class="archive">
+
+  <div class="breadcrumbs--wrap">
+    <?php get_template_part('include/common', 'breadcrumb'); ?>
+  </div>
+
+  <div class="archive_page">
     <div class="container">
       <h2 class="ttl">
         <?php echo esc_html($title); ?>
@@ -69,7 +72,7 @@ $is_all_act = (is_post_type_archive('question') && !is_tax($taxonomy_slug));
         <input type="search" id="js-question-search" placeholder="検索したいキーワードを入力してください" autocomplete="off">
       </div>
 
-      <section class="archive--inner">
+      <section class="archive--inner front-news">
         <ul id="js-question-results">
           <?php if (have_posts()) : ?>
             <?php while (have_posts()) : the_post(); ?>

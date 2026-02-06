@@ -25,12 +25,13 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
 </div>
 
 
-<div class="breadcrumbs--wrap">
-  <?php get_template_part('include/common', 'breadcrumb'); ?>
-</div>
-
 <main class="<?php echo $slug . '_page'; ?>">
-  <div class="archive">
+
+  <div class="breadcrumbs--wrap">
+    <?php get_template_part('include/common', 'breadcrumb'); ?>
+  </div>
+
+  <div class="archive_page">
     <div class="container -md">
       <section>
         <h2 class="ttl">
@@ -103,9 +104,9 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
           <p>記事が見つかりませんでした。</p>
         <?php endif; ?>
       </section>
-      <div class="pagination">
-        <?php wp_pagination(); ?>
-      </div>
+    </div>
+    <div class="pagination">
+      <?php wp_pagination(); ?>
     </div>
   </div>
 </main>

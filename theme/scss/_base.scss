@@ -61,10 +61,6 @@ main {
     }
   }
 
-  .archive & {
-    padding-top: 100px;
-  }
-
   // iPadポトレ用の設定もここに入れる
   @media (min-width: 768px) and (max-width: 769px) and (orientation: portrait) {
     min-height: 95vh;
@@ -102,7 +98,7 @@ main {
       width: 100%;
       max-width: 300px;
       margin: auto;
-      font-size: var(--fz55);
+      font-size: var(--fz45);
       text-align: center;
       transform: translate(-50%, 0);
     }
