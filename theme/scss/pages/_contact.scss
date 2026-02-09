@@ -21,6 +21,14 @@
     padding: 80px min(4vw, 25px);
     background: #fff;
   }
+
+  & .-confirm {
+    @include max-mq {
+      .eyecatch h1 {
+        top: 25%;
+      }
+    }
+  }
 }
 
 .contact_corporate {

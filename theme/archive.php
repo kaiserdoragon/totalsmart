@@ -1,7 +1,7 @@
 <?php
-/*------------------------------------*\
-お知らせ一覧ページ
-\*------------------------------------*/
+// ---------------------------------------------
+//  お知らせ一覧ページ
+// ---------------------------------------------
 ?>
 
 <?php get_header(); ?>
@@ -42,7 +42,7 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
         ];
         $categories = get_categories($args);
 
-        $all_url    = home_url('/news/');
+        $all_url    = home_url('/news');
         $is_all_act = (is_home() || is_post_type_archive('post'));
         ?>
 
@@ -54,10 +54,17 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
             <?php // --- カテゴリー一覧 --- 
             ?>
             <?php foreach ($categories as $cat) :
-              $url      = get_category_link($cat->term_id);
+              $url = get_category_link($cat->term_id);
               $is_active = is_category($cat->term_id);
+              $unique_class = 'cat-' . $cat->slug;
+              $li_classes = array();
+              $li_classes[] = $unique_class;
+              if ($is_active) {
+                $li_classes[] = 'is-active';
+              }
+              $class_attr = ' class="' . esc_attr(implode(' ', $li_classes)) . '"';
             ?>
-              <li<?php echo $is_active ? ' class="is-active"' : ''; ?>>
+              <li<?php echo $class_attr; ?>>
                 <a href="<?php echo esc_url($url); ?>">
                   <?php echo esc_html($cat->name); ?>
                 </a>

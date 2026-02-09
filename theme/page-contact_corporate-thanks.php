@@ -1,10 +1,10 @@
 <?php get_header(); ?>
-<div class="eyecatch">
+<div class="eyecatch -thanks">
   <?php if (has_post_thumbnail()): ?>
     <?php the_post_thumbnail(); ?>
   <?php else: ?>
   <?php endif; ?>
-  <h1>お問い合わせありがとうございました</h1>
+  <h1>お問い合わせ<br>ありがとうございました</h1>
 </div>
 
 <?php $slug_name = $post->post_name; ?>

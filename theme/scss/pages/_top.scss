@@ -11,7 +11,7 @@
 
   h1 {
     position: absolute;
-    top: 55%;
+    top: 52%;
     left: 6%;
     font-size: var(--fz120);
     font-weight: 900;
@@ -420,6 +420,11 @@
   &--logo {
     margin-right: 10px;
     vertical-align: baseline;
+    object-fit: cover;
+
+    @include max-mq {
+      width: 80%;
+    }
   }
 
   // .lead_solution--inner
@@ -654,7 +659,7 @@
     }
 
     li {
-      padding: 30px;
+      padding: 20px;
     }
   }
 }
@@ -717,12 +722,22 @@
   }
 
   @include max-mq {
+    h3 {
+      margin-bottom: 15px;
+    }
+
+    img {
+      margin: 0 auto 30px;
+    }
+
     ul {
       grid-template-columns: repeat(1, 1fr);
       gap: 60px;
     }
 
     li {
+      display: block;
+
       &::before {
         top: -25px;
         font-size: var(--fz25);

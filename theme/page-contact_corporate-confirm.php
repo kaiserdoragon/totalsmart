@@ -4,7 +4,7 @@
     <?php the_post_thumbnail(); ?>
   <?php else: ?>
   <?php endif; ?>
-  <h1>確認画面</h1>
+  <h1>確認画面です</h1>
 </div>
 
 <?php $slug_name = $post->post_name; ?>
@@ -15,7 +15,7 @@
       <?php get_template_part('include/common', 'breadcrumb'); ?>
     </div>
 
-    <section class="sec -sm contact_page" id="confirm">
+    <section class="sec -sm contact_page -confirm" id="confirm">
       <div class="container -md">
         <h2 class="ttl">
           お問い合わせ内容の確認です

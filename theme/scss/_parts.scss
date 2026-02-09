@@ -44,12 +44,16 @@ img {
     border-radius: 3px;
   }
 
-  // .attention--lead
+  // .ttl--lead
   &--lead {
     margin-bottom: 60px;
     font-size: var(--fz25);
     font-weight: 600;
     text-align: center;
+
+    @include max-mq {
+      margin-bottom: 40px;
+    }
   }
 
   @include max-mq {
@@ -70,8 +74,8 @@ img {
 
   @include tb-mq {
     padding: 0;
-    font-size: var(--fz27);
-    background-size: 100% 40px;
+    font-size: var(--fz30);
+    background-size: 100% 35px;
   }
 }
 

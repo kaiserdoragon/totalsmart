@@ -87,20 +87,53 @@ main {
     object-fit: cover;
   }
 
-  @include max-mq {
+  &.-thanks {
+    h1 {
+      top: 50%;
+      transform: translate(0, -25%);
+    }
+  }
+
+  @media (width <= 1450px) {
+    &.-thanks {
+      img {
+        aspect-ratio: 1920 / 1000;
+      }
+    }
+  }
+
+  @media (width <= 1150px) {
+    &.-thanks {
+      img {
+        aspect-ratio: 1920 / 1300;
+      }
+    }
+  }
+
+  @include tb-mq {
     img {
       aspect-ratio: 1920 / 1000;
     }
 
     h1 {
-      top: 30%;
+      top: 40%;
       left: 50%;
       width: 100%;
       max-width: 350px;
       margin: auto;
-      font-size: var(--fz35);
+      font-size: var(--fz40);
       text-align: center;
-      transform: translate(-50%, 0);
+      transform: translate(-50%, 0%);
+    }
+
+    &.-thanks {
+      h1 {
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        text-align: center;
+        transform: translate(-50%, -50%);
+      }
     }
   }
 }
@@ -223,7 +256,7 @@ main {
     }
   }
 
-  @include max-mq {
+  @include tb-mq {
     position: relative;
   }
 }
@@ -335,7 +368,7 @@ main {
     }
 
     @include tb-mq {
-      padding: 80px 0 0;
+      padding: 55px 0 0;
     }
   }
 
