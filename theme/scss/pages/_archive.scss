@@ -199,6 +199,74 @@
   }
 }
 
+
+.disclaimer {
+  margin: 40px auto;
+  overflow: hidden;
+  font-size: var(--fz20);
+  line-height: 1.9;
+  background: #fff;
+  border: 2px solid #959595;
+
+  // .disclaimer--ttl
+  &--ttl {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 12px 20px;
+    font-size: var(--fz23);
+    font-weight: bold;
+    color: #fff;
+    background: #959595;
+  }
+
+  // .disclaimer--inner
+  &--inner {
+    padding: 24px;
+    color: #333;
+  }
+
+  // .disclaimer--lead
+  &--lead {
+    margin: 0 0 24px;
+  }
+
+  // .disclaimer--list
+  &--list {
+    li {
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      padding-bottom: 4px;
+      margin: 0 0 8px;
+      font-size: var(--fz23);
+      font-weight: bold;
+      color: #333;
+      border-bottom: 1px dashed #7b7b7b;
+    }
+
+    strong {
+      font-weight: bold;
+      background: linear-gradient(transparent 60%, #fff9c4 60%); /* 黄色のマーカー風 */
+    }
+  }
+
+  // .disclaimer--attention
+  &--attention {
+    padding: 15px 20px;
+    margin-top: 30px;
+    background-color: #fff5f5; /* 薄い赤背景 */
+    border: 1px solid #ffcdd2;
+    border-radius: 4px;
+
+    strong {
+      color: #c62828; /* 濃い赤 */
+    }
+  }
+}
+
+
 // ---------------------------------------------
 //  導入実績　専用
 // ---------------------------------------------
