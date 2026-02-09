@@ -32,11 +32,24 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
     <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
         <article class="detail_page">
-          <time class="post_meta--date" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.m.d'); ?></time>
+          <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.m.d'); ?></time>
           <h2 class="detail_page--ttl"><?php the_title(); ?></h2>
           <ul class="detail_page--cat">
             <?php categories_label() ?>
           </ul>
+          <div class="detail_page--thumb">
+            <?php if (has_post_thumbnail()) : ?>
+              <?php the_post_thumbnail('info-thumb', $thumb_attr); ?>
+            <?php else : ?>
+              <img
+                src="<?php echo esc_url(get_theme_file_uri('/img/top/information.jpg')); ?>"
+                alt=""
+                width="345"
+                height="220"
+                loading="lazy"
+                decoding="async">
+            <?php endif; ?>
+          </div>
           <div>
             <?php the_content(); ?>
           </div>

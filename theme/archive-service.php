@@ -45,37 +45,31 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
       </p>
 
       <?php if (have_posts()) : ?>
-        <section>
-          <?php if (have_posts()) : ?>
-            <ul>
-              <?php while (have_posts()) : the_post(); ?>
-                <li>
-                  <a href="<?php the_permalink(); ?>">
-                    <figure>
-                      <?php if (has_post_thumbnail()) : ?>
-                        <?php the_post_thumbnail('service-thumb', [
-                          'alt'      => the_title_attribute(['echo' => false]),
-                          'loading'  => 'lazy',
-                          'decoding' => 'async',
-                          'width'    => '212',
-                          'height'   => '212',
-                        ]); ?>
-                      <?php else : ?>
-                        <img src="<?php echo esc_url(get_theme_file_uri('/img/top/service.jpg')); ?>" alt="" width="212" height="212" loading="lazy">
-                      <?php endif; ?>
+        <ul>
+          <?php while (have_posts()) : the_post(); ?>
+            <li>
+              <a href="<?php the_permalink(); ?>">
+                <figure>
+                  <?php if (has_post_thumbnail()) : ?>
+                    <?php the_post_thumbnail('service-thumb', [
+                      'alt'      => the_title_attribute(['echo' => false]),
+                      'loading'  => 'lazy',
+                      'decoding' => 'async',
+                      'width'    => '212',
+                      'height'   => '212',
+                    ]); ?>
+                  <?php else : ?>
+                    <img src="<?php echo esc_url(get_theme_file_uri('/img/top/service.jpg')); ?>" alt="" width="212" height="212" loading="lazy">
+                  <?php endif; ?>
 
-                      <figcaption>
-                        <h3><?php the_title(); ?></h3>
-                      </figcaption>
-                    </figure>
-                  </a>
-                </li>
-              <?php endwhile; ?>
-            </ul>
-          <?php else : ?>
-            <p>記事が見つかりませんでした。</p>
-          <?php endif; ?>
-        </section>
+                  <figcaption>
+                    <h3><?php the_title(); ?></h3>
+                  </figcaption>
+                </figure>
+              </a>
+            </li>
+          <?php endwhile; ?>
+        </ul>
       <?php else : ?>
         <p>記事が見つかりませんでした。</p>
       <?php endif; ?>

@@ -96,7 +96,7 @@
   }
 
   @include max-mq {
-    height: 75vh;
+    height: 60vh;
 
     h1 {
       left: 50%;
@@ -170,7 +170,7 @@
 
     @media (max-width: 767px) {
       p {
-        bottom: 30%;
+        bottom: 45%;
         font-size: 6rem;
       }
     }

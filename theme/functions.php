@@ -528,7 +528,7 @@ function my_customize_query_total_posts($query)
   $post_types = ['question', 'information', 'introduction', 'post'];
 
   if (is_post_type_archive($post_types) || is_home() || is_category()) {
-    $query->set('posts_per_page', 3);
+    $query->set('posts_per_page', 9);
   }
 }
 add_action('pre_get_posts', 'my_customize_query_total_posts');

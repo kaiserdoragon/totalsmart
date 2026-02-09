@@ -36,12 +36,16 @@
     ul {
       grid-template-columns: repeat(auto-fit, 45%);
     }
+
+    li {
+      text-align: center;
+    }
   }
 }
 
 // サービス詳細
 .single_service {
-  margin-top: 120px;
+  padding-top: 120px;
 
   dl {
     box-sizing: border-box;
@@ -118,6 +122,8 @@
   }
 
   @include max-mq {
+    padding-top: 80px;
+
     .wp-block-image img {
       display: block;
       width: 95%;

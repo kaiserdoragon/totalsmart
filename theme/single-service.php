@@ -28,21 +28,6 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
           <h2 class="page_detail_ttl"><?php the_title(); ?></h2>
           <?php the_content(); ?>
         </article>
-        <ul class="paging">
-          <li class="paging--item paging--item-next">
-            <?php if (get_next_post()): ?>
-              <?php next_post_link('%link', '%title', false); ?>
-            <?php endif; ?>
-          </li>
-          <li class="paging--item paging--item-gotolist">
-            <a href="<?php echo home_url(); ?>/service">一覧へ戻る</a>
-          </li>
-          <li class="paging--item paging--item-prev">
-            <?php if (get_previous_post()): ?>
-              <?php previous_post_link('%link', '%title', false); ?>
-            <?php endif; ?>
-          </li>
-        </ul>
       <?php endwhile; ?>
     <?php endif; ?>
   </div>

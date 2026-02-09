@@ -58,6 +58,10 @@ img {
 
   @include max-mq {
     font-size: var(--fz35);
+
+    span {
+      font-size: var(--fz20);
+    }
   }
 }
 
@@ -293,7 +297,7 @@ table {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 120px;
+  margin-top: 80px;
 
   & > span,
   a {

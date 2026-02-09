@@ -22,7 +22,11 @@
   }
 
   .container {
-    padding: 0 min(4vw, 25px) 100px;
+    padding: 0 min(4vw, 25px) 120px;
+  }
+
+  @include max-mq {
+    padding-top: 80px;
   }
 }
 
@@ -155,6 +159,17 @@
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 40px;
+  }
+
+  // .detail_page--cat
+  &--thumb {
+    margin-bottom: 30px;
+
+    img {
+      display: block;
+      width: 70%;
+      margin: auto;
+    }
   }
 }
 
