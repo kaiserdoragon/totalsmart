@@ -267,6 +267,29 @@
 }
 
 
+// SPテーブルの横スクロール
+.scroll_table {
+  max-width: 100%;
+  white-space: nowrap;
+
+  table {
+    width: 700px;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    width: 200px;
+    padding: 10px 15px;
+    border: 1px solid #222;
+  }
+
+  th {
+    background-color: #ddd;
+  }
+}
+
+
 // ---------------------------------------------
 //  導入実績　専用
 // ---------------------------------------------
