@@ -82,12 +82,38 @@
   }
 
   h2.wp-block-heading {
-    padding-left: 10px;
+    padding: 10px 15px;
     margin-bottom: 60px;
     font-size: var(--fz25);
     font-weight: 800;
-    color: #002669;
-    border-left: solid 6px #4472c4;
+    color: #333;
+    background: #f4f7f9;
+    border-left: 5px solid #4472c4; /* 信頼感のある青 */
+  }
+
+  h3.wp-block-heading {
+    position: relative;
+    padding: 10px 0;
+    font-size: var(--fz23);
+    font-weight: 800;
+    border-bottom: 5px solid #ddd;
+
+    &::before {
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 20%;
+      height: 5px;
+      content: "";
+      background: #4472c4;
+    }
+  }
+
+  h4.wp-block-heading {
+    padding: 10px 0;
+    font-size: var(--fz20);
+    font-weight: 800;
+    border-bottom: solid 3px #27acd9;
   }
 
   ul.wp-block-list,
