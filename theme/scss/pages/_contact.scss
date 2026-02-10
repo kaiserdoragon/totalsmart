@@ -86,6 +86,18 @@
         background: url(../img/contact/fax.png) no-repeat left center / 35px;
       }
     }
+
+    @include max-mq {
+      a {
+        padding-left: 30px;
+        font-size: var(--fz35);
+        background: url(../img/contact/tel.png) no-repeat left center / 25px;
+
+        &:last-of-type {
+          background: url(../img/contact/fax.png) no-repeat left center / 25px;
+        }
+      }
+    }
   }
 
   // .contact_corporate--time
