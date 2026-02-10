@@ -4,7 +4,8 @@ Template Name: エアコンのクリーニングLP
 */
 defined('ABSPATH') || exit;
 
-$page_url = esc_url_raw(get_permalink());
+$page_id  = get_queried_object_id();
+$page_url = esc_url_raw(get_permalink($page_id));
 $home_url = esc_url_raw(home_url('/'));
 
 $logo_url = esc_url_raw(get_theme_file_uri('cleaninglp/img/logo.png'));
@@ -16,12 +17,69 @@ $main_tel_intl      = '+81-52-932-5450';
 $tracking_tel_local = '0800-111-3816';
 $tracking_tel_intl  = '+81-800-111-3816';
 
+// tel: hrefは数字列（端末互換性重視）に正規化（表示テキストはそのまま）
+$tracking_tel_href = preg_replace('/[^0-9]/', '', $tracking_tel_local); // 08001113816
+$main_tel_href     = preg_replace('/[^0-9]/', '', $main_tel_local);     // 0529325450
+
+// SEOプラグインの有無（重複出力回避）
+$has_seo_plugin = defined('WPSEO_VERSION') || defined('RANK_MATH_VERSION') || defined('AIOSEO_VERSION');
+
 // このテンプレート用のdescription（必要なら固定文→カスタムフィールド化推奨）
 $meta_description = '愛知・岐阜・三重・静岡でエアコンクリーニング（分解洗浄）。最短当日対応、明朗会計。電話・メール・LINEで無料見積り。';
+$meta_description = wp_strip_all_tags($meta_description);
+if (function_exists('mb_strimwidth')) {
+  $meta_description = mb_strimwidth($meta_description, 0, 120, '…', 'UTF-8');
+}
+
+// title-tag 非対応テーマのための保険（テーマが対応ならwp_head側で出る）
+$meta_title = 'エアコンクリーニング（エアコン掃除）｜株式会社トータルスマート';
 
 // ---------------------------
 // JSON-LD（表示内容と整合）
+// ※SEOプラグインがschemaを出す場合が多いのでガード
 // ---------------------------
+$offers = [
+  [
+    '@type' => 'Offer',
+    'name'  => '簡単クリーニング（フィルター清掃・風速測定・温度測定）',
+    'url'   => $page_url . '#price',
+    'price' => '5000',
+    'priceCurrency' => 'JPY',
+    'priceSpecification' => [
+      '@type' => 'UnitPriceSpecification',
+      'price' => '5000',
+      'priceCurrency' => 'JPY',
+      'valueAddedTaxIncluded' => false, // LP表記が「税抜」
+    ],
+  ],
+  [
+    '@type' => 'Offer',
+    'name'  => 'しっかりクリーニング（分解洗浄）',
+    'url'   => $page_url . '#price',
+    'price' => '18000',
+    'priceCurrency' => 'JPY',
+    'priceSpecification' => [
+      '@type' => 'UnitPriceSpecification',
+      'price' => '18000',
+      'priceCurrency' => 'JPY',
+      'valueAddedTaxIncluded' => false,
+    ],
+  ],
+  [
+    '@type' => 'Offer',
+    'name'  => 'お掃除機能付きオプション',
+    'url'   => $page_url . '#price',
+    'price' => '6000',
+    'priceCurrency' => 'JPY',
+    'priceSpecification' => [
+      '@type' => 'UnitPriceSpecification',
+      'price' => '6000',
+      'priceCurrency' => 'JPY',
+      'valueAddedTaxIncluded' => false,
+    ],
+  ],
+];
+
 $website = [
   '@type' => 'WebSite',
   '@id'   => $home_url . '#website',
@@ -36,42 +94,18 @@ $primary_image = [
   'url'   => $mv_url,
 ];
 
-$offers = [
-  [
-    '@type' => 'Offer',
-    'name' => '簡単クリーニング（フィルター清掃・風速測定・温度測定）',
-    'url'  => $page_url . '#price',
-    'priceSpecification' => [
-      '@type' => 'UnitPriceSpecification',
-      'price' => '5000',
-      'priceCurrency' => 'JPY',
-      'valueAddedTaxIncluded' => false, // LP表記が「税抜」
-    ],
-  ],
-  [
-    '@type' => 'Offer',
-    'name' => 'しっかりクリーニング（分解洗浄）',
-    'url'  => $page_url . '#price',
-    'priceSpecification' => [
-      '@type' => 'UnitPriceSpecification',
-      'price' => '18000',
-      'priceCurrency' => 'JPY',
-      'valueAddedTaxIncluded' => false, // LP表記が「税抜」
-    ],
-  ],
-];
-
 $business = [
-  '@type' => ['LocalBusiness', 'HVACBusiness'],
+  // できる限り具体的なLocalBusinessサブタイプ（HVACBusiness）に寄せる
+  '@type' => 'HVACBusiness',
   '@id'   => $home_url . '#localbusiness',
   'name'  => '株式会社トータルスマート',
   'url'   => $home_url,
-  // 代表番号（NAP）をtelephoneに
+  // NAPの代表番号
   'telephone' => $main_tel_intl,
   'logo'  => $logo_url,
   'image' => [$mv_url],
-  // 単値よりレンジ表現を推奨
-  'priceRange' => '¥5,000〜¥18,000（税抜）',
+  // LP表示（5,000 / 18,000 + 6,000）に合わせてレンジを上限24,000まで含める
+  'priceRange' => '¥5,000〜¥24,000（税抜）',
   'paymentAccepted' => '現金',
   'currenciesAccepted' => 'JPY',
   'address' => [
@@ -88,7 +122,6 @@ $business = [
     ['@type' => 'AdministrativeArea', 'name' => '三重県'],
     ['@type' => 'AdministrativeArea', 'name' => '静岡県'],
   ],
-  // 代表番号＋（LPで表示している）受付番号の両方をContactPointに
   'contactPoint' => [
     [
       '@type' => 'ContactPoint',
@@ -103,7 +136,6 @@ $business = [
       'availableLanguage' => ['ja'],
     ],
   ],
-  // LP上に表示されている価格のみをOffer化（見えている情報と一致させる）
   'makesOffer' => $offers,
 ];
 
@@ -112,12 +144,7 @@ $service = [
   '@id'   => $page_url . '#service',
   'name'  => 'エアコンクリーニング（エアコン掃除）',
   'provider' => ['@id' => $home_url . '#localbusiness'],
-  'areaServed' => [
-    ['@type' => 'AdministrativeArea', 'name' => '愛知県'],
-    ['@type' => 'AdministrativeArea', 'name' => '岐阜県'],
-    ['@type' => 'AdministrativeArea', 'name' => '三重県'],
-    ['@type' => 'AdministrativeArea', 'name' => '静岡県'],
-  ],
+  'areaServed' => $business['areaServed'],
   'offers' => $offers,
 ];
 
@@ -125,10 +152,11 @@ $webpage = [
   '@type' => 'WebPage',
   '@id'   => $page_url . '#webpage',
   'url'   => $page_url,
-  'name'  => 'エアコンクリーニング（エアコン掃除）｜株式会社トータルスマート',
+  'name'  => $meta_title,
   'inLanguage' => 'ja-JP',
   'isPartOf' => ['@id' => $home_url . '#website'],
   'primaryImageOfPage' => ['@id' => $page_url . '#primaryimage'],
+  'about' => ['@id' => $page_url . '#service'],
   'mainEntity' => ['@id' => $page_url . '#service'],
 ];
 
@@ -141,7 +169,7 @@ $faqpage = [
       'name'  => '表示されている料金以外に、追加でかかる費用はありますか？',
       'acceptedAnswer' => [
         '@type' => 'Answer',
-        'text'  => 'エアコン本体の料金＋オプション（ご希望時のみ）が総額です。出張費・基本的な養生・洗浄作業料はすべて含まれています。勝手に追加請求することは一切ございません。',
+        'text'  => 'エアコン本体の料金＋オプション（ご希望時のみ）が総額です。出張費・基本的な養生・洗浄作業料はすべて含まれています。勝手に追加請求することは一切ございません。お客様にとって一番負担の少ない方法をご提案し、無理な工事を押しつけることもありません。',
       ],
     ],
     [
@@ -165,7 +193,7 @@ $faqpage = [
       'name'  => '事前に準備しておくことはありますか？',
       'acceptedAnswer' => [
         '@type' => 'Answer',
-        'text'  => 'エアコンの真下や周辺の小物の移動、作業スペース（1〜2畳）の確保、部品洗浄に使用できる場所（お風呂場またはベランダ等）のご提供をお願いしています。',
+        'text'  => '下記のご協力をお願いしています。エアコンの真下や周辺にある小物・壊れやすいものの移動、作業スペースとして1〜2畳ほどの空きスペースの確保、お風呂場またはベランダなど、部品洗浄に使用できる場所のご提供。',
       ],
     ],
     [
@@ -173,7 +201,7 @@ $faqpage = [
       'name'  => '猫や犬などのペットがいますが大丈夫ですか？',
       'acceptedAnswer' => [
         '@type' => 'Answer',
-        'text'  => '作業には基本的にオーガニック洗剤を使用しています。安心して下さい。',
+        'text'  => 'エアコンクリーニングなどの作業には基本的にはオーガニック洗剤を使用しています。安心して下さい。',
       ],
     ],
   ],
@@ -184,9 +212,9 @@ $ld_json = [
   '@graph' => [$website, $primary_image, $business, $service, $webpage, $faqpage],
 ];
 
-add_action('wp_head', static function () use ($ld_json) {
+add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
   static $printed = false;
-  if ($printed || is_admin()) {
+  if ($printed || is_admin() || $has_seo_plugin) {
     return;
   }
   $printed = true;
@@ -195,17 +223,16 @@ add_action('wp_head', static function () use ($ld_json) {
     . wp_json_encode($ld_json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
     . '</script>' . "\n";
 }, 1);
-?>
 
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 
 <head>
   <meta charset="<?php bloginfo('charset'); ?>" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="format-detection" content="telephone=no">
 
-  <!-- Preload（LPで実際に使っているアセットに合わせる） -->
   <link rel="preload" as="image" href="<?php echo esc_url(get_theme_file_uri('cleaninglp/img/logo.avif')); ?>" type="image/avif">
   <link rel="preload" as="image" href="<?php echo esc_url(get_theme_file_uri('cleaninglp/img/mv_sp.avif')); ?>" type="image/avif" media="(max-width: 767px)">
   <link rel="preload" as="image" href="<?php echo esc_url(get_theme_file_uri('cleaninglp/img/mv.avif')); ?>" type="image/avif" media="(min-width: 768px)">
@@ -213,17 +240,32 @@ add_action('wp_head', static function () use ($ld_json) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  </noscript>
 
-  <meta name="description" content="<?php echo esc_attr($meta_description); ?>">
+  <?php if (!$has_seo_plugin): ?>
+    <?php if (!current_theme_supports('title-tag')): ?>
+      <title><?php echo esc_html($meta_title); ?></title>
+    <?php endif; ?>
 
-  <!-- OG（必要なら。SEOプラグイン導入時は重複に注意） -->
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="ja_JP">
-  <meta property="og:title" content="エアコンクリーニング（エアコン掃除）｜株式会社トータルスマート">
-  <meta property="og:description" content="<?php echo esc_attr($meta_description); ?>">
-  <meta property="og:url" content="<?php echo esc_url($page_url); ?>">
-  <meta property="og:image" content="<?php echo esc_url($mv_url); ?>">
-  <meta name="twitter:card" content="summary_large_image">
+    <meta name="description" content="<?php echo esc_attr($meta_description); ?>">
+    <link rel="canonical" href="<?php echo esc_url($page_url); ?>">
+
+    <!-- OG（SEOプラグイン導入時は重複回避） -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:site_name" content="株式会社トータルスマート">
+    <meta property="og:title" content="<?php echo esc_attr($meta_title); ?>">
+    <meta property="og:description" content="<?php echo esc_attr($meta_description); ?>">
+    <meta property="og:url" content="<?php echo esc_url($page_url); ?>">
+    <meta property="og:image" content="<?php echo esc_url($mv_url); ?>">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo esc_attr($meta_title); ?>">
+    <meta name="twitter:description" content="<?php echo esc_attr($meta_description); ?>">
+    <meta name="twitter:image" content="<?php echo esc_url($mv_url); ?>">
+  <?php endif; ?>
 
   <link rel="icon" href="<?php echo esc_url(get_theme_file_uri('/img/icons/favicon.ico')); ?>">
   <link rel="apple-touch-icon" sizes="180x180" href="<?php echo esc_url(get_theme_file_uri('/img/icons/apple-touch-icon.png')); ?>">
@@ -236,9 +278,10 @@ add_action('wp_head', static function () use ($ld_json) {
 
   <header class="header">
     <div class="contents">
-      <section class="header--logo">
+      <div class="header--logo">
         <a href="<?php echo esc_url(home_url('/cleaninglp/')); ?>">
           <p>愛知県・岐阜県・三重県・静岡県のエアコンクリーニングはトータルスマート株式会社</p>
+
           <h1>
             <picture>
               <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo.avif" type="image/avif">
@@ -247,15 +290,15 @@ add_action('wp_head', static function () use ($ld_json) {
                 alt="株式会社トータルスマート"
                 width="397" height="262"
                 fetchpriority="high"
-                loading="eager"
                 decoding="async">
             </picture>
           </h1>
         </a>
-      </section>
+      </div>
+
       <div class="header--btns">
         <div class="header--btn-item">
-          <a href="tel:<?php echo esc_attr($tracking_tel_local); ?>" class="cv_button gtm-click-tel">
+          <a href="tel:<?php echo esc_attr($tracking_tel_href); ?>" class="cv_button gtm-click-tel">
             <picture>
               <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.avif" type="image/avif">
               <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.webp" type="image/webp">
@@ -266,6 +309,7 @@ add_action('wp_head', static function () use ($ld_json) {
             </picture>
           </a>
         </div>
+
         <div class="header--btn-item">
           <a href="#contact" class="cv_button gtm-click-mail">
             <picture>
@@ -278,6 +322,7 @@ add_action('wp_head', static function () use ($ld_json) {
             </picture>
           </a>
         </div>
+
         <div class="header--btn-item">
           <a href="https://lin.ee/fXrKQyq" class="cv_button gtm-click-line">
             <picture>
@@ -321,7 +366,6 @@ add_action('wp_head', static function () use ($ld_json) {
           alt="エアコンクリーニングなら株式会社トータルスマート"
           width="1920" height="800"
           fetchpriority="high"
-          loading="eager"
           decoding="async">
       </picture>
     </div>
@@ -371,7 +415,7 @@ add_action('wp_head', static function () use ($ld_json) {
             </p>
             <div class="header--btns">
               <div class="header--btn-item">
-                <a href="tel:<?php echo esc_attr($tracking_tel_local); ?>" class="cv_button gtm-click-tel">
+                <a href="tel:<?php echo esc_attr($tracking_tel_href); ?>" class="cv_button gtm-click-tel">
                   <picture>
                     <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.avif" type="image/avif">
                     <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.webp" type="image/webp">
@@ -434,7 +478,7 @@ add_action('wp_head', static function () use ($ld_json) {
         </picture>
         <div class="header--btns">
           <div class="header--btn-item">
-            <a href="tel:<?php echo esc_attr($tracking_tel_local); ?>" class="cv_button gtm-click-tel">
+            <a href="tel:<?php echo esc_attr($tracking_tel_href); ?>" class="cv_button gtm-click-tel">
               <picture>
                 <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.avif" type="image/avif">
                 <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.webp" type="image/webp">
@@ -520,32 +564,24 @@ add_action('wp_head', static function () use ($ld_json) {
         </h2>
         <ol>
           <li>
-            <h3>
-              確かな技術力・品質
-            </h3>
+            <h3>確かな技術力・品質</h3>
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_01.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
             <p>エアコン本体を分解し、アルミフィン・送風ファン・ドレンパンなど自分では触れない内部まで徹底洗浄します。
               お掃除機能付きエアコンにも対応しているので、ご自宅の機種も安心してお任せください。</p>
           </li>
           <li>
-            <h3>
-              明確な料金体系
-            </h3>
+            <h3>明確な料金体系</h3>
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_02.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
             <p>1台だけのご依頼から、複数台のご依頼まで、台数ごとのお得なセット料金をご用意しています。
               お掃除機能付きや室外機洗浄など、追加オプションも事前に料金をお伝えするため、当日になって突然金額が増えることはありません。</p>
           </li>
           <li>
-            <h3>
-              スピード対応
-            </h3>
+            <h3>スピード対応</h3>
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_03.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
             <p>移動時間を含めたスケジュール調整がしやすく、繁忙期を除けば最短当日〜数日以内のご訪問が可能です。</p>
           </li>
           <li>
-            <h3>
-              安心・安全への配慮
-            </h3>
+            <h3>安心・安全への配慮</h3>
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_04.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
             <p>作業中の思わぬトラブルにも備え、損害賠償保険に加入しています。
               室内はビニールシートでしっかり養生し、壁や床・家具に水や汚れが飛び散らないよう配慮して作業します。</p>
@@ -558,6 +594,7 @@ add_action('wp_head', static function () use ($ld_json) {
       <div class="contents">
         <span class="sign--catch">エアコンクリーニングするとここまできれいになります</span>
         <h2 class="ttl">施工事例</h2>
+
         <div class="case--item">
           <h3>まさか、この空気を吸っていたなんて…</h3>
           <div class="case--inner">
@@ -578,6 +615,7 @@ add_action('wp_head', static function () use ($ld_json) {
             </div>
           </div>
         </div>
+
         <div class="case--item">
           <h3>その黒ずみ、お客様に見られています。</h3>
           <div class="case--inner">
@@ -600,6 +638,7 @@ add_action('wp_head', static function () use ($ld_json) {
             </div>
           </div>
         </div>
+
         <div class="case--item">
           <h3>黄ばみを一掃してお店の好感度アップ！</h3>
           <div class="case--inner">
@@ -622,6 +661,7 @@ add_action('wp_head', static function () use ($ld_json) {
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -870,7 +910,7 @@ add_action('wp_head', static function () use ($ld_json) {
           <div>
             <dt>猫や犬などのペットがいますが大丈夫ですか？</dt>
             <dd>
-              エアコンクリーニングなどの作業には基本的にはオーガニック洗剤を使用しています<br>
+              エアコンクリーニングなどの作業には基本的にはオーガニック洗剤を使用しています。<br>
               安心して下さい。
             </dd>
           </div>
@@ -886,13 +926,13 @@ add_action('wp_head', static function () use ($ld_json) {
           こちらのフォームからご連絡ください。<br>
           無料でお見積もり・ご提案いたします。
         </p>
-        <?php echo apply_shortcodes('[contact-form-7 id="565" title="エアコンのクリーニングのフォーム"]'); ?>
+        <?php echo do_shortcode('[contact-form-7 id="565" title="エアコンのクリーニングのフォーム"]'); ?>
       </div>
     </section>
   </main>
 
   <div class="footer_btn_fixed" id="js_fixed-btn">
-    <p class="footer_btn_fixed--tel"><a href="tel:<?php echo esc_attr($tracking_tel_local); ?>">電話で<br>予約する</a></p>
+    <p class="footer_btn_fixed--tel"><a href="tel:<?php echo esc_attr($tracking_tel_href); ?>">電話で<br>予約する</a></p>
     <p class="footer_btn_fixed--mail"><a href="#contact">メールで<br>無料見積り</a></p>
     <p class="footer_btn_fixed--line"><a href="https://lin.ee/fXrKQyq">LINEで<br>問い合わせ</a></p>
   </div>
