@@ -68,7 +68,7 @@
         <tr>
           <th>グループ会社</th>
           <td>
-            アットソリューション株式会社　AT Solution Ltd
+            株式会社QUORIX
           </td>
         </tr>
       </table>

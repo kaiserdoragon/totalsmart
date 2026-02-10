@@ -60,6 +60,20 @@
     display: block;
     margin: auto;
   }
+
+  @include max-mq {
+    th {
+      display: block;
+      width: 100%;
+    }
+
+    td {
+      display: block;
+      padding: 15px 20px;
+      border-top: none;
+      border-left: 1px solid #063064;
+    }
+  }
 }
 
 .company_access {
@@ -126,6 +140,12 @@
     gap: 40px;
     justify-content: center;
   }
+
+  @include max-mq {
+    iframe {
+      width: 100%;
+    }
+  }
 }
 
 .company_date {
@@ -158,6 +178,13 @@
         aspect-ratio: 14 / 11;
         content: "";
         background: url(../img/company/checkbox.png) no-repeat left center / contain;
+      }
+    }
+
+    @include max-mq {
+      li {
+        padding-left: 25px;
+        text-indent: -25px;
       }
     }
   }
@@ -199,6 +226,10 @@
     display: block;
     width: 60%;
     margin: 0 auto 40px;
+
+    @include max-mq {
+      width: 80%;
+    }
   }
 
   // .company_message--illust
