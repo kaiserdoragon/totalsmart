@@ -1,0 +1,316 @@
+@charset "UTF-8";
+@use "variables" as *;
+
+// ---------------------------------------------
+//  base
+// ---------------------------------------------
+
+.siteHeader,
+.siteFooter,
+.vk-mobile-nav-menu-btn,
+.skip-link.screen-reader-text {
+  display: none !important;
+}
+
+html {
+  margin-top: 0 !important;
+  font-size: 62.5%;
+}
+
+body {
+  position: relative;
+  font-family: $font-sans;
+  font-size: var(--fz18);
+  font-weight: 500;
+  line-height: 1.6;
+  color: $color-body;
+}
+
+// font-sizeは下記の用に指定
+// font-size: var(--fz14);
+
+.wrap {
+  // min-width: 1200px;
+  margin: auto;
+
+  @include max-mq {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+.contents {
+  box-sizing: border-box;
+  width: min(1450px, 100%); // デザインの幅 + padding
+  padding: 0 min(4vw, 25px);
+  margin: auto;
+
+  &.-md {
+    width: min(1050px, 100%); // デザインの幅 + padding
+  }
+}
+
+main {
+  display: block;
+  padding-top: 150px;
+
+  @media (width <= 1200px) {
+    padding-top: 285px;
+  }
+
+  @include max-mq {
+    padding-top: 48vw;
+  }
+
+  @media (width <= 485px) {
+    padding-top: 190px;
+  }
+
+  @media (min-width: 768px) and (max-width: 769px) and (orientation: portrait) {
+    min-height: 95vh;
+  }
+}
+
+
+// ---------------------------------------------
+//  ヘッダー関連 header
+// ---------------------------------------------
+
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 1111111;
+  width: 100%;
+  background: #fff;
+
+  .contents {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px min(4vw, 25px);
+  }
+
+  p {
+    max-width: 410px;
+    margin: auto;
+    font-size: var(--fz12);
+    font-weight: 900;
+    text-align: center;
+  }
+
+  // .header--btns
+  &--btns {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+
+    @include max-mq {
+      gap: 3px;
+    }
+  }
+
+  // .header--logo
+  &--logo {
+    @include max-mq {
+      img {
+        display: block;
+        width: 80%;
+        margin: auto;
+      }
+    }
+  }
+
+  @media (width <= 1280px) {
+    .contents {
+      gap: 15px;
+      justify-content: center;
+    }
+  }
+
+  @include max-mq {
+    .contents {
+      row-gap: 10px;
+      padding: 25px 10px 20px;
+    }
+  }
+}
+
+// ---------------------------------------------
+//  グローバルナビゲーション関連 gnav
+// ---------------------------------------------
+
+.gnav_btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+  display: block;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  background: $color-primary;
+  border: solid 2px #fff;
+
+  span {
+    position: absolute;
+    left: 15%;
+    display: block;
+    width: 70%;
+    height: 3px;
+    background: #fff;
+    transition: 0.3s;
+
+    &:first-child {
+      top: 23%;
+    }
+
+    &:nth-child(2) {
+      top: 48%;
+      opacity: 1;
+    }
+
+    &:last-child {
+      top: 72%;
+    }
+  }
+
+  &.is-open {
+    span {
+      transition: 0.2s;
+
+      &:first-child {
+        top: 48%;
+        transform: rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        display: none;
+        opacity: 0;
+      }
+
+      &:last-child {
+        top: 48%;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  @include min-mq {
+    display: none; // PC時非表示
+  }
+}
+
+.gnav {
+  display: block;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  a {
+    display: block;
+    padding: 15px 0;
+  }
+
+  @include max-mq {
+    position: fixed;
+    top: 0;
+    right: -110%;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+
+    &.is-open {
+      right: 0;
+    }
+
+    ul {
+      display: block;
+    }
+
+    a {
+      display: block;
+    }
+  }
+}
+
+// ---------------------------------------------
+//  フッター関連 footer
+// ---------------------------------------------
+
+.footer {
+  padding: 40px 0 0;
+  border-top: 2px solid #b0b0b0;
+
+  .contents {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  // .footer--logo
+  &--logo {
+    a {
+      display: block;
+      margin-bottom: 30px;
+    }
+
+    img {
+      margin-bottom: 5px;
+    }
+
+    p {
+      max-width: 410px;
+      font-size: var(--fz12);
+      font-weight: 900;
+      text-align: center;
+    }
+
+    @include max-mq {
+      a {
+        text-align: center;
+      }
+    }
+  }
+
+  // .footer--info
+  &--info {
+    @include max-mq {
+      text-align: center;
+    }
+  }
+
+  // .footer--copy
+  &--copy {
+    padding: 10px;
+    text-align: center;
+  }
+
+  @media (width <= 1024px) {
+    .contents {
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+
+/* recaptcha badge */
+.grecaptcha-badge {
+  z-index: 9999;
+  margin-bottom: 70px;
+}
+
+@media (min-width: 992px) {
+  .grecaptcha-badge {
+    margin-bottom: 0;
+  }
+}

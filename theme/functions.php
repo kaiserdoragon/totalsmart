@@ -175,26 +175,55 @@ if (function_exists('add_theme_support')) {
 
 add_action('wp_enqueue_scripts', function () {
 
+  $lp_pages = ['cleaninglp', 'shuurilp', 'cleaning_thanks', 'shuuri_thanks'];
+  $is_lp    = is_page($lp_pages);
+
   $uri  = fn($file) => get_theme_file_uri($file);
   $path = fn($file) => get_theme_file_path($file);
 
   $enqueue = function ($handle, $file, $deps = [], $media = 'all') use ($uri, $path) {
     $p = $path($file);
     if (!file_exists($p)) return;
-    $ver = (string) filemtime($p);
-    wp_enqueue_style($handle, $uri($file), $deps, $ver, $media);
+    wp_enqueue_style($handle, $uri($file), $deps, (string) filemtime($p), $media);
   };
 
-  $enqueue('mytheme-reset',      'css/reset.css', []);
-  $enqueue('mytheme-swiper',     'css/swiper-bundle.min.css', ['mytheme-reset']);
-  $enqueue('mytheme-scrollhint', 'css/scroll-hint.css',        ['mytheme-reset']);
+  // ─────────────────────────────
+  // 全体CSSだけ（LPには適応されない）
+  // ─────────────────────────────
+  if (!$is_lp) {
+    $enqueue('mytheme-reset',      'css/reset.css', []);
+    $enqueue('mytheme-swiper',     'css/swiper-bundle.min.css', ['mytheme-reset']);
+    $enqueue('mytheme-scrollhint', 'css/scroll-hint.css',        ['mytheme-reset']);
+    $enqueue('mytheme-theme',      'style.css', ['mytheme-reset', 'mytheme-swiper', 'mytheme-scrollhint']);
+    $enqueue('mytheme-custom',     'css/style.css', ['mytheme-theme']);
+    return;
+  }
 
-  // 親（テーマ）を libs の後に読む（必要なら上書きしやすい）
-  $enqueue('mytheme-theme',      'style.css', ['mytheme-reset', 'mytheme-swiper', 'mytheme-scrollhint']);
+  // ─────────────────────────────
+  // LP専用CSSだけ（クリーニング、修理など）
+  // ─────────────────────────────
+  if (is_page(['cleaninglp', 'cleaning_thanks'])) {
+    $folder = 'cleaninglp';
 
-  // 最後に自前のスタイル（theme + scrollhint を上書きできる）
-  $enqueue('mytheme-custom',     'css/style.css', ['mytheme-theme']);
-}, 5);
+    $enqueue('lp-cleaning-reset',      "{$folder}/css/reset.css", []);
+    $enqueue('lp-cleaning-scrollhint', "{$folder}/css/scroll-hint.css", ['lp-cleaning-reset']);
+    $enqueue('lp-cleaning-main',       "{$folder}/css/style.css", ['lp-cleaning-reset', 'lp-cleaning-scrollhint']);
+
+    return;
+  }
+
+  if (is_page(['shuurilp', 'shuuri_thanks'])) {
+    $folder = 'shuurilp';
+
+    $enqueue('lp-shuuri-reset', "{$folder}/css/reset.css", []);
+    $enqueue('lp-shuuri-main',  "{$folder}/css/style.css", ['lp-shuuri-reset']);
+
+    return;
+  }
+}, 20);
+
+
+
 
 
 
@@ -238,13 +267,26 @@ add_filter('style_loader_tag', function ($html, $handle, $href, $media) {
 // -------------------------------------
 //　読み込まれるjs関連
 // -------------------------------------
-if (! function_exists('theme_enqueue_js_only_optimized_assets')) {
 
-  // フロント専用のスクリプト登録・読み込み（全て footer に配置）
+// LP（特定のスラッグ）により条件判定させる
+if (!function_exists('theme_is_lp_page')) {
+  function theme_is_lp_page()
+  {
+    return is_page(array('cleaninglp', 'shuurilp', 'cleaning_thanks', 'shuuri_thanks'));
+  }
+}
+
+
+
+if (!function_exists('theme_enqueue_js_only_optimized_assets')) {
+
+  /**
+   * 全体（LP以外）で使うJSを読み込む
+   */
   function theme_enqueue_js_only_optimized_assets()
   {
 
-    // 管理画面・ログイン画面・REST/AJAX/cron・WP-CLI 等には影響させない
+    // 管理画面・ログイン・REST/AJAX/cron・WP-CLI 等には影響させない
     if (
       is_admin()
       || (defined('WP_CLI') && WP_CLI)
@@ -260,58 +302,93 @@ if (! function_exists('theme_enqueue_js_only_optimized_assets')) {
     $theme_dir = get_stylesheet_directory();
     $theme_uri = get_stylesheet_directory_uri();
 
-    // ヘルパー：ファイルの最終更新時刻を version に使う
-    $register_script = function ($handle, $relative_path, $deps = array(), $strategy = 'defer') use ($theme_dir, $theme_uri) {
+    // 共通ヘルパー：ローカルJSを（存在すれば）登録・enqueue
+    $register_local_script = function ($handle, $relative_path, $deps = array(), $strategy = 'defer') use ($theme_dir, $theme_uri) {
       $relative_path = ltrim($relative_path, '/');
       $full_path     = $theme_dir . '/' . $relative_path;
 
-      // ファイルが無いなら何もしない（404を避ける）
-      if (! file_exists($full_path)) {
-        return;
+      if (!file_exists($full_path)) {
+        return false;
       }
 
       $src = $theme_uri . '/' . $relative_path;
       $ver = filemtime($full_path);
 
-      // footer に読み込む（最後の引数 true）
       wp_register_script($handle, $src, $deps, $ver, true);
 
-      // WordPress 6.3+ の「strategy」で defer/async を付与（旧版では無害に無視される）
-      // ※ 依存関係ツリーも考慮されるため、タグ出力時の置換より安全
-      if (! empty($strategy) && function_exists('wp_script_add_data')) {
-        wp_script_add_data($handle, 'strategy', $strategy); // 'defer' または 'async'
+      // WP 6.3+ の loading strategy（旧版では無害に無視される）
+      if (!empty($strategy) && function_exists('wp_script_add_data')) {
+        wp_script_add_data($handle, 'strategy', $strategy);
       }
 
       wp_enqueue_script($handle);
+      return true;
     };
 
-    // スクリプト登録
-    $register_script('swiperjs',    'js/swiper-bundle.min.js', array(), 'defer');
-    $register_script('scrollhint',    'js/scroll-hint.min.js', array(), 'defer');
-    $register_script('mainscripts', 'js/scripts.js',           array('jquery'), 'defer');
-    $register_script('animationjs', 'js/animation.js',         array('jquery'), 'defer');
-    $register_script('slider',      'js/slider.js',            array('jquery', 'swiperjs'), 'defer');
+    // ===== LPページ：全体JSを読まない。LP専用（ローカル）だけ読む =====
+    if (theme_is_lp_page()) {
 
-    // ページごとの条件付き読み込み例
+      // LPグループ判定（thanks も同フォルダ運用）
+      $folder = '';
+      if (is_page(array('cleaninglp', 'cleaning_thanks'))) {
+        $folder = 'cleaninglp';
+      } elseif (is_page(array('shuurilp', 'shuuri_thanks'))) {
+        $folder = 'shuurilp';
+      } else {
+        return;
+      }
+
+      // 1) LP用 scroll-hint（ローカルのみ。CDNは使わない）
+      $scrollhint_handle = "lp-{$folder}-scrollhint";
+      $scrollhint_loaded = $register_local_script(
+        $scrollhint_handle,
+        "{$folder}/js/scroll-hint.min.js",
+        array(),
+        'defer'
+      );
+
+      // 2) LP用メインJS（scroll-hint がある時だけ依存に入れる）
+      $deps = array('jquery');
+      if ($scrollhint_loaded) {
+        $deps[] = $scrollhint_handle;
+      }
+
+      $register_local_script(
+        "lp-{$folder}-scripts",
+        "{$folder}/js/scripts.js",
+        $deps,
+        'defer'
+      );
+
+      return;
+    }
+
+    // ===== 全体JS（LP以外でのみ読み込み）=====
+    $register_local_script('swiperjs',     'js/swiper-bundle.min.js', array(), 'defer');
+    $register_local_script('scrollhint',   'js/scroll-hint.min.js',   array(), 'defer');
+    $register_local_script('mainscripts',  'js/scripts.js',           array('jquery'), 'defer');
+    $register_local_script('animationjs',  'js/animation.js',         array('jquery'), 'defer');
+    $register_local_script('slider',       'js/slider.js',            array('jquery', 'swiperjs'), 'defer');
+
     if (is_front_page()) {
-      $register_script('loadinganimation', 'js/loadinganimation.js', array('jquery'), 'defer');
+      $register_local_script('loadinganimation', 'js/loadinganimation.js', array('jquery'), 'defer');
     }
   }
+
   add_action('wp_enqueue_scripts', 'theme_enqueue_js_only_optimized_assets', 20);
 
 
-  // ★フォールバック（WP 6.3未満向け）
-  // script タグに defer を付与（安全性考慮：jQuery 等は除外）
+  /**
+   * scriptタグへ defer を付与（全体JSのみ）
+   */
   function theme_add_defer_attribute_safe($tag, $handle, $src)
   {
 
-    // 6.3+ ならコアの strategy に任せる（重複付与や順序問題を避ける）
     global $wp_version;
     if (isset($wp_version) && version_compare($wp_version, '6.3', '>=')) {
       return $tag;
     }
 
-    // フロント以外、Ajax、REST、cron などでは触らない
     if (
       is_admin()
       || (function_exists('wp_doing_ajax') && wp_doing_ajax())
@@ -321,7 +398,7 @@ if (! function_exists('theme_enqueue_js_only_optimized_assets')) {
       return $tag;
     }
 
-    // defer を付けたくないハンドル（コアや互換性リスクがあるもの）
+    // defer を付けたくないハンドル
     $exclude_handles = array(
       'jquery',
       'jquery-core',
@@ -329,19 +406,16 @@ if (! function_exists('theme_enqueue_js_only_optimized_assets')) {
       'wp-emoji-release',
       'wp-embed',
     );
-
     if (in_array($handle, $exclude_handles, true)) {
       return $tag;
     }
 
-    // defer を付けたいハンドル（ここに該当するハンドルのみ付与）
+    // defer を付けたいハンドル（全体JSのみ）
     $defer_handles = array('mainscripts', 'slider', 'animationjs', 'swiperjs', 'loadinganimation', 'scrollhint');
-
-    if (! in_array($handle, $defer_handles, true)) {
+    if (!in_array($handle, $defer_handles, true)) {
       return $tag;
     }
 
-    // 既に defer / async / module 指定があれば二重付与しない
     if (
       stripos($tag, ' defer') !== false
       || stripos($tag, ' async') !== false
@@ -350,9 +424,9 @@ if (! function_exists('theme_enqueue_js_only_optimized_assets')) {
       return $tag;
     }
 
-    // 最小限の置換で defer 属性を付与
     return preg_replace('/<script(\s)/i', '<script defer$1', $tag, 1);
   }
+
   add_filter('script_loader_tag', 'theme_add_defer_attribute_safe', 10, 3);
 }
 
