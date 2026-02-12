@@ -1,5 +1,59 @@
 <?php get_header(); ?>
+
+<script type="application/ld+json">
+  [{
+      "@context": "https://schema.org",
+      "@type": "GeneralContractor",
+      "name": "トータルスマート株式会社",
+      "alternateName": "Total Smart Co., Ltd.",
+      "url": "<?php echo esc_url(home_url('/')); ?>",
+      "logo": "<?php echo get_template_directory_uri(); ?>/img/common/logo.png",
+      "description": "名古屋市を中心に愛知・岐阜・三重・静岡でオフィス・店舗のコスト削減、設備工事を一括対応する総合設備会社。",
+      "address": {
+        "@type": "PostalAddress",
+        "postalCode": "461-0002",
+        "addressRegion": "愛知県",
+        "addressLocality": "名古屋市東区",
+        "streetAddress": "代官町16-17 アーク代官町ビルディング2F",
+        "addressCountry": "JP"
+      },
+      "telephone": "052-932-5450",
+      "areaServed": ["愛知県", "岐阜県", "三重県", "静岡県"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+          "@type": "Question",
+          "name": "法人契約でないと契約は出来ないのですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "商品サービスによって異なりますが､ご商売をされているお客さまでしたらお申込いただけます｡"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "料金はいくらですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ご利用企業様の利用計画に応じて、さまざまな料金プランをご用意しております。詳しくはお問い合わせください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "導入までにどれくらい時間がかかりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "お申し込み後、数日でご利用を開始していただけます。契約後は専任のスタッフにより、開設・ご利用方法をご説明いたします。"
+          }
+        }
+      ]
+    }
+  ]
+</script>
+
 <main>
+
   <section class="mv">
     <h1>
       <span>賢く安く簡単に最適なコスト削減</span>
@@ -243,17 +297,15 @@
         'hide_empty' => true,
       ]);
 
-      if (!empty($terms) && !is_wp_error($terms)) :
-        $json_ld_services = [];
+      $json_ld_services = []; // ★SEO強化: 構造化データ用配列の初期化
 
-        // ★ここを -1 にすれば無制限、20 にすれば最大20個まで出ます
+      if (!empty($terms) && !is_wp_error($terms)) :
         $display_limit = -1;
         $current_count = 0;
       ?>
         <ul class="service--list">
           <?php
           foreach ($terms as $term) :
-            // 合計表示数が上限に達したら終了
             if ($display_limit !== -1 && $current_count >= $display_limit) break;
 
             $args = [
@@ -275,6 +327,7 @@
               while ($service_query->have_posts()) : $service_query->the_post();
                 $current_count++;
 
+                // ★SEO強化: ループ内でサービスデータを蓄積
                 $json_ld_services[] = [
                   '@type' => 'ListItem',
                   'position' => $current_count,
@@ -312,6 +365,17 @@
           ?>
         </ul>
       <?php endif; ?>
+
+      <?php if (!empty($json_ld_services)) : ?>
+        <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": <?php echo json_encode($json_ld_services, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
+          }
+        </script>
+      <?php endif; ?>
+
       <a class="btn_link" href="<?php echo esc_url(home_url('/service')); ?>" rel="noopener">サービス一覧を見る</a>
     </div>
   </section>
@@ -640,6 +704,26 @@
     </div>
   </section>
 
+  <?php
+  /**
+   * よくある質問（SEO対応版）
+   * データをPHP配列化し、HTMLとJSON-LD（構造化データ）の両方に利用します
+   */
+  $faq_data = [
+    [
+      'q' => '法人契約でないと契約は出来ないのですか？',
+      'a' => '商品サービスによって異なりますが､ご商売をされているお客さまでしたらお申込いただけます｡'
+    ],
+    [
+      'q' => '料金はいくらですか？',
+      'a' => 'ご利用企業様の利用計画に応じて、さまざまな料金プランをご用意しております。詳しくはお問い合わせください。'
+    ],
+    [
+      'q' => '導入までにどれくらい時間がかかりますか？',
+      'a' => 'お申し込み後、数日でご利用を開始していただけます。契約後は専任のスタッフにより、開設・ご利用方法をご説明いたします。'
+    ]
+  ];
+  ?>
   <section class="question sec bg_white">
     <div class="container">
       <h2 class="ttl">
@@ -648,12 +732,10 @@
       </h2>
       <p>皆様からのご質問を回答させていただいています。</p>
       <dl>
-        <dt>法人契約でないと契約は出来ないのですか？</dt>
-        <dd>商品サービスによって異なりますが､ご商売をされているお客さまでしたらお申込いただけます｡</dd>
-        <dt>料金はいくらですか？</dt>
-        <dd>ご利用企業様の利用計画に応じて、さまざまな料金プランをご用意しております。詳しくはお問い合わせください。</dd>
-        <dt>導入までにどれくらい時間がかかりますか？</dt>
-        <dd>お申し込み後、数日でご利用を開始していただけます。契約後は専任のスタッフにより、開設・ご利用方法をご説明いたします。</dd>
+        <?php foreach ($faq_data as $faq) : ?>
+          <dt><?php echo esc_html($faq['q']); ?></dt>
+          <dd><?php echo esc_html($faq['a']); ?></dd>
+        <?php endforeach; ?>
       </dl>
       <a class="btn_link" href="<?php echo esc_url(home_url('/question')); ?>" rel="noopener">よくある質問の一覧を見る</a>
     </div>
