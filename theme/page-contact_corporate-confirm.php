@@ -4,7 +4,7 @@
     <?php the_post_thumbnail(); ?>
   <?php else: ?>
   <?php endif; ?>
-  <h1>確認画面です</h1>
+  <div>確認画面です</div>
 </div>
 
 <?php $slug_name = $post->post_name; ?>
@@ -17,10 +17,10 @@
 
     <section class="sec -sm contact_page -confirm" id="confirm">
       <div class="container -md">
-        <h2 class="ttl">
+        <h1 class="ttl">
           お問い合わせ内容の確認です
           <span>CONFIRM</span>
-        </h2>
+        </h1>
         <?php echo apply_shortcodes('[contact-form-7 id="5655751" title="お問い合わせの確認画面（コーポレートサイト）"]'); ?>
       </div>
     </section>

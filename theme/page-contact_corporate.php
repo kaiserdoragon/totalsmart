@@ -4,7 +4,7 @@
     <?php the_post_thumbnail(); ?>
   <?php else: ?>
   <?php endif; ?>
-  <h1>お問い合わせ</h1>
+  <div>お問い合わせ</div>
 </div>
 
 <?php $slug_name = $post->post_name; ?>
@@ -17,10 +17,10 @@
 
     <section class="contact_corporate sec -sm contact_page">
       <div class="container -md">
-        <h2 class="ttl">
+        <h1 class="ttl">
           お問い合わせ
           <span>CONTACT</span>
-        </h2>
+        </h1>
         <p class="u-mb30">
           メールでのお問い合わせは、下記のフォームにご入力ください。<br>
           内容を確認後、メールまたはお電話にてご連絡させていただきます。<br>

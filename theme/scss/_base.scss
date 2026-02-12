@@ -129,7 +129,7 @@ main {
       aspect-ratio: 1920 / 1000;
     }
 
-    h1 {
+    div {
       top: 40%;
       left: 50%;
       width: 100%;
@@ -140,8 +140,21 @@ main {
       transform: translate(-50%, 0%);
     }
 
-    &.-thanks {
+    .page & {
       h1 {
+        top: 40%;
+        left: 50%;
+        width: 100%;
+        max-width: 350px;
+        margin: auto;
+        font-size: var(--fz40);
+        text-align: center;
+        transform: translate(-50%, 0%);
+      }
+    }
+
+    &.-thanks {
+      div {
         top: 50%;
         left: 50%;
         width: 100%;

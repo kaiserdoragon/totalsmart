@@ -94,6 +94,7 @@
   h3.wp-block-heading {
     position: relative;
     padding: 10px 0;
+    margin-bottom: 30px;
     font-size: var(--fz23);
     font-weight: 800;
     border-bottom: 5px solid #ddd;
@@ -156,8 +157,12 @@
   .wp-block-button__link {
     display: block;
     width: 100%;
-    max-width: 320px;
+    max-width: 400px;
     margin: auto;
+  }
+
+  .wp-block-table thead {
+    border-bottom: 3px solid #001151;
   }
 
   .cat_label {
@@ -281,23 +286,39 @@
 
 // SPテーブルの横スクロール
 .scroll_table {
-  max-width: 100%;
-  white-space: nowrap;
+  max-width: 100% !important;
+  white-space: nowrap !important;
 
   table {
-    width: 700px;
-    border-collapse: collapse;
+    width: 950px !important;
+    table-layout: unset !important;
+    border-collapse: collapse !important;
   }
 
   th,
   td {
-    width: 200px;
-    padding: 10px 15px;
-    border: 1px solid #222;
+    width: 300px;
+    padding: 10px 15px !important;
   }
 
   th {
-    background-color: #ddd;
+    color: #fff;
+    background: #2753a2;
+    border-top: 1px solid #2753a2 !important;
+  }
+
+  tr {
+    &:first-child {
+      th {
+        &:first-child {
+          border-left: 1px solid #2753a2 !important;
+        }
+
+        &:last-child {
+          border-right: 1px solid #2753a2 !important;
+        }
+      }
+    }
   }
 }
 
