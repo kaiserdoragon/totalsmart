@@ -153,6 +153,13 @@
     }
   }
 
+  .wp-block-button__link {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin: auto;
+  }
+
   .cat_label {
     display: block;
     width: 130px;
@@ -271,7 +278,6 @@
     }
   }
 }
-
 
 // SPテーブルの横スクロール
 .scroll_table {
