@@ -30,12 +30,42 @@ $all_url    = home_url('/question/');
 $is_all_act = (is_post_type_archive('question') && !is_tax($taxonomy_slug));
 ?>
 
+<?php
+if (have_posts()) {
+  $faq_list = [];
+  // メインクエリの投稿データをループ（表示用ループには影響しません）
+  foreach ($wp_query->posts as $post_obj) {
+    // 本文を回答として取得（タグを除去してプレーンテキスト化）
+    $answer_text = wp_strip_all_tags($post_obj->post_content);
+    // 本文が空でなければリストに追加
+    if (!empty($answer_text)) {
+      $faq_list[] = [
+        "@type" => "Question",
+        "name" => get_the_title($post_obj),
+        "acceptedAnswer" => [
+          "@type" => "Answer",
+          "text" => $answer_text
+        ]
+      ];
+    }
+  }
+
+  // FAQデータが存在する場合のみ出力
+  if (!empty($faq_list)) {
+    $faq_schema = [
+      "@context" => "https://schema.org",
+      "@type" => "FAQPage",
+      "mainEntity" => $faq_list
+    ];
+    echo '<script type="application/ld+json">' . json_encode($faq_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+  }
+}
+?>
+
 <div class="eyecatch -archive">
-  <h1><?php echo esc_html($title); ?></h1>
+  <div><?php echo esc_html($title); ?></div>
   <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/page/<?php echo esc_attr($img_file); ?>" alt="<?php echo esc_attr($title); ?>" width="1920" height="600" loading="lazy" decoding="async">
 </div>
-
-
 
 <main class="<?php echo esc_attr($slug . '_page'); ?>">
 
@@ -43,12 +73,12 @@ $is_all_act = (is_post_type_archive('question') && !is_tax($taxonomy_slug));
     <?php get_template_part('include/common', 'breadcrumb'); ?>
   </div>
 
-  <div class="archive_page">
+  <section class="archive_page">
     <div class="container">
-      <h2 class="ttl">
+      <h1 class="ttl">
         <?php echo esc_html($title); ?>
         <span><?php echo esc_html(strtoupper($slug)); ?></span>
-      </h2>
+      </h1>
 
       <ul class="category_list">
         <li<?php echo $is_all_act ? ' class="is-active"' : ''; ?>>
@@ -67,7 +97,6 @@ $is_all_act = (is_post_type_archive('question') && !is_tax($taxonomy_slug));
             <?php endif; ?>
       </ul>
 
-      <!-- 検索フォーム（常に表示） -->
       <div class="question-search">
         <input type="search" id="js-question-search" placeholder="検索したいキーワードを入力してください" autocomplete="off">
       </div>
@@ -106,9 +135,7 @@ $is_all_act = (is_post_type_archive('question') && !is_tax($taxonomy_slug));
         <?php wp_pagination(); ?>
       </div>
     </div>
-  </div>
+    </div>
 </main>
-
-
 
 <?php get_footer(); ?>

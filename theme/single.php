@@ -20,7 +20,7 @@ $is_introduction = ($post_type === 'introduction');
 ?>
 
 <div class="eyecatch -archive">
-  <div class="eyecatch--title"><?php echo esc_html($archive_title); ?></div>
+  <div><?php echo esc_html($archive_title); ?></div>
   <img src="<?php echo get_template_directory_uri(); ?>/img/page/<?php echo esc_attr($img_file); ?>" alt="<?php echo esc_attr($archive_title); ?>" width="1920" height="600" loading="lazy" decoding="async">
 </div>
 
