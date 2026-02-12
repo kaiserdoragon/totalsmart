@@ -5,13 +5,24 @@
   <meta charset="<?php bloginfo('charset'); ?>" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover maximum-scale=1.0">
   <meta name="format-detection" content="telephone=no">
+
   <link rel="preload" as="image" href="<?php echo get_theme_file_uri('/img/common/logo.png'); ?>" fetchpriority="high">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
   <?php if (is_front_page()): ?>
     <meta name="description" content="<?php bloginfo('description'); ?>">
+  <?php elseif (is_single() || is_page()): ?>
+    <?php
+    // 記事や固定ページなら「抜粋」を優先、なければ本文から抽出
+    $meta_desc = has_excerpt() ? get_the_excerpt() : wp_trim_words(strip_shortcodes(get_the_content()), 120, '...');
+    if (empty($meta_desc)) {
+      $meta_desc = trim(wp_title('', false)) . "について。トータルスマートは愛知・岐阜・三重・静岡でオフィスのコスト削減を支援します。";
+    }
+    ?>
+    <meta name="description" content="<?php echo esc_attr($meta_desc); ?>">
   <?php else: ?>
     <meta name="description" content="<?php echo trim(wp_title('', false)); ?>について。トータルスマートは愛知・岐阜・三重・静岡でオフィスのコスト削減を支援します。">
   <?php endif; ?>

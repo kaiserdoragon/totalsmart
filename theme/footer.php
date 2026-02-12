@@ -6,7 +6,7 @@
     </p>
     <div class="footer--inner">
       <div class="footer--txt">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/common/footer_logo.png" alt="" width="461" height="96" loading="lazy" decoding="async">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/common/footer_logo.png" alt="Total Smart" width="461" height="96" loading="lazy" decoding="async">
         <address>
           〒461-0002<br>愛知県名古屋市東区代官町16-17 アーク代官町ビルディング2F
         </address>
@@ -28,6 +28,28 @@
   </div>
 </footer>
 </div>
+
+<?php if (!is_page('company')): ?>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "トータルスマート株式会社",
+      "image": "<?php echo get_template_directory_uri(); ?>/img/common/logo.png",
+      "telephone": "052-932-5450",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "代官町16-17 アーク代官町ビルディング2F",
+        "addressLocality": "名古屋市東区",
+        "addressRegion": "愛知県",
+        "postalCode": "461-0002",
+        "addressCountry": "JP"
+      },
+      "url": "<?php echo esc_url(home_url('/')); ?>"
+    }
+  </script>
+<?php endif; ?>
+
 <?php wp_footer(); ?>
 </body>
 

@@ -15,12 +15,13 @@ $archive_title = $type_settings[$post_type]['title'] ?? 'お知らせ';
 $img_file      = $type_settings[$post_type]['img'] ?? 'eyecatch_default.jpg';
 $slug          = $type_settings[$post_type]['slug'] ?? 'news';
 
-// ★追加判定：導入実績（introduction）かどうか
-$is_introduction = ($post_type === 'introduction');
+// 投稿タイプ判定フラグ
+$is_introduction = ($post_type === 'introduction'); // 導入事例か？
+$is_question     = ($post_type === 'question');     // よくある質問か？
 ?>
 
 <div class="eyecatch -archive">
-  <div><?php echo esc_html($archive_title); ?></div>
+  <div class="eyecatch--title"><?php echo esc_html($archive_title); ?></div>
   <img src="<?php echo get_template_directory_uri(); ?>/img/page/<?php echo esc_attr($img_file); ?>" alt="<?php echo esc_attr($archive_title); ?>" width="1920" height="600" loading="lazy" decoding="async">
 </div>
 
@@ -33,39 +34,56 @@ $is_introduction = ($post_type === 'introduction');
   <div class="container">
     <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
-        <script type="application/ld+json">
-          {
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "<?php echo esc_js(get_the_title()); ?>",
-            "image": [
-              "<?php echo has_post_thumbnail() ? esc_url(get_the_post_thumbnail_url(get_the_ID(), 'large')) : ''; ?>"
-            ],
-            "datePublished": "<?php echo get_the_date('c'); ?>",
-            "dateModified": "<?php echo get_the_modified_date('c'); ?>",
-            "author": [
-              <?php if ($is_introduction): ?>
-                /* 導入実績の場合：著者は「会社」 */
-                {
-                  "@type": "Organization",
-                  "name": "トータルスマート株式会社",
-                  "url": "<?php echo esc_url(home_url('/')); ?>"
+        <?php if ($is_question): ?>
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [{
+                "@type": "Question",
+                "name": "<?php echo esc_js(get_the_title()); ?>",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "<?php echo esc_js(wp_strip_all_tags(get_the_content())); ?>"
                 }
-              <?php else: ?>
-                /* お役立ち情報の場合：著者は「担当者（個人）」 */
-                {
-                  "@type": "Person",
-                  "name": "<?php echo esc_js(get_the_author_meta('display_name')); ?>",
-                  "url": "<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>"
-                }
-              <?php endif; ?>
-            ]
-          }
-        </script>
+              }]
+            }
+          </script>
+        <?php else: ?>
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "headline": "<?php echo esc_js(get_the_title()); ?>",
+              "image": [
+                "<?php echo has_post_thumbnail() ? esc_url(get_the_post_thumbnail_url(get_the_ID(), 'large')) : ''; ?>"
+              ],
+              "datePublished": "<?php echo get_the_date('c'); ?>",
+              "dateModified": "<?php echo get_the_modified_date('c'); ?>",
+              "author": [
+                <?php if ($is_introduction): ?>
+                  /* 導入実績の場合：著者は「会社」 */
+                  {
+                    "@type": "Organization",
+                    "name": "トータルスマート株式会社",
+                    "url": "<?php echo esc_url(home_url('/')); ?>"
+                  }
+                <?php else: ?>
+                  /* 通常記事（お役立ち情報など）：著者は「担当者（個人）」 */
+                  {
+                    "@type": "Person",
+                    "name": "<?php echo esc_js(get_the_author_meta('display_name')); ?>",
+                    "url": "<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>"
+                  }
+                <?php endif; ?>
+              ]
+            }
+          </script>
+        <?php endif; ?>
 
         <article class="detail_page">
           <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.m.d'); ?></time>
-          <h1 class="detail_page--ttl"><?php the_title(); ?></h1>
+          <h2 class="detail_page--ttl"><?php the_title(); ?></h2>
           <ul class="detail_page--cat">
             <?php if (function_exists('categories_label')) categories_label(); ?>
           </ul>

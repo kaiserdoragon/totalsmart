@@ -1,4 +1,46 @@
 <?php get_header(); ?>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "GeneralContractor",
+    "name": "トータルスマート株式会社",
+    "alternateName": "Total Smart Co., Ltd.",
+    "url": "<?php echo esc_url(home_url('/')); ?>",
+    "logo": "<?php echo get_template_directory_uri(); ?>/img/common/logo.png",
+    "image": "<?php echo get_template_directory_uri(); ?>/img/top/company.png",
+    "description": "名古屋市を中心に愛知・岐阜・三重・静岡でエアコン修理・クリーニング、防犯カメラ、LED照明、光回線、OA機器などオフィス・店舗・住宅の設備工事を一括対応する総合設備会社。",
+    "foundingDate": "2014",
+    "address": {
+      "@type": "PostalAddress",
+      "postalCode": "461-0002",
+      "addressRegion": "愛知県",
+      "addressLocality": "名古屋市東区",
+      "streetAddress": "代官町16-17 アーク代官町ビルディング2F",
+      "addressCountry": "JP"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "35.1763",
+      "longitude": "136.9205"
+    },
+    "telephone": "052-932-5450",
+    "faxNumber": "052-932-5451",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "052-932-5450",
+      "contactType": "customer service",
+      "areaServed": ["JP", "愛知県", "岐阜県", "三重県", "静岡県"],
+      "availableLanguage": "Japanese"
+    },
+    "employee": {
+      "@type": "Person",
+      "name": "京田 貴志",
+      "jobTitle": "代表取締役"
+    },
+    "priceRange": "$$"
+  }
+</script>
 <div class="eyecatch">
   <?php if (has_post_thumbnail()): ?>
     <?php the_post_thumbnail(); ?>
