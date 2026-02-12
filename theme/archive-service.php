@@ -20,7 +20,7 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
 ?>
 
 <div class="eyecatch -archive">
-  <h1><?php echo $title; ?></h1>
+  <div><?php echo $title; ?></div>
   <img src="<?php echo get_template_directory_uri(); ?>/img/page/<?php echo $img_file; ?>" alt="<?php echo $title; ?>" width="1920" height="600" loading="lazy" decoding="async">
 </div>
 
@@ -33,10 +33,10 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
   <section class="archive_page">
     <div class="container">
 
-      <h2 class="ttl">
+      <h1 class="ttl">
         <?php echo esc_html($title); ?>
         <span><?php echo esc_html(strtoupper($slug)); ?></span>
-      </h2>
+      </h1>
       <p>
         当社は企業のあらゆるシーンに対応する最新テクノロジーと革新的なサービスを、<br class="is-hidden_sp">
         レンタル・リース・購入の柔軟なプランでご提供し、初期投資の負担を抑えつつすぐに導入、<br class="is-hidden_sp">

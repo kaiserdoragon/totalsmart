@@ -20,7 +20,7 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
 ?>
 
 <div class="eyecatch -archive">
-  <h1><?php echo $title; ?></h1>
+  <div><?php echo $title; ?></div>
   <img src="<?php echo get_template_directory_uri(); ?>/img/page/<?php echo $img_file; ?>" alt="<?php echo $title; ?>" width="1920" height="600" loading="lazy" decoding="async">
 </div>
 
@@ -33,10 +33,10 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
   <div class="archive_page">
     <div class="container -md">
       <section>
-        <h2 class="ttl">
+        <h1 class="ttl">
           <?php echo esc_html($title); ?>
           <span><?php echo esc_html(strtoupper($slug)); ?></span>
-        </h2>
+        </h1>
         <p class="<?php echo $slug . '_page--txt'; ?>">
           私たちの最新設備を導入いただいた様々な企業の体験談が掲載されています。<br>
           実際にご利用いただいた企業の成功事例や具体的な活用方法、<br class="is-hidden_sp">

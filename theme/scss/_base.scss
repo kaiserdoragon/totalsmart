@@ -94,6 +94,20 @@ main {
     }
   }
 
+
+  .page & {
+    h1 {
+      position: absolute;
+      top: 50%;
+      left: 135px;
+      font-size: var(--fz80);
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 30px rgb(255 255 255 / 44%);
+      letter-spacing: 0.1em;
+    }
+  }
+
   @media (width <= 1450px) {
     &.-thanks {
       img {
