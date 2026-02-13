@@ -88,13 +88,13 @@
     font-weight: 800;
     color: #333;
     background: #f4f7f9;
-    border-left: 5px solid #4472c4; /* 信頼感のある青 */
+    border-left: 5px solid #4472c4;
   }
 
   h3.wp-block-heading {
     position: relative;
     padding: 10px 0;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     font-size: var(--fz20);
     font-weight: 800;
     border-bottom: 5px solid #ddd;
@@ -185,10 +185,14 @@
   &--ttl {
     padding-bottom: 15px;
     margin: 5px auto 15px;
-    font-size: 25px;
+    font-size: var(--fz25);
     font-weight: bold;
     color: #767676;
     border-bottom: 4px solid rgb(28 73 122 / 28%);
+
+    @include max-mq {
+      font-size: var(--fz20);
+    }
   }
 
   // .detail_page--cat
@@ -215,27 +219,46 @@
       }
     }
   }
+
+  @include max-mq {
+    h2.wp-block-heading {
+      margin-bottom: 30px;
+      font-size: var(--fz18);
+    }
+
+    h3.wp-block-heading {
+      margin-bottom: 30px;
+      font-size: var(--fz16);
+    }
+  }
 }
 
 
 .disclaimer {
-  margin: 40px auto;
-  overflow: hidden;
+  width: 100%;
+  max-width: 900px;
+  margin: 100px auto 0;
   font-size: var(--fz20);
   line-height: 1.9;
   background: #fff;
   border: 2px solid #959595;
 
+
   // .disclaimer--ttl
   &--ttl {
     display: flex;
-    gap: 10px;
     align-items: center;
     padding: 12px 20px;
-    font-size: var(--fz23);
+    font-size: var(--fz20);
     font-weight: bold;
     color: #fff;
     background: #959595;
+
+    @include max-mq {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
   }
 
   // .disclaimer--inner
@@ -246,7 +269,8 @@
 
   // .disclaimer--lead
   &--lead {
-    margin: 0 0 24px;
+    margin: 0 0 15px !important;
+    font-size: var(--fz18);
   }
 
   // .disclaimer--list
@@ -258,10 +282,14 @@
     h3 {
       padding-bottom: 4px;
       margin: 0 0 8px;
-      font-size: var(--fz23);
+      font-size: var(--fz18);
       font-weight: bold;
       color: #333;
       border-bottom: 1px dashed #7b7b7b;
+    }
+
+    p {
+      font-size: var(--fz16) !important;
     }
 
     strong {
@@ -324,15 +352,16 @@
 
 // 目次（TOC）のデザイン
 
-
 /* 目次全体の枠（初期状態は非表示） */
 .toc-container {
   display: none; /* JSでコンテンツがある場合のみ .is-active がついて表示されます */
+  width: 100%;
+  max-width: 700px;
   padding: 20px;
-  margin-bottom: 30px;
+  margin: 0 auto 30px;
   background: #f9f9f9;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 10px;
 
   /* 目次が表示される時のクラス */
   &.is-active {
