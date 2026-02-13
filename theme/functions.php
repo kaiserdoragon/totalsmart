@@ -359,10 +359,14 @@ if (!function_exists('theme_enqueue_js_only_optimized_assets')) {
     $register_local_script('mainscripts',  'js/scripts.js',           array('jquery'), 'defer');
     $register_local_script('animationjs',  'js/animation.js',         array('jquery'), 'defer');
     $register_local_script('slider',       'js/slider.js',            array('jquery', 'swiperjs'), 'defer');
-    $register_local_script('mokujijs',  'js/mokuji.js',         array('jquery'), 'defer');
 
     if (is_front_page()) {
       $register_local_script('loadinganimation', 'js/loadinganimation.js', array('jquery'), 'defer');
+    }
+
+    // post_type が 'information' の詳細ページの時だけ読み込む
+    if (is_singular('information')) {
+      $register_local_script('mokujijs', 'js/mokuji.js', array('jquery'), 'defer');
     }
   }
 
