@@ -92,11 +92,17 @@ $is_question     = ($post_type === 'question');     // よくある質問か？
               <?php the_post_thumbnail('info-thumb'); ?>
             <?php endif; ?>
           </div>
-          <div>
+
+          <!-- // JSで目次を出力させる -->
+          <div id="toc-container" class="toc-container">
+            <p class="toc-title">目次</p>
+            <ul id="toc-list" class="toc-list"></ul>
+          </div>
+
+          <div class="detail_page--content">
             <?php the_content(); ?>
           </div>
         </article>
-
         <ul class="paging">
           <li class="paging--item paging--item-next">
             <?php if (get_next_post()): ?>

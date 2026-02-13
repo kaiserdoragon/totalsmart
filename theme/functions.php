@@ -223,11 +223,6 @@ add_action('wp_enqueue_scripts', function () {
 }, 20);
 
 
-
-
-
-
-
 // -------------------------------------
 //　type='text/css' を削除（任意・微小な省バイト）
 // -------------------------------------
@@ -268,7 +263,7 @@ add_filter('style_loader_tag', function ($html, $handle, $href, $media) {
 //　読み込まれるjs関連
 // -------------------------------------
 
-// LP（特定のスラッグ）により条件判定させる
+// LP（特定のスラッグ）により条件判定させてJSを読み込み準備をする
 if (!function_exists('theme_is_lp_page')) {
   function theme_is_lp_page()
   {
@@ -276,13 +271,8 @@ if (!function_exists('theme_is_lp_page')) {
   }
 }
 
-
-
 if (!function_exists('theme_enqueue_js_only_optimized_assets')) {
 
-  /**
-   * 全体（LP以外）で使うJSを読み込む
-   */
   function theme_enqueue_js_only_optimized_assets()
   {
 
@@ -325,7 +315,7 @@ if (!function_exists('theme_enqueue_js_only_optimized_assets')) {
       return true;
     };
 
-    // ===== LPページ：全体JSを読まない。LP専用（ローカル）だけ読む =====
+    // ===== LPページ：全体JSを読まない。LP専用だけ読む =====
     if (theme_is_lp_page()) {
 
       // LPグループ判定（thanks も同フォルダ運用）
@@ -363,12 +353,13 @@ if (!function_exists('theme_enqueue_js_only_optimized_assets')) {
       return;
     }
 
-    // ===== 全体JS（LP以外でのみ読み込み）=====
+    // ===== 全体JS（※LP以外でのみ読み込み）=====
     $register_local_script('swiperjs',     'js/swiper-bundle.min.js', array(), 'defer');
     $register_local_script('scrollhint',   'js/scroll-hint.min.js',   array(), 'defer');
     $register_local_script('mainscripts',  'js/scripts.js',           array('jquery'), 'defer');
     $register_local_script('animationjs',  'js/animation.js',         array('jquery'), 'defer');
     $register_local_script('slider',       'js/slider.js',            array('jquery', 'swiperjs'), 'defer');
+    $register_local_script('mokujijs',  'js/mokuji.js',         array('jquery'), 'defer');
 
     if (is_front_page()) {
       $register_local_script('loadinganimation', 'js/loadinganimation.js', array('jquery'), 'defer');
@@ -411,7 +402,7 @@ if (!function_exists('theme_enqueue_js_only_optimized_assets')) {
     }
 
     // defer を付けたいハンドル（全体JSのみ）
-    $defer_handles = array('mainscripts', 'slider', 'animationjs', 'swiperjs', 'loadinganimation', 'scrollhint');
+    $defer_handles = array('mainscripts', 'slider', 'animationjs', 'swiperjs', 'loadinganimation', 'scrollhint', 'mokujijs');
     if (!in_array($handle, $defer_handles, true)) {
       return $tag;
     }

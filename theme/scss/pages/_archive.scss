@@ -322,6 +322,57 @@
   }
 }
 
+// 目次（TOC）のデザイン
+
+
+/* 目次全体の枠（初期状態は非表示） */
+.toc-container {
+  display: none; /* JSでコンテンツがある場合のみ .is-active がついて表示されます */
+  padding: 20px;
+  margin-bottom: 30px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+
+  /* 目次が表示される時のクラス */
+  &.is-active {
+    display: block;
+  }
+}
+
+.toc-title {
+  margin-bottom: 15px !important;
+  font-size: var(--fz20);
+  font-weight: bold;
+  text-align: center;
+}
+
+.toc-item {
+  margin-bottom: 10px;
+}
+
+.toc-h2 {
+  font-weight: bold;
+}
+
+.toc-h3 {
+  margin-left: 20px;
+}
+
+/* リンクのデザイン */
+.toc-link {
+  display: block; /* クリック領域を広げる */
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+/* リンクホバー時 */
+.toc-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
 
 // ---------------------------------------------
 //  導入実績　専用
