@@ -83,7 +83,18 @@
 
     <div class="loadinganimation--logo-wrapper">
       <div class="loadinganimation--hologram-effect"></div>
-      <img src="<?php echo get_template_directory_uri(); ?>/img/common/logo_white.png" alt="トータルスマート株式会社" width="1034" height="216" loading="lazy" decoding="async">
+      <picture>
+        <source srcset="<?php echo get_template_directory_uri(); ?>/img/common/logo_white.avif" type="image/avif">
+
+        <source srcset="<?php echo get_template_directory_uri(); ?>/img/common/logo_white.webp" type="image/webp">
+
+        <img
+          src="<?php echo get_template_directory_uri(); ?>/img/common/logo_white.png"
+          alt="トータルスマート株式会社"
+          width="1034"
+          height="216"
+          decoding="async">
+      </picture>
     </div>
 
     <div class="loadinganimation--status">

@@ -89,14 +89,57 @@ window.addEventListener("load", () => {
   }
 });
 
-
 //SPの時にテーブルを横スクロール
-new ScrollHint('.js-scrollable', {
+new ScrollHint(".js-scrollable", {
   suggestiveShadow: true, //スクロール可能な要素右端に影を付ける
   i18n: {
-    scrollable: '横スクロール可能です' //表示するテキスト
-  }
+    scrollable: "横スクロール可能です", //表示するテキスト
+  },
 });
+
+// SP(<=767px)のときだけフッター追従ボタンを有効化
+(() => {
+  const btn = document.getElementById("js_fixed-btn");
+  if (!btn) return;
+
+  const THRESHOLD = 500;
+  const mql = window.matchMedia("(max-width: 767px)");
+  let controller = null;
+
+  const update = () => {
+    btn.classList.toggle("is-active", window.scrollY >= THRESHOLD);
+  };
+
+  const enable = () => {
+    if (controller) return; // すでに有効
+    controller = new AbortController();
+    const opts = { passive: true, signal: controller.signal };
+
+    // 初期反映
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", update, { once: true });
+    } else {
+      update();
+    }
+
+    // スクロール/リサイズで状態更新（SP時のみ有効）
+    window.addEventListener("scroll", update, opts);
+    window.addEventListener("resize", update, opts);
+  };
+
+  const disable = () => {
+    if (!controller) return;
+    controller.abort(); // まとめてリスナー解除
+    controller = null;
+    btn.classList.remove("is-active"); // デスクトップへ戻ったら非表示に
+  };
+
+  // 初期判定
+  mql.matches ? enable() : disable();
+
+  // 767pxをまたいだら有効/無効を切り替え
+  mql.addEventListener("change", (e) => (e.matches ? enable() : disable()));
+})();
 
 // (function ($, root, undefined) {
 //   // ------------------------------
