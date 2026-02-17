@@ -90,7 +90,7 @@ $is_information     = ($post_type === 'information'); // お役立ち情報か�
           </ul>
           <div class="detail_page--thumb">
             <?php if (has_post_thumbnail()) : ?>
-              <?php the_post_thumbnail('info-thumb'); ?>
+              <?php the_post_thumbnail(''); ?>
             <?php endif; ?>
           </div>
 
