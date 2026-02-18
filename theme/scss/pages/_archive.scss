@@ -65,6 +65,17 @@
   }
 }
 
+.news_page,
+.question_page {
+  .archive--inner {
+    li {
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #d1d1d1;
+    }
+  }
+}
+
 // ---------------------------------------------
 //  お知らせ　専用
 // ---------------------------------------------
@@ -74,7 +85,7 @@
   padding: 0 0 100px;
 
   p {
-    margin: 0 0 1rem;
+    margin: 0 0 1em;
   }
 
   strong {
@@ -94,7 +105,7 @@
   h3.wp-block-heading {
     position: relative;
     padding: 10px 0;
-    margin-bottom: 50px;
+    margin: 40px 0 50px;
     font-size: var(--fz20);
     font-weight: 800;
     border-bottom: 5px solid #ddd;
@@ -181,6 +192,10 @@
     }
   }
 
+  .scroll_table {
+    margin-bottom: 15px;
+  }
+
   // .detail_page--ttl
   &--ttl {
     padding-bottom: 15px;
@@ -221,13 +236,15 @@
   }
 
   @include max-mq {
+    padding: 0 0 60px;
+
     h2.wp-block-heading {
       margin-bottom: 30px;
       font-size: var(--fz18);
     }
 
     h3.wp-block-heading {
-      margin-bottom: 30px;
+      margin: 20px 0 30px;
       font-size: var(--fz16);
     }
   }

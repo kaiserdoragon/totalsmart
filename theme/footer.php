@@ -1,6 +1,6 @@
   <div class="footer_btn_fixed" id="js_fixed-btn">
-    <p class="footer_btn_fixed--tel"><a href="tel:<?php echo esc_attr($tracking_tel_href); ?>">電話で<br>予約する</a></p>
-    <p class="footer_btn_fixed--mail"><a href="#contact">メールで<br>無料見積り</a></p>
+    <p class="footer_btn_fixed--tel"><a href="tel:052-932-5450">電話で<br>予約する</a></p>
+    <p class="footer_btn_fixed--mail"><a href="<?php echo esc_url(home_url('/contact_corporate')); ?>">メールで<br>無料見積り</a></p>
     <p class="footer_btn_fixed--line"><a href="https://lin.ee/fXrKQyq">LINEで<br>問い合わせ</a></p>
   </div>
 

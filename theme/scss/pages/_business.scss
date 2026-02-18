@@ -26,24 +26,26 @@
   }
 
   li {
-    font-weight: 700;
+    dt {
+      font-weight: 700;
 
-    span {
+      &::before {
+        margin-right: 10px;
+        font-size: 15px;
+        color: #ff8000;
+        vertical-align: baseline;
+        content: "⚫︎";
+      }
+    }
+
+    dd {
       display: inline-block;
-      padding-left: 27px;
+      padding-left: 25px;
       font-weight: 400;
     }
 
     &:not(:last-child) {
       margin-bottom: 30px;
-    }
-
-    &::before {
-      margin-right: 10px;
-      font-size: 15px;
-      color: #ff8000;
-      vertical-align: baseline;
-      content: "⚫︎";
     }
   }
 
@@ -54,6 +56,11 @@
     gap: 100px;
     align-items: flex-start;
     justify-content: center;
+
+    div {
+      width: 100%;
+      max-width: 500px;
+    }
 
     &:not(:last-of-type) {
       margin-bottom: 60px;
@@ -80,6 +87,15 @@
     @include tb-mq {
       display: block;
       margin: 0 auto 30px;
+    }
+  }
+
+  @include max-mq {
+    li {
+      dt {
+        padding-left: 20px;
+        text-indent: -20px;
+      }
     }
   }
 }
@@ -234,6 +250,12 @@
 
       &:nth-child(3) {
         background: url(../img/business/plan_tel.png) no-repeat center top / contain;
+      }
+    }
+
+    @include max-mq {
+      li {
+        padding-top: 110px;
       }
     }
   }

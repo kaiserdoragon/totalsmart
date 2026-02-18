@@ -32,16 +32,22 @@
           <img class="business_lead--img_sp" src="<?php echo get_template_directory_uri(); ?>/img/business/lead_01.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
           <ul>
             <li>
-              配膳ロボット、サイネージ、POSレジなど<br>
-              <span>作業の自動化とな会計処理で、操作をスマートに！</span>
+              <dl>
+                <dt>配膳ロボット、サイネージ、POSレジなど</dt>
+                <dd>作業の自動化とな会計処理で、操作をスマートに！</dd>
+              </dl>
             </li>
             <li>
-              キャッシュレス決済、オーダーシステム<br>
-              <span>お客様の支払いと注文がスムーズに完了し、<br class="is-hidden_sp">手間解消とミス防止に貢献！</span>
+              <dl>
+                <dt>キャッシュレス決済、オーダーシステム</dt>
+                <dd>お客様の支払いと注文がスムーズに完了し、<br class="is-hidden_sp">手間解消とミス防止に貢献！</dd>
+              </dl>
             </li>
             <li>
-              電話回線＆ネット回線、スマホ＆タブレット提供<br>
-              <span>安定した通信環境で、社内外の情報連携を強化し<br class="is-hidden_sp">経費も削減！</span>
+              <dl>
+                <dt>電話回線＆ネット回線、スマホ＆タブレット提供</dt>
+                <dd>安定した通信環境で、社内外の情報連携を強化し<br class="is-hidden_sp">経費も削減！</dd>
+              </dl>
             </li>
           </ul>
         </div>
@@ -50,20 +56,26 @@
       <article class="business_lead--item">
         <div>
           <h3>
-            <span>業務効率化</span>＆<span>コスト・経費</span>削減
+            安心・快適な<span>社内環境</span>
           </h3>
           <ul>
             <li>
-              配膳ロボット、サイネージ、POSレジなど<br>
-              <span>作業の自動化とな会計処理で、操作をスマートに！</span>
+              <dl>
+                <dt>業務用エアコン</dt>
+                <dd>快適な温度管理で、従業員もお客様も心地よい空間を提供！</dd>
+              </dl>
             </li>
             <li>
-              キャッシュレス決済、オーダーシステム<br>
-              <span>お客様の支払いと注文がスムーズに完了し、<br class="is-hidden_sp">手間解消とミス防止に貢献！</span>
+              <dl>
+                <dt>防犯カメラ、防犯セキュリティ</dt>
+                <dd>24時間の安全管理で、安心して店舗運営が可能に！</dd>
+              </dl>
             </li>
             <li>
-              電話回線＆ネット回線、スマホ＆タブレット提供<br>
-              <span>安定した通信環境で、社内外の情報連携を強化し<br class="is-hidden_sp">経費も削減！</span>
+              <dl>
+                <dt>電気代＆ガス代削減</dt>
+                <dd>最新省エネ技術で、エネルギーコストを大幅にカット！</dd>
+              </dl>
             </li>
           </ul>
         </div>
@@ -72,20 +84,26 @@
       <article class="business_lead--item">
         <div>
           <h3>
-            <span>業務効率化</span>＆<span>コスト・経費</span>削減
+            <span>プロモーション＆集客</span>強化
           </h3>
           <ul>
             <li>
-              配膳ロボット、サイネージ、POSレジなど<br>
-              <span>作業の自動化とな会計処理で、操作をスマートに！</span>
+              <dl>
+                <dt>ホームページ作成、チラシ作成</dt>
+                <dd>お店の魅力をわかりやすく伝えるデザインで、ブランド力をアップ！</dd>
+              </dl>
             </li>
             <li>
-              キャッシュレス決済、オーダーシステム<br>
-              <span>お客様の支払いと注文がスムーズに完了し、<br class="is-hidden_sp">手間解消とミス防止に貢献！</span>
+              <dl>
+                <dt>オンデマンド導入、USEN、SNS活用</dt>
+                <dd>動画や音響を活用した魅力的なプロモーションで、集客効果を最大化！</dd>
+              </dl>
             </li>
             <li>
-              電話回線＆ネット回線、スマホ＆タブレット提供<br>
-              <span>安定した通信環境で、社内外の情報連携を強化し<br class="is-hidden_sp">経費も削減！</span>
+              <dl>
+                <dt>LED販売</dt>
+                <dd>明るい印象的な照明で、店舗の雰囲気を一新し、来店ワクワクを刺激！</dd>
+              </dl>
             </li>
           </ul>
         </div>

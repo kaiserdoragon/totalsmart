@@ -567,7 +567,7 @@
           <?php esc_html_e('お知らせ', 'text-domain'); ?>
           <span>NEWS</span>
         </h2>
-        <ul>
+        <ul class="front-news--list">
           <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
             <li>
               <a href="<?php the_permalink(); ?>">
@@ -586,7 +586,9 @@
                     <?php endforeach; ?>
                   <?php endif; ?>
                 </div>
-                <p><?php the_title(); ?></p>
+                <p>
+                  <?php echo mb_strimwidth(get_the_title(), 0, 250, '...'); ?>
+                </p>
               </a>
             </li>
           <?php endwhile; ?>
