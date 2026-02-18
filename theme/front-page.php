@@ -133,7 +133,14 @@
 
   <?php
   $page_data = get_page_by_path('attention');
-  if ($page_data && !empty($page_data->post_content)) :
+  $content_check = '';
+  if ($page_data) {
+    $raw_content = $page_data->post_content;
+    $raw_content = str_replace('&nbsp;', '', $raw_content);
+    $content_check = trim(strip_tags($raw_content, '<a><img><iframe>'));
+  }
+
+  if ($page_data && !empty($content_check)) :
   ?>
     <section class="attention sec bg_orange">
       <div class="container">
@@ -154,6 +161,7 @@
       </div>
     </section>
   <?php endif; ?>
+
 
   <section class="feature bg_white sec">
     <div class="container">

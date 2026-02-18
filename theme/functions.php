@@ -99,6 +99,21 @@ add_action('wp_enqueue_scripts', 'my_delete_plugin_files');
 
 
 // -------------------------------------
+//　特定の固定ページにnoindexを出力する
+// -------------------------------------
+
+function add_noindex_to_specific_page()
+{
+  // 'attention' は固定ページのスラッグです
+  if (is_page('attention')) {
+    echo '<meta name="robots" content="noindex, follow" />' . "\n";
+  }
+}
+add_action('wp_head', 'add_noindex_to_specific_page');
+
+
+
+// -------------------------------------
 //　外部のファイル・モジュールの読み込み External files
 // -------------------------------------
 
