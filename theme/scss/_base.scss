@@ -44,11 +44,13 @@ body {
     width: min(1050px, 100%); // デザインの幅 + padding
   }
 
-
+  .single & {
+    padding: 60px min(4vw, 25px) 120px;
+  }
 
   @include tb-mq {
     .single & {
-      padding: 60px min(4vw, 25px) 40px;
+      padding: 40px min(4vw, 25px) 80px;
     }
   }
 }
