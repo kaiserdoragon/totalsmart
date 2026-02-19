@@ -104,10 +104,11 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
           <p>記事が見つかりませんでした。</p>
         <?php endif; ?>
       </section>
+      <div class="pagination">
+        <?php wp_pagination(); ?>
+      </div>
     </div>
-    <div class="pagination">
-      <?php wp_pagination(); ?>
-    </div>
+
   </div>
 </main>
 
