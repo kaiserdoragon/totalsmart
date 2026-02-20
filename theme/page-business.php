@@ -58,6 +58,7 @@
           <h3>
             安心・快適な<span>社内環境</span>
           </h3>
+          <img class="business_lead--img_sp" src="<?php echo get_template_directory_uri(); ?>/img/business/lead_02.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
           <ul>
             <li>
               <dl>
@@ -79,13 +80,14 @@
             </li>
           </ul>
         </div>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/business/lead_02.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
+        <img class="business_lead--img_pc" src="<?php echo get_template_directory_uri(); ?>/img/business/lead_02.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
       </article>
       <article class="business_lead--item">
         <div>
           <h3>
             <span>プロモーション＆集客</span>強化
           </h3>
+          <img class="business_lead--img_sp" src="<?php echo get_template_directory_uri(); ?>/img/business/lead_03.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
           <ul>
             <li>
               <dl>
@@ -107,7 +109,7 @@
             </li>
           </ul>
         </div>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/business/lead_03.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
+        <img class="business_lead--img_pc" src="<?php echo get_template_directory_uri(); ?>/img/business/lead_03.jpg" alt="" width="500" height="400" loading="lazy" decoding="async">
       </article>
     </div>
   </section>

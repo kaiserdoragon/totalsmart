@@ -229,8 +229,9 @@
   // .company_message--logo
   &--logo {
     display: block;
-    width: 60%;
+    width: 40%;
     margin: 0 auto 40px;
+    object-fit: cover;
 
     @include max-mq {
       width: 80%;
@@ -241,5 +242,12 @@
   &--illust {
     display: block;
     margin: 0 auto;
+  }
+
+  @include max-mq {
+    p {
+      margin-bottom: 80px;
+      font-size: var(--fz20);
+    }
   }
 }

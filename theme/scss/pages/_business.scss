@@ -160,6 +160,7 @@
   @include tb-mq {
     ul {
       gap: 60px;
+      margin-bottom: 0;
     }
   }
 }
@@ -224,6 +225,22 @@
     @include tb-mq {
       grid-template-columns: repeat(1, 1fr);
       gap: 60px;
+    }
+
+    @include max-mq {
+      li {
+        &:nth-child(1) {
+          background: url(../img/business/plan_num_01.png) no-repeat left 20px top / 80px;
+        }
+
+        &:nth-child(2) {
+          background: url(../img/business/plan_num_02.png) no-repeat left 20px top / 80px;
+        }
+
+        &:nth-child(3) {
+          background: url(../img/business/plan_num_03.png) no-repeat left 20px top / 80px;
+        }
+      }
     }
   }
 
