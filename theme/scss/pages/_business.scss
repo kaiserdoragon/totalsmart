@@ -118,19 +118,19 @@
     border-radius: 10px;
     box-shadow: 5px 5px 0 #333;
 
-    &::before {
-      position: absolute;
-      top: -30px;
-      left: 50%;
-      padding: 5px 20px;
-      font-size: var(--fz23);
-      font-weight: 700;
-      color: #fff;
-      content: "POINT" counter(num, decimal-leading-zero);
-      background: #0052a7;
-      border-radius: 1000px;
-      transform: translateX(-50%);
-    }
+    // &::before {
+    //   position: absolute;
+    //   top: -25px;
+    //   left: 50%;
+    //   padding: 5px 20px;
+    //   font-size: var(--fz23);
+    //   font-weight: 700;
+    //   color: #fff;
+    //   content: "POINT" counter(num, decimal-leading-zero);
+    //   background: #0052a7;
+    //   border-radius: 1000px;
+    //   transform: translateX(-50%);
+    // }
   }
 
   img {

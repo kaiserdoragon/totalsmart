@@ -127,6 +127,7 @@
       </p>
       <ul>
         <li>
+          <span class="business_flow--step">POINT<span>01</span></span>
           <img src="<?php echo get_template_directory_uri(); ?>/img/business/strong_01.png" alt="" width="315" height="210" loading="lazy" decoding="async">
           <p>
             あなたの会社を
@@ -138,6 +139,7 @@
           </p>
         </li>
         <li>
+          <span class="business_flow--step">POINT<span>02</span></span>
           <img src="<?php echo get_template_directory_uri(); ?>/img/business/strong_02.png" alt="" width="315" height="210" loading="lazy" decoding="async">
           <p>
             企業の成長と売上をしっかり支える、最適なソリューションです。<br>
@@ -146,6 +148,7 @@
           </p>
         </li>
         <li>
+          <span class="business_flow--step">POINT<span>03</span></span>
           <img src="<?php echo get_template_directory_uri(); ?>/img/business/strong_03.png" alt="" width="315" height="210" loading="lazy" decoding="async">
           <p>
             あなたの会社を時代に合わせて革新します。<br>
