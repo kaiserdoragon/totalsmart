@@ -1,0 +1,20 @@
+@charset "UTF-8";
+@use "../variables" as *;
+
+// ---------------------------------------------
+//  採用情報　専用
+// ---------------------------------------------
+
+.recruit_lead {
+
+  /* スライドの動き等速 */
+  .swiper-wrapper {
+    transition-timing-function: linear;
+  }
+
+  /* 画像のサイズ調整 */
+  .swiper-slide img {
+    width: 100%;
+    height: auto;
+  }
+}
