@@ -15,65 +15,74 @@ if (Gnav_btn) {
   });
 }
 
+
 // アンカーリンクのスムーススクロール
 const anchors = document.querySelectorAll('a[href*="#"]:not(.is-noscroll)');
 
 anchors.forEach((element) => {
-  element.addEventListener("click", (e) => {
-    // 【修正】末尾のスラッシュを削除して厳密にパスを比較する
-    const targetPath = element.pathname.replace(/\/$/, "");
-    const currentPath = window.location.pathname.replace(/\/$/, "");
+  element.addEventListener("click", function (e) {
+    // リンク先のURLと現在のURLを取得（ハッシュ部分を除外して比較）
+    const currentUrl = window.location.origin + window.location.pathname;
+    const linkUrl = this.origin + this.pathname;
 
-    if (element.origin !== window.location.origin || targetPath !== currentPath) {
-      // 別ページへのリンクならJSを中断
+    // 別ページへのリンクならJSの処理を中断し、通常のページ遷移に任せる
+    if (currentUrl !== linkUrl) {
       return;
     }
 
-    const hash = element.hash;
-    let target;
+    // ページ内リンク（同じURL）と判断された場合、ここから下の処理を実行
+    const hash = this.hash; // 例: "#about"
+
+    // ハッシュが空、もしくは "#" のみならページトップをターゲットに
+    let target = null;
     if (hash === "" || hash === "#") {
       target = document.documentElement;
     } else {
-      const id = hash.replace("#", "");
-      target = document.getElementById(id);
+      target = document.querySelector(hash);
     }
 
+    // ターゲットが存在しなければ終了
     if (!target) return;
 
+    // 【重要】ブラウザのデフォルト動作（一瞬でジャンプする挙動）を確実に防ぐ
     e.preventDefault();
 
+    // ヘッダーの高さを取得（固定ヘッダーの場合は必須）
     const header = document.querySelector(".header");
     const headerHeight = header ? header.offsetHeight : 0;
+
+    // スクロール先の正確な位置を計算
     const targetPosition = target.getBoundingClientRect().top + window.scrollY;
 
+    // スムーススクロールの実行
     window.scrollTo({
       top: targetPosition - headerHeight,
       behavior: "smooth",
     });
+
+    // 必要であれば、URLの末尾にハッシュを追加（履歴に残す場合）
+    // history.pushState(null, null, hash);
   });
 });
 
-// 別URLからやってきたときに発火
+// 別URL（別ページ）からハッシュ付きで遷移してきた時の処理
 window.addEventListener("load", () => {
   const hash = window.location.hash;
   if (hash) {
-    const id = hash.replace("#", "");
-    const target = document.getElementById(id);
+    const target = document.querySelector(hash);
     if (target) {
-      // 【修正】ここで再度ヘッダーの高さを取得する（未定義エラーの解消）
       const header = document.querySelector(".header");
       const headerHeight = header ? header.offsetHeight : 0;
 
-      // offsetTopだと親要素の配置に依存するため、getBoundingClientRect()を使用
-      const targetPosition = target.getBoundingClientRect().top + window.scrollY;
-
-      // ブラウザのデフォルトのハッシュジャンプと競合しないよう、少しだけ遅延させてからスクロールさせる
+      // 最初から少しだけ遅延させることで、ブラウザの初期ジャンプを上書きする
       setTimeout(() => {
+        const targetPosition = target.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({ top: targetPosition - headerHeight, behavior: "smooth" });
-      }, 10);
+      }, 50); // 10ms → 50msに変更し、より確実に発火させます
     }
   }
 });
+
 
 
 
