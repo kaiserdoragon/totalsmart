@@ -252,12 +252,15 @@
   }
 }
 
-
 .recruit_entry {
   // .recruit_entry--inner
   &--inner {
     padding: 120px min(4vw, 25px);
     background: #fff;
+
+    .wpcf7-list-item.first {
+      margin-right: 10px;
+    }
   }
 
   // .recruit_entry--btn
