@@ -133,6 +133,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 60px;
+  align-items: flex-start; /* ← ここを追加 */
   justify-content: center;
   width: min(1250px, 100%);
   padding: 60px min(4vw, 25px);
@@ -140,8 +141,6 @@
 
   // .recruit_voice--image
   &--image {
-    position: sticky;
-    top: 20px;
     width: 447px;
 
     p {
@@ -154,6 +153,11 @@
         margin-left: 15px;
         font-weight: 800;
       }
+    }
+
+    @media (1280px <= width) {
+      position: sticky;
+      top: 180px;
     }
   }
 
