@@ -712,6 +712,50 @@
       </div>
     </div>
   </section>
+
+  <section class="recruit_working sec">
+    <div class="container">
+      <h2 class="page_ttl">働き方や働く環境の魅力</h2>
+      <div class="recruit_working--inner">
+        <ul>
+          <li>自由度の高い社風（強制的な社内イベントなし）</li>
+          <li>社長との距離も近いフラットな環境</li>
+          <li>子育て事情にも柔軟に対応</li>
+          <li>既存顧客数は1万5000社以上。案件豊富で安定性抜群</li>
+          <li>未経験も安心の同行体制＋社内サポート（LINEで即レス対応あり）</li>
+          <li>訪問先はアプリでMAP表示されるので安心</li>
+          <li>日々のスケジュールは各自の裁量で調整可能</li>
+          <li>朝礼・終礼はスマホからオンラインで参加</li>
+        </ul>
+        <ul>
+          <li>社会保険完備（雇用・労災・健康・厚生年金）</li>
+          <li>社用車貸与</li>
+          <li>社用スマホ貸与</li>
+          <li>社用PC貸与</li>
+          <li>資格取得支援制度（取得費用を会社が負担）</li>
+          <li>オフィスグリコ完備</li>
+          <li>ウォーターサーバー完備</li>
+          <li>提携宿泊施設や飲食店、レジャー施設の割引</li>
+          <li>家電製品の社員割引</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="recruit_entry bg_gray sec">
+    <div class="container">
+      <div class="recruit_entry--inner">
+        <h2 class="page_ttl">エントリーフォーム</h2>
+        <?php echo apply_shortcodes('[contact-form-7 id="c490473" title="採用情報のエントリーフォーム" html_class="h-adr"]'); ?>
+        <div class="recruit_entry--btn">
+          <p>＼ ジョブカンからもエントリー受付中 ／</p>
+          <a href="https://recruit.jobcan.jp/totalsmart">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/jobkan.jpg" alt="" width="368" height="150" loading="lazy" decoding="async">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <?php get_footer(); ?>

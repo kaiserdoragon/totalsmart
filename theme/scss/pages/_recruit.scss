@@ -222,8 +222,60 @@
 }
 
 
+.recruit_working {
+  li {
+    padding: 0 0 5px 40px;
+    margin-bottom: 15px;
+    font-weight: 800;
+    color: #0052a7;
+    background: url(../img/service/check.png) no-repeat left 10px center / 17px;
+    border-bottom: 1px solid #d1d1d1;
+  }
+
+  // .recruit_working--inner
+  &--inner {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    justify-content: center;
+
+    ul {
+      width: 100%;
+      max-width: 620px;
+    }
+
+    @include tb-mq {
+      flex-direction: column;
+      gap: 0;
+      align-items: center;
+    }
+  }
+}
 
 
+.recruit_entry {
+  // .recruit_entry--inner
+  &--inner {
+    padding: 120px min(4vw, 25px);
+    background: #fff;
+  }
+
+  // .recruit_entry--btn
+  &--btn {
+    width: fit-content;
+    margin: auto;
+
+    p {
+      margin-bottom: 15px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    a {
+      display: block;
+    }
+  }
+}
 
 // ---------------------------------------------
 //  タブ切り替え
@@ -278,10 +330,7 @@
   &--content {
     position: relative;
     display: none;
-    padding: 24px;
-    color: #333;
     background: #fff;
-    border-radius: 12px;
 
     // 表示されるコンテンツ
     &.-show {
