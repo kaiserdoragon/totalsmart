@@ -16,7 +16,7 @@
     </div>
 
     <section class="contact_corporate sec -sm contact_page">
-      <div class="container -md">
+      <div class="container -md" id="contact">
         <h1 class="ttl">
           お問い合わせ
           <span>CONTACT</span>

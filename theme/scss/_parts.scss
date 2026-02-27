@@ -188,6 +188,7 @@ img {
 
   @include max-mq {
     .recruit_page & {
+      margin: 0 auto 60px;
       font-size: var(--fz23);
     }
   }
