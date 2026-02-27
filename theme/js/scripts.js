@@ -1,31 +1,3 @@
-function add_script(url) {
-  let script = document.createElement("script");
-  script.src = url;
-  document.body.appendChild(script);
-}
-// 追加でjsファイルを読み込む場合は、ファイルパスを記述
-// add_script("./js/animation.min.js");　// アニメーション用js
-
-// ヘッダーのスクロール位置を取得 /////////////////////////////////////////////
-// headerの高さ分スクロールしたら、-fixedクラスをつける。
-const Header = document.getElementById("js-header");
-if (Header) {
-  const options = {
-    root: null,
-    rootMargin: `${Header.offsetHeight}px 0px ${document.body.clientHeight}px 0px`,
-    threshold: 1,
-  };
-
-  const observer = new IntersectionObserver(change_header, options);
-  observer.observe(document.body);
-  function change_header(entries) {
-    if (!entries[0].isIntersecting) {
-      Header.classList.add("-fixed");
-    } else {
-      Header.classList.remove("-fixed");
-    }
-  }
-}
 
 // グローバルナビゲーション //////////////////////////////////////////////////////
 const Gnav_btn = document.getElementById("js-gnav_btn");
@@ -43,38 +15,49 @@ if (Gnav_btn) {
   });
 }
 
-// ページトップへ移動するボタン(クリックでページトップへスクロール) ///////////////////////////
-const Totop = document.getElementById("js-totop");
-if (Totop) {
-  Totop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-}
 
-// アンカーリンクのスムーススクロール //////////////////////////////////////////////
-// iOSでスムーススクロールをするためには「<script src=" https://polyfill.io/v3/polyfill.min.js?features=smoothscroll"></script>」を読み込む必要がある。
-const headerHeight = ((load) => {
-  return load ? document.getElementsByClassName("header")[0].offsetHeight : 0;
-})(true); // ※ヘッダー高さをロード時にはかりたいときは、ここをtrueにする
+// アンカーリンクのスムーススクロール
+const anchors = document.querySelectorAll('a[href*="#"]:not(.is-noscroll)');
 
-const anchor = document.querySelectorAll("a[href*='#']:not(.is-noscroll)"); // 発火しない場合は「.is-noscroll」
-[...anchor].forEach((element) => {
-  const target = ((hash) => {
-    return hash
-      ? document.querySelector(element.hash)
-      : console.error(`リンクが空です。 ${element.outerHTML}`);
-  })(element.hash);
+anchors.forEach((element) => {
+  element.addEventListener("click", (e) => {
+    // 【追加】リンク先のURL（パス）と、現在のページのURL（パス）が一致するかチェック
+    if (
+      element.origin !== window.location.origin ||
+      element.pathname !== window.location.pathname
+    ) {
+      // 別ページへのリンクならJSを中断し、通常のページ遷移（ジャンプ）に任せる
+      return;
+    }
 
-  if (target) {
-    element.addEventListener("click", (e) => {
-      e.preventDefault();
-      window.scrollTo({
-        top: target.offsetTop - headerHeight,
-        behavior: "smooth",
-      });
+    // ここから下は同じページ内の場合の処理
+    const hash = element.hash;
+    let target;
+    if (hash === "" || hash === "#") {
+      target = document.documentElement;
+    } else {
+      const id = hash.replace("#", "");
+      target = document.getElementById(id);
+    }
+
+    if (!target) return;
+
+    // デフォルトのジャンプをキャンセル
+    e.preventDefault();
+
+    const header = document.querySelector(".header");
+    const headerHeight = header ? header.offsetHeight : 0;
+    const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+
+    window.scrollTo({
+      top: targetPosition - headerHeight,
+      behavior: "smooth",
     });
-  }
+  });
 });
+
+
+
 
 //別URLからやってきたときに発火
 window.addEventListener("load", () => {

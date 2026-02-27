@@ -119,7 +119,25 @@
     </div>
   </section>
 
-  <section class="recruit_about">
+  <ul>
+    <li>
+      <a href="<?php echo esc_url(home_url('/recruit/')); ?>#about">トータルスマートとは</a>
+    </li>
+    <li>
+      <a href="<?php echo esc_url(home_url('/recruit/')); ?>#work">私たちの働き方</a>
+    </li>
+    <li>
+      <a href="<?php echo esc_url(home_url('/recruit')); ?>#voice">社員の声</a>
+    </li>
+    <li>
+      <a href="<?php echo esc_url(home_url('/recruit')); ?>#requirements">募集要項・働く環境</a>
+    </li>
+    <li>
+      <a href="<?php echo esc_url(home_url('/recruit')); ?>#entry">エントリーフォーム</a>
+    </li>
+  </ul>
+
+  <section class="recruit_about" id="about">
     <div class="container">
       <h2 class="page_ttl">トータルスマートとは</h2>
       <dl>
@@ -145,7 +163,7 @@
     </div>
   </section>
 
-  <section class="recruit_work">
+  <section class="recruit_work" id="work">
     <div class="container">
       <h2 class="page_ttl">私たちの働き方</h2>
       <ul>
@@ -215,7 +233,7 @@
     </div>
   </section>
 
-  <section class="bg_gray sec">
+  <section class="bg_gray sec" id="voice">
     <div class="container">
       <h2 class="page_ttl">社員の声</h2>
       <div class="recruit_voice">
@@ -293,7 +311,7 @@
     </div>
   </section>
 
-  <section class="recruit_requirements sec">
+  <section class="recruit_requirements sec" id="requirements">
     <div class="container">
       <h2 class="page_ttl">募集要項</h2>
       <div class="tab_change">
@@ -713,7 +731,7 @@
     </div>
   </section>
 
-  <section class="recruit_working sec">
+  <section class="recruit_working sec" id="working">
     <div class="container">
       <h2 class="page_ttl">働き方や働く環境の魅力</h2>
       <div class="recruit_working--inner">
@@ -742,7 +760,7 @@
     </div>
   </section>
 
-  <section class="recruit_entry bg_gray sec">
+  <section class="recruit_entry bg_gray sec" id="entry">
     <div class="container">
       <div class="recruit_entry--inner">
         <h2 class="page_ttl">エントリーフォーム</h2>

@@ -57,6 +57,8 @@
 }
 
 .recruit_work {
+  padding: 200px 0;
+
   ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -126,7 +128,6 @@
     }
   }
 }
-
 
 .recruit_voice {
   box-sizing: border-box;
