@@ -34,11 +34,11 @@ const swiper = new Swiper(".works .swiper", {
 
 
 const recruitslider = new Swiper(".recruit_lead .swiper", {
-  loop: true, // ループ有効
-  slidesPerView: 6, // 一度に表示する枚数
-  speed: 6000, // ループの時間
-  allowTouchMove: false, // スワイプ無効
+  loop: true,
+  slidesPerView: 6,
+  speed: 6000,
+  allowTouchMove: false,
   autoplay: {
-    delay: 0, // 途切れなくループ
+    delay: 0,
   },
 });
