@@ -15,22 +15,20 @@ if (Gnav_btn) {
   });
 }
 
-
 // アンカーリンクのスムーススクロール
 const anchors = document.querySelectorAll('a[href*="#"]:not(.is-noscroll)');
 
 anchors.forEach((element) => {
   element.addEventListener("click", (e) => {
-    // 【追加】リンク先のURL（パス）と、現在のページのURL（パス）が一致するかチェック
-    if (
-      element.origin !== window.location.origin ||
-      element.pathname !== window.location.pathname
-    ) {
-      // 別ページへのリンクならJSを中断し、通常のページ遷移（ジャンプ）に任せる
+    // 【修正】末尾のスラッシュを削除して厳密にパスを比較する
+    const targetPath = element.pathname.replace(/\/$/, "");
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+
+    if (element.origin !== window.location.origin || targetPath !== currentPath) {
+      // 別ページへのリンクならJSを中断
       return;
     }
 
-    // ここから下は同じページ内の場合の処理
     const hash = element.hash;
     let target;
     if (hash === "" || hash === "#") {
@@ -42,7 +40,6 @@ anchors.forEach((element) => {
 
     if (!target) return;
 
-    // デフォルトのジャンプをキャンセル
     e.preventDefault();
 
     const header = document.querySelector(".header");
@@ -56,21 +53,29 @@ anchors.forEach((element) => {
   });
 });
 
-
-
-
-//別URLからやってきたときに発火
+// 別URLからやってきたときに発火
 window.addEventListener("load", () => {
-  const url = window.location.href;
-  if (url.indexOf("#") !== -1) {
-    const id = url.split("#");
-    const target = document.getElementById(id[id.length - 1]);
+  const hash = window.location.hash;
+  if (hash) {
+    const id = hash.replace("#", "");
+    const target = document.getElementById(id);
     if (target) {
-      window.scroll({ top: 0 });
-      window.scroll({ top: target.offsetTop - headerHeight, behavior: "smooth" });
+      // 【修正】ここで再度ヘッダーの高さを取得する（未定義エラーの解消）
+      const header = document.querySelector(".header");
+      const headerHeight = header ? header.offsetHeight : 0;
+
+      // offsetTopだと親要素の配置に依存するため、getBoundingClientRect()を使用
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+
+      // ブラウザのデフォルトのハッシュジャンプと競合しないよう、少しだけ遅延させてからスクロールさせる
+      setTimeout(() => {
+        window.scrollTo({ top: targetPosition - headerHeight, behavior: "smooth" });
+      }, 10);
     }
   }
 });
+
+
 
 //SPの時にテーブルを横スクロール
 new ScrollHint(".js-scrollable", {

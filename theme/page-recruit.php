@@ -120,21 +120,11 @@
   </section>
 
   <ul>
-    <li>
-      <a href="<?php echo esc_url(home_url('/recruit/')); ?>#about">トータルスマートとは</a>
-    </li>
-    <li>
-      <a href="<?php echo esc_url(home_url('/recruit/')); ?>#work">私たちの働き方</a>
-    </li>
-    <li>
-      <a href="<?php echo esc_url(home_url('/recruit')); ?>#voice">社員の声</a>
-    </li>
-    <li>
-      <a href="<?php echo esc_url(home_url('/recruit')); ?>#requirements">募集要項・働く環境</a>
-    </li>
-    <li>
-      <a href="<?php echo esc_url(home_url('/recruit')); ?>#entry">エントリーフォーム</a>
-    </li>
+    <li><a href="#about">トータルスマートとは</a></li>
+    <li><a href="#work">私たちの働き方</a></li>
+    <li><a href="#voice">社員の声</a></li>
+    <li><a href="#requirements">募集要項・働く環境</a></li>
+    <li><a href="#entry">エントリーフォーム</a></li>
   </ul>
 
   <section class="recruit_about" id="about">
