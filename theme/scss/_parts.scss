@@ -185,6 +185,12 @@ img {
   .recruit_page & {
     margin: 0 auto 80px;
   }
+
+  @include max-mq {
+    .recruit_page & {
+      font-size: var(--fz23);
+    }
+  }
 }
 
 .page_detail_ttl {

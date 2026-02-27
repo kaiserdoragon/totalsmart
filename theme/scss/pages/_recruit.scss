@@ -15,6 +15,7 @@
     font-size: var(--fz25);
     font-weight: 900;
     color: #fff;
+    text-align: center;
     background: #0052a7;
   }
 
@@ -31,6 +32,10 @@
   .swiper-slide img {
     width: 100%;
     height: auto;
+  }
+
+  @include tb-mq {
+    padding: 120px 0 100px;
   }
 }
 
@@ -82,6 +87,18 @@
   dd {
     font-weight: 500;
     text-align: center;
+  }
+
+  @include max-mq {
+    padding: 100px 0;
+
+    dt {
+      font-size: var(--fz23);
+    }
+
+    .container {
+      background: none;
+    }
   }
 }
 
@@ -156,6 +173,49 @@
       transform: translateX(-50%);
     }
   }
+
+  @include tb-mq {
+    ul {
+      grid-template-columns: repeat(2, 1fr);
+      margin-bottom: 0;
+    }
+  }
+
+  @include max-mq {
+    padding: 100px 0;
+
+    ul {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    li {
+      padding: 200px 30px 30px;
+
+      &:nth-child(1) {
+        background: url(../img/recruit/work_01.png) no-repeat top 30px center / 150px;
+      }
+
+      &:nth-child(2) {
+        background: url(../img/recruit/work_02.png) no-repeat top 30px center / 150px;
+      }
+
+      &:nth-child(3) {
+        background: url(../img/recruit/work_03.png) no-repeat top 30px center / 150px;
+      }
+
+      &:nth-child(4) {
+        background: url(../img/recruit/work_04.png) no-repeat top 30px center / 150px;
+      }
+
+      &:nth-child(5) {
+        background: url(../img/recruit/work_05.png) no-repeat top 30px center / 150px;
+      }
+
+      &:nth-child(6) {
+        background: url(../img/recruit/work_06.png) no-repeat top 30px center / 150px;
+      }
+    }
+  }
 }
 
 .recruit_voice {
@@ -216,7 +276,6 @@
   }
 }
 
-
 .recruit_requirements {
   tr {
     &:first-child {
@@ -249,8 +308,23 @@
     border-top: 1px solid #0052a7;
     border-right: 1px solid #0052a7;
   }
-}
 
+  @include max-mq {
+    th {
+      width: 100%;
+      padding: 25px 0;
+    }
+
+    td {
+      padding: 25px;
+    }
+
+    th,
+    td {
+      display: block;
+    }
+  }
+}
 
 .recruit_working {
   li {
@@ -291,6 +365,10 @@
     .wpcf7-list-item.first {
       margin-right: 10px;
     }
+
+    @include max-mq {
+      padding: 80px min(4vw, 25px);
+    }
   }
 
   // .recruit_entry--btn
@@ -321,6 +399,7 @@
   // .tab_change--list
   &--list {
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
     justify-content: center;
     margin-bottom: 60px;
