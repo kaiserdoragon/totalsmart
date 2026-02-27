@@ -185,3 +185,112 @@
     margin-bottom: 60px;
   }
 }
+
+
+.recruit_requirements {
+  tr {
+    &:first-child {
+      th {
+        border-top: 1px solid #0052a7;
+      }
+    }
+  }
+
+  th {
+    width: 185px;
+    padding: 40px 0;
+    color: #fff;
+    background: #0052a7;
+    border-top: 1px solid #fff;
+  }
+
+  td {
+    padding: 40px;
+    border-top: 1px solid #0052a7;
+    border-right: 1px solid #0052a7;
+  }
+}
+
+
+
+
+
+// ---------------------------------------------
+//  タブ切り替え
+// ---------------------------------------------
+
+.tab_change {
+  position: relative;
+  border-radius: 1000px;
+
+  // .tab_change--list
+  &--list {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 60px;
+  }
+
+  // .tab_change--item
+  &--item {
+    width: 100%;
+    max-width: 300px;
+    padding: 14px 24px;
+    font-weight: 500;
+    color: #666;
+    text-align: center;
+    cursor: pointer;
+    background: #fff;
+    border: 2px solid #333;
+    border-radius: 1000px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    transition: all 0.3s ease;
+
+    // 選択されているタブ
+    &.-selected {
+      color: #fff;
+      background: #0052a7;
+      border-color: #0052a7;
+      box-shadow: 0 4px 16px rgb(0 82 167 / 40%);
+    }
+
+    // 選択されていないタブのホバー時
+    &:not(.-selected):hover {
+      color: #0052a7;
+      background: #f8f9fa;
+      border-color: #0052a7;
+      box-shadow: 0 3px 12px rgb(102 126 234 / 20%);
+    }
+  }
+
+  // タブのコンテンツ部分
+  // .tab_change--content
+  &--content {
+    position: relative;
+    display: none;
+    padding: 24px;
+    color: #333;
+    background: #fff;
+    border-radius: 12px;
+
+    // 表示されるコンテンツ
+    &.-show {
+      display: block;
+      animation: buttonFadeIn 0.4s ease;
+    }
+  }
+}
+
+// アニメーションの定義
+@keyframes buttonFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px) scale(1);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+

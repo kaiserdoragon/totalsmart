@@ -141,6 +141,50 @@ new ScrollHint(".js-scrollable", {
   mql.addEventListener("change", (e) => (e.matches ? enable() : disable()));
 })();
 
+
+// タブ切り替え
+document.addEventListener('DOMContentLoaded', () => {
+  const tabContainers = document.querySelectorAll('.tab_change');
+
+  // タブコンテナが存在する場合のみ処理を実行する
+  if (tabContainers.length > 0) {
+
+    // それぞれのコンテナごとに処理を独立させる
+    tabContainers.forEach(container => {
+      // コンテナ内のタブメニューとコンテンツを取得
+      const tabMenuItems = container.querySelectorAll('ul li');
+      const tabContents = container.querySelectorAll('.tab_change--content');
+
+      tabMenuItems.forEach(tabMenuItem => {
+        tabMenuItem.addEventListener('click', () => {
+
+          // 1. 選択状態のリセットと付与（このコンテナ内のタブのみ）
+          tabMenuItems.forEach(item => {
+            item.classList.remove('-selected');
+          });
+          tabMenuItem.classList.add('-selected');
+
+          // 2. コンテンツの非表示（このコンテナ内のコンテンツのみ）
+          tabContents.forEach(tabContent => {
+            tabContent.classList.remove('-show');
+          });
+
+          // 3. IDで紐付いた対象のコンテンツを表示
+          if (tabMenuItem.dataset.id) {
+            const targetContent = document.getElementById(tabMenuItem.dataset.id);
+            // 対象のコンテンツが確実に存在する場合のみクラスを付与
+            if (targetContent) {
+              targetContent.classList.add('-show');
+            }
+          }
+        });
+      });
+    });
+  }
+});
+
+
+
 // (function ($, root, undefined) {
 //   // ------------------------------
 //   // jqueryはここに記載
