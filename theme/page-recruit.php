@@ -1,49 +1,115 @@
 <?php get_header(); ?>
 
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "GeneralContractor",
-    "name": "トータルスマート株式会社",
-    "alternateName": "Total Smart Co., Ltd.",
-    "url": "<?php echo esc_url(home_url('/')); ?>",
-    "logo": "<?php echo get_template_directory_uri(); ?>/img/common/logo.png",
-    "image": "<?php echo get_template_directory_uri(); ?>/img/top/recruit.png",
-    "description": "名古屋市を中心に愛知・岐阜・三重・静岡でエアコン修理・クリーニング、防犯カメラ、LED照明、光回線、OA機器などオフィス・店舗・住宅の設備工事を一括対応する総合設備会社。",
-    "foundingDate": "2014",
-    "address": {
-      "@type": "PostalAddress",
-      "postalCode": "461-0002",
-      "addressRegion": "愛知県",
-      "addressLocality": "名古屋市東区",
-      "streetAddress": "代官町16-17 アーク代官町ビルディング2F",
-      "addressCountry": "JP"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "35.1763",
-      "longitude": "136.9205"
-    },
-    "telephone": "052-932-5450",
-    "faxNumber": "052-932-5451",
-    "contactPoint": {
-      "@type": "ContactPoint",
+  [{
+      "@context": "https://schema.org",
+      "@type": "GeneralContractor",
+      "name": "トータルスマート株式会社",
+      "alternateName": "Total Smart Co., Ltd.",
+      "url": "<?php echo esc_url(home_url('/')); ?>",
+      "logo": "<?php echo get_template_directory_uri(); ?>/img/common/logo.png",
+      "image": "<?php echo get_template_directory_uri(); ?>/img/top/recruit.png",
+      "description": "名古屋市を中心に愛知・岐阜・三重・静岡でエアコン修理・クリーニング、防犯カメラ、LED照明、光回線、OA機器などオフィス・店舗・住宅の設備工事を一括対応する総合設備会社。",
+      "foundingDate": "2014",
+      "address": {
+        "@type": "PostalAddress",
+        "postalCode": "461-0002",
+        "addressRegion": "愛知県",
+        "addressLocality": "名古屋市東区",
+        "streetAddress": "代官町16-17 アーク代官町ビルディング2F",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "35.1763",
+        "longitude": "136.9205"
+      },
       "telephone": "052-932-5450",
-      "contactType": "customer service",
-      "areaServed": ["JP", "愛知県", "岐阜県", "三重県", "静岡県"],
-      "availableLanguage": "Japanese"
+      "faxNumber": "052-932-5451",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "052-932-5450",
+        "contactType": "customer service",
+        "areaServed": ["JP", "愛知県", "岐阜県", "三重県", "静岡県"],
+        "availableLanguage": "Japanese"
+      }
     },
-    "employee": {
-      "@type": "Person",
-      "name": "京田 貴志",
-      "jobTitle": "代表取締役"
+    {
+      "@context": "https://schema.org/",
+      "@type": "JobPosting",
+      "title": "電気工事スタッフ",
+      "description": "オフィスや店舗などの「業務用エアコン」「LED照明」の設置・交換・修理や「通信工事」をお任せします。古いエアコンや照明器具などの取り外し、新しい機器への交換、新店舗・オフィスの開設に伴う新設・増設工事、LED照明の設置作業、オフィスネットワーク工事など。",
+      "datePosted": "<?php echo get_the_modified_time('Y-m-d'); ?>",
+      "employmentType": "FULL_TIME",
+      "hiringOrganization": {
+        "@type": "Organization",
+        "name": "トータルスマート株式会社",
+        "sameAs": "<?php echo esc_url(home_url('/')); ?>",
+        "logo": "<?php echo get_template_directory_uri(); ?>/img/common/logo.png"
+      },
+      "jobLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "代官町16-17 アーク代官町ビルディング2F",
+          "addressLocality": "名古屋市東区",
+          "addressRegion": "愛知県",
+          "postalCode": "461-0002",
+          "addressCountry": "JP"
+        }
+      },
+      "baseSalary": {
+        "@type": "MonetaryAmount",
+        "currency": "JPY",
+        "value": {
+          "@type": "QuantitativeValue",
+          "minValue": 250000,
+          "maxValue": 500000,
+          "unitText": "MONTH"
+        }
+      }
     },
-    "priceRange": "$$"
-  }
+    {
+      "@context": "https://schema.org/",
+      "@type": "JobPosting",
+      "title": "保守点検スタッフ",
+      "description": "既存顧客先に訪問して、フォーマットに沿ってヒアリングを行うお仕事です。1万社以上の法人のお客様に対して、訪問サポートを中心に行っています。営業ではなく、お客様の「困った」を解決することに専念できるポジションです。",
+      "datePosted": "<?php echo get_the_modified_time('Y-m-d'); ?>",
+      "employmentType": "FULL_TIME",
+      "hiringOrganization": {
+        "@type": "Organization",
+        "name": "トータルスマート株式会社",
+        "sameAs": "<?php echo esc_url(home_url('/')); ?>",
+        "logo": "<?php echo get_template_directory_uri(); ?>/img/common/logo.png"
+      },
+      "jobLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "代官町16-17 アーク代官町ビルディング2F",
+          "addressLocality": "名古屋市東区",
+          "addressRegion": "愛知県",
+          "postalCode": "461-0002",
+          "addressCountry": "JP"
+        }
+      },
+      "baseSalary": {
+        "@type": "MonetaryAmount",
+        "currency": "JPY",
+        "value": {
+          "@type": "QuantitativeValue",
+          "minValue": 250000,
+          "maxValue": 400000,
+          "unitText": "MONTH"
+        }
+      }
+    }
+  ]
 </script>
+
 <div class="eyecatch">
   <?php if (has_post_thumbnail()): ?>
-    <?php the_post_thumbnail(); ?>
+    <?php the_post_thumbnail('full', ['alt' => get_the_title() . 'のアイキャッチ画像']); ?>
   <?php else: ?>
   <?php endif; ?>
   <h1><?php the_title(); ?></h1>
@@ -53,7 +119,7 @@
   <?php get_template_part('include/common', 'breadcrumb'); ?>
 </div>
 <?php $slug_name = $post->post_name; ?>
-<main class="<?php echo $slug_name; ?>_page">
+<main class="<?php echo esc_attr($slug_name); ?>_page">
   <section class="recruit_lead">
     <div class="container">
       <h2 class="ttl">
@@ -74,52 +140,52 @@
     <div class="swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_01.jpg" alt="" width="320" height="270" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_01.jpg" alt="トータルスマートの社内の様子と働くメンバー1" width="320" height="270" loading="lazy" decoding="async">
         </div>
         <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_02.jpg" alt="" width="320" height="270" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_02.jpg" alt="トータルスマートの社内の様子と働くメンバー2" width="320" height="270" loading="lazy" decoding="async">
         </div>
         <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_03.jpg" alt="" width="320" height="270" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_03.jpg" alt="トータルスマートの社内の様子と働くメンバー3" width="320" height="270" loading="lazy" decoding="async">
         </div>
         <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_04.jpg" alt="" width="320" height="270" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_04.jpg" alt="トータルスマートの社内の様子と働くメンバー4" width="320" height="270" loading="lazy" decoding="async">
         </div>
         <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_05.jpg" alt="" width="320" height="270" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_05.jpg" alt="トータルスマートの社内の様子と働くメンバー5" width="320" height="270" loading="lazy" decoding="async">
         </div>
         <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_06.jpg" alt="" width="320" height="270" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_06.jpg" alt="トータルスマートの社内の様子と働くメンバー6" width="320" height="270" loading="lazy" decoding="async">
         </div>
         <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_07.jpg" alt="" width="320" height="270" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_07.jpg" alt="トータルスマートの社内の様子と働くメンバー7" width="320" height="270" loading="lazy" decoding="async">
         </div>
         <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_01.jpg" alt="" width="320" height="270" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_01.jpg" alt="トータルスマートの社内の様子と働くメンバー1" width="320" height="270" loading="lazy" decoding="async">
         </div>
         <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_02.jpg" alt="" width="320" height="270" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_02.jpg" alt="トータルスマートの社内の様子と働くメンバー2" width="320" height="270" loading="lazy" decoding="async">
         </div>
         <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_03.jpg" alt="" width="320" height="270" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_03.jpg" alt="トータルスマートの社内の様子と働くメンバー2" width="320" height="270" loading="lazy" decoding="async">
         </div>
         <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_04.jpg" alt="" width="320" height="270" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_04.jpg" alt="トータルスマートの社内の様子と働くメンバー4" width="320" height="270" loading="lazy" decoding="async">
         </div>
         <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_05.jpg" alt="" width="320" height="270" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_05.jpg" alt="トータルスマートの社内の様子と働くメンバー5" width="320" height="270" loading="lazy" decoding="async">
         </div>
         <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_06.jpg" alt="" width="320" height="270" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_06.jpg" alt="トータルスマートの社内の様子と働くメンバー6" width="320" height="270" loading="lazy" decoding="async">
         </div>
         <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_07.jpg" alt="" width="320" height="270" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_07.jpg" alt="トータルスマートの社内の様子と働くメンバー7" width="320" height="270" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
   </section>
 
-  <div class="recruit_anchor">
+  <nav class="recruit_anchor" aria-label="採用ページ目次">
     <div class="container">
       <ul>
         <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>#about">トータルスマートとは</a></li>
@@ -129,7 +195,7 @@
         <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>#entry">エントリーフォーム</a></li>
       </ul>
     </div>
-  </div>
+  </nav>
 
   <section class="recruit_about" id="about">
     <div class="container">
@@ -232,7 +298,7 @@
       <h2 class="page_ttl">社員の声</h2>
       <div class="recruit_voice">
         <div class="recruit_voice--image">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/voice_01.jpg" alt="" width="447" height="322" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/voice_01.jpg" alt="2019年入社 営業職社員へのインタビュー" width="447" height="322" loading="lazy" decoding="async">
           <p>2019年<span>営業職</span></p>
         </div>
         <div class="recruit_voice--txt">
@@ -270,7 +336,7 @@
       </div>
       <div class="recruit_voice">
         <div class="recruit_voice--image">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/voice_02.jpg" alt="" width="447" height="322" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/voice_02.jpg" alt="2019年入社 営業職社員(子育てとの両立)へのインタビュー" width="447" height="322" loading="lazy" decoding="async">
           <p>2019年<span>営業職</span></p>
         </div>
         <div class="recruit_voice--txt">
@@ -297,7 +363,7 @@
             </dd>
             <dt>Q.これからの目標や展望をおしえてください。</dt>
             <dd>
-              標は扱っている商材ひとつひとつの知識を増やしていき、常に進化し続けながらも初心を忘れず…これからもお客さまに寄り添い、頼られる営業員になっていくことです。
+              目標は扱っている商材ひとつひとつの知識を増やしていき、常に進化し続けながらも初心を忘れず…これからもお客さまに寄り添い、頼られる営業員になっていくことです。
             </dd>
           </dl>
         </div>
@@ -312,7 +378,6 @@
         <ul class="tab_change--list">
           <li class="tab_change--item -selected" data-id="tab-1">電気工事スタッフ</li>
           <li class="tab_change--item" data-id="tab-2">保守点検スタッフ</li>
-          <!-- <li class="tab_change--item" data-id="tab-3">募集求人</li> -->
         </ul>
         <div class="tab_change--content -show" id="tab-1">
           <table>
@@ -688,6 +753,7 @@
                   <dt>■社員の年収例</dt>
                   <dd>年収350万円～400万円（入社1年目／未経験入社）</dd>
                 </dl>
+              </td>
             </tr>
             <tr>
               <th>休日・休暇</th>
@@ -718,9 +784,6 @@
             </tr>
           </table>
         </div>
-        <!-- <div class="tab_change--content" id="tab-3">
-          募集求人のコンテンツ
-        </div> -->
       </div>
     </div>
   </section>
@@ -761,8 +824,8 @@
         <?php echo apply_shortcodes('[contact-form-7 id="c490473" title="採用情報のエントリーフォーム" html_class="h-adr"]'); ?>
         <div class="recruit_entry--btn">
           <p>＼ ジョブカンからもエントリー受付中 ／</p>
-          <a href="https://recruit.jobcan.jp/totalsmart">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/jobkan.jpg" alt="" width="368" height="150" loading="lazy" decoding="async">
+          <a href="https://recruit.jobcan.jp/totalsmart" target="_blank" rel="noopener noreferrer">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/jobkan.jpg" alt="ジョブカン採用サイトからエントリー" width="368" height="150" loading="lazy" decoding="async">
           </a>
         </div>
       </div>
