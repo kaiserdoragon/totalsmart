@@ -789,7 +789,7 @@
 
   <section class="recruit_working sec" id="working">
     <div class="container">
-      <h2 class="page_ttl">働き方や働く環境の魅力</h2>
+      <h2 class="page_ttl">働き方・職場の魅力</h2>
       <div class="recruit_working--inner">
         <ul>
           <li>自由度の高い社風（強制的な社内イベントなし）</li>
