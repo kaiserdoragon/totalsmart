@@ -280,9 +280,9 @@
           <li>
             <a href="<?php echo esc_url(home_url('/contact_corporate')); ?>">メールで問い合わせ</a>
           </li>
-          <li>
+          <!-- <li>
             <a href="">LINEで問い合わせ</a>
-          </li>
+          </li> -->
         </ul>
         <a href="tel:052-932-5450" class="cv_contact--btn">
           052-932-5450

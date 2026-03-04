@@ -191,7 +191,9 @@
         <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>#about">トータルスマートとは</a></li>
         <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>#work">私たちの働き方</a></li>
         <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>#voice">社員の声</a></li>
-        <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>#requirements">募集要項・働く環境</a></li>
+        <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>#working">働き方・職場の魅力</a></li>
+        <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>#employee">充実した福利厚生</a></li>
+        <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>#requirements">募集要項</a></li>
         <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>#entry">エントリーフォーム</a></li>
       </ul>
     </div>
@@ -370,6 +372,90 @@
     </div>
   </section>
 
+  <section class="recruit_working sec" id="working">
+    <div class="container">
+      <h2 class="page_ttl">働き方・職場の魅力</h2>
+      <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/working.jpg" alt="" width="2816" height="1536" loading="lazy" decoding="async">
+      <div class="recruit_working--inner">
+        <ul>
+          <li>自由度の高い社風（強制的な社内イベントなし）</li>
+          <li>社長との距離も近いフラットな環境</li>
+          <li>既存顧客数は1万5000社以上。案件豊富で安定性抜群</li>
+          <li>未経験も安心の同行体制＋社内サポート（LINEで即レス対応あり）</li>
+          <li>訪問先はアプリでMAP表示されるので安心</li>
+          <li>日々のスケジュールは各自の裁量で調整可能</li>
+          <li>朝礼・終礼はスマホからオンラインで参加</li>
+          <li>資格取得支援制度（取得費用を会社が負担）</li>
+        </ul>
+        <ul>
+          <li>社会保険完備（雇用・労災・健康・厚生年金）</li>
+          <li>社用車貸与</li>
+          <li>社用スマホ貸与</li>
+          <li>社用PC貸与</li>
+          <li>オフィスグリコ完備</li>
+          <li>ウォーターサーバー完備</li>
+          <li>提携宿泊施設や飲食店、レジャー施設の割引</li>
+          <li>家電製品の社員割引</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="recruit_working sec" id="women">
+    <div class="container">
+      <h2 class="page_ttl">女性の働き方支援</h2>
+      <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/women.jpg" alt="" width="2816" height="1536" loading="lazy" decoding="async">
+      <div class="recruit_working--inner">
+        <ul>
+          <li>子育て事情にも柔軟に対応</li>
+        </ul>
+        <ul>
+          <li>月に1回「ネイル」「フェイシャル」「ネイル」「脱毛」が受けられる</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="recruit_certification sec" id="certification">
+    <div class="container">
+      <h2 class="page_ttl">認定・認証</h2>
+      <p>
+        トータルスマートは、社員一人ひとりが安心して仕事と家庭を両立できる環境づくりを、制度と運用の両面から継続して進めています。<br>
+        その取り組みを「社内基準」ではなく「第三者の認定・認証」として形にし、働きやすさを見える化しています。
+      </p>
+      <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/certification.png" alt="" width="175" height="196" loading="lazy" decoding="async">
+      <span>事業継続力強化計画（BCP）</span>
+    </div>
+  </section>
+
+  <section class="recruit_employee sec" id="employee">
+    <div class="container">
+      <h2 class="page_ttl">充実した福利厚生</h2>
+      <ul>
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/employee_01.jpg" alt="" width="316" height="316" loading="lazy" decoding="async">
+          <span>全厚済Off Time</span>
+        </li>
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/employee_02.jpg" alt="" width="316" height="316" loading="lazy" decoding="async">
+          <span>全厚済メディカルコールセンター</span>
+        </li>
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/employee_03.jpg" alt="" width="316" height="316" loading="lazy" decoding="async">
+          <span>交通事故傷害保険</span>
+        </li>
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/employee_04.jpg" alt="" width="316" height="316" loading="lazy" decoding="async">
+          <span>お祝い金制度</span>
+        </li>
+        <li>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/employee_05.jpg" alt="" width="316" height="316" loading="lazy" decoding="async">
+          <span>個人賠償責任保険</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
   <section class="recruit_requirements sec" id="requirements">
     <div class="container">
       <h2 class="page_ttl">募集要項</h2>
@@ -536,16 +622,9 @@
                   </dd>
                 </dl>
                 <dl class="u-mb15">
-                  <dt>・入社時の想定年収</dt>
+                  <dt>■入社時の想定年収</dt>
                   <dd>
-                    年収300万円～500万円
-                  </dd>
-                </dl>
-                <dl class="u-mb15">
-                  <dt>・社員の年収例</dt>
-                  <dd>
-                    年収350万円（入社1年目／未経験入社）<br>
-                    年収400万円～500万円（入社1年目／経験者入社）
+                    年収400万円～600万円
                   </dd>
                 </dl>
               </td>
@@ -724,7 +803,7 @@
               <th>給与</th>
               <td>
                 <p class="u-mb15">
-                  月給25万円～<br>
+                  ■月給25万円～<br>
                   ※経験者の方は前職の給与を考慮して決定します<br>
                   ※残業代全額支給
                 </p>
@@ -746,11 +825,7 @@
                 </p>
                 <dl class="u-mb15">
                   <dt>■入社時の想定年収</dt>
-                  <dd>年収300万円～400万円</dd>
-                </dl>
-                <dl class="u-mb15">
-                  <dt>■社員の年収例</dt>
-                  <dd>年収350万円～400万円（入社1年目／未経験入社）</dd>
+                  <dd>年収400万円～600万円</dd>
                 </dl>
               </td>
             </tr>
@@ -783,35 +858,6 @@
             </tr>
           </table>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="recruit_working sec" id="working">
-    <div class="container">
-      <h2 class="page_ttl">働き方・職場の魅力</h2>
-      <div class="recruit_working--inner">
-        <ul>
-          <li>自由度の高い社風（強制的な社内イベントなし）</li>
-          <li>社長との距離も近いフラットな環境</li>
-          <li>子育て事情にも柔軟に対応</li>
-          <li>既存顧客数は1万5000社以上。案件豊富で安定性抜群</li>
-          <li>未経験も安心の同行体制＋社内サポート（LINEで即レス対応あり）</li>
-          <li>訪問先はアプリでMAP表示されるので安心</li>
-          <li>日々のスケジュールは各自の裁量で調整可能</li>
-          <li>朝礼・終礼はスマホからオンラインで参加</li>
-        </ul>
-        <ul>
-          <li>社会保険完備（雇用・労災・健康・厚生年金）</li>
-          <li>社用車貸与</li>
-          <li>社用スマホ貸与</li>
-          <li>社用PC貸与</li>
-          <li>資格取得支援制度（取得費用を会社が負担）</li>
-          <li>オフィスグリコ完備</li>
-          <li>ウォーターサーバー完備</li>
-          <li>提携宿泊施設や飲食店、レジャー施設の割引</li>
-          <li>家電製品の社員割引</li>
-        </ul>
       </div>
     </div>
   </section>
