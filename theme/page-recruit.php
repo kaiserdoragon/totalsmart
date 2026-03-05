@@ -420,8 +420,10 @@
     <div class="container">
       <h2 class="page_ttl">認定・認証</h2>
       <p>
-        トータルスマートは、社員一人ひとりが安心して仕事と家庭を両立できる環境づくりを、制度と運用の両面から継続して進めています。<br>
-        その取り組みを「社内基準」ではなく「第三者の認定・認証」として形にし、働きやすさを見える化しています。
+        トータルスマートは社員一人ひとりが安心して仕事と家庭を両立できる環境づくりを、<br class="is-hidden_sp">
+        制度と運用の両面から継続して進めています。<br>
+        その取り組みを「社内基準」ではなく「第三者の認定・認証」として形にし、<br class="is-hidden_sp">
+        働きやすさを見える化しています。
       </p>
       <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/certification.png" alt="" width="175" height="196" loading="lazy" decoding="async">
       <span>事業継続力強化計画（BCP）</span>
