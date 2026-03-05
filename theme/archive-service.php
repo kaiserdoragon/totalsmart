@@ -80,7 +80,7 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
     </div>
   </section>
 
-  <section class="mitumori">
+  <!-- <section class="mitumori">
     <div class="container">
       <h2 class="page_ttl">見積りシュミレーション（仮）</h2>
       <p>
@@ -93,7 +93,8 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
         無料で見積りをする
       </a>
     </div>
-  </section>
+  </section> -->
+
 </main>
 
 
