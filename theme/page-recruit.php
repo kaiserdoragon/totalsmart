@@ -40,6 +40,7 @@
       "title": "電気工事スタッフ",
       "description": "オフィスや店舗などの「業務用エアコン」「LED照明」の設置・交換・修理や「通信工事」をお任せします。古いエアコンや照明器具などの取り外し、新しい機器への交換、新店舗・オフィスの開設に伴う新設・増設工事、LED照明の設置作業、オフィスネットワーク工事など。",
       "datePosted": "<?php echo get_the_modified_time('Y-m-d'); ?>",
+      "validThrough": "<?php echo date('Y-m-d', strtotime('+3 months')); ?>T00:00",
       "employmentType": "FULL_TIME",
       "hiringOrganization": {
         "@type": "Organization",
@@ -57,6 +58,11 @@
           "postalCode": "461-0002",
           "addressCountry": "JP"
         }
+      },
+      "jobLocationType": "TELECOMMUTE",
+      "applicantLocationRequirements": {
+        "@type": "Country",
+        "name": "Japan"
       },
       "baseSalary": {
         "@type": "MonetaryAmount",
@@ -75,6 +81,7 @@
       "title": "保守点検スタッフ",
       "description": "既存顧客先に訪問して、フォーマットに沿ってヒアリングを行うお仕事です。1万社以上の法人のお客様に対して、訪問サポートを中心に行っています。営業ではなく、お客様の「困った」を解決することに専念できるポジションです。",
       "datePosted": "<?php echo get_the_modified_time('Y-m-d'); ?>",
+      "validThrough": "<?php echo date('Y-m-d', strtotime('+3 months')); ?>T00:00",
       "employmentType": "FULL_TIME",
       "hiringOrganization": {
         "@type": "Organization",
@@ -93,6 +100,11 @@
           "addressCountry": "JP"
         }
       },
+      "jobLocationType": "TELECOMMUTE",
+      "applicantLocationRequirements": {
+        "@type": "Country",
+        "name": "Japan"
+      },
       "baseSalary": {
         "@type": "MonetaryAmount",
         "currency": "JPY",
@@ -109,7 +121,7 @@
 
 <div class="eyecatch">
   <?php if (has_post_thumbnail()): ?>
-    <?php the_post_thumbnail('full', ['alt' => get_the_title() . 'のアイキャッチ画像']); ?>
+    <?php the_post_thumbnail('full', ['alt' => get_the_title() . 'のアイキャッチ画像', 'fetchpriority' => 'high']); ?>
   <?php else: ?>
   <?php endif; ?>
   <h1><?php the_title(); ?></h1>
@@ -140,34 +152,13 @@
     <div class="swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_01.jpg" alt="トータルスマートの社内の様子と働くメンバー1" width="320" height="270" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_01.jpg" alt="トータルスマートの社内の様子と働くメンバー1" width="320" height="270" fetchpriority="high" decoding="async">
         </div>
         <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_02.jpg" alt="トータルスマートの社内の様子と働くメンバー2" width="320" height="270" loading="lazy" decoding="async">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_02.jpg" alt="トータルスマートの社内の様子と働くメンバー2" width="320" height="270" fetchpriority="high" decoding="async">
         </div>
         <div class="swiper-slide">
           <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_03.jpg" alt="トータルスマートの社内の様子と働くメンバー3" width="320" height="270" loading="lazy" decoding="async">
-        </div>
-        <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_04.jpg" alt="トータルスマートの社内の様子と働くメンバー4" width="320" height="270" loading="lazy" decoding="async">
-        </div>
-        <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_05.jpg" alt="トータルスマートの社内の様子と働くメンバー5" width="320" height="270" loading="lazy" decoding="async">
-        </div>
-        <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_06.jpg" alt="トータルスマートの社内の様子と働くメンバー6" width="320" height="270" loading="lazy" decoding="async">
-        </div>
-        <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_07.jpg" alt="トータルスマートの社内の様子と働くメンバー7" width="320" height="270" loading="lazy" decoding="async">
-        </div>
-        <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_01.jpg" alt="トータルスマートの社内の様子と働くメンバー1" width="320" height="270" loading="lazy" decoding="async">
-        </div>
-        <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_02.jpg" alt="トータルスマートの社内の様子と働くメンバー2" width="320" height="270" loading="lazy" decoding="async">
-        </div>
-        <div class="swiper-slide">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_03.jpg" alt="トータルスマートの社内の様子と働くメンバー2" width="320" height="270" loading="lazy" decoding="async">
         </div>
         <div class="swiper-slide">
           <img src="<?php echo get_template_directory_uri(); ?>/img/recruit/slide_04.jpg" alt="トータルスマートの社内の様子と働くメンバー4" width="320" height="270" loading="lazy" decoding="async">
@@ -468,11 +459,12 @@
     <div class="container">
       <h2 class="page_ttl">募集要項</h2>
       <div class="tab_change">
-        <ul class="tab_change--list">
-          <li class="tab_change--item -selected" data-id="tab-1">電気工事スタッフ</li>
-          <li class="tab_change--item" data-id="tab-2">保守点検スタッフ</li>
+        <ul class="tab_change--list" role="tablist">
+          <li class="tab_change--item -selected" data-id="tab-1" id="tab-label-1" role="tab" aria-controls="tab-1" aria-selected="true" tabindex="0">電気工事スタッフ</li>
+          <li class="tab_change--item" data-id="tab-2" id="tab-label-2" role="tab" aria-controls="tab-2" aria-selected="false" tabindex="-1">保守点検スタッフ</li>
         </ul>
-        <div class="tab_change--content -show" id="tab-1">
+        <div class="tab_change--content -show" id="tab-1" role="tabpanel" aria-labelledby="tab-label-1" tabindex="0">
+          <h3 class="screen-reader-text" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">電気工事スタッフの募集要項</h3>
           <table>
             <tr>
               <th>募集職種</th>
@@ -714,7 +706,8 @@
             </tr>
           </table>
         </div>
-        <div class="tab_change--content" id="tab-2">
+        <div class="tab_change--content" id="tab-2" role="tabpanel" aria-labelledby="tab-label-2" tabindex="0">
+          <h3 class="screen-reader-text" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">保守点検スタッフの募集要項</h3>
           <table>
             <tr>
               <th>募集職種</th>

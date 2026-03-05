@@ -20,12 +20,12 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
 ?>
 
 <div class="eyecatch -archive">
-  <div><?php echo $title; ?></div>
-  <img src="<?php echo get_template_directory_uri(); ?>/img/page/<?php echo $img_file; ?>" alt="<?php echo $title; ?>" width="1920" height="600" loading="lazy" decoding="async">
+  <div><?php echo esc_html($title); ?></div>
+  <img src="<?php echo esc_url(get_template_directory_uri() . '/img/page/' . $img_file); ?>" alt="<?php echo esc_attr($title); ?>" width="1920" height="600" fetchpriority="high">
 </div>
 
 
-<main class="<?php echo $slug . '_page'; ?>">
+<main class="<?php echo esc_attr($slug) . '_page'; ?>">
 
   <div class="breadcrumbs--wrap">
     <?php get_template_part('include/common', 'breadcrumb'); ?>
@@ -39,18 +39,13 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
           <span><?php echo esc_html(strtoupper($slug)); ?></span>
         </h1>
         <?php if (have_posts()) : ?>
-          <ul class="<?php echo $slug . '_page--inner'; ?>">
+          <ul class="<?php echo esc_attr($slug) . '_page--inner'; ?>">
             <?php while (have_posts()) : the_post(); ?>
-              <?php
-              $current_post_type = get_post_type();
-              $taxonomy = ($current_post_type === 'post') ? 'category' : (get_object_taxonomies($current_post_type)[0] ?? '');
-              $terms = ($taxonomy) ? get_the_terms(get_the_ID(), $taxonomy) : [];
-              ?>
               <li>
                 <a href="<?php the_permalink(); ?>">
                   <div class="information--image">
                     <?php if (has_post_thumbnail()) : ?>
-                      <?php the_post_thumbnail('info-thumb', $thumb_attr); ?>
+                      <?php the_post_thumbnail('info-thumb', ['loading' => 'lazy', 'decoding' => 'async']); ?>
                     <?php else : ?>
                       <img
                         src="<?php echo esc_url(get_theme_file_uri('/img/top/information.jpg')); ?>"
@@ -62,23 +57,9 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
                     <?php endif; ?>
                   </div>
 
-                  <?php
-                  // --- 準備：親子カテゴリーをここで仕分けておく ---
-                  $parent_terms = [];
-                  $child_terms  = [];
-                  if (!empty($terms) && !is_wp_error($terms)) {
-                    foreach ($terms as $term) {
-                      if ($term->parent === 0) {
-                        $parent_terms[] = $term;
-                      } else {
-                        $child_terms[] = $term;
-                      }
-                    }
-                  }
-                  ?>
-
                   <div class="information--meta">
                     <?php
+                    // 親カテゴリーを取得して表示する処理
                     $terms = get_the_terms(get_the_ID(), 'information_cat');
                     if ($terms && !is_wp_error($terms)) :
                       $top_term = $terms[0];
@@ -91,11 +72,11 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
                       </span>
                     <?php endif; ?>
 
-                    <time datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
+                    <time datetime="<?php echo get_the_date('c'); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
 
                   </div>
 
-                  <p><?php the_title(); ?></p>
+                  <h2><?php the_title(); ?></h2>
                 </a>
               </li>
             <?php endwhile; ?>
