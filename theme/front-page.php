@@ -1,55 +1,68 @@
 <?php get_header(); ?>
 
-<script type="application/ld+json">
-  [{
-      "@context": "https://schema.org",
-      "@type": "GeneralContractor",
-      "name": "トータルスマート株式会社",
-      "alternateName": "Total Smart Co., Ltd.",
-      "url": "<?php echo esc_url(home_url('/')); ?>",
-      "logo": "<?php echo get_template_directory_uri(); ?>/img/common/logo.png",
-      "description": "名古屋市を中心に愛知・岐阜・三重・静岡でオフィス・店舗のコスト削減、設備工事を一括対応する総合設備会社。",
-      "address": {
-        "@type": "PostalAddress",
-        "postalCode": "461-0002",
-        "addressRegion": "愛知県",
-        "addressLocality": "名古屋市東区",
-        "streetAddress": "代官町16-17 アーク代官町ビルディング2F",
-        "addressCountry": "JP"
-      },
-      "telephone": "052-932-5450",
-      "areaServed": ["愛知県", "岐阜県", "三重県", "静岡県"]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [{
-          "@type": "Question",
-          "name": "法人契約でないと契約は出来ないのですか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "商品サービスによって異なりますが､ご商売をされているお客さまでしたらお申込いただけます｡"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "料金はいくらですか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "ご利用企業様の利用計画に応じて、さまざまな料金プランをご用意しております。詳しくはお問い合わせください。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "導入までにどれくらい時間がかかりますか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "お申し込み後、数日でご利用を開始していただけます。契約後は専任のスタッフにより、開設・ご利用方法をご説明いたします。"
-          }
-        }
-      ]
-    }
+<?php
+/**
+ * SEO強化: 構造化データ（JSON-LD）の安全なPHP配列化
+ * 二重管理を防ぎ、構文エラーを完全に防止します。
+ */
+$faq_data = [
+  [
+    'q' => '法人契約でないと契約は出来ないのですか？',
+    'a' => '商品サービスによって異なりますが､ご商売をされているお客さまでしたらお申込いただけます｡'
+  ],
+  [
+    'q' => '料金はいくらですか？',
+    'a' => 'ご利用企業様の利用計画に応じて、さまざまな料金プランをご用意しております。詳しくはお問い合わせください。'
+  ],
+  [
+    'q' => '導入までにどれくらい時間がかかりますか？',
+    'a' => 'お申し込み後、数日でご利用を開始していただけます。契約後は専任のスタッフにより、開設・ご利用方法をご説明いたします。'
   ]
+];
+
+// FAQの構造化データを構築
+$faq_schema_items = [];
+foreach ($faq_data as $faq) {
+  $faq_schema_items[] = [
+    "@type" => "Question",
+    "name" => $faq['q'],
+    "acceptedAnswer" => [
+      "@type" => "Answer",
+      "text" => $faq['a']
+    ]
+  ];
+}
+
+// 企業情報＋FAQの統合JSON-LD
+$schema_data = [
+  [
+    "@context" => "https://schema.org",
+    "@type" => "GeneralContractor",
+    "name" => "トータルスマート株式会社",
+    "alternateName" => "Total Smart Co., Ltd.",
+    "url" => home_url('/'),
+    "logo" => get_template_directory_uri() . "/img/common/logo.png",
+    "description" => "名古屋市を中心に愛知・岐阜・三重・静岡でオフィス・店舗のコスト削減、設備工事を一括対応する総合設備会社。",
+    "address" => [
+      "@type" => "PostalAddress",
+      "postalCode" => "461-0002",
+      "addressRegion" => "愛知県",
+      "addressLocality" => "名古屋市東区",
+      "streetAddress" => "代官町16-17 アーク代官町ビルディング2F",
+      "addressCountry" => "JP"
+    ],
+    "telephone" => "052-932-5450",
+    "areaServed" => ["愛知県", "岐阜県", "三重県", "静岡県"]
+  ],
+  [
+    "@context" => "https://schema.org",
+    "@type" => "FAQPage",
+    "mainEntity" => $faq_schema_items
+  ]
+];
+?>
+<script type="application/ld+json">
+  <?php echo wp_json_encode($schema_data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); ?>
 </script>
 
 <main>
@@ -84,7 +97,8 @@
         poster="<?php echo get_theme_file_uri('/img/top/mv_video.jpg'); ?>"
         playsinline autoplay muted loop
         preload="metadata"
-        title="トータルスマート サービス紹介動画">
+        title="トータルスマート サービス紹介動画"
+        fetchpriority="high">
       </video>
     </div>
   </section>
@@ -212,7 +226,7 @@
         <p>お客様にとってストレスのない業務形態です。</p>
       </div>
       <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_anima.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
-      <a class="btn_link" href="<?php echo esc_url(home_url('/company')); ?>" rel="noopener">トータルスマートについて詳しく知る</a>
+      <a class="btn_link" href="<?php echo esc_url(home_url('/company/')); ?>" rel="noopener">トータルスマートについて詳しく知る</a>
     </div>
   </section>
 
@@ -376,15 +390,15 @@
 
       <?php if (!empty($json_ld_services)) : ?>
         <script type="application/ld+json">
-          {
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "itemListElement": <?php echo json_encode($json_ld_services, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
-          }
+          <?php echo wp_json_encode([
+            "@context" => "https://schema.org",
+            "@type" => "ItemList",
+            "itemListElement" => $json_ld_services
+          ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
         </script>
       <?php endif; ?>
 
-      <a class="btn_link" href="<?php echo esc_url(home_url('/service')); ?>" rel="noopener">サービス一覧を見る</a>
+      <a class="btn_link" href="<?php echo esc_url(home_url('/service/')); ?>" rel="noopener">サービス一覧を見る</a>
     </div>
   </section>
 
@@ -493,7 +507,7 @@
         <p>表示する投稿がありません。</p>
       <?php endif; ?>
     </div>
-    <a class="btn_link" href="<?php echo esc_url(home_url('/introduction')); ?>" rel="noopener">導入実績一覧を見る</a>
+    <a class="btn_link" href="<?php echo esc_url(home_url('/introduction/')); ?>" rel="noopener">導入実績一覧を見る</a>
   </section>
 
   <section class="company bg_white sec">
@@ -515,7 +529,7 @@
             <li><a href="<?php echo esc_url(home_url('/company/#history')); ?>">沿革</a></li>
             <li><a href="<?php echo esc_url(home_url('/company/#access')); ?>">アクセス</a></li>
           </ul>
-          <a class="btn_link" href="<?php echo esc_url(home_url('/company')); ?>" rel="noopener">会社概要の詳細はこちらから</a>
+          <a class="btn_link" href="<?php echo esc_url(home_url('/company/')); ?>" rel="noopener">会社概要の詳細はこちらから</a>
         </div>
         <img src="<?php echo get_template_directory_uri(); ?>/img/top/company.png" alt="" width="415" height="407" loading="lazy" decoding="async">
       </div>
@@ -594,11 +608,12 @@
           <?php endwhile; ?>
         </ul>
       </div>
-      <a class="btn_link" href="<?php echo esc_url(home_url('/news')); ?>">お知らせ一覧はこちらから</a>
+      <a class="btn_link" href="<?php echo esc_url(home_url('/news/')); ?>">お知らせ一覧はこちらから</a>
     </section>
   <?php
+    // 改善点4: ループが実行された場合のみ確実にリセットされるように移動
+    wp_reset_postdata();
   endif;
-  wp_reset_postdata();
   ?>
 
 
@@ -675,7 +690,7 @@
         <p>現在、お役立ち情報はありません。</p>
       <?php endif; ?>
 
-      <a class="btn_link" href="<?php echo esc_url(home_url('/information')); ?>" rel="noopener">お役立ち情報一覧を見る</a>
+      <a class="btn_link" href="<?php echo esc_url(home_url('/information/')); ?>" rel="noopener">お役立ち情報一覧を見る</a>
     </div>
   </section>
 
@@ -714,26 +729,6 @@
     </div>
   </section>
 
-  <?php
-  /**
-   * よくある質問（SEO対応版）
-   * データをPHP配列化し、HTMLとJSON-LD（構造化データ）の両方に利用します
-   */
-  $faq_data = [
-    [
-      'q' => '法人契約でないと契約は出来ないのですか？',
-      'a' => '商品サービスによって異なりますが､ご商売をされているお客さまでしたらお申込いただけます｡'
-    ],
-    [
-      'q' => '料金はいくらですか？',
-      'a' => 'ご利用企業様の利用計画に応じて、さまざまな料金プランをご用意しております。詳しくはお問い合わせください。'
-    ],
-    [
-      'q' => '導入までにどれくらい時間がかかりますか？',
-      'a' => 'お申し込み後、数日でご利用を開始していただけます。契約後は専任のスタッフにより、開設・ご利用方法をご説明いたします。'
-    ]
-  ];
-  ?>
   <section class="question sec bg_white">
     <div class="container">
       <h2 class="ttl">
@@ -747,7 +742,7 @@
           <dd><?php echo esc_html($faq['a']); ?></dd>
         <?php endforeach; ?>
       </dl>
-      <a class="btn_link" href="<?php echo esc_url(home_url('/question')); ?>" rel="noopener">よくある質問の一覧を見る</a>
+      <a class="btn_link" href="<?php echo esc_url(home_url('/question/')); ?>" rel="noopener">よくある質問の一覧を見る</a>
     </div>
   </section>
 
@@ -765,11 +760,8 @@
       <div class="cv_contact--inner">
         <ul>
           <li>
-            <a href="<?php echo esc_url(home_url('/contact')); ?>">メールで問い合わせ</a>
+            <a href="<?php echo esc_url(home_url('/contact/')); ?>">メールで問い合わせ</a>
           </li>
-          <!-- <li>
-            <a href="">LINEで問い合わせ</a>
-          </li> -->
         </ul>
         <a href="tel:052-932-5450" class="cv_contact--btn">
           052-932-5450
