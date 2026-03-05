@@ -293,6 +293,51 @@ img {
 }
 
 
+.mitumori {
+  .container {
+    margin: 0 auto 100px;
+  }
+
+  // .mitumori--btn
+  &--btn {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px 0;
+    margin: auto;
+    font-size: var(--fz40);
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    background: url(../img/service/mitumori.png) no-repeat left 35px top 85% / 100px, #0052a7;
+    border-radius: 15px;
+
+    span {
+      display: block;
+      width: fit-content;
+      padding: 5px 30px;
+      margin: auto;
+      font-size: var(--fz23);
+      font-weight: 800;
+      color: #0052a7;
+      background: #fff;
+      border-radius: 1000px;
+    }
+
+    @include max-mq {
+      font-size: var(--fz30);
+      background: url(../img/service/mitumori.png) no-repeat left 35px top 70% / 80px, #0052a7;
+
+      span {
+        font-size: var(--fz18);
+      }
+    }
+  }
+}
+
+
+
+
 // レスポンシブ table　表
 table {
   width: 100%;

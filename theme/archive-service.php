@@ -79,6 +79,21 @@ $slug = $type_settings[$post_type]['slug'] ?? 'news';
       </div>
     </div>
   </section>
+
+  <section class="mitumori">
+    <div class="container">
+      <h2 class="page_ttl">見積りシュミレーション（仮）</h2>
+      <p>
+        希望条件を入力するだけで、複合機・コピー機の月額リース料金を24時間オンラインで自動見積。<br>
+        オフィス機器・回線まで含めたトータルのコスト最適化もワンストップでご提案します。
+      </p>
+
+      <a class="mitumori--btn" href="<?php echo esc_url(home_url('/')); ?>">
+        <span>お見積りはこちら</span>
+        無料で見積りをする
+      </a>
+    </div>
+  </section>
 </main>
 
 
