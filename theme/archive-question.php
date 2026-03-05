@@ -41,7 +41,8 @@ if (have_posts()) {
     if (!empty($answer_text)) {
       $faq_list[] = [
         "@type" => "Question",
-        "name" => get_the_title($post_obj),
+        // 改善: タイトルもタグ除去を確実に行い、JSONの構文エラーを防止
+        "name" => wp_strip_all_tags(get_the_title($post_obj)),
         "acceptedAnswer" => [
           "@type" => "Answer",
           "text" => $answer_text
@@ -57,14 +58,15 @@ if (have_posts()) {
       "@type" => "FAQPage",
       "mainEntity" => $faq_list
     ];
-    echo '<script type="application/ld+json">' . json_encode($faq_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+    // 改善: WordPress標準のより安全な wp_json_encode を使用
+    echo '<script type="application/ld+json">' . wp_json_encode($faq_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
   }
 }
 ?>
 
 <div class="eyecatch -archive">
   <div><?php echo esc_html($title); ?></div>
-  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/page/<?php echo esc_attr($img_file); ?>" alt="<?php echo esc_attr($title); ?>" width="1920" height="600" loading="lazy" decoding="async">
+  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/page/<?php echo esc_attr($img_file); ?>" alt="<?php echo esc_attr($title); ?>" width="1920" height="600" fetchpriority="high">
 </div>
 
 <main class="<?php echo esc_attr($slug . '_page'); ?>">
