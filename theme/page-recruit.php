@@ -183,6 +183,7 @@
         <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>#work">私たちの働き方</a></li>
         <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>#voice">社員の声</a></li>
         <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>#working">働き方・職場の魅力</a></li>
+        <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>#women">女性の働き方支援</a></li>
         <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>#employee">充実した福利厚生</a></li>
         <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>#requirements">募集要項</a></li>
         <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>#entry">エントリーフォーム</a></li>
