@@ -290,7 +290,7 @@ $schema_data = [
         </p>
         <span>受付時間　平日9：00～18：00</span>
         <div class="cv_area--btns">
-          <a class="cv_area--mail" href="" target="_blank">メールで問い合わせ</a>
+          <a class="cv_area--mail" href="<?php echo esc_url(home_url('/contact_corporate/')); ?>" target="_blank">メールで問い合わせ</a>
           <a class="cv_area--tel" href="tel:052-932-5450">お電話で問い合わせ</a>
         </div>
       </div>
