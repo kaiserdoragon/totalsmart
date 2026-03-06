@@ -148,39 +148,94 @@ if (!isset($content_width)) {
 
 if (function_exists('add_theme_support')) {
 
-
-  // アップロード画像のサムネイル設定
+  // ==================================================
+  // 1. アップロード画像のサムネイル設定
+  // ==================================================
   add_theme_support('post-thumbnails');
 
   // 特定の大きさのサムネイルが必要なとき用使い方→ the_post_thumbnail('custom-size');
   add_image_size('custom-size', 300, 200, true); // 任意の数値を設定
-
   add_image_size('info-thumb', 345, 220, true);
-
   add_image_size('service-thumb', 212, 212, true);
-
   add_image_size('works-thumb', 352, 308, true);
 
 
-
-  //タイトルタグ使用をサポート（wp_headに自動でtitleタグが入ります）
+  // ==================================================
+  // 2. タイトルタグ使用をサポート
+  // ==================================================
   add_theme_support('title-tag');
-  //タイトルタグ内のセパレーター設定
+
+
+  // ==================================================
+  // 3. タイトルタグの柔軟な出力設定（完全に上書き）
+  // ==================================================
+  function custom_pre_get_document_title($title)
+  {
+    // 基本のサイト名を取得しておく
+    $site_name = get_bloginfo('name');
+
+    // ① ホーム / フロントページの場合
+    // if (is_front_page() || is_home()) {
+    //   return $site_name . ' | キャッチコピーやコンセプトなどを自由に入力';
+    // }
+
+    // ② 特定の固定ページ（例：スラッグが 'about'）の場合
+    if (is_page('contact_corporate')) {
+      return 'お問い合わせ | ' . $site_name;
+    }
+
+    if (is_page('contact_corporate-confirm')) {
+      return 'お問い合わせ確認画面 | ' . $site_name;
+    }
+
+    // 複数のお問い合わせ完了ページ（サンクスページ）の場合
+    if (is_page(['contact_corporate-thanks', 'cleaning_thanks', 'shuuri_thanks'])) {
+      return 'お問い合わせありがとうございました | ' . $site_name;
+    }
+
+    // ③ カスタム投稿タイプ（例：'works'）のアーカイブ（一覧）ページの場合
+    // if (is_post_type_archive('works')) {
+    //   return '制作実績一覧 | ' . $site_name;
+    // }
+
+    // ④ カスタム投稿タイプ（例：'works'）の個別詳細ページの場合
+    // if (is_singular('works')) {
+    //   return '実績紹介：' . get_the_title() . ' | ' . $site_name;
+    // }
+
+    // ⑤ 404エラーページの場合
+    // if (is_404()) {
+    //   return 'ページが見つかりません | ' . $site_name;
+    // }
+
+    // 上記のどの条件にも当てはまらない場合は空を返し、下記のデフォルト処理へ移行させる
+    return '';
+  }
+  add_filter('pre_get_document_title', 'custom_pre_get_document_title');
+
+
+  // ==================================================
+  // 4. 上記で「空（''）」を返したページ用のフォールバック設定
+  // ==================================================
+  // タイトルタグ内のセパレーター設定
   function custom_document_title_separator($sep)
   {
     return '|';
   }
-
   add_filter('document_title_separator', 'custom_document_title_separator');
-  //タイトルタグ内にサイトの説明文を表示させない
+
+  // タイトルタグ内にサイトの説明文（キャッチフレーズ）を表示させない
   function edit_document_title_parts($title)
   {
     unset($title['tagline']);
     return $title;
   }
-
   add_filter('document_title_parts', 'edit_document_title_parts');
 }
+
+
+
+
 
 
 
