@@ -53,8 +53,6 @@
     }
   }
 
-
-
   // .contact_corporate--consent
   &--consent {
     margin-bottom: 60px;
@@ -129,5 +127,11 @@
     width: fit-content;
     margin: 40px auto 0;
     text-decoration: underline;
+  }
+
+  @include max-mq {
+    .header--tel {
+      font-size: var(--fz32);
+    }
   }
 }
