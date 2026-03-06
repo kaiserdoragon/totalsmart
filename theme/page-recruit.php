@@ -464,7 +464,6 @@
           <li class="tab_change--item" data-id="tab-2" id="tab-label-2" role="tab" aria-controls="tab-2" aria-selected="false" tabindex="-1">保守点検スタッフ</li>
         </ul>
         <div class="tab_change--content -show" id="tab-1" role="tabpanel" aria-labelledby="tab-label-1" tabindex="0">
-          <h3 class="screen-reader-text" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">電気工事スタッフの募集要項</h3>
           <table>
             <tr>
               <th>募集職種</th>
@@ -707,7 +706,6 @@
           </table>
         </div>
         <div class="tab_change--content" id="tab-2" role="tabpanel" aria-labelledby="tab-label-2" tabindex="0">
-          <h3 class="screen-reader-text" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">保守点検スタッフの募集要項</h3>
           <table>
             <tr>
               <th>募集職種</th>
