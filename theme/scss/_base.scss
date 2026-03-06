@@ -599,7 +599,7 @@ main {
     background: #fff;
 
     .-page & {
-      background: #f6f6f6;
+      background: #fff;
     }
 
     ul {
@@ -673,7 +673,7 @@ main {
         gap: 15px;
 
         &::before {
-          bottom: 135px;
+          bottom: 85px;
           width: 200px;
         }
       }
