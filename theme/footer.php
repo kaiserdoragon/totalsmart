@@ -1,5 +1,5 @@
 <div class="footer_btn_fixed" id="js_fixed-btn">
-  <p class="footer_btn_fixed--tel"><a href="tel:052-932-5450">電話で<br>予約する</a></p>
+  <p class="footer_btn_fixed--tel"><a href="tel:0529325450">電話で<br>予約する</a></p>
   <p class="footer_btn_fixed--mail"><a href="<?php echo esc_url(home_url('/contact_corporate/')); ?>#contact">メールで<br>無料見積り</a></p>
   <!-- <p class="footer_btn_fixed--line"><a href="https://lin.ee/fXrKQyq">LINEで<br>問い合わせ</a></p> -->
 </div>
@@ -11,9 +11,16 @@
       愛知・岐阜・三重・静岡で、エアコン修理・クリーニング、防犯カメラ、LED照明、光回線、OA機器など、オフィス・店舗・住宅に必要な設備工事をワンストップで提供しています。<br>
       販売・施工・保守まで一貫対応し、通信環境の整備、防犯強化、省エネ対策を通じて、コスト削減と業務効率化を実現します。
     </p>
+
     <div class="footer--inner">
       <div class="footer--txt">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/common/footer_logo.png" alt="Total Smart" width="461" height="96" loading="lazy" decoding="async">
+        <img
+          src="<?php echo esc_url(get_template_directory_uri() . '/img/common/footer_logo.png'); ?>"
+          alt="トータルスマート株式会社"
+          width="461"
+          height="96"
+          loading="lazy"
+          decoding="async">
         <address>
           〒461-0002<br>愛知県名古屋市東区代官町16-17 アーク代官町ビルディング2F
         </address>
@@ -32,45 +39,45 @@
         <li><a href="<?php echo esc_url(home_url('/privacy/')); ?>">プライバシーポリシー</a></li>
       </ul>
     </div>
+
     <small>Copyright &copy; Total Smart株式会社 All Rights Reserved.</small>
   </div>
 </footer>
 </div>
 
-<?php if (!is_page('company')): ?>
+<?php if (is_front_page() || is_page('company')) : ?>
   <?php
   $footer_schema = [
-    "@context" => "https://schema.org",
-    "@type" => "LocalBusiness",
-    "name" => "トータルスマート株式会社",
-    "image" => get_template_directory_uri() . "/img/common/logo.png",
-    "telephone" => "052-932-5450",
-    "url" => home_url('/'),
-    "address" => [
-      "@type" => "PostalAddress",
-      "streetAddress" => "代官町16-17 アーク代官町ビルディング2F",
-      "addressLocality" => "名古屋市東区",
-      "addressRegion" => "愛知県",
-      "postalCode" => "461-0002",
-      "addressCountry" => "JP"
+    '@context' => 'https://schema.org',
+    '@type'    => 'LocalBusiness',
+    '@id'      => home_url('/') . '#localbusiness',
+    'name'     => 'トータルスマート株式会社',
+    'alternateName' => 'Total Smart Co., Ltd.',
+    'url'      => home_url('/'),
+    'logo'     => get_theme_file_uri('/img/common/logo.png'),
+    'image'    => get_theme_file_uri('/img/common/logo.png'),
+    'telephone' => '+81-52-932-5450',
+    'address'  => [
+      '@type'           => 'PostalAddress',
+      'streetAddress'   => '代官町16-17 アーク代官町ビルディング2F',
+      'addressLocality' => '名古屋市東区',
+      'addressRegion'   => '愛知県',
+      'postalCode'      => '461-0002',
+      'addressCountry'  => 'JP',
     ],
-    "geo" => [
-      "@type" => "GeoCoordinates",
-      "latitude" => "35.17860058275399", // 必要に応じて微調整してください
-      "longitude" => "136.92176775383203" // 必要に応じて微調整してください
-    ],
-    "openingHoursSpecification" => [
+    'openingHoursSpecification' => [
       [
-        "@type" => "OpeningHoursSpecification",
-        "dayOfWeek" => ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens" => "09:00",
-        "closes" => "18:00"
-      ]
-    ]
+        '@type'    => 'OpeningHoursSpecification',
+        'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        'opens'    => '09:00',
+        'closes'   => '18:00',
+      ],
+    ],
+    'areaServed' => ['愛知県', '岐阜県', '三重県', '静岡県'],
   ];
   ?>
   <script type="application/ld+json">
-    <?php echo wp_json_encode($footer_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); ?>
+    <?php echo wp_json_encode($footer_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
   </script>
 <?php endif; ?>
 
