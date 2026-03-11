@@ -1,59 +1,197 @@
-<?php get_header(); ?>
+<?php
+/*------------------------------------*\
+会社概要ページ
+\*------------------------------------*/
 
+$page_id        = get_queried_object_id();
+$site_name      = get_bloginfo('name');
+$page_title     = get_the_title($page_id);
+$page_url       = get_permalink($page_id);
+$home_url       = home_url('/');
+$slug_name      = get_post_field('post_name', $page_id);
+$hero_image_url = get_template_directory_uri() . '/img/common/logo.png';
+$company_image  = get_template_directory_uri() . '/img/top/company.png';
+
+$raw_content = $page_id ? get_post_field('post_content', $page_id) : '';
+$page_description_source = wp_strip_all_tags(strip_shortcodes((string) $raw_content));
+$page_description_source = html_entity_decode((string) $page_description_source, ENT_QUOTES, get_bloginfo('charset'));
+$page_description_source = preg_replace('/\s+/u', ' ', $page_description_source);
+$page_description_source = trim((string) $page_description_source);
+
+if (function_exists('mb_strimwidth')) {
+  $page_description = mb_strimwidth($page_description_source, 0, 160, '...', 'UTF-8');
+} else {
+  $page_description = wp_trim_words($page_description_source, 120, '...');
+}
+
+if ('' === $page_description) {
+  $page_description = 'トータルスマート株式会社の会社概要ページです。所在地、代表者、事業内容、アクセス、企業理念、代表挨拶をご案内しています。';
+}
+
+$seo_title = '会社概要 | ' . $site_name;
+
+$has_seo_plugin = (
+  defined('WPSEO_VERSION') ||
+  defined('RANK_MATH_VERSION') ||
+  defined('AIOSEO_VERSION') ||
+  defined('SEOPRESS_VERSION')
+);
+
+/**
+ * この会社概要ページ専用の title を付与
+ * SEOプラグインがある場合はそちらを優先
+ */
+if (!$has_seo_plugin) {
+  add_filter('pre_get_document_title', function ($document_title) use ($seo_title, $page_id) {
+    if (is_page($page_id)) {
+      return $seo_title;
+    }
+    return $document_title;
+  }, 20);
+
+  /**
+   * この会社概要ページ専用の canonical を付与
+   * SEOプラグインがある場合はそちらを優先
+   */
+  add_action('wp_head', function () use ($page_url, $page_id) {
+    if (!is_page($page_id)) {
+      return;
+    }
+    echo '<link rel="canonical" href="' . esc_url($page_url) . '">' . "\n";
+  }, 20);
+}
+
+get_header();
+?>
+
+<?php
+$schema_graph = [
+  [
+    '@type'           => 'BreadcrumbList',
+    '@id'             => $page_url . '#breadcrumb',
+    'itemListElement' => [
+      [
+        '@type'    => 'ListItem',
+        'position' => 1,
+        'name'     => 'TOP',
+        'item'     => $home_url,
+      ],
+      [
+        '@type'    => 'ListItem',
+        'position' => 2,
+        'name'     => '会社概要',
+        'item'     => $page_url,
+      ],
+    ],
+  ],
+  [
+    '@type'       => 'WebPage',
+    '@id'         => $page_url . '#webpage',
+    'url'         => $page_url,
+    'name'        => $page_title,
+    'description' => $page_description,
+    'isPartOf'    => [
+      '@type' => 'WebSite',
+      '@id'   => $home_url . '#website',
+      'url'   => $home_url,
+      'name'  => $site_name,
+    ],
+    'breadcrumb'  => [
+      '@id' => $page_url . '#breadcrumb',
+    ],
+    'about'       => [
+      '@id' => $home_url . '#organization',
+    ],
+  ],
+  [
+    '@type'         => 'Organization',
+    '@id'           => $home_url . '#organization',
+    'name'          => 'トータルスマート株式会社',
+    'alternateName' => 'Total Smart Co., Ltd.',
+    'url'           => $home_url,
+    'logo'          => get_theme_file_uri('/img/common/logo.png'),
+    'image'         => $company_image,
+    'description'   => '名古屋市を中心に愛知・岐阜・三重・静岡で、防犯カメラ、LED照明、光回線、エアコン、OA機器などオフィス・店舗の設備工事を一括対応する総合設備会社です。',
+    'foundingDate'  => '2014-09',
+    'telephone'     => '+81-52-932-5450',
+    'faxNumber'     => '+81-52-932-5451',
+    'address'       => [
+      '@type'           => 'PostalAddress',
+      'postalCode'      => '461-0002',
+      'addressRegion'   => '愛知県',
+      'addressLocality' => '名古屋市東区',
+      'streetAddress'   => '代官町16-17 アーク代官町ビルディング2F',
+      'addressCountry'  => 'JP',
+    ],
+    'contactPoint'  => [
+      [
+        '@type'             => 'ContactPoint',
+        'telephone'         => '+81-52-932-5450',
+        'contactType'       => 'customer service',
+        'areaServed'        => ['JP', '愛知県', '岐阜県', '三重県', '静岡県'],
+        'availableLanguage' => ['ja'],
+      ],
+    ],
+  ],
+  [
+    '@type'         => 'LocalBusiness',
+    '@id'           => $page_url . '#localbusiness',
+    'name'          => 'トータルスマート株式会社',
+    'url'           => $home_url,
+    'image'         => $company_image,
+    'telephone'     => '+81-52-932-5450',
+    'faxNumber'     => '+81-52-932-5451',
+    'address'       => [
+      '@type'           => 'PostalAddress',
+      'postalCode'      => '461-0002',
+      'addressRegion'   => '愛知県',
+      'addressLocality' => '名古屋市東区',
+      'streetAddress'   => '代官町16-17 アーク代官町ビルディング2F',
+      'addressCountry'  => 'JP',
+    ],
+    'openingHoursSpecification' => [
+      [
+        '@type'    => 'OpeningHoursSpecification',
+        'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        'opens'    => '09:00',
+        'closes'   => '18:00',
+      ],
+    ],
+    'areaServed' => [
+      ['@type' => 'AdministrativeArea', 'name' => '愛知県'],
+      ['@type' => 'AdministrativeArea', 'name' => '岐阜県'],
+      ['@type' => 'AdministrativeArea', 'name' => '三重県'],
+      ['@type' => 'AdministrativeArea', 'name' => '静岡県'],
+    ],
+    'parentOrganization' => [
+      '@id' => $home_url . '#organization',
+    ],
+  ],
+];
+?>
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "GeneralContractor",
-    "name": "トータルスマート株式会社",
-    "alternateName": "Total Smart Co., Ltd.",
-    "url": "<?php echo esc_url(home_url('/')); ?>",
-    "logo": "<?php echo get_template_directory_uri(); ?>/img/common/logo.png",
-    "image": "<?php echo get_template_directory_uri(); ?>/img/top/company.png",
-    "description": "名古屋市を中心に愛知・岐阜・三重・静岡でエアコン修理・クリーニング、防犯カメラ、LED照明、光回線、OA機器などオフィス・店舗・住宅の設備工事を一括対応する総合設備会社。",
-    "foundingDate": "2014",
-    "address": {
-      "@type": "PostalAddress",
-      "postalCode": "461-0002",
-      "addressRegion": "愛知県",
-      "addressLocality": "名古屋市東区",
-      "streetAddress": "代官町16-17 アーク代官町ビルディング2F",
-      "addressCountry": "JP"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "35.1763",
-      "longitude": "136.9205"
-    },
-    "telephone": "052-932-5450",
-    "faxNumber": "052-932-5451",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "052-932-5450",
-      "contactType": "customer service",
-      "areaServed": ["JP", "愛知県", "岐阜県", "三重県", "静岡県"],
-      "availableLanguage": "Japanese"
-    },
-    "employee": {
-      "@type": "Person",
-      "name": "京田 貴志",
-      "jobTitle": "代表取締役"
-    },
-    "priceRange": "$$"
-  }
+  <?php echo wp_json_encode(['@context' => 'https://schema.org', '@graph' => $schema_graph], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
 </script>
+
 <div class="eyecatch">
-  <?php if (has_post_thumbnail()): ?>
-    <?php the_post_thumbnail(); ?>
-  <?php else: ?>
+  <?php if (has_post_thumbnail()) : ?>
+    <?php
+    the_post_thumbnail('full', [
+      'alt'           => the_title_attribute(['echo' => false]),
+      'loading'       => 'eager',
+      'fetchpriority' => 'high',
+      'decoding'      => 'async',
+    ]);
+    ?>
   <?php endif; ?>
-  <h1><?php the_title(); ?></h1>
+  <h1><?php echo esc_html($page_title); ?></h1>
 </div>
 
 <div class="breadcrumbs--wrap">
   <?php get_template_part('include/common', 'breadcrumb'); ?>
 </div>
-<?php $slug_name = $post->post_name; ?>
-<main class="<?php echo $slug_name; ?>_page">
+
+<main class="<?php echo esc_attr($slug_name . '_page'); ?>">
   <section class="company_about sec">
     <div class="container -md">
       <h2 class="ttl">
@@ -115,12 +253,16 @@
         </tr>
         <tr>
           <th>グループ会社</th>
-          <td>
-            株式会社QUORIX
-          </td>
+          <td>株式会社QUORIX</td>
         </tr>
       </table>
-      <img src="<?php echo get_template_directory_uri(); ?>/img/company/exterior.jpg" alt="" width="900" height="500" loading="lazy" decoding="async">
+      <img
+        src="<?php echo esc_url(get_template_directory_uri() . '/img/company/exterior.jpg'); ?>"
+        alt="トータルスマート株式会社 外観"
+        width="900"
+        height="500"
+        loading="lazy"
+        decoding="async">
     </div>
   </section>
 
@@ -154,7 +296,13 @@
             </ul>
           </dd>
         </dl>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.121082038919!2d136.91922377576543!3d35.17853457275365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x600370ba32995555%3A0x8d9204a4268d7036!2z44OI44O844K_44Or44K544Oe44O844OI5qCq5byP5Lya56S-!5e0!3m2!1sja!2sjp!4v1770079692557!5m2!1sja!2sjp" width="100%" height="auto" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.121082038919!2d136.91922377576543!3d35.17853457275365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x600370ba32995555%3A0x8d9204a4268d7036!2z44OI44O844K_44Or44K544Oe44O844OI5qCq5byP5Lya56S-!5e0!3m2!1sja!2sjp!4v1770079692557!5m2!1sja!2sjp"
+          style="border:0;width:100%;"
+          height="450"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>
@@ -162,22 +310,16 @@
   <section class="company_date sec -top" id="philosophy">
     <div class="container -sm">
       <h2 class="page_ttl">企業理念</h2>
-      <img src="<?php echo get_template_directory_uri(); ?>/img/company/philosophy.png" alt="" width="261" height="200" loading="lazy" decoding="async">
+      <img src="<?php echo esc_url(get_template_directory_uri() . '/img/company/philosophy.png'); ?>" alt="" width="261" height="200" loading="lazy" decoding="async">
       <p>
         お得・快適・安心を軸に、お客様の生涯に寄り添う“信頼されるパートナー”となる。<br>
         最適なコスト削減と効率化を提案し、進化するサービスを磨いて提供。全国展開で多様な課題に応え、<br class="is-hidden_sp">
         個性を活かした提案力で期待を超えていきます。
       </p>
       <ul class="company_date--list">
-        <li>
-          地域密着企業として、お客様に満足・喜び・感動を与える商品とサービスを提供いたします。
-        </li>
-        <li>
-          社員一人一人が自主性・主体性をもち、考え・行動・協力できる社員を育成します。
-        </li>
-        <li>
-          今に感謝し、明るく前向きに素直な心で日々勉強をし、昨日の自分より成長します。
-        </li>
+        <li>地域密着企業として、お客様に満足・喜び・感動を与える商品とサービスを提供いたします。</li>
+        <li>社員一人一人が自主性・主体性をもち、考え・行動・協力できる社員を育成します。</li>
+        <li>今に感謝し、明るく前向きに素直な心で日々勉強をし、昨日の自分より成長します。</li>
       </ul>
     </div>
   </section>
@@ -185,7 +327,7 @@
   <section class="company_date sec -top" id="history">
     <div class="container -sm">
       <h2 class="page_ttl">沿革</h2>
-      <img src="<?php echo get_template_directory_uri(); ?>/img/company/history.png" alt="" width="307" height="200" loading="lazy" decoding="async">
+      <img src="<?php echo esc_url(get_template_directory_uri() . '/img/company/history.png'); ?>" alt="" width="307" height="200" loading="lazy" decoding="async">
       <p>
         創業以来、当社は常に革新と成長を追求し、最新技術の導入を積極的に進めてまいりました。<br>
         市場の変化に柔軟に対応するため、数々の先進ソリューションを提供し業界内での信頼と実績を築いております。<br>
@@ -198,7 +340,7 @@
   <section class="company_date sec -bottom">
     <div class="container -sm">
       <h2 class="page_ttl">お取引先様</h2>
-      <img src="<?php echo get_template_directory_uri(); ?>/img/company/transaction.png" alt="" width="263" height="155" loading="lazy" decoding="async">
+      <img src="<?php echo esc_url(get_template_directory_uri() . '/img/company/transaction.png'); ?>" alt="" width="263" height="155" loading="lazy" decoding="async">
       <p>
         弊社は、優れた仕入先および提供パートナーとの強固な連携を基盤に、<br class="is-hidden_sp">
         高品質な製品とサービスの供給体制を構築しております。<br>
@@ -209,19 +351,19 @@
       </p>
       <ul class="company_date--partners">
         <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/company/logo_01.png" alt="" width="232" height="39" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/company/logo_01.png'); ?>" alt="" width="232" height="39" loading="lazy" decoding="async">
           <p>株式会社日立製作所様</p>
         </li>
         <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/company/logo_02.png" alt="" width="212" height="46" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/company/logo_02.png'); ?>" alt="" width="212" height="46" loading="lazy" decoding="async">
           <p>ダイキン工業株式会社様</p>
         </li>
         <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/company/logo_03.png" alt="" width="239" height="66" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/company/logo_03.png'); ?>" alt="" width="239" height="66" loading="lazy" decoding="async">
           <p>株式会社日立製作所様</p>
         </li>
         <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/company/logo_04.png" alt="" width="228" height="40" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/company/logo_04.png'); ?>" alt="" width="228" height="40" loading="lazy" decoding="async">
           <p>株式会社USEN様</p>
         </li>
       </ul>
@@ -234,7 +376,7 @@
         代表挨拶
         <span>MESSAGE</span>
       </h2>
-      <img class="company_message--logo" src="<?php echo get_theme_file_uri('/img/common/logo.png'); ?>" alt="トータルスマート株式会社" width="325" height="68" fetchpriority="high" decoding="async" />
+      <img class="company_message--logo" src="<?php echo esc_url(get_theme_file_uri('/img/common/logo.png')); ?>" alt="トータルスマート株式会社" width="325" height="68" fetchpriority="high" decoding="async">
       <p>
         自由でみずみずしい発想を原動力に。<br>個人の想像力とチームワークの強みを最大限に高める企業風土をつくる。
       </p>
@@ -256,7 +398,7 @@
           企業様のお困り事に寄り添える企業として、縁の下の力持ちのような存在を目指しております。
         </dd>
       </dl>
-      <img class="company_message--illust" src="<?php echo get_theme_file_uri('/img/company/illust.jpg'); ?>" alt="トータルスマート株式会社" width="800" height="1200" fetchpriority="high" decoding="async" />
+      <img class="company_message--illust" src="<?php echo esc_url(get_theme_file_uri('/img/company/illust.jpg')); ?>" alt="トータルスマート株式会社" width="800" height="1200" loading="lazy" decoding="async">
     </div>
   </section>
 

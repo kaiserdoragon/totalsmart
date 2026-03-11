@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> class="<?php echo esc_attr(implode(' ', get_body_class())); ?>">
+<html <?php language_attributes(); ?>>
 
 <head>
   <!-- Google Tag Manager -->
@@ -37,6 +37,14 @@
   $ts_meta_desc = '';
   $ts_robots    = '';
 
+  $ts_noindex_pages = [
+    'attention',
+    'contact_corporate-confirm',
+    'contact_corporate-thanks',
+    'cleaning_thanks',
+    'shuuri_thanks',
+  ];
+
   if (is_front_page()) {
     $ts_meta_desc = get_bloginfo('description');
 
@@ -45,15 +53,28 @@
     }
   } elseif (is_home()) {
     $ts_meta_desc = 'トータルスマート株式会社のお知らせ一覧です。最新情報や重要なお知らせをご案内します。';
+  } elseif (is_page($ts_noindex_pages)) {
+    $ts_meta_desc = wp_strip_all_tags(get_the_title(get_queried_object_id())) . 'のページです。';
+    $ts_robots    = 'noindex,follow';
+  } elseif (is_search()) {
+    $ts_meta_desc = '「' . get_search_query() . '」の検索結果ページです。';
+    $ts_robots    = 'noindex,follow';
+  } elseif (is_404()) {
+    $ts_meta_desc = 'お探しのページは見つかりませんでした。';
+    $ts_robots    = 'noindex,follow';
   } elseif (is_singular()) {
     $ts_object_id = get_queried_object_id();
     $ts_excerpt   = get_the_excerpt($ts_object_id);
 
-    if (! empty($ts_excerpt)) {
+    if (!empty($ts_excerpt)) {
       $ts_meta_desc = $ts_excerpt;
     } else {
       $ts_content   = get_post_field('post_content', $ts_object_id);
-      $ts_meta_desc = wp_trim_words(wp_strip_all_tags(strip_shortcodes((string) $ts_content)), 120, '...');
+      $ts_meta_desc = wp_trim_words(
+        wp_strip_all_tags(strip_shortcodes((string) $ts_content)),
+        120,
+        '...'
+      );
     }
 
     if ('' === trim((string) $ts_meta_desc)) {
@@ -62,7 +83,7 @@
   } elseif (is_category() || is_tag() || is_tax()) {
     $ts_term_desc = term_description();
 
-    if (! empty($ts_term_desc)) {
+    if (!empty($ts_term_desc)) {
       $ts_meta_desc = wp_strip_all_tags($ts_term_desc);
     } else {
       $ts_meta_desc = wp_strip_all_tags(single_term_title('', false)) . 'の一覧ページです。';
@@ -70,21 +91,15 @@
   } elseif (is_post_type_archive()) {
     $ts_archive_desc = get_the_archive_description();
 
-    if (! empty($ts_archive_desc)) {
+    if (!empty($ts_archive_desc)) {
       $ts_meta_desc = wp_strip_all_tags($ts_archive_desc);
     } else {
       $ts_meta_desc = wp_strip_all_tags(post_type_archive_title('', false)) . 'の一覧ページです。';
     }
-  } elseif (is_search()) {
-    $ts_meta_desc = '「' . get_search_query() . '」の検索結果ページです。';
-    $ts_robots    = 'noindex,follow';
-  } elseif (is_404()) {
-    $ts_meta_desc = 'お探しのページは見つかりませんでした。';
-    $ts_robots    = 'noindex,follow';
   } elseif (is_archive()) {
     $ts_archive_desc = get_the_archive_description();
 
-    if (! empty($ts_archive_desc)) {
+    if (!empty($ts_archive_desc)) {
       $ts_meta_desc = wp_strip_all_tags($ts_archive_desc);
     } else {
       $ts_meta_desc = wp_strip_all_tags(get_the_archive_title()) . 'の一覧ページです。';
@@ -99,19 +114,17 @@
   $ts_meta_desc = trim((string) $ts_meta_desc);
   ?>
 
-  <?php if (! current_theme_supports('title-tag')) : ?>
+  <?php if (!current_theme_supports('title-tag')) : ?>
     <title><?php echo esc_html(wp_get_document_title()); ?></title>
   <?php endif; ?>
 
-  <?php if (! $ts_has_seo_plugin && ! empty($ts_meta_desc)) : ?>
+  <?php if (!$ts_has_seo_plugin && !empty($ts_meta_desc)) : ?>
     <meta name="description" content="<?php echo esc_attr($ts_meta_desc); ?>">
   <?php endif; ?>
 
-  <?php if (! $ts_has_seo_plugin && ! empty($ts_robots)) : ?>
+  <?php if (!$ts_has_seo_plugin && !empty($ts_robots)) : ?>
     <meta name="robots" content="<?php echo esc_attr($ts_robots); ?>">
   <?php endif; ?>
-
-  <link rel="preload" as="image" href="<?php echo esc_url(get_theme_file_uri('/img/common/logo.png')); ?>" fetchpriority="high">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -184,7 +197,6 @@
             alt="トータルスマート株式会社"
             width="1034"
             height="216"
-            fetchpriority="high"
             decoding="async">
         </picture>
       </div>
@@ -214,7 +226,6 @@
               alt="トータルスマート株式会社"
               width="325"
               height="68"
-              fetchpriority="high"
               decoding="async">
           </a>
         </p>
