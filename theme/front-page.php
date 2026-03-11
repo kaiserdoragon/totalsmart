@@ -1,7 +1,49 @@
-<?php get_header(); ?>
-
 <?php
-$site_home_url = home_url('/');
+$site_home_url   = home_url('/');
+$ts_site_name    = get_bloginfo('name');
+$ts_poster_url   = get_theme_file_uri('/img/top/mv_video.jpg');
+$ts_has_seo_plugin = (
+  defined('WPSEO_VERSION') ||
+  defined('RANK_MATH_VERSION') ||
+  defined('AIOSEO_VERSION') ||
+  defined('SEOPRESS_VERSION')
+);
+
+/**
+ * フロントページ専用の title を付与
+ * SEOプラグインがある場合はそちらを優先
+ */
+if (!$ts_has_seo_plugin) {
+  add_filter('pre_get_document_title', function ($document_title) use ($ts_site_name) {
+    if (is_front_page()) {
+      return 'トータルスマート株式会社 | コスト削減・設備工事・オフィス支援 | ' . $ts_site_name;
+    }
+    return $document_title;
+  }, 20);
+
+  /**
+   * フロントページ専用の canonical を付与
+   */
+  add_action('wp_head', function () use ($site_home_url) {
+    if (!is_front_page()) {
+      return;
+    }
+    echo '<link rel="canonical" href="' . esc_url($site_home_url) . '">' . "\n";
+  }, 20);
+}
+
+/**
+ * ヒーロー動画ポスター画像を先読み
+ */
+add_action('wp_head', function () use ($ts_poster_url) {
+  if (!is_front_page()) {
+    return;
+  }
+  echo '<link rel="preload" as="image" href="' . esc_url($ts_poster_url) . '" fetchpriority="high">' . "\n";
+}, 5);
+
+get_header();
+
 $faq_data = [
   [
     'q' => '法人契約でないと契約は出来ないのですか？',
@@ -17,7 +59,7 @@ $faq_data = [
   ],
 ];
 
-$base_schema = [
+$home_schema = [
   '@context' => 'https://schema.org',
   '@graph'   => [
     [
@@ -37,7 +79,21 @@ $base_schema = [
         'streetAddress'   => '代官町16-17 アーク代官町ビルディング2F',
         'addressCountry'  => 'JP',
       ],
-      'areaServed'    => ['愛知県', '岐阜県', '三重県', '静岡県'],
+      'areaServed'    => [
+        ['@type' => 'AdministrativeArea', 'name' => '愛知県'],
+        ['@type' => 'AdministrativeArea', 'name' => '岐阜県'],
+        ['@type' => 'AdministrativeArea', 'name' => '三重県'],
+        ['@type' => 'AdministrativeArea', 'name' => '静岡県'],
+      ],
+      'contactPoint'  => [
+        [
+          '@type'             => 'ContactPoint',
+          'telephone'         => '+81-52-932-5450',
+          'contactType'       => 'customer service',
+          'areaServed'        => ['JP', '愛知県', '岐阜県', '三重県', '静岡県'],
+          'availableLanguage' => ['ja'],
+        ],
+      ],
     ],
     [
       '@type'      => 'WebSite',
@@ -46,13 +102,25 @@ $base_schema = [
       'url'        => $site_home_url,
       'inLanguage' => 'ja',
     ],
+    [
+      '@type'       => 'WebPage',
+      '@id'         => $site_home_url . '#webpage',
+      'url'         => $site_home_url,
+      'name'        => 'トータルスマート株式会社',
+      'description' => '愛知・岐阜・三重・静岡対応。防犯・通信・省エネ・設備工事をワンストップで支援し、コスト削減と業務効率化を実現します。',
+      'isPartOf'    => [
+        '@id' => $site_home_url . '#website',
+      ],
+      'about'       => [
+        '@id' => $site_home_url . '#organization',
+      ],
+    ],
   ],
 ];
 ?>
 <script type="application/ld+json">
-  <?php echo wp_json_encode($base_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
+  <?php echo wp_json_encode($home_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
 </script>
-
 
 <main>
 
@@ -65,14 +133,10 @@ $base_schema = [
     <div class="mv_scroll" aria-hidden="true">
       <div class="mv_scroll--inner">
         <div class="mv_scroll--left">
-          <p>
-            <?php echo str_repeat('Total Smartは経費削減を専門とする会社です。 ', 20); ?>
-          </p>
+          <p><?php echo esc_html(str_repeat('Total Smartは経費削減を専門とする会社です。 ', 20)); ?></p>
         </div>
         <div class="mv_scroll--right">
-          <p>
-            <?php echo str_repeat('Total Smartは経費削減を専門とする会社です。 ', 20); ?>
-          </p>
+          <p><?php echo esc_html(str_repeat('Total Smartは経費削減を専門とする会社です。 ', 20)); ?></p>
         </div>
       </div>
     </div>
@@ -84,13 +148,13 @@ $base_schema = [
     <div class="mv_parallax_bg">
       <video
         src="<?php echo esc_url(get_theme_file_uri('/video/video2.mp4')); ?>"
-        poster="<?php echo esc_url(get_theme_file_uri('/img/top/mv_video.jpg')); ?>"
+        poster="<?php echo esc_url($ts_poster_url); ?>"
         playsinline
         autoplay
         muted
         loop
         preload="metadata"
-        title="<?php echo esc_attr('トータルスマート サービス紹介動画'); ?>">
+        aria-label="<?php echo esc_attr('トータルスマート サービス紹介動画'); ?>">
       </video>
     </div>
   </section>
@@ -137,8 +201,6 @@ $base_schema = [
     </div>
   </section>
 
-
-
   <?php
   $page_data     = get_page_by_path('attention', OBJECT, 'page');
   $content_check = '';
@@ -167,7 +229,6 @@ $base_schema = [
     </section>
   <?php endif; ?>
 
-
   <section class="feature bg_white sec">
     <div class="container">
       <h2 class="ttl">
@@ -177,7 +238,7 @@ $base_schema = [
       <p class="ttl--lead">コストを抑えて成果を伸ばす、最適な業務改善をご提案します！！</p>
       <ul>
         <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_catch_01.png" alt="" width="400" height="210" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_theme_file_uri('/img/top/feature_catch_01.png')); ?>" alt="" width="400" height="210" loading="lazy" decoding="async">
           <h3>コスト削減</h3>
           <p>
             オフィスで必須なOA機器やインターネット回線
@@ -185,10 +246,10 @@ $base_schema = [
             お得に経費削減。<br>
             面倒な初期の手続き工事もお任せで安心。
           </p>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_icon_01.png" alt="" width="246" height="87" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_theme_file_uri('/img/top/feature_icon_01.png')); ?>" alt="" width="246" height="87" loading="lazy" decoding="async">
         </li>
         <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_catch_02.png" alt="" width="400" height="210" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_theme_file_uri('/img/top/feature_catch_02.png')); ?>" alt="" width="400" height="210" loading="lazy" decoding="async">
           <h3>業務効率化</h3>
           <p>
             リモートサポートはブロードバンド回線を
@@ -196,10 +257,10 @@ $base_schema = [
             技術スタッフのパソコンに表示し、
             画面を確認しながらご対応します。
           </p>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_icon_02.png" alt="" width="245" height="105" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_theme_file_uri('/img/top/feature_icon_02.png')); ?>" alt="" width="245" height="105" loading="lazy" decoding="async">
         </li>
         <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_catch_03.png" alt="" width="400" height="210" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_theme_file_uri('/img/top/feature_catch_03.png')); ?>" alt="" width="400" height="210" loading="lazy" decoding="async">
           <h3>売上・収益向上</h3>
           <p>
             ITを駆使して、企業の可能性を見極め、
@@ -207,7 +268,7 @@ $base_schema = [
             データに基づいた継続的な進化を通じて、
             企業の成長や売上増加を支援します。
           </p>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_icon_03.png" alt="" width="164" height="117" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_theme_file_uri('/img/top/feature_icon_03.png')); ?>" alt="" width="164" height="117" loading="lazy" decoding="async">
         </li>
       </ul>
       <div class="feature--inner">
@@ -216,7 +277,7 @@ $base_schema = [
         <strong class="underline">一本の電話ですべて解決する</strong>
         <p>お客様にとってストレスのない業務形態です。</p>
       </div>
-      <img src="<?php echo get_template_directory_uri(); ?>/img/top/feature_anima.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
+      <img src="<?php echo esc_url(get_theme_file_uri('/img/top/feature_anima.jpg')); ?>" alt="" width="800" height="1200" loading="lazy" decoding="async">
       <a class="btn_link" href="<?php echo esc_url(home_url('/company/')); ?>" rel="noopener">トータルスマートについて詳しく知る</a>
     </div>
   </section>
@@ -237,7 +298,7 @@ $base_schema = [
       </p>
       <ul>
         <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/reason_02.png" alt="" width="136" height="117" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_theme_file_uri('/img/top/reason_02.png')); ?>" alt="" width="136" height="117" loading="lazy" decoding="async">
           <h3>一括契約の提供</h3>
           <p>
             工事を行った後に発生する保守やメンテナ
@@ -248,7 +309,7 @@ $base_schema = [
           </p>
         </li>
         <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/reason_03.png" alt="" width="171" height="103" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_theme_file_uri('/img/top/reason_03.png')); ?>" alt="" width="171" height="103" loading="lazy" decoding="async">
           <h3>総合的なサポート</h3>
           <p>
             工事だけでなく、その後の保守や修理、サポー
@@ -257,10 +318,9 @@ $base_schema = [
             別々の業者との契約や交渉をする手間を省くこ
             とができます。
           </p>
-
         </li>
         <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/reason_01.png" alt="" width="129" height="129" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_theme_file_uri('/img/top/reason_01.png')); ?>" alt="" width="129" height="129" loading="lazy" decoding="async">
           <h3>透明性と予測可能性</h3>
           <p>
             一括契約の場合、費用が明確に提示されるた
@@ -281,13 +341,12 @@ $base_schema = [
         </p>
         <span>受付時間　平日9：00～18：00</span>
         <div class="cv_area--btns">
-          <a class="cv_area--mail" href="<?php echo esc_url(home_url('/contact_corporate/')); ?>" target="_blank">メールで問い合わせ</a>
-          <a class="cv_area--tel" href="tel:052-932-5450">お電話で問い合わせ</a>
+          <a class="cv_area--mail" href="<?php echo esc_url(home_url('/contact_corporate/')); ?>" target="_blank" rel="noopener noreferrer">メールで問い合わせ</a>
+          <a class="cv_area--tel" href="tel:0529325450">お電話で問い合わせ</a>
         </div>
       </div>
     </section>
   </section>
-
 
   <?php
   /**
@@ -401,6 +460,7 @@ $base_schema = [
           <?php echo wp_json_encode([
             '@context'        => 'https://schema.org',
             '@type'           => 'ItemList',
+            '@id'             => $site_home_url . '#service-list',
             'name'            => 'サービス一覧',
             'itemListElement' => $json_ld_services,
           ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
@@ -410,8 +470,6 @@ $base_schema = [
       <a class="btn_link" href="<?php echo esc_url(home_url('/service/')); ?>">サービス一覧を見る</a>
     </div>
   </section>
-
-
 
   <?php
   /**
@@ -445,6 +503,9 @@ $base_schema = [
         'update_post_term_cache' => true,
       ]);
 
+      $json_ld_works = [];
+      $works_position = 0;
+
       if ($works_query->have_posts()) :
         $post_count = 0;
       ?>
@@ -453,6 +514,15 @@ $base_schema = [
             <?php while ($works_query->have_posts()) : $works_query->the_post(); ?>
               <?php
               $post_count++;
+              $works_position++;
+
+              $json_ld_works[] = [
+                '@type'    => 'ListItem',
+                'position' => $works_position,
+                'name'     => get_the_title(),
+                'url'      => get_permalink(),
+              ];
+
               $thumb_attr = [
                 'alt'      => wp_strip_all_tags(get_the_title()),
                 'loading'  => ($post_count <= 3) ? 'eager' : 'lazy',
@@ -528,6 +598,19 @@ $base_schema = [
         <p>表示する投稿がありません。</p>
       <?php endif; ?>
     </div>
+
+    <?php if (!empty($json_ld_works)) : ?>
+      <script type="application/ld+json">
+        <?php echo wp_json_encode([
+          '@context'        => 'https://schema.org',
+          '@type'           => 'ItemList',
+          '@id'             => $site_home_url . '#works-list',
+          'name'            => '導入実績一覧',
+          'itemListElement' => $json_ld_works,
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
+      </script>
+    <?php endif; ?>
+
     <a class="btn_link" href="<?php echo esc_url(home_url('/introduction/')); ?>">導入実績一覧を見る</a>
   </section>
 
@@ -552,7 +635,7 @@ $base_schema = [
           </ul>
           <a class="btn_link" href="<?php echo esc_url(home_url('/company/')); ?>" rel="noopener">会社概要の詳細はこちらから</a>
         </div>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/top/company.png" alt="" width="415" height="407" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_theme_file_uri('/img/top/company.png')); ?>" alt="" width="415" height="407" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
@@ -575,9 +658,9 @@ $base_schema = [
               チームワークを強化し、お客様はもちろん従業員がよりよい環境で働けることを目指します。
             </dd>
           </dl>
-          <a class="btn_link" href="https://recruit.jobcan.jp/totalsmart" target="_blank" rel="noopener">採用情報はこちらから</a>
+          <a class="btn_link" href="https://recruit.jobcan.jp/totalsmart" target="_blank" rel="noopener noreferrer">採用情報はこちらから</a>
         </div>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/top/recruit_catch.png" alt="" width="477" height="492" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_theme_file_uri('/img/top/recruit_catch.png')); ?>" alt="" width="477" height="492" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
@@ -586,7 +669,7 @@ $base_schema = [
   /**
    * お知らせ一覧
    */
-  $args = array(
+  $news_query = new WP_Query([
     'post_type'              => 'post',
     'post_status'            => 'publish',
     'posts_per_page'         => 3,
@@ -596,19 +679,17 @@ $base_schema = [
     'no_found_rows'          => true,
     'update_post_meta_cache' => false,
     'update_post_term_cache' => true,
-  );
+  ]);
 
-  $the_query = new WP_Query($args);
-
-  if ($the_query->have_posts()) : ?>
+  if ($news_query->have_posts()) : ?>
     <section class="front-news bg_white sec">
       <div class="container">
         <h2 class="ttl">
-          <?php esc_html_e('お知らせ', 'text-domain'); ?>
+          <?php esc_html_e('お知らせ', 'origintheme'); ?>
           <span>NEWS</span>
         </h2>
         <ul class="front-news--list">
-          <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+          <?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
             <li>
               <a href="<?php echo esc_url(get_permalink()); ?>">
                 <div class="front-news--info">
@@ -628,9 +709,7 @@ $base_schema = [
                   endif;
                   ?>
                 </div>
-                <p>
-                  <?php echo esc_html(mb_strimwidth(wp_strip_all_tags(get_the_title()), 0, 250, '...', 'UTF-8')); ?>
-                </p>
+                <p><?php echo esc_html(mb_strimwidth(wp_strip_all_tags(get_the_title()), 0, 250, '...', 'UTF-8')); ?></p>
               </a>
             </li>
           <?php endwhile; ?>
@@ -643,12 +722,6 @@ $base_schema = [
   endif;
   ?>
 
-
-  <?php
-  /**
-   * お役立ち情報
-   */
-  ?>
   <section class="information bg_white sec">
     <div class="container">
       <h2 class="ttl">
@@ -792,7 +865,7 @@ $base_schema = [
           お問い合わせ
           <span>CONTACT</span>
         </h2>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/page/contact_logo.png" alt="トータルスマート株式会社" width="1100" height="117" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_theme_file_uri('/img/page/contact_logo.png')); ?>" alt="トータルスマート株式会社" width="1100" height="117" loading="lazy" decoding="async">
       </div>
       <p>ご不明な点やご質問、または詳細な情報をお求めの場合は、どうぞお気軽にお問い合わせください。<br>
         専門のスタッフが迅速にサポートします。</p>
@@ -802,7 +875,7 @@ $base_schema = [
             <a href="<?php echo esc_url(home_url('/contact/')); ?>">メールで問い合わせ</a>
           </li>
         </ul>
-        <a href="tel:052-932-5450" class="cv_contact--btn">
+        <a href="tel:0529325450" class="cv_contact--btn">
           052-932-5450
           <span>受付時間<br class="is-hidden_sp">平日9:00～18:00</span>
         </a>

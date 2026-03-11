@@ -3,14 +3,12 @@
 // -------------------------------------
 // セキュリティヘッダーの送信
 // -------------------------------------
-
 function add_security_headers()
 {
   if (!is_admin()) {
-    header("X-Content-Type-Options: nosniff");
-    header("X-Frame-Options: SAMEORIGIN");
-    header("X-XSS-Protection: 1; mode=block");
-    header("Strict-Transport-Security: max-age=31536000; includeSubDomains; preload");
+    header('X-Content-Type-Options: nosniff');
+    header('X-Frame-Options: SAMEORIGIN');
+    header('Strict-Transport-Security: max-age=31536000; includeSubDomains; preload');
   }
 }
 add_action('send_headers', 'add_security_headers');
@@ -38,75 +36,47 @@ function ts_cleanup_head_safe()
   remove_action('admin_print_scripts', 'print_emoji_detection_script');
   remove_action('admin_print_styles', 'print_emoji_styles');
 
+  // TinyMCE の絵文字プラグインを除外
+  add_filter('tiny_mce_plugins', 'ts_disable_tinymce_wpemoji');
+
+  // 絵文字SVGのURLを無効化
   add_filter('emoji_svg_url', '__return_false');
 }
 add_action('init', 'ts_cleanup_head_safe');
 
-
-
-
-
-// -------------------------------------
-// 		絵文字無効化
-// -------------------------------------
-
-add_action('init', function () {
-  remove_action('wp_head', 'print_emoji_detection_script', 7);
-  remove_action('wp_print_styles', 'print_emoji_styles');
-  remove_action('admin_print_scripts', 'print_emoji_detection_script');
-  remove_action('admin_print_styles', 'print_emoji_styles');
-  add_filter('tiny_mce_plugins', function ($plugins) {
-    return is_array($plugins) ? array_diff($plugins, ['wpemoji']) : [];
-  });
-  add_filter('wp_mail', 'wp_staticize_emoji_for_email'); // 必要なら外す
-});
-
-
+function ts_disable_tinymce_wpemoji($plugins)
+{
+  return is_array($plugins) ? array_diff($plugins, ['wpemoji']) : [];
+}
 
 // -------------------------------------
 //　oEmbed のJS（wp-embed.min.js）を読み込ませない
 // -------------------------------------
+function ts_dequeue_wp_embed()
+{
+  if (is_admin()) {
+    return;
+  }
 
-add_action('wp_footer', function () {
   wp_dequeue_script('wp-embed');
-}, 100);
+}
+add_action('wp_enqueue_scripts', 'ts_dequeue_wp_embed', 100);
 
 
 // -------------------------------------
-//　管理用アイコン（dashicons）をフロントで読み込まない
+// 管理用アイコン（dashicons）をフロントで読み込まない
 // -------------------------------------
+function ts_deregister_dashicons_for_guests()
+{
+  if (is_admin()) {
+    return;
+  }
 
-add_action('wp_enqueue_scripts', function () {
-  if (! is_user_logged_in()) {
+  if (!is_user_logged_in()) {
     wp_deregister_style('dashicons');
   }
-});
-
-
-// -------------------------------------
-//　Gutenberg用のCSSを読み込まない
-// -------------------------------------
-
-function my_delete_plugin_files()
-{
-  //IDを指定し解除
-  wp_deregister_style('wp-block-library');
 }
-add_action('wp_enqueue_scripts', 'my_delete_plugin_files');
-
-
-// -------------------------------------
-//　特定の固定ページにnoindexを出力する
-// -------------------------------------
-
-function add_noindex_to_specific_page()
-{
-  // 'attention' は固定ページのスラッグです
-  if (is_page('attention')) {
-    echo '<meta name="robots" content="noindex, follow" />' . "\n";
-  }
-}
-add_action('wp_head', 'add_noindex_to_specific_page');
+add_action('wp_enqueue_scripts', 'ts_deregister_dashicons_for_guests', 100);
 
 
 
@@ -150,6 +120,11 @@ function ts_theme_setup()
 
   // タイトルタグをWordPress管理にする
   add_theme_support('title-tag');
+
+  // メニュー登録
+  register_nav_menus([
+    'global-menu' => 'グローバルナビゲーション',
+  ]);
 
   // 任意の画像サイズ
   add_image_size('custom-size', 300, 200, true);
@@ -276,12 +251,10 @@ add_filter('style_loader_tag', function ($tag) {
 add_filter('style_loader_tag', function ($html, $handle, $href, $media) {
   if (is_admin()) return $html;
 
-  // 本当に初期描画に必要なものだけを列挙
-  // 例: "custom" はUI調整が多く初期描画に関与しがち
-  $preload_handles = ['custom'];
+  $preload_handles = ['mytheme-custom'];
 
   if (!in_array($handle, $preload_handles, true)) {
-    return $html; // それ以外は通常のブロッキングCSSとして読み込み
+    return $html;
   }
 
   $orig  = trim($html);
@@ -289,8 +262,6 @@ add_filter('style_loader_tag', function ($html, $handle, $href, $media) {
   $id    = esc_attr("{$handle}-css");
   $media = $media ? ' media="' . esc_attr($media) . '"' : '';
 
-  // rel=preload で先に取得し、onloadで stylesheet に切替
-  // JS無効時は <noscript> でフォールバック
   return "<link rel=\"preload\" id=\"{$id}\" href=\"{$href}\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\"{$media}>\n"
     . "<noscript>{$orig}</noscript>\n";
 }, 10, 4);
@@ -467,16 +438,6 @@ if (!function_exists('theme_enqueue_js_only_optimized_assets')) {
 //   管理画面で変更可能なメニュー機能
 // -------------------------------------
 
-// メニューの場所名登録（管理画面に表示する名前）
-function register_menu()
-{
-  register_nav_menus(array( //メニューを追加する場合は行を追加
-    'global-menu' => "グローバルナビゲーション",
-  ));
-}
-
-add_action('init', 'register_menu'); // Add HTML5 Blank Menu
-
 // 出力されるメニューのHTMLタグ設定 add_globalmenu();をテンプレート側に書いて表示
 function add_globalmenu()
 {
@@ -525,8 +486,6 @@ function wp_pagination()
   $big = 999999999;
   echo paginate_links(array('base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))), 'format' => '?paged=%#%', 'current' => max(1, get_query_var('paged')), 'prev_text' => '<span>≪</span>', 'next_text' => '<span>≫</span>', 'total' => $wp_query->max_num_pages));
 }
-
-add_action('init', 'wp_pagination');
 
 
 // -------------------------------------

@@ -45,42 +45,6 @@
 </footer>
 </div>
 
-<?php if (is_front_page() || is_page('company')) : ?>
-  <?php
-  $footer_schema = [
-    '@context' => 'https://schema.org',
-    '@type'    => 'LocalBusiness',
-    '@id'      => home_url('/') . '#localbusiness',
-    'name'     => 'トータルスマート株式会社',
-    'alternateName' => 'Total Smart Co., Ltd.',
-    'url'      => home_url('/'),
-    'logo'     => get_theme_file_uri('/img/common/logo.png'),
-    'image'    => get_theme_file_uri('/img/common/logo.png'),
-    'telephone' => '+81-52-932-5450',
-    'address'  => [
-      '@type'           => 'PostalAddress',
-      'streetAddress'   => '代官町16-17 アーク代官町ビルディング2F',
-      'addressLocality' => '名古屋市東区',
-      'addressRegion'   => '愛知県',
-      'postalCode'      => '461-0002',
-      'addressCountry'  => 'JP',
-    ],
-    'openingHoursSpecification' => [
-      [
-        '@type'    => 'OpeningHoursSpecification',
-        'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        'opens'    => '09:00',
-        'closes'   => '18:00',
-      ],
-    ],
-    'areaServed' => ['愛知県', '岐阜県', '三重県', '静岡県'],
-  ];
-  ?>
-  <script type="application/ld+json">
-    <?php echo wp_json_encode($footer_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
-  </script>
-<?php endif; ?>
-
 <?php wp_footer(); ?>
 </body>
 
