@@ -428,80 +428,92 @@ $base_schema = [
         私たちの最新店舗設備を導入いただいた様々なお店の体験談が掲載されています。<br>
         実際にご利用いただいた企業の成功事例や具体的な活用方法、<br class="is-hidden_sp">
         改善された業務効率やお客様満足度の向上など、リアルな声をぜひご覧ください。<br>
-        あなたの会社の未来を変えるヒントがここにあります！<br>
+        あなたの会社の未来を変えるヒントがここにあります！
       </p>
     </div>
 
     <div class="works--inner">
       <?php
-      $args = array(
+      $works_query = new WP_Query([
         'post_type'              => 'introduction',
+        'post_status'            => 'publish',
         'posts_per_page'         => 13,
         'orderby'                => 'date',
         'order'                  => 'DESC',
-        'no_found_rows'          => true,  // ページネーション不要なため計算をスキップ（高速化）
-        'update_post_meta_cache' => false, // カスタムフィールドを使わない場合は false
-        'update_post_term_cache' => true,  // タクソノミーを使用するため true
-      );
-      $custom_query = new WP_Query($args);
+        'no_found_rows'          => true,
+        'update_post_meta_cache' => false,
+        'update_post_term_cache' => true,
+      ]);
 
-      if ($custom_query->have_posts()) :
-        $post_count = 0; // ループカウンター
+      if ($works_query->have_posts()) :
+        $post_count = 0;
       ?>
         <div class="swiper">
           <div class="swiper-wrapper">
-            <?php while ($custom_query->have_posts()) : $custom_query->the_post();
+            <?php while ($works_query->have_posts()) : $works_query->the_post(); ?>
+              <?php
               $post_count++;
               $thumb_attr = [
-                'alt'      => the_title_attribute(['echo' => false]),
-                'loading'  => 'lazy',
+                'alt'      => wp_strip_all_tags(get_the_title()),
+                'loading'  => ($post_count <= 3) ? 'eager' : 'lazy',
                 'decoding' => 'async',
               ];
-            ?>
+
+              if (1 === $post_count) {
+                $thumb_attr['fetchpriority'] = 'high';
+              }
+
+              $intro_terms      = get_the_terms(get_the_ID(), 'introduction_cat');
+              $root_term_name   = '';
+              $child_term_names = [];
+
+              if ($intro_terms && !is_wp_error($intro_terms)) {
+                $root_term = $intro_terms[0];
+                while (!empty($root_term->parent)) {
+                  $root_term = get_term($root_term->parent, 'introduction_cat');
+                }
+                if ($root_term && !is_wp_error($root_term)) {
+                  $root_term_name = $root_term->name;
+                }
+
+                foreach ($intro_terms as $intro_term) {
+                  if (!empty($intro_term->parent)) {
+                    $child_term_names[] = $intro_term->name;
+                  }
+                }
+              }
+              ?>
               <article class="swiper-slide">
-                <a href="<?php echo esc_url(get_permalink()); ?>" rel="noopener">
+                <a href="<?php echo esc_url(get_permalink()); ?>">
                   <div class="works--thumbnail">
                     <?php if (has_post_thumbnail()) : ?>
-                      <?php
-                      the_post_thumbnail('works-thumb', $thumb_attr);
-                      ?>
+                      <?php echo get_the_post_thumbnail(get_the_ID(), 'works-thumb', $thumb_attr); ?>
                     <?php else : ?>
                       <img
-                        src="<?php echo esc_url(get_template_directory_uri()); ?>/img/top/works.jpg"
-                        alt="<?php the_title_attribute(); ?>"
+                        src="<?php echo esc_url(get_theme_file_uri('/img/top/works.jpg')); ?>"
+                        alt="<?php echo esc_attr(wp_strip_all_tags(get_the_title())); ?>"
                         width="352"
                         height="308"
-                        <?php echo ($post_count <= 3) ? 'loading="eager"' : 'loading="lazy"'; ?>>
+                        <?php echo (1 === $post_count) ? 'fetchpriority="high"' : ''; ?>
+                        loading="<?php echo esc_attr(($post_count <= 3) ? 'eager' : 'lazy'); ?>"
+                        decoding="async">
                     <?php endif; ?>
                   </div>
 
                   <div class="works--contents">
                     <div>
-                      <time datetime="<?php echo get_the_date('c'); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
-
-                      <?php
-                      $terms = get_the_terms(get_the_ID(), 'introduction_cat');
-                      if ($terms && !is_wp_error($terms)) :
-                        // 親カテゴリー取得の最適化
-                        $root_term = $terms[0];
-                        while ($root_term->parent != 0) {
-                          $root_term = get_term($root_term->parent, 'introduction_cat');
-                        }
-                      ?>
-                        <span class="works--cat">
-                          <?php echo esc_html($root_term->name); ?>
-                        </span>
+                      <time datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
+                      <?php if ('' !== $root_term_name) : ?>
+                        <span class="works--cat"><?php echo esc_html($root_term_name); ?></span>
                       <?php endif; ?>
                     </div>
-                    <p><?php the_title(); ?></p>
 
-                    <?php
-                    // 子カテゴリー抽出
-                    $child_terms = ($terms && !is_wp_error($terms)) ? wp_list_filter($terms, array('parent' => 0), 'NOT') : array();
-                    if (!empty($child_terms)) : ?>
+                    <p><?php echo esc_html(get_the_title()); ?></p>
+
+                    <?php if (!empty($child_term_names)) : ?>
                       <div>
-                        <?php foreach ($child_terms as $term) : ?>
-                          <span class="works--cat_child"><?php echo esc_html($term->name); ?></span>
+                        <?php foreach ($child_term_names as $child_term_name) : ?>
+                          <span class="works--cat_child"><?php echo esc_html($child_term_name); ?></span>
                         <?php endforeach; ?>
                       </div>
                     <?php endif; ?>
@@ -516,7 +528,7 @@ $base_schema = [
         <p>表示する投稿がありません。</p>
       <?php endif; ?>
     </div>
-    <a class="btn_link" href="<?php echo esc_url(home_url('/introduction/')); ?>" rel="noopener">導入実績一覧を見る</a>
+    <a class="btn_link" href="<?php echo esc_url(home_url('/introduction/')); ?>">導入実績一覧を見る</a>
   </section>
 
   <section class="company bg_white sec">
@@ -574,11 +586,16 @@ $base_schema = [
   /**
    * お知らせ一覧
    */
-  $paged = get_query_var('paged') ? get_query_var('paged') : (get_query_var('page') ? get_query_var('page') : 1);
   $args = array(
-    'post_type'      => 'post',
-    'posts_per_page' => 3,
-    'paged'          => $paged,
+    'post_type'              => 'post',
+    'post_status'            => 'publish',
+    'posts_per_page'         => 3,
+    'orderby'                => 'date',
+    'order'                  => 'DESC',
+    'ignore_sticky_posts'    => true,
+    'no_found_rows'          => true,
+    'update_post_meta_cache' => false,
+    'update_post_term_cache' => true,
   );
 
   $the_query = new WP_Query($args);
@@ -593,24 +610,26 @@ $base_schema = [
         <ul class="front-news--list">
           <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
             <li>
-              <a href="<?php the_permalink(); ?>">
+              <a href="<?php echo esc_url(get_permalink()); ?>">
                 <div class="front-news--info">
-                  <time datetime="<?php echo get_the_date('c'); ?>">
-                    <?php echo get_the_date('Y.m.d'); ?>
+                  <time datetime="<?php echo esc_attr(get_the_date('c')); ?>">
+                    <?php echo esc_html(get_the_date('Y.m.d')); ?>
                   </time>
                   <?php
                   $categories = get_the_category();
-                  if (!empty($categories)) : ?>
-                    <?php foreach ($categories as $category) : ?>
-                      <span href="<?php echo esc_url(get_category_link($category->term_id)); ?>"
-                        class="front-news--cat_label -<?php echo esc_attr($category->slug); ?>">
+                  if (!empty($categories)) :
+                    foreach ($categories as $category) :
+                  ?>
+                      <span class="front-news--cat_label -<?php echo esc_attr($category->slug); ?>">
                         <?php echo esc_html($category->name); ?>
                       </span>
-                    <?php endforeach; ?>
-                  <?php endif; ?>
+                  <?php
+                    endforeach;
+                  endif;
+                  ?>
                 </div>
                 <p>
-                  <?php echo mb_strimwidth(get_the_title(), 0, 250, '...'); ?>
+                  <?php echo esc_html(mb_strimwidth(wp_strip_all_tags(get_the_title()), 0, 250, '...', 'UTF-8')); ?>
                 </p>
               </a>
             </li>
@@ -620,7 +639,6 @@ $base_schema = [
       <a class="btn_link" href="<?php echo esc_url(home_url('/news/')); ?>">お知らせ一覧はこちらから</a>
     </section>
   <?php
-    // 改善点4: ループが実行された場合のみ確実にリセットされるように移動
     wp_reset_postdata();
   endif;
   ?>
@@ -639,27 +657,49 @@ $base_schema = [
       </h2>
 
       <?php
-      $args = array(
-        'post_type'      => 'information',
-        'posts_per_page' => 6,
-        'order'          => 'DESC',
-        'no_found_rows'  => true, // ページネーション不要な場合はtrueに設定してDB負荷を軽減
-      );
-      $custom_query = new WP_Query($args);
-      if ($custom_query->have_posts()) :
+      $information_query = new WP_Query([
+        'post_type'              => 'information',
+        'post_status'            => 'publish',
+        'posts_per_page'         => 6,
+        'orderby'                => 'date',
+        'order'                  => 'DESC',
+        'no_found_rows'          => true,
+        'update_post_meta_cache' => false,
+        'update_post_term_cache' => true,
+      ]);
+
+      if ($information_query->have_posts()) :
       ?>
         <div class="information--list">
-          <?php while ($custom_query->have_posts()) : $custom_query->the_post(); ?>
-            <article> <a href="<?php the_permalink(); ?>" class="information--link">
+          <?php while ($information_query->have_posts()) : $information_query->the_post(); ?>
+            <?php
+            $information_terms = get_the_terms(get_the_ID(), 'information_cat');
+            $top_term_name     = '';
 
+            if ($information_terms && !is_wp_error($information_terms)) {
+              $top_term = $information_terms[0];
+              while (!empty($top_term->parent)) {
+                $top_term = get_term($top_term->parent, 'information_cat');
+              }
+              if ($top_term && !is_wp_error($top_term)) {
+                $top_term_name = $top_term->name;
+              }
+            }
+            ?>
+            <article>
+              <a href="<?php echo esc_url(get_permalink()); ?>" class="information--link">
                 <div class="information--image">
                   <?php if (has_post_thumbnail()) : ?>
                     <?php
-                    the_post_thumbnail('info-thumb', [
-                      'alt'      => the_title_attribute(['echo' => false]),
-                      'loading'  => 'lazy',
-                      'decoding' => 'async',
-                    ]);
+                    echo get_the_post_thumbnail(
+                      get_the_ID(),
+                      'info-thumb',
+                      [
+                        'alt'      => wp_strip_all_tags(get_the_title()),
+                        'loading'  => 'lazy',
+                        'decoding' => 'async',
+                      ]
+                    );
                     ?>
                   <?php else : ?>
                     <img
@@ -673,23 +713,13 @@ $base_schema = [
                 </div>
 
                 <div class="information--meta">
-                  <?php
-                  $terms = get_the_terms(get_the_ID(), 'information_cat');
-                  if ($terms && !is_wp_error($terms)) :
-                    $top_term = $terms[0];
-                    while ($top_term->parent != 0) {
-                      $top_term = get_term($top_term->parent, 'information_cat');
-                    }
-                  ?>
-                    <span class="information--cat">
-                      <?php echo esc_html($top_term->name); ?>
-                    </span>
+                  <?php if ('' !== $top_term_name) : ?>
+                    <span class="information--cat"><?php echo esc_html($top_term_name); ?></span>
                   <?php endif; ?>
-
-                  <time datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
-
+                  <time datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
                 </div>
-                <h3><?php the_title(); ?></h3>
+
+                <h3><?php echo esc_html(get_the_title()); ?></h3>
               </a>
             </article>
           <?php endwhile; ?>
@@ -699,7 +729,7 @@ $base_schema = [
         <p>現在、お役立ち情報はありません。</p>
       <?php endif; ?>
 
-      <a class="btn_link" href="<?php echo esc_url(home_url('/information/')); ?>" rel="noopener">お役立ち情報一覧を見る</a>
+      <a class="btn_link" href="<?php echo esc_url(home_url('/information/')); ?>">お役立ち情報一覧を見る</a>
     </div>
   </section>
 
