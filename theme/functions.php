@@ -1,5 +1,4 @@
 <?php
-load_theme_textdomain('origintheme', get_template_directory() . '/languages');
 
 // -------------------------------------
 // セキュリティヘッダーの送信
@@ -19,34 +18,32 @@ add_action('send_headers', 'add_security_headers');
 
 
 // -------------------------------------
-// 	headからいらない項目を削除する
+// head の安全な軽量化
 // -------------------------------------
-
-function removed_scripts_styles()
+function ts_cleanup_head_safe()
 {
-  if (!is_admin()) {
-    remove_action('wp_head', 'wp_print_scripts');
-    remove_action('wp_head', 'wp_print_head_scripts', 9);
-    remove_action('wp_head', 'wp_enqueue_scripts', 1);
-    remove_action('wp_head', 'www-widgetapi');
-    remove_action('wp_head', 'wp_generator');
-    remove_action('wp_head', 'rsd_link');
-    remove_action('wp_head', 'wlwmanifest_link');
-    remove_action('wp_head', 'index_rel_link');
-    remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
-    remove_action('wp_head', 'parent_post_rel_link', 10, 0);
-    remove_action('wp_head', 'start_post_rel_link', 10, 0);
-    remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
-    remove_action('wp_head', 'feed_links', 2);
-    remove_action('wp_head', 'feed_links_extra', 3);
-    remove_action('wp_head', 'print_emoji_detection_script', 7);
-    remove_action('admin_print_scripts', 'print_emoji_detection_script');
-    remove_action('wp_print_styles', 'print_emoji_styles');
-    remove_action('admin_print_styles', 'print_emoji_styles');
-    add_filter('emoji_svg_url', '__return_false');
-  }
+  // WordPress バージョン出力を削除
+  remove_action('wp_head', 'wp_generator');
+
+  // 外部エディタ・古いAPI向けのリンクを削除
+  remove_action('wp_head', 'rsd_link');
+  remove_action('wp_head', 'wlwmanifest_link');
+
+  // 短縮URLを削除
+  remove_action('wp_head', 'wp_shortlink_wp_head', 10);
+
+  // 絵文字関連を削除
+  remove_action('wp_head', 'print_emoji_detection_script', 7);
+  remove_action('wp_print_styles', 'print_emoji_styles');
+  remove_action('admin_print_scripts', 'print_emoji_detection_script');
+  remove_action('admin_print_styles', 'print_emoji_styles');
+
+  add_filter('emoji_svg_url', '__return_false');
 }
-add_action('wp_enqueue_scripts', 'removed_scripts_styles');
+add_action('init', 'ts_cleanup_head_safe');
+
+
+
 
 
 // -------------------------------------
@@ -133,6 +130,8 @@ require_once locate_template('settings/settings-import.php', true);
 require_once locate_template('settings/sample-post.php', true);
 
 
+
+
 // -------------------------------------
 //　テーマ機能設定 add_theme_support
 // -------------------------------------
@@ -141,97 +140,65 @@ if (!isset($content_width)) {
   $content_width = 1000; //テーマ内任意のoEmbedsや画像の最大許容幅
 }
 
+function ts_theme_setup()
+{
+  // 翻訳ファイル読み込み
+  load_theme_textdomain('origintheme', get_template_directory() . '/languages');
 
-// -------------------------------------
-//　画像のサムネイルサイズ設定 post-thumbnails
-// -------------------------------------
-
-if (function_exists('add_theme_support')) {
-
-  // ==================================================
-  // 1. アップロード画像のサムネイル設定
-  // ==================================================
+  // アイキャッチ画像
   add_theme_support('post-thumbnails');
 
-  // 特定の大きさのサムネイルが必要なとき用使い方→ the_post_thumbnail('custom-size');
-  add_image_size('custom-size', 300, 200, true); // 任意の数値を設定
+  // タイトルタグをWordPress管理にする
+  add_theme_support('title-tag');
+
+  // 任意の画像サイズ
+  add_image_size('custom-size', 300, 200, true);
   add_image_size('info-thumb', 345, 220, true);
   add_image_size('service-thumb', 212, 212, true);
   add_image_size('works-thumb', 352, 308, true);
-
-
-  // ==================================================
-  // 2. タイトルタグ使用をサポート
-  // ==================================================
-  add_theme_support('title-tag');
-
-
-  // ==================================================
-  // 3. タイトルタグの柔軟な出力設定（完全に上書き）
-  // ==================================================
-  function custom_pre_get_document_title($title)
-  {
-    // 基本のサイト名を取得しておく
-    $site_name = get_bloginfo('name');
-
-    // ① ホーム / フロントページの場合
-    // if (is_front_page() || is_home()) {
-    //   return $site_name . ' | キャッチコピーやコンセプトなどを自由に入力';
-    // }
-
-    // ② 特定の固定ページ（例：スラッグが 'about'）の場合
-    if (is_page('contact_corporate')) {
-      return 'お問い合わせ | ' . $site_name;
-    }
-
-    if (is_page('contact_corporate-confirm')) {
-      return 'お問い合わせ確認画面 | ' . $site_name;
-    }
-
-    // 複数のお問い合わせ完了ページ（サンクスページ）の場合
-    if (is_page(['contact_corporate-thanks', 'cleaning_thanks', 'shuuri_thanks'])) {
-      return 'お問い合わせありがとうございました | ' . $site_name;
-    }
-
-    // ③ カスタム投稿タイプ（例：'works'）のアーカイブ（一覧）ページの場合
-    // if (is_post_type_archive('works')) {
-    //   return '制作実績一覧 | ' . $site_name;
-    // }
-
-    // ④ カスタム投稿タイプ（例：'works'）の個別詳細ページの場合
-    // if (is_singular('works')) {
-    //   return '実績紹介：' . get_the_title() . ' | ' . $site_name;
-    // }
-
-    // ⑤ 404エラーページの場合
-    // if (is_404()) {
-    //   return 'ページが見つかりません | ' . $site_name;
-    // }
-
-    // 上記のどの条件にも当てはまらない場合は空を返し、下記のデフォルト処理へ移行させる
-    return '';
-  }
-  add_filter('pre_get_document_title', 'custom_pre_get_document_title');
-
-
-  // ==================================================
-  // 4. 上記で「空（''）」を返したページ用のフォールバック設定
-  // ==================================================
-  // タイトルタグ内のセパレーター設定
-  function custom_document_title_separator($sep)
-  {
-    return '|';
-  }
-  add_filter('document_title_separator', 'custom_document_title_separator');
-
-  // タイトルタグ内にサイトの説明文（キャッチフレーズ）を表示させない
-  function edit_document_title_parts($title)
-  {
-    unset($title['tagline']);
-    return $title;
-  }
-  add_filter('document_title_parts', 'edit_document_title_parts');
 }
+add_action('after_setup_theme', 'ts_theme_setup');
+
+
+
+
+
+// -------------------------------------
+// タイトルタグのカスタマイズ
+// -------------------------------------
+
+function custom_pre_get_document_title($title)
+{
+  $site_name = get_bloginfo('name');
+
+  if (is_page('contact_corporate')) {
+    return 'お問い合わせ | ' . $site_name;
+  }
+
+  if (is_page('contact_corporate-confirm')) {
+    return 'お問い合わせ確認画面 | ' . $site_name;
+  }
+
+  if (is_page(array('contact_corporate-thanks', 'cleaning_thanks', 'shuuri_thanks'))) {
+    return 'お問い合わせありがとうございました | ' . $site_name;
+  }
+
+  return '';
+}
+add_filter('pre_get_document_title', 'custom_pre_get_document_title');
+
+function custom_document_title_separator($sep)
+{
+  return '|';
+}
+add_filter('document_title_separator', 'custom_document_title_separator');
+
+function edit_document_title_parts($title)
+{
+  unset($title['tagline']);
+  return $title;
+}
+add_filter('document_title_parts', 'edit_document_title_parts');
 
 
 
@@ -901,9 +868,34 @@ add_action(
 // -------------------------------------
 // YubinBangoライブラリ（郵便番号と住所連動）
 // -------------------------------------
-wp_enqueue_script('yubinbango', 'https://yubinbango.github.io/yubinbango/yubinbango.js', array(), null, true);
+function ts_enqueue_yubinbango()
+{
+  if (is_admin()) {
+    return;
+  }
 
+  // 住所自動入力を使うページだけに限定
+  $yubinbango_pages = array(
+    'contact',
+    'contact_corporate',
+    'contact_corporate-confirm',
+    'cleaninglp',
+    'shuurilp'
+  );
 
+  if (! is_page($yubinbango_pages)) {
+    return;
+  }
+
+  wp_enqueue_script(
+    'yubinbango',
+    'https://yubinbango.github.io/yubinbango/yubinbango.js',
+    array(),
+    null,
+    true
+  );
+}
+add_action('wp_enqueue_scripts', 'ts_enqueue_yubinbango', 20);
 
 // ---------------------------------------------------------
 // サービス一覧（service）ページの並び替えの制御と表示件数の制御
