@@ -1,69 +1,58 @@
 <?php get_header(); ?>
 
 <?php
-/**
- * SEO強化: 構造化データ（JSON-LD）の安全なPHP配列化
- * 二重管理を防ぎ、構文エラーを完全に防止します。
- */
+$site_home_url = home_url('/');
 $faq_data = [
   [
     'q' => '法人契約でないと契約は出来ないのですか？',
-    'a' => '商品サービスによって異なりますが､ご商売をされているお客さまでしたらお申込いただけます｡'
+    'a' => '商品サービスによって異なりますが、ご商売をされているお客さまでしたらお申込いただけます。',
   ],
   [
     'q' => '料金はいくらですか？',
-    'a' => 'ご利用企業様の利用計画に応じて、さまざまな料金プランをご用意しております。詳しくはお問い合わせください。'
+    'a' => 'ご利用企業様の利用計画に応じて、さまざまな料金プランをご用意しております。詳しくはお問い合わせください。',
   ],
   [
     'q' => '導入までにどれくらい時間がかかりますか？',
-    'a' => 'お申し込み後、数日でご利用を開始していただけます。契約後は専任のスタッフにより、開設・ご利用方法をご説明いたします。'
-  ]
+    'a' => 'お申し込み後、数日でご利用を開始していただけます。契約後は専任のスタッフにより、開設・ご利用方法をご説明いたします。',
+  ],
 ];
 
-// FAQの構造化データを構築
-$faq_schema_items = [];
-foreach ($faq_data as $faq) {
-  $faq_schema_items[] = [
-    "@type" => "Question",
-    "name" => $faq['q'],
-    "acceptedAnswer" => [
-      "@type" => "Answer",
-      "text" => $faq['a']
-    ]
-  ];
-}
-
-// 企業情報＋FAQの統合JSON-LD
-$schema_data = [
-  [
-    "@context" => "https://schema.org",
-    "@type" => "GeneralContractor",
-    "name" => "トータルスマート株式会社",
-    "alternateName" => "Total Smart Co., Ltd.",
-    "url" => home_url('/'),
-    "logo" => get_template_directory_uri() . "/img/common/logo.png",
-    "description" => "名古屋市を中心に愛知・岐阜・三重・静岡でオフィス・店舗のコスト削減、設備工事を一括対応する総合設備会社。",
-    "address" => [
-      "@type" => "PostalAddress",
-      "postalCode" => "461-0002",
-      "addressRegion" => "愛知県",
-      "addressLocality" => "名古屋市東区",
-      "streetAddress" => "代官町16-17 アーク代官町ビルディング2F",
-      "addressCountry" => "JP"
+$base_schema = [
+  '@context' => 'https://schema.org',
+  '@graph'   => [
+    [
+      '@type'         => 'Organization',
+      '@id'           => $site_home_url . '#organization',
+      'name'          => 'トータルスマート株式会社',
+      'alternateName' => 'Total Smart Co., Ltd.',
+      'url'           => $site_home_url,
+      'logo'          => get_theme_file_uri('/img/common/logo.png'),
+      'description'   => '名古屋市を中心に愛知・岐阜・三重・静岡で、オフィス・店舗のコスト削減や設備工事をワンストップで支援する会社です。',
+      'telephone'     => '+81-52-932-5450',
+      'address'       => [
+        '@type'           => 'PostalAddress',
+        'postalCode'      => '461-0002',
+        'addressRegion'   => '愛知県',
+        'addressLocality' => '名古屋市東区',
+        'streetAddress'   => '代官町16-17 アーク代官町ビルディング2F',
+        'addressCountry'  => 'JP',
+      ],
+      'areaServed'    => ['愛知県', '岐阜県', '三重県', '静岡県'],
     ],
-    "telephone" => "052-932-5450",
-    "areaServed" => ["愛知県", "岐阜県", "三重県", "静岡県"]
+    [
+      '@type'      => 'WebSite',
+      '@id'        => $site_home_url . '#website',
+      'name'       => 'トータルスマート株式会社',
+      'url'        => $site_home_url,
+      'inLanguage' => 'ja',
+    ],
   ],
-  [
-    "@context" => "https://schema.org",
-    "@type" => "FAQPage",
-    "mainEntity" => $faq_schema_items
-  ]
 ];
 ?>
 <script type="application/ld+json">
-  <?php echo wp_json_encode($schema_data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); ?>
+  <?php echo wp_json_encode($base_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
 </script>
+
 
 <main>
 
@@ -91,14 +80,17 @@ $schema_data = [
     <div class="mv--scroll_down">
       <span>Scroll</span>
     </div>
+
     <div class="mv_parallax_bg">
       <video
-        src="<?php echo get_theme_file_uri('/video/video2.mp4'); ?>"
-        poster="<?php echo get_theme_file_uri('/img/top/mv_video.jpg'); ?>"
-        playsinline autoplay muted loop
+        src="<?php echo esc_url(get_theme_file_uri('/video/video2.mp4')); ?>"
+        poster="<?php echo esc_url(get_theme_file_uri('/img/top/mv_video.jpg')); ?>"
+        playsinline
+        autoplay
+        muted
+        loop
         preload="metadata"
-        title="トータルスマート サービス紹介動画"
-        fetchpriority="high">
+        title="<?php echo esc_attr('トータルスマート サービス紹介動画'); ?>">
       </video>
     </div>
   </section>
@@ -145,16 +137,17 @@ $schema_data = [
     </div>
   </section>
 
+
+
   <?php
-  $page_data = get_page_by_path('attention');
+  $page_data     = get_page_by_path('attention', OBJECT, 'page');
   $content_check = '';
-  if ($page_data) {
-    $raw_content = $page_data->post_content;
-    $raw_content = str_replace('&nbsp;', '', $raw_content);
-    $content_check = trim(strip_tags($raw_content, '<a><img><iframe>'));
+
+  if ($page_data instanceof WP_Post) {
+    $content_check = trim(preg_replace('/[\x{00a0}\s]+/u', '', wp_strip_all_tags((string) $page_data->post_content)));
   }
 
-  if ($page_data && !empty($content_check)) :
+  if ($page_data instanceof WP_Post && '' !== $content_check) :
   ?>
     <section class="attention sec bg_orange">
       <div class="container">
@@ -168,9 +161,7 @@ $schema_data = [
         </p>
 
         <div class="attention--inner">
-          <?php
-          echo apply_filters('the_content', $page_data->post_content);
-          ?>
+          <?php echo apply_filters('the_content', $page_data->post_content); ?>
         </div>
       </div>
     </section>
@@ -311,94 +302,112 @@ $schema_data = [
       </h2>
 
       <?php
-      // 1. タクソノミーの取得
-      $terms = get_terms([
+      $service_terms = get_terms([
         'taxonomy'   => 'service_cat',
         'orderby'    => 'description',
         'order'      => 'ASC',
         'hide_empty' => true,
       ]);
 
-      $json_ld_services = []; // ★SEO強化: 構造化データ用配列の初期化
+      $service_posts = get_posts([
+        'post_type'              => 'service',
+        'post_status'            => 'publish',
+        'posts_per_page'         => -1,
+        'orderby'                => ['menu_order' => 'ASC', 'date' => 'DESC'],
+        'no_found_rows'          => true,
+        'update_post_meta_cache' => false,
+        'update_post_term_cache' => true,
+      ]);
 
-      if (!empty($terms) && !is_wp_error($terms)) :
-        $display_limit = -1;
-        $current_count = 0;
+      $services_by_term   = [];
+      $json_ld_services   = [];
+      $displayed_services = [];
+      $service_position   = 0;
+
+      if (!empty($service_posts)) {
+        foreach ($service_posts as $service_post) {
+          $term_ids = wp_get_post_terms($service_post->ID, 'service_cat', ['fields' => 'ids']);
+          if (empty($term_ids) || is_wp_error($term_ids)) {
+            continue;
+          }
+
+          foreach ($term_ids as $term_id) {
+            $services_by_term[$term_id][] = $service_post;
+          }
+        }
+      }
+
+      if (!empty($service_terms) && !is_wp_error($service_terms)) :
       ?>
         <ul class="service--list">
-          <?php
-          foreach ($terms as $term) :
-            if ($display_limit !== -1 && $current_count >= $display_limit) break;
+          <?php foreach ($service_terms as $service_term) : ?>
+            <?php if (empty($services_by_term[$service_term->term_id])) : ?>
+              <?php continue; ?>
+            <?php endif; ?>
 
-            $args = [
-              'post_type'      => 'service',
-              'posts_per_page' => ($display_limit === -1) ? -1 : ($display_limit - $current_count),
-              'no_found_rows'  => true,
-              'tax_query'      => [
-                [
-                  'taxonomy' => 'service_cat',
-                  'field'    => 'term_id',
-                  'terms'    => $term->term_id,
-                ],
-              ],
-            ];
+            <?php foreach ($services_by_term[$service_term->term_id] as $service_post) : ?>
+              <?php
+              if (in_array($service_post->ID, $displayed_services, true)) {
+                continue;
+              }
 
-            $service_query = new WP_Query($args);
+              $displayed_services[] = $service_post->ID;
+              $service_position++;
+              $service_title = get_the_title($service_post);
+              $service_link  = get_permalink($service_post);
 
-            if ($service_query->have_posts()) :
-              while ($service_query->have_posts()) : $service_query->the_post();
-                $current_count++;
-
-                // ★SEO強化: ループ内でサービスデータを蓄積
-                $json_ld_services[] = [
-                  '@type' => 'ListItem',
-                  'position' => $current_count,
-                  'name' => get_the_title(),
-                  'url' => get_permalink(),
-                ];
-          ?>
-                <li>
-                  <article>
-                    <a href="<?php the_permalink(); ?>">
-                      <figure>
-                        <?php if (has_post_thumbnail()) : ?>
-                          <?php the_post_thumbnail('service-thumb', [
-                            'alt'      => the_title_attribute(['echo' => false]),
+              $json_ld_services[] = [
+                '@type'    => 'ListItem',
+                'position' => $service_position,
+                'name'     => $service_title,
+                'url'      => $service_link,
+              ];
+              ?>
+              <li>
+                <article>
+                  <a href="<?php echo esc_url($service_link); ?>">
+                    <figure>
+                      <?php if (has_post_thumbnail($service_post)) : ?>
+                        <?php
+                        echo get_the_post_thumbnail(
+                          $service_post->ID,
+                          'service-thumb',
+                          [
+                            'alt'      => $service_title,
                             'loading'  => 'lazy',
                             'decoding' => 'async',
                             'width'    => '212',
                             'height'   => '212',
-                          ]); ?>
-                        <?php else : ?>
-                          <img src="<?php echo esc_url(get_theme_file_uri('/img/top/service.jpg')); ?>" alt="" width="212" height="212" loading="lazy">
-                        <?php endif; ?>
-                        <figcaption>
-                          <h3><?php echo wp_kses_post(get_the_title()); ?></h3>
-                        </figcaption>
-                      </figure>
-                    </a>
-                  </article>
-                </li>
-          <?php
-              endwhile;
-              wp_reset_postdata();
-            endif;
-          endforeach;
-          ?>
+                          ]
+                        );
+                        ?>
+                      <?php else : ?>
+                        <img src="<?php echo esc_url(get_theme_file_uri('/img/top/service.jpg')); ?>" alt="" width="212" height="212" loading="lazy" decoding="async">
+                      <?php endif; ?>
+                      <figcaption>
+                        <h3><?php echo esc_html($service_title); ?></h3>
+                      </figcaption>
+                    </figure>
+                  </a>
+                </article>
+              </li>
+            <?php endforeach; ?>
+          <?php endforeach; ?>
         </ul>
       <?php endif; ?>
 
       <?php if (!empty($json_ld_services)) : ?>
         <script type="application/ld+json">
           <?php echo wp_json_encode([
-            "@context" => "https://schema.org",
-            "@type" => "ItemList",
-            "itemListElement" => $json_ld_services
+            '@context'        => 'https://schema.org',
+            '@type'           => 'ItemList',
+            'name'            => 'サービス一覧',
+            'itemListElement' => $json_ld_services,
           ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
         </script>
       <?php endif; ?>
 
-      <a class="btn_link" href="<?php echo esc_url(home_url('/service/')); ?>" rel="noopener">サービス一覧を見る</a>
+      <a class="btn_link" href="<?php echo esc_url(home_url('/service/')); ?>">サービス一覧を見る</a>
     </div>
   </section>
 
