@@ -9,7 +9,7 @@
       "url": "<?php echo esc_url(home_url('/')); ?>",
       "logo": "<?php echo get_template_directory_uri(); ?>/img/common/logo.png",
       "image": "<?php echo get_template_directory_uri(); ?>/img/top/recruit.png",
-      "description": "名古屋市を中心に愛知・岐阜・三重・静岡でエアコン修理・クリーニング、防犯カメラ、LED照明、光回線、OA機器などオフィス・店舗・住宅の設備工事を一括対応する総合設備会社。",
+      "description": "名古屋市を中心に愛知・岐阜・三重・静岡でエアコン修理・クリーニング、防犯カメラ、LED照明、光回線、OA機器などオフィス・店舗の設備工事を一括対応する総合設備会社。",
       "foundingDate": "2014",
       "address": {
         "@type": "PostalAddress",
