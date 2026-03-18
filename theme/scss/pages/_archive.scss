@@ -184,9 +184,18 @@
       counter-increment: item-count;
 
       &::before {
+        display: inline-block;
+        justify-content: center;
+        width: 25px;
+        height: 25px;
         margin-right: 5px;
+        font-size: var(--fz16);
         font-weight: bold;
-        content: counter(item-count) ". ";
+        color: #fff;
+        text-align: center;
+        content: counter(item-count) "";
+        background: #4472c4;
+        border-radius: 50%;
       }
     }
   }
