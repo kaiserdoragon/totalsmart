@@ -838,6 +838,8 @@ function ts_enqueue_yubinbango()
     'contact',
     'contact_corporate',
     'contact_corporate-confirm',
+    'recruit',
+    'recruit-confirm',
     'cleaninglp',
     'shuurilp'
   );
