@@ -284,13 +284,6 @@ main {
 // ---------------------------------------------
 
 .header_single_detail {
-  nav {
-    font-size: var(--fz22);
-    font-weight: 800;
-    color: #fff;
-    background: #00195b;
-  }
-
   ul {
     display: flex;
     gap: 1.5%;
@@ -335,8 +328,21 @@ main {
     }
   }
 
+  // .header_single_detail--menu
+  &--menu {
+    font-size: var(--fz22);
+    font-weight: 800;
+    color: #fff;
+    background: #00195b;
+
+    @include tb-mq {
+      display: none;
+    }
+  }
+
   @include tb-mq {
     .header--btn {
+      display: none;
       flex-direction: unset;
     }
   }
@@ -514,11 +520,16 @@ main {
 // ---------------------------------------------
 
 #nav {
-  position: absolute;
+  position: fixed;
   top: 0;
-  right: -100%;
+  right: -110%;
+  z-index: 99;
   width: 100%;
-  transition: 0.7s;
+  height: 100vh;
+  overflow: auto;
+  color: #fff;
+  background: rgb(6 48 100);
+  transition: 0.8s;
 }
 
 #nav ul {
@@ -533,6 +544,7 @@ main {
   position: absolute;
   top: 20px;
   right: 30px;
+  z-index: 99999;
   display: none;
   width: 50px;
   height: 44px;
@@ -563,7 +575,7 @@ main {
 }
 
 .in {
-  transform: translateX(-100%);
+  right: 0 !important;
 }
 
 .line_1,
@@ -586,7 +598,7 @@ main {
   transform: translateY(-20px) rotate(45deg);
 }
 
-@media (max-width: 1200px) {
+@include tb-mq {
   #hamburger {
     display: block;
   }

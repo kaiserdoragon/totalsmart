@@ -170,7 +170,7 @@
           </a>
         </div>
       </div>
-      <nav>
+      <nav class="header_single_detail--menu">
         <ul>
           <li><a href="<?php echo esc_url(home_url('/business/')); ?>">選ばれる4つの理由</a></li>
           <li><a href="<?php echo esc_url(home_url('/service/')); ?>">3つの最適解</a></li>
