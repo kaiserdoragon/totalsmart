@@ -44,6 +44,10 @@ body {
     width: min(1050px, 100%); // デザインの幅 + padding
   }
 
+  &.-lg {
+    width: min(1450px, 100%); // デザインの幅 + padding
+  }
+
   .single & {
     padding: 60px min(4vw, 25px) 120px;
   }
@@ -271,6 +275,30 @@ main {
 
   @include tb-mq {
     position: relative;
+  }
+}
+
+.header_single_detail {
+  .header--inner {
+    box-sizing: border-box;
+    width: min(1450px, 100%);
+    padding: 0 min(4vw, 25px);
+    margin: auto;
+  }
+
+  .header--contact {
+    box-sizing: border-box;
+    width: 275px;
+    height: 71px;
+    padding-top: 0;
+    padding-left: 20px;
+    font-size: var(--fz25);
+    background: url(../img/common/icon_mail.png) no-repeat center left 35px / 28px 20px, #ff8206;
+    border-radius: 1000px;
+  }
+
+  .header--btn {
+    gap: 15px;
   }
 }
 

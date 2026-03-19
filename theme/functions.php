@@ -365,7 +365,7 @@ if (!function_exists('theme_enqueue_js_only_optimized_assets')) {
     $register_local_script('swiperjs',     'js/swiper-bundle.min.js', array(), 'defer');
     $register_local_script('scrollhint',   'js/scroll-hint.min.js',   array(), 'defer');
     $register_local_script('mainscripts',  'js/scripts.js',           array('jquery'), 'defer');
-    $register_local_script('prohibited',  'js/prohibited.js',         array('jquery'), 'defer');
+    // $register_local_script('prohibited',  'js/prohibited.js',         array('jquery'), 'defer');
     $register_local_script('slider',       'js/slider.js',            array('jquery', 'swiperjs'), 'defer');
 
     if (is_front_page()) {

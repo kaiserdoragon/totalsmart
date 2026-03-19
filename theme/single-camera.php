@@ -84,7 +84,7 @@ if (!$has_seo_plugin) {
   }, 20);
 }
 
-get_header();
+get_header('service');
 ?>
 
 
