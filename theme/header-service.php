@@ -170,4 +170,29 @@
           </a>
         </div>
       </div>
+      <nav>
+        <ul>
+          <li><a href="<?php echo esc_url(home_url('/business/')); ?>">選ばれる4つの理由</a></li>
+          <li><a href="<?php echo esc_url(home_url('/service/')); ?>">3つの最適解</a></li>
+          <li><a href="<?php echo esc_url(home_url('/introduction/')); ?>">施工実績</a></li>
+          <li><a href="<?php echo esc_url(home_url('/company/')); ?>">導入・施工までの流れ</a></li>
+          <li><a href="<?php echo esc_url(home_url('/information/')); ?>">よくある質問</a></li>
+          <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>">対応エリア</a></li>
+        </ul>
+      </nav>
+      <nav id="nav">
+        <ul>
+          <li><a href="<?php echo esc_url(home_url('/business/')); ?>">選ばれる4つの理由</a></li>
+          <li><a href="<?php echo esc_url(home_url('/service/')); ?>">3つの最適解</a></li>
+          <li><a href="<?php echo esc_url(home_url('/introduction/')); ?>">施工実績</a></li>
+          <li><a href="<?php echo esc_url(home_url('/company/')); ?>">導入・施工までの流れ</a></li>
+          <li><a href="<?php echo esc_url(home_url('/information/')); ?>">よくある質問</a></li>
+          <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>">対応エリア</a></li>
+        </ul>
+      </nav>
+      <div id="hamburger">
+        <span class="inner_line" id="line1"></span>
+        <span class="inner_line" id="line2"></span>
+        <span class="inner_line" id="line3"></span>
+      </div>
     </header>

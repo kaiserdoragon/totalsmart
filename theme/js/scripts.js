@@ -1,5 +1,4 @@
-
-// グローバルナビゲーション //////////////////////////////////////////////////////
+// グローバルナビゲーション
 const Gnav_btn = document.getElementById("js-gnav_btn");
 const Gnav = document.getElementById("js-gnav");
 if (Gnav_btn) {
@@ -15,6 +14,16 @@ if (Gnav_btn) {
   });
 }
 
+// サービス（service）詳細のハンバーガーメニュー
+function hamburger() {
+  document.getElementById("line1").classList.toggle("line_1");
+  document.getElementById("line2").classList.toggle("line_2");
+  document.getElementById("line3").classList.toggle("line_3");
+  document.getElementById("nav").classList.toggle("in");
+}
+document.getElementById("hamburger").addEventListener("click", function () {
+  hamburger();
+});
 
 // アンカーリンクのスムーススクロール
 const anchors = document.querySelectorAll('a[href*="#"]:not(.is-noscroll)');
@@ -83,9 +92,6 @@ window.addEventListener("load", () => {
   }
 });
 
-
-
-
 //SPの時にテーブルを横スクロール
 new ScrollHint(".js-scrollable", {
   suggestiveShadow: true, //スクロール可能な要素右端に影を付ける
@@ -138,32 +144,29 @@ new ScrollHint(".js-scrollable", {
   mql.addEventListener("change", (e) => (e.matches ? enable() : disable()));
 })();
 
-
 // タブ切り替え
-document.addEventListener('DOMContentLoaded', () => {
-  const tabContainers = document.querySelectorAll('.tab_change');
+document.addEventListener("DOMContentLoaded", () => {
+  const tabContainers = document.querySelectorAll(".tab_change");
 
   // タブコンテナが存在する場合のみ処理を実行する
   if (tabContainers.length > 0) {
-
     // それぞれのコンテナごとに処理を独立させる
-    tabContainers.forEach(container => {
+    tabContainers.forEach((container) => {
       // コンテナ内のタブメニューとコンテンツを取得
-      const tabMenuItems = container.querySelectorAll('ul li');
-      const tabContents = container.querySelectorAll('.tab_change--content');
+      const tabMenuItems = container.querySelectorAll("ul li");
+      const tabContents = container.querySelectorAll(".tab_change--content");
 
-      tabMenuItems.forEach(tabMenuItem => {
-        tabMenuItem.addEventListener('click', () => {
-
+      tabMenuItems.forEach((tabMenuItem) => {
+        tabMenuItem.addEventListener("click", () => {
           // 1. 選択状態のリセットと付与（このコンテナ内のタブのみ）
-          tabMenuItems.forEach(item => {
-            item.classList.remove('-selected');
+          tabMenuItems.forEach((item) => {
+            item.classList.remove("-selected");
           });
-          tabMenuItem.classList.add('-selected');
+          tabMenuItem.classList.add("-selected");
 
           // 2. コンテンツの非表示（このコンテナ内のコンテンツのみ）
-          tabContents.forEach(tabContent => {
-            tabContent.classList.remove('-show');
+          tabContents.forEach((tabContent) => {
+            tabContent.classList.remove("-show");
           });
 
           // 3. IDで紐付いた対象のコンテンツを表示
@@ -171,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetContent = document.getElementById(tabMenuItem.dataset.id);
             // 対象のコンテンツが確実に存在する場合のみクラスを付与
             if (targetContent) {
-              targetContent.classList.add('-show');
+              targetContent.classList.add("-show");
             }
           }
         });
@@ -179,8 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-
-
 
 // (function ($, root, undefined) {
 //   // ------------------------------
