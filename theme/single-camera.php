@@ -89,6 +89,27 @@ get_header('service');
 
 
 <main>
+  <section class="camera_mv">
+    <div>
+      <div>
+        <span>愛知・岐阜・三重・静岡対応</span>
+        <p>不審者対策も、内部トラブル対策もこれで解決！</p>
+        <h2><span>防犯カメラ</span>の設置・工事は<br>お任せください！！</h2>
+        <p>オフィス・店舗・施設の環境に合わせた、<br>防犯カメラをご提案します</p>
+        <ul>
+          <li>出張費・見積り<br><span>無料</span></li>
+          <li>アフターサポートまで<br><span>自社対応</span></li>
+          <li><span>電源・回線のない現場</span><br>にも対応可能</li>
+          <li><span>既存の配線を活かした</span><br>リプレイスにも対応</li>
+        </ul>
+      </div>
+      <div>
+        <img src="<?php echo get_template_directory_uri(); ?>/img/service/mv_catch.png" alt="" width="515" height="645" loading="lazy" decoding="async">
+      </div>
+    </div>
+    <img class="camera_mv--bg" src="<?php echo get_template_directory_uri(); ?>/img/service/mv_bg.jpg" alt="" width="1920" height="750" loading="lazy" decoding="async">
+  </section>
+
   <div class="single_service">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
