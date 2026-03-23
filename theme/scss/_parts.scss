@@ -116,6 +116,10 @@ img {
   background: #fffaf6;
 }
 
+.bg_skyblue {
+  background: #eef6ff;
+}
+
 .sec {
   padding: 120px 0;
 
@@ -337,57 +341,6 @@ img {
 
 
 
-
-// レスポンシブ table　表
-table {
-  width: 100%;
-
-  @include max-mq {
-    &.table {
-      display: block;
-
-      tbody,
-      tr,
-      th,
-      td {
-        box-sizing: border-box;
-        display: block;
-        width: 100% !important;
-      }
-    }
-  }
-}
-
-// SPの時に邪魔されたときの対処コード
-// table tbody {
-//   display: table-row-group !important;
-//   width: auto !important;
-// }
-
-// table tr {
-//   display: table-row !important;
-//   width: auto !important;
-// }
-
-// table th, table td {
-//   display: table-cell !important;
-//   width: auto !important;
-// }
-
-
-.bold {
-  // font-weight: boldのとき、文字がにじんで見える場合はこのclassで太字にする（YuGothic Midiumを使わないようにする）
-  font-family:
-    "Helvetica Neue",
-    "Arial",
-    "Hiragino Kaku Gothic ProN",
-    "Hiragino Sans",
-    "YuGothic",
-    "Yu Gothic",
-    "Meiryo",
-    sans-serif;
-  font-weight: bold;
-}
 
 // ---------------------------------------------
 // 下層ページ汎用

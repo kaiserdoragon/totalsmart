@@ -134,12 +134,81 @@ get_header('service');
     </div>
   </section>
 
-  <div class="camera_middle">
+  <div class="camera_middle bg_gray">
     <p>
       お客様の現場の課題を解決するための<br>
       <span>最適なソリューション</span>をご提供します
     </p>
   </div>
+
+  <section class="camera_reason sec">
+    <div class="container -md">
+      <h2 class="single_detail_page--ttl">
+        選ばれる<span>4</span>つの理由
+      </h2>
+      <div class="container camera_reason--inner">
+        <ol>
+          <li>
+            <h3>地域密着・迅速対応</h3>
+            <img src="<?php echo get_template_directory_uri(); ?>/img/service/reason_01.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+            <p>
+              愛知・岐阜・三重・静岡の商圏に絞り、現地調査から
+              施工、運用相談までスピーディーに対応。<br>
+              「名古屋の店舗」「四日市の工場」「岐阜の倉庫」
+              「浜松の資材置き場」など、地域特有の設置条件も
+              踏まえて提案します。
+            </p>
+          </li>
+          <li>
+            <h3>現場課題に合わせての提案</h3>
+            <img src="<?php echo get_template_directory_uri(); ?>/img/service/reason_02.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+            <p>
+              防犯カメラは、どこにでも同じものを付ければよいわけ
+              ではありません。<br>
+              建物の形、見たい場所、夜の明るさ、今ある配線、
+              予算の考え方によって、合う設備は変わります。
+              それぞれの環境に合った設置方法をご提案します。
+            </p>
+          </li>
+          <li>
+            <h3>圧倒的なコスト最適化</h3>
+            <img src="<?php echo get_template_directory_uri(); ?>/img/service/reason_03.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+            <p>
+              「入れ替えたいけど工事費が…」というご担当者様に
+              喜ばれているのが、既存の同軸ケーブルを流用できる
+              5MAHDカメラシステムです。<br>
+              アナログカメラ時代の配線をそのままに、高画質なシス
+              テムへ更新できます。<br>
+              現有資産を活かしたコスト最適化を実現します。
+            </p>
+          </li>
+          <li>
+            <h3>使いやすさまで考えます</h3>
+            <img src="<?php echo get_template_directory_uri(); ?>/img/service/reason_04.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+            <p>
+              防犯カメラは、性能が高ければそれで十分というもの
+              ではありません。<br>
+              当社では、映像のきれいさや見える範囲だけでなく、
+              導入のしやすさまで含めて考えます。<br>
+              現場に合っていて、導入後も使いやすいことまで考えて
+              ご提案します。
+            </p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg_skyblue sec">
+    <div class="container -md">
+      <div class="u-txt_center">
+        <h2 class="single_detail_page--ttl -double">
+          現場の課題を解決する<br>
+          <span>3</span>つの課題
+        </h2>
+      </div>
+    </div>
+  </section>
 
 
 

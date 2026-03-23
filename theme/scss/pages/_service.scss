@@ -155,6 +155,30 @@
   .container {
     padding: 0 min(4vw, 25px) !important;
   }
+
+  // .single_detail_page--ttl
+  &--ttl {
+    width: fit-content;
+    padding: 0 15px;
+    margin: 0 auto 60px;
+    font-size: var(--fz50);
+    font-weight: 900;
+    color: #333;
+    background: linear-gradient(to bottom, transparent 0%, transparent 70%, #ff0 70%, #ff0 85%, transparent 85%, transparent 100%);
+
+    span {
+      font-size: var(--fz80);
+      color: #1d56a5;
+    }
+
+    &.-double {
+      display: inline;
+      line-height: 1.2;
+      background: linear-gradient(to bottom, transparent 0%, transparent 70%, #fff100 70%, #fff100 100%);
+      background-repeat: repeat-y;
+      background-size: 100% 75px;
+    }
+  }
 }
 
 // ---------------------------------------------
@@ -265,7 +289,7 @@
   // .camera_mv--bg
   &--bg {
     width: 100%;
-    height: 70vh;
+    height: 100vh;
     aspect-ratio: 1950 / 750;
     object-fit: cover;
   }
@@ -333,7 +357,6 @@
 
 .camera_middle {
   padding: 100px 0;
-  background: #f2f2f2;
 
   p {
     position: relative;
@@ -363,5 +386,60 @@
       background: url(../img/service/img_middle.png) no-repeat left center / contain;
       transform: translateY(-50%);
     }
+  }
+}
+
+
+.camera_reason {
+  h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    margin: 0 auto 30px;
+    font-size: var(--fz25);
+    font-weight: 800;
+    color: #fff;
+    background: #1d56a5;
+  }
+
+  ol {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 80px;
+    column-gap: 30px;
+    counter-reset: num;
+  }
+
+  li {
+    position: relative;
+    padding: 80px 45px 45px;
+    text-align: center;
+    counter-increment: num;
+    background: #eef6ff;
+    border-radius: 15px;
+
+    &::before {
+      position: absolute;
+      top: -85px;
+      left: 50%;
+      font-size: 100px;
+      font-weight: 800;
+      color: #ff8206;
+      content: counter(num, decimal-leading-zero) "";
+      transform: translateX(-50%);
+    }
+  }
+
+  img {
+    margin-bottom: 40px;
+  }
+
+  p {
+    text-align: left;
+  }
+
+  .single_detail_page--ttl {
+    margin-bottom: 100px;
   }
 }
