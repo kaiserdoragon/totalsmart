@@ -199,13 +199,16 @@ get_header('service');
     </div>
   </section>
 
-  <section class="bg_skyblue sec">
+  <section class="camera_assignment bg_skyblue sec">
     <div class="container -md">
       <div class="u-txt_center">
         <h2 class="single_detail_page--ttl -double">
           現場の課題を解決する<br>
           <span>3</span>つの課題
         </h2>
+        <div>
+
+        </div>
       </div>
     </div>
   </section>
