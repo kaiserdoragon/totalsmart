@@ -148,14 +148,163 @@
   }
 }
 
+// サービス詳細(特化ページ共通)
+.single_detail_page {
+  padding-top: 225px;
+
+  .container {
+    padding: 0 min(4vw, 25px) !important;
+  }
+}
+
 // ---------------------------------------------
 //  防犯カメラ特化ページ　専用
 // ---------------------------------------------
 .camera_mv {
+  position: relative;
+
+  ul {
+    display: flex;
+    gap: 10px;
+  }
+
+  li {
+    align-self: center;
+    width: 100%;
+    max-width: 290px;
+    padding: 20px 0;
+    font-size: var(--fz25);
+    font-weight: 800;
+    text-align: center;
+    background: #fff;
+    border-radius: 10px;
+
+    span {
+      color: #ff8206;
+    }
+  }
+
+  // .camera_mv--contents
+  &--contents {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  // .camera_mv--ttl
+  &--ttl {
+    font-size: var(--fz65);
+    font-weight: 900;
+    color: #fff;
+  }
+
+  // .camera_mv--txt
+  &--txt {
+    display: block;
+    width: fit-content;
+    padding: 5px 20px;
+    color: #fff;
+    background: #00195b;
+
+    &:first-of-type {
+      margin-bottom: 15px;
+    }
+  }
+
+  // .camera_mv--strong
+  &--strong {
+    color: #ff0;
+  }
+
+  // .camera_mv--area
+  &--area {
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+    padding: 7px 0;
+    margin-bottom: 30px;
+    font-size: var(--fz25);
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    background: #00195b;
+    border-radius: 1000px;
+  }
+
+  // .camera_mv--lead
+  &--lead {
+    margin-bottom: 10px;
+    font-size: var(--fz35);
+    font-weight: 900;
+    color: #00195b;
+  }
+
+  // .camera_mv--supplement
+  &--supplement {
+    width: 100%;
+    max-width: 825px;
+    padding: 15px;
+    margin: 30px 0;
+    font-size: var(--fz30);
+    font-weight: 900;
+    color: #00195b;
+    text-align: center;
+    border-top: 3px solid #00195b;
+    border-bottom: 3px solid #00195b;
+  }
+
+  //.camera_mv--image{
+  &--image {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-60%);
+  }
+
   // .camera_mv--bg
   &--bg {
     width: 100%;
-    object-fit: cover;
+    height: 70vh;
     aspect-ratio: 1950 / 750;
+    object-fit: cover;
+  }
+}
+
+.camera_lead {
+  padding: 80px 0;
+  background: url(../img/service/lead_bg.jpg) no-repeat center / cover;
+
+  h2 {
+    margin-bottom: 30px;
+    font-size: var(--fz45);
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+
+    span {
+      color: #ff0;
+    }
+  }
+
+  ul {
+    padding: 60px 20px 60px 100px;
+    background: #fff;
+    border-radius: 15px;
+  }
+
+  li {
+    padding-left: 35px;
+    font-size: var(--fz23);
+    font-weight: 800;
+    background: url(../img/service/lead_check.png) no-repeat left top 65% / 24px;
+
+    span {
+      color: #f00;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
   }
 }

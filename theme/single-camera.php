@@ -88,27 +88,53 @@ get_header('service');
 ?>
 
 
-<main>
+<main class="single_<?php echo esc_attr(get_post_field('post_name', get_post())); ?> single_detail_page">
   <section class="camera_mv">
-    <div>
+    <div class="camera_mv--contents container -lg">
       <div>
-        <span>愛知・岐阜・三重・静岡対応</span>
-        <p>不審者対策も、内部トラブル対策もこれで解決！</p>
-        <h2><span>防犯カメラ</span>の設置・工事は<br>お任せください！！</h2>
-        <p>オフィス・店舗・施設の環境に合わせた、<br>防犯カメラをご提案します</p>
+        <span class="camera_mv--area">愛知・岐阜・三重・静岡対応</span>
+        <p class="camera_mv--lead">不審者対策も、内部トラブル対策もこれで解決！</p>
+        <h2 class="camera_mv--ttl">
+          <span class="camera_mv--txt"><span class="camera_mv--strong">防犯カメラ</span>の設置・工事は</span>
+          <span class="camera_mv--txt">お任せください！！</span>
+        </h2>
+        <p class="camera_mv--supplement">オフィス・店舗・施設の環境に合わせた、<br>防犯カメラをご提案します</p>
         <ul>
           <li>出張費・見積り<br><span>無料</span></li>
-          <li>アフターサポートまで<br><span>自社対応</span></li>
+          <li>アフターサポートまで<br>すべて<span>自社対応</span></li>
           <li><span>電源・回線のない現場</span><br>にも対応可能</li>
           <li><span>既存の配線を活かした</span><br>リプレイスにも対応</li>
         </ul>
       </div>
-      <div>
+      <div class="camera_mv--image">
         <img src="<?php echo get_template_directory_uri(); ?>/img/service/mv_catch.png" alt="" width="515" height="645" loading="lazy" decoding="async">
       </div>
     </div>
     <img class="camera_mv--bg" src="<?php echo get_template_directory_uri(); ?>/img/service/mv_bg.jpg" alt="" width="1920" height="750" loading="lazy" decoding="async">
   </section>
+
+  <section class="camera_lead">
+    <div class="container -md">
+      <h2>
+        防犯・監視カメラ導入で<br>
+        このような<span>お悩み</span>はありませんか？
+      </h2>
+      <ul>
+        <li>古いカメラのままで画質が悪く、<span>いざという時に顔や車のナンバーが判別できない</span></li>
+        <li>システム一式の入れ替えを検討しているが、<span>配線工事費が高額で予算が合わない</span></li>
+        <li>動物や木の揺れによる誤報が多く、<span>本当に必要な通知が埋もれてしまう</span></li>
+        <li>建設現場や資材置き場、農地など<span>電源もインターネット回線もない場所を監視したい</span></li>
+        <li>トラブル発生時に<span>すぐ駆けつけてくれる地元の業者がわからない</span></li>
+      </ul>
+      <p>
+        防犯カメラは「ただ設置すればよい」というものではありません。<br>
+        現場の環境（明るさ、広さ、配線状況、電源の有無）や目的に合っていない機器を選んでしまうと、<br>
+        本来の役割を果たせないだけでなく、無駄なコストがかかってしまいます。
+      </p>
+    </div>
+  </section>
+
+
 
   <div class="single_service">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
