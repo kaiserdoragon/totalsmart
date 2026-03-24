@@ -327,6 +327,9 @@ $schema_graph = [
         サービスについて、機器の操作方法や不明な点など、電話や訪問してサポートするだけでなく、<br class="is-hidden_sp">
         どこでも遠隔サポートが可能。無駄な時間を省いて業務を効率化。
       </p>
+      <a class="business_plan--btn" href="<?php echo esc_url(home_url('/remote/')); ?>">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/business/remotesupport.jpg'); ?>" alt="リモートサポートサービス" width="500" height="150" loading="lazy" decoding="async">
+      </a>
       <ul class="business_plan--support">
         <li>リモートサポート</li>
         <li>訪問サポート</li>

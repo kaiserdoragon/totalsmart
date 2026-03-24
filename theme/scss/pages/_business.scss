@@ -244,6 +244,13 @@
     }
   }
 
+  // .business_plan--btn
+  &--btn {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 60px;
+  }
+
   // .business_plan--support
   &--support {
     display: grid;
@@ -272,7 +279,7 @@
 
     @include max-mq {
       li {
-        padding-top: 110px;
+        padding-top: 100%;
       }
     }
   }
