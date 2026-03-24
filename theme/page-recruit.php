@@ -16,7 +16,7 @@
         "postalCode": "461-0002",
         "addressRegion": "愛知県",
         "addressLocality": "名古屋市東区",
-        "streetAddress": "代官町16-17 アーク代官町ビルディング2F",
+        "streetAddress": "代官町16-17 代官町ビルディング2F",
         "addressCountry": "JP"
       },
       "geo": {
@@ -52,7 +52,7 @@
         "@type": "Place",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "代官町16-17 アーク代官町ビルディング2F",
+          "streetAddress": "代官町16-17 代官町ビルディング2F",
           "addressLocality": "名古屋市東区",
           "addressRegion": "愛知県",
           "postalCode": "461-0002",
@@ -93,7 +93,7 @@
         "@type": "Place",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "代官町16-17 アーク代官町ビルディング2F",
+          "streetAddress": "代官町16-17 代官町ビルディング2F",
           "addressLocality": "名古屋市東区",
           "addressRegion": "愛知県",
           "postalCode": "461-0002",

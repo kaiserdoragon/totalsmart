@@ -201,6 +201,15 @@
     gap: 20px;
     align-items: baseline;
     justify-content: center;
+
+    li {
+      &:nth-child(3) {
+        img {
+          width: 35%;
+          object-fit: cover;
+        }
+      }
+    }
   }
 }
 

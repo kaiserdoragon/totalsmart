@@ -76,7 +76,7 @@ $home_schema = [
         'postalCode'      => '461-0002',
         'addressRegion'   => '愛知県',
         'addressLocality' => '名古屋市東区',
-        'streetAddress'   => '代官町16-17 アーク代官町ビルディング2F',
+        'streetAddress'   => '代官町16-17 代官町ビルディング2F',
         'addressCountry'  => 'JP',
       ],
       'areaServed'    => [

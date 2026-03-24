@@ -113,7 +113,7 @@ $business = [
     'postalCode' => '461-0002',
     'addressRegion' => '愛知県',
     'addressLocality' => '名古屋市東区',
-    'streetAddress' => '代官町16-17 アーク代官町ビルディング2F',
+    'streetAddress' => '代官町16-17 代官町ビルディング2F',
     'addressCountry' => 'JP',
   ],
   'areaServed' => [
@@ -979,7 +979,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         </div>
         <div class="footer--info">
           <p>〒461-0002 愛知県名古屋市東区代官町16-17
-            <br>アーク代官町ビルディング2F
+            <br>代官町ビルディング2F
           </p>
           <p>TEL:<?php echo esc_html($main_tel_local); ?></p>
           <p>FAX:052-932-5451</p>

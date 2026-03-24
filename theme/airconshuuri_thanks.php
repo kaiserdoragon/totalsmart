@@ -185,7 +185,7 @@ if (function_exists('wp_robots_no_robots')) {
         </div>
         <div class="footer--info">
           <p>〒461-0002 愛知県名古屋市東区代官町16-17
-            <br>アーク代官町ビルディング2F
+            <br>代官町ビルディング2F
           </p>
           <p>TEL:052-932-5450</p>
           <p>FAX:052-932-5451</p>

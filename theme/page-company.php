@@ -120,7 +120,7 @@ $schema_graph = [
       'postalCode'      => '461-0002',
       'addressRegion'   => '愛知県',
       'addressLocality' => '名古屋市東区',
-      'streetAddress'   => '代官町16-17 アーク代官町ビルディング2F',
+      'streetAddress'   => '代官町16-17 代官町ビルディング2F',
       'addressCountry'  => 'JP',
     ],
     'contactPoint'  => [
@@ -146,7 +146,7 @@ $schema_graph = [
       'postalCode'      => '461-0002',
       'addressRegion'   => '愛知県',
       'addressLocality' => '名古屋市東区',
-      'streetAddress'   => '代官町16-17 アーク代官町ビルディング2F',
+      'streetAddress'   => '代官町16-17 代官町ビルディング2F',
       'addressCountry'  => 'JP',
     ],
     'openingHoursSpecification' => [
@@ -221,7 +221,7 @@ $schema_graph = [
         </tr>
         <tr>
           <th>所在地</th>
-          <td>愛知県名古屋市東区代官町16-17 アーク代官町ビルディング2F</td>
+          <td>愛知県名古屋市東区代官町16-17 代官町ビルディング2F</td>
         </tr>
         <tr>
           <th>電話番号</th>
@@ -269,7 +269,7 @@ $schema_graph = [
   <section class="company_access sec -md bg_gray" id="access">
     <div class="company_access--inner">
       <h2 class="page_ttl">アクセス</h2>
-      <a href="https://maps.app.goo.gl/Dh57s5aHyVMs9oi68">愛知県名古屋市東区代官町16-17 アーク代官町ビルディング2F</a>
+      <a href="https://maps.app.goo.gl/Dh57s5aHyVMs9oi68">愛知県名古屋市東区代官町16-17 代官町ビルディング2F</a>
       <div class="company_access--info">
         <dl>
           <dt>電車の場合</dt>
@@ -337,8 +337,8 @@ $schema_graph = [
     </div>
   </section>
 
-  <section class="company_date sec -bottom">
-    <div class="container -sm">
+  <section class="company_date sec">
+    <div class="container -md">
       <h2 class="page_ttl">お取引先様</h2>
       <img src="<?php echo esc_url(get_template_directory_uri() . '/img/company/transaction.png'); ?>" alt="" width="263" height="155" loading="lazy" decoding="async">
       <p>
@@ -359,8 +359,8 @@ $schema_graph = [
           <p>ダイキン工業株式会社様</p>
         </li>
         <li>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/company/logo_03.png'); ?>" alt="" width="239" height="66" loading="lazy" decoding="async">
-          <p>株式会社日立製作所様</p>
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/company/logo_03.png'); ?>" alt="" width="216" height="90" loading="lazy" decoding="async">
+          <p>中部テレコミュニケーション株式会社</p>
         </li>
         <li>
           <img src="<?php echo esc_url(get_template_directory_uri() . '/img/company/logo_04.png'); ?>" alt="" width="228" height="40" loading="lazy" decoding="async">
