@@ -199,19 +199,113 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_assignment bg_skyblue sec">
+  <section class="camera_assignment sec">
     <div class="container -md">
       <div class="u-txt_center">
         <h2 class="single_detail_page--ttl -double">
           現場の課題を解決する<br>
           <span>3</span>つの課題
         </h2>
-        <div>
-
-        </div>
       </div>
+      <article>
+        <h3>
+          AIネットワークカメラ<br>
+          （NEXT AIシリーズ / Sシリーズ）
+        </h3>
+        <img src="<?php echo get_template_directory_uri(); ?>/img/service/assignment_01.jpg" alt="" width="600" height="327" loading="lazy" decoding="async">
+        <div class="camera_assignment--inner">
+          <ul>
+            <li>誤検知が多すぎてアラートを信頼できない</li>
+            <li>画質が悪くて証拠映像として使えない</li>
+            <li>来客数や動線の把握にも活用したい</li>
+          </ul>
+          <p>
+            人と車をAIが高精度に識別するネットワークカメラです。<br>
+            風で揺れる木や通過する虫などによる誤検知を大幅に削減し、<br>
+            「本当に注意すべき動き」だけを通知します。<br>
+            また、高解像度の映像は万が一の際に明確な証拠映像となります。<br>
+            誤報を抑えながら、必要なアラートに集中しやすくなります。<br>
+            工場・倉庫では侵入監視や搬入口確認、店舗では来店状況や導線把握、<br class="is-hidden_sp">
+            事務所や駐車場ではトラブル時の確認性向上につながります。
+          </p>
+          <strong>
+            名古屋市や豊橋市の店舗、刈谷市・安城市の工場など、<br>
+            用途の幅広いお客様に特に喜ばれているシリーズです。
+          </strong>
+        </div>
+      </article>
+      <article>
+        <h3>
+          5M AHDカメラシステム<br>
+          （同軸ケーブル流用ソリューション）
+        </h3>
+        <img src="<?php echo get_template_directory_uri(); ?>/img/service/assignment_02.jpg" alt="" width="600" height="327" loading="lazy" decoding="async">
+        <div class="camera_assignment--inner">
+          <ul>
+            <li>古いアナログカメラを高画質に更新したいが、配線工事費が高すぎる</li>
+            <li>なるべく工事の手間とコストを抑えてリプレイスしたい</li>
+            <li>映像の遅延が気になるので、シンプルな構成がいい</li>
+          </ul>
+          <p>
+            既存のアナログカメラ用配線（同軸ケーブル）をそのまま流用しながら、<br class="is-hidden_sp">
+            5メガピクセル（約250万画素以上）の高画質カメラシステムに更新できます。<br>
+            新たに配線を引き直す必要がないため、工事費を大幅に抑えることができます。<br>
+            配線工事費を抑えやすく、更新コストの最適化につながります。<br>
+            遅延の少ない映像で見やすく、既存環境を活用できるため、<br class="is-hidden_sp">
+            工場・倉庫・店舗・事務所の入れ替え時にも現実的な選択肢になります。
+          </p>
+          <strong>
+            「岐阜市・各務原市の製造業の倉庫や、<br>
+            大垣市・多治見市の工場などで多くご採用いただいています。
+          </strong>
+        </div>
+      </article>
+      <article>
+        <h3>
+          MOBITY BOX<br>
+          （モバイル遠隔監視システム）
+        </h3>
+        <img src="<?php echo get_template_directory_uri(); ?>/img/service/assignment_03.jpg" alt="" width="600" height="327" loading="lazy" decoding="async">
+        <div class="camera_assignment--inner">
+          <ul>
+            <li>建設現場や農地など、電源もネット回線もない場所を監視したい</li>
+            <li>資材の盗難・不法投棄が心配だが、固定設備を引くのが難しい</li>
+            <li>工期に合わせて設置場所を移動させたい</li>
+          </ul>
+          <p>
+            4G LTEルーターとバッテリーを内蔵した、可搬型の遠隔監視システムです。<br>
+            電源工事も回線工事も不要で、<br class="is-hidden_sp">
+            現場にそのまま設置するだけでスマートフォンや<br class="is-hidden_sp">
+            PCからリアルタイムに映像を確認できます。<br>
+            ソーラーパネルとの組み合わせにより、長期間の無電源監視にも対応します。<br>
+            建設現場では夜間の侵入対策や進捗確認、資材置き場では盗難抑止、<br class="is-hidden_sp">
+            農地では離れた場所の状況確認など、<br class="is-hidden_sp">
+            これまで設置が難しかった場所にも監視体制を構築できます。<br>
+            「電源がないから無理」と諦めていた現場に、実用的な選択肢をつくれます。
+          </p>
+          <strong>
+            三重県の伊賀市・松阪市、静岡県の掛川市・藤枝市など、<br>
+            比較的郊外や山間部での建設現場・農地でご採用いただいています。
+          </strong>
+        </div>
+      </article>
     </div>
   </section>
+
+  <div class="camera_introduction bg_blue">
+    <div class="camera_introduction--inner">
+      <p>
+        他にも熱源を検知するサーマルカメラ（夜間・視界不良時の不審者対策など）や、<br class="is-hidden_sp">
+        既存の同軸ケーブルにPoE給電を可能にするPoC対応カメラ、<br class="is-hidden_sp">
+        複数の録画方式に対応するハイブリッドレコーダーなども取り扱っています。
+      </p>
+      <p>
+        「この現場に何が合うかわからない」という場合も、<br class="is-hidden_sp">
+        まず無料現地調査でご相談ください。<br>
+        現場を直接確認したうえで、最適な構成をご提案します。
+      </p>
+    </div>
+  </div>
 
 
 

@@ -389,7 +389,6 @@
   }
 }
 
-
 .camera_reason {
   h3 {
     display: flex;
@@ -441,5 +440,98 @@
 
   .single_detail_page--ttl {
     margin-bottom: 100px;
+  }
+}
+
+
+.camera_assignment {
+  .u-txt_center {
+    margin-bottom: 80px;
+  }
+
+  article {
+    padding: 80px 60px;
+    background: #ffff;
+    border: 5px solid #1d56a5;
+    border-radius: 15px;
+
+    &:not(:last-child) {
+      margin-bottom: 60px;
+    }
+
+    &:nth-of-type(2),
+    &:nth-of-type(3) {
+      ul {
+        width: 75%;
+      }
+    }
+  }
+
+  h3 {
+    margin-bottom: 30px;
+    font-size: var(--fz40);
+    font-weight: 900;
+    color: #1d56a5;
+    text-align: center;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto 60px;
+  }
+
+  ul {
+    width: 45%;
+    padding: 60px 0;
+    margin: auto;
+  }
+
+  li {
+    padding-left: 35px;
+    margin-bottom: 15px;
+    font-size: var(--fz20);
+    font-weight: 700;
+    color: #0052a7;
+    background: url(../img/service/check.png) no-repeat left 10px center / 17px;
+  }
+
+  p {
+    margin-bottom: 60px;
+    line-height: 2;
+    text-align: center;
+  }
+
+  strong {
+    display: block;
+    font-weight: 800;
+    line-height: 2;
+    text-align: center;
+  }
+
+  // .camera_assignment--inner
+  &--inner {
+    border-top: 5px dotted #a9a9a9;
+  }
+}
+
+
+.camera_introduction {
+  p {
+    font-size: var(--fz25);
+    color: #fff;
+    text-align: center;
+
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+
+  // .camera_introduction--inner
+  &--inner {
+    box-sizing: border-box;
+    width: min(1350px, 100%);
+    padding: 120px min(4vw, 25px);
+    margin: auto;
+    background: url(../img/service/introduction.png) no-repeat center center / contain;
   }
 }
