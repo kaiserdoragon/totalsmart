@@ -307,6 +307,124 @@ get_header('service');
     </div>
   </div>
 
+  <section class="camera_construction sec">
+    <div class="container -md">
+      <h2>施工・導入実績</h2>
+      <p>
+        工場・倉庫・店舗・建設現場など、現場ごとに求められる監視体制は異なります。<br>
+        私たちは、防犯カメラを一律にご提案するのではなく、<br class="is-hidden_sps">
+        課題・設置環境・既存設備に合わせて、最適な機器構成と工事方法をご提案しています。
+      </p>
+      <article>
+        <h3>誤報の嵐から解放され、業務管理も劇的に改善</h3>
+        <div class="camera_construction--inner">
+          <dl>
+            <dt>愛知県名古屋市 自動車部品工場様</dt>
+            <dd>敷地外周に設置していた従来の動体検知カメラが、
+              野良猫や風で揺れる木々に反応してしまい、夜間の誤報が多発。<br>
+              警備システムとの連動で無駄な出動コストがかかっていました。<br>
+              導入後は動物や天候による誤報が「ゼロ」になり、本当に必要な
+              不審者の侵入時のみ正確にアラートが鳴る仕組みが完成しました。<br>
+              画質な映像を活用し、日中は工場内の安全管理や作業工程の確認
+              など、防犯以外の業務改善にも役立てています。
+            </dd>
+          </dl>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/service/construction_01.jpg" alt="" width="460" height="320" loading="lazy" decoding="async">
+        </div>
+      </article>
+      <article>
+        <h3>他社の高額見積もりを覆す、低コストな高画質化</h3>
+        <div class="camera_construction--inner">
+          <dl>
+            <dt>岐阜県岐阜市　小売店様</dt>
+            <dd>
+              駐車場での当て逃げトラブルが起きた際、古いアナログカメラ
+              の画質では車のナンバープレートが読み取れませんでした。<br>
+              システム一式の入れ替えを検討したものの、他社からは「配線
+              をすべてLANケーブルに引き直す必要がある」と高額な見積も
+              りを出され、予算が合わず困っていました。<br>
+              今回配線工事費を大幅にカットできたため、他社見積もりの
+              約半分のコストでフルハイビジョンを超える高画質監視ができ
+              ました。<br>
+              ナンバープレートもくっきりと録画できるようになり、トラ
+              ブルの早期解決と犯罪抑止力が飛躍的に向上しました。
+            </dd>
+          </dl>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/service/construction_02.jpg" alt="" width="460" height="320" loading="lazy" decoding="async">
+        </div>
+      </article>
+      <article>
+        <h3>電源なし・ネットなしの過酷な環境を即日監視</h3>
+        <div class="camera_construction--inner">
+          <dl>
+            <dt>三重県四日市市　建設会社様</dt>
+            <dd>
+              郊外の仮設資材置き場で、夜間に銅線ケーブルなどの盗難被害
+              が出ていました。<br>
+              すぐに監視カメラを設置したかったものの、現場には100V電源
+              もインターネット回線もなく、通常のカメラでは対応できない
+              状態でした。<br>
+              お問い合わせをしてから最短で現場まで来てもらって、その日
+              のうちに稼働ができました。<br>
+              スマートフォンからいつでも現地の状況を遠隔監視できるよう
+              になりました。<br>
+              カメラの存在自体が強力な威嚇となり、導入以降は盗難被害が
+              一切発生していません。
+            </dd>
+          </dl>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/service/construction_03.jpg" alt="" width="460" height="320" loading="lazy" decoding="async">
+        </div>
+      </article>
+      <article>
+        <h3>電源なし・ネットなしの過酷な環境を即日監視</h3>
+        <div class="camera_construction--inner">
+          <dl>
+            <dt>三重県四日市市　建設会社様</dt>
+            <dd>
+              郊外の仮設資材置き場で、夜間に銅線ケーブルなどの盗難被害
+              が出ていました。<br>
+              すぐに監視カメラを設置したかったものの、現場には100V電源
+              もインターネット回線もなく、通常のカメラでは対応できない
+              状態でした。<br>
+              お問い合わせをしてから最短で現場まで来てもらって、その日
+              のうちに稼働ができました。<br>
+              スマートフォンからいつでも現地の状況を遠隔監視できるよう
+              になりました。<br>
+              カメラの存在自体が強力な威嚇となり、導入以降は盗難被害が
+              一切発生していません。
+            </dd>
+          </dl>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/service/construction_04.jpg" alt="" width="460" height="320" loading="lazy" decoding="async">
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="camera_flow bg_gray sec">
+    <div class="container -md">
+      <h2>導入・施工までの流れ</h2>
+      <p>
+        初めてご依頼の方も、既存設備の入れ替えをお考えの方も、まずはお気軽にご連絡ください。<br>
+        以下のステップで、現場に最適なシステムを丁寧に構築します。
+      </p>
+      <article>
+        <p class="camera_flow--step">
+          <span>STEP</span>
+          01
+        </p>
+        <div class="camera_flow--inner">
+          <h3>お問い合わせ・ご相談（無料）</h3>
+          <p>
+            フォームまたはお電話にてご連絡ください。<br>
+            現場の種類・現在の設備状況・お悩みの概要などをお聞きします。<br>
+            「何から話せばいいかわからない」という段階でも歓迎です。<br>
+            まずは気軽にお声がけください。
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
 
 
   <div class="single_service">

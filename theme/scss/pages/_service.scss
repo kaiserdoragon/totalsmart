@@ -443,7 +443,6 @@
   }
 }
 
-
 .camera_assignment {
   .u-txt_center {
     margin-bottom: 80px;
@@ -514,7 +513,6 @@
   }
 }
 
-
 .camera_introduction {
   p {
     font-size: var(--fz25);
@@ -533,5 +531,118 @@
     padding: 120px min(4vw, 25px);
     margin: auto;
     background: url(../img/service/introduction.png) no-repeat center center / contain;
+  }
+}
+
+
+.camera_construction {
+  h2 {
+    margin-bottom: 60px;
+    font-size: var(--fz50);
+    font-weight: 900;
+    color: #00195b;
+    text-align: center;
+
+    + p {
+      margin-bottom: 80px;
+      text-align: center;
+    }
+  }
+
+  h3 {
+    padding: 5px 0;
+    margin-bottom: 30px;
+    font-size: var(--fz35);
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    background: #00195b;
+  }
+
+  dt {
+    padding: 5px 0;
+    margin-bottom: 30px;
+    font-size: var(--fz20);
+    font-weight: 600;
+    color: #00195b;
+    text-align: center;
+    background: #f1f1f1;
+  }
+
+  dd {
+    line-height: 1.8;
+  }
+
+  article {
+    &:not(:last-child) {
+      margin-bottom: 100px;
+    }
+  }
+
+  // .camera_construction--inner
+  &--inner {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
+
+
+.camera_flow {
+  h2 {
+    margin-bottom: 60px;
+    font-size: var(--fz50);
+    font-weight: 900;
+    color: #00195b;
+    text-align: center;
+
+    + p {
+      margin-bottom: 80px;
+      text-align: center;
+    }
+  }
+
+  h3 {
+    font-size: var(--fz30);
+    font-weight: 800;
+    color: #00195b;
+    border-bottom: 3px dotted #a9a9a9;
+  }
+
+  article {
+    position: relative;
+    display: flex;
+    padding: 60px 0 60px 190px;
+    background: #fff;
+    border-radius: 10px;
+  }
+
+  // .camera_flow--step
+  &--step {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    font-size: var(--fz50);
+    font-weight: 800;
+    line-height: 1.2;
+    color: #fff;
+    background: #1d56a5;
+    border-radius: 10px 0 0 10px;
+
+    span {
+      font-size: var(--fz30);
+    }
+  }
+
+  // .camera_flow--inner
+  &--inner {
+    width: 100%;
   }
 }
