@@ -534,7 +534,6 @@
   }
 }
 
-
 .camera_construction {
   h2 {
     margin-bottom: 60px;
@@ -545,6 +544,8 @@
 
     + p {
       margin-bottom: 80px;
+      font-size: var(--fz20);
+      font-weight: 600;
       text-align: center;
     }
   }
@@ -588,7 +589,6 @@
   }
 }
 
-
 .camera_flow {
   h2 {
     margin-bottom: 60px;
@@ -599,11 +599,15 @@
 
     + p {
       margin-bottom: 80px;
+      font-size: var(--fz20);
+      font-weight: 600;
       text-align: center;
     }
   }
 
   h3 {
+    padding-bottom: 5px;
+    margin-bottom: 30px;
     font-size: var(--fz30);
     font-weight: 800;
     color: #00195b;
@@ -613,9 +617,25 @@
   article {
     position: relative;
     display: flex;
-    padding: 60px 0 60px 190px;
+    padding: 60px 60px 60px 190px;
     background: #fff;
     border-radius: 10px;
+
+    &:not(:last-of-type) {
+      margin-bottom: 100px;
+
+      &::after {
+        position: absolute;
+        bottom: -135px;
+        left: 50%;
+        display: inline-block;
+        width: 8%;
+        aspect-ratio: 47 / 94;
+        content: "";
+        background: url(../img/service/arrow_blue.png) no-repeat center / contain;
+        transform: translateX(-50%);
+      }
+    }
   }
 
   // .camera_flow--step
@@ -644,5 +664,80 @@
   // .camera_flow--inner
   &--inner {
     width: 100%;
+
+    p {
+      font-size: var(--fz20);
+      line-height: 1.8;
+    }
+  }
+}
+
+.camera_qa {
+  h2 {
+    margin-bottom: 60px;
+    font-size: var(--fz50);
+    font-weight: 900;
+    color: #00195b;
+    text-align: center;
+
+    + p {
+      margin-bottom: 80px;
+      font-size: var(--fz20);
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+
+  dt {
+    position: relative;
+    padding: 13px 0 13px 85px;
+    font-size: var(--fz28);
+    font-weight: 700;
+    color: #fff;
+    background: #1d56a5;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      font-weight: 600;
+      text-align: center;
+      content: "Q";
+      background: #5781c2;
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  dd {
+    position: relative;
+    padding: 30px 30px 30px 85px;
+    font-size: var(--fz20);
+    font-weight: 600;
+    line-height: 1.8;
+
+    &::after {
+      position: absolute;
+      top: 20px;
+      left: 15px;
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      font-size: var(--fz30);
+      font-weight: 600;
+      line-height: 1.5;
+      color: #fff;
+      text-align: center;
+      content: "A";
+      background: #ff8206;
+      border-radius: 50%;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
   }
 }
