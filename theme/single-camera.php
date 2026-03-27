@@ -3,9 +3,7 @@
 Template Name: 防犯カメラ
 Template Post Type:service
 */
-?>
 
-<?php
 $post_type = 'service';
 
 $type_settings = [
@@ -16,42 +14,57 @@ $type_settings = [
   ],
 ];
 
-$title    = $type_settings[$post_type]['title'] ?? 'お知らせ';
-$img_file = $type_settings[$post_type]['img'] ?? 'eyecatch_default.jpg';
-$slug     = $type_settings[$post_type]['slug'] ?? 'news';
+$title     = $type_settings[$post_type]['title'] ?? 'お知らせ';
+$img_file  = $type_settings[$post_type]['img'] ?? 'eyecatch_default.jpg';
+$slug      = $type_settings[$post_type]['slug'] ?? 'news';
+$post_id   = get_queried_object_id();
+$site_name = get_bloginfo('name');
 
-$post_id            = get_queried_object_id();
-$site_name          = get_bloginfo('name');
-$service_title      = $post_id ? get_the_title($post_id) : '';
-$service_url        = $post_id ? get_permalink($post_id) : home_url('/');
+$service_title       = $post_id ? get_the_title($post_id) : '防犯カメラ';
+$service_url         = $post_id ? get_permalink($post_id) : home_url('/');
 $service_archive_url = get_post_type_archive_link('service') ?: home_url('/service/');
-$hero_image_url     = get_template_directory_uri() . '/img/page/' . $img_file;
-$service_image_url  = $post_id && has_post_thumbnail($post_id)
+$service_image_url   = $post_id && has_post_thumbnail($post_id)
   ? get_the_post_thumbnail_url($post_id, 'full')
   : '';
+$post_slug = $post_id ? get_post_field('post_name', $post_id) : $slug;
 
 $raw_excerpt = $post_id ? get_the_excerpt($post_id) : '';
 $raw_content = $post_id ? get_post_field('post_content', $post_id) : '';
+
+$default_description = sprintf(
+  '%sの設置・工事なら%s。愛知・岐阜・三重・静岡に対応し、現地調査・見積り無料。既存配線を活かした更新や無電源現場の遠隔監視にも対応します。',
+  $service_title ?: '防犯カメラ',
+  $site_name
+);
 
 $description_source = $raw_excerpt;
 if ('' === trim((string) $description_source)) {
   $description_source = wp_strip_all_tags(strip_shortcodes((string) $raw_content));
 }
+if ('' === trim((string) $description_source)) {
+  $description_source = $default_description;
+}
 
-$description_source = html_entity_decode((string) $description_source, ENT_QUOTES, get_bloginfo('charset'));
+$description_source = html_entity_decode((string) $description_source, ENT_QUOTES, get_bloginfo('charset') ?: 'UTF-8');
 $description_source = wp_strip_all_tags($description_source);
 $description_source = preg_replace('/\s+/u', ' ', $description_source);
 $description_source = trim((string) $description_source);
 
 if (function_exists('mb_strimwidth')) {
-  $service_description = mb_strimwidth($description_source, 0, 160, '...', 'UTF-8');
+  $service_description = mb_strimwidth($description_source, 0, 140, '...', 'UTF-8');
 } else {
-  $service_description = wp_trim_words($description_source, 120, '...');
+  $service_description = wp_trim_words($description_source, 60, '...');
 }
 
 if ('' === $service_description) {
-  $service_description = $service_title . 'の詳細ページです。';
+  $service_description = $default_description;
 }
+
+$seo_title = sprintf(
+  '%sの設置・工事 | %s',
+  $service_title ?: '防犯カメラ',
+  $site_name
+);
 
 $has_seo_plugin = (
   defined('WPSEO_VERSION') ||
@@ -60,44 +73,151 @@ $has_seo_plugin = (
   defined('SEOPRESS_VERSION')
 );
 
-/**
- * この詳細ページ専用の title を付与
- * SEOプラグインがある場合はそちらを優先
- */
 if (!$has_seo_plugin) {
-  add_filter('pre_get_document_title', function ($document_title) use ($service_title, $title, $site_name) {
+  add_filter('pre_get_document_title', function ($document_title) use ($seo_title) {
     if (is_singular('service')) {
-      return $service_title . ' | ' . $title . ' | ' . $site_name;
+      return $seo_title;
     }
     return $document_title;
   }, 20);
 
-  /**
-   * この詳細ページ専用の canonical を付与
-   * SEOプラグインがある場合はそちらを優先
-   */
-  add_action('wp_head', function () use ($service_url) {
+  add_action('wp_head', function () use ($service_url, $service_description) {
     if (!is_singular('service')) {
       return;
     }
-    echo '<link rel="canonical" href="' . esc_url($service_url) . '">' . "\n";
+
+    echo '<link rel="canonical" href="' . esc_url($service_url) . '">' . "
+";
+    echo '<meta name="description" content="' . esc_attr($service_description) . '">' . "
+";
+    echo '<meta name="robots" content="max-image-preview:large">' . "
+";
   }, 20);
 }
 
 get_header('service');
 ?>
 
+<main class="single_<?php echo esc_attr($post_slug); ?> single_detail_page">
+  <?php
+  if (is_singular('service')) :
+    $website_id    = home_url('/') . '#website';
+    $organization_id = home_url('/') . '#organization';
+    $webpage_id    = $service_url . '#webpage';
+    $breadcrumb_id = $service_url . '#breadcrumb';
+    $service_id    = $service_url . '#service';
 
-<main class="single_<?php echo esc_attr(get_post_field('post_name', get_post())); ?> single_detail_page">
+    $service_schema = [
+      '@type'       => 'Service',
+      '@id'         => $service_id,
+      'name'        => $service_title,
+      'serviceType' => $service_title,
+      'description' => $service_description,
+      'url'         => $service_url,
+      'provider'    => [
+        '@id' => $organization_id,
+      ],
+      'areaServed'  => [
+        ['@type' => 'AdministrativeArea', 'name' => '愛知県'],
+        ['@type' => 'AdministrativeArea', 'name' => '岐阜県'],
+        ['@type' => 'AdministrativeArea', 'name' => '三重県'],
+        ['@type' => 'AdministrativeArea', 'name' => '静岡県'],
+      ],
+    ];
+
+    if ($service_image_url) {
+      $service_schema['image'] = $service_image_url;
+    }
+
+    $schema_graph = [$service_schema];
+
+    if (!$has_seo_plugin) {
+      $schema_graph = [
+        [
+          '@type' => 'Organization',
+          '@id'   => $organization_id,
+          'name'  => $site_name,
+          'url'   => home_url('/'),
+        ],
+        [
+          '@type'     => 'WebSite',
+          '@id'       => $website_id,
+          'url'       => home_url('/'),
+          'name'      => $site_name,
+          'publisher' => [
+            '@id' => $organization_id,
+          ],
+        ],
+        [
+          '@type'           => 'BreadcrumbList',
+          '@id'             => $breadcrumb_id,
+          'itemListElement' => [
+            [
+              '@type'    => 'ListItem',
+              'position' => 1,
+              'name'     => 'TOP',
+              'item'     => home_url('/'),
+            ],
+            [
+              '@type'    => 'ListItem',
+              'position' => 2,
+              'name'     => $title,
+              'item'     => $service_archive_url,
+            ],
+            [
+              '@type'    => 'ListItem',
+              'position' => 3,
+              'name'     => $service_title,
+              'item'     => $service_url,
+            ],
+          ],
+        ],
+        [
+          '@type'       => 'WebPage',
+          '@id'         => $webpage_id,
+          'url'         => $service_url,
+          'name'        => $service_title,
+          'description' => $service_description,
+          'isPartOf'    => [
+            '@id' => $website_id,
+          ],
+          'breadcrumb'  => [
+            '@id' => $breadcrumb_id,
+          ],
+          'mainEntity'  => [
+            '@id' => $service_id,
+          ],
+        ],
+        $service_schema,
+      ];
+
+      if ($service_image_url) {
+        $schema_graph[3]['primaryImageOfPage'] = [
+          '@type' => 'ImageObject',
+          'url'   => $service_image_url,
+        ];
+      }
+    }
+
+    $schema_data = [
+      '@context' => 'https://schema.org',
+      '@graph'   => $schema_graph,
+    ];
+  ?>
+    <script type="application/ld+json">
+      <?php echo wp_json_encode($schema_data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
+    </script>
+  <?php endif; ?>
+
   <section class="camera_mv">
     <div class="camera_mv--contents container -lg">
       <div>
         <span class="camera_mv--area">愛知・岐阜・三重・静岡対応</span>
         <p class="camera_mv--lead">不審者対策も、内部トラブル対策もこれで解決！</p>
-        <h2 class="camera_mv--ttl">
+        <h1 class="camera_mv--ttl">
           <span class="camera_mv--txt"><span class="camera_mv--strong">防犯カメラ</span>の設置・工事は</span>
           <span class="camera_mv--txt">お任せください！！</span>
-        </h2>
+        </h1>
         <p class="camera_mv--supplement">オフィス・店舗・施設の環境に合わせた、<br>防犯カメラをご提案します</p>
         <ul>
           <li>出張費・見積り<br><span>無料</span></li>
@@ -107,10 +227,10 @@ get_header('service');
         </ul>
       </div>
       <div class="camera_mv--image">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/service/mv_catch.png" alt="" width="515" height="645" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_catch.png'); ?>" alt="防犯カメラ設置サービスのイメージ" width="515" height="645" loading="eager" fetchpriority="high" decoding="async">
       </div>
     </div>
-    <img class="camera_mv--bg" src="<?php echo get_template_directory_uri(); ?>/img/service/mv_bg.jpg" alt="" width="1920" height="750" loading="lazy" decoding="async">
+    <img class="camera_mv--bg" src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_bg.jpg'); ?>" alt="" width="1920" height="750" loading="eager" fetchpriority="high" decoding="async">
   </section>
 
   <section class="camera_lead">
@@ -150,7 +270,7 @@ get_header('service');
         <ol>
           <li>
             <h3>地域密着・迅速対応</h3>
-            <img src="<?php echo get_template_directory_uri(); ?>/img/service/reason_01.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_01.png'); ?>" alt="地域密着・迅速対応のイメージ" width="240" height="240" loading="lazy" decoding="async">
             <p>
               愛知・岐阜・三重・静岡の商圏に絞り、現地調査から
               施工、運用相談までスピーディーに対応。<br>
@@ -161,7 +281,7 @@ get_header('service');
           </li>
           <li>
             <h3>現場課題に合わせての提案</h3>
-            <img src="<?php echo get_template_directory_uri(); ?>/img/service/reason_02.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_02.png'); ?>" alt="現場課題に合わせた提案のイメージ" width="240" height="240" loading="lazy" decoding="async">
             <p>
               防犯カメラは、どこにでも同じものを付ければよいわけ
               ではありません。<br>
@@ -172,7 +292,7 @@ get_header('service');
           </li>
           <li>
             <h3>圧倒的なコスト最適化</h3>
-            <img src="<?php echo get_template_directory_uri(); ?>/img/service/reason_03.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_03.png'); ?>" alt="コスト最適化のイメージ" width="240" height="240" loading="lazy" decoding="async">
             <p>
               「入れ替えたいけど工事費が…」というご担当者様に
               喜ばれているのが、既存の同軸ケーブルを流用できる
@@ -184,7 +304,7 @@ get_header('service');
           </li>
           <li>
             <h3>使いやすさまで考えます</h3>
-            <img src="<?php echo get_template_directory_uri(); ?>/img/service/reason_04.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_04.png'); ?>" alt="使いやすさを考えた提案のイメージ" width="240" height="240" loading="lazy" decoding="async">
             <p>
               防犯カメラは、性能が高ければそれで十分というもの
               ではありません。<br>
@@ -212,7 +332,7 @@ get_header('service');
           AIネットワークカメラ<br>
           （NEXT AIシリーズ / Sシリーズ）
         </h3>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/service/assignment_01.jpg" alt="" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_01.jpg'); ?>" alt="AIネットワークカメラの導入イメージ" width="600" height="327" loading="lazy" decoding="async">
         <div class="camera_assignment--inner">
           <ul>
             <li>誤検知が多すぎてアラートを信頼できない</li>
@@ -239,7 +359,7 @@ get_header('service');
           5M AHDカメラシステム<br>
           （同軸ケーブル流用ソリューション）
         </h3>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/service/assignment_02.jpg" alt="" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_02.jpg'); ?>" alt="同軸ケーブル流用による5M AHDカメラ更新のイメージ" width="600" height="327" loading="lazy" decoding="async">
         <div class="camera_assignment--inner">
           <ul>
             <li>古いアナログカメラを高画質に更新したいが、配線工事費が高すぎる</li>
@@ -248,7 +368,7 @@ get_header('service');
           </ul>
           <p>
             既存のアナログカメラ用配線（同軸ケーブル）をそのまま流用しながら、<br class="is-hidden_sp">
-            5メガピクセル（約250万画素以上）の高画質カメラシステムに更新できます。<br>
+            5メガピクセル級の高画質カメラシステムに更新できます。<br>
             新たに配線を引き直す必要がないため、工事費を大幅に抑えることができます。<br>
             配線工事費を抑えやすく、更新コストの最適化につながります。<br>
             遅延の少ない映像で見やすく、既存環境を活用できるため、<br class="is-hidden_sp">
@@ -265,7 +385,7 @@ get_header('service');
           MOBITY BOX<br>
           （モバイル遠隔監視システム）
         </h3>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/service/assignment_03.jpg" alt="" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_03.jpg'); ?>" alt="MOBITY BOXによる遠隔監視のイメージ" width="600" height="327" loading="lazy" decoding="async">
         <div class="camera_assignment--inner">
           <ul>
             <li>建設現場や農地など、電源もネット回線もない場所を監視したい</li>
@@ -312,7 +432,7 @@ get_header('service');
       <h2>施工・導入実績</h2>
       <p>
         工場・倉庫・店舗・建設現場など、現場ごとに求められる監視体制は異なります。<br>
-        私たちは、防犯カメラを一律にご提案するのではなく、<br class="is-hidden_sps">
+        私たちは、防犯カメラを一律にご提案するのではなく、<br class="is-hidden_sp">
         課題・設置環境・既存設備に合わせて、最適な機器構成と工事方法をご提案しています。
       </p>
       <article>
@@ -329,7 +449,7 @@ get_header('service');
               など、防犯以外の業務改善にも役立てています。
             </dd>
           </dl>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/service/construction_01.jpg" alt="" width="460" height="320" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_01.jpg'); ?>" alt="自動車部品工場での防犯カメラ導入事例" width="460" height="320" loading="lazy" decoding="async">
         </div>
       </article>
       <article>
@@ -350,7 +470,7 @@ get_header('service');
               ブルの早期解決と犯罪抑止力が飛躍的に向上しました。
             </dd>
           </dl>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/service/construction_02.jpg" alt="" width="460" height="320" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_02.jpg'); ?>" alt="小売店での高画質カメラ更新事例" width="460" height="320" loading="lazy" decoding="async">
         </div>
       </article>
       <article>
@@ -372,29 +492,7 @@ get_header('service');
               一切発生していません。
             </dd>
           </dl>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/service/construction_03.jpg" alt="" width="460" height="320" loading="lazy" decoding="async">
-        </div>
-      </article>
-      <article>
-        <h3>電源なし・ネットなしの過酷な環境を即日監視</h3>
-        <div class="camera_construction--inner">
-          <dl>
-            <dt>三重県四日市市　建設会社様</dt>
-            <dd>
-              郊外の仮設資材置き場で、夜間に銅線ケーブルなどの盗難被害
-              が出ていました。<br>
-              すぐに監視カメラを設置したかったものの、現場には100V電源
-              もインターネット回線もなく、通常のカメラでは対応できない
-              状態でした。<br>
-              お問い合わせをしてから最短で現場まで来てもらって、その日
-              のうちに稼働ができました。<br>
-              スマートフォンからいつでも現地の状況を遠隔監視できるよう
-              になりました。<br>
-              カメラの存在自体が強力な威嚇となり、導入以降は盗難被害が
-              一切発生していません。
-            </dd>
-          </dl>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/service/construction_04.jpg" alt="" width="460" height="320" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_03.jpg'); ?>" alt="無電源現場での遠隔監視導入事例" width="460" height="320" loading="lazy" decoding="async">
         </div>
       </article>
     </div>
@@ -430,7 +528,7 @@ get_header('service');
         <div class="camera_flow--inner">
           <h3>無料現地調査</h3>
           <p>
-            実際に現場へ伺い、設置環境・既存配線の状況死角になりやすい箇所などを
+            実際に現場へ伺い、設置環境・既存配線の状況・死角になりやすい箇所などを
             詳しく確認します。<br>
             東海4県（愛知・岐阜・三重・静岡）への出張費は無料です。<br>
             現場を見ることで、最適解が見えてきます。
@@ -558,114 +656,65 @@ get_header('service');
   </section>
 
   <section class="camera_area bg_skyblue sec">
-
     <div class="container -md">
       <h2>
         <span>愛知県・岐阜県・三重県・静岡県</span>
         へ迅速に対応します
       </h2>
       <p>
-        お問い合わせ前に気になる点を、まとめてお答えします。<br>
-        ご不明な点は、お気軽にお問い合わせください。
+        東海エリアに密着した防犯カメラ設置・販売の会社として、<br>
+        愛知県・岐阜県・三重県・静岡県での現地調査・施工・アフターサポートを行っています。
       </p>
+      <article>
+        <span>愛知県</span>
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_01.jpg'); ?>" alt="愛知県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <p>
+          名古屋市・豊田市・岡崎市・一宮市・春日井市・<br class="is-hidden_sp">
+          豊橋市・安城市・刈谷市・小牧市・半田市・<br class="is-hidden_sp">
+          および愛知県内全域に対応しております。<br class="is-hidden_sp">
+          製造業が盛んな豊田市・刈谷市・安城市のエリアの工場や倉庫、<br>
+          名古屋市内の店舗・事務所からの<br class="is-hidden_sp">
+          ご相談も多数いただいています。
+        </p>
+      </article>
+      <article>
+        <span>岐阜県</span>
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_02.jpg'); ?>" alt="岐阜県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <p>
+          岐阜県・大垣市・各務原市・多治見市・可児市・<br class="is-hidden_sp">
+          関市・高山市・および岐阜県全域に<br class="is-hidden_sp">
+          対応しています。<br>
+          岐阜市・大垣市周辺の倉庫や工場、<br class="is-hidden_sp">
+          山間部の建設現場・農地での<br class="is-hidden_sp">
+          無電源監視のご相談も承っています。
+        </p>
+      </article>
+      <article>
+        <span>三重県</span>
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_03.jpg'); ?>" alt="三重県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <p>
+          四日市市・津市・鈴鹿市・桑名市・松阪市・<br class="is-hidden_sp">
+          伊勢市・伊賀市、および三重県全域に<br class="is-hidden_sp">
+          対応しています。<br>
+          四日市市・鈴鹿市のコンビナート・<br class="is-hidden_sp">
+          工場エリアや伊賀市・松阪市の農地・<br class="is-hidden_sp">
+          建設現場での実績があります。
+        </p>
+      </article>
+      <article>
+        <span>静岡県</span>
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_04.jpg'); ?>" alt="静岡県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <p>
+          静岡市・浜松市・沼津市・富士市・焼津市・<br class="is-hidden_sp">
+          藤枝市・磐田市・掛川市・三島市・<br class="is-hidden_sp">
+          および静岡県全域に対応しています。<br>
+          浜松市・磐田市の工場、富士市・焼津市の<br class="is-hidden_sp">
+          倉庫・物流拠点からのご相談も対応しています。
+        </p>
+      </article>
     </div>
-
   </section>
 
-  <div class="single_service">
-    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-        <?php
-        $schema_graph = [];
-
-        $schema_graph[] = [
-          '@type'           => 'BreadcrumbList',
-          'itemListElement' => [
-            [
-              '@type'    => 'ListItem',
-              'position' => 1,
-              'name'     => 'TOP',
-              'item'     => home_url('/'),
-            ],
-            [
-              '@type'    => 'ListItem',
-              'position' => 2,
-              'name'     => $title,
-              'item'     => $service_archive_url,
-            ],
-            [
-              '@type'    => 'ListItem',
-              'position' => 3,
-              'name'     => get_the_title(),
-              'item'     => get_permalink(),
-            ],
-          ],
-        ];
-
-        $schema_graph[] = [
-          '@type'       => 'WebPage',
-          '@id'         => get_permalink() . '#webpage',
-          'url'         => get_permalink(),
-          'name'        => get_the_title(),
-          'description' => $service_description,
-          'isPartOf'    => [
-            '@type' => 'WebSite',
-            '@id'   => home_url('/') . '#website',
-            'url'   => home_url('/'),
-            'name'  => $site_name,
-          ],
-          'breadcrumb'  => [
-            '@type' => 'BreadcrumbList',
-            '@id'   => get_permalink() . '#breadcrumb',
-          ],
-          'mainEntity'  => [
-            '@id' => get_permalink() . '#service',
-          ],
-        ];
-
-        $service_schema = [
-          '@type'       => 'Service',
-          '@id'         => get_permalink() . '#service',
-          'name'        => get_the_title(),
-          'serviceType' => get_the_title(),
-          'description' => $service_description,
-          'url'         => get_permalink(),
-          'provider'    => [
-            '@type' => 'Organization',
-            '@id'   => home_url('/') . '#organization',
-            'name'  => 'トータルスマート株式会社',
-            'url'   => home_url('/'),
-          ],
-          'areaServed'  => [
-            ['@type' => 'AdministrativeArea', 'name' => '愛知県'],
-            ['@type' => 'AdministrativeArea', 'name' => '岐阜県'],
-            ['@type' => 'AdministrativeArea', 'name' => '三重県'],
-            ['@type' => 'AdministrativeArea', 'name' => '静岡県'],
-          ],
-        ];
-
-        if ($service_image_url) {
-          $service_schema['image'] = $service_image_url;
-        }
-
-        $schema_graph[] = $service_schema;
-
-        $schema_data = [
-          '@context' => 'https://schema.org',
-          '@graph'   => $schema_graph,
-        ];
-        ?>
-        <script type="application/ld+json">
-          <?php echo wp_json_encode($schema_data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
-        </script>
-
-        <article>
-          <h1 class="page_detail_ttl"><?php echo esc_html(get_the_title()); ?></h1>
-          <?php the_content(); ?>
-        </article>
-      <?php endwhile; ?>
-    <?php endif; ?>
-  </div>
 </main>
 
 <?php get_footer(); ?>
