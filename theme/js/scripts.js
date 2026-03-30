@@ -15,20 +15,20 @@ if (Gnav_btn) {
 }
 
 // サービス（service）詳細のハンバーガーメニュー
-function hamburger() {
-  document.getElementById("line1").classList.toggle("line_1");
-  document.getElementById("line2").classList.toggle("line_2");
-  document.getElementById("line3").classList.toggle("line_3");
-  document.getElementById("service_nav").classList.toggle("in");
+function servicegnav() {
+  document.getElementById("service_nav--line1").classList.toggle("line_1");
+  document.getElementById("service_nav--line2").classList.toggle("line_2");
+  document.getElementById("service_nav--line3").classList.toggle("line_3");
+  document.getElementById("service_nav").classList.toggle("service_nav--open");
 }
 
 // HTMLの読み込みが完了してから実行する
 document.addEventListener("DOMContentLoaded", function () {
-  const hamburgerBtn = document.getElementById("hamburger");
+  const hamburgerBtn = document.getElementById("service_nav--line");
 
   if (hamburgerBtn) {
     hamburgerBtn.addEventListener("click", function () {
-      hamburger();
+      servicegnav();
     });
   }
 });
