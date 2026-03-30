@@ -312,8 +312,9 @@ $schema_graph = [
       <h2 class="page_ttl">企業理念</h2>
       <img src="<?php echo esc_url(get_template_directory_uri() . '/img/company/philosophy.png'); ?>" alt="" width="261" height="200" loading="lazy" decoding="async">
       <p>
-        お得・快適・安心を軸に、お客様の生涯に寄り添う“信頼されるパートナー”となる。<br>
-        最適なコスト削減と効率化を提案し、進化するサービスを磨いて提供。全国展開で多様な課題に応え、<br class="is-hidden_sp">
+        お得・快適・安心を軸に、お客様の生涯に寄り添う「信頼されるパートナー」となる。<br>
+        最適なコスト削減と効率化を提案し、進化するサービスを磨いて提供。<br>
+        全国展開で多様な課題に応え、<br class="is-hidden_sp">
         個性を活かした提案力で期待を超えていきます。
       </p>
       <ul class="company_date--list">
