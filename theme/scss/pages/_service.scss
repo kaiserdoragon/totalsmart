@@ -179,6 +179,10 @@
       background-size: 100% 75px;
     }
   }
+
+  @include tb-mq {
+    padding-top: 0;
+  }
 }
 
 // ---------------------------------------------
@@ -189,6 +193,7 @@
 
   ul {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
   }
 
@@ -216,11 +221,26 @@
     transform: translate(-50%, -50%);
   }
 
+  // .camera_mv--block
+  &--block {
+    position: relative;
+    z-index: 1;
+  }
+
   // .camera_mv--ttl
   &--ttl {
     font-size: var(--fz65);
     font-weight: 900;
     color: #fff;
+
+    @include tb-mq {
+      font-size: var(--fz55);
+    }
+
+    @include max-mq {
+      font-size: 12vw;
+      text-align: center;
+    }
   }
 
   // .camera_mv--txt
@@ -254,6 +274,10 @@
     text-align: center;
     background: #00195b;
     border-radius: 1000px;
+
+    @include max-mq {
+      font-size: var(--fz22);
+    }
   }
 
   // .camera_mv--lead
@@ -262,6 +286,11 @@
     font-size: var(--fz35);
     font-weight: 900;
     color: #00195b;
+
+    @include max-mq {
+      margin-bottom: 30px;
+      font-size: var(--fz28);
+    }
   }
 
   // .camera_mv--supplement
@@ -284,6 +313,10 @@
     top: 50%;
     right: 0;
     transform: translateY(-60%);
+
+    @include max-mq {
+      display: none;
+    }
   }
 
   // .camera_mv--bg
@@ -292,6 +325,13 @@
     height: 80vh;
     aspect-ratio: 1950 / 750;
     object-fit: cover;
+  }
+
+  @include max-mq {
+    ul {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 }
 
@@ -352,6 +392,30 @@
     content: "";
     background: url(../img/service/arrow_skyblue.png) no-repeat center /contain;
     transform: translateX(-50%);
+  }
+
+  @include max-mq {
+    h2 {
+      font-size: var(--fz30);
+    }
+
+    ul {
+      padding: 40px 20px;
+    }
+
+    li {
+      padding-left: 35px;
+      font-size: var(--fz20);
+      background: url(../img/service/lead_check.png) no-repeat left top 50% / 20px;
+
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    }
+
+    p {
+      font-size: var(--fz20);
+    }
   }
 }
 
@@ -741,7 +805,6 @@
     }
   }
 }
-
 
 .camera_area {
   h2 {

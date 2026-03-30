@@ -595,7 +595,12 @@ main {
     ul {
       flex-direction: column;
       gap: 30px;
-      padding: 120px min(4vw, 25px);
+      padding: 80px min(4vw, 25px) 40px;
+    }
+
+    .header--btn {
+      display: flex;
+      flex-direction: column;
     }
   }
 

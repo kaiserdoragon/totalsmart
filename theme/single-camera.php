@@ -211,7 +211,7 @@ get_header('service');
 
   <section class="camera_mv">
     <div class="camera_mv--contents container -lg">
-      <div>
+      <div class="camera_mv--block">
         <span class="camera_mv--area">愛知・岐阜・三重・静岡対応</span>
         <p class="camera_mv--lead">不審者対策も、内部トラブル対策もこれで解決！</p>
         <h1 class="camera_mv--ttl">

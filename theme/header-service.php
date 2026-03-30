@@ -173,11 +173,11 @@
       <nav class="header_single_detail--menu">
         <ul>
           <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_reason')); ?>">選ばれる4つの理由</a></li>
-          <li><a href="<?php echo esc_url(home_url('/service/')); ?>">3つの最適解</a></li>
-          <li><a href="<?php echo esc_url(home_url('/introduction/')); ?>">施工実績</a></li>
-          <li><a href="<?php echo esc_url(home_url('/company/')); ?>">導入・施工までの流れ</a></li>
-          <li><a href="<?php echo esc_url(home_url('/information/')); ?>">よくある質問</a></li>
-          <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>">対応エリア</a></li>
+          <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_assignment')); ?>">3つの最適解</a></li>
+          <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_construction')); ?>">施工実績</a></li>
+          <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_flow')); ?>">導入・施工までの流れ</a></li>
+          <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_qa')); ?>">よくある質問</a></li>
+          <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_area')); ?>">対応エリア</a></li>
         </ul>
       </nav>
       <nav class="service_nav" id="service_nav">
@@ -189,6 +189,14 @@
           <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_qa')); ?>">よくある質問</a></li>
           <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_area')); ?>">対応エリア</a></li>
         </ul>
+        <div class="header--btn">
+          <a href="tel:0529325450" class="header--tel">052-932-5450
+            <span>営業時間 9:00～18:00</span>
+          </a>
+          <a href="<?php echo esc_url(home_url('/contact_corporate/')); ?>" class="header--contact">
+            お問い合わせ
+          </a>
+        </div>
       </nav>
       <div id="service_nav_btn" class="service_nav_btn">
         <span class="service_nav--line service_nav--line1"></span>
