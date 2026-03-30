@@ -498,7 +498,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_flow bg_gray sec">
+  <section class="camera_flow bg_gray sec" id="camera_flow">
     <div class="container -md">
       <h2>導入・施工までの流れ</h2>
       <p>
