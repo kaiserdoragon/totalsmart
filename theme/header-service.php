@@ -190,9 +190,9 @@
           <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>">対応エリア</a></li>
         </ul>
       </nav>
-      <div id="service_nav--line" class="service_nav--line">
-        <span class="service_nav--line1" id="service_nav--line1"></span>
-        <span class="service_nav--line2" id="service_nav--line2"></span>
-        <span class="service_nav--line3" id="service_nav--line3"></span>
+      <div id="service_nav_btn" class="service_nav_btn">
+        <span class="service_nav--line service_nav--line1"></span>
+        <span class="service_nav--line service_nav--line2"></span>
+        <span class="service_nav--line service_nav--line3"></span>
       </div>
     </header>
