@@ -1,4 +1,9 @@
-// グローバルナビゲーション
+
+
+// ---------------------------------------------
+//  汎用グローバルナビゲーション
+// ---------------------------------------------
+
 const Gnav_btn = document.getElementById("js-gnav_btn");
 const Gnav = document.getElementById("js-gnav");
 if (Gnav_btn) {
@@ -14,10 +19,20 @@ if (Gnav_btn) {
   });
 }
 
-// サービス（service）詳細のハンバーガーメニュー
+
+
+// ---------------------------------------------
+//  サービス（service）詳細のハンバーガーメニュー
+// ---------------------------------------------
 function servicegnav() {
-  document.getElementById("service_nav").classList.toggle("service_nav--active");
-  document.getElementById("service_nav_btn").classList.toggle("service_nav_btn--open");
+  const service_nav = document.getElementById("service_nav");
+  const service_nav_btn = document.getElementById("service_nav_btn");
+
+  //両方の要素が存在する場合のみ実行する（エラー防止）
+  if (service_nav && service_nav_btn) {
+    service_nav.classList.toggle("service_nav--active");
+    service_nav_btn.classList.toggle("service_nav_btn--open");
+  }
 }
 
 // HTMLの読み込みが完了してから実行する
@@ -28,10 +43,31 @@ document.addEventListener("DOMContentLoaded", function () {
     service_nav_btn.addEventListener("click", function () {
       servicegnav();
     });
+
+    document.addEventListener('click', (e) => {
+      // クリックした場所から一番近い「aタグ」を探す
+      const link = e.target.closest('a');
+
+      // id="service_nav" の中にあるかをチェック
+      if (link && link.closest('#service_nav')) {
+
+        // リンクが「別ページへの移動」なら preventDefault は消す
+        // e.preventDefault(); 
+
+        servicegnav();
+      }
+    });
   }
 });
 
-// アンカーリンクのスムーススクロール
+
+
+
+
+// ---------------------------------------------
+//  アンカーリンクのスムーススクロール
+// ---------------------------------------------
+
 const anchors = document.querySelectorAll('a[href*="#"]:not(.is-noscroll)');
 
 anchors.forEach((element) => {
@@ -80,7 +116,11 @@ anchors.forEach((element) => {
   });
 });
 
-// 別URL（別ページ）からハッシュ付きで遷移してきた時の処理
+
+// ---------------------------------------------
+//  別URL（別ページ）からハッシュ付きで遷移してきた時の処理
+// ---------------------------------------------
+
 window.addEventListener("load", () => {
   const hash = window.location.hash;
   if (hash) {
@@ -98,7 +138,11 @@ window.addEventListener("load", () => {
   }
 });
 
-//SPの時にテーブルを横スクロール
+
+// ---------------------------------------------
+//  SPの時にテーブルを横スクロール
+// ---------------------------------------------
+
 new ScrollHint(".js-scrollable", {
   suggestiveShadow: true, //スクロール可能な要素右端に影を付ける
   i18n: {
@@ -106,7 +150,11 @@ new ScrollHint(".js-scrollable", {
   },
 });
 
-// SP(<=767px)のときだけフッター追従ボタンを有効化
+
+// ---------------------------------------------
+//  SP(<=767px)のときだけフッター追従ボタンを有効化
+// ---------------------------------------------
+
 (() => {
   const btn = document.getElementById("js_fixed-btn");
   if (!btn) return;
@@ -150,7 +198,12 @@ new ScrollHint(".js-scrollable", {
   mql.addEventListener("change", (e) => (e.matches ? enable() : disable()));
 })();
 
-// タブ切り替え
+
+
+// ---------------------------------------------
+//  タブ切り替え（採用情報）
+// ---------------------------------------------
+
 document.addEventListener("DOMContentLoaded", () => {
   const tabContainers = document.querySelectorAll(".tab_change");
 

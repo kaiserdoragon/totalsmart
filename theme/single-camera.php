@@ -261,7 +261,7 @@ get_header('service');
     </p>
   </div>
 
-  <section class="camera_reason sec">
+  <section class="camera_reason sec" id="camera_reason">
     <div class="container -md">
       <h2 class="single_detail_page--ttl">
         選ばれる<span>4</span>つの理由
@@ -319,7 +319,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_assignment sec">
+  <section class="camera_assignment sec" id="camera_assignment">
     <div class="container -md">
       <div class="u-txt_center">
         <h2 class="single_detail_page--ttl -double">
@@ -427,7 +427,7 @@ get_header('service');
     </div>
   </div>
 
-  <section class="camera_construction sec">
+  <section class="camera_construction sec" id="camera_construction">
     <div class="container -md">
       <h2>施工・導入実績</h2>
       <p>
@@ -597,7 +597,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_qa sec">
+  <section class="camera_qa sec" id="camera_qa">
     <div class="container -md">
       <h2>よくある質問</h2>
       <p>
@@ -655,7 +655,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_area bg_skyblue sec">
+  <section class="camera_area bg_skyblue sec" id="camera_area">
     <div class="container -md">
       <h2>
         <span>愛知県・岐阜県・三重県・静岡県</span>
