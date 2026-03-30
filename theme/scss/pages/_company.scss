@@ -253,6 +253,11 @@
     margin: 0 auto;
   }
 
+  // .company_message--txt
+  &--txt {
+    line-height: 2;
+  }
+
   @include max-mq {
     p {
       margin-bottom: 80px;
