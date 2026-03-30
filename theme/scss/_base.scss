@@ -519,7 +519,7 @@ main {
 //  サービス（service）詳細用のハンバーガーメニュー
 // ---------------------------------------------
 
-#nav {
+.service_nav {
   position: fixed;
   top: 0;
   right: -110%;
@@ -530,14 +530,6 @@ main {
   color: #fff;
   background: rgb(6 48 100);
   transition: 0.8s;
-}
-
-#nav ul {
-  padding-top: 80px;
-}
-
-#nav ul li {
-  list-style-type: none;
 }
 
 #hamburger {

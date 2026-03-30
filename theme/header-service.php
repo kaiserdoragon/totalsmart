@@ -180,7 +180,7 @@
           <li><a href="<?php echo esc_url(home_url('/recruit/')); ?>">対応エリア</a></li>
         </ul>
       </nav>
-      <nav id="nav">
+      <nav class="service_nav" id="service_nav">
         <ul>
           <li><a href="<?php echo esc_url(home_url('/business/')); ?>">選ばれる4つの理由</a></li>
           <li><a href="<?php echo esc_url(home_url('/service/')); ?>">3つの最適解</a></li>
