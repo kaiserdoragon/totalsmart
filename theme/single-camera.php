@@ -255,10 +255,12 @@ get_header('service');
   </section>
 
   <div class="camera_middle bg_gray">
-    <p>
-      お客様の現場の課題を解決するための<br>
-      <span>最適なソリューション</span>をご提供します
-    </p>
+    <div class="container">
+      <p>
+        お客様の現場の課題を解決するための<br>
+        <span>最適なソリューション</span>をご提供します
+      </p>
+    </div>
   </div>
 
   <section class="camera_reason sec" id="camera_reason">
@@ -449,7 +451,7 @@ get_header('service');
               など、防犯以外の業務改善にも役立てています。
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_01.jpg'); ?>" alt="自動車部品工場での防犯カメラ導入事例" width="460" height="320" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_01.jpg'); ?>" alt="自動車部品工場での防犯カメラ導入事例" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
       <article>
@@ -470,7 +472,7 @@ get_header('service');
               ブルの早期解決と犯罪抑止力が飛躍的に向上しました。
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_02.jpg'); ?>" alt="小売店での高画質カメラ更新事例" width="460" height="320" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_02.jpg'); ?>" alt="小売店での高画質カメラ更新事例" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
       <article>
@@ -492,7 +494,7 @@ get_header('service');
               一切発生していません。
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_03.jpg'); ?>" alt="無電源現場での遠隔監視導入事例" width="460" height="320" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_03.jpg'); ?>" alt="無電源現場での遠隔監視導入事例" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
     </div>

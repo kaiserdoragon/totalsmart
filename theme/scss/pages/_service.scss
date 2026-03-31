@@ -178,6 +178,14 @@
       background-repeat: repeat-y;
       background-size: 100% 75px;
     }
+
+    @include max-mq {
+      font-size: var(--fz35);
+
+      span {
+        font-size: var(--fz60);
+      }
+    }
   }
 
   @include tb-mq {
@@ -200,7 +208,7 @@
   li {
     align-self: center;
     width: 100%;
-    max-width: 290px;
+    max-width: 330px;
     padding: 20px 0;
     font-size: var(--fz25);
     font-weight: 800;
@@ -238,8 +246,12 @@
     }
 
     @include max-mq {
-      font-size: 12vw;
+      font-size: var(--fz70);
       text-align: center;
+    }
+
+    @media (width <= 480px) {
+      font-size: 13vw;
     }
   }
 
@@ -289,7 +301,8 @@
 
     @include max-mq {
       margin-bottom: 30px;
-      font-size: var(--fz28);
+      font-size: var(--fz25);
+      text-align: center;
     }
   }
 
@@ -325,6 +338,25 @@
     height: 100vh;
     aspect-ratio: 1950 / 750;
     object-fit: cover;
+
+    @media (width <= 1280px) {
+      height: 120vh;
+    }
+
+    @include max-mq {
+      height: 1600px;
+    }
+
+    @media (width <= 480px) {
+      height: 1500px;
+    }
+  }
+
+
+  @include tb-mq {
+    ul {
+      justify-content: center;
+    }
   }
 
   @include max-mq {
@@ -361,14 +393,14 @@
   }
 
   ul {
-    padding: 60px 20px 60px 100px;
+    padding: 60px 70px;
     margin-bottom: 30px;
     background: #fff;
     border-radius: 15px;
   }
 
   li {
-    padding-left: 35px;
+    padding-left: 40px;
     font-size: var(--fz23);
     font-weight: 800;
     background: url(../img/service/lead_check.png) no-repeat left top 65% / 24px;
@@ -397,10 +429,14 @@
   @include max-mq {
     h2 {
       font-size: var(--fz30);
+
+      span {
+        font-size: var(--fz45);
+      }
     }
 
     ul {
-      padding: 40px 20px;
+      padding: 60px 40px;
     }
 
     li {
@@ -420,13 +456,13 @@
 }
 
 .camera_middle {
-  padding: 100px 0;
+  padding: 150px 0;
 
   p {
     position: relative;
     width: 100%;
     max-width: 900px;
-    padding: 20px 0;
+    padding: 20px min(4vw, 25px);
     margin: auto;
     font-size: var(--fz40);
     font-weight: 800;
@@ -445,10 +481,32 @@
       left: -110px;
       display: inline-block;
       width: 201px;
-      height: 294px;
+      aspect-ratio: 201 / 294;
       content: "";
       background: url(../img/service/img_middle.png) no-repeat left center / contain;
       transform: translateY(-50%);
+    }
+  }
+
+  @include tb-mq {
+    padding: 80px 0 160px;
+
+    p {
+      padding: 40px min(4vw, 25px);
+      font-size: var(--fz30);
+
+      &::before {
+        top: 125%;
+        left: 50%;
+        width: 120px;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  @include max-mq {
+    br {
+      display: none;
     }
   }
 }
@@ -486,7 +544,7 @@
       position: absolute;
       top: -85px;
       left: 50%;
-      font-size: 100px;
+      font-size: var(--fz100);
       font-weight: 800;
       color: #ff8206;
       content: counter(num, decimal-leading-zero) "";
@@ -504,6 +562,20 @@
 
   .single_detail_page--ttl {
     margin-bottom: 100px;
+  }
+
+  @include tb-mq {
+    ol {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    li {
+      &::before {
+        top: -115px;
+        padding: 60px 30px 30px;
+        font-size: var(--fz70);
+      }
+    }
   }
 }
 
@@ -575,6 +647,33 @@
   &--inner {
     border-top: 5px dotted #a9a9a9;
   }
+
+  @include max-mq {
+    h3 {
+      font-size: var(--fz25);
+    }
+
+    article {
+      padding: 60px 30px;
+
+      &:nth-of-type(2),
+      &:nth-of-type(3) {
+        ul {
+          width: 100%;
+        }
+      }
+    }
+
+    img {
+      margin: 0 auto 30px;
+    }
+
+
+    ul {
+      width: 100%;
+      padding: 30px 0;
+    }
+  }
 }
 
 .camera_introduction {
@@ -595,6 +694,17 @@
     padding: 120px min(4vw, 25px);
     margin: auto;
     background: url(../img/service/introduction.png) no-repeat center center / contain;
+
+    @include max-mq {
+      padding: 80px min(4vw, 25px);
+      background: url(../img/service/introduction_sp.png) no-repeat center center / contain;
+    }
+  }
+
+  @include max-mq {
+    p {
+      font-size: var(--fz20);
+    }
   }
 }
 
@@ -615,13 +725,18 @@
   }
 
   h3 {
-    padding: 5px 0;
+    padding: 15px;
     margin-bottom: 30px;
     font-size: var(--fz35);
     font-weight: 800;
     color: #fff;
     text-align: center;
     background: #00195b;
+  }
+
+  dl {
+    width: 100%;
+    max-width: 580px;
   }
 
   dt {
@@ -647,9 +762,25 @@
   // .camera_construction--inner
   &--inner {
     display: flex;
-    gap: 60px;
+    flex-wrap: wrap;
+    gap: 15px;
     align-items: flex-start;
     justify-content: center;
+
+    @include max-mq {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  }
+
+  @include max-mq {
+    h2 {
+      font-size: var(--fz40);
+    }
+
+    h3 {
+      font-size: var(--fz28);
+    }
   }
 }
 
@@ -670,7 +801,7 @@
   }
 
   h3 {
-    padding-bottom: 5px;
+    padding: 5px;
     margin-bottom: 30px;
     font-size: var(--fz30);
     font-weight: 800;
@@ -723,6 +854,19 @@
     span {
       font-size: var(--fz30);
     }
+
+    @include max-mq {
+      right: 0;
+      bottom: unset;
+      width: 100%;
+      padding: 15px 0;
+      font-size: var(--fz40);
+      border-radius: 10px 10px 0 0;
+
+      span {
+        font-size: var(--fz30);
+      }
+    }
   }
 
   // .camera_flow--inner
@@ -730,8 +874,36 @@
     width: 100%;
 
     p {
+      padding: 0 5px;
       font-size: var(--fz20);
       line-height: 1.8;
+    }
+  }
+
+  @include max-mq {
+    h2 {
+      font-size: var(--fz40);
+    }
+
+    article {
+      padding: 140px 30px 30px;
+
+      &:not(:last-of-type) {
+        margin-bottom: 80px;
+
+        &::after {
+          bottom: -70px;
+          width: 20%;
+          aspect-ratio: 50 / 35;
+        }
+      }
+    }
+
+    h3 {
+      padding: 0 15px 15px;
+      margin-bottom: 30px;
+      font-size: var(--fz28);
+      text-align: center;
     }
   }
 }
@@ -754,7 +926,7 @@
 
   dt {
     position: relative;
-    padding: 13px 0 13px 85px;
+    padding: 15px 15px 15px 85px;
     font-size: var(--fz28);
     font-weight: 700;
     color: #fff;
@@ -802,6 +974,36 @@
 
     &:not(:last-child) {
       margin-bottom: 40px;
+    }
+  }
+
+  @include max-mq {
+    h2 {
+      font-size: var(--fz40);
+    }
+
+    dt {
+      padding: 15px 15px 15px 65px;
+      font-size: var(--fz25);
+
+      &::after {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    dd {
+      padding: 22px 30px 30px 70px;
+
+      &::after {
+        width: 40px;
+        height: 40px;
+        line-height: 1.3;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
     }
   }
 }
@@ -868,6 +1070,20 @@
 
     &:not(:last-child) {
       margin-bottom: 100px;
+    }
+  }
+
+  @include max-mq {
+    h2 {
+      font-size: var(--fz40);
+    }
+
+    article {
+      padding: 60px 25px 25px;
+
+      &:not(:last-child) {
+        margin-bottom: 60px;
+      }
     }
   }
 }
