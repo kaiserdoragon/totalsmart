@@ -220,7 +220,7 @@ get_header('service');
         </h1>
         <p class="camera_mv--supplement">オフィス・店舗・施設の環境に合わせた、<br>防犯カメラをご提案します</p>
         <ul>
-          <li>出張費・見積り<br><span>無料</span></li>
+          <li>出張費・お見積り<br><span>無料</span></li>
           <li>アフターサポートまで<br>すべて<span>自社対応</span></li>
           <li><span>電源・回線のない現場</span><br>にも対応可能</li>
           <li><span>既存の配線を活かした</span><br>リプレイスにも対応</li>
