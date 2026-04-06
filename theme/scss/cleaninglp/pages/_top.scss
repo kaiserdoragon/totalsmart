@@ -34,13 +34,13 @@
     &::before {
       top: -30px;
       left: 0;
-      background: url(../../cleaninglp/img/case_star01.png) no-repeat center center / contain;
+      background: image-set(url(../../cleaninglp/img/case_star01.avif) type("image/avif"), url(../../cleaninglp/img/case_star01.webp) type("image/webp"), url(../../cleaninglp/img/case_star01.png) type("image/png")) no-repeat center /contain;
     }
 
     &::after {
       right: 0;
       bottom: -30px;
-      background: url(../../cleaninglp/img/case_star02.png) no-repeat center center / contain;
+      background: image-set(url(../../cleaninglp/img/case_star02.avif) type("image/avif"), url(../../cleaninglp/img/case_star02.webp) type("image/webp"), url(../../cleaninglp/img/case_star02.png) type("image/png")) no-repeat center /contain;
     }
   }
 
@@ -354,7 +354,7 @@
       width: 247px;
       height: 227px;
       content: "";
-      background: url(../../cleaninglp/img/sign_person.png) no-repeat center center / contain;
+      background: image-set(url(../../cleaninglp/img/sign_person.avif) type("image/avif"), url(../../cleaninglp/img/sign_person.webp) type("image/webp"), url(../../cleaninglp/img/sign_person.png) type("image/png")) no-repeat center /contain;
     }
 
     @media (width <= 1280px) {
