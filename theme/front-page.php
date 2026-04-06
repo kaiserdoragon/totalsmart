@@ -16,7 +16,7 @@ $ts_has_seo_plugin = (
 if (!$ts_has_seo_plugin) {
   add_filter('pre_get_document_title', function ($document_title) use ($ts_site_name) {
     if (is_front_page()) {
-      return 'トータルスマート株式会社 | コスト削減・設備工事・オフィス支援 | ' . $ts_site_name;
+      return 'トータルスマート株式会社 | コスト削減・設備工事・オフィス支援';
     }
     return $document_title;
   }, 20);
