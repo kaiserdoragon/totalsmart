@@ -60,11 +60,13 @@ $has_seo_plugin = (
 /**
  * この詳細ページ専用の title を付与
  * SEOプラグインがある場合はそちらを優先
+ * サービス詳細ページのタイトルタグの制御
  */
 if (!$has_seo_plugin) {
   add_filter('pre_get_document_title', function ($document_title) use ($service_title, $title, $site_name) {
     if (is_singular('service')) {
-      return $service_title . ' | ' . $title . ' | ' . $site_name;
+      // return $service_title . ' | ' . $title . ' | ' . $site_name;
+      return $service_title . ' | ' . $site_name;
     }
     return $document_title;
   }, 20);
