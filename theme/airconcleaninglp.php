@@ -304,7 +304,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
     <div class="contents">
       <div class="header--logo">
         <a href="<?php echo esc_url(home_url('/cleaninglp/')); ?>">
-          <p>愛知県・岐阜県・三重県・静岡県のエアコンクリーニングはトータルスマート株式会社</p>
+          <p>愛知県・岐阜県・三重県・静岡県の<br>エアコンクリーニング・掃除はトータルスマート株式会社</p>
 
           <h1>
             <picture>
