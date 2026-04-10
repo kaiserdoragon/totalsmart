@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: 防犯カメラ
+Template Name: 業務用エアコン
 Template Post Type:service
 */
 
@@ -20,7 +20,7 @@ $slug      = $type_settings[$post_type]['slug'] ?? 'news';
 $post_id   = get_queried_object_id();
 $site_name = get_bloginfo('name');
 
-$service_title       = $post_id ? get_the_title($post_id) : '防犯カメラ';
+$service_title       = $post_id ? get_the_title($post_id) : '業務用エアコン';
 $service_url         = $post_id ? get_permalink($post_id) : home_url('/');
 $service_archive_url = get_post_type_archive_link('service') ?: home_url('/service/');
 $service_image_url   = $post_id && has_post_thumbnail($post_id)
@@ -32,8 +32,8 @@ $raw_excerpt = $post_id ? get_the_excerpt($post_id) : '';
 $raw_content = $post_id ? get_post_field('post_content', $post_id) : '';
 
 $default_description = sprintf(
-  '%sの設置・工事なら%s。愛知・岐阜・三重・静岡に対応し、現地調査・見積り無料。既存配線を活かした更新や無電源現場の遠隔監視にも対応します。',
-  $service_title ?: '防犯カメラ',
+  '%sのクリーニング・修理なら%s。愛知・岐阜・三重・静岡に対応し、現地調査・見積り無料。既存配線を活かした更新や無電源現場の遠隔監視にも対応します。',
+  $service_title ?: '業務用エアコン',
   $site_name
 );
 
@@ -61,8 +61,8 @@ if ('' === $service_description) {
 }
 
 $seo_title = sprintf(
-  '%sの設置・工事 | %s',
-  $service_title ?: '防犯カメラ',
+  '%sのクリーニング・修理 | %s',
+  $service_title ?: '業務用エアコン',
   $site_name
 );
 
@@ -88,8 +88,8 @@ if (!$has_seo_plugin) {
 
     echo '<link rel="canonical" href="' . esc_url($service_url) . '">' . "
 ";
-    //     echo '<meta name="description" content="' . esc_attr($service_description) . '">' . "
-    // ";
+    echo '<meta name="description" content="' . esc_attr($service_description) . '">' . "
+";
     echo '<meta name="robots" content="max-image-preview:large">' . "
 ";
   }, 20);
