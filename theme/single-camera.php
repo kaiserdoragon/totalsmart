@@ -85,11 +85,6 @@ if (!$has_seo_plugin) {
     if (!is_singular('service')) {
       return;
     }
-
-    echo '<link rel="canonical" href="' . esc_url($service_url) . '">' . "
-";
-    //     echo '<meta name="description" content="' . esc_attr($service_description) . '">' . "
-    // ";
     echo '<meta name="robots" content="max-image-preview:large">' . "
 ";
   }, 20);
