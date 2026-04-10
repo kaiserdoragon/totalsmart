@@ -15,7 +15,6 @@ $type_settings = [
 ];
 
 $title     = $type_settings[$post_type]['title'] ?? 'お知らせ';
-$img_file  = $type_settings[$post_type]['img'] ?? 'eyecatch_default.jpg';
 $slug      = $type_settings[$post_type]['slug'] ?? 'news';
 $post_id   = get_queried_object_id();
 $site_name = get_bloginfo('name');
@@ -32,7 +31,7 @@ $raw_excerpt = $post_id ? get_the_excerpt($post_id) : '';
 $raw_content = $post_id ? get_post_field('post_content', $post_id) : '';
 
 $default_description = sprintf(
-  '%sのクリーニング・修理なら%s。愛知・岐阜・三重・静岡に対応し、現地調査・見積り無料。既存配線を活かした更新や無電源現場の遠隔監視にも対応します。',
+  '%sのクリーニング・修理・取付なら%s。愛知・岐阜・三重・静岡に対応し、業務用エアコンのクリーニング・修理・取付のサービスを行っています。',
   $service_title ?: '業務用エアコン',
   $site_name
 );
@@ -60,8 +59,9 @@ if ('' === $service_description) {
   $service_description = $default_description;
 }
 
+//タイトルタグ生成
 $seo_title = sprintf(
-  '%sのクリーニング・修理 | %s',
+  '%sのクリーニング・修理・取付 | %s',
   $service_title ?: '業務用エアコン',
   $site_name
 );
@@ -73,6 +73,7 @@ $has_seo_plugin = (
   defined('SEOPRESS_VERSION')
 );
 
+//タイトルタグの差し替え
 if (!$has_seo_plugin) {
   add_filter('pre_get_document_title', function ($document_title) use ($seo_title) {
     if (is_singular('service')) {
@@ -81,15 +82,10 @@ if (!$has_seo_plugin) {
     return $document_title;
   }, 20);
 
-  add_action('wp_head', function () use ($service_url, $service_description) {
+  add_action('wp_head', function () {
     if (!is_singular('service')) {
       return;
     }
-
-    echo '<link rel="canonical" href="' . esc_url($service_url) . '">' . "
-";
-    echo '<meta name="description" content="' . esc_attr($service_description) . '">' . "
-";
     echo '<meta name="robots" content="max-image-preview:large">' . "
 ";
   }, 20);

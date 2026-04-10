@@ -25,8 +25,6 @@
   <meta name="format-detection" content="telephone=no">
 
   <?php
-  $ts_is_front_like = is_home() || is_front_page();
-
   $ts_has_seo_plugin = (
     defined('WPSEO_VERSION') ||
     defined('RANK_MATH_VERSION') ||
@@ -34,78 +32,41 @@
     defined('SEOPRESS_VERSION')
   );
 
+  $ts_object_id = get_queried_object_id();
+  $ts_post_slug = $ts_object_id ? get_post_field('post_name', $ts_object_id) : '';
   $ts_meta_desc = '';
-  $ts_robots    = '';
 
-  $ts_noindex_pages = [
-    'attention',
-    'contact_corporate-confirm',
-    'contact_corporate-thanks',
-    'cleaning_thanks',
-    'shuuri_thanks',
-  ];
-
-  if (is_front_page()) {
-    $ts_meta_desc = get_bloginfo('description');
-
-    if ('' === trim((string) $ts_meta_desc)) {
-      $ts_meta_desc = '愛知県・岐阜県・三重県・静岡県対応。防犯・通信・省エネをまとめて任せて、コスト削減を支援するトータルスマート株式会社。';
-    }
-  } elseif (is_home()) {
-    $ts_meta_desc = 'トータルスマート株式会社のお知らせ一覧です。最新情報や重要なお知らせをご案内します。';
-  } elseif (is_page($ts_noindex_pages)) {
-    $ts_meta_desc = wp_strip_all_tags(get_the_title(get_queried_object_id())) . 'のページです。';
-    $ts_robots    = 'noindex,follow';
-  } elseif (is_search()) {
-    $ts_meta_desc = '「' . get_search_query() . '」の検索結果ページです。';
-    $ts_robots    = 'noindex,follow';
-  } elseif (is_404()) {
-    $ts_meta_desc = 'お探しのページは見つかりませんでした。';
-    $ts_robots    = 'noindex,follow';
-  } elseif (is_singular()) {
-    $ts_object_id = get_queried_object_id();
-    $ts_excerpt   = get_the_excerpt($ts_object_id);
-
-    if (!empty($ts_excerpt)) {
-      $ts_meta_desc = $ts_excerpt;
+  if (!$ts_has_seo_plugin) {
+    if ('camera' === $ts_post_slug) {
+      $ts_meta_desc = '「防犯対策を強化したい」「どのカメラを選べばいいかわからない」そんな悩みはトータルスマートが解決します。AI検知、夜間カラー撮影、長期録画など多様なニーズに対応。施工後の保守管理も万全で、導入後も長く安心してご利用いただけます。現地調査・見積もり無料。防犯のプロによる最適な提案を今すぐご確認ください。';
+    } elseif ('aircon' === $ts_post_slug) {
+      $ts_meta_desc = '業務用エアコンのメタディスクリプションが入ります。';
     } else {
-      $ts_content   = get_post_field('post_content', $ts_object_id);
-      $ts_meta_desc = wp_trim_words(
-        wp_strip_all_tags(strip_shortcodes((string) $ts_content)),
-        120,
-        '...'
-      );
-    }
+      $ts_excerpt = $ts_object_id ? get_post_field('post_excerpt', $ts_object_id) : '';
 
-    if ('' === trim((string) $ts_meta_desc)) {
-      $ts_meta_desc = wp_strip_all_tags(get_the_title($ts_object_id)) . 'について。トータルスマートは愛知・岐阜・三重・静岡でオフィスのコスト削減を支援します。';
-    }
-  } elseif (is_category() || is_tag() || is_tax()) {
-    $ts_term_desc = term_description();
+      if (!empty($ts_excerpt)) {
+        $ts_meta_desc = $ts_excerpt;
+      } else {
+        $ts_content = $ts_object_id ? get_post_field('post_content', $ts_object_id) : '';
+        $ts_content_clean = wp_strip_all_tags(strip_shortcodes((string) $ts_content));
 
-    if (!empty($ts_term_desc)) {
-      $ts_meta_desc = wp_strip_all_tags($ts_term_desc);
-    } else {
-      $ts_meta_desc = wp_strip_all_tags(single_term_title('', false)) . 'の一覧ページです。';
-    }
-  } elseif (is_post_type_archive()) {
-    $ts_archive_desc = get_the_archive_description();
+        if (function_exists('mb_strlen') && function_exists('mb_substr')) {
+          if (mb_strlen($ts_content_clean, 'UTF-8') > 120) {
+            $ts_meta_desc = mb_substr($ts_content_clean, 0, 120, 'UTF-8') . '...';
+          } else {
+            $ts_meta_desc = $ts_content_clean;
+          }
+        } else {
+          $ts_meta_desc = wp_trim_words($ts_content_clean, 120, '...');
+        }
+      }
 
-    if (!empty($ts_archive_desc)) {
-      $ts_meta_desc = wp_strip_all_tags($ts_archive_desc);
-    } else {
-      $ts_meta_desc = wp_strip_all_tags(post_type_archive_title('', false)) . 'の一覧ページです。';
+      if ('' === trim((string) $ts_meta_desc)) {
+        $ts_meta_desc = $ts_object_id
+          ? wp_strip_all_tags(get_the_title($ts_object_id)) . 'について。トータルスマート株式会社のサービスページです。'
+          : 'トータルスマート株式会社のサービスページです。';
+      }
     }
-  } elseif (is_archive()) {
-    $ts_archive_desc = get_the_archive_description();
-
-    if (!empty($ts_archive_desc)) {
-      $ts_meta_desc = wp_strip_all_tags($ts_archive_desc);
-    } else {
-      $ts_meta_desc = wp_strip_all_tags(get_the_archive_title()) . 'の一覧ページです。';
-    }
-  } else {
-    $ts_meta_desc = get_bloginfo('description');
   }
 
   $ts_meta_desc = html_entity_decode((string) $ts_meta_desc, ENT_QUOTES, get_bloginfo('charset'));
@@ -120,10 +81,6 @@
 
   <?php if (!$ts_has_seo_plugin && !empty($ts_meta_desc)) : ?>
     <meta name="description" content="<?php echo esc_attr($ts_meta_desc); ?>">
-  <?php endif; ?>
-
-  <?php if (!$ts_has_seo_plugin && !empty($ts_robots)) : ?>
-    <meta name="robots" content="<?php echo esc_attr($ts_robots); ?>">
   <?php endif; ?>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">

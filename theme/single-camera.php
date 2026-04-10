@@ -15,7 +15,6 @@ $type_settings = [
 ];
 
 $title     = $type_settings[$post_type]['title'] ?? 'お知らせ';
-$img_file  = $type_settings[$post_type]['img'] ?? 'eyecatch_default.jpg';
 $slug      = $type_settings[$post_type]['slug'] ?? 'news';
 $post_id   = get_queried_object_id();
 $site_name = get_bloginfo('name');
@@ -60,6 +59,7 @@ if ('' === $service_description) {
   $service_description = $default_description;
 }
 
+//タイトルタグ生成
 $seo_title = sprintf(
   '%sの設置・工事 | %s',
   $service_title ?: '防犯カメラ',
@@ -73,6 +73,7 @@ $has_seo_plugin = (
   defined('SEOPRESS_VERSION')
 );
 
+//タイトルタグの差し替え
 if (!$has_seo_plugin) {
   add_filter('pre_get_document_title', function ($document_title) use ($seo_title) {
     if (is_singular('service')) {
@@ -81,7 +82,7 @@ if (!$has_seo_plugin) {
     return $document_title;
   }, 20);
 
-  add_action('wp_head', function () use ($service_url, $service_description) {
+  add_action('wp_head', function () {
     if (!is_singular('service')) {
       return;
     }
