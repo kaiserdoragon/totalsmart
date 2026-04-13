@@ -400,7 +400,15 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <div class="catch--inner">
           <div class="catch--item">
             <span>簡単クリーニング</span>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_01.jpg" alt="簡単クリーニング" width="430" height="271" loading="lazy" decoding="async">
+            <picture>
+              <source
+                srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_01.avif"
+                type="image/avif">
+              <source
+                srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_01.webp"
+                type="image/webp">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_01.jpg" alt="簡単クリーニング" width="430" height="271" fetchpriority="high" decoding="async">
+            </picture>
             <p>フィルター清掃・風速測定・温度測定</p>
             <div class="catch--price">
               <p>5<span class="catch--period">,</span>000</p><span class="catch--unit"><span class="catch--jpy">円～</span><span class="catch--tax">（税抜）</span></span>
@@ -408,7 +416,15 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           </div>
           <div class="catch--item">
             <span>しっかりクリーニング</span>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_02.jpg" alt="業務用エアコン" width="430" height="271" loading="lazy" decoding="async">
+            <picture>
+              <source
+                srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_02.avif"
+                type="image/avif">
+              <source
+                srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_02.webp"
+                type="image/webp">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_02.jpg" alt="業務用エアコン" width="430" height="271" loading="lazy" decoding="async">
+            </picture>
             <div class="catch--price">
               <p>18<span class="catch--period">,</span>000</p><span class="catch--unit"><span class="catch--jpy">円～</span><span class="catch--tax">（税抜）</span></span>
             </div>
@@ -426,7 +442,12 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       <div class="contents -md">
         <h2>
           <picture>
+            <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt_sp.avif" type="image/avif">
+            <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt_sp.webp" type="image/webp">
             <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt_sp.png">
+
+            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt.avif" type="image/avif">
+            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt.webp" type="image/webp">
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt.png" alt="愛知県・岐阜県・三重県・静岡県なら最短当日・即日での訪問も可能です。" width="621" height="114" loading="lazy" decoding="async">
           </picture>
         </h2>
@@ -548,7 +569,11 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_logo.png" alt="株式会社トータルスマート" width="401" height="44" loading="lazy" decoding="async">の<br>圧倒的なコスパ
         </h2>
         <div class="price--img js-scrollable">
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.png" alt="エアコンクリーニングの比較料金表" width="1509" height="834" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.avif" type="image/avif">
+            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.webp" type="image/webp">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.png" alt="エアコンクリーニングの比較料金表" width="1509" height="834" loading="lazy" decoding="async">
+          </picture>
         </div>
       </div>
     </section>
