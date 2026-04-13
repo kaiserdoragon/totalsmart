@@ -8,18 +8,7 @@ Template Post Type:service
 タイトルタグ・メタディスクリプションなどは「header-service.php」を参照
 */
 
-$post_type = 'service';
-
-$type_settings = [
-  'service' => [
-    'title' => 'サービス',
-    'img'   => 'eyecatch_service.jpg',
-    'slug'  => 'service',
-  ],
-];
-
-$title     = $type_settings[$post_type]['title'] ?? 'お知らせ';
-$slug      = $type_settings[$post_type]['slug'] ?? 'news';
+$title     = 'サービス';
 $post_id   = get_queried_object_id();
 $site_name = get_bloginfo('name');
 
@@ -29,7 +18,7 @@ $service_archive_url = get_post_type_archive_link('service') ?: home_url('/servi
 $service_image_url   = $post_id && has_post_thumbnail($post_id)
   ? get_the_post_thumbnail_url($post_id, 'full')
   : '';
-$post_slug = $post_id ? get_post_field('post_name', $post_id) : $slug;
+$post_slug = $post_id ? get_post_field('post_name', $post_id) : 'service';
 
 $raw_excerpt = $post_id ? get_the_excerpt($post_id) : '';
 $raw_content = $post_id ? get_post_field('post_content', $post_id) : '';
