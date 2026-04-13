@@ -36,36 +36,35 @@
   $ts_post_slug = $ts_object_id ? get_post_field('post_name', $ts_object_id) : '';
   $ts_meta_desc = '';
 
-  if (!$ts_has_seo_plugin) {
-    if ('camera' === $ts_post_slug) {
-      $ts_meta_desc = '「防犯対策を強化したい」「どのカメラを選べばいいかわからない」そんな悩みはトータルスマートが解決します。AI検知、夜間カラー撮影、長期録画など多様なニーズに対応。施工後の保守管理も万全で、導入後も長く安心してご利用いただけます。現地調査・見積もり無料。防犯のプロによる最適な提案を今すぐご確認ください。';
-    } elseif ('aircon' === $ts_post_slug) {
-      $ts_meta_desc = '業務用エアコンのメタディスクリプションが入ります。';
-    } else {
-      $ts_excerpt = $ts_object_id ? get_post_field('post_excerpt', $ts_object_id) : '';
+  if (! $ts_has_seo_plugin) {
+    $ts_meta_desc = '';
 
-      if (!empty($ts_excerpt)) {
-        $ts_meta_desc = $ts_excerpt;
-      } else {
-        $ts_content = $ts_object_id ? get_post_field('post_content', $ts_object_id) : '';
-        $ts_content_clean = wp_strip_all_tags(strip_shortcodes((string) $ts_content));
+    $custom_descriptions = [
+      'camera' => '「防犯対策を強化したい」「どのカメラを選べばいいかわからない」そんな悩みはトータルスマートが解決します。AI検知、夜間カラー撮影、長期録画など多様なニーズに対応。施工後の保守管理も万全で、導入後も長く安心してご利用いただけます。現地調査・見積もり無料。防犯のプロによる最適な提案を今すぐご確認ください。',
+      'aircon' => '業務用エアコンのメタディスクリプションが入ります。',
+    ];
 
-        if (function_exists('mb_strlen') && function_exists('mb_substr')) {
-          if (mb_strlen($ts_content_clean, 'UTF-8') > 120) {
-            $ts_meta_desc = mb_substr($ts_content_clean, 0, 120, 'UTF-8') . '...';
-          } else {
-            $ts_meta_desc = $ts_content_clean;
-          }
-        } else {
-          $ts_meta_desc = wp_trim_words($ts_content_clean, 120, '...');
-        }
+    //特定のスラッグに合致するかチェック
+    if (array_key_exists($ts_post_slug, $custom_descriptions)) {
+      $ts_meta_desc = $custom_descriptions[$ts_post_slug];
+    } elseif ($ts_object_id) {
+      $ts_meta_desc = get_post_field('post_excerpt', $ts_object_id);
+
+      if (empty($ts_meta_desc)) {
+        $content       = get_post_field('post_content', $ts_object_id);
+        $clean_content = wp_strip_all_tags(strip_shortcodes((string) $content));
+
+        $ts_meta_desc = mb_strlen($clean_content, 'UTF-8') > 120
+          ? mb_substr($clean_content, 0, 120, 'UTF-8') . '...'
+          : $clean_content;
       }
+    }
 
-      if ('' === trim((string) $ts_meta_desc)) {
-        $ts_meta_desc = $ts_object_id
-          ? wp_strip_all_tags(get_the_title($ts_object_id)) . 'について。トータルスマート株式会社のサービスページです。'
-          : 'トータルスマート株式会社のサービスページです。';
-      }
+    if (empty(trim((string) $ts_meta_desc))) {
+      $title = $ts_object_id ? wp_strip_all_tags(get_the_title($ts_object_id)) : '';
+      $ts_meta_desc = $title
+        ? "{$title}について。トータルスマート株式会社のサービスページです。"
+        : 'トータルスマート株式会社のサービスページです。';
     }
   }
 
@@ -108,7 +107,9 @@
     <header class="header header_single_detail">
       <div class="header--inner">
         <p class="header--logo">
-          <small>【愛知県・岐阜県・三重県・静岡県対応】<br>防犯・通信・省エネをまとめて任せて、コスト削減ならトータルスマート株式会社</small>
+          <small>【愛知県・岐阜県・三重県・静岡県対応】<br>
+            防犯・通信・省エネをまとめて任せて、コスト削減
+            ならトータルスマート株式会社</small>
           <a href="<?php echo esc_url(home_url('/')); ?>">
             <img
               src="<?php echo esc_url(get_theme_file_uri('/img/common/logo.png')); ?>"

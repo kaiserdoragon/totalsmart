@@ -236,24 +236,35 @@ get_header('service');
     <img class="camera_mv--bg" src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_bg.jpg'); ?>" alt="" width="1920" height="750" loading="eager" fetchpriority="high" decoding="async">
   </section>
 
-  <section class="camera_lead">
-    <div class="container -md">
-      <h2>
-        防犯・監視カメラ導入で<br>
-        このような<span>お悩み</span>はありませんか？
+  <section class="aircon_lead sec bg_darkblue">
+    <div class="container -lg">
+      <h2 class="aircon_lead--ttl">
+        業務用エアコンで<br>
+        このような<b><span>お</span><span>悩</span><span>み</span></b>はありませんか？？
       </h2>
-      <ul>
-        <li>古いカメラのままで画質が悪く、<span>いざという時に顔や車のナンバーが判別できない</span></li>
-        <li>システム一式の入れ替えを検討しているが、<span>配線工事費が高額で予算が合わない</span></li>
-        <li>動物や木の揺れによる誤報が多く、<span>本当に必要な通知が埋もれてしまう</span></li>
-        <li>建設現場や資材置き場、農地など<span>電源もインターネット回線もない場所を監視したい</span></li>
-        <li>トラブル発生時に<span>すぐ駆けつけてくれる地元の業者がわからない</span></li>
-      </ul>
-      <p>
-        防犯カメラは「ただ設置すればよい」というものではありません。<br>
-        現場の環境（明るさ、広さ、配線状況、電源の有無）や目的に合っていない機器を選んでしまうと、
-        本来の役割を果たせないだけでなく、無駄なコストがかかってしまいます。
+      <p class="aircon_lead--txt">
+        業務用エアコンの不調は、クリーニングで改善する場合と<br class="is-hidden_sp">
+        修理が必要な場合とがあります。<br>
+        現在の症状に近いものをご確認ください。<br>
       </p>
+
+      <div class="aircon_lead--select tab_change">
+        <ul class="tab_change--list" role="tablist">
+          <li class="tab_change--item -selected" data-id="tab-1" id="tab-label-1" role="tab" aria-controls="tab-1" aria-selected="true" tabindex="0">
+            クリーニングが<br>必要な場合
+          </li>
+          <li class="tab_change--item" data-id="tab-2" id="tab-label-2" role="tab" aria-controls="tab-2" aria-selected="false" tabindex="-1">
+            修理が<br>必要な場合
+          </li>
+        </ul>
+        <div class="tab_change--content -show" id="tab-1" role="tabpanel" aria-labelledby="tab-label-1" tabindex="0">
+          <p>コンテンツ1</p>
+        </div>
+        <div class="tab_change--content" id="tab-2" role="tabpanel" aria-labelledby="tab-label-2" tabindex="0">
+          <p>コンテンツ2</p>
+        </div>
+      </div>
+
     </div>
   </section>
 

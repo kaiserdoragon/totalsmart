@@ -1102,6 +1102,79 @@
 // ---------------------------------------------
 
 
-.aircon_mv {
+.aircon_lead {
+  // .aircon_lead--ttl
+  &--ttl {
+    margin-bottom: 60px;
+    font-size: var(--fz60);
+    font-weight: 900;
+    text-align: center;
 
+    b {
+      padding: 0 10px;
+      background: linear-gradient(to bottom, transparent 0%, transparent 60%, #ff0 60%, #ff0 85%, transparent 85%, transparent 100%);
+    }
+
+    span {
+      position: relative;
+      color: #f09;
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        content: "";
+        background: #f09;
+        border-radius: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  // .aircon_lead--txt
+  &--txt {
+    margin-bottom: 80px;
+    font-size: var(--fz25);
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .tab_change--item {
+    position: relative;
+    max-width: 430px;
+    padding: 5px 24px 30px;
+    font-size: var(--fz30);
+    font-weight: 800;
+    line-height: 1.4;
+    color: #0052a7;
+    box-shadow: 7px 7px 0 #002a53;
+
+    &::before {
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      content: "";
+      border: 15px solid transparent;
+      border-top: 20px solid #ff0;
+      transform: translate(-50%, 0);
+    }
+
+    &:not(.-selected):hover {
+      box-shadow: 7px 7px 0 #002a53;
+    }
+
+    &.-selected {
+      box-shadow: 7px 7px 0 #002a53;
+    }
+  }
+
+
+
+
+  .container {
+    padding: 80px min(4vw, 25px) !important;
+    background: #fff;
+  }
 }
