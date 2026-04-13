@@ -4,6 +4,10 @@ Template Name: 防犯カメラ
 Template Post Type:service
 */
 
+/*
+タイトルタグ・メタディスクリプションなどは「header-service.php」を参照
+*/
+
 $post_type = 'service';
 
 $type_settings = [

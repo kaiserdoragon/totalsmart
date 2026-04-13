@@ -4,6 +4,10 @@ Template Name: 業務用エアコン
 Template Post Type:service
 */
 
+/*
+タイトルタグ・メタディスクリプションなどは「header-service.php」を参照
+*/
+
 $post_type = 'service';
 
 $type_settings = [
@@ -205,21 +209,24 @@ get_header('service');
     </script>
   <?php endif; ?>
 
-  <section class="camera_mv">
+  <section class="camera_mv aircon_mv">
     <div class="camera_mv--contents container -lg">
       <div class="camera_mv--block">
         <span class="camera_mv--area">愛知・岐阜・三重・静岡対応</span>
-        <p class="camera_mv--lead">不審者対策も、内部トラブル対策もこれで解決！</p>
+        <p class="camera_mv--lead">業務用エアコンのトラブルをまとめて対応いたします。</p>
         <h1 class="camera_mv--ttl">
-          <span class="camera_mv--txt"><span class="camera_mv--strong">防犯カメラ</span>の設置・工事は</span>
-          <span class="camera_mv--txt">お任せください！！</span>
+          <span class="camera_mv--txt"><span class="camera_mv--strong">業務用エアコン</span>のクリーニング</span>
+          <span class="camera_mv--txt">修理・取付を全て解決！！</span>
         </h1>
-        <p class="camera_mv--supplement">オフィス・店舗・施設の環境に合わせた、<br>防犯カメラをご提案します</p>
+        <p class="camera_mv--supplement">
+          店舗・オフィスなど環境に合わせて、<br>
+          修理・洗浄・点検まで最適な方法をご提案
+        </p>
         <ul>
           <li>出張費・お見積り<br><span>無料</span></li>
-          <li>アフターサポートまで<br>すべて<span>自社対応</span></li>
-          <li><span>電源・回線のない現場</span><br>にも対応可能</li>
-          <li><span>既存の配線を活かした</span><br>リプレイスにも対応</li>
+          <li>損害賠償保険<br>すべて<span>加入済み</span></li>
+          <li>明朗会計<br><span>追加料金なし</span></li>
+          <li><span>業界最安値</span><br>低価格</li>
         </ul>
       </div>
       <div class="camera_mv--image">
