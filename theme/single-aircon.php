@@ -219,7 +219,7 @@ get_header('service');
         </ul>
       </div>
       <div class="camera_mv--image">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_catch.png'); ?>" alt="防犯カメラ設置サービスのイメージ" width="515" height="645" loading="eager" fetchpriority="high" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_catch_aircon.png'); ?>" alt="業務用エアコン" width="517" height="635" loading="eager" fetchpriority="high" decoding="async">
       </div>
     </div>
     <img class="camera_mv--bg" src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_bg.jpg'); ?>" alt="" width="1920" height="750" loading="eager" fetchpriority="high" decoding="async">
@@ -236,8 +236,7 @@ get_header('service');
         修理が必要な場合とがあります。<br>
         現在の症状に近いものをご確認ください。<br>
       </p>
-
-      <div class="aircon_lead--select tab_change">
+      <div class="aircon_lead--select tab_change_smooth">
         <ul class="tab_change--list" role="tablist">
           <li class="tab_change--item -selected" data-id="tab-1" id="tab-label-1" role="tab" aria-controls="tab-1" aria-selected="true" tabindex="0">
             クリーニングが<br>必要な場合
@@ -246,77 +245,111 @@ get_header('service');
             修理が<br>必要な場合
           </li>
         </ul>
+        <div class="aircon_lead--catch">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/aircon_lead_catch.png'); ?>" alt="業務用エアコン" width="562" height="351" loading="eager" fetchpriority="high" decoding="async">
+        </div>
         <div class="tab_change--content -show" id="tab-1" role="tabpanel" aria-labelledby="tab-label-1" tabindex="0">
-          <p>コンテンツ1</p>
+          <section class="aircon_lead--inner">
+            <h3>クリーニングが必要な場合</h3>
+            <p>
+              内部の汚れやカビ、ホコリ詰まりが原因のことがあります。<br>
+              分解洗浄によって風量・ニオイ・効きの改善が期待できます。
+            </p>
+            <ul>
+              <li>カビ臭い、嫌なニオイがする</li>
+              <li>吹き出し口に黒い汚れが見える</li>
+              <li>効きが悪くなった気がする</li>
+              <li>電気代が上がった</li>
+              <li>送風が弱い</li>
+              <li>衛生面が気になる</li>
+            </ul>
+          </section>
         </div>
         <div class="tab_change--content" id="tab-2" role="tabpanel" aria-labelledby="tab-label-2" tabindex="0">
-          <p>コンテンツ2</p>
+          <section class="aircon_lead--inner">
+            <h3>修理が必要な場合</h3>
+            <p>
+              部品不良や機器トラブルの可能性があります。<br>
+              早めの点検・修理で損失を最小限に抑えます。
+            </p>
+            <ul>
+              <li>電源が入らない</li>
+              <li>冷えない、暖まらない</li>
+              <li>水漏れしている</li>
+              <li>異音がする</li>
+              <li>室外機が動かない</li>
+              <li>室外機が動かない</li>
+            </ul>
+          </section>
         </div>
       </div>
-
     </div>
   </section>
 
-  <div class="camera_middle bg_gray">
+  <section class="aircon_middle bg_gray">
     <div class="container">
+      <h2>
+        「クリーニング」か「修理」か<br>
+        分からない場合もご相談ください
+      </h2>
       <p>
-        お客様の現場の課題を解決するための<br>
-        <span>最適なソリューション</span>をご提供します
+        故障なのか、内部の汚れが原因なのかは、<br class="is-hidden_sp">
+        見た目だけでは判断しづらいことも少なくありません。<br>
+        弊社では修理とクリーニングの両方に対応しているため、<br class="is-hidden_sp">
+        <span>現地の状態を確認したうえで最適な方法をご案内できます。</span><br>
       </p>
     </div>
-  </div>
+  </section>
 
-  <section class="camera_reason sec" id="camera_reason">
+  <section class="camera_reason aircon_reason sec">
     <div class="container -md">
       <h2 class="single_detail_page--ttl">
         選ばれる<span>4</span>つの理由
       </h2>
+      <p class="aircon_reason--lead">
+        業務用エアコンは、故障時のスピードだけでなく、対応の丁寧さや提案の正確さも重要です。<br>
+        多くのお客様にご相談いただいている理由をご紹介します。
+      </p>
       <div class="container camera_reason--inner">
         <ol>
           <li>
-            <h3>地域密着・迅速対応</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_01.png'); ?>" alt="地域密着・迅速対応のイメージ" width="240" height="240" loading="lazy" decoding="async">
+            <h3>最短当日・即日対応</h3>
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_01_aircon.png'); ?>" alt="最短当日・即日対応のイメージ" width="240" height="240" loading="lazy" decoding="async">
             <p>
-              愛知・岐阜・三重・静岡の商圏に絞り、現地調査から
-              施工、運用相談までスピーディーに対応。<br>
-              「名古屋の店舗」「四日市の工場」「岐阜の倉庫」
-              「浜松の資材置き場」など、地域特有の設置条件も
-              踏まえて提案します。
+              急な故障や、営業に支障が出る空調トラブルにも、
+              できる限り迅速に対応します。緊急性の高いケース
+              にも柔軟に対応し、現場の状況に合わせた判断で
+              必要な処置を的確に行います。
             </p>
           </li>
           <li>
-            <h3>現場課題に合わせての提案</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_02.png'); ?>" alt="現場課題に合わせた提案のイメージ" width="240" height="240" loading="lazy" decoding="async">
+            <h3>クリーニングも修理も対応可</h3>
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_02_aircon.png'); ?>" alt="クリーニングも修理も対応可のイメージ" width="240" height="240" loading="lazy" decoding="async">
             <p>
-              防犯カメラは、どこにでも同じものを付ければよいわけ
-              ではありません。<br>
-              建物の形、見たい場所、夜の明るさ、今ある配線、
-              予算の考え方によって、合う設備は変わります。
-              それぞれの環境に合った設置方法をご提案します。
+              エアコンのニオイやカビ、油汚れ、効きの悪さ
+              といった日常的なお悩みから、異音、水漏れ、
+              動作不良、部品の劣化による故障まで幅広く
+              対応します。安心してお任せください。
             </p>
           </li>
           <li>
-            <h3>圧倒的なコスト最適化</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_03.png'); ?>" alt="コスト最適化のイメージ" width="240" height="240" loading="lazy" decoding="async">
+            <h3>明確な料金体系で安心</h3>
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_03_aircon.png'); ?>" alt="明確な料金体系で安心のイメージ" width="240" height="240" loading="lazy" decoding="async">
             <p>
-              「入れ替えたいけど工事費が…」というご担当者様に
-              喜ばれているのが、既存の同軸ケーブルを流用できる
-              5MAHDカメラシステムです。<br>
-              アナログカメラ時代の配線をそのままに、高画質なシス
-              テムへ更新できます。<br>
-              現有資産を活かしたコスト最適化を実現します。
+              当社では、作業内容と費用の目安を事前にわかりや
+              すくご案内し、ご納得いただいたうえで進めること
+              を大切にしています。費用面の不安を減らし、相談
+              しやすさにもつなげています。
             </p>
           </li>
           <li>
-            <h3>使いやすさまで考えます</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_04.png'); ?>" alt="使いやすさを考えた提案のイメージ" width="240" height="240" loading="lazy" decoding="async">
+            <h3>安全面・作業品質にも配慮</h3>
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_04_aircon.png'); ?>" alt="安全面・作業品質にも配慮のイメージ" width="240" height="240" loading="lazy" decoding="async">
             <p>
-              防犯カメラは、性能が高ければそれで十分というもの
-              ではありません。<br>
-              当社では、映像のきれいさや見える範囲だけでなく、
-              導入のしやすさまで含めて考えます。<br>
-              現場に合っていて、導入後も使いやすいことまで考えて
-              ご提案します。
+              当社では、作業前の確認から養生、機器の取り扱い、
+              周囲への配慮まで基本を徹底し、現場環境に合わせ
+              て丁寧に対応します。作業後の確認まで責任を持って
+              対応します。
             </p>
           </li>
         </ol>
@@ -324,180 +357,72 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_assignment sec" id="camera_assignment">
-    <div class="container -md">
-      <div class="u-txt_center">
-        <h2 class="single_detail_page--ttl -double">
-          現場の課題を解決する<br>
-          <span>3</span>つの課題
-        </h2>
-      </div>
-      <article>
-        <h3>
-          AIネットワークカメラ<br>
-          （NEXT AIシリーズ / Sシリーズ）
-        </h3>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_01.jpg'); ?>" alt="AIネットワークカメラの導入イメージ" width="600" height="327" loading="lazy" decoding="async">
-        <div class="camera_assignment--inner">
-          <ul>
-            <li>誤検知が多すぎてアラートを信頼できない</li>
-            <li>画質が悪くて証拠映像として使えない</li>
-            <li>来客数や動線の把握にも活用したい</li>
-          </ul>
-          <p>
-            人と車をAIが高精度に識別するネットワークカメラです。<br>
-            風で揺れる木や通過する虫などによる誤検知を大幅に削減し、<br>
-            「本当に注意すべき動き」だけを通知します。<br>
-            また、高解像度の映像は万が一の際に明確な証拠映像となります。<br>
-            誤報を抑えながら、必要なアラートに集中しやすくなります。<br>
-            工場・倉庫では侵入監視や搬入口確認、店舗では来店状況や導線把握、<br class="is-hidden_sp">
-            事務所や駐車場ではトラブル時の確認性向上につながります。
-          </p>
-          <strong>
-            名古屋市や豊橋市の店舗、刈谷市・安城市の工場など、<br>
-            用途の幅広いお客様に特に喜ばれているシリーズです。
-          </strong>
-        </div>
-      </article>
-      <article>
-        <h3>
-          5M AHDカメラシステム<br>
-          （同軸ケーブル流用ソリューション）
-        </h3>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_02.jpg'); ?>" alt="同軸ケーブル流用による5M AHDカメラ更新のイメージ" width="600" height="327" loading="lazy" decoding="async">
-        <div class="camera_assignment--inner">
-          <ul>
-            <li>古いアナログカメラを高画質に更新したいが、配線工事費が高すぎる</li>
-            <li>なるべく工事の手間とコストを抑えてリプレイスしたい</li>
-            <li>映像の遅延が気になるので、シンプルな構成がいい</li>
-          </ul>
-          <p>
-            既存のアナログカメラ用配線（同軸ケーブル）をそのまま流用しながら、<br class="is-hidden_sp">
-            5メガピクセル級の高画質カメラシステムに更新できます。<br>
-            新たに配線を引き直す必要がないため、工事費を大幅に抑えることができます。<br>
-            配線工事費を抑えやすく、更新コストの最適化につながります。<br>
-            遅延の少ない映像で見やすく、既存環境を活用できるため、<br class="is-hidden_sp">
-            工場・倉庫・店舗・事務所の入れ替え時にも現実的な選択肢になります。
-          </p>
-          <strong>
-            「岐阜市・各務原市の製造業の倉庫や、<br>
-            大垣市・多治見市の工場などで多くご採用いただいています。
-          </strong>
-        </div>
-      </article>
-      <article>
-        <h3>
-          MOBITY BOX<br>
-          （モバイル遠隔監視システム）
-        </h3>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_03.jpg'); ?>" alt="MOBITY BOXによる遠隔監視のイメージ" width="600" height="327" loading="lazy" decoding="async">
-        <div class="camera_assignment--inner">
-          <ul>
-            <li>建設現場や農地など、電源もネット回線もない場所を監視したい</li>
-            <li>資材の盗難・不法投棄が心配だが、固定設備を引くのが難しい</li>
-            <li>工期に合わせて設置場所を移動させたい</li>
-          </ul>
-          <p>
-            4G LTEルーターとバッテリーを内蔵した、可搬型の遠隔監視システムです。<br>
-            電源工事も回線工事も不要で、<br class="is-hidden_sp">
-            現場にそのまま設置するだけでスマートフォンや<br class="is-hidden_sp">
-            PCからリアルタイムに映像を確認できます。<br>
-            ソーラーパネルとの組み合わせにより、長期間の無電源監視にも対応します。<br>
-            建設現場では夜間の侵入対策や進捗確認、資材置き場では盗難抑止、<br class="is-hidden_sp">
-            農地では離れた場所の状況確認など、<br class="is-hidden_sp">
-            これまで設置が難しかった場所にも監視体制を構築できます。<br>
-            「電源がないから無理」と諦めていた現場に、実用的な選択肢をつくれます。
-          </p>
-          <strong>
-            三重県の伊賀市・松阪市、静岡県の掛川市・藤枝市など、<br>
-            比較的郊外や山間部での建設現場・農地でご採用いただいています。
-          </strong>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <div class="camera_introduction bg_blue">
-    <div class="camera_introduction--inner">
-      <p>
-        他にも熱源を検知するサーマルカメラ（夜間・視界不良時の不審者対策など）や、<br class="is-hidden_sp">
-        既存の同軸ケーブルにPoE給電を可能にするPoC対応カメラ、<br class="is-hidden_sp">
-        複数の録画方式に対応するハイブリッドレコーダーなども取り扱っています。
-      </p>
-      <p>
-        「この現場に何が合うかわからない」という場合も、<br class="is-hidden_sp">
-        まず無料現地調査でご相談ください。<br>
-        現場を直接確認したうえで、最適な構成をご提案します。
-      </p>
-    </div>
-  </div>
-
-  <section class="camera_construction sec" id="camera_construction">
-    <div class="container -md">
+  <section class="camera_construction aircon_construction sec bg_gray">
+    <div class="container">
       <h2>施工・導入実績</h2>
       <p>
-        工場・倉庫・店舗・建設現場など、現場ごとに求められる監視体制は異なります。<br>
-        私たちは、防犯カメラを一律にご提案するのではなく、<br class="is-hidden_sp">
-        課題・設置環境・既存設備に合わせて、最適な機器構成と工事方法をご提案しています。
+        実際にご依頼いただいた事例の一部をご紹介します。<br>
+        症状や現場環境に応じて、適切な方法で対応しています。
       </p>
       <article>
-        <h3>誤報の嵐から解放され、業務管理も劇的に改善</h3>
+        <h3>カビのようなニオイが気になっていました</h3>
         <div class="camera_construction--inner">
           <dl>
-            <dt>愛知県名古屋市 自動車部品工場様</dt>
-            <dd>敷地外周に設置していた従来の動体検知カメラが、
-              野良猫や風で揺れる木々に反応してしまい、夜間の誤報が多発。<br>
-              警備システムとの連動で無駄な出動コストがかかっていました。<br>
-              導入後は動物や天候による誤報が「ゼロ」になり、本当に必要な
-              不審者の侵入時のみ正確にアラートが鳴る仕組みが完成しました。<br>
-              画質な映像を活用し、日中は工場内の安全管理や作業工程の確認
-              など、防犯以外の業務改善にも役立てています。
+            <dt>クリニック【業務用エアコンクリーニング】</dt>
+            <dd>
+              院内の嫌なニオイがするようになり、内部までは自分たちでは対応できず、衛生面でも不安がありました。<br>
+              今回は内部の汚れが原因の可能性が高いと説明してもらえたので、安心してお願いしました。<br>
+              作業後は気になっていたニオイがやわらぎ、空気環境がすっきりしたように感じました。<br>
+              定期的なクリーニングは必要だと実感しました。<br>
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_01.jpg'); ?>" alt="自動車部品工場での防犯カメラ導入事例" width="500" height="348" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_01_aircon.jpg'); ?>" alt="" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
       <article>
-        <h3>他社の高額見積もりを覆す、低コストな高画質化</h3>
+        <h3>エアコンが急に冷えなくなりました</h3>
         <div class="camera_construction--inner">
           <dl>
-            <dt>岐阜県岐阜市　小売店様</dt>
+            <dt>飲食店【業務用エアコン修理】</dt>
             <dd>
-              駐車場での当て逃げトラブルが起きた際、古いアナログカメラ
-              の画質では車のナンバープレートが読み取れませんでした。<br>
-              システム一式の入れ替えを検討したものの、他社からは「配線
-              をすべてLANケーブルに引き直す必要がある」と高額な見積も
-              りを出され、予算が合わず困っていました。<br>
-              今回配線工事費を大幅にカットできたため、他社見積もりの
-              約半分のコストでフルハイビジョンを超える高画質監視ができ
-              ました。<br>
-              ナンバープレートもくっきりと録画できるようになり、トラ
-              ブルの早期解決と犯罪抑止力が飛躍的に向上しました。
+              店舗のエアコンが急に冷えにくくなり、店内の暑さが気になり始めていました。<br>
+              修理で直るのかも分からず、一度見てもらいたいと思って相談しました。<br>
+              実際に見てもらったところ、症状に合わせて必要な対応を説明してもらえたので、納得してお願いできました。<br>
+              対応後はしっかり冷えるようになりました。
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_02.jpg'); ?>" alt="小売店での高画質カメラ更新事例" width="500" height="348" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_02_aircon.jpg'); ?>" alt="" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
       <article>
-        <h3>電源なし・ネットなしの過酷な環境を即日監視</h3>
+        <h3>吹き出し口の汚れが気になっていました</h3>
         <div class="camera_construction--inner">
           <dl>
-            <dt>三重県四日市市　建設会社様</dt>
+            <dt>美容院【業務用エアコンクリーニング】</dt>
             <dd>
-              郊外の仮設資材置き場で、夜間に銅線ケーブルなどの盗難被害
-              が出ていました。<br>
-              すぐに監視カメラを設置したかったものの、現場には100V電源
-              もインターネット回線もなく、通常のカメラでは対応できない
-              状態でした。<br>
-              お問い合わせをしてから最短で現場まで来てもらって、その日
-              のうちに稼働ができました。<br>
-              スマートフォンからいつでも現地の状況を遠隔監視できるよう
-              になりました。<br>
-              カメラの存在自体が強力な威嚇となり、導入以降は盗難被害が
-              一切発生していません。
+              郊外の仮設資材置き場で、夜間に銅線ケーブルなどの盗難被害が出ていました。<br>
+              すぐに監視カメラを設置したかったものの、現場には100V電源もインターネット回線もなく、通常のカメラでは対応できない状態でした。<br>
+              お問い合わせをしてから最短で現場まで来てもらって、その日のうちに稼働ができました。<br>
+              スマートフォンからいつでも現地の状況を遠隔監視できるようになりました。<br>
+              カメラの存在自体が強力な威嚇となり、導入以降は盗難被害が一切発生していません。
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_03.jpg'); ?>" alt="無電源現場での遠隔監視導入事例" width="500" height="348" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_03_aircon.jpg'); ?>" alt="無電源現場での遠隔監視導入事例" width="500" height="348" loading="lazy" decoding="async">
+        </div>
+      </article>
+      <article>
+        <h3>天井からの水漏れがありました</h3>
+        <div class="camera_construction--inner">
+          <dl>
+            <dt>事務所【業務用エアコン修理】</dt>
+            <dd>
+              エアコンから水漏れがあり、デスクや床に影響が出ないか心配していました。<br>
+              業務にも影響しますし使い続けて大きなトラブルになったら困るという不安がありました。<br>
+              すぐに相談したところ、状況を丁寧に確認してもらえたので、慌てずに対応を進めることができました。<br>
+              対応後は水漏れの不安が解消され、通常通り使用できるようになりました。
+            </dd>
+          </dl>
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_04_aircon.jpg'); ?>" alt="" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
     </div>

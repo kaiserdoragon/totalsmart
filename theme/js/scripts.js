@@ -187,9 +187,8 @@ new ScrollHint(".js-scrollable", {
 })();
 
 // ---------------------------------------------
-//  タブ切り替え（採用情報）
+//  タブ切り替え
 // ---------------------------------------------
-
 document.addEventListener("DOMContentLoaded", () => {
   const tabContainers = document.querySelectorAll(".tab_change");
 
@@ -227,6 +226,57 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+
+// ---------------------------------------------
+//  タブ切り替え（スクロール機能あり）
+// ---------------------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  const tabContainers = document.querySelectorAll(".tab_change_smooth");
+
+  if (tabContainers.length > 0) {
+    tabContainers.forEach((container) => {
+      const tabMenuItems = container.querySelectorAll("ul li");
+      const tabContents = container.querySelectorAll(".tab_change--content");
+
+      tabMenuItems.forEach((tabMenuItem) => {
+        tabMenuItem.addEventListener("click", () => {
+          tabMenuItems.forEach((item) => {
+            item.classList.remove("-selected");
+          });
+          tabMenuItem.classList.add("-selected");
+
+          tabContents.forEach((tabContent) => {
+            tabContent.classList.remove("-show");
+          });
+
+          if (tabMenuItem.dataset.id) {
+            const targetContent = document.getElementById(tabMenuItem.dataset.id);
+            if (targetContent) {
+              targetContent.classList.add("-show");
+
+              // ★実際のサイトのヘッダーの高さ（px）に合わせてここの数値を変更してください
+              const headerHeight = 225;
+
+              // 要素の画面上での位置 ＋ 現在のスクロール量 － ヘッダーの高さ
+              const rect = targetContent.getBoundingClientRect().top;
+              const offset = window.scrollY || window.pageYOffset;
+              const targetPosition = rect + offset - headerHeight;
+
+              // 計算した位置へスムーズにスクロール
+              window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
+              });
+            }
+          }
+        });
+      });
+    });
+  }
+});
+
+
 
 // (function ($, root, undefined) {
 //   // ------------------------------
