@@ -38,9 +38,10 @@
       "@context": "https://schema.org/",
       "@type": "JobPosting",
       "title": "電気工事スタッフ",
-      "description": "オフィスや店舗などの「業務用エアコン」「LED照明」の設置・交換・修理や「通信工事」をお任せします。古いエアコンや照明器具などの取り外し、新しい機器への交換、新店舗・オフィスの開設に伴う新設・増設工事、LED照明の設置作業、オフィスネットワーク工事など。",
-      "datePosted": "<?php echo get_the_modified_time('Y-m-d'); ?>",
-      "validThrough": "<?php echo date('Y-m-d', strtotime('+3 months')); ?>T00:00",
+      "url": "<?php echo esc_url(home_url('/recruit/')); ?>#tab-1",
+      "description": "<p>オフィスや店舗などの「業務用エアコン」「LED照明」の設置・交換・修理や「通信工事」をお任せします。</p><ul><li>古いエアコンや照明器具などの取り外し、新しい機器への交換</li><li>新店舗・オフィスの開設に伴う新設・増設工事</li><li>LED照明の設置作業</li><li>オフィスネットワーク工事など</li></ul><p><strong>【対象となる方】</strong><br>未経験歓迎／学歴不問。経験よりも人柄とやる気を重視した採用を行います！</p><p><strong>【勤務地】</strong><br>愛知県・岐阜県・静岡県・三重県の担当エリア（基本直行直帰OK）</p>",
+      "datePosted": "<?php echo get_the_time('c'); ?>",
+      "validThrough": "<?php echo date('c', strtotime('+3 months')); ?>",
       "employmentType": "FULL_TIME",
       "hiringOrganization": {
         "@type": "Organization",
@@ -58,11 +59,6 @@
           "postalCode": "461-0002",
           "addressCountry": "JP"
         }
-      },
-      "jobLocationType": "TELECOMMUTE",
-      "applicantLocationRequirements": {
-        "@type": "Country",
-        "name": "Japan"
       },
       "baseSalary": {
         "@type": "MonetaryAmount",
@@ -79,9 +75,10 @@
       "@context": "https://schema.org/",
       "@type": "JobPosting",
       "title": "保守点検スタッフ",
-      "description": "既存顧客先に訪問して、フォーマットに沿ってヒアリングを行うお仕事です。1万社以上の法人のお客様に対して、訪問サポートを中心に行っています。営業ではなく、お客様の「困った」を解決することに専念できるポジションです。",
-      "datePosted": "<?php echo get_the_modified_time('Y-m-d'); ?>",
-      "validThrough": "<?php echo date('Y-m-d', strtotime('+3 months')); ?>T00:00",
+      "url": "<?php echo esc_url(home_url('/recruit/')); ?>#tab-2",
+      "description": "<p>既存顧客先に訪問して、フォーマットに沿ってヒアリングを行うお仕事です。</p><p>1万社以上の法人のお客様に対して、訪問サポートを中心に行っています。営業ではなく、お客様の「困った」を解決することに専念できるポジションです。</p><ul><li>既存のお客様を訪問し、状況やお困りごとをヒアリング</li><li>内容に応じて各部署へ連携</li><li>必要に応じたフォロー対応</li></ul><p><strong>【勤務地】</strong><br>愛知県・岐阜県・静岡県・三重県の担当エリア（基本直行直帰OK）</p>",
+      "datePosted": "<?php echo get_the_time('c'); ?>",
+      "validThrough": "<?php echo date('c', strtotime('+3 months')); ?>",
       "employmentType": "FULL_TIME",
       "hiringOrganization": {
         "@type": "Organization",
@@ -99,11 +96,6 @@
           "postalCode": "461-0002",
           "addressCountry": "JP"
         }
-      },
-      "jobLocationType": "TELECOMMUTE",
-      "applicantLocationRequirements": {
-        "@type": "Country",
-        "name": "Japan"
       },
       "baseSalary": {
         "@type": "MonetaryAmount",
