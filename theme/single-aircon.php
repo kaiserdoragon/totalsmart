@@ -301,7 +301,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="aircon_solution sec">
+  <section class="aircon_solution sec" id="aircon_improvement">
     <div class="container">
       <div class="u-txt_center">
         <h2 class="aircon_solution--ttl">
@@ -468,7 +468,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_reason aircon_reason sec">
+  <section class="camera_reason aircon_reason sec" id="aircon_reason">
     <div class="container -md">
       <h2 class="single_detail_page--ttl">
         選ばれる<span>4</span>つの理由
@@ -524,7 +524,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_construction aircon_construction sec bg_gray">
+  <section class="camera_construction aircon_construction sec bg_gray" id="aircon_construction">
     <div class="container">
       <h2>施工・導入実績</h2>
       <p>
@@ -595,7 +595,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_flow -border sec" id="camera_flow">
+  <section class="camera_flow -border sec" id="aircon_flow">
     <div class="container -md">
       <h2>導入・施工までの流れ</h2>
       <p>
@@ -694,7 +694,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_qa bg_gray sec" id="camera_qa">
+  <section class="camera_qa bg_gray sec" id="aircon_qa">
     <div class="container -md">
       <h2>よくある質問</h2>
       <p>
@@ -731,7 +731,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_area bg_skyblue sec" id="camera_area">
+  <section class="camera_area bg_skyblue sec" id="aircon_area">
     <div class="container -md">
       <h2>
         <span>愛知県・岐阜県・三重県・静岡県</span>

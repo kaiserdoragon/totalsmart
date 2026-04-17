@@ -150,11 +150,11 @@
         elseif ($post->post_name === 'aircon') :
         ?>
           <ul>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_reason')); ?>">メニュー名1</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_assignment')); ?>">メニュー名2</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_construction')); ?>">メニュー名3</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_flow')); ?>">メニュー名4</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_qa')); ?>">メニュー名5</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_improvement')); ?>">エアコンの症状改善</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_reason')); ?>">選ばれる4つの理由</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_construction')); ?>">施工実績</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_flow')); ?>">導入・施工までの流れ</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_qa')); ?>">よくある質問</a></li>
             <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_area')); ?>">対応エリア</a></li>
           </ul>
         <?php
@@ -193,11 +193,11 @@
         elseif ($post->post_name === 'aircon') :
         ?>
           <ul>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_reason')); ?>">メニュー名1</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_assignment')); ?>">メニュー名2</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_construction')); ?>">メニュー名3</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_flow')); ?>">メニュー名4</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_qa')); ?>">メニュー名5</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_improvement')); ?>">エアコンの症状改善</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_reason')); ?>">選ばれる4つの理由</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_construction')); ?>">施工実績</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_flow')); ?>">導入・施工までの流れ</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_qa')); ?>">よくある質問</a></li>
             <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_area')); ?>">対応エリア</a></li>
           </ul>
         <?php
