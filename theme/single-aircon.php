@@ -301,6 +301,83 @@ get_header('service');
     </div>
   </section>
 
+  <section class="aircon_solution sec">
+    <div class="container">
+      <div class="u-txt_center">
+        <h2 class="aircon_solution--ttl">
+          <span>業務用エアコン</span>の<br>
+          クリーニング・修理をまとめて対応します
+        </h2>
+      </div>
+      <p class="aircon_solution--lead">
+        業務用エアコンの「クリーニング」と「修理」の両方に対応しています。<br>
+        不具合を直すだけでなく、汚れやニオイ、<br class="is-hidden_sp">
+        効率低下まで含めて総合的にサポートできるのが強みです。<br>
+        「とりあえず見てほしい」「原因がわからない」という段階でも問題ありません。<br>
+        症状や設置状況を確認し、修理・クリーニングのどちらが適しているか、<br class="is-hidden_sp">
+        わかりやすくご説明いたします。
+      </p>
+      <div class="aircon_solution--box">
+        <div class="aircon_solution--item">
+          <h3>業務用エアコンクリーニング</h3>
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/solution_01_aircon.png'); ?>" alt="" width="355" height="294" loading="lazy" decoding="async">
+          <p>
+            冷暖房が効かない、水漏れする、
+            異音がする、電源が入らないなど、
+            営業や業務に支障が出る
+            不具合に対応いたします。<br>
+            急なトラブルにもできる限り
+            迅速に対応し、原因を確認したうえで
+            必要な修理内容をご案内します。
+          </p>
+          <a href="">
+            クリーニングについて詳しく見る
+          </a>
+        </div>
+        <div class="aircon_solution--item -orange">
+          <h3>業務用エアコン修理</h3>
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/solution_02_aircon.png'); ?>" alt="" width="355" height="294" loading="lazy" decoding="async">
+          <p>
+            業務用エアコンの内部には、
+            ホコリ、カビ、油分などが
+            蓄積しやすく、ニオイや効きの悪さ、
+            衛生面の不安につながります。<br>
+            分解洗浄によって内部まで
+            しっかり清掃し、快適で清潔な
+            空調環境へ整えます。
+          </p>
+          <a href="">
+            修理について詳しく見る
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aircon_symptoms sec bg_skyblue">
+    <div class="container">
+      <h2 class="aircon_symptoms--ttl">
+        業務用エアコンクリーニングで<br>
+        改善が期待できる症状
+      </h2>
+      <p>
+        汚れが蓄積した業務用エアコンは、見た目だけでなく、空気環境や冷暖房効率にも影響します。<br>
+        定期的なクリーニングによって、快適性の維持と設備負担の軽減が期待できます。
+      </p>
+      <div class="aircon_symptoms--contents">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_01.png'); ?>" alt="" width="240" height="240" loading="lazy" decoding="async">
+        <div>
+          <h3>カビ臭い・嫌なニオイがする</h3>
+          <p>
+            内部にたまったカビや汚れが、ニオイの原因になっている
+            ことがあります。分解洗浄によって、ニオイの元にしっかり
+            アプローチします。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="camera_reason aircon_reason sec">
     <div class="container -md">
       <h2 class="single_detail_page--ttl">

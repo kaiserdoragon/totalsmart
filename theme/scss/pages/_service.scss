@@ -1146,6 +1146,13 @@
   // .aircon_lead--catch
   &--catch {
     text-align: center;
+
+    img {
+      width: 100%;
+      max-width: 400px;
+      object-fit: cover;
+      aspect-ratio: 562 / 351;
+    }
   }
 
   // .aircon_lead--inner
@@ -1289,7 +1296,6 @@
   }
 }
 
-
 .aircon_reason {
   .single_detail_page--ttl {
     margin-bottom: 40px;
@@ -1310,3 +1316,105 @@
     background: #fff;
   }
 }
+
+.aircon_solution {
+  // .aircon_solution--ttl
+  &--ttl {
+    display: inline;
+    font-size: var(--fz45);
+    font-weight: 900;
+    background: linear-gradient(to bottom, transparent 0%, transparent 70%, #fff100 70%, #fff100 100%);
+    background-repeat: repeat-y;
+    background-size: 100% 60px;
+
+    span {
+      color: #f09;
+    }
+  }
+
+  // .aircon_solution--lead
+  &--lead {
+    margin: 60px 0 80px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  // .aircon_solution--box
+  &--box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  // .aircon_solution--item
+  &--item {
+    position: relative;
+    text-align: center;
+    border: 3px solid #1d56a5;
+    border-radius: 15px;
+
+    h3 {
+      padding: 15px 0;
+      font-size: var(--fz35);
+      font-weight: 800;
+      color: #fff;
+      text-align: center;
+      background: #1d56a5;
+      border-radius: 10px 10px 0 0;
+    }
+
+    img {
+      padding: 40px 0 30px;
+    }
+
+    p {
+      width: 70%;
+      margin: 0 auto 30px;
+      font-size: var(--fz23);
+    }
+
+    a {
+      display: block;
+      width: fit-content;
+      padding: 15px 30px;
+      margin: 0 auto 60px;
+      color: #ffff;
+      background: #1d56a5;
+      border-radius: 1000px;
+    }
+
+    &::before {
+      position: absolute;
+      bottom: -100px;
+      left: 50%;
+      content: "";
+      border: 30px solid transparent;
+      border-top: 45px solid #1d56a5;
+      transform: translate(-50%, 0);
+    }
+
+    &.-orange {
+      border: 3px solid #f7a910;
+
+      h3 {
+        background: #f7a910;
+      }
+
+      &::before {
+        border-top: 45px solid #f7a910;
+      }
+
+      a {
+        background: #f7a910;
+      }
+    }
+  }
+}
+
+
+
+
+
