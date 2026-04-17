@@ -129,24 +129,89 @@
         </div>
       </div>
       <nav class="header_single_detail--menu">
-        <ul>
-          <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_reason')); ?>">選ばれる4つの理由</a></li>
-          <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_assignment')); ?>">3つの最適解</a></li>
-          <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_construction')); ?>">施工実績</a></li>
-          <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_flow')); ?>">導入・施工までの流れ</a></li>
-          <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_qa')); ?>">よくある質問</a></li>
-          <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_area')); ?>">対応エリア</a></li>
-        </ul>
+        <?php
+        $post = get_post();
+
+        if (!is_singular() || !$post) {
+          return;
+        }
+
+        if ($post->post_name === 'camera') :
+        ?>
+          <ul>
+            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_reason')); ?>">選ばれる4つの理由</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_assignment')); ?>">3つの最適解</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_construction')); ?>">施工実績</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_flow')); ?>">導入・施工までの流れ</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_qa')); ?>">よくある質問</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_area')); ?>">対応エリア</a></li>
+          </ul>
+        <?php
+        elseif ($post->post_name === 'aircon') :
+        ?>
+          <ul>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_reason')); ?>">メニュー名1</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_assignment')); ?>">メニュー名2</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_construction')); ?>">メニュー名3</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_flow')); ?>">メニュー名4</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_qa')); ?>">メニュー名5</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_area')); ?>">対応エリア</a></li>
+          </ul>
+        <?php
+        elseif ($post->post_name === 'hukugouki') :
+        ?>
+          <ul>
+            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_reason')); ?>">メニュー名1</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_assignment')); ?>">メニュー名2</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_construction')); ?>">メニュー名3</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_flow')); ?>">メニュー名4</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_qa')); ?>">メニュー名5</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_area')); ?>">対応エリア</a></li>
+          </ul>
+        <?php endif; ?>
       </nav>
+
       <nav class="service_nav" id="service_nav">
-        <ul>
-          <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_reason')); ?>">選ばれる4つの理由</a></li>
-          <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_assignment')); ?>">3つの最適解</a></li>
-          <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_construction')); ?>">施工実績</a></li>
-          <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_flow')); ?>">導入・施工までの流れ</a></li>
-          <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_qa')); ?>">よくある質問</a></li>
-          <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_area')); ?>">対応エリア</a></li>
-        </ul>
+        <?php
+        $post = get_post();
+
+        if (!is_singular() || !$post) {
+          return;
+        }
+
+        if ($post->post_name === 'camera') :
+        ?>
+          <ul>
+            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_reason')); ?>">選ばれる4つの理由</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_assignment')); ?>">3つの最適解</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_construction')); ?>">施工実績</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_flow')); ?>">導入・施工までの流れ</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_qa')); ?>">よくある質問</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_area')); ?>">対応エリア</a></li>
+          </ul>
+        <?php
+        elseif ($post->post_name === 'aircon') :
+        ?>
+          <ul>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_reason')); ?>">メニュー名1</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_assignment')); ?>">メニュー名2</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_construction')); ?>">メニュー名3</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_flow')); ?>">メニュー名4</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_qa')); ?>">メニュー名5</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_area')); ?>">対応エリア</a></li>
+          </ul>
+        <?php
+        elseif ($post->post_name === 'hukugouki') :
+        ?>
+          <ul>
+            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_reason')); ?>">メニュー名1</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_assignment')); ?>">メニュー名2</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_construction')); ?>">メニュー名3</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_flow')); ?>">メニュー名4</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_qa')); ?>">メニュー名5</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_area')); ?>">対応エリア</a></li>
+          </ul>
+        <?php endif; ?>
         <div class="header--btn">
           <a href="tel:0529325450" class="header--tel">052-932-5450
             <span>営業時間 9:00～18:00</span>
