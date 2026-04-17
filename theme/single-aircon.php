@@ -330,8 +330,8 @@ get_header('service');
             迅速に対応し、原因を確認したうえで
             必要な修理内容をご案内します。
           </p>
-          <a href="">
-            クリーニングについて詳しく見る
+          <a href="<?php echo esc_url(home_url('/service/aircon/#symptoms_cleaning')); ?>">
+            クリーニングで改善できる症状を知る
           </a>
         </div>
         <div class="aircon_solution--item -orange">
@@ -346,21 +346,21 @@ get_header('service');
             しっかり清掃し、快適で清潔な
             空調環境へ整えます。
           </p>
-          <a href="">
-            修理について詳しく見る
+          <a href="<?php echo esc_url(home_url('/service/aircon/#symptoms_shuuri')); ?>">
+            修理で改善できる症状を知る
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="aircon_symptoms sec bg_skyblue">
+  <section class="aircon_symptoms sec bg_skyblue" id="symptoms_cleaning">
     <div class="container">
       <h2 class="aircon_symptoms--ttl">
-        業務用エアコンクリーニングで<br>
+        <span>業務用エアコンクリーニング</span>で<br>
         改善が期待できる症状
       </h2>
-      <p>
+      <p class="aircon_symptoms--lead">
         汚れが蓄積した業務用エアコンは、見た目だけでなく、空気環境や冷暖房効率にも影響します。<br>
         定期的なクリーニングによって、快適性の維持と設備負担の軽減が期待できます。
       </p>
@@ -372,6 +372,96 @@ get_header('service');
             内部にたまったカビや汚れが、ニオイの原因になっている
             ことがあります。分解洗浄によって、ニオイの元にしっかり
             アプローチします。
+          </p>
+        </div>
+      </div>
+      <div class="aircon_symptoms--contents">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_02.png'); ?>" alt="" width="240" height="240" loading="lazy" decoding="async">
+        <div>
+          <h3>吹き出し口や内部の汚れが気になる</h3>
+          <p>
+            吹き出し口の黒ずみや内部の汚れは、衛生面でも気になる
+            ポイントです。店舗やクリニックなど、空気環境を重視したい
+            現場にもおすすめです。
+          </p>
+        </div>
+      </div>
+      <div class="aircon_symptoms--contents">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_03.png'); ?>" alt="" width="240" height="240" loading="lazy" decoding="async">
+        <div>
+          <h3>効きが悪い・風量が弱い</h3>
+          <p>
+            ホコリや汚れがたまることで、エアコン本来の性能が
+            発揮しにくくなることがあります。<br>
+            内部洗浄によって、風量や効きの改善が期待できます。
+          </p>
+        </div>
+      </div>
+      <div class="aircon_symptoms--contents">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_04.png'); ?>" alt="" width="240" height="240" loading="lazy" decoding="async">
+        <div>
+          <h3>電気代や設備負担が気になる</h3>
+          <p>
+            汚れたまま使用を続けると、効率の低下から余計な負荷が
+            かかることがあります。<br>
+            定期的なクリーニングは、快適な使用環境の維持にもつながります。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aircon_symptoms sec -orange" id="symptoms_shuuri">
+    <div class="container">
+      <h2 class="aircon_symptoms--ttl">
+        <span>業務用エアコン修理</span>で<br>
+        改善が期待できる症状
+      </h2>
+      <p class="aircon_symptoms--lead">
+        業務用エアコンの故障は、放置すると営業や業務に大きな影響が出ることがあります。<br>
+        気になる症状がある場合は、早めの点検・修理がおすすめです。
+      </p>
+      <div class="aircon_symptoms--contents">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_01.png'); ?>" alt="" width="240" height="240" loading="lazy" decoding="async">
+        <div>
+          <h3>カビ臭い・嫌なニオイがする</h3>
+          <p>
+            内部にたまったカビや汚れが、ニオイの原因になっている
+            ことがあります。分解洗浄によって、ニオイの元にしっかり
+            アプローチします。
+          </p>
+        </div>
+      </div>
+      <div class="aircon_symptoms--contents">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_02.png'); ?>" alt="" width="240" height="240" loading="lazy" decoding="async">
+        <div>
+          <h3>吹き出し口や内部の汚れが気になる</h3>
+          <p>
+            吹き出し口の黒ずみや内部の汚れは、衛生面でも気になる
+            ポイントです。店舗やクリニックなど、空気環境を重視したい
+            現場にもおすすめです。
+          </p>
+        </div>
+      </div>
+      <div class="aircon_symptoms--contents">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_03.png'); ?>" alt="" width="240" height="240" loading="lazy" decoding="async">
+        <div>
+          <h3>効きが悪い・風量が弱い</h3>
+          <p>
+            ホコリや汚れがたまることで、エアコン本来の性能が
+            発揮しにくくなることがあります。<br>
+            内部洗浄によって、風量や効きの改善が期待できます。
+          </p>
+        </div>
+      </div>
+      <div class="aircon_symptoms--contents">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_04.png'); ?>" alt="" width="240" height="240" loading="lazy" decoding="async">
+        <div>
+          <h3>電気代や設備負担が気になる</h3>
+          <p>
+            汚れたまま使用を続けると、効率の低下から余計な負荷が
+            かかることがあります。<br>
+            定期的なクリーニングは、快適な使用環境の維持にもつながります。
           </p>
         </div>
       </div>
@@ -505,7 +595,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_flow bg_gray sec" id="camera_flow">
+  <section class="camera_flow -border sec" id="camera_flow">
     <div class="container -md">
       <h2>導入・施工までの流れ</h2>
       <p>
@@ -604,7 +694,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_qa sec" id="camera_qa">
+  <section class="camera_qa bg_gray sec" id="camera_qa">
     <div class="container -md">
       <h2>よくある質問</h2>
       <p>
@@ -612,51 +702,30 @@ get_header('service');
         ご不明な点は、お気軽にお問い合わせください。
       </p>
       <dl>
-        <dt>現地調査や見積もりは本当に無料ですか？</dt>
+        <dt>修理かクリーニングか分からないのですが、相談できますか？</dt>
         <dd>
-          はい、完全無料です。<br>
-          現地調査・お見積りに費用は一切かかりません。<br>
-          また、ご提案後にご依頼いただかなくても、キャンセル料等も発生しませんのでご安心ください。<br>
-          「まず話を聞いてみたい」という段階でのお問い合わせを歓迎しています。
+          はい、可能です。<br>
+          症状をお伺いしたうえで、必要に応じて現地確認を行い、適した方法をご案内します。
         </dd>
-        <dt>既存のカメラや配線はそのまま使えますか？</dt>
+        <dt>見積りだけでも依頼できますか？</dt>
         <dd>
-          現場の状況によって異なりますが、アナログカメラ時代の同軸ケーブルが残っている場合、<br>
-          それをそのまま流用した高画質システムへの更新が可能なケースが多いです。<br>
-          現地調査の際に配線の状態を確認したうえで、最適な方法をご提案します。<br>
+          はい、お見積りは無料です。<br>
+          まずは症状や台数、設置場所などをお知らせください。
         </dd>
-        <dt>電源もネット回線もない場所には設置できますか？</dt>
+        <dt>追加料金がかかることはありますか？</dt>
         <dd>
-          はい、対応可能です。<br>
-          4G LTEとバッテリーを内蔵したMOBITY BOX（モバイル遠隔監視システム）により、<br>
-          電源・回線工事なしで遠隔監視を実現できます。<br>
-          建設現場・農地・資材置き場など、インフラが整っていない場所でも設置実績があります。<br>
-          詳しくは現地調査にてご相談ください。
+          事前に作業内容と費用をご説明し、ご納得いただいてから作業を行います。<br>
+          ご説明のないまま作業を進めることはありません。
         </dd>
-        <dt>導入費用の目安はどれくらいですか？</dt>
+        <dt>複数台まとめて依頼できますか？</dt>
         <dd>
-          現場の規模・設置台数・機種・既存設備の状況によって大きく異なるため、<br>
-          一概にはお伝えできません。<br>
-          ただし、既存配線の流用や、必要最低限の構成から始める段階的な導入など、<br>
-          コストを抑えるご提案も積極的に行っています。まずはお気軽にご相談ください。
+          はい、複数台のご依頼にも対応しています。<br>
+          店舗や事務所など、台数が多い場合もお気軽にご相談ください。
         </dd>
-        <dt>施工はどのくらいの期間がかかりますか？</dt>
+        <dt>営業中でも作業できますか？</dt>
         <dd>
-          現場の規模・台数・既存配線の状況によって異なりますが、<br>
-          小規模な設置（数台程度）であれば1日で完了することもあります。<br>
-          大規模な工場や複数フロアへの設置の場合は、数日程度かかることもあります。<br>
-          工期の見通しはお見積り時に合わせてご提示します。
-        </dd>
-        <dt>工場や店舗の営業時間中でも施工できますか？</dt>
-        <dd>
-          可能な場合も多いですが、現場の状況によっては夜間・休日対応をご提案することもあります。<br>
-          現場の稼働スケジュールに合わせた施工計画を立てますので、まずはご相談ください。
-        </dd>
-        <dt>設置後のサポートはありますか？</dt>
-        <dd>
-          はい、設置後の操作説明から、機器の不具合・追加増設のご相談まで対応しています。<br>
-          「映像が映らなくなった」「録画がうまくできていない」といった<br>
-          トラブルにも迅速に対応しますのでご安心ください。
+          現場の状況によりますが、できる限り営業への影響を抑えられるよう配慮して対応いたします。<br>
+          ご希望があれば事前にお知らせください。
         </dd>
       </dl>
     </div>
@@ -669,54 +738,62 @@ get_header('service');
         へ迅速に対応します
       </h2>
       <p>
-        東海エリアに密着した防犯カメラ設置・販売の会社として、<br>
-        愛知県・岐阜県・三重県・静岡県での現地調査・施工・アフターサポートを行っています。
+        愛知県・岐阜県・三重県・静岡県を中心に、<br class="is-hidden_sp">
+        業務用エアコンのクリーニング・修理に対応しています。<br>
+        急な故障による営業への影響を抑えたい場合も、ニオイや汚れが気になるため早めに洗浄したい場合も、
+        地域に応じて迅速にご案内いたします。<br>
+        店舗・オフィス・クリニック・各種施設など、<br class="is-hidden_sp">
+        業務用エアコンのことならまずはお気軽にご相談ください。
       </p>
       <article>
         <span>愛知県</span>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_01.jpg'); ?>" alt="愛知県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_01_aircon.jpg'); ?>" alt="愛知県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
         <p>
-          名古屋市・豊田市・岡崎市・一宮市・春日井市・<br class="is-hidden_sp">
-          豊橋市・安城市・刈谷市・小牧市・半田市・<br class="is-hidden_sp">
-          および愛知県内全域に対応しております。<br class="is-hidden_sp">
-          製造業が盛んな豊田市・刈谷市・安城市のエリアの工場や倉庫、<br>
-          名古屋市内の店舗・事務所からの<br class="is-hidden_sp">
-          ご相談も多数いただいています。
+          名古屋市を中心としたオフィス・商業施設に加え、<br class="is-hidden_sp">
+          豊田市、岡崎市、一宮市などをはじめとする<br class="is-hidden_sp">
+          事業所・店舗からのご相談にも対応しています。<br>
+          空調トラブルが生産や来店環境に直結しやすい地域だからこそ、<br class="is-hidden_sp">
+          「冷えない」「止まった」「水漏れした」といった修理対応はもちろん、<br class="is-hidden_sp">
+          工場事務所や店舗の衛生管理・快適性維持を<br class="is-hidden_sp">
+          目的としたクリーニングまで、現場に合わせてご案内します。<br>
         </p>
       </article>
       <article>
         <span>岐阜県</span>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_02.jpg'); ?>" alt="岐阜県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_02_aircon.jpg'); ?>" alt="岐阜県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
         <p>
-          岐阜県・大垣市・各務原市・多治見市・可児市・<br class="is-hidden_sp">
-          関市・高山市・および岐阜県全域に<br class="is-hidden_sp">
-          対応しています。<br>
-          岐阜市・大垣市周辺の倉庫や工場、<br class="is-hidden_sp">
-          山間部の建設現場・農地での<br class="is-hidden_sp">
-          無電源監視のご相談も承っています。
+          岐阜市、大垣市、各務原市などの<br class="is-hidden_sp">
+          市街地・工業系エリアに加え、<br class="is-hidden_sp">
+          観光・宿泊需要のある飛騨高山や下呂方面も含めて、<br class="is-hidden_sp">
+          業務用エアコンのクリーニング・修理のご相談に対応しています。<br>
+          工場・事務所の安定稼働を重視した修理対応から、<br class="is-hidden_sp">
+          宿泊施設・店舗の快適性やニオイ対策を意識したクリーニングまで、<br class="is-hidden_sp">
+          地域特性に合わせて柔軟に対応します。
         </p>
       </article>
       <article>
         <span>三重県</span>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_03.jpg'); ?>" alt="三重県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_03_aircon.jpg'); ?>" alt="三重県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
         <p>
-          四日市市・津市・鈴鹿市・桑名市・松阪市・<br class="is-hidden_sp">
-          伊勢市・伊賀市、および三重県全域に<br class="is-hidden_sp">
-          対応しています。<br>
-          四日市市・鈴鹿市のコンビナート・<br class="is-hidden_sp">
-          工場エリアや伊賀市・松阪市の農地・<br class="is-hidden_sp">
-          建設現場での実績があります。
+          津市、四日市市、鈴鹿市、伊勢市などを中心に、<br class="is-hidden_sp">
+          業務用エアコンのトラブルやメンテナンスのご相談を承っています。<br>
+          工場・事業所向けの迅速な修理対応と、<br class="is-hidden_sp">
+          宿泊施設・店舗向けの定期クリーニングの両方に需要があります。<br>
+          空調が止められない現場にも、空気環境を整えたい現場にも、<br class="is-hidden_sp">
+          状況に応じて最適な方法をご提案します。<br>
         </p>
       </article>
       <article>
         <span>静岡県</span>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_04.jpg'); ?>" alt="静岡県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_04_aircon.jpg'); ?>" alt="静岡県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
         <p>
-          静岡市・浜松市・沼津市・富士市・焼津市・<br class="is-hidden_sp">
-          藤枝市・磐田市・掛川市・三島市・<br class="is-hidden_sp">
-          および静岡県全域に対応しています。<br>
-          浜松市・磐田市の工場、富士市・焼津市の<br class="is-hidden_sp">
-          倉庫・物流拠点からのご相談も対応しています。
+          浜松市、静岡市、富士市、沼津市などを中心に、<br class="is-hidden_sp">
+          業務用エアコンのクリーニング・修理に対応しています。<br>
+          静岡県は製造業の集積が厚い一方で、<br class="is-hidden_sp">
+          観光・サービス関連施設も多い県です。<br>
+          「急な故障への迅速な修理」と「快適性を維持するための内部洗浄」の<br class="is-hidden_sp">
+          両方が重要な県です。<br>
+          地域や業種に合わせて、必要な対応をご案内します。
         </p>
       </article>
     </div>

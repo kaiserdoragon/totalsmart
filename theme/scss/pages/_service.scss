@@ -888,6 +888,13 @@
     }
   }
 
+  &.-border {
+    article {
+      border: 3px solid #1d56a5;
+      border-radius: 15px;
+    }
+  }
+
   @include max-mq {
     h2 {
       font-size: var(--fz40);
@@ -1334,7 +1341,8 @@
 
   // .aircon_solution--lead
   &--lead {
-    margin: 60px 0 80px;
+    margin-bottom: 80px;
+    font-size: var(--fz20);
     font-weight: 600;
     text-align: center;
   }
@@ -1381,7 +1389,9 @@
       width: fit-content;
       padding: 15px 30px;
       margin: 0 auto 60px;
-      color: #ffff;
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 5px;
       background: #1d56a5;
       border-radius: 1000px;
     }
@@ -1414,7 +1424,88 @@
   }
 }
 
+.aircon_symptoms {
+  // .aircon_symptoms--ttl
+  &--ttl {
+    width: 100%;
+    max-width: 900px;
+    padding: 10px;
+    margin: 0 auto 60px;
+    font-size: var(--fz45);
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+    background: #1d56a5;
+    border-radius: 10px;
 
+    span {
+      color: #ff0;
+    }
+
+    .-orange & {
+      background: #f7a910;
+
+      span {
+        color: #c10000;
+      }
+    }
+  }
+
+  // .aircon_symptoms--lead
+  &--lead {
+    margin-bottom: 80px;
+    font-size: var(--fz20);
+    font-weight: 600;
+    line-height: 2;
+    text-align: center;
+  }
+
+  // .aircon_symptoms--contents
+  &--contents {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    padding: 40px;
+    margin: auto;
+    background: #fff;
+    border: 3px solid #1d56a5;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgb(29 86 165 / 60%);
+
+    h3 {
+      padding-bottom: 5px;
+      margin-bottom: 30px;
+      font-size: var(--fz30);
+      font-weight: 800;
+      color: #1d56a5;
+      border-bottom: 3px dotted #1d56a5;
+    }
+
+    div {
+      width: 60%;
+    }
+
+    &:not(:last-of-type) {
+      margin: 0 auto 40px;
+    }
+
+    .-orange & {
+      border: 3px solid #f7a910;
+      box-shadow: 3px 3px 10px rgb(247 169 16 / 60%);
+
+      h3 {
+        color: #f7a910;
+        border-bottom: 3px dotted #f7a910;
+      }
+    }
+  }
+
+  &.-orange {
+    background: #fffae3;
+  }
+}
 
 
 
