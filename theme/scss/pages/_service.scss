@@ -598,6 +598,12 @@
       }
     }
   }
+
+  @include max-mq {
+    li {
+      padding: 80px 20px 45px;
+    }
+  }
 }
 
 .camera_assignment {
@@ -1413,6 +1419,12 @@
     padding: 40px;
     margin: auto;
     background: #fff;
+  }
+
+  @include max-mq {
+    article {
+      padding: 15px;
+    }
   }
 }
 
