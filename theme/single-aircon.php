@@ -289,7 +289,7 @@ get_header('service');
   <section class="aircon_middle bg_gray">
     <div class="container">
       <h2>
-        「クリーニング」か「修理」か<br>
+        「クリーニング」か「修理」か<br class="is-hidden_sp">
         分からない場合もご相談ください
       </h2>
       <p>
@@ -357,8 +357,7 @@ get_header('service');
   <section class="aircon_symptoms sec bg_skyblue" id="symptoms_cleaning">
     <div class="container">
       <h2 class="aircon_symptoms--ttl">
-        <span>業務用エアコンクリーニング</span>で<br>
-        改善が期待できる症状
+        <span>業務用エアコンクリーニング</span>で<br class="is-hidden_sp">改善が期待できる症状
       </h2>
       <p class="aircon_symptoms--lead">
         汚れが蓄積した業務用エアコンは、見た目だけでなく、空気環境や冷暖房効率にも影響します。<br>
@@ -414,8 +413,7 @@ get_header('service');
   <section class="aircon_symptoms sec -orange" id="symptoms_shuuri">
     <div class="container">
       <h2 class="aircon_symptoms--ttl">
-        <span>業務用エアコン修理</span>で<br>
-        改善が期待できる症状
+        <span>業務用エアコン修理</span>で<br class="is-hidden_sp">改善が期待できる症状
       </h2>
       <p class="aircon_symptoms--lead">
         業務用エアコンの故障は、放置すると営業や業務に大きな影響が出ることがあります。<br>

@@ -380,6 +380,11 @@
       flex-direction: column;
       align-items: center;
     }
+
+    li {
+      max-width: 100%;
+      font-size: var(--fz25);
+    }
   }
 }
 
@@ -1165,6 +1170,10 @@
     @include tb-mq {
       font-size: var(--fz45);
     }
+
+    @include max-mq {
+      // 767px以下
+    }
   }
 
   // .aircon_lead--txt
@@ -1247,6 +1256,14 @@
 
     @include max-mq {
       padding: 30px 15px;
+
+      h3 {
+        font-size: var(--fz35);
+      }
+
+      p {
+        margin: 0 auto 40px;
+      }
     }
   }
 
@@ -1297,15 +1314,21 @@
     transform: translateX(-50%);
   }
 
-  @include max-mq {
+  @include tb-mq {
     .tab_change--list {
       gap: 30px;
     }
+  }
 
+  @include max-mq {
     .tab_change--item {
       max-width: 100%;
       padding: 5px 24px 40px;
       font-size: var(--fz25);
+    }
+
+    &::after {
+      width: 140px;
     }
   }
 }
@@ -1357,7 +1380,17 @@
 
     p {
       padding: 40px min(4vw, 25px);
-      font-size: var(--fz30);
+      font-size: var(--fz25);
+    }
+
+    &::before {
+      width: 250px;
+    }
+  }
+
+  @include max-mq {
+    h2 {
+      font-size: var(--fz35);
     }
   }
 }
@@ -1396,6 +1429,11 @@
     span {
       color: #f09;
     }
+
+    @include max-mq {
+      font-size: var(--fz35);
+      background: linear-gradient(to bottom, transparent 0%, transparent 55%, #fff100 55%, #fff100 100%);
+    }
   }
 
   // .aircon_solution--lead
@@ -1414,6 +1452,11 @@
     width: 100%;
     max-width: 1200px;
     margin: auto;
+
+    @include tb-mq {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 110px;
+    }
   }
 
   // .aircon_solution--item
@@ -1424,8 +1467,8 @@
     border-radius: 15px;
 
     h3 {
-      padding: 15px 0;
-      font-size: var(--fz35);
+      padding: 15px 10px;
+      font-size: var(--fz30);
       font-weight: 800;
       color: #fff;
       text-align: center;
@@ -1480,6 +1523,12 @@
         background: #f7a910;
       }
     }
+
+    @include tb-mq {
+      p {
+        width: 90%;
+      }
+    }
   }
 }
 
@@ -1508,6 +1557,10 @@
         color: #c10000;
       }
     }
+
+    @include max-mq {
+      font-size: var(--fz40);
+    }
   }
 
   // .aircon_symptoms--lead
@@ -1522,6 +1575,7 @@
   // .aircon_symptoms--contents
   &--contents {
     display: flex;
+    flex-wrap: wrap;
     gap: 40px;
     align-items: center;
     width: 100%;
@@ -1557,6 +1611,20 @@
       h3 {
         color: #f7a910;
         border-bottom: 3px dotted #f7a910;
+      }
+    }
+
+    @include max-mq {
+      flex-direction: column;
+      padding: 30px 20px;
+
+      div {
+        width: 100%;
+        text-align: center;
+      }
+
+      h3 {
+        font-size: var(--fz25);
       }
     }
   }
