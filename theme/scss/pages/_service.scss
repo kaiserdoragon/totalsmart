@@ -345,6 +345,14 @@
       height: 120vh;
     }
 
+    @media (width <= 1380px) {
+      height: 95vh;
+    }
+
+    @include tb-mq {
+      height: 85vh;
+    }
+
     @include max-mq {
       height: 1600px;
     }
@@ -1108,6 +1116,19 @@
 //  業務用エアコン特化ページ　専用
 // ---------------------------------------------
 
+.aircon_mv {
+  @include max-mq {
+    .camera_mv--ttl {
+      font-size: var(--fz60);
+    }
+  }
+
+  @media (width <= 480px) {
+    .camera_mv--bg {
+      height: 1700px;
+    }
+  }
+}
 
 .aircon_lead {
   position: relative;
@@ -1140,6 +1161,10 @@
         transform: translateX(-50%);
       }
     }
+
+    @include tb-mq {
+      font-size: var(--fz45);
+    }
   }
 
   // .aircon_lead--txt
@@ -1160,6 +1185,12 @@
       object-fit: cover;
       aspect-ratio: 562 / 351;
     }
+
+    @include max-mq {
+      img {
+        width: 300px;
+      }
+    }
   }
 
   // .aircon_lead--inner
@@ -1173,7 +1204,7 @@
 
     h3 {
       width: fit-content;
-      padding: 0 20px;
+      padding: 0 20px 10px;
       margin: 0 auto 40px;
       font-size: var(--fz40);
       font-weight: 900;
@@ -1200,6 +1231,22 @@
       &:not(:last-child) {
         margin-bottom: 10px;
       }
+    }
+
+    @include tb-mq {
+      padding: 40px 30px;
+
+      p {
+        font-size: var(--fz23);
+      }
+
+      h3 {
+        text-align: center;
+      }
+    }
+
+    @include max-mq {
+      padding: 30px 15px;
     }
   }
 
@@ -1248,6 +1295,18 @@
     content: "";
     background: url(../img/service/arrow_skyblue.png) no-repeat center / contain;
     transform: translateX(-50%);
+  }
+
+  @include max-mq {
+    .tab_change--list {
+      gap: 30px;
+    }
+
+    .tab_change--item {
+      max-width: 100%;
+      padding: 5px 24px 40px;
+      font-size: var(--fz25);
+    }
   }
 }
 

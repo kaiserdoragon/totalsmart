@@ -228,7 +228,7 @@ get_header('service');
   <section class="aircon_lead sec bg_darkblue">
     <div class="container -lg">
       <h2 class="aircon_lead--ttl">
-        業務用エアコンで<br>
+        業務用エアコンで<br class="is-hidden_sp">
         このような<b><span>お</span><span>悩</span><span>み</span></b>はありませんか？？
       </h2>
       <p class="aircon_lead--txt">
