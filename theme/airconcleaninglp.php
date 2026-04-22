@@ -975,6 +975,12 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           こちらのフォームからご連絡ください。<br>
           無料でお見積もり・ご提案いたします。
         </p>
+        <p class="contact--remarks">簡単入力<span>1分</span>で完了</p>
+        <ul class="contact--step">
+          <li>項目の入力</li>
+          <!-- <li>入力内容の確認</li> -->
+          <li>送信完了</li>
+        </ul>
         <?php echo do_shortcode('[contact-form-7 id="565" title="エアコンのクリーニングのフォーム"]'); ?>
       </div>
     </section>
