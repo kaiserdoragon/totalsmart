@@ -658,7 +658,7 @@ $home_schema = [
               チームワークを強化し、お客様はもちろん従業員がよりよい環境で働けることを目指します。
             </dd>
           </dl>
-          <a class="btn_link" href="https://recruit.jobcan.jp/totalsmart" target="_blank" rel="noopener noreferrer">採用情報はこちらから</a>
+          <a class="btn_link" href="<?php echo esc_url(home_url('/recruit/')); ?>" target="_blank" rel="noopener noreferrer">採用情報はこちらから</a>
         </div>
         <img src="<?php echo esc_url(get_theme_file_uri('/img/top/recruit_catch.png')); ?>" alt="" width="477" height="492" loading="lazy" decoding="async">
       </div>
