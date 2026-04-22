@@ -74,7 +74,7 @@
     {
       "@context": "https://schema.org/",
       "@type": "JobPosting",
-      "title": "保守点検スタッフ",
+      "title": "お客様サポートスタッフ",
       "url": "<?php echo esc_url(home_url('/recruit/')); ?>#tab-2",
       "description": "<p>既存顧客先に訪問して、フォーマットに沿ってヒアリングを行うお仕事です。</p><p>1万社以上の法人のお客様に対して、訪問サポートを中心に行っています。営業ではなく、お客様の「困った」を解決することに専念できるポジションです。</p><ul><li>既存のお客様を訪問し、状況やお困りごとをヒアリング</li><li>内容に応じて各部署へ連携</li><li>必要に応じたフォロー対応</li></ul><p><strong>【勤務地】</strong><br>愛知県・岐阜県・静岡県・三重県の担当エリア（基本直行直帰OK）</p>",
       "datePosted": "<?php echo get_the_time('c'); ?>",
@@ -455,7 +455,7 @@
       <div class="tab_change">
         <ul class="tab_change--list" role="tablist">
           <li class="tab_change--item -selected" data-id="tab-1" id="tab-label-1" role="tab" aria-controls="tab-1" aria-selected="true" tabindex="0">電気工事スタッフ</li>
-          <li class="tab_change--item" data-id="tab-2" id="tab-label-2" role="tab" aria-controls="tab-2" aria-selected="false" tabindex="-1">保守点検スタッフ</li>
+          <li class="tab_change--item" data-id="tab-2" id="tab-label-2" role="tab" aria-controls="tab-2" aria-selected="false" tabindex="-1">お客様サポートスタッフ</li>
         </ul>
         <div class="tab_change--content -show" id="tab-1" role="tabpanel" aria-labelledby="tab-label-1" tabindex="0">
           <table>
@@ -704,7 +704,7 @@
           <table>
             <tr>
               <th>募集職種</th>
-              <td>保守点検スタッフ</td>
+              <td>お客様サポートスタッフ</td>
             </tr>
             <tr>
               <th>仕事内容</th>
