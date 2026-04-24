@@ -82,6 +82,7 @@ main {
   z-index: 1111111;
   width: 100%;
   background: #fff;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
   .contents {
     display: flex;
@@ -97,6 +98,11 @@ main {
     font-size: var(--fz12);
     font-weight: 900;
     text-align: center;
+  }
+
+  &.is-hide {
+    opacity: 0;
+    transform: translateY(0);
   }
 
   // .header--btns
