@@ -54,17 +54,17 @@ main {
   display: block;
   padding-top: 170px;
 
-  @media (width <= 1200px) {
+  @media (width <= 1300px) {
     padding-top: 285px;
   }
 
   @include max-mq {
-    padding-top: 48vw;
+    padding-top: 0;
   }
 
-  @media (width <= 485px) {
-    padding-top: 190px;
-  }
+  // @media (width <= 485px) {
+  //   padding-top: 190px;
+  // }
 
   @media (min-width: 768px) and (max-width: 769px) and (orientation: portrait) {
     min-height: 95vh;
@@ -100,10 +100,10 @@ main {
     text-align: center;
   }
 
-  &.is-hide {
-    opacity: 0;
-    transform: translateY(0);
-  }
+  // &.is-hide {
+  //   opacity: 0;
+  //   transform: translateY(0);
+  // }
 
   // .header--btns
   &--btns {
@@ -137,6 +137,8 @@ main {
   }
 
   @include max-mq {
+    position: relative;
+
     .contents {
       row-gap: 10px;
       padding: 25px 10px 20px;

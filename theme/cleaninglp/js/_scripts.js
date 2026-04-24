@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", function () {
   const btn = document.getElementById("js_fixed-btn");
   if (!btn) return;
 
-  const THRESHOLD = 500;
+  const THRESHOLD = 100;
   const mql = window.matchMedia("(max-width: 767px)");
   let controller = null;
 
@@ -78,44 +78,44 @@ if (Header) {
 }
 
 // SP(<=767px)のときだけヘッダーのフェードで消去
-const header = document.querySelector(".header");
-const mediaQuery = window.matchMedia("(max-width: 767px)");
-let lastScrollY = window.scrollY;
+// const header = document.querySelector(".header");
+// const mediaQuery = window.matchMedia("(max-width: 767px)");
+// let lastScrollY = window.scrollY;
 
-if (header) {
-  window.addEventListener(
-    "scroll",
-    () => {
-      const currentScrollY = window.scrollY;
+// if (header) {
+//   window.addEventListener(
+//     "scroll",
+//     () => {
+//       const currentScrollY = window.scrollY;
 
-      // スマホ幅以外では発動しない
-      if (!mediaQuery.matches) {
-        header.classList.remove("is-hide");
-        lastScrollY = currentScrollY;
-        return;
-      }
+//       // スマホ幅以外では発動しない
+//       if (!mediaQuery.matches) {
+//         header.classList.remove("is-hide");
+//         lastScrollY = currentScrollY;
+//         return;
+//       }
 
-      if (currentScrollY > 100 && currentScrollY > lastScrollY) {
-        // 下スクロール
-        header.classList.add("is-hide");
-      } else {
-        // 上スクロール、またはページ上部
-        header.classList.remove("is-hide");
-      }
+//       if (currentScrollY > 100 && currentScrollY > lastScrollY) {
+//         // 下スクロール
+//         header.classList.add("is-hide");
+//       } else {
+//         // 上スクロール、またはページ上部
+//         header.classList.remove("is-hide");
+//       }
 
-      lastScrollY = currentScrollY;
-    },
-    { passive: true }
-  );
+//       lastScrollY = currentScrollY;
+//     },
+//     { passive: true }
+//   );
 
-  mediaQuery.addEventListener("change", () => {
-    if (!mediaQuery.matches) {
-      header.classList.remove("is-hide");
-    }
+//   mediaQuery.addEventListener("change", () => {
+//     if (!mediaQuery.matches) {
+//       header.classList.remove("is-hide");
+//     }
 
-    lastScrollY = window.scrollY;
-  });
-}
+//     lastScrollY = window.scrollY;
+//   });
+// }
 
 // グローバルナビゲーション //////////////////////////////////////////////////////
 const Gnav_btn = document.getElementById("js-gnav_btn");
