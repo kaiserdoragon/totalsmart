@@ -432,9 +432,8 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           </div>
         </div>
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_03.jpg" alt="" width="283" height="178" decoding="async">
-        <p class="catch--txt">エアコンのクリーニングは<br class="is-hidden_pc">全てお任せ下さい。</p>
-        <p>エアコンの専門の技術スタッフが、<br class="is-hidden_sp">
-          エアコンの悩みを解消します！</p>
+        <p class="catch--txt">エアコンのクリーニング・掃除は<br class="is-hidden_pc">全てお任せ下さい。</p>
+        <p>専門の技術スタッフが、エアコンの悩みを解消します！</p>
       </div>
     </section>
 
