@@ -961,9 +961,11 @@
     margin-bottom: 5px;
   }
 
-  @include max-mq {
-    padding: 550px 0 120px;
+  @include tb-mq {
+    padding: 500px 0 120px;
+  }
 
+  @include max-mq {
     ul {
       grid-template-columns: repeat(auto-fit, 45%);
       row-gap: 30px;
