@@ -5,9 +5,16 @@
 // -------------------------------------
 function add_security_headers()
 {
-  if (!is_admin()) {
-    header('X-Content-Type-Options: nosniff');
-    header('X-Frame-Options: SAMEORIGIN');
+  if (is_admin() || headers_sent()) {
+    return;
+  }
+
+  header('X-Content-Type-Options: nosniff');
+  header('X-Frame-Options: SAMEORIGIN');
+  header('Referrer-Policy: strict-origin-when-cross-origin');
+
+  // HSTS は HTTPS 配信時のみ送信する。HTTPで送ってもブラウザ側では無効。
+  if (is_ssl()) {
     header('Strict-Transport-Security: max-age=31536000; includeSubDomains; preload');
   }
 }
@@ -48,6 +55,8 @@ function ts_disable_tinymce_wpemoji($plugins)
 {
   return is_array($plugins) ? array_diff($plugins, ['wpemoji']) : [];
 }
+
+
 
 // -------------------------------------
 //　oEmbed のJS（wp-embed.min.js）を読み込ませない
@@ -176,6 +185,357 @@ function edit_document_title_parts($title)
 add_filter('document_title_parts', 'edit_document_title_parts');
 
 
+
+
+
+// -------------------------------------
+// SEOフォールバック設定（SEOプラグイン未使用時にテーマ側で出力）
+// -------------------------------------
+
+if (!function_exists('ts_is_major_seo_plugin_active')) {
+  function ts_is_major_seo_plugin_active()
+  {
+    return (
+      defined('WPSEO_VERSION') // Yoast SEO
+      || defined('RANK_MATH_VERSION') // Rank Math
+      || defined('AIOSEO_VERSION') // All in One SEO
+      || defined('SEOPRESS_VERSION') // SEOPress
+      || defined('SLIM_SEO_VERSION') // Slim SEO
+      || class_exists('The_SEO_Framework\Load') // The SEO Framework
+      || function_exists('rank_math')
+    );
+  }
+}
+
+if (!function_exists('ts_normalize_meta_text')) {
+  function ts_normalize_meta_text($text, $limit = 160)
+  {
+    $text = wp_strip_all_tags(strip_shortcodes((string) $text));
+    $text = preg_replace('/\s+/u', ' ', $text);
+    $text = trim($text);
+
+    if ($text === '') {
+      return '';
+    }
+
+    if (function_exists('mb_strlen') && mb_strlen($text, 'UTF-8') > $limit) {
+      return rtrim(mb_substr($text, 0, $limit, 'UTF-8')) . '…';
+    }
+
+    return $text;
+  }
+}
+
+
+if (!function_exists('ts_get_custom_seo_title')) {
+  function ts_get_custom_seo_title($post_id)
+  {
+    $post_id = (int) $post_id;
+    if ($post_id <= 0) {
+      return '';
+    }
+
+    foreach (array('_ts_seo_title', 'ts_seo_title', '_seo_title', 'seo_title') as $meta_key) {
+      $value = get_post_meta($post_id, $meta_key, true);
+      if (!empty($value)) {
+        return ts_normalize_meta_text($value, 60);
+      }
+    }
+
+    return '';
+  }
+}
+
+if (!function_exists('ts_get_custom_seo_description')) {
+  function ts_get_custom_seo_description($post_id)
+  {
+    $post_id = (int) $post_id;
+    if ($post_id <= 0) {
+      return '';
+    }
+
+    foreach (array('_ts_seo_description', 'ts_seo_description', '_meta_description', 'meta_description', 'description') as $meta_key) {
+      $value = get_post_meta($post_id, $meta_key, true);
+      if (!empty($value)) {
+        return ts_normalize_meta_text($value, 160);
+      }
+    }
+
+    return '';
+  }
+}
+
+if (!function_exists('ts_is_noindex_singular')) {
+  function ts_is_noindex_singular($post_id = 0)
+  {
+    $post_id = $post_id ? (int) $post_id : (int) get_queried_object_id();
+    if ($post_id <= 0) {
+      return false;
+    }
+
+    return get_post_meta($post_id, '_ts_seo_noindex', true) === '1';
+  }
+}
+
+if (!function_exists('ts_get_fallback_meta_description')) {
+  function ts_get_fallback_meta_description()
+  {
+    if (is_search() || is_404()) {
+      return '';
+    }
+
+    if (is_singular()) {
+      $post_id = get_queried_object_id();
+
+      $custom_description = ts_get_custom_seo_description($post_id);
+      if ($custom_description !== '') {
+        return $custom_description;
+      }
+
+      if (has_excerpt($post_id)) {
+        return ts_normalize_meta_text(get_the_excerpt($post_id));
+      }
+
+      $post = get_post($post_id);
+      if ($post && !empty($post->post_content)) {
+        return ts_normalize_meta_text($post->post_content);
+      }
+    }
+
+    if (is_category() || is_tag() || is_tax()) {
+      $term = get_queried_object();
+      if ($term && !empty($term->description)) {
+        return ts_normalize_meta_text($term->description);
+      }
+    }
+
+    if (is_front_page() || is_home()) {
+      return ts_normalize_meta_text(get_bloginfo('description'));
+    }
+
+    return '';
+  }
+}
+
+if (!function_exists('ts_get_fallback_canonical_url')) {
+  function ts_get_fallback_canonical_url()
+  {
+    if (is_search() || is_404()) {
+      return '';
+    }
+
+    if (is_paged()) {
+      return get_pagenum_link(max(1, (int) get_query_var('paged')));
+    }
+
+    if (is_singular()) {
+      return get_permalink();
+    }
+
+    if (is_front_page()) {
+      return home_url('/');
+    }
+
+    if (is_home()) {
+      $page_for_posts = (int) get_option('page_for_posts');
+      return $page_for_posts ? get_permalink($page_for_posts) : home_url('/');
+    }
+
+    if (is_category() || is_tag() || is_tax()) {
+      $term_link = get_term_link(get_queried_object());
+      return is_wp_error($term_link) ? '' : $term_link;
+    }
+
+    if (is_post_type_archive()) {
+      $post_type = get_query_var('post_type');
+      if (is_array($post_type)) {
+        $post_type = reset($post_type);
+      }
+      return $post_type ? get_post_type_archive_link($post_type) : '';
+    }
+
+    if (is_author()) {
+      $author = get_queried_object();
+      return !empty($author->ID) ? get_author_posts_url($author->ID) : '';
+    }
+
+    return '';
+  }
+}
+
+
+// WordPress本体の singular canonical とテーマ側canonicalの重複を避ける。
+add_action('wp', function () {
+  if (!is_admin() && !ts_is_major_seo_plugin_active()) {
+    remove_action('wp_head', 'rel_canonical');
+  }
+}, 0);
+
+if (!function_exists('ts_add_seo_meta_box')) {
+  function ts_add_seo_meta_box()
+  {
+    $post_types = get_post_types(array('public' => true), 'names');
+    foreach ($post_types as $post_type) {
+      add_meta_box(
+        'ts_seo_settings',
+        'SEO設定',
+        'ts_render_seo_meta_box',
+        $post_type,
+        'normal',
+        'default'
+      );
+    }
+  }
+}
+add_action('add_meta_boxes', 'ts_add_seo_meta_box');
+
+if (!function_exists('ts_render_seo_meta_box')) {
+  function ts_render_seo_meta_box($post)
+  {
+    wp_nonce_field('ts_save_seo_meta_box', 'ts_seo_meta_box_nonce');
+
+    $seo_title       = get_post_meta($post->ID, '_ts_seo_title', true);
+    $seo_description = get_post_meta($post->ID, '_ts_seo_description', true);
+    $noindex         = get_post_meta($post->ID, '_ts_seo_noindex', true) === '1';
+?>
+    <p>
+      <label for="ts_seo_title"><strong>SEOタイトル</strong></label><br>
+      <input type="text" id="ts_seo_title" name="ts_seo_title" value="<?php echo esc_attr($seo_title); ?>" class="widefat" maxlength="70">
+      <span class="description">未入力の場合は通常のタイトルタグを使用します。目安は30〜60文字です。</span>
+    </p>
+    <p>
+      <label for="ts_seo_description"><strong>メタディスクリプション</strong></label><br>
+      <textarea id="ts_seo_description" name="ts_seo_description" class="widefat" rows="4" maxlength="180"><?php echo esc_textarea($seo_description); ?></textarea>
+      <span class="description">未入力の場合は抜粋または本文冒頭から自動生成します。目安は80〜160文字です。</span>
+    </p>
+    <p>
+      <label>
+        <input type="checkbox" name="ts_seo_noindex" value="1" <?php checked($noindex); ?>>
+        このページを検索結果に表示させない（noindex）
+      </label>
+    </p>
+  <?php
+  }
+}
+
+if (!function_exists('ts_save_seo_meta_box')) {
+  function ts_save_seo_meta_box($post_id)
+  {
+    if (
+      !isset($_POST['ts_seo_meta_box_nonce'])
+      || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['ts_seo_meta_box_nonce'])), 'ts_save_seo_meta_box')
+    ) {
+      return;
+    }
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+      return;
+    }
+
+    if (!current_user_can('edit_post', $post_id)) {
+      return;
+    }
+
+    $seo_title = isset($_POST['ts_seo_title'])
+      ? ts_normalize_meta_text(sanitize_text_field(wp_unslash($_POST['ts_seo_title'])), 60)
+      : '';
+
+    $seo_description = isset($_POST['ts_seo_description'])
+      ? ts_normalize_meta_text(sanitize_textarea_field(wp_unslash($_POST['ts_seo_description'])), 160)
+      : '';
+
+    if ($seo_title !== '') {
+      update_post_meta($post_id, '_ts_seo_title', $seo_title);
+    } else {
+      delete_post_meta($post_id, '_ts_seo_title');
+    }
+
+    if ($seo_description !== '') {
+      update_post_meta($post_id, '_ts_seo_description', $seo_description);
+    } else {
+      delete_post_meta($post_id, '_ts_seo_description');
+    }
+
+    if (!empty($_POST['ts_seo_noindex'])) {
+      update_post_meta($post_id, '_ts_seo_noindex', '1');
+    } else {
+      delete_post_meta($post_id, '_ts_seo_noindex');
+    }
+  }
+}
+add_action('save_post', 'ts_save_seo_meta_box');
+
+if (!function_exists('ts_output_website_schema_json_ld')) {
+  function ts_output_website_schema_json_ld()
+  {
+    if (is_admin() || ts_is_major_seo_plugin_active() || !is_front_page()) {
+      return;
+    }
+
+    $schema = array(
+      '@context' => 'https://schema.org',
+      '@type'    => 'WebSite',
+      'url'      => home_url('/'),
+      'name'     => get_bloginfo('name'),
+    );
+
+    $description = ts_normalize_meta_text(get_bloginfo('description'), 160);
+    if ($description !== '') {
+      $schema['description'] = $description;
+    }
+
+    $schema['potentialAction'] = array(
+      '@type'       => 'SearchAction',
+      'target'      => home_url('/?s={search_term_string}'),
+      'query-input' => 'required name=search_term_string',
+    );
+
+    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+  }
+}
+add_action('wp_head', 'ts_output_website_schema_json_ld', 20);
+
+if (!function_exists('ts_output_fallback_seo_meta')) {
+  function ts_output_fallback_seo_meta()
+  {
+    if (is_admin() || ts_is_major_seo_plugin_active()) {
+      return;
+    }
+
+    $description = ts_get_fallback_meta_description();
+    if ($description !== '') {
+      echo '<meta name="description" content="' . esc_attr($description) . '">' . "\n";
+    }
+
+    $canonical = ts_get_fallback_canonical_url();
+    if ($canonical !== '') {
+      echo '<link rel="canonical" href="' . esc_url($canonical) . '">' . "\n";
+    }
+  }
+}
+add_action('wp_head', 'ts_output_fallback_seo_meta', 1);
+
+if (!function_exists('ts_adjust_robots_meta')) {
+  function ts_adjust_robots_meta($robots)
+  {
+    if (is_admin() || ts_is_major_seo_plugin_active()) {
+      return $robots;
+    }
+
+    $robots['max-image-preview'] = 'large';
+    $robots['max-snippet']       = -1;
+    $robots['max-video-preview'] = -1;
+
+    if (is_search() || is_404() || (is_singular() && ts_is_noindex_singular())) {
+      unset($robots['index']);
+      $robots['noindex'] = true;
+      $robots['follow']  = true;
+    }
+
+    return $robots;
+  }
+}
+add_filter('wp_robots', 'ts_adjust_robots_meta', 20);
 
 
 
@@ -770,7 +1130,7 @@ add_action(
 
     // JavaScriptコードをバッファリング開始
     ob_start();
-?>
+  ?>
   <script>
     window.addEventListener(
       'load', // ページ全体の読み込み完了後に実行
