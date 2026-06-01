@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: 業務用エアコン
+Template Name: 業務用エアコンクリーニング・修理
 Template Post Type:service
 */
 
@@ -24,7 +24,7 @@ $raw_excerpt = $post_id ? get_the_excerpt($post_id) : '';
 $raw_content = $post_id ? get_post_field('post_content', $post_id) : '';
 
 $default_description = sprintf(
-  '%sのクリーニング・修理・取付なら%s。愛知・岐阜・三重・静岡に対応し、業務用エアコンのクリーニング・修理・取付のサービスを行っています。',
+  '%sのクリーニング・掃除・修理なら%s。愛知・岐阜・三重・静岡の店舗・オフィス・クリニックに対応。カビ臭・汚れ・水漏れ・効きの悪さも無料見積りで確認します。',
   $service_title ?: '業務用エアコン',
   $site_name
 );
@@ -54,9 +54,14 @@ if ('' === $service_description) {
 
 //タイトルタグ生成
 $seo_title = sprintf(
-  '%sのクリーニング・修理・取付 | %s',
+  '%sのクリーニング・掃除・修理 | %s',
   $service_title ?: '業務用エアコン',
   $site_name
+);
+
+$service_schema_name = sprintf(
+  '%sのクリーニング・掃除・修理',
+  $service_title ?: '業務用エアコン'
 );
 
 $has_seo_plugin = (
@@ -75,10 +80,14 @@ if (!$has_seo_plugin) {
     return $document_title;
   }, 20);
 
-  add_action('wp_head', function () {
+  add_action('wp_head', function () use ($service_description, $service_url) {
     if (!is_singular('service')) {
       return;
     }
+    echo '<meta name="description" content="' . esc_attr($service_description) . '">' . "
+";
+    echo '<link rel="canonical" href="' . esc_url($service_url) . '">' . "
+";
     echo '<meta name="robots" content="max-image-preview:large">' . "
 ";
   }, 20);
@@ -99,8 +108,8 @@ get_header('service');
     $service_schema = [
       '@type'       => 'Service',
       '@id'         => $service_id,
-      'name'        => $service_title,
-      'serviceType' => $service_title,
+      'name'        => $service_schema_name,
+      'serviceType' => '業務用エアコンクリーニング・業務用エアコン掃除・業務用エアコン修理',
       'description' => $service_description,
       'url'         => $service_url,
       'provider'    => [
@@ -165,7 +174,7 @@ get_header('service');
           '@type'       => 'WebPage',
           '@id'         => $webpage_id,
           'url'         => $service_url,
-          'name'        => $service_title,
+          'name'        => $service_schema_name,
           'description' => $service_description,
           'isPartOf'    => [
             '@id' => $website_id,
@@ -202,14 +211,14 @@ get_header('service');
     <div class="camera_mv--contents container -lg">
       <div class="camera_mv--block">
         <span class="camera_mv--area">愛知・岐阜・三重・静岡対応</span>
-        <p class="camera_mv--lead">業務用エアコンのトラブルをまとめて対応いたします。</p>
+        <p class="camera_mv--lead">業務用エアコンのクリーニング・掃除・修理を<br class="is-hidden_sp">まとめて対応いたします。</p>
         <h1 class="camera_mv--ttl">
-          <span class="camera_mv--txt"><span class="camera_mv--strong">業務用エアコン</span>のクリーニング</span>
-          <span class="camera_mv--txt">修理・取付を全て解決！！</span>
+          <span class="camera_mv--txt"><span class="camera_mv--strong">業務用エアコン</span>の</span>
+          <span class="camera_mv--txt">クリーニング・掃除・修理を</span>
+          <span class="camera_mv--txt">全て解決！！</span>
         </h1>
         <p class="camera_mv--supplement">
-          店舗・オフィスなど環境に合わせて、<br>
-          修理・洗浄・点検まで最適な方法をご提案
+          店舗・オフィスなど環境に合わせて、<br class="is-hidden_sp">掃除・洗浄・点検・修理まで最適な方法をご提案
         </p>
         <ul>
           <li>出張費・お見積り<br><span>無料</span></li>
@@ -219,7 +228,7 @@ get_header('service');
         </ul>
       </div>
       <div class="camera_mv--image">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_catch_aircon.png'); ?>" alt="業務用エアコン" width="517" height="635" loading="eager" fetchpriority="high" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_catch_aircon.png'); ?>" alt="業務用エアコンクリーニング・掃除・修理サービス" width="517" height="635" loading="eager" fetchpriority="high" decoding="async">
       </div>
     </div>
     <img class="camera_mv--bg" src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_bg.jpg'); ?>" alt="" width="1920" height="750" loading="eager" fetchpriority="high" decoding="async">
@@ -232,7 +241,7 @@ get_header('service');
         このような<b><span>お</span><span>悩</span><span>み</span></b>はありませんか？？
       </h2>
       <p class="aircon_lead--txt">
-        業務用エアコンの不調は、クリーニングで改善する場合と<br class="is-hidden_sp">
+        業務用エアコンの不調は、クリーニング・掃除で改善する場合と<br class="is-hidden_sp">
         修理が必要な場合とがあります。<br>
         現在の症状に近いものをご確認ください。<br>
       </p>
@@ -246,14 +255,14 @@ get_header('service');
           </li>
         </ul>
         <div class="aircon_lead--catch">
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/aircon_lead_catch.png'); ?>" alt="業務用エアコン" width="562" height="351" loading="eager" fetchpriority="high" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/aircon_lead_catch.png'); ?>" alt="業務用エアコンのクリーニングと修理の相談イメージ" width="562" height="351" loading="eager" fetchpriority="high" decoding="async">
         </div>
         <div class="tab_change--content -show" id="tab-1" role="tabpanel" aria-labelledby="tab-label-1" tabindex="0">
           <section class="aircon_lead--inner">
             <h3>クリーニングが必要な場合</h3>
             <p>
               内部の汚れやカビ、ホコリ詰まりが原因のことがあります。<br>
-              分解洗浄によって風量・ニオイ・効きの改善が期待できます。
+              分解洗浄や内部掃除によって風量・ニオイ・効きの改善が期待できます。
             </p>
             <ul>
               <li>カビ臭い、嫌なニオイがする</li>
@@ -278,7 +287,7 @@ get_header('service');
               <li>水漏れしている</li>
               <li>異音がする</li>
               <li>室外機が動かない</li>
-              <li>室外機が動かない</li>
+              <li>エラーコードが表示される</li>
             </ul>
           </section>
         </div>
@@ -289,13 +298,13 @@ get_header('service');
   <section class="aircon_middle bg_gray">
     <div class="container">
       <h2>
-        「クリーニング」か「修理」か<br class="is-hidden_sp">
+        「クリーニング・掃除」か「修理」か<br class="is-hidden_sp">
         分からない場合もご相談ください
       </h2>
       <p>
         故障なのか、内部の汚れが原因なのかは、<br class="is-hidden_sp">
         見た目だけでは判断しづらいことも少なくありません。<br>
-        弊社では修理とクリーニングの両方に対応しているため、<br class="is-hidden_sp">
+        弊社では業務用エアコンの掃除・洗浄と修理の両方に対応しているため、<br class="is-hidden_sp">
         <span>現地の状態を確認したうえで最適な方法をご案内できます。</span><br>
       </p>
     </div>
@@ -306,21 +315,37 @@ get_header('service');
       <div class="u-txt_center">
         <h2 class="aircon_solution--ttl">
           <span>業務用エアコン</span>の<br>
-          クリーニング・修理をまとめて対応します
+          クリーニング・掃除・修理をまとめて対応します
         </h2>
       </div>
       <p class="aircon_solution--lead">
-        業務用エアコンの「クリーニング」と「修理」の両方に対応しています。<br>
+        業務用エアコンの「クリーニング・掃除」と「修理」の両方に対応しています。<br>
         不具合を直すだけでなく、汚れやニオイ、<br class="is-hidden_sp">
-        効率低下まで含めて総合的にサポートできるのが強みです。<br>
+        効率低下や衛生面まで含めて総合的にサポートできるのが強みです。<br>
         「とりあえず見てほしい」「原因がわからない」という段階でも問題ありません。<br>
-        症状や設置状況を確認し、修理・クリーニングのどちらが適しているか、<br class="is-hidden_sp">
+        症状や設置状況を確認し、掃除・洗浄・修理のどれが適しているか、<br class="is-hidden_sp">
         わかりやすくご説明いたします。
       </p>
       <div class="aircon_solution--box">
         <div class="aircon_solution--item">
-          <h3>業務用エアコンクリーニング</h3>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/solution_01_aircon.png'); ?>" alt="" width="355" height="294" loading="lazy" decoding="async">
+          <h3>業務用エアコンクリーニング・掃除</h3>
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/solution_01_aircon.png'); ?>" alt="業務用エアコンを分解洗浄しているイメージ" width="355" height="294" loading="lazy" decoding="async">
+          <p>
+            業務用エアコンの内部には、
+            ホコリ、カビ、油分などが
+            蓄積しやすく、ニオイや効きの悪さ、
+            衛生面の不安につながります。<br>
+            分解洗浄や内部掃除によって
+            汚れの原因にしっかり対応し、
+            清潔な空調環境へ整えます。
+          </p>
+          <a href="<?php echo esc_url(home_url('/service/aircon/#symptoms_cleaning')); ?>">
+            クリーニングで改善できる症状を知る
+          </a>
+        </div>
+        <div class="aircon_solution--item -orange">
+          <h3>業務用エアコン修理</h3>
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/solution_02_aircon.png'); ?>" alt="業務用エアコン修理の点検イメージ" width="355" height="294" loading="lazy" decoding="async">
           <p>
             冷暖房が効かない、水漏れする、
             異音がする、電源が入らないなど、
@@ -329,22 +354,6 @@ get_header('service');
             急なトラブルにもできる限り
             迅速に対応し、原因を確認したうえで
             必要な修理内容をご案内します。
-          </p>
-          <a href="<?php echo esc_url(home_url('/service/aircon/#symptoms_cleaning')); ?>">
-            クリーニングで改善できる症状を知る
-          </a>
-        </div>
-        <div class="aircon_solution--item -orange">
-          <h3>業務用エアコン修理</h3>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/solution_02_aircon.png'); ?>" alt="" width="355" height="294" loading="lazy" decoding="async">
-          <p>
-            業務用エアコンの内部には、
-            ホコリ、カビ、油分などが
-            蓄積しやすく、ニオイや効きの悪さ、
-            衛生面の不安につながります。<br>
-            分解洗浄によって内部まで
-            しっかり清掃し、快適で清潔な
-            空調環境へ整えます。
           </p>
           <a href="<?php echo esc_url(home_url('/service/aircon/#symptoms_shuuri')); ?>">
             修理で改善できる症状を知る
@@ -357,25 +366,25 @@ get_header('service');
   <section class="aircon_symptoms sec bg_skyblue" id="symptoms_cleaning">
     <div class="container">
       <h2 class="aircon_symptoms--ttl">
-        <span>業務用エアコンクリーニング</span>で<br class="is-hidden_sp">改善が期待できる症状
+        <span>業務用エアコンクリーニング・掃除</span>で<br class="is-hidden_sp">改善が期待できる症状
       </h2>
       <p class="aircon_symptoms--lead">
         汚れが蓄積した業務用エアコンは、見た目だけでなく、空気環境や冷暖房効率にも影響します。<br>
-        定期的なクリーニングによって、快適性の維持と設備負担の軽減が期待できます。
+        定期的なクリーニング・掃除によって、快適性の維持と設備負担の軽減が期待できます。
       </p>
       <div class="aircon_symptoms--contents">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_01.png'); ?>" alt="" width="240" height="240" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_01.png'); ?>" alt="業務用エアコンのカビ臭いニオイのイメージ" width="240" height="240" loading="lazy" decoding="async">
         <div>
           <h3>カビ臭い・嫌なニオイがする</h3>
           <p>
             内部にたまったカビや汚れが、ニオイの原因になっている
-            ことがあります。分解洗浄によって、ニオイの元にしっかり
+            ことがあります。分解洗浄や内部掃除によって、ニオイの元にしっかり
             アプローチします。
           </p>
         </div>
       </div>
       <div class="aircon_symptoms--contents">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_02.png'); ?>" alt="" width="240" height="240" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_02.png'); ?>" alt="業務用エアコンの吹き出し口汚れのイメージ" width="240" height="240" loading="lazy" decoding="async">
         <div>
           <h3>吹き出し口や内部の汚れが気になる</h3>
           <p>
@@ -386,7 +395,7 @@ get_header('service');
         </div>
       </div>
       <div class="aircon_symptoms--contents">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_03.png'); ?>" alt="" width="240" height="240" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_03.png'); ?>" alt="業務用エアコンの効きや風量低下のイメージ" width="240" height="240" loading="lazy" decoding="async">
         <div>
           <h3>効きが悪い・風量が弱い</h3>
           <p>
@@ -397,13 +406,13 @@ get_header('service');
         </div>
       </div>
       <div class="aircon_symptoms--contents">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_04.png'); ?>" alt="" width="240" height="240" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_04.png'); ?>" alt="業務用エアコンの電気代や設備負担のイメージ" width="240" height="240" loading="lazy" decoding="async">
         <div>
           <h3>電気代や設備負担が気になる</h3>
           <p>
             汚れたまま使用を続けると、効率の低下から余計な負荷が
             かかることがあります。<br>
-            定期的なクリーニングは、快適な使用環境の維持にもつながります。
+            定期的なクリーニング・掃除は、快適な使用環境の維持にもつながります。
           </p>
         </div>
       </div>
@@ -420,46 +429,46 @@ get_header('service');
         気になる症状がある場合は、早めの点検・修理がおすすめです。
       </p>
       <div class="aircon_symptoms--contents">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_01.png'); ?>" alt="" width="240" height="240" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_01.png'); ?>" alt="業務用エアコンが冷えない症状のイメージ" width="240" height="240" loading="lazy" decoding="async">
         <div>
-          <h3>カビ臭い・嫌なニオイがする</h3>
+          <h3>冷えない・暖まらない</h3>
           <p>
-            内部にたまったカビや汚れが、ニオイの原因になっている
-            ことがあります。分解洗浄によって、ニオイの元にしっかり
-            アプローチします。
+            設定温度を変えても冷暖房が効きにくい場合は、部品不良や
+            冷媒系統の不具合などが関係していることがあります。
+            現地で原因を確認し、必要な修理をご案内します。
           </p>
         </div>
       </div>
       <div class="aircon_symptoms--contents">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_02.png'); ?>" alt="" width="240" height="240" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_02.png'); ?>" alt="業務用エアコンの水漏れ症状のイメージ" width="240" height="240" loading="lazy" decoding="async">
         <div>
-          <h3>吹き出し口や内部の汚れが気になる</h3>
+          <h3>水漏れしている</h3>
           <p>
-            吹き出し口の黒ずみや内部の汚れは、衛生面でも気になる
-            ポイントです。店舗やクリニックなど、空気環境を重視したい
-            現場にもおすすめです。
+            ドレン詰まりや部品の劣化などにより、室内機から水が漏れる
+            ことがあります。店舗や事務所への影響を抑えるため、
+            早めの点検と修理が重要です。
           </p>
         </div>
       </div>
       <div class="aircon_symptoms--contents">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_03.png'); ?>" alt="" width="240" height="240" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_03.png'); ?>" alt="業務用エアコンの異音症状のイメージ" width="240" height="240" loading="lazy" decoding="async">
         <div>
-          <h3>効きが悪い・風量が弱い</h3>
+          <h3>異音がする</h3>
           <p>
-            ホコリや汚れがたまることで、エアコン本来の性能が
-            発揮しにくくなることがあります。<br>
-            内部洗浄によって、風量や効きの改善が期待できます。
+            運転中に普段と違う音がする場合は、ファンやモーターなどの
+            不具合が起きている可能性があります。<br>
+            放置せず、症状が軽いうちに確認することをおすすめします。
           </p>
         </div>
       </div>
       <div class="aircon_symptoms--contents">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_04.png'); ?>" alt="" width="240" height="240" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_04.png'); ?>" alt="業務用エアコンの電源不良症状のイメージ" width="240" height="240" loading="lazy" decoding="async">
         <div>
-          <h3>電気代や設備負担が気になる</h3>
+          <h3>電源が入らない・途中で止まる</h3>
           <p>
-            汚れたまま使用を続けると、効率の低下から余計な負荷が
-            かかることがあります。<br>
-            定期的なクリーニングは、快適な使用環境の維持にもつながります。
+            電源が入らない、運転中に停止する、エラーコードが出る場合は、
+            電気系統や基板などの確認が必要なことがあります。<br>
+            業務への影響を抑えるため、状況に応じて修理対応します。
           </p>
         </div>
       </div>
@@ -472,7 +481,7 @@ get_header('service');
         選ばれる<span>4</span>つの理由
       </h2>
       <p class="aircon_reason--lead">
-        業務用エアコンは、故障時のスピードだけでなく、対応の丁寧さや提案の正確さも重要です。<br>
+        業務用エアコンは、掃除・洗浄の品質だけでなく、故障時のスピードや提案の正確さも重要です。<br>
         多くのお客様にご相談いただいている理由をご紹介します。
       </p>
       <div class="container camera_reason--inner">
@@ -541,7 +550,7 @@ get_header('service');
               定期的なクリーニングは必要だと実感しました。<br>
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_01_aircon.jpg'); ?>" alt="" width="500" height="348" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_01_aircon.jpg'); ?>" alt="業務用エアコンの施工事例写真" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
       <article>
@@ -565,14 +574,14 @@ get_header('service');
           <dl>
             <dt>美容院<br class="is-hidden_pc">【業務用エアコンクリーニング】</dt>
             <dd>
-              郊外の仮設資材置き場で、夜間に銅線ケーブルなどの盗難被害が出ていました。<br>
-              すぐに監視カメラを設置したかったものの、現場には100V電源もインターネット回線もなく、通常のカメラでは対応できない状態でした。<br>
-              お問い合わせをしてから最短で現場まで来てもらって、その日のうちに稼働ができました。<br>
-              スマートフォンからいつでも現地の状況を遠隔監視できるようになりました。<br>
-              カメラの存在自体が強力な威嚇となり、導入以降は盗難被害が一切発生していません。
+              店内の業務用エアコンの吹き出し口に黒い汚れが見えるようになり、お客様の目に触れる場所なので気になっていました。<br>
+              自分たちで表面の掃除はしていましたが、内部の汚れまでは対応できず、専門業者に相談しました。<br>
+              現地で状態を確認してもらい、分解洗浄が必要な理由や作業内容を分かりやすく説明してもらえました。<br>
+              作業後はニオイや見た目の不安が軽くなり、定期的な業務用エアコン掃除の必要性を感じました。<br>
+              カメラの存在自体が強力な威嚇となり、クリーニング後は吹き出し口の汚れが目立ちにくくなり、店内の空気も清潔に保ちやすくなりました。
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_03_aircon.jpg'); ?>" alt="無電源現場での遠隔監視導入事例" width="500" height="348" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_03_aircon.jpg'); ?>" alt="美容院の業務用エアコンクリーニング事例" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
       <article>
@@ -595,10 +604,10 @@ get_header('service');
 
   <section class="camera_flow -border sec" id="aircon_flow">
     <div class="container -md">
-      <h2>導入・施工までの流れ</h2>
+      <h2>ご依頼・作業までの流れ</h2>
       <p>
-        初めてご依頼の方も、既存設備の入れ替えをお考えの方も、まずはお気軽にご連絡ください。<br>
-        以下のステップで、現場に最適なシステムを丁寧に構築します。
+        初めて業務用エアコンのクリーニング・掃除をご依頼の方も、修理が必要か分からない方も、まずはお気軽にご連絡ください。<br>
+        以下のステップで、現場の状態に合わせた作業内容をご案内します。
       </p>
       <article>
         <p class="camera_flow--step">
@@ -609,7 +618,7 @@ get_header('service');
           <h3>お問い合わせ・ご相談（無料）</h3>
           <p>
             フォームまたはお電話にてご連絡ください。<br>
-            現場の種類・現在の設備状況・お悩みの概要などをお聞きします。<br>
+            設置場所・台数・現在の症状・お悩みの概要などをお聞きします。<br>
             「何から話せばいいかわからない」という段階でも歓迎です。<br>
             まずは気軽にお声がけください。
           </p>
@@ -623,10 +632,10 @@ get_header('service');
         <div class="camera_flow--inner">
           <h3>無料現地調査</h3>
           <p>
-            実際に現場へ伺い、設置環境・既存配線の状況・死角になりやすい箇所などを
+            実際に現場へ伺い、業務用エアコンの設置状況・汚れ・水漏れ・異音などを
             詳しく確認します。<br>
             東海4県（愛知・岐阜・三重・静岡）への出張費は無料です。<br>
-            現場を見ることで、最適解が見えてきます。
+            現場を見ることで、掃除・洗浄・修理のどれが適しているか判断しやすくなります。
           </p>
         </div>
       </article>
@@ -638,10 +647,10 @@ get_header('service');
         <div class="camera_flow--inner">
           <h3>ご提案・無料お見積り</h3>
           <p>
-            現地調査の結果をもとに、現場に最適な機器構成と設置プランをご提案します。<br>
-            お見積りは無料で、複数のプラン（例：コスト重視プラン・高画質プランなど）
-            を比較提示することも可能です。<br>
-            「こんな提案は想定していなかった」というご意見をよくいただきます。
+            現地調査の結果をもとに、現場に適したクリーニング・掃除・修理内容をご提案します。<br>
+            お見積りは無料で、作業内容や台数に応じた費用の目安を
+            分かりやすくご案内します。<br>
+            必要な作業だけをご案内し、ご納得いただいてから進めます。
           </p>
         </div>
       </article>
@@ -651,11 +660,11 @@ get_header('service');
           04
         </p>
         <div class="camera_flow--inner">
-          <h3>ご契約・設置スケジュールの確定</h3>
+          <h3>ご契約・作業スケジュールの確定</h3>
           <p>
             ご提案内容にご納得いただけましたら、ご契約となります。<br>
-            施工日程は現場の稼働状況に合わせて柔軟に調整します。<br>
-            工場や店舗の営業時間外の施工にも対応しています。
+            作業日程は現場の稼働状況に合わせて柔軟に調整します。<br>
+            工場や店舗の営業時間外の作業にも対応しています。
           </p>
         </div>
       </article>
@@ -665,11 +674,11 @@ get_header('service');
           05
         </p>
         <div class="camera_flow--inner">
-          <h3>機器設置・動作確認</h3>
+          <h3>クリーニング・修理作業</h3>
           <p>
-            専門スタッフが現場で機器を設置し、映像確認・録画設定・<br>
-            リモートアクセスの設定まで丁寧に行います。<br>
-            設置後は、実際の映像を確認しながら動作確認を実施し、
+            専門スタッフが現場で養生を行い、分解洗浄・内部掃除・修理など、<br>
+            状況に応じた作業を丁寧に行います。<br>
+            作業後は、汚れの状態や運転状況を確認し、
             問題がないことを確かめてから引き渡します。
           </p>
         </div>
@@ -680,11 +689,11 @@ get_header('service');
           06
         </p>
         <div class="camera_flow--inner">
-          <h3>操作説明・アフターサポート</h3>
+          <h3>作業後の確認・アフターサポート</h3>
           <p>
-            設置後の操作方法を担当者様にわかりやすくご説明します。<br>
-            「映像の確認方法がわからない」「追加でカメラを増設したい」<br>
-            「故障かもしれない」など、導入後のご相談にも対応しています。<br>
+            作業後の状態や今後の注意点を担当者様にわかりやすくご説明します。<br>
+            「またニオイが気になる」「定期的に掃除したい」<br>
+            「故障かもしれない」など、作業後のご相談にも対応しています。<br>
             長期的なパートナーとしてお付き合いしています。
           </p>
         </div>
@@ -700,7 +709,7 @@ get_header('service');
         ご不明な点は、お気軽にお問い合わせください。
       </p>
       <dl>
-        <dt>修理かクリーニングか分からないのですが、相談できますか？</dt>
+        <dt>修理かクリーニング・掃除か分からないのですが、相談できますか？</dt>
         <dd>
           はい、可能です。<br>
           症状をお伺いしたうえで、必要に応じて現地確認を行い、適した方法をご案内します。
@@ -715,7 +724,7 @@ get_header('service');
           事前に作業内容と費用をご説明し、ご納得いただいてから作業を行います。<br>
           ご説明のないまま作業を進めることはありません。
         </dd>
-        <dt>複数台まとめて依頼できますか？</dt>
+        <dt>業務用エアコンを複数台まとめて依頼できますか？</dt>
         <dd>
           はい、複数台のご依頼にも対応しています。<br>
           店舗や事務所など、台数が多い場合もお気軽にご相談ください。
@@ -737,7 +746,7 @@ get_header('service');
       </h2>
       <p>
         愛知県・岐阜県・三重県・静岡県を中心に、<br class="is-hidden_sp">
-        業務用エアコンのクリーニング・修理に対応しています。<br>
+        業務用エアコンのクリーニング・掃除・修理に対応しています。<br>
         急な故障による営業への影響を抑えたい場合も、ニオイや汚れが気になるため早めに洗浄したい場合も、
         地域に応じて迅速にご案内いたします。<br>
         店舗・オフィス・クリニック・各種施設など、<br class="is-hidden_sp">
@@ -753,7 +762,7 @@ get_header('service');
           空調トラブルが生産や来店環境に直結しやすい地域だからこそ、<br class="is-hidden_sp">
           「冷えない」「止まった」「水漏れした」といった修理対応はもちろん、<br class="is-hidden_sp">
           工場事務所や店舗の衛生管理・快適性維持を<br class="is-hidden_sp">
-          目的としたクリーニングまで、現場に合わせてご案内します。<br>
+          目的としたクリーニング・掃除まで、現場に合わせてご案内します。<br>
         </p>
       </article>
       <article>
@@ -763,9 +772,9 @@ get_header('service');
           岐阜市、大垣市、各務原市などの<br class="is-hidden_sp">
           市街地・工業系エリアに加え、<br class="is-hidden_sp">
           観光・宿泊需要のある飛騨高山や下呂方面も含めて、<br class="is-hidden_sp">
-          業務用エアコンのクリーニング・修理のご相談に対応しています。<br>
+          業務用エアコンのクリーニング・掃除・修理のご相談に対応しています。<br>
           工場・事務所の安定稼働を重視した修理対応から、<br class="is-hidden_sp">
-          宿泊施設・店舗の快適性やニオイ対策を意識したクリーニングまで、<br class="is-hidden_sp">
+          宿泊施設・店舗の快適性やニオイ対策を意識したクリーニング・掃除まで、<br class="is-hidden_sp">
           地域特性に合わせて柔軟に対応します。
         </p>
       </article>
@@ -776,7 +785,7 @@ get_header('service');
           津市、四日市市、鈴鹿市、伊勢市などを中心に、<br class="is-hidden_sp">
           業務用エアコンのトラブルやメンテナンスのご相談を承っています。<br>
           工場・事業所向けの迅速な修理対応と、<br class="is-hidden_sp">
-          宿泊施設・店舗向けの定期クリーニングの両方に需要があります。<br>
+          宿泊施設・店舗向けの定期クリーニング・掃除の両方に需要があります。<br>
           空調が止められない現場にも、空気環境を整えたい現場にも、<br class="is-hidden_sp">
           状況に応じて最適な方法をご提案します。<br>
         </p>
@@ -789,7 +798,7 @@ get_header('service');
           業務用エアコンのクリーニング・修理に対応しています。<br>
           静岡県は製造業の集積が厚い一方で、<br class="is-hidden_sp">
           観光・サービス関連施設も多い県です。<br>
-          「急な故障への迅速な修理」と「快適性を維持するための内部洗浄」の<br class="is-hidden_sp">
+          「急な故障への迅速な修理」と「快適性を維持するための内部洗浄・掃除」の<br class="is-hidden_sp">
           両方が重要な県です。<br>
           地域や業種に合わせて、必要な対応をご案内します。
         </p>

@@ -244,16 +244,11 @@
     color: #fff;
 
     @include tb-mq {
-      font-size: var(--fz55);
+      font-size: var(--fz35);
     }
 
     @include max-mq {
-      font-size: var(--fz70);
       text-align: center;
-    }
-
-    @media (width <= 480px) {
-      font-size: 13vw;
     }
   }
 
@@ -265,8 +260,12 @@
     color: #fff;
     background: #00195b;
 
-    &:first-of-type {
+    &:not(:last-child) {
       margin-bottom: 15px;
+    }
+
+    @include max-mq {
+      width: auto;
     }
   }
 
@@ -290,6 +289,8 @@
     border-radius: 1000px;
 
     @include max-mq {
+      display: block;
+      margin: 0 auto 30px;
       font-size: var(--fz22);
     }
   }
@@ -303,7 +304,7 @@
 
     @include max-mq {
       margin-bottom: 30px;
-      font-size: var(--fz25);
+      font-size: var(--fz23);
       text-align: center;
     }
   }
@@ -320,6 +321,10 @@
     text-align: center;
     border-top: 3px solid #00195b;
     border-bottom: 3px solid #00195b;
+
+    @include max-mq {
+      font-size: var(--fz25);
+    }
   }
 
   //.camera_mv--image{
@@ -337,28 +342,31 @@
   // .camera_mv--bg
   &--bg {
     width: 100%;
-    height: 100vh;
-    aspect-ratio: 1950 / 750;
+    aspect-ratio: 1950 / 1300;
     object-fit: cover;
 
     @media (width <= 1480px) {
-      height: 120vh;
+      aspect-ratio: 1950 / 1500;
     }
 
     @media (width <= 1380px) {
-      height: 95vh;
+      aspect-ratio: 1950 / 2000;
     }
 
     @include tb-mq {
-      height: 85vh;
+      aspect-ratio: 1950 / 3000;
     }
 
     @include max-mq {
-      height: 1600px;
+      aspect-ratio: 1950 / 4000;
+    }
+
+    @media (width <= 580px) {
+      aspect-ratio: 1950 / 5000;
     }
 
     @media (width <= 480px) {
-      height: 1500px;
+      aspect-ratio: 1950 / 7000;
     }
   }
 
@@ -1127,20 +1135,6 @@
 //  業務用エアコン特化ページ　専用
 // ---------------------------------------------
 
-.aircon_mv {
-  @include max-mq {
-    .camera_mv--ttl {
-      font-size: var(--fz60);
-    }
-  }
-
-  @media (width <= 480px) {
-    .camera_mv--bg {
-      height: 1700px;
-    }
-  }
-}
-
 .aircon_lead {
   position: relative;
 
@@ -1178,7 +1172,14 @@
     }
 
     @include max-mq {
-      // 767px以下
+      font-size: var(--fz35);
+
+      span {
+        &::before {
+          width: 7px;
+          height: 7px;
+        }
+      }
     }
   }
 
@@ -1188,6 +1189,10 @@
     font-size: var(--fz25);
     font-weight: 600;
     text-align: center;
+
+    @include max-mq {
+      font-size: var(--fz20);
+    }
   }
 
   // .aircon_lead--catch
@@ -1444,7 +1449,7 @@
 
     @include max-mq {
       font-size: var(--fz35);
-      background: linear-gradient(to bottom, transparent 0%, transparent 55%, #fff100 55%, #fff100 100%);
+      background: linear-gradient(to bottom, transparent 0%, transparent 75%, #fff100 75%, #fff100 100%);
     }
   }
 
@@ -1539,6 +1544,11 @@
     @include tb-mq {
       p {
         width: 90%;
+      }
+
+      a {
+        width: 90%;
+        padding: 15px;
       }
     }
   }
