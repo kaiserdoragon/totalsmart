@@ -20,46 +20,27 @@ $service_image_url   = $post_id && has_post_thumbnail($post_id)
   : '';
 $post_slug = $post_id ? get_post_field('post_name', $post_id) : 'service';
 
-$raw_excerpt = $post_id ? get_the_excerpt($post_id) : '';
-$raw_content = $post_id ? get_post_field('post_content', $post_id) : '';
-
-$default_description = sprintf(
-  '%sのクリーニング・掃除・修理なら%s。愛知・岐阜・三重・静岡の店舗・オフィス・クリニックに対応。カビ臭・汚れ・水漏れ・効きの悪さも無料見積りで確認します。',
-  $service_title ?: '業務用エアコン',
+$default_seo_title = sprintf(
+  '業務用エアコンクリーニング・掃除・修理 | %s',
   $site_name
 );
 
-$description_source = $raw_excerpt;
-if ('' === trim((string) $description_source)) {
-  $description_source = wp_strip_all_tags(strip_shortcodes((string) $raw_content));
-}
-if ('' === trim((string) $description_source)) {
-  $description_source = $default_description;
-}
+$default_description = sprintf(
+  '愛知・岐阜・三重・静岡で業務用エアコンのクリーニング・掃除・修理なら%s。店舗・オフィス・クリニックのカビ臭・汚れ・水漏れ・効きの悪さを現地調査・無料見積りで確認します。',
+  $site_name
+);
 
-$description_source = html_entity_decode((string) $description_source, ENT_QUOTES, get_bloginfo('charset') ?: 'UTF-8');
-$description_source = wp_strip_all_tags($description_source);
-$description_source = preg_replace('/\s+/u', ' ', $description_source);
-$description_source = trim((string) $description_source);
-
-if (function_exists('mb_strimwidth')) {
-  $service_description = mb_strimwidth($description_source, 0, 140, '...', 'UTF-8');
-} else {
-  $service_description = wp_trim_words($description_source, 60, '...');
+$seo_title = function_exists('ts_get_custom_seo_title') ? ts_get_custom_seo_title($post_id) : '';
+if ('' === $seo_title) {
+  $seo_title = $default_seo_title;
 }
 
+$service_description = function_exists('ts_get_custom_seo_description') ? ts_get_custom_seo_description($post_id) : '';
 if ('' === $service_description) {
   $service_description = $default_description;
 }
 
 $GLOBALS['ts_meta_description_override'] = $service_description;
-
-//タイトルタグ生成
-$seo_title = sprintf(
-  '%sのクリーニング・掃除・修理 | %s',
-  $service_title ?: '業務用エアコン',
-  $site_name
-);
 
 $service_schema_name = sprintf(
   '%sのクリーニング・掃除・修理',
