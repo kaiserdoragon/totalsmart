@@ -1135,6 +1135,39 @@
 //  業務用エアコン特化ページ　専用
 // ---------------------------------------------
 
+.aircon_mv {
+  // .camera_mv--bg
+  .camera_mv--bg {
+    width: 100%;
+    aspect-ratio: 1950 / 1200;
+    object-fit: cover;
+
+    @media (width <= 1480px) {
+      aspect-ratio: 1950 / 1500;
+    }
+
+    @media (width <= 1380px) {
+      aspect-ratio: 1950 / 2000;
+    }
+
+    @include tb-mq {
+      aspect-ratio: 1950 / 3000;
+    }
+
+    @include max-mq {
+      aspect-ratio: 1950 / 4000;
+    }
+
+    @media (width <= 580px) {
+      aspect-ratio: 1950 / 5000;
+    }
+
+    @media (width <= 480px) {
+      aspect-ratio: 1950 / 7000;
+    }
+  }
+}
+
 .aircon_lead {
   position: relative;
 
