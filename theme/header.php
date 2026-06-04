@@ -49,6 +49,9 @@
 
   $ts_meta_desc = '';
   $ts_robots    = '';
+  $ts_meta_desc_override = isset($GLOBALS['ts_meta_description_override'])
+    ? (string) $GLOBALS['ts_meta_description_override']
+    : '';
 
   $ts_noindex_pages = [
     'attention',
@@ -58,7 +61,9 @@
     'shuuri_thanks',
   ];
 
-  if (is_front_page()) {
+  if ('' !== trim($ts_meta_desc_override)) {
+    $ts_meta_desc = $ts_meta_desc_override;
+  } elseif (is_front_page()) {
     $ts_meta_desc = get_bloginfo('description');
 
     if ('' === trim((string) $ts_meta_desc)) {

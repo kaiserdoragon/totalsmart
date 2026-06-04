@@ -12,6 +12,8 @@ $ts_archive_url         = ($ts_current_paged > 1) ? get_pagenum_link($ts_current
 $ts_archive_description = 'お役立ち情報一覧ページです。業務改善、コスト削減、設備導入、防犯、通信、省エネなどに役立つ情報をまとめてご紹介しています。';
 $ts_site_name           = get_bloginfo('name');
 
+$GLOBALS['ts_meta_description_override'] = $ts_archive_description;
+
 $ts_has_seo_plugin = (
   defined('WPSEO_VERSION') ||
   defined('RANK_MATH_VERSION') ||
