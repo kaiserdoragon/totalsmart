@@ -67,6 +67,10 @@
 
 .news_page,
 .question_page {
+  .front-news--info {
+    margin-bottom: 10px;
+  }
+
   .archive--inner {
     li {
       padding-bottom: 15px;
@@ -81,7 +85,8 @@
 // ---------------------------------------------
 
 // 詳細ページ
-.detail_page {
+.detail_page,
+.attention--inner {
   padding: 0 0 60px;
 
   p {

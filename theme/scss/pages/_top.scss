@@ -480,14 +480,12 @@
 }
 
 .attention {
-  text-align: center;
-
   // .attention--inner
   &--inner {
     position: relative;
     box-sizing: border-box;
     width: min(950px, 100%);
-    padding: 60px;
+    padding: 30px !important;
     margin: auto;
     background: #fff;
     border: 3px solid #ff3198;
@@ -1197,7 +1195,6 @@
     display: flex;
     gap: 15px;
     align-items: center;
-    margin-bottom: 10px;
 
     @include max-mq {
       width: 100%;
