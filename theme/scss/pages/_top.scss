@@ -1197,6 +1197,7 @@
     display: flex;
     gap: 15px;
     align-items: center;
+    margin-bottom: 10px;
 
     @include max-mq {
       width: 100%;
