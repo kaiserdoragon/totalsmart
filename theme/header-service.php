@@ -37,7 +37,9 @@
   $ts_meta_desc = '';
 
   if (! $ts_has_seo_plugin) {
-    $ts_meta_desc = '';
+    $ts_meta_desc = isset($GLOBALS['ts_meta_description_override'])
+      ? (string) $GLOBALS['ts_meta_description_override']
+      : '';
 
     $custom_descriptions = [
       'camera' => '「防犯対策を強化したい」「どのカメラを選べばいいかわからない」そんな悩みはトータルスマートが解決します。AI検知、夜間カラー撮影、長期録画など多様なニーズに対応。施工後の保守管理も万全で、導入後も長く安心してご利用いただけます。現地調査・見積もり無料。防犯のプロによる最適な提案を今すぐご確認ください。',
@@ -45,18 +47,20 @@
     ];
 
     //特定のスラッグに合致するかチェック
-    if (array_key_exists($ts_post_slug, $custom_descriptions)) {
-      $ts_meta_desc = $custom_descriptions[$ts_post_slug];
-    } elseif ($ts_object_id) {
-      $ts_meta_desc = get_post_field('post_excerpt', $ts_object_id);
+    if ('' === trim((string) $ts_meta_desc)) {
+      if (array_key_exists($ts_post_slug, $custom_descriptions)) {
+        $ts_meta_desc = $custom_descriptions[$ts_post_slug];
+      } elseif ($ts_object_id) {
+        $ts_meta_desc = get_post_field('post_excerpt', $ts_object_id);
 
-      if (empty($ts_meta_desc)) {
-        $content       = get_post_field('post_content', $ts_object_id);
-        $clean_content = wp_strip_all_tags(strip_shortcodes((string) $content));
+        if (empty($ts_meta_desc)) {
+          $content       = get_post_field('post_content', $ts_object_id);
+          $clean_content = wp_strip_all_tags(strip_shortcodes((string) $content));
 
-        $ts_meta_desc = mb_strlen($clean_content, 'UTF-8') > 120
-          ? mb_substr($clean_content, 0, 120, 'UTF-8') . '...'
-          : $clean_content;
+          $ts_meta_desc = mb_strlen($clean_content, 'UTF-8') > 120
+            ? mb_substr($clean_content, 0, 120, 'UTF-8') . '...'
+            : $clean_content;
+        }
       }
     }
 

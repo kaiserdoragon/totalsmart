@@ -502,11 +502,7 @@ if (!function_exists('ts_output_fallback_seo_meta')) {
       return;
     }
 
-    $description = ts_get_fallback_meta_description();
-    if ($description !== '') {
-      echo '<meta name="description" content="' . esc_attr($description) . '">' . "\n";
-    }
-
+    // Description tags are emitted by the active header/template to avoid duplicates.
     $canonical = ts_get_fallback_canonical_url();
     if ($canonical !== '') {
       echo '<link rel="canonical" href="' . esc_url($canonical) . '">' . "\n";

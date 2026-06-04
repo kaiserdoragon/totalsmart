@@ -52,6 +52,8 @@ if ('' === $service_description) {
   $service_description = $default_description;
 }
 
+$GLOBALS['ts_meta_description_override'] = $service_description;
+
 //タイトルタグ生成
 $seo_title = sprintf(
   '%sのクリーニング・掃除・修理 | %s',
@@ -80,12 +82,10 @@ if (!$has_seo_plugin) {
     return $document_title;
   }, 20);
 
-  add_action('wp_head', function () use ($service_description, $service_url) {
+  add_action('wp_head', function () use ($service_url) {
     if (!is_singular('service')) {
       return;
     }
-    echo '<meta name="description" content="' . esc_attr($service_description) . '">' . "
-";
     echo '<link rel="canonical" href="' . esc_url($service_url) . '">' . "
 ";
     echo '<meta name="robots" content="max-image-preview:large">' . "
