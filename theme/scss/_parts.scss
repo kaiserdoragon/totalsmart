@@ -414,12 +414,12 @@ img {
 
 .paging {
   display: flex;
-  flex-wrap: wrap;
   gap: 30px;
   align-items: center;
   justify-content: center;
   width: 100%;
   max-width: 1000px;
+  padding-bottom: 60px;
   margin: auto;
   text-align: center;
 
