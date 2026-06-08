@@ -518,6 +518,71 @@
 // ---------------------------------------------
 //  お役立ち情報　専用
 // ---------------------------------------------
+.related_information {
+  padding: 70px 0 60px;
+  border-top: 1px solid #d1d1d1;
+
+  // .related_information--ttl
+  &--ttl {
+    position: relative;
+    width: fit-content;
+    padding-bottom: 12px;
+    margin: 0 auto 40px;
+    font-size: var(--fz25);
+    font-weight: 800;
+    color: #0052a7;
+    text-align: center;
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 60px;
+      height: 4px;
+      content: "";
+      background: #ff3198;
+      border-radius: 1000px;
+      transform: translateX(-50%);
+    }
+  }
+
+  // .related_information--list
+  &--list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+
+    h3 {
+      font-size: var(--fz20);
+      font-weight: 700;
+      line-height: 1.5;
+      text-decoration: underline;
+    }
+  }
+
+  // .related_information--image
+  &--image {
+    overflow: hidden;
+    background: #f6f6f6;
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 345 / 220;
+      object-fit: cover;
+    }
+  }
+
+  @include max-mq {
+    padding: 50px 0;
+
+    &--list {
+      grid-template-columns: repeat(1, 1fr);
+      row-gap: 35px;
+    }
+  }
+}
+
 .information_page {
   // .information_page--inner
   &--inner {

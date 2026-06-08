@@ -346,7 +346,6 @@ get_header();
               </div>
             </div>
           <?php endif; ?>
-
         </article>
 
         <ul class="paging">
@@ -364,6 +363,111 @@ get_header();
             <?php endif; ?>
           </li>
         </ul>
+
+        <?php if ($is_information) : ?>
+          <?php
+          $related_information_args = [
+            'post_type'              => 'information',
+            'post_status'            => 'publish',
+            'posts_per_page'         => 3,
+            'post__not_in'           => [get_the_ID()],
+            'orderby'                => 'date',
+            'order'                  => 'DESC',
+            'ignore_sticky_posts'    => true,
+            'no_found_rows'          => true,
+            'update_post_meta_cache' => false,
+            'update_post_term_cache' => true,
+          ];
+
+          $related_information_term_ids = wp_get_post_terms(get_the_ID(), 'information_cat', ['fields' => 'ids']);
+          $has_related_information_terms = (!is_wp_error($related_information_term_ids) && !empty($related_information_term_ids));
+
+          if ($has_related_information_terms) {
+            $related_information_args['tax_query'] = [
+              [
+                'taxonomy' => 'information_cat',
+                'field'    => 'term_id',
+                'terms'    => array_map('absint', $related_information_term_ids),
+              ],
+            ];
+          }
+
+          $related_information_query = new WP_Query($related_information_args);
+
+          if (!$related_information_query->have_posts() && $has_related_information_terms) {
+            wp_reset_postdata();
+            unset($related_information_args['tax_query']);
+            $related_information_query = new WP_Query($related_information_args);
+          }
+          ?>
+
+          <?php if ($related_information_query->have_posts()) : ?>
+            <section class="related_information" aria-labelledby="related-information-title">
+              <h2 id="related-information-title" class="related_information--ttl">関連記事</h2>
+
+              <ul class="related_information--list">
+                <?php while ($related_information_query->have_posts()) : $related_information_query->the_post(); ?>
+                  <?php
+                  $related_terms = get_the_terms(get_the_ID(), 'information_cat');
+                  $related_top_term_name = '';
+
+                  if ($related_terms && !is_wp_error($related_terms)) {
+                    $related_top_term = $related_terms[0];
+                    while (!empty($related_top_term->parent)) {
+                      $related_top_term = get_term($related_top_term->parent, 'information_cat');
+                    }
+                    if ($related_top_term && !is_wp_error($related_top_term)) {
+                      $related_top_term_name = $related_top_term->name;
+                    }
+                  }
+                  ?>
+                  <li>
+                    <article>
+                      <a href="<?php echo esc_url(get_permalink()); ?>">
+                        <div class="related_information--image">
+                          <?php if (has_post_thumbnail()) : ?>
+                            <?php
+                            echo get_the_post_thumbnail(
+                              get_the_ID(),
+                              'info-thumb',
+                              [
+                                'alt'      => wp_strip_all_tags(get_the_title()),
+                                'loading'  => 'lazy',
+                                'decoding' => 'async',
+                              ]
+                            );
+                            ?>
+                          <?php else : ?>
+                            <img
+                              src="<?php echo esc_url(get_theme_file_uri('/img/top/information.jpg')); ?>"
+                              alt=""
+                              width="345"
+                              height="220"
+                              loading="lazy"
+                              decoding="async">
+                          <?php endif; ?>
+                        </div>
+
+                        <div class="information--meta">
+                          <?php if ('' !== $related_top_term_name) : ?>
+                            <span class="information--cat"><?php echo esc_html($related_top_term_name); ?></span>
+                          <?php endif; ?>
+                          <time datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
+                        </div>
+
+                        <h3><?php echo esc_html(get_the_title()); ?></h3>
+                      </a>
+                    </article>
+                  </li>
+                <?php endwhile; ?>
+              </ul>
+            </section>
+          <?php endif; ?>
+
+          <?php wp_reset_postdata(); ?>
+        <?php endif; ?>
+
+
 
       <?php endwhile; ?>
     <?php endif; ?>
