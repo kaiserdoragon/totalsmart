@@ -216,7 +216,7 @@ main {
     gap: 30px;
     align-items: center;
 
-    @media (width <= 1550px) {
+    @media (width <= 1650px) {
       gap: 15px;
     }
 
@@ -261,7 +261,7 @@ main {
     text-align: center;
     background: url(../img/common/icon_mail.png) no-repeat top 40px center / 28px 20px, #ff8206;
 
-    @media (width <= 1550px) {
+    @media (width <= 1650px) {
       box-sizing: border-box;
       width: 275px;
       height: 71px;
@@ -408,8 +408,8 @@ main {
     }
   }
 
-  @media (1024px <= width) {
-    display: none; // PC時非表示
+  @media (1150px <= width) {
+    display: none;
   }
 }
 
@@ -448,22 +448,15 @@ main {
     justify-content: center;
     font-weight: 800;
 
-    @media (width <= 1550px) {
+    @media (width <= 1650px) {
       flex-direction: column;
       gap: 15px;
-      padding: 10px 0;
+      align-items: flex-end;
     }
 
-    @include tb-mq {
+    @media (width <= 1150px) {
+      align-items: center;
       padding: 55px 0 0;
-    }
-  }
-
-  @media (width <= 1650px) {
-    li {
-      a {
-        font-size: var(--fz14);
-      }
     }
   }
 
@@ -473,7 +466,7 @@ main {
     }
   }
 
-  @include tb-mq {
+  @media (width <= 1150px) {
     position: fixed;
     top: 0;
     right: -110%;
