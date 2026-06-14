@@ -454,10 +454,10 @@
       <h2 class="page_ttl">募集要項</h2>
       <div class="tab_change">
         <ul class="tab_change--list" role="tablist">
-          <li class="tab_change--item -selected" data-id="tab-1" id="tab-label-1" role="tab" aria-controls="tab-1" aria-selected="true" tabindex="0">電気工事スタッフ</li>
-          <li class="tab_change--item" data-id="tab-2" id="tab-label-2" role="tab" aria-controls="tab-2" aria-selected="false" tabindex="-1">お客様サポートスタッフ</li>
+          <!-- <li class="tab_change--item" data-id="tab-1" id="tab-label-1" role="tab" aria-controls="tab-1" aria-selected="true" tabindex="0">電気工事スタッフ</li> -->
+          <li class="tab_change--item -selected" data-id="tab-2" id="tab-label-2" role="tab" aria-controls="tab-2" aria-selected="false" tabindex="-1">お客様サポートスタッフ</li>
         </ul>
-        <div class="tab_change--content -show" id="tab-1" role="tabpanel" aria-labelledby="tab-label-1" tabindex="0">
+        <!-- <div class="tab_change--content" id="tab-1" role="tabpanel" aria-labelledby="tab-label-1" tabindex="0">
           <table>
             <tr>
               <th>募集職種</th>
@@ -699,8 +699,8 @@
               </td>
             </tr>
           </table>
-        </div>
-        <div class="tab_change--content" id="tab-2" role="tabpanel" aria-labelledby="tab-label-2" tabindex="0">
+        </div> -->
+        <div class="tab_change--content -show" id="tab-2" role="tabpanel" aria-labelledby="tab-label-2" tabindex="0">
           <table>
             <tr>
               <th>募集職種</th>
