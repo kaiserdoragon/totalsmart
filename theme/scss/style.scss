@@ -22,6 +22,7 @@
 @use "pages/remote"; // リモートサポート
 @use "pages/notfound"; // 404
 @use "pages/privacy"; // プライバシー・情報セキュリティ
+@use "pages/costaircon"; // 業務用エアコンシミュレーション
 
 // wordpress用 ブログ記事をリッチテキストエディタ
 @use "post";

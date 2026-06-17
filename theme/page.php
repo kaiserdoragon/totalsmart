@@ -1,8 +1,9 @@
 <?php get_header(); ?>
 <div class="eyecatch">
-  <?php if (has_post_thumbnail()): // サムネイルを持っているとき 
-  ?><?php the_post_thumbnail(); ?><?php else: // サムネイルを持っていない 
-                                  ?><?php endif; ?>
+  <?php if (has_post_thumbnail()): ?>
+    <?php the_post_thumbnail(); ?>
+  <?php else: ?>
+  <?php endif; ?>
   <h1><?php the_title(); ?></h1>
 </div>
 

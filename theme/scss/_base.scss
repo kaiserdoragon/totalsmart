@@ -108,6 +108,12 @@ main {
     }
   }
 
+  &.-cost {
+    h1 {
+      top: 40%;
+    }
+  }
+
   @media (width <= 1450px) {
     &.-thanks {
       img {
@@ -150,6 +156,12 @@ main {
         width: 100%;
         text-align: center;
         transform: translate(-50%, -50%);
+      }
+    }
+
+    &.-cost {
+      h1 {
+        top: 50%;
       }
     }
   }
