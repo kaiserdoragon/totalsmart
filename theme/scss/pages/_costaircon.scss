@@ -6,8 +6,54 @@
 //  業務用エアコンシュミレーション
 // ---------------------------------------------
 
+
+.costaircon_page {
+  // .costaircon_page--check
+  &--check {
+    display: block;
+    width: fit-content;
+    padding: 8px 20px;
+    margin: 0 auto 10px;
+    font-weight: 900;
+    color: #92400e;
+    white-space: nowrap;
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+    border-radius: 999px;
+  }
+
+  // .costaircon_page--lead
+  &--lead {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  // .costaircon_page--list
+  &--list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
+
+    li {
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 280px;
+      padding: 15px 0;
+      font-weight: 700;
+      line-height: 1;
+      color: #fff;
+      text-align: center;
+      background: #38abff;
+      border-radius: 999px;
+    }
+  }
+}
+
+
 .card {
-  width: 80%;
   margin: auto;
   overflow: hidden;
   background: #fff;
@@ -19,15 +65,15 @@
 .card-head {
   display: flex;
   gap: 20px;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: 25px 30px;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
   background: linear-gradient(180deg, #fff 0%, #f8fbff 100%);
   border-bottom: 1px solid #e7edf5;
 }
 
 .card-head h2 {
-  font-size: var(--fz30);
+  font-size: var(--fz35);
   font-weight: 900;
   color: #0f3376;
 }
@@ -53,10 +99,10 @@
 }
 
 .section-title {
-  margin: 0 0 14px;
+  margin: 0 0 15px;
   font-size: var(--fz30);
   font-weight: 900;
-  color: #101827;
+  color: #333;
 }
 
 .unit-list {
@@ -122,7 +168,7 @@ select:focus {
 }
 
 .help {
-  font-size: 12px;
+  font-size: var(--fz13);
   line-height: 1.55;
   color: #667085;
 }
@@ -232,10 +278,10 @@ select:focus {
 
 .actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 10px;
   align-items: center;
-  margin-top: 22px;
+  margin-top: 15px;
 }
 
 .primary-btn {
@@ -255,13 +301,15 @@ select:focus {
 }
 
 .secondary-btn {
-  padding: 12px 18px;
+  width: 100%;
+  max-width: 300px;
+  padding: 12px 0;
   font-weight: 800;
   color: #1f2937;
   cursor: pointer;
   background: #fff;
   border: 1px solid #cbd5e1;
-  border-radius: 999px;
+  border-radius: 1000px;
 }
 
 .secondary-btn:hover {
@@ -289,7 +337,9 @@ select:focus {
 }
 
 .notice {
+  width: fit-content;
   padding: 13px 15px;
+  margin: 30px auto 0;
   margin-top: 18px;
   font-size: var(--fz14);
   font-weight: 650;
@@ -301,8 +351,8 @@ select:focus {
 
 .results {
   display: block;
-  padding-top: 26px;
-  margin-top: 26px;
+  padding-top: 30px;
+  margin-top: 60px;
   border-top: 1px solid #e7edf5;
 }
 
@@ -323,8 +373,8 @@ select:focus {
 }
 
 .result-lead {
-  margin: 0 0 18px;
-  font-size: 14px;
+  margin: 0 0 30px;
+  font-size: var(--fz14);
   color: #5d6b82;
 }
 
@@ -579,6 +629,7 @@ select:focus {
 }
 
 .placeholder-cta span {
+  font-size: var(--fz14);
   color: #92400e;
 }
 
@@ -766,10 +817,6 @@ select:focus {
 }
 
 @include tb-mq {
-  .card {
-    width: 100%;
-  }
-
   .card-head {
     display: block;
   }
@@ -786,10 +833,6 @@ select:focus {
 
   .section-title {
     text-align: center;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
   }
 
   .result-grid {
@@ -815,7 +858,7 @@ select:focus {
   }
 
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 
   .option-row {

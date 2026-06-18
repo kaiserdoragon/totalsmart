@@ -12,17 +12,17 @@
     <?php get_template_part('include/common', 'breadcrumb'); ?>
   </div>
 
-  <section class="sec">
+  <section class="costaircon_page sec">
     <div class="container">
-      <span>30秒で概算をチェック</span>
+      <span class="costaircon_page--check">30秒で概算をチェック</span>
       <h2 class="ttl">
         業務用エアコンの電気代<br class="is-hidden_sp">
         交換・取り換えでどれくらい下がるか
       </h2>
-      <p>
+      <p class="costaircon_page--lead">
         現在お使いの業務用エアコンの馬力・年式・稼働時間を入力すると、<br class="is-hidden_sp">新しい業務用エアコンへ交換した場合の電気代削減目安を確認できます。
       </p>
-      <ul>
+      <ul class="costaircon_page--list">
         <li>無料・登録不要</li>
         <li>店舗・オフィス・工場対応</li>
         <li>複数台にも対応</li>
