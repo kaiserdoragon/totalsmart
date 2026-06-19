@@ -194,20 +194,19 @@ get_header();
     <?php echo wp_json_encode($ts_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
   </script>
 
-  <!-- <section class="mitumori">
+  <section class="mitumori">
     <div class="container">
-      <h2 class="page_ttl">見積りシュミレーション（仮）</h2>
-      <p>
-        希望条件を入力するだけで、複合機・コピー機の月額リース料金を24時間オンラインで自動見積。<br>
-        オフィス機器・回線まで含めたトータルのコスト最適化もワンストップでご提案します。
+      <h2 class="page_ttl">業務用エアコン電気代削減シミュレーション</h2>
+      <p class="mitumori--lead">
+        業務用エアコンの電気代は、使用時間や稼働台数、電気料金単価によって大きく変わります。毎月の負担を抑えるには、まず現在のコストと削減できる金額の目安を把握することが重要です。<br>
+        以下のシミュレーションでは、簡単な項目を入力するだけで、業務用エアコンの電気代と削減額の概算を確認できます。<br>
+        省エネ対策や機器の見直しによって、どれくらいコスト削減が見込めるのかチェックしてみましょう。
       </p>
-
-      <a class="mitumori--btn" href="<?php echo esc_url(home_url('/')); ?>">
-        <span>お見積りはこちら</span>
-        無料で見積りをする
+      <a href="<?php echo esc_url(home_url('/costaircon/')); ?>">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/service/aircon_simulation_btn.jpg" alt="" width="300" height="250">
       </a>
     </div>
-  </section> -->
+  </section>
 
 </main>
 
