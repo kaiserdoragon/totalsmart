@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: 業務用エアコン取り換え
+Template Name: 業務用エアコン交換・取り換え・買い替え
 Template Post Type:service
 */
 
@@ -21,12 +21,12 @@ $service_image_url   = $post_id && has_post_thumbnail($post_id)
 $post_slug = $post_id ? get_post_field('post_name', $post_id) : 'service';
 
 $default_seo_title = sprintf(
-  '業務用エアコンクリーニング・掃除・修理 | %s',
+  '業務用エアコン交換・取り換え・買い替え | %s',
   $site_name
 );
 
 $default_description = sprintf(
-  '愛知・岐阜・三重・静岡で業務用エアコンのクリーニング・掃除・修理なら%s。店舗・オフィス・クリニックのカビ臭・汚れ・水漏れ・効きの悪さを現地調査・無料見積りで確認します。',
+  '愛知・岐阜・三重・静岡で業務用エアコンの交換・取り換え・買い替えなら%s。店舗・オフィス・工場・クリニックの老朽化、効きの悪さ、修理費の増加、省エネ更新を現地調査・無料見積りで確認します。',
   $site_name
 );
 
@@ -43,7 +43,7 @@ if ('' === $service_description) {
 $GLOBALS['ts_meta_description_override'] = $service_description;
 
 $service_schema_name = sprintf(
-  '%sのクリーニング・掃除・修理',
+  '%sの交換・取り換え・買い替え',
   $service_title ?: '業務用エアコン'
 );
 
@@ -90,7 +90,7 @@ get_header('service');
       '@type'       => 'Service',
       '@id'         => $service_id,
       'name'        => $service_schema_name,
-      'serviceType' => '業務用エアコンクリーニング・業務用エアコン掃除・業務用エアコン修理',
+      'serviceType' => '業務用エアコン交換・業務用エアコン取り換え・業務用エアコン買い替え',
       'description' => $service_description,
       'url'         => $service_url,
       'provider'    => [
