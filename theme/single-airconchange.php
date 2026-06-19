@@ -188,105 +188,79 @@ get_header('service');
     </script>
   <?php endif; ?>
 
-  <section class="camera_mv aircon_mv">
-    <div class="camera_mv--contents container -lg">
+  <section class="camera_mv aircon_mv airconchange_mv">
+    <div class="camera_mv--contents">
       <div class="camera_mv--block">
         <span class="camera_mv--area">愛知・岐阜・三重・静岡対応</span>
-        <p class="camera_mv--lead">業務用エアコンのクリーニング・掃除・修理を<br class="is-hidden_sp">まとめて対応いたします。</p>
+        <p class="camera_mv--lead">店舗・オフィス・クリニック・施設など空調更新に対応。</p>
         <h1 class="camera_mv--ttl">
-          <span class="camera_mv--txt"><span class="camera_mv--strong">業務用エアコン</span>の</span>
-          <span class="camera_mv--txt">クリーニング・掃除・修理を</span>
-          <span class="camera_mv--txt">全て解決！！</span>
+          <span class="camera_mv--txt"><span class="camera_mv--strong">業務用エアコン</span>の交換・買い替えから</span>
+          <span class="camera_mv--txt">工事・設置まで一括で対応</span>
         </h1>
         <p class="camera_mv--supplement">
-          店舗・オフィスなど環境に合わせて、<br class="is-hidden_sp">掃除・洗浄・点検・修理まで最適な方法をご提案
+          販売、既存機器の撤去、フロン回収、取付工事、<br class="is-hidden_sp">
+          試運転までまとめてご相談いただけます。
         </p>
         <ul>
-          <li>出張費・お見積り<br><span>無料</span></li>
-          <li>損害賠償保険<br>すべて<span>加入済み</span></li>
-          <li>明朗会計<br><span>追加料金なし</span></li>
-          <li><span>業界最安値</span><br>低価格</li>
+          <li>出張費・お見積り<br><span>完全無料</span></li>
+          <li>業務用エアコンの<br><span>導入・交換に対応</span></li>
+          <li><span>販売・工事・撤去</span><br>まで一括相談</li>
+          <li>メーカー問わず<br><span>相談可能</span></li>
         </ul>
       </div>
-      <div class="camera_mv--image">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_catch_aircon.png'); ?>" alt="業務用エアコンクリーニング・掃除・修理サービス" width="517" height="635" loading="eager" fetchpriority="high" decoding="async">
-      </div>
     </div>
-    <img class="camera_mv--bg" src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_bg.jpg'); ?>" alt="" width="1920" height="750" loading="eager" fetchpriority="high" decoding="async">
+    <picture>
+      <source
+        media="(max-width: 1024px)"
+        srcset="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_bg.jpg'); ?>">
+
+      <img
+        class="airconchange_mv--bg"
+        src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_bg_airconchange.jpg'); ?>"
+        alt=""
+        width="1920"
+        height="820"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async">
+    </picture>
   </section>
 
-  <section class="aircon_lead sec bg_darkblue">
+  <section class="airconchange_lead sec">
     <div class="container -lg">
-      <h2 class="aircon_lead--ttl">
-        業務用エアコンで<br class="is-hidden_sp">
-        このような<b><span>お</span><span>悩</span><span>み</span></b>はありませんか？？
+      <h2 class="airconchange_lead--ttl">
+        業務用エアコンの<span>不</span><span>調</span>や<span>老</span><span>朽</span><span>化</span>を<br class="is-hidden_sp">
+        そのままにしていませんか？？
       </h2>
-      <p class="aircon_lead--txt">
-        業務用エアコンの不調は、クリーニング・掃除で改善する場合と<br class="is-hidden_sp">
-        修理が必要な場合とがあります。<br>
-        現在の症状に近いものをご確認ください。<br>
+      <p class="airconchange_lead--txt">
+        業務用エアコンの不調や老朽化を放置すると、<br class="is-hidden_sp">
+        電気代の増加、急な故障、店舗・施設の営業停止リスクにつながる場合があります。<br>
+        愛知・岐阜・三重・静岡で、法人・店舗・施設の空調更新をご検討中の方は、<br class="is-hidden_sp">
+        まずは現在の状況をお聞かせください。
       </p>
-      <div class="aircon_lead--select tab_change_smooth">
-        <ul class="tab_change--list" role="tablist">
-          <li class="tab_change--item -selected" data-id="tab-1" id="tab-label-1" role="tab" aria-controls="tab-1" aria-selected="true" tabindex="0">
-            クリーニングが<br>必要な場合
-          </li>
-          <li class="tab_change--item" data-id="tab-2" id="tab-label-2" role="tab" aria-controls="tab-2" aria-selected="false" tabindex="-1">
-            修理が<br>必要な場合
-          </li>
-        </ul>
-        <div class="aircon_lead--catch">
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/aircon_lead_catch.png'); ?>" alt="業務用エアコンのクリーニングと修理の相談イメージ" width="562" height="351" loading="eager" fetchpriority="high" decoding="async">
-        </div>
-        <div class="tab_change--content -show" id="tab-1" role="tabpanel" aria-labelledby="tab-label-1" tabindex="0">
-          <section class="aircon_lead--inner">
-            <h3>クリーニングが必要な場合</h3>
-            <p>
-              内部の汚れやカビ、ホコリ詰まりが原因のことがあります。<br>
-              分解洗浄や内部掃除によって風量・ニオイ・効きの改善が期待できます。
-            </p>
-            <ul>
-              <li>カビ臭い、嫌なニオイがする</li>
-              <li>吹き出し口に黒い汚れが見える</li>
-              <li>効きが悪くなった気がする</li>
-              <li>電気代が上がった</li>
-              <li>送風が弱い</li>
-              <li>衛生面が気になる</li>
-            </ul>
-          </section>
-        </div>
-        <div class="tab_change--content" id="tab-2" role="tabpanel" aria-labelledby="tab-label-2" tabindex="0">
-          <section class="aircon_lead--inner">
-            <h3>修理が必要な場合</h3>
-            <p>
-              部品不良や機器トラブルの可能性があります。<br>
-              早めの点検・修理で損失を最小限に抑えます。
-            </p>
-            <ul>
-              <li>電源が入らない</li>
-              <li>冷えない、暖まらない</li>
-              <li>水漏れしている</li>
-              <li>異音がする</li>
-              <li>室外機が動かない</li>
-              <li>エラーコードが表示される</li>
-            </ul>
-          </section>
-        </div>
-      </div>
+      <ul>
+        <li>10年以上使用していて、交換時期か分からない</li>
+        <li>冷えない・暖まらないなど、空調の効きが悪い</li>
+        <li>電気代が高く、省エネ型に更新したい</li>
+        <li>新店舗・新事務所・新施設に業務用エアコンを導入したい</li>
+        <li>古い機器の撤去やフロン回収までまとめて相談したい</li>
+        <li>購入・設置にかかる費用を知りたい</li>
+      </ul>
     </div>
   </section>
 
-  <section class="aircon_middle bg_gray">
+  <section class="aircon_middle airconchange_middle bg_gray">
     <div class="container">
       <h2>
-        「クリーニング・掃除」か「修理」か<br class="is-hidden_sp">
-        分からない場合もご相談ください
+        ひとつでも当てはまる方は、<br class="is-hidden_sp">
+        是非ごご相談ください！！
       </h2>
       <p>
-        故障なのか、内部の汚れが原因なのかは、<br class="is-hidden_sp">
-        見た目だけでは判断しづらいことも少なくありません。<br>
-        弊社では業務用エアコンの掃除・洗浄と修理の両方に対応しているため、<br class="is-hidden_sp">
-        <span>現地の状態を確認したうえで最適な方法をご案内できます。</span><br>
+        業務用エアコンの不調や老朽化は、<br class="is-hidden_sp">
+        <span>放置すると急な故障や営業・業務への影響につながる場合があります。</span><br>
+        まずは現在の機器の型番・設置写真・台数など、<br class="is-hidden_sp">
+        分かる範囲の情報だけでもお知らせください。<br>
+        交換が必要か、導入・更新の選択肢があるかを確認します。
       </p>
     </div>
   </section>
