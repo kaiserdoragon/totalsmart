@@ -265,55 +265,62 @@ get_header('service');
     </div>
   </section>
 
-  <section class="aircon_solution sec" id="aircon_improvement">
+  <section class="aircon_solution airconchange_solution sec" id="aircon_improvement">
     <div class="container">
       <div class="u-txt_center">
         <h2 class="aircon_solution--ttl">
-          <span>業務用エアコン</span>の<br>
-          クリーニング・掃除・修理をまとめて対応します
+          <span>業務用エアコン</span>の導入・交換を<br>
+          機器選定から工事まで一括対応します
         </h2>
       </div>
       <p class="aircon_solution--lead">
-        業務用エアコンの「クリーニング・掃除」と「修理」の両方に対応しています。<br>
-        不具合を直すだけでなく、汚れやニオイ、<br class="is-hidden_sp">
-        効率低下や衛生面まで含めて総合的にサポートできるのが強みです。<br>
-        「とりあえず見てほしい」「原因がわからない」という段階でも問題ありません。<br>
-        症状や設置状況を確認し、掃除・洗浄・修理のどれが適しているか、<br class="is-hidden_sp">
-        わかりやすくご説明いたします。
+        業務用エアコンの導入・交換では、本体価格だけでなく、<br class="is-hidden_sp">
+        設置場所、馬力、台数、配管、室外機の位置・撤去、フロン回収、<br class="is-hidden_sp">
+        工事日程まで確認する必要があります。<br>
+        法人・店舗・施設の状況をヒアリングしたうえで、導入・交換に必要な内容をまとめてご提案します。
       </p>
-      <div class="aircon_solution--box">
-        <div class="aircon_solution--item">
-          <h3>業務用エアコンクリーニング・掃除</h3>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/solution_01_aircon.png'); ?>" alt="業務用エアコンを分解洗浄しているイメージ" width="355" height="294" loading="lazy" decoding="async">
-          <p>
-            業務用エアコンの内部には、
-            ホコリ、カビ、油分などが
-            蓄積しやすく、ニオイや効きの悪さ、
-            衛生面の不安につながります。<br>
-            分解洗浄や内部掃除によって
-            汚れの原因にしっかり対応し、
-            清潔な空調環境へ整えます。
-          </p>
-          <a href="<?php echo esc_url(home_url('/service/aircon/#symptoms_cleaning')); ?>">
-            クリーニングで改善できる症状を知る
-          </a>
-        </div>
-        <div class="aircon_solution--item -orange">
-          <h3>業務用エアコン修理</h3>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/solution_02_aircon.png'); ?>" alt="業務用エアコン修理の点検イメージ" width="355" height="294" loading="lazy" decoding="async">
-          <p>
-            冷暖房が効かない、水漏れする、
-            異音がする、電源が入らないなど、
-            営業や業務に支障が出る
-            不具合に対応いたします。<br>
-            急なトラブルにもできる限り
-            迅速に対応し、原因を確認したうえで
-            必要な修理内容をご案内します。
-          </p>
-          <a href="<?php echo esc_url(home_url('/service/aircon/#symptoms_shuuri')); ?>">
-            修理で改善できる症状を知る
-          </a>
-        </div>
+      <div class="airconchange_solution--list">
+        <article>
+          <h3>現在の機器が<br><span>交換時期か確認</span></h3>
+          <div>
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/aircon_solution_01.jpg'); ?>" alt="" width="250" height="250">
+            <p>
+              「まだ修理で使えるのか」<br>「そろそろ交換したほうがよいのか」<br>
+              使用年数や故障状況、部品供給、設置環境によって判断が変わります。<br>
+              現在の業務用エアコンの型番・使用年数を確認し、交換を検討すべき状態かどうかを整理します。
+            </p>
+          </div>
+        </article>
+        <article>
+          <h3>施設用途に合わせた<br><span>機器選定</span></h3>
+          <div>
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/aircon_solution_02.jpg'); ?>" alt="" width="250" height="250">
+            <p>
+              業務用エアコンは部屋の広さだけで選ぶと能力不足や過剰設備につながる場合があります。<br>
+              店舗・オフィス・クリニック・介護施設など、施設の用途、稼働時間、<br class="is-hidden_sp">熱源、天井高、利用人数に合わせて、適切な機種や馬力をご提案します。
+            </p>
+          </div>
+        </article>
+        <article>
+          <h3><span>販売から取付工事</span><br>まで対応</h3>
+          <div>
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/aircon_solution_03.jpg'); ?>" alt="" width="250" height="250">
+            <p>
+              業務用エアコンの導入・交換では、本体の選定だけでなく、設置条件、配管、電源、室外機の位置、工事日程まで確認が必要です。
+              機器の販売から取付工事、試運転までまとめてご相談いただけるため、複数の業者に個別で依頼する手間を抑えられます。
+            </p>
+          </div>
+        </article>
+        <article>
+          <h3>既存機器の<span>撤去・</span><br><span>フロン回収</span>も相談可能</h3>
+          <div>
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/aircon_solution_04.jpg'); ?>" alt="" width="250" height="250">
+            <p>
+              古い業務用エアコンを交換する際は、新しい機器の設置だけでなく、既存機器の撤去やフロン回収まわりの確認も必要です。<br>
+              交換時に必要となる撤去・回収まわりも含めて、現在の状況に合わせてご相談いただけます。
+            </p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
