@@ -1824,7 +1824,6 @@
   }
 }
 
-
 .airconchange_solution {
   // .airconchange_solution--list
   &--list {
@@ -1863,3 +1862,19 @@
     }
   }
 }
+
+.airconchange_reason {
+  li {
+    background: #fff;
+    border: 3px solid #1d56a5;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgb(29 86 165 / 60%);
+  }
+
+  // .airconchange_reason--lead
+  &--lead {
+    margin-bottom: 100px;
+    text-align: center !important;
+  }
+}
+

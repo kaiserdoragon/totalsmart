@@ -325,171 +325,75 @@ get_header('service');
     </div>
   </section>
 
-  <section class="aircon_symptoms sec bg_skyblue" id="symptoms_cleaning">
-    <div class="container">
-      <h2 class="aircon_symptoms--ttl">
-        <span>業務用エアコンクリーニング・掃除</span>で<br class="is-hidden_sp">改善が期待できる症状
-      </h2>
-      <p class="aircon_symptoms--lead">
-        汚れが蓄積した業務用エアコンは、見た目だけでなく、空気環境や冷暖房効率にも影響します。<br>
-        定期的なクリーニング・掃除によって、快適性の維持と設備負担の軽減が期待できます。
-      </p>
-      <div class="aircon_symptoms--contents">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_01.png'); ?>" alt="業務用エアコンのカビ臭いニオイのイメージ" width="240" height="240" loading="lazy" decoding="async">
-        <div>
-          <h3>カビ臭い・嫌なニオイがする</h3>
-          <p>
-            内部にたまったカビや汚れが、ニオイの原因になっている
-            ことがあります。分解洗浄や内部掃除によって、ニオイの元にしっかり
-            アプローチします。
-          </p>
-        </div>
-      </div>
-      <div class="aircon_symptoms--contents">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_02.png'); ?>" alt="業務用エアコンの吹き出し口汚れのイメージ" width="240" height="240" loading="lazy" decoding="async">
-        <div>
-          <h3>吹き出し口や内部の汚れが気になる</h3>
-          <p>
-            吹き出し口の黒ずみや内部の汚れは、衛生面でも気になる
-            ポイントです。店舗やクリニックなど、空気環境を重視したい
-            現場にもおすすめです。
-          </p>
-        </div>
-      </div>
-      <div class="aircon_symptoms--contents">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_03.png'); ?>" alt="業務用エアコンの効きや風量低下のイメージ" width="240" height="240" loading="lazy" decoding="async">
-        <div>
-          <h3>効きが悪い・風量が弱い</h3>
-          <p>
-            ホコリや汚れがたまることで、エアコン本来の性能が
-            発揮しにくくなることがあります。<br>
-            内部洗浄によって、風量や効きの改善が期待できます。
-          </p>
-        </div>
-      </div>
-      <div class="aircon_symptoms--contents">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_04.png'); ?>" alt="業務用エアコンの電気代や設備負担のイメージ" width="240" height="240" loading="lazy" decoding="async">
-        <div>
-          <h3>電気代や設備負担が気になる</h3>
-          <p>
-            汚れたまま使用を続けると、効率の低下から余計な負荷が
-            かかることがあります。<br>
-            定期的なクリーニング・掃除は、快適な使用環境の維持にもつながります。
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="aircon_symptoms sec -orange" id="symptoms_shuuri">
-    <div class="container">
-      <h2 class="aircon_symptoms--ttl">
-        <span>業務用エアコン修理</span>で<br class="is-hidden_sp">改善が期待できる症状
-      </h2>
-      <p class="aircon_symptoms--lead">
-        業務用エアコンの故障は、放置すると営業や業務に大きな影響が出ることがあります。<br>
-        気になる症状がある場合は、早めの点検・修理がおすすめです。
-      </p>
-      <div class="aircon_symptoms--contents">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_01.png'); ?>" alt="業務用エアコンが冷えない症状のイメージ" width="240" height="240" loading="lazy" decoding="async">
-        <div>
-          <h3>冷えない・暖まらない</h3>
-          <p>
-            設定温度を変えても冷暖房が効きにくい場合は、部品不良や
-            冷媒系統の不具合などが関係していることがあります。
-            現地で原因を確認し、必要な修理をご案内します。
-          </p>
-        </div>
-      </div>
-      <div class="aircon_symptoms--contents">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_02.png'); ?>" alt="業務用エアコンの水漏れ症状のイメージ" width="240" height="240" loading="lazy" decoding="async">
-        <div>
-          <h3>水漏れしている</h3>
-          <p>
-            ドレン詰まりや部品の劣化などにより、室内機から水が漏れる
-            ことがあります。店舗や事務所への影響を抑えるため、
-            早めの点検と修理が重要です。
-          </p>
-        </div>
-      </div>
-      <div class="aircon_symptoms--contents">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_03.png'); ?>" alt="業務用エアコンの異音症状のイメージ" width="240" height="240" loading="lazy" decoding="async">
-        <div>
-          <h3>異音がする</h3>
-          <p>
-            運転中に普段と違う音がする場合は、ファンやモーターなどの
-            不具合が起きている可能性があります。<br>
-            放置せず、症状が軽いうちに確認することをおすすめします。
-          </p>
-        </div>
-      </div>
-      <div class="aircon_symptoms--contents">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/symptoms_04.png'); ?>" alt="業務用エアコンの電源不良症状のイメージ" width="240" height="240" loading="lazy" decoding="async">
-        <div>
-          <h3>電源が入らない・途中で止まる</h3>
-          <p>
-            電源が入らない、運転中に停止する、エラーコードが出る場合は、
-            電気系統や基板などの確認が必要なことがあります。<br>
-            業務への影響を抑えるため、状況に応じて修理対応します。
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="camera_reason aircon_reason sec" id="aircon_reason">
+  <section class="camera_reason airconchange_reason bg_skyblue sec" id="aircon_reason">
     <div class="container -md">
       <h2 class="single_detail_page--ttl">
-        選ばれる<span>4</span>つの理由
+        選ばれる<span>6</span>つの理由
       </h2>
-      <p class="aircon_reason--lead">
-        業務用エアコンは、掃除・洗浄の品質だけでなく、故障時のスピードや提案の正確さも重要です。<br>
-        多くのお客様にご相談いただいている理由をご紹介します。
+      <p class="airconchange_reason--lead">
+        業務用エアコンは、施設の広さや用途、稼働時間、設置環境によって選ぶべき機種や工事内容が変わります。<br>
+        そのため、単に本体を入れ替えるだけでなく、現場に合った機器選定と施工計画が重要です。<br>
+        法人・店舗・施設の状況を丁寧に確認し、導入・交換・買い替えに必要な内容をまとめてサポートします。
       </p>
-      <div class="container camera_reason--inner">
-        <ol>
-          <li>
-            <h3>最短当日・即日対応</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_01_aircon.png'); ?>" alt="最短当日・即日対応のイメージ" width="240" height="240" loading="lazy" decoding="async">
-            <p>
-              急な故障や、営業に支障が出る空調トラブルにも、
-              できる限り迅速に対応します。緊急性の高いケース
-              にも柔軟に対応し、現場の状況に合わせた判断で
-              必要な処置を的確に行います。
-            </p>
-          </li>
-          <li>
-            <h3>クリーニングも修理も対応可</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_02_aircon.png'); ?>" alt="クリーニングも修理も対応可のイメージ" width="240" height="240" loading="lazy" decoding="async">
-            <p>
-              エアコンのニオイやカビ、油汚れ、効きの悪さ
-              といった日常的なお悩みから、異音、水漏れ、
-              動作不良、部品の劣化による故障まで幅広く
-              対応します。安心してお任せください。
-            </p>
-          </li>
-          <li>
-            <h3>明確な料金体系で安心</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_03_aircon.png'); ?>" alt="明確な料金体系で安心のイメージ" width="240" height="240" loading="lazy" decoding="async">
-            <p>
-              当社では、作業内容と費用の目安を事前にわかりや
-              すくご案内し、ご納得いただいたうえで進めること
-              を大切にしています。費用面の不安を減らし、相談
-              しやすさにもつなげています。
-            </p>
-          </li>
-          <li>
-            <h3>安全面・作業品質にも配慮</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_04_aircon.png'); ?>" alt="安全面・作業品質にも配慮のイメージ" width="240" height="240" loading="lazy" decoding="async">
-            <p>
-              当社では、作業前の確認から養生、機器の取り扱い、
-              周囲への配慮まで基本を徹底し、現場環境に合わせ
-              て丁寧に対応します。作業後の確認まで責任を持って
-              対応します。
-            </p>
-          </li>
-        </ol>
-      </div>
+      <ol>
+        <li>
+          <h3>省エネ性能まで考えた機種選定</h3>
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/airconchange_reason_01.jpg'); ?>" alt="" width="280" height="280" loading="lazy" decoding="async">
+          <p>
+            業務用エアコンは、同じ馬力でも省エネ性能や制御機能によって、長期的な電気代が変わります。安い機種を選ぶと、初期費用は抑えられても、毎月の電気代で損をする可能性があります。<br>
+            使用時間、部屋の広さ、天井高、人数、熱源、業種、営業日数を確認し、過剰スペックにも能力不足にもならない機種をご提案します。<br>
+            初期費用だけでなく、運用コストまで考えたサポートします。
+          </p>
+        </li>
+        <li>
+          <h3>総額が見える見積り</h3>
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/airconchange_reason_02.jpg'); ?>" alt="" width="280" height="280" loading="lazy" decoding="async">
+          <p>
+            業務用エアコンの交換費用は、本体価格だけでは判断できません。撤去費、配管工事、電源工事、冷媒回収、搬入経路、室外機の設置条件によって総額が変わります。<br>
+            現地状況を確認したうえで「本体費」「標準工事費」「撤去・処分費」「追加工事の可能性」を分けてご提示します。<br>
+            あとから追加費用が膨らむ不安を抑え、納得して比較できる見積りを行います。
+          </p>
+        </li>
+        <li>
+          <h3>業種別に最適な空調を提案</h3>
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/airconchange_reason_03.jpg'); ?>" alt="" width="280" height="280" loading="lazy" decoding="async">
+          <p>
+            飲食店、美容室、クリニック、事務所など空調に求められる条件が異なります。<br>
+            飲食店では厨房熱や油汚れ、美容室では薬剤臭や温度ムラ、クリニックでは快適性と清潔感の配慮が必要です。<br>
+            単に既存機器と同等品を入れ替えるだけでなく、業種・使用環境・お客様の動線・スタッフの作業環境に合わせて、最適なタイプと能力を選定します。
+          </p>
+        </li>
+        <li>
+          <h3>工事後の保証・アフター対応</h3>
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/airconchange_reason_04.jpg'); ?>" alt="" width="280" height="280" loading="lazy" decoding="async">
+          <p>
+            業務用エアコンは、設置して終わりではありません。<br>
+            長く安定して使うには、工事品質、試運転、保証、メンテナンス体制が重要です。<br>
+            設置後に試運転を行い、冷暖房の効き、異音、排水、リモコン動作などを確認します。
+            工事後の不具合やメンテナンスの相談にも対応し、長期的に安心して使える環境をサポートします。
+          </p>
+        </li>
+        <li>
+          <h3>リース・分割払いの相談ができる</h3>
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/airconchange_reason_05.jpg'); ?>" alt="" width="280" height="280" loading="lazy" decoding="async">
+          <p>
+            業務用エアコンの交換は、まとまった初期費用がかかる設備投資です。<br>
+            リース、分割払いなどを含めて検討することが重要です。<br>
+            初期費用を抑えたい、月額化したいといったご相談にも対応します。<br>
+            購入がよいのか、リースがよいのかも、使用年数や台数、会社の資金計画に合わせてご提案します。
+          </p>
+        </li>
+        <li>
+          <h3>回収・撤去・処分まで一括対応</h3>
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/airconchange_reason_06.jpg'); ?>" alt="" width="280" height="280" loading="lazy" decoding="async">
+          <p>
+            業務用エアコンの撤去には、冷媒回収や適切な処分が関わります。<br>
+            機器を外して終わりではなく、法令に沿った対応が必要です。<br>
+            当社では既存機器の撤去、冷媒回収、搬出、処分、新しい機器の設置まで一括で対応します。
+            複数業者を手配する手間を減らし、工事全体をスムーズに進めます。
+          </p>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -501,64 +405,80 @@ get_header('service');
         症状や現場環境に応じて、適切な方法で対応しています。
       </p>
       <article>
-        <h3>カビのようなニオイが気になっていました</h3>
+        <h3>夏場のピーク前に、店内が冷えない不安を何とかしたかった</h3>
         <div class="camera_construction--inner">
           <dl>
-            <dt>クリニック<br class="is-hidden_pc">【業務用エアコンクリーニング】</dt>
+            <dt>古い天井カセット形エアコンを交換</dt>
             <dd>
-              院内の嫌なニオイがするようになり、内部までは自分たちでは対応できず、衛生面でも不安がありました。<br>
-              今回は内部の汚れが原因の可能性が高いと説明してもらえたので、安心してお願いしました。<br>
-              作業後は気になっていたニオイがやわらぎ、空気環境がすっきりしたように感じました。<br>
-              定期的なクリーニングは必要だと実感しました。<br>
+              特にランチタイムや満席の時間帯が心配でした。<br>
+              お客様に「暑い」と思われるのは避けたいですし、夏本番に
+              急に止まってしまうのも困ります。営業にできるだけ影響が
+              出ないように、早めに入れ替えを相談と思っていました。
             </dd>
           </dl>
           <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_01_aircon.jpg'); ?>" alt="業務用エアコンの施工事例写真" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
       <article>
-        <h3>エアコンが急に冷えなくなりました</h3>
+        <h3>何度も修理するより、交換した方がいいのではと悩んでいた</h3>
         <div class="camera_construction--inner">
           <dl>
-            <dt>飲食店<br class="is-hidden_pc">【業務用エアコン修理】</dt>
+            <dt>10年以上使った業務用エアコンの入れ替え</dt>
             <dd>
-              店舗のエアコンが急に冷えにくくなり、店内の暑さが気になり始めていました。<br>
-              修理で直るのかも分からず、一度見てもらいたいと思って相談しました。<br>
-              実際に見てもらったところ、症状に合わせて必要な対応を説明してもらえたので、納得してお願いできました。<br>
-              対応後はしっかり冷えるようになりました。
+              ここ数年、エアコンの調子が悪くなることが増えていて、そのたび
+              に修理を依頼していました。このまま修理を続けた方がいいのか、
+              思い切って交換した方がいいのか判断できずにいました。<br>
+              業務中に止まると困るので、今後のことも考えて一度見てほしいとおもっていました。
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_02_aircon.jpg'); ?>" alt="" width="500" height="348" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/airconchange_construction_02.jpg'); ?>" alt="" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
       <article>
-        <h3>吹き出し口の汚れが気になっていました</h3>
+        <h3>開業日が決まっているので、空調を間に合わせたかった</h3>
         <div class="camera_construction--inner">
           <dl>
-            <dt>美容院<br class="is-hidden_pc">【業務用エアコンクリーニング】</dt>
+            <dt>新店舗に業務用エアコンを新規設置しました</dt>
             <dd>
-              店内の業務用エアコンの吹き出し口に黒い汚れが見えるようになり、お客様の目に触れる場所なので気になっていました。<br>
-              自分たちで表面の掃除はしていましたが、内部の汚れまでは対応できず、専門業者に相談しました。<br>
-              現地で状態を確認してもらい、分解洗浄が必要な理由や作業内容を分かりやすく説明してもらえました。<br>
-              作業後はニオイや見た目の不安が軽くなり、定期的な業務用エアコン掃除の必要性を感じました。<br>
-              カメラの存在自体が強力な威嚇となり、クリーニング後は吹き出し口の汚れが目立ちにくくなり、店内の空気も清潔に保ちやすくなりました。
+              開業日が決まっているので、それまでにエアコンの設置を終わらせ
+              たいとおもっていました。内装工事も進んでいるのですが、どの
+              くらいの能力のエアコンが必要なのか分からなくて不安でした。<br>
+              ドライヤーを使うので店内が暑くなりやすいと思いますし、お客様
+              に快適に過ごしてもらえる空調にしたいとおもっていました。
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_03_aircon.jpg'); ?>" alt="美容院の業務用エアコンクリーニング事例" width="500" height="348" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/airconchange_construction_03.jpg'); ?>" alt="" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
       <article>
-        <h3>天井からの水漏れがありました</h3>
+        <h3>従業員から暑いと言われていて、作業環境を改善したかった</h3>
         <div class="camera_construction--inner">
           <dl>
-            <dt>事務所<br class="is-hidden_pc">【業務用エアコン修理】</dt>
+            <dt>作業場に業務用エアコンを増設しました</dt>
             <dd>
-              エアコンから水漏れがあり、デスクや床に影響が出ないか心配していました。<br>
-              業務にも影響しますし使い続けて大きなトラブルになったら困るという不安がありました。<br>
-              すぐに相談したところ、状況を丁寧に確認してもらえたので、慌てずに対応を進めることができました。<br>
-              対応後は水漏れの不安が解消され、通常通り使用できるようになりました。
+              夏場になると作業場がかなり暑くなってしまい、従業員からも暑さ
+              について声が上がっていました。今ある空調だけでは全体まで効い
+              ていないようで、作業効率にも影響が出ている気がしました。<br>
+              どこに、どのくらいのエアコンを追加すればいいのかを相談させ
+              てもらって増設を決めました。
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_04_aircon.jpg'); ?>" alt="" width="500" height="348" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/airconchange_construction_04.jpg'); ?>" alt="" width="500" height="348" loading="lazy" decoding="async">
+        </div>
+      </article>
+      <article>
+        <h3>電気代が高くなっていて、使い続けるべきか迷っていた</h3>
+        <div class="camera_construction--inner">
+          <dl>
+            <dt>省エネ型の機種へ取り換えました</dt>
+            <dd>
+              エアコン自体はまだ動いているのですが、電気代が高くなってきて
+              いるのが気になっていました。<br>
+              古い機種をこのまま使い続けるより、新しいものに交換した方が結果的に安くなるのかを一度見てもらいました。
+              初期費用だけでなく、今後のランニングコストも含めてシミュレーションをしてもらって取り換えるようとおもいました。
+            </dd>
+          </dl>
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/airconchange_construction_05.jpg'); ?>" alt="" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
     </div>
