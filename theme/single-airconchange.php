@@ -198,8 +198,7 @@ get_header('service');
           <span class="camera_mv--txt">工事・設置まで一括で対応</span>
         </h1>
         <p class="camera_mv--supplement">
-          取り換え、既存機器の撤去、フロン回収、取付工事、<br class="is-hidden_sp">
-          試運転までまとめてご相談いただけます。
+          交換、取り換え、入れ替え、既存機器の撤去、フロン回収、取付工事、試運転までまとめてご相談いただけます。
         </p>
         <ul>
           <li>出張費・お見積り<br><span>完全無料</span></li>
@@ -265,7 +264,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="aircon_solution airconchange_solution sec" id="aircon_improvement">
+  <section class="aircon_solution airconchange_solution sec" id="airconchange_improvement">
     <div class="container">
       <div class="u-txt_center">
         <h2 class="aircon_solution--ttl">
@@ -325,7 +324,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_reason airconchange_reason bg_skyblue sec" id="aircon_reason">
+  <section class="camera_reason airconchange_reason bg_skyblue sec" id="airconchange_reason">
     <div class="container -md">
       <h2 class="single_detail_page--ttl">
         選ばれる<span>6</span>つの理由
@@ -397,7 +396,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_construction aircon_construction sec bg_gray" id="aircon_construction">
+  <section class="camera_construction aircon_construction sec bg_gray" id="airconchange_construction">
     <div class="container">
       <h2>施工・導入実績</h2>
       <p>
@@ -484,7 +483,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_flow -border sec" id="aircon_flow">
+  <section class="camera_flow -border sec" id="airconchange_flow">
     <div class="container -md">
       <h2>ご依頼・作業までの流れ</h2>
       <p>
@@ -597,7 +596,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_qa bg_gray sec" id="aircon_qa">
+  <section class="camera_qa bg_gray sec" id="airconchange_qa">
     <div class="container -md">
       <h2>よくある質問</h2>
       <p>
@@ -673,7 +672,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_area bg_skyblue sec" id="aircon_area">
+  <section class="camera_area bg_skyblue sec" id="airconchange_area">
     <div class="container -md">
       <h2>
         <span>愛知県・岐阜県・三重県・静岡県</span>
@@ -691,7 +690,7 @@ get_header('service');
       </p>
       <article>
         <span>愛知県</span>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_01_aircon.jpg'); ?>" alt="愛知県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_01_airconchange.jpg'); ?>" alt="愛知県の対応エリアイメージ" width="600" height="450" loading="lazy" decoding="async">
         <p>
           名古屋市を中心とした店舗・オフィス・商業施設をはじめ、<br class="is-hidden_sp">
           三河エリアの工場・倉庫・物流施設など、<br class="is-hidden_sp">
@@ -707,7 +706,7 @@ get_header('service');
       </article>
       <article>
         <span>岐阜県</span>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_02_aircon.jpg'); ?>" alt="岐阜県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_02_airconchange.jpg'); ?>" alt="岐阜県の対応エリアイメージ" width="600" height="450" loading="lazy" decoding="async">
         <p>
           岐阜市・大垣市・各務原市周辺の店舗・事務所・工場・物流施設をはじめ、<br class="is-hidden_sp">
           地場産業の作業場、医療施設、福祉施設、宿泊施設などの<br class="is-hidden_sp">
@@ -722,7 +721,7 @@ get_header('service');
       </article>
       <article>
         <span>三重県</span>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_03_aircon.jpg'); ?>" alt="三重県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_03_airconchange.jpg'); ?>" alt="三重県の対応エリアイメージ" width="600" height="450" loading="lazy" decoding="async">
         <p>
           四日市市・鈴鹿市・いなべ市周辺の工場・倉庫・事業所をはじめ、<br class="is-hidden_sp">
           津市・松阪市・桑名市・伊勢志摩エリアの店舗・飲食店・宿泊施設・医療施設など、<br class="is-hidden_sp">
@@ -739,7 +738,7 @@ get_header('service');
       </article>
       <article>
         <span>静岡県</span>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_04_aircon.jpg'); ?>" alt="静岡県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_04_airconchange.jpg'); ?>" alt="静岡県の対応エリアイメージ" width="600" height="450" loading="lazy" decoding="async">
         <p>
           浜松市・静岡市・沼津市・富士市周辺をはじめ、<br class="is-hidden_sp">
           県内各地の店舗・オフィス・工場・倉庫・飲食店・医療施設・福祉施設などの<br class="is-hidden_sp">

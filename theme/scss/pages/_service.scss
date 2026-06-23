@@ -1672,9 +1672,8 @@
   .airconchange_mv--bg {
     width: 100%;
     object-fit: cover;
-    height: auto;
 
-    @media (width <= 1850px) {
+    @media (width <= 1900px) {
       height: 1100px;
       object-position: 70%;
     }
@@ -1779,6 +1778,20 @@
         transform: translateX(-50%);
       }
     }
+
+    @include tb-mq {
+      font-size: var(--fz40);
+
+      span {
+        position: relative;
+        color: #ff0;
+
+        &::before {
+          width: 7px;
+          height: 7px;
+        }
+      }
+    }
   }
 
   // .airconchange_lead--txt
@@ -1787,6 +1800,10 @@
     font-size: var(--fz25);
     font-weight: 700;
     text-align: center;
+
+    @include tb-mq {
+      font-size: var(--fz20);
+    }
   }
 
   &::after {
@@ -1800,6 +1817,25 @@
     content: "";
     background: url(../img/service/arrow_skyblue.png) no-repeat center / contain;
     transform: translateX(-50%);
+  }
+
+  @include tb-mq {
+    li {
+      padding: 150px 15px 30px;
+      font-size: var(--fz25);
+      text-align: center;
+
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
+
+      &::before {
+        position: absolute;
+        top: 15px;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+    }
   }
 }
 
@@ -1859,6 +1895,10 @@
     img {
       display: block;
       margin: 0 auto 30px;
+    }
+
+    @include max-mq {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 }

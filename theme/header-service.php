@@ -165,12 +165,12 @@
         elseif ($post->post_name === 'airconchange') :
         ?>
           <ul>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_improvement')); ?>">エアコンの症状改善</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_reason')); ?>">選ばれる4つの理由</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_construction')); ?>">施工実績</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_flow')); ?>">導入・施工までの流れ</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_qa')); ?>">よくある質問</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_area')); ?>">対応エリア</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_improvement')); ?>">機器選定から一括対応</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_reason')); ?>">選ばれる6つの理由</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_construction')); ?>">施工・導入実績</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_flow')); ?>">導入・施工までの流れ</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_qa')); ?>">よくある質問</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_area')); ?>">対応エリア</a></li>
           </ul>
         <?php
         elseif ($post->post_name === 'hukugouki') :
@@ -225,6 +225,17 @@
             <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_flow')); ?>">メニュー名4</a></li>
             <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_qa')); ?>">メニュー名5</a></li>
             <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_area')); ?>">対応エリア</a></li>
+          </ul>
+        <?php
+        elseif ($post->post_name === 'airconchange') :
+        ?>
+          <ul>
+            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_improvement')); ?>">機器選定から一括対応</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_reason')); ?>">選ばれる6つの理由</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_construction')); ?>">施工・導入実績</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_flow')); ?>">導入・施工までの流れ</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_qa')); ?>">よくある質問</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_area')); ?>">対応エリア</a></li>
           </ul>
         <?php endif; ?>
         <div class="header--btn">
