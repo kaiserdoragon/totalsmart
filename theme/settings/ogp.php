@@ -33,7 +33,8 @@ function output_ogp()
   $og_title       = get_bloginfo('name');
   $og_type        = 'website';
   $og_url         = home_url();
-  $og_image       = get_template_directory_uri() . '/img/ogp.png'; //できるだけpng
+  $default_og_image = get_theme_file_uri('/img/ogp.png');
+  $og_image       = $default_og_image; //できるだけpng
   $og_description = get_bloginfo('description');
   $og_description_override = isset($GLOBALS['ts_meta_description_override'])
     ? (string) $GLOBALS['ts_meta_description_override']
@@ -75,9 +76,12 @@ function output_ogp()
         $og_description = $clean_description;
       }
     }
-    if (is_single() && has_post_thumbnail()) {
+    if (is_single() && !is_singular('service') && has_post_thumbnail()) {
       //アイキャッチ画像のある記事ページなら、og_imageにはアイキャッチ画像を入れる
-      $og_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[0];
+      $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
+      if (!empty($thumbnail[0])) {
+        $og_image = $thumbnail[0];
+      }
     }
     wp_reset_postdata();
   }
