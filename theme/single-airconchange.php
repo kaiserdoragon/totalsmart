@@ -396,7 +396,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_construction aircon_construction sec bg_gray" id="airconchange_construction">
+  <section class="camera_construction aircon_construction airconchange_construction sec bg_gray" id="airconchange_construction">
     <div class="container">
       <h2>施工・導入実績</h2>
       <p>

@@ -566,7 +566,7 @@
   }
 
   .single_detail_page--ttl {
-    margin-bottom: 100px;
+    margin-bottom: 60px;
   }
 
   @include tb-mq {
@@ -889,6 +889,12 @@
       font-size: var(--fz20);
       line-height: 1.8;
     }
+
+    @include max-mq {
+      p {
+        font-size: var(--fz18);
+      }
+    }
   }
 
   &.-border {
@@ -920,7 +926,7 @@
     h3 {
       padding: 0 15px 15px;
       margin-bottom: 30px;
-      font-size: var(--fz28);
+      font-size: var(--fz25);
       text-align: center;
     }
   }
@@ -1093,7 +1099,11 @@
 
   @include max-mq {
     h2 {
-      font-size: var(--fz40);
+      font-size: var(--fz35);
+
+      + p {
+        font-size: var(--fz18);
+      }
     }
 
     article {
@@ -1376,7 +1386,7 @@
 
     p {
       padding: 40px min(4vw, 25px);
-      font-size: var(--fz25);
+      font-size: var(--fz20);
     }
 
     &::before {
@@ -1386,7 +1396,7 @@
 
   @include max-mq {
     h2 {
-      font-size: var(--fz35);
+      font-size: var(--fz25);
     }
   }
 }
@@ -1646,8 +1656,6 @@
 //  業務用エアコン交換・取り換え　専用
 // ---------------------------------------------
 
-
-
 .airconchange_mv {
   .camera_mv--contents {
     width: 100%;
@@ -1669,7 +1677,22 @@
     }
   }
 
-  .airconchange_mv--bg {
+  .camera_mv--ttl {
+    @include tb-mq {
+      font-size: var(--fz60);
+    }
+
+    @include max-mq {
+      font-size: var(--fz40);
+    }
+  }
+
+  li {
+    font-size: var(--fz25);
+  }
+
+  // .airconchange_mv--bg
+  &--bg {
     width: 100%;
     object-fit: cover;
     height: 1000px;
@@ -1680,24 +1703,6 @@
 
     @media (width <= 1200px) {
       height: 1400px;
-    }
-
-    @include tb-mq {
-      height: 1600px;
-    }
-  }
-
-  li {
-    font-size: var(--fz25);
-  }
-
-  .camera_mv--ttl {
-    @include tb-mq {
-      font-size: var(--fz60);
-    }
-
-    @include max-mq {
-      font-size: var(--fz50);
     }
   }
 }
@@ -1872,7 +1877,7 @@
     column-gap: 30px;
 
     h3 {
-      padding: 20px 0;
+      padding: 20px;
       font-size: var(--fz35);
       font-weight: 800;
       color: #fff;
@@ -1902,6 +1907,34 @@
 
     @include max-mq {
       grid-template-columns: repeat(1, 1fr);
+
+      div {
+        padding: 40px 15px 60px;
+      }
+
+      h3 {
+        font-size: var(--fz30);
+      }
+    }
+  }
+}
+
+.airconchange_construction {
+  dt {
+    padding: 15px;
+  }
+
+  @include max-mq {
+    article {
+      padding: 0 !important;
+    }
+
+    h3 {
+      font-size: var(--fz23);
+    }
+
+    dt {
+      font-size: var(--fz20);
     }
   }
 }
@@ -1912,6 +1945,10 @@
     border: 3px solid #1d56a5;
     border-radius: 10px;
     box-shadow: 3px 3px 10px rgb(29 86 165 / 60%);
+  }
+
+  img {
+    margin-bottom: 0 !important;
   }
 
   // .airconchange_reason--lead
