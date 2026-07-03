@@ -8,31 +8,28 @@ $page_id  = get_queried_object_id();
 $page_url = esc_url_raw(get_permalink($page_id));
 $home_url = esc_url_raw(home_url('/'));
 
-$logo_url = esc_url_raw(get_theme_file_uri('cleaninglp/img/logo.png'));
-$mv_url   = esc_url_raw(get_theme_file_uri('cleaninglp/img/mv.jpg'));
+$logo_url = esc_url_raw(get_theme_file_uri('airconchangelp/img/logo.png'));
+$mv_url   = esc_url_raw(get_theme_file_uri('airconchangelp/img/mv.jpg'));
 
 // NAP（代表番号）と、広告計測等で使う番号（表示している番号）を分離
 $main_tel_local     = '052-932-5450';
 $main_tel_intl      = '+81-52-932-5450';
-$tracking_tel_local = '0800-111-3816';
-$tracking_tel_intl  = '+81-800-111-3816';
 
 // tel: hrefは数字列（端末互換性重視）に正規化（表示テキストはそのまま）
-$tracking_tel_href = preg_replace('/[^0-9]/', '', $tracking_tel_local); // 08001113816
 $main_tel_href     = preg_replace('/[^0-9]/', '', $main_tel_local);     // 0529325450
 
 // SEOプラグインの有無（重複出力回避）
 $has_seo_plugin = defined('WPSEO_VERSION') || defined('RANK_MATH_VERSION') || defined('AIOSEO_VERSION');
 
 // このテンプレート用のdescription（必要なら固定文→カスタムフィールド化推奨）
-$meta_description = '愛知・岐阜・三重・静岡でエアコンクリーニング（分解洗浄）。最短当日対応、明朗会計。電話・メール・LINEで無料見積り。';
+$meta_description = '愛知・岐阜・三重・静岡で業務用エアコンの交換・取り換え・入れ替え・買い替え。電話・メールで無料見積り。';
 $meta_description = wp_strip_all_tags($meta_description);
 if (function_exists('mb_strimwidth')) {
   $meta_description = mb_strimwidth($meta_description, 0, 120, '…', 'UTF-8');
 }
 
 // title-tag 非対応テーマのための保険（テーマが対応ならwp_head側で出る）
-$meta_title = 'エアコンクリーニング（エアコン掃除）｜株式会社トータルスマート';
+$meta_title = '業務用エアコンの交換・取り換え・入れ替え・買い替え｜株式会社トータルスマート';
 
 // ---------------------------
 // JSON-LD（表示内容と整合）
@@ -127,12 +124,6 @@ $business = [
       '@type' => 'ContactPoint',
       'telephone' => $main_tel_intl,
       'contactType' => 'customer service',
-      'availableLanguage' => ['ja'],
-    ],
-    [
-      '@type' => 'ContactPoint',
-      'telephone' => $tracking_tel_intl,
-      'contactType' => 'sales',
       'availableLanguage' => ['ja'],
     ],
   ],
@@ -265,9 +256,9 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="format-detection" content="telephone=no">
 
-  <link rel="preload" as="image" href="<?php echo esc_url(get_theme_file_uri('cleaninglp/img/logo.avif')); ?>" type="image/avif">
-  <link rel="preload" as="image" href="<?php echo esc_url(get_theme_file_uri('cleaninglp/img/mv_sp.avif')); ?>" type="image/avif" media="(max-width: 767px)">
-  <link rel="preload" as="image" href="<?php echo esc_url(get_theme_file_uri('cleaninglp/img/mv.avif')); ?>" type="image/avif" media="(min-width: 768px)">
+  <link rel="preload" as="image" href="<?php echo esc_url(get_theme_file_uri('airconchangelp/img/logo.avif')); ?>" type="image/avif">
+  <link rel="preload" as="image" href="<?php echo esc_url(get_theme_file_uri('airconchangelp/img/mv_sp.avif')); ?>" type="image/avif" media="(max-width: 767px)">
+  <link rel="preload" as="image" href="<?php echo esc_url(get_theme_file_uri('airconchangelp/img/mv.avif')); ?>" type="image/avif" media="(min-width: 768px)">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -305,7 +296,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
   <?php wp_head(); ?>
 </head>
 
-<body <?php body_class('cleaninglp'); ?>>
+<body <?php body_class('airconchangelp'); ?>>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKC4PWHS"
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -316,8 +307,8 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
   <header class="header">
     <div class="contents">
       <div class="header--logo">
-        <a href="<?php echo esc_url(home_url('/cleaninglp/')); ?>">
-          <p>愛知県・岐阜県・三重県・静岡県の<br>エアコンクリーニング・掃除はトータルスマート株式会社</p>
+        <a href="<?php echo esc_url(home_url('/airconchangelp/')); ?>">
+          <p>業務用エアコンの交換・取り換え・入れ替え・買い替えは<br>トータルスマート株式会社</p>
 
           <h1>
             <picture>
