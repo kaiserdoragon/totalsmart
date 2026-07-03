@@ -543,7 +543,7 @@ add_filter('wp_robots', 'ts_adjust_robots_meta', 20);
 
 add_action('wp_enqueue_scripts', function () {
 
-  $lp_pages = ['cleaninglp', 'shuurilp', 'cleaning_thanks', 'shuuri_thanks'];
+  $lp_pages = ['cleaninglp', 'shuurilp', 'cleaning_thanks', 'shuuri_thanks', 'airconchangelp', 'airconchange_thanks'];
   $is_lp    = is_page($lp_pages);
 
   $uri  = fn($file) => get_theme_file_uri($file);
@@ -585,6 +585,15 @@ add_action('wp_enqueue_scripts', function () {
 
     $enqueue('lp-shuuri-reset', "{$folder}/css/reset.css", []);
     $enqueue('lp-shuuri-main',  "{$folder}/css/style.css", ['lp-shuuri-reset']);
+
+    return;
+  }
+
+  if (is_page(['airconchangelp', 'airconchange_thanks'])) {
+    $folder = 'airconchangelp';
+
+    $enqueue('lp-airconchange-reset', "{$folder}/css/reset.css", []);
+    $enqueue('lp-airconchange-main',  "{$folder}/css/style.css", ['lp-airconchange-reset']);
 
     return;
   }

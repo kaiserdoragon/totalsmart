@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+// ---------------------------------------------
+//  各ファイルを読み込む
+// ---------------------------------------------
+
+@use "airconchangelp/utility"; // 基本共通要素
+@use "airconchangelp/parts"; // 共通装飾パーツ
+@use "airconchangelp/base"; // header,footerやmainなど
+
+// index
+@use "airconchangelp/pages/top";
+
+// 下層ページ
+
+@use "airconchangelp/pages/contact";
+@use "airconchangelp/pages/notfound"; // 404ページ見つかりません
+
+// wordpress用 ブログ記事をリッチテキストエディタ
+// @use "post";
+
+/* コメント残したいときはアスタリスクの形式で囲ってね */
