@@ -163,7 +163,7 @@ function custom_pre_get_document_title($title)
     return 'お問い合わせ確認画面 | ' . $site_name;
   }
 
-  if (is_page(array('contact_corporate-thanks', 'cleaning_thanks', 'shuuri_thanks'))) {
+  if (is_page(array('contact_corporate-thanks', 'cleaning_thanks', 'shuuri_thanks', 'airconchange_thanks'))) {
     return 'お問い合わせありがとうございました | ' . $site_name;
   }
 
@@ -568,7 +568,7 @@ add_action('wp_enqueue_scripts', function () {
   }
 
   // ─────────────────────────────
-  // LP専用CSSだけ（クリーニング、修理など）
+  // LP専用CSSだけ（クリーニング、修理、交換・買い替えなど）
   // ─────────────────────────────
   if (is_page(['cleaninglp', 'cleaning_thanks'])) {
     $folder = 'cleaninglp';
@@ -592,8 +592,9 @@ add_action('wp_enqueue_scripts', function () {
   if (is_page(['airconchangelp', 'airconchange_thanks'])) {
     $folder = 'airconchangelp';
 
-    $enqueue('lp-airconchange-reset', "{$folder}/css/reset.css", []);
-    $enqueue('lp-airconchange-main',  "{$folder}/css/style.css", ['lp-airconchange-reset']);
+    $enqueue('lp-airconchange-reset',      "{$folder}/css/reset.css", []);
+    $enqueue('lp-airconchange-scrollhint', "{$folder}/css/scroll-hint.css", ['lp-airconchange-reset']);
+    $enqueue('lp-airconchange-main',       "{$folder}/css/style.css", ['lp-airconchange-reset', 'lp-airconchange-scrollhint']);
 
     return;
   }
@@ -640,7 +641,7 @@ add_filter('style_loader_tag', function ($html, $handle, $href, $media) {
 if (!function_exists('theme_is_lp_page')) {
   function theme_is_lp_page()
   {
-    return is_page(array('cleaninglp', 'shuurilp', 'cleaning_thanks', 'shuuri_thanks'));
+    return is_page(array('cleaninglp', 'shuurilp', 'cleaning_thanks', 'shuuri_thanks', 'airconchangelp', 'airconchange_thanks'));
   }
 }
 
@@ -697,6 +698,8 @@ if (!function_exists('theme_enqueue_js_only_optimized_assets')) {
         $folder = 'cleaninglp';
       } elseif (is_page(array('shuurilp', 'shuuri_thanks'))) {
         $folder = 'shuurilp';
+      } elseif (is_page(array('airconchangelp', 'airconchange_thanks'))) {
+        $folder = 'airconchangelp';
       } else {
         return;
       }
@@ -730,7 +733,7 @@ if (!function_exists('theme_enqueue_js_only_optimized_assets')) {
     $register_local_script('swiperjs',     'js/swiper-bundle.min.js', array(), 'defer');
     $register_local_script('scrollhint',   'js/scroll-hint.min.js',   array(), 'defer');
     $register_local_script('mainscripts',  'js/scripts.js',           array('jquery'), 'defer');
-    // $register_local_script('prohibited',  'js/prohibited.js',         array('jquery'), 'defer');
+    $register_local_script('prohibited',  'js/prohibited.js',         array('jquery'), 'defer');
 
     $register_local_script('slider',       'js/slider.js',            array('jquery', 'swiperjs'), 'defer');
 
@@ -1211,7 +1214,8 @@ function ts_enqueue_yubinbango()
     'recruit',
     'recruit-confirm',
     'cleaninglp',
-    'shuurilp'
+    'shuurilp',
+    'airconchangelp'
   );
 
   if (! is_page($yubinbango_pages)) {
