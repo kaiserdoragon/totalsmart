@@ -565,53 +565,6 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       </div>
     </section>
 
-    <section class="cvarea bg_blue">
-      <div class="contents">
-        <picture>
-          <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_sp.png">
-          <img class="cvarea--bg" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea.png" alt="エアコンクリーニングならトータルスマートにお任せください" width="1366" height="618" loading="lazy" decoding="async">
-        </picture>
-        <div class="header--btns">
-          <div class="header--btn-item">
-            <a href="tel:<?php echo esc_attr($tracking_tel_href); ?>" class="cv_button gtm-click-tel">
-              <picture>
-                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.avif" type="image/avif">
-                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.webp" type="image/webp">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.png"
-                  alt="お電話でのご相談はこちら: <?php echo esc_attr($tracking_tel_local); ?>"
-                  width="270" height="70"
-                  decoding="async">
-              </picture>
-            </a>
-          </div>
-          <div class="header--btn-item">
-            <a href="#contact" class="cv_button gtm-click-mail">
-              <picture>
-                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.avif" type="image/avif">
-                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.webp" type="image/webp">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.png"
-                  alt="メールでお問い合わせ"
-                  width="270" height="70"
-                  decoding="async">
-              </picture>
-            </a>
-          </div>
-          <div class="header--btn-item">
-            <a href="https://lin.ee/fXrKQyq" class="cv_button gtm-click-line">
-              <picture>
-                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.avif" type="image/avif">
-                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.webp" type="image/webp">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.png"
-                  alt="LINEでお問い合わせ"
-                  width="270" height="70"
-                  decoding="async">
-              </picture>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="price sec" id="price">
       <div class="contents">
         <span class="sign--catch">他社との比較でわかる！</span>
@@ -803,64 +756,6 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
               増えています。</p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="flow sec">
-      <div class="contents">
-        <h2 class="ttl">エアコンクリーニングの流れ</h2>
-        <ol>
-          <li>
-            <span>STEP1</span>
-            <div>
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/flow_01.jpg" alt="" width="180" height="100" loading="lazy" decoding="async">
-              <dl>
-                <dt>エアコンの分解</dt>
-                <dd>パーツを分解して<br class="is-hidden_sp">いきます。</dd>
-              </dl>
-            </div>
-          </li>
-          <li>
-            <span>STEP2</span>
-            <div>
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/flow_02.jpg" alt="" width="180" height="100" loading="lazy" decoding="async">
-              <dl>
-                <dt>ホコリ除去</dt>
-                <dd>ホコリや汚れを<br class="is-hidden_sp">除去します。</dd>
-              </dl>
-            </div>
-          </li>
-          <li>
-            <span>STEP3</span>
-            <div>
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/flow_03.jpg" alt="" width="180" height="100" loading="lazy" decoding="async">
-              <dl>
-                <dt>エアコン内部洗浄</dt>
-                <dd>高圧洗浄機で<br class="is-hidden_sp">きれいにします。</dd>
-              </dl>
-            </div>
-          </li>
-          <li>
-            <span>STEP4</span>
-            <div>
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/flow_04.jpg" alt="" width="180" height="100" loading="lazy" decoding="async">
-              <dl>
-                <dt>パーツの汚れ除去</dt>
-                <dd>分解したパーツも<br class="is-hidden_sp">洗浄します。</dd>
-              </dl>
-            </div>
-          </li>
-          <li>
-            <span>STEP5</span>
-            <div>
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/flow_05.jpg" alt="" width="180" height="100" loading="lazy" decoding="async">
-              <dl>
-                <dt>最終確認</dt>
-                <dd>正常に動くかの<br class="is-hidden_sp">最終確認をします。</dd>
-              </dl>
-            </div>
-          </li>
-        </ol>
       </div>
     </section>
 
