@@ -6,7 +6,6 @@
 // ---------------------------------------------
 
 html {
-  margin-top: 0 !important;
   font-size: 62.5%;
 }
 
@@ -34,7 +33,7 @@ body {
 
 .contents {
   box-sizing: border-box;
-  width: min(1450px, 100%); // デザインの幅 + padding
+  width: min(1650px, 100%);
   padding: 0 min(4vw, 25px);
   margin: auto;
 
@@ -46,14 +45,6 @@ body {
 main {
   display: block;
   padding-top: 170px;
-
-  @media (width <= 1300px) {
-    padding-top: 285px;
-  }
-
-  @include max-mq {
-    padding-top: 0;
-  }
 
   // @media (width <= 485px) {
   //   padding-top: 190px;
@@ -74,7 +65,7 @@ main {
   top: 0;
   z-index: 1111111;
   width: 100%;
-  background: red;
+  background: #fff;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
   .contents {

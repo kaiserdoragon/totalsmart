@@ -328,11 +328,11 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <div class="header--btn-item">
           <a href="tel:<?php echo esc_attr($tracking_tel_href); ?>" class="cv_button gtm-click-tel">
             <picture>
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.avif" type="image/avif">
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.webp" type="image/webp">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.png"
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.avif" type="image/avif">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.webp" type="image/webp">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.png"
                 alt="お電話でのご相談はこちら: <?php echo esc_attr($tracking_tel_local); ?>"
-                width="270" height="70"
+                width="270" height="80"
                 decoding="async">
             </picture>
           </a>
@@ -341,24 +341,11 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <div class="header--btn-item">
           <a href="#contact" class="cv_button gtm-click-mail">
             <picture>
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.avif" type="image/avif">
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.webp" type="image/webp">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.png"
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.avif" type="image/avif">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.webp" type="image/webp">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.png"
                 alt="メールでお問い合わせ"
-                width="270" height="70"
-                decoding="async">
-            </picture>
-          </a>
-        </div>
-
-        <div class="header--btn-item">
-          <a href="https://lin.ee/fXrKQyq" class="cv_button gtm-click-line">
-            <picture>
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.avif" type="image/avif">
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.webp" type="image/webp">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.png"
-                alt="LINEでお問い合わせ"
-                width="270" height="70"
+                width="270" height="80"
                 decoding="async">
             </picture>
           </a>
@@ -372,27 +359,87 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       <picture>
         <source
           media="(max-width: 767px)"
-          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv_sp.avif"
+          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv_sp.avif"
           type="image/avif">
         <source
           media="(max-width: 767px)"
-          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv_sp.webp"
+          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv_sp.webp"
           type="image/webp">
         <source
           media="(max-width: 767px)"
-          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv_sp.jpg">
+          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv_sp.jpg">
 
         <source
-          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv.avif"
+          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv.avif"
           type="image/avif">
         <source
-          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv.webp"
+          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv.webp"
           type="image/webp">
 
         <img
-          src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv.jpg"
+          src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv.jpg"
           alt="エアコンクリーニングなら株式会社トータルスマート"
-          width="1920" height="800"
+          width="1920" height="1778"
+          fetchpriority="high"
+          decoding="async">
+      </picture>
+    </div>
+
+    <div class="cv_area">
+      <div class="cv_area--btn">
+        <div class="header--btns">
+          <div class="header--btn-item">
+            <a href="tel:<?php echo esc_attr($tracking_tel_href); ?>" class="cv_button gtm-click-tel">
+              <picture>
+                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.avif" type="image/avif">
+                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.webp" type="image/webp">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.png"
+                  alt="お電話でのご相談はこちら: <?php echo esc_attr($tracking_tel_local); ?>"
+                  width="487" height="144"
+                  decoding="async">
+              </picture>
+            </a>
+          </div>
+
+          <div class="header--btn-item">
+            <a href="#contact" class="cv_button gtm-click-mail">
+              <picture>
+                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.avif" type="image/avif">
+                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.webp" type="image/webp">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.png"
+                  alt="メールでお問い合わせ"
+                  width="487" height="144"
+                  decoding="async">
+              </picture>
+            </a>
+          </div>
+        </div>
+      </div>
+      <picture>
+        <source
+          media="(max-width: 767px)"
+          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/cvarea_sp.avif"
+          type="image/avif">
+        <source
+          media="(max-width: 767px)"
+          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/cvarea_sp.webp"
+          type="image/webp">
+        <source
+          media="(max-width: 767px)"
+          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/cvarea_sp.jpg">
+
+        <source
+          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/cvarea.avif"
+          type="image/avif">
+        <source
+          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/cvarea.webp"
+          type="image/webp">
+
+        <img
+          src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/cvarea.jpg"
+          alt="業務用エアコンの交換・入れ替え！施工から保守まで一括サポート。まずは無料でご相談ください"
+          class="cv_area--img"
+          width="1920" height="1778"
           fetchpriority="high"
           decoding="async">
       </picture>
@@ -992,7 +1039,6 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
   <div class="footer_btn_fixed" id="js_fixed-btn">
     <p class="footer_btn_fixed--tel"><a href="tel:<?php echo esc_attr($tracking_tel_href); ?>">電話で<br>予約する</a></p>
     <p class="footer_btn_fixed--mail"><a href="#contact">メールで<br>無料見積り</a></p>
-    <p class="footer_btn_fixed--line"><a href="https://lin.ee/fXrKQyq">LINEで<br>問い合わせ</a></p>
   </div>
 
   <footer class="footer">
