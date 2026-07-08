@@ -417,6 +417,71 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       </div>
     </section>
 
+    <section class="solution sec">
+      <div class="contents">
+        <div class="solution--inner">
+          <h2>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_ttl.png" alt="" width="1194" height="120" decoding="async">
+          </h2>
+          <div class="solution--lead">
+            業務用エアコンの<br class="is-hidden_sp">
+            <p class="solution--item"><span>交換</span><span>取り換え</span><span>入れ替え</span><span>買い替え</span></p>は
+          </div>
+          <p class="solution--strong">
+            <strong>トータルスマート株式会社</strong>に<br class="is-hidden_sp">
+            お任せください
+          </p>
+          <div class="solution--guide">
+            <div>
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_txt_1.png" alt="" width="686" height="163" decoding="async">
+            </div>
+            <p>
+              現在のエアコンの写真、設置場所、台数、使用年数など、<br class="is-hidden_sp">
+              分かる範囲の情報だけでご相談いただけます。<br class="is-hidden_sp">
+              修理を続けるべきか、交換した方がよいか、<br class="is-hidden_sp">
+              現地状況を確認したうえでご案内します。
+            </p>
+          </div>
+          <div>
+            <p>お問い合わせはこちらから</p>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_txt_2.png" alt="" width="683" height="59" decoding="async">
+            <div class="header--btns">
+              <div class="header--btn-item">
+                <a href="tel:<?php echo esc_attr($tracking_tel_href); ?>" class="cv_button gtm-click-tel">
+                  <picture>
+                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.avif" type="image/avif">
+                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.webp" type="image/webp">
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.png"
+                      alt="お電話でのご相談はこちら: <?php echo esc_attr($tracking_tel_local); ?>"
+                      width="487" height="144"
+                      decoding="async">
+                  </picture>
+                </a>
+              </div>
+
+              <div class="header--btn-item">
+                <a href="#contact" class="cv_button gtm-click-mail">
+                  <picture>
+                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.avif" type="image/avif">
+                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.webp" type="image/webp">
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.png"
+                      alt="メールでお問い合わせ"
+                      width="487" height="144"
+                      decoding="async">
+                  </picture>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="cvarea">
       <div class="cvarea--btn">
         <div class="header--btns">
