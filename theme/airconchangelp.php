@@ -385,8 +385,40 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       </picture>
     </div>
 
-    <div class="cv_area">
-      <div class="cv_area--btn">
+    <section class="issue sec">
+      <div class="contents">
+        <h2>
+          業務用エアコンの<br class="is-hidden_sp">
+          <strong><b><span>不</span><span>調</span></b></strong>や<strong><b><span>老</span><span>朽</span><span>化</span></b></strong>を<br class="is-hidden_sp">
+          そのままにしていませんか？？
+        </h2>
+        <p>
+          業務用エアコンは、故障してから慌てて交換しようとすると、<br class="is-hidden_sp">
+          <span>営業停止、従業員や来店客の不快感、</span><br class="is-hidden_sp">
+          <span>急な工事費用の発生</span>につながる場合があります。<br class="is-hidden_sp">
+          特に店舗・工場・オフィス・施設では、<br class="is-hidden_sp">
+          空調トラブルがそのまま事業運営のリスクになります。
+        </p>
+        <img class="issue--img" src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/issue_catch.png" alt="" width="674" height="520" decoding="async">
+
+        <div class="issue--inner">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/issue_txt.png" alt="" width="900" height="100" decoding="async">
+          <ul>
+            <li>10年以上使用していて、交換時期が分からない</li>
+            <li>冷えない・暖まらないなど、空調の効きが悪い</li>
+            <li>修理費用が高く、交換するべきか悩んでいる</li>
+            <li>電気代が高いので、省エネ型に変えたい</li>
+            <li>複数台まとめて入れ替えたい</li>
+            <li>新店舗・新事務所に新しいエアコンを導入したい</li>
+            <li>どのメーカー・機種・馬力を選べばいいか分からない</li>
+            <li>古い機種の撤去やフロン回収までまとめて相談したい</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="cvarea">
+      <div class="cvarea--btn">
         <div class="header--btns">
           <div class="header--btn-item">
             <a href="tel:<?php echo esc_attr($tracking_tel_href); ?>" class="cv_button gtm-click-tel">
@@ -438,12 +470,29 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <img
           src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/cvarea.jpg"
           alt="業務用エアコンの交換・入れ替え！施工から保守まで一括サポート。まずは無料でご相談ください"
-          class="cv_area--img"
+          class="cvarea--img"
           width="1920" height="1778"
           fetchpriority="high"
           decoding="async">
       </picture>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <section class="catch sec -sm">
       <div class="contents">

@@ -14,7 +14,7 @@
 
 
 
-.cv_area {
+.cvarea {
   position: relative;
 
   // .cv_area--btn
@@ -48,6 +48,138 @@
     }
   }
 }
+
+
+
+.issue {
+  position: relative;
+  background: #eee;
+
+  h2 {
+    margin-bottom: 40px;
+    font-size: var(--fz75);
+    font-weight: 900;
+    line-height: 1.4;
+    color: #001f52;
+    text-align: center;
+
+    strong {
+      padding: 0 15px;
+      background: linear-gradient(to bottom, transparent 0%, transparent 70%, #f0ff00 70%, #f0ff00 100%);
+    }
+
+    b {
+      color: #f00;
+    }
+
+    span {
+      position: relative;
+
+      &::before {
+        position: absolute;
+        top: -5px;
+        right: 0;
+        left: 0;
+        padding-top: 25px;
+        margin: auto;
+        content: "";
+        background: radial-gradient(circle 15px, #f00 50%, transparent 50%);
+      }
+    }
+  }
+
+  p {
+    margin-bottom: 30px;
+    font-size: var(--fz30);
+    font-weight: 800;
+    text-align: center;
+
+    span {
+      color: #ff7200;
+    }
+  }
+
+  // .issue--img
+  &--img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  // .issue--inner
+  &--inner {
+    width: 100%;
+    max-width: 1100px;
+    padding: 40px;
+    margin: auto;
+    background: #fff;
+    border-radius: 15px;
+
+    img {
+      display: block;
+      margin: 0 auto 30px;
+    }
+
+    li {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      padding: 15px 15px 15px 50px;
+      margin: auto;
+      margin-bottom: 5px;
+      font-size: var(--fz30);
+      font-weight: 800;
+      background-image: radial-gradient(#333 30%, transparent 55%);
+      background-repeat: repeat-x;
+      background-position: bottom;
+      background-size: 7px 7px;
+
+      &::before {
+        position: absolute;
+        top: 53%;
+        left: 0;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        content: "";
+        background: url(../img/issue_check.png) no-repeat center / 100%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &::after {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    z-index: 1;
+    display: inline-block;
+    width: 185px;
+    height: 92px;
+    content: "";
+    background: url(../img/arrow_blue.png) no-repeat center / 100%;
+    transform: translateX(-50%);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

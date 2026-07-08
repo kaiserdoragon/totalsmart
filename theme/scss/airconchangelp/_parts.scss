@@ -104,18 +104,17 @@ table {
 }
 
 .bg_blue {
-  background: #1352c3;
+  background: #049;
 }
 
 .bg_skyblue {
-  background: #effeff;
+  background: #eefaff;
 }
 
 .cv_button {
   position: relative;
   display: inline-block;
   overflow: hidden;
-  line-height: 0;
   border-radius: 1000px;
   transition: transform 0.2s ease;
   animation: cv-pulse 2.5s infinite ease-in-out;
