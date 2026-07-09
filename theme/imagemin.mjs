@@ -6,7 +6,7 @@ import { glob } from "glob";
 import fs from "fs/promises";
 import path from "path";
 
-const SOURCE_DIR = "img";
+const SOURCE_DIR = "airconchangelp/img";
 const DEST_DIR = "dist";
 
 async function compressImages() {
