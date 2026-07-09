@@ -121,7 +121,6 @@
   }
 }
 
-
 .solution {
   position: relative;
   background: url(../img/solution_bg.jpg) no-repeat center /cover;
@@ -217,6 +216,45 @@
     }
   }
 
+  // .solution--cv
+  &--cv {
+    margin-bottom: 60px;
+
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 5px;
+      font-size: var(--fz30);
+      font-weight: 800;
+      color: #001f52;
+      text-align: center;
+
+      &::before,
+      &::after {
+        width: 1px;
+        height: 35px;
+        content: "";
+        background: #001f52;
+      }
+
+      &::before {
+        margin-right: 25px;
+        transform: rotate(-30deg);
+      }
+
+      &::after {
+        margin-left: 25px;
+        transform: rotate(30deg);
+      }
+
+      +img {
+        display: block;
+        margin: 0 auto 30px;
+      }
+    }
+  }
+
   // .solution--inner
   &--inner {
     position: relative;
@@ -226,11 +264,168 @@
     border-radius: 15px;
   }
 
+  // .solution--img
+  &--img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
 
-  //  {
-  //   width: 1031px;
-  //   height: 454px;
-  // }
+.service {
+  // .service--ttl
+  &--ttl {
+    margin-bottom: 60px;
+    text-align: center;
+
+    h2 {
+      display: inline;
+      font-size: var(--fz50);
+      font-weight: 900;
+      background: linear-gradient(to bottom, transparent 0%, transparent 70%, #f0ff00 70%, #f0ff00 100%);
+
+      strong {
+        color: #ff004e;
+      }
+    }
+  }
+
+  // .service--lead
+  &--lead {
+    margin-bottom: 80px;
+    font-size: var(--fz25);
+    font-weight: 700;
+    text-align: center;
+  }
+
+  // .service--inner
+  &--inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    width: 100%;
+    margin: 0 auto 100px;
+
+    h3 {
+      padding: 30px;
+      margin-bottom: 40px;
+      font-size: var(--fz40);
+      font-weight: 800;
+      color: #fff;
+      text-align: center;
+      background: #049;
+      border-radius: 15px 15px 0 0;
+    }
+
+    span {
+      color: #fffc00;
+    }
+
+    img {
+      display: block;
+      margin: auto;
+    }
+
+    p {
+      padding: 60px;
+      font-size: var(--fz23);
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    article {
+      border: 3px solid #049;
+      border-radius: 20px;
+    }
+  }
+
+  // .service--maker
+  &--maker {
+    h3 {
+      img {
+        display: block;
+        margin: 0 auto 30px;
+      }
+    }
+
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 100px;
+    }
+  }
+
+  // .service--building
+  &--building {
+    h3 {
+      margin-bottom: 30px;
+      font-size: 60px;
+      color: #fff5a0;
+      text-align: center;
+      -webkit-text-stroke: 9px #003578;
+      paint-order: stroke;
+    }
+  }
+
+  // .service--img
+  &--img {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 60px;
+    column-gap: 30px;
+    justify-content: center;
+
+    div {
+      position: relative;
+    }
+
+    p {
+      position: absolute;
+      bottom: -33px;
+      left: 50%;
+      width: 220px;
+      padding: 10px 0;
+      font-size: var(--fz30);
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      background: linear-gradient(180deg, rgb(0 35 79) 0%, rgb(0 55 124) 35%, rgb(0 75 169) 50%, rgb(0 55 124) 65%, rgb(0 35 79) 100%);
+      border-radius: 10px;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+
+.reason {
+  background: #eefaff;
+
+  h2 {
+    display: block;
+    width: fit-content;
+    padding: 0 30px;
+    margin: 0 auto 60px;
+    font-size: var(--fz50);
+    font-weight: 900;
+    color: #049;
+    text-align: center;
+    background: linear-gradient(to bottom, transparent 0%, transparent 70%, #f0ff00 70%, #f0ff00 100%);
+
+    span {
+      font-size: var(--fz70);
+      color: #00a8ff;
+    }
+  }
+
+  // .reason--lead
+  &--lead {
+    font-size: var(--fz25);
+    font-weight: 700;
+    text-align: center;
+  }
 }
 
 

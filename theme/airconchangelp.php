@@ -442,7 +442,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
               現地状況を確認したうえでご案内します。
             </p>
           </div>
-          <div>
+          <div class="solution--cv">
             <p>お問い合わせはこちらから</p>
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_txt_2.png" alt="" width="683" height="59" decoding="async">
             <div class="header--btns">
@@ -473,15 +473,152 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
               </div>
             </div>
           </div>
-
+          <div class="solution--img">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_01.jpg" alt="" width="400" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_02.jpg" alt="" width="400" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_03.jpg" alt="" width="400" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_04.jpg" alt="" width="400" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_05.jpg" alt="" width="400" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_06.jpg" alt="" width="400" height="250" decoding="async">
+          </div>
         </div>
       </div>
     </section>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+
+    <section class="service sec">
+      <div class="contents">
+        <div class="service--ttl">
+          <h2>
+            <strong>業務用エアコン</strong>の交換・取り換えを<br class="is-hidden_sp">
+            機器選定から工事まで一括対応します
+          </h2>
+        </div>
+        <p class="service--lead">
+          業務用エアコンの交換・取り換えは本体価格だけでなく、<br class="is-hidden_sp">
+          設置場所、馬力、台数、配管、室外機の位置・撤去、フロン回収、<br class="is-hidden_sp">
+          工事日程まで確認する必要があります。<br class="is-hidden_sp">
+          法人・店舗・施設の状況をヒアリングしたうえで、<br class="is-hidden_sp">
+          導入・交換に必要な内容をまとめてご提案します。
+        </p>
+        <div class="service--inner">
+          <article>
+            <h3>今のエアコンが<br class="is-hidden_sp"><span>交換時期</span>か確認します</h3>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_01.jpg" alt="" width="250" height="250" decoding="async">
+            <p>
+              「まだ修理で使えるのか」<br>
+              「今のうちに交換したほうがよいのか」<br>
+              使用年数、故障内容、部品供給、修理費用、設置環境によって変わります。
+              現在の機器の型番、使用年数、症状、エラー内容などを確認し、
+              修理対応でよいケースと交換を検討すべきケースを整理します。
+            </p>
+          </article>
+          <article>
+            <h3>能力不足・過剰設備を<br class="is-hidden_sp">避けた<span>機器選定</span></h3>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_02.jpg" alt="" width="250" height="250" decoding="async">
+            <p>
+              部屋の広さだけで選ぶと、冷暖房が効きにくい、電気代が高くなる、必要以上に高額な機器を選んでしまうといった問題につながる場合があります。<br class="is-hidden_sp">
+              施設用途、稼働時間、天井高、利用人数、発熱機器の有無を確認し、現場に合った機種・馬力・台数をご提案します。
+            </p>
+          </article>
+          <article>
+            <h3>本体販売から取付工事まで<br class="is-hidden_sp"><span>まとめて依頼できます</span></h3>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_03.jpg" alt="" width="250" height="250" decoding="async">
+            <p>
+              業務用エアコンの交換では、本体の選定だけでなく、配管、電源、室外機の設置場所、搬入経路、工事可能日まで確認する必要があります。<br class="is-hidden_sp">
+              機器の手配から取付工事までまとめて対応し、販売店、工事業者、撤去業者を個別に探す手間を抑えられます。
+            </p>
+          </article>
+          <article>
+            <h3><span>既存機器の撤去・フロン回収</span><br class="is-hidden_sp">本体販売から取付工事まで</h3>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_04.jpg" alt="" width="250" height="250" decoding="async">
+            <p>
+              古い業務用エアコンを交換する際は、新しい機器の設置だけでなく、既存機器の撤去やフロン回収に関する確認も必要です。<br class="is-hidden_sp">
+              交換時に必要となる撤去、回収、処分まわりについても、現在の設置状況に合わせてご相談いただけます。
+            </p>
+          </article>
+          <article>
+            <h3><span>業務の影響を抑えた</span><br class="is-hidden_sp">工事計画を提案します</h3>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_05.jpg" alt="" width="250" height="250" decoding="async">
+            <p>
+              古い業務用エアコンを交換する際は、新しい機器の設置だけでなく、既存機器の撤去やフロン回収に関する確認も必要です。<br class="is-hidden_sp">
+              交換時に必要となる撤去、回収、処分まわりについても、現在の設置状況に合わせてご相談いただけます。
+            </p>
+          </article>
+          <article>
+            <h3><span>追加の工事・費用</span>は<br class="is-hidden_sp">事前に確認できます</h3>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_06.jpg" alt="" width="250" height="250" decoding="async">
+            <p>
+              既存の配管・電源・室外機の位置・搬入経路・天井内の状況によって、必要な工事内容が変わる場合があります。<br class="is-hidden_sp">
+              「見積もり後に費用が変わらないか不安」<br>
+              「どこまで工事費に含まれるのか？」<br>
+              追加工事が発生する可能性がある部分を事前に確認します。<br class="is-hidden_sp">
+            </p>
+          </article>
+
+        </div>
+
+        <section class="service--maker">
+          <h3>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_txt.png" alt="" width="776" height="76" decoding="async">
+          </h3>
+          <div>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_01.png" alt="" width="397" height="61" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_02.png" alt="" width="338" height="72" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_03.png" alt="" width="408" height="63" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_04.png" alt="" width="394" height="76" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_05.png" alt="" width="314" height="131" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_06.png" alt="" width="371" height="59" decoding="async">
+          </div>
+        </section>
+
+
+        <section class="service--building">
+          <h3>
+            店舗・事務所・工場・施設など幅広く対応
+          </h3>
+          <div class="service--img">
+            <div>
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_01.jpg" alt="" width="350" height="250" decoding="async">
+              <p>事務所</p>
+            </div>
+            <div>
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_02.jpg" alt="" width="350" height="250" decoding="async">
+              <p>飲食店</p>
+            </div>
+            <div>
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_03.jpg" alt="" width="350" height="250" decoding="async">
+              <p>美容院</p>
+            </div>
+            <div>
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_04.jpg" alt="" width="350" height="250" decoding="async">
+              <p>クリニック</p>
+            </div>
+            <div>
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_05.jpg" alt="" width="350" height="250" decoding="async">
+              <p>工場・倉庫</p>
+            </div>
+            <div>
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_06.jpg" alt="" width="350" height="250" decoding="async">
+              <p>塾</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="reason sec">
+      <div class="contents">
+        <h2>選ばれる<span>6</span>つの理由</h2>
+        <p class="reason--lead">
+          業務用エアコンの導入・交換では、機器本体の価格だけでなく、<br class="is-hidden_sp">
+          設置環境、必要な能力、工事内容、既存機器の撤去、フロン回収、<br class="is-hidden_sp">
+          導入後の使いやすさまで総合的に考える必要があります。<br>
+          機器選定から販売、取付工事、試運転まで一括でご相談いただけます。
+        </p>
+      </div>
+    </section>
+
+
     <div class="cvarea">
       <div class="cvarea--btn">
         <div class="header--btns">
