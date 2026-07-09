@@ -615,9 +615,151 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           導入後の使いやすさまで総合的に考える必要があります。<br>
           機器選定から販売、取付工事、試運転まで一括でご相談いただけます。
         </p>
+        <div class="reason--inner">
+          <article>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_01.jpg" alt="" width="500" height="300" decoding="async">
+            <h3>省エネ性能まで考えた機種選定</h3>
+            <p>
+              同じ馬力でも省エネ性能や制御機能によって、長期的な電気代が変わります。<br>
+              安い機種を選ぶと、初期費用は抑えられても、毎月の電気代で損をする可能性があります。<br>
+              使用時間、部屋の広さ、天井高、人数、熱源、業種、営業日数を確認し、過剰スペックにも能力不足にもならない機種をご提案します。<br>
+              初期費用だけでなく、運用コストまで考えたサポートをします。
+            </p>
+          </article>
+          <article>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_02.jpg" alt="" width="500" height="300" decoding="async">
+            <h3>総額が見える見積り</h3>
+            <p>
+              交換費用は、本体価格だけでは判断できません。<br>
+              撤去費、配管工事、電源工事、冷媒回収、搬入経路、室外機の設置条件によって総額が変わります。<br>
+              現地状況を確認したうえで「本体費」「標準工事費」「撤去・処分費」「追加工事の可能性」を分けてご提示します。<br>
+              あとから追加費用が膨らむ不安を抑え、納得して比較できる見積りを行います。
+            </p>
+          </article>
+          <article>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_03.jpg" alt="" width="500" height="300" decoding="async">
+            <h3>業種別に最適な空調を提案</h3>
+            <p>
+              飲食店、美容室、クリニック、事務所など空調に求められる条件が異なります。<br>
+              飲食店では厨房熱や油汚れ、美容室では薬剤臭や温度ムラ、クリニックでは快適性と清潔感の配慮が必要です。<br>
+              単に既存機器と同等品を入れ替えるだけでなく、業種・使用環境・お客様の動線・スタッフの作業環境に合わせて、最適なタイプと能力を選定します。
+            </p>
+          </article>
+          <article>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_04.jpg" alt="" width="500" height="300" decoding="async">
+            <h3>工事後の保証・アフター対応</h3>
+            <p>
+              業務用エアコンは、設置して終わりではありません。長く安定して使うには、工事品質、試運転、保証、メンテナンス体制が重要です。<br>
+              設置後に試運転を行い、冷暖房の効き、異音、排水、リモコン動作などを確認します。<br>
+              工事後の不具合やメンテナンスの相談にも対応し、長期的に安心して使える環境をサポートします。
+            </p>
+          </article>
+          <article>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_05.jpg" alt="" width="500" height="300" decoding="async">
+            <h3>リース・分割払いの相談ができる</h3>
+            <p>
+              業務用エアコンの交換や買い替えをするとまとまった初期費用がかかります。<br>
+              一括での支払いが難しい場合にはリース、分割払いなどを検討することが重要です。<br>
+              初期費用を抑えたい、月額化したいといったご相談にも対応します。<br>
+              購入がよいのか、リースがよいのかも、使用年数や台数、会社の資金計画に合わせてご提案します。
+            </p>
+          </article>
+          <article>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_06.jpg" alt="" width="500" height="300" decoding="async">
+            <h3>工事後の保証・アフター対応</h3>
+            <p>
+              使わなくなった業務用エアコンの撤去には、冷媒回収や適切な処分が関わります。<br>
+              機器を外して終わりではなく、法令に沿った対応が必要です。<br>
+              既存機器の撤去、冷媒回収、搬出、処分、新しい機器の設置まで一括で対応します。<br>
+              複数業者を手配する手間を減らし、工事全体をスムーズに進めます。
+            </p>
+          </article>
+        </div>
       </div>
     </section>
 
+    <section class="worry sec">
+      <div class="contents">
+        <h2 class="worry--ttl">
+          <span>このような店舗・施設に選ばれています</span>
+          それぞれの現場が抱える<b>お悩みを解決</b>
+        </h2>
+        <p class="worry--lead">
+          実際にご依頼いただいた事例の一部をご紹介します。<br>
+          症状や現場環境に応じて、適切な方法で対応しています。
+        </p>
+        <article>
+          <h3>夏本番前に、店内が冷えない不安を何とかしたかった</h3>
+          <div class="worry--inner">
+            <div>
+              <p class="worry--txt"><span>飲食店</span>古い天井カセット形エアコンを交換</p>
+              <p>
+                特にランチタイムや満席の時間帯が心配でした。<br>
+                お客様に「暑い」と思われるのは避けたいですし、夏本番に 急に止まってしまうのも困ります。
+                営業にできるだけ影響が 出ないように、早めに入れ替えを相談したいと思っていました。
+              </p>
+            </div>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/worry_01.jpg" alt="" width="350" height="250" decoding="async">
+          </div>
+        </article>
+        <article>
+          <h3>何度も修理するより、交換した方がいいのではと悩んでいた</h3>
+          <div class="worry--inner">
+            <div>
+              <p class="worry--txt"><span>オフィス</span>10年以上使った業務用エアコンの入れ替え</p>
+              <p>
+                ここ数年、エアコンの調子が悪くなることが増えていて、そのたびに修理を依頼していました。<br>
+                このまま修理を続けた方がいいのか、思い切って交換した方がいいのか判断できずにいました。<br>
+                業務中に止まると困るので、今後のことも考えて一度見てほしいとおもっていました。
+              </p>
+            </div>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/worry_02.jpg" alt="" width="350" height="250" decoding="async">
+          </div>
+        </article>
+        <article>
+          <h3>開業日が決まっているので、空調を間に合わせたかった</h3>
+          <div class="worry--inner">
+            <div>
+              <p class="worry--txt"><span>美容院</span>新店舗に業務用エアコンを新規設置しました</p>
+              <p>
+                開業日が決まっているので、それまでにエアコンの設置を終わらせたいとおもっていました。<br>
+                内装工事も進んでいるのですが、どのくらいの性能のエアコンが必要なのか分からなくて不安でした。<br>
+                ドライヤーを使うので店内が暑くなりやすいと思いますし、お客様に快適に過ごしてもらえる空調にしたいとおもっていました。
+              </p>
+            </div>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/worry_03.jpg" alt="" width="350" height="250" decoding="async">
+          </div>
+        </article>
+        <article>
+          <h3>従業員から暑いと言われていて、作業環境を改善したかった</h3>
+          <div class="worry--inner">
+            <div>
+              <p class="worry--txt"><span>工場</span>作業場に業務用エアコンを増設しました</p>
+              <p>
+                夏場になると作業場がかなり暑くなってしまい、従業員からも暑さについて声が上がっていました。<br>
+                今ある空調だけでは全体まで効いていないようで、作業効率にも影響が出ている気がしました。<br>
+                どこに、どのくらいのエアコンを追加すればいいのかを相談させ てもらって増設を決めました。
+              </p>
+            </div>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/worry_04.jpg" alt="" width="350" height="250" decoding="async">
+          </div>
+        </article>
+        <article>
+          <h3>電気代が高くなっていて、使い続けるべきか迷っていた</h3>
+          <div class="worry--inner">
+            <div>
+              <p class="worry--txt"><span>塾</span>省エネ型の機種へ取り換えました</p>
+              <p>
+                エアコン自体はまだ動いているのですが、電気代が高くなってきているのが気になっていました。<br>
+                古い機種をこのまま使い続けるより、新しいものに交換した方が結果的に安くなるのかを一度見てもらいました。<br>
+                初期費用だけでなく、今後のランニングコストも含めてシミュレーションをしてもらって取り換えようとおもいました。
+              </p>
+            </div>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/worry_05.jpg" alt="" width="350" height="250" decoding="async">
+          </div>
+        </article>
+      </div>
+    </section>
 
     <div class="cvarea">
       <div class="cvarea--btn">

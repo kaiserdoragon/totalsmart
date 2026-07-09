@@ -420,14 +420,224 @@
     }
   }
 
+  h3 {
+    width: fit-content;
+    padding: 0 20px 10px;
+    margin: 0 auto 30px;
+    font-size: var(--fz30);
+    font-weight: 800;
+    color: #049;
+    background: radial-gradient(rgb(255 122 4) 40%, transparent 60%) repeat-x bottom / 7px 7px;
+  }
+
+  article {
+    position: relative;
+    padding: 60px;
+    background: #fff;
+    border: 3px solid #049;
+    border-radius: 15px;
+    box-shadow: 0 0 25.5px 4.5px rgb(192 234 255 / 100%);
+
+    &:nth-child(1) {
+      &::before {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        display: inline-block;
+        width: 154px;
+        height: 110px;
+        content: "";
+        background: url(../img/reason_num_01.png) no-repeat center / contain;
+      }
+    }
+
+    &:nth-child(2) {
+      &::before {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        display: inline-block;
+        width: 154px;
+        height: 110px;
+        content: "";
+        background: url(../img/reason_num_02.png) no-repeat center / contain;
+      }
+    }
+
+    &:nth-child(3) {
+      &::before {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        display: inline-block;
+        width: 154px;
+        height: 110px;
+        content: "";
+        background: url(../img/reason_num_03.png) no-repeat center / contain;
+      }
+    }
+
+    &:nth-child(4) {
+      &::before {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        display: inline-block;
+        width: 154px;
+        height: 110px;
+        content: "";
+        background: url(../img/reason_num_04.png) no-repeat center / contain;
+      }
+    }
+
+    &:nth-child(5) {
+      &::before {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        display: inline-block;
+        width: 154px;
+        height: 110px;
+        content: "";
+        background: url(../img/reason_num_05.png) no-repeat center / contain;
+      }
+    }
+
+    &:nth-child(6) {
+      &::before {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        display: inline-block;
+        width: 154px;
+        height: 110px;
+        content: "";
+        background: url(../img/reason_num_06.png) no-repeat center / contain;
+      }
+    }
+  }
+
+  img {
+    display: block;
+    margin: 0 auto 30px;
+  }
+
+  p {
+    text-align: center;
+  }
+
   // .reason--lead
   &--lead {
+    margin-bottom: 60px;
+    font-size: var(--fz25);
+    font-weight: 700;
+  }
+
+  // .reason--inner
+  &--inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    width: 100%;
+    margin: 0 auto 100px;
+  }
+}
+
+
+.worry {
+  background: #0bf;
+
+  article {
+    position: relative;
+
+    &:not(:last-child) {
+      margin-bottom: 100px;
+    }
+  }
+
+  h3 {
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    box-sizing: border-box;
+    width: max-content;
+    padding: 20px 60px;
+    font-size: 30px;
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    background: #465cac;
+    box-shadow: 5px 5px 0 #333;
+    transform: translateX(-50%);
+  }
+
+  // .worry--ttl
+  &--ttl {
+    margin-bottom: 40px;
+    font-size: var(--fz50);
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+
+    span {
+      display: block;
+      font-size: var(--fz25);
+      color: #fff;
+    }
+
+    b {
+      color: #fffc00;
+    }
+  }
+
+  // worry--lead
+  &--lead {
+    margin-bottom: 120px;
     font-size: var(--fz25);
     font-weight: 700;
     text-align: center;
   }
-}
 
+  // .worry--inner
+  &--inner {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1100px;
+    padding: 100px 60px 60px;
+    margin: auto;
+    background: #fff;
+  }
+
+  // .worry--txt
+  &--txt {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    font-size: var(--fz25);
+    font-weight: 800;
+    color: #0090ff;
+    background-image: linear-gradient(to right, #000 8px, transparent 8px);
+    background-repeat: repeat-x;
+    background-position: left bottom;
+    background-size: 10px 1px;
+
+    span {
+      display: inline-block;
+      width: 90px;
+      padding: 5px 10px;
+      margin-right: 10px;
+      font-size: var(--fz18);
+      color: #333;
+      text-align: center;
+      background: #eee;
+      border-radius: 5px;
+    }
+  }
+}
 
 .cvarea {
   position: relative;
