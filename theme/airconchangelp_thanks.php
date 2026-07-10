@@ -5,12 +5,12 @@ Template Name: エアコンの交換・買い替えのサンクスページ
 defined('ABSPATH') || exit;
 
 // URL（フラグメントは後で連結する）
-$lp_url_raw = home_url('/cleaninglp/');
+$lp_url_raw = home_url('/airconchangelp/');
 $lp_url     = esc_url($lp_url_raw);
 $lp_contact = esc_url($lp_url_raw . '#contact');
 
 // 表示用電話番号（計測用番号などに差し替えるならここだけ変更）
-$tel_display = '0800-111-3816';
+$tel_display = '052-932-5450';
 $tel_href    = 'tel:' . preg_replace('/[^0-9+]/', '', $tel_display);
 
 // サンクスページは通常 noindex（WP流儀：wp_robots）
@@ -67,7 +67,7 @@ if (function_exists('wp_robots_no_robots')) {
   <?php wp_head(); ?>
 </head>
 
-<body <?php body_class('cleaninglp-thanks'); ?>>
+<body <?php body_class('airconchangelp-thanks'); ?>>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKC4PWHS"
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -78,12 +78,12 @@ if (function_exists('wp_robots_no_robots')) {
     <div class="contents">
       <div class="header--logo">
         <a href="<?php echo $lp_url; ?>">
-          <p>愛知県・岐阜県・三重県・静岡県のエアコンクリーニングはトータルスマート株式会社</p>
+          <p>愛知県・岐阜県・三重県・静岡県のエアコンの交換・買い替えはトータルスマート株式会社</p>
           <picture>
-            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo.avif" type="image/avif">
-            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo.webp" type="image/webp">
+            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/logo.avif" type="image/avif">
+            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/logo.webp" type="image/webp">
             <img
-              src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo.png"
+              src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/logo.png"
               alt="株式会社トータルスマート"
               width="397" height="262"
               fetchpriority="high"
@@ -97,10 +97,10 @@ if (function_exists('wp_robots_no_robots')) {
         <div class="header--btn-item">
           <a href="<?php echo esc_url($tel_href); ?>" class="cv_button gtm-click-tel">
             <picture>
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.avif" type="image/avif">
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.webp" type="image/webp">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.avif" type="image/avif">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.webp" type="image/webp">
               <img
-                src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.png"
+                src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.png"
                 alt="お電話でのご相談はこちら: <?php echo esc_attr($tel_display); ?>"
                 width="270" height="70"
                 decoding="async">
@@ -111,25 +111,11 @@ if (function_exists('wp_robots_no_robots')) {
         <div class="header--btn-item">
           <a href="<?php echo $lp_contact; ?>" class="cv_button gtm-click-mail">
             <picture>
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.avif" type="image/avif">
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.webp" type="image/webp">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.avif" type="image/avif">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.webp" type="image/webp">
               <img
-                src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.png"
+                src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.png"
                 alt="メールでお問い合わせ（LPへ戻ります）"
-                width="270" height="70"
-                decoding="async">
-            </picture>
-          </a>
-        </div>
-
-        <div class="header--btn-item">
-          <a href="https://lin.ee/fXrKQyq" class="cv_button gtm-click-line" rel="noopener noreferrer">
-            <picture>
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.avif" type="image/avif">
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.webp" type="image/webp">
-              <img
-                src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.png"
-                alt="LINEでお問い合わせ"
                 width="270" height="70"
                 decoding="async">
             </picture>
@@ -154,10 +140,10 @@ if (function_exists('wp_robots_no_robots')) {
         <div class="thanks--tel">
           <a href="<?php echo esc_url($tel_href); ?>" class="cv_button">
             <picture>
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.avif" type="image/avif">
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.webp" type="image/webp">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.avif" type="image/avif">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.webp" type="image/webp">
               <img
-                src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.png"
+                src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.png"
                 alt="お電話でのご相談はこちら: <?php echo esc_attr($tel_display); ?>"
                 width="355" height="90"
                 decoding="async">
@@ -182,10 +168,10 @@ if (function_exists('wp_robots_no_robots')) {
         <div class="footer--logo">
           <a href="<?php echo esc_url(home_url('/')); ?>">
             <picture>
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo_footer.avif" type="image/avif">
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo_footer.webp" type="image/webp">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/logo_footer.avif" type="image/avif">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/logo_footer.webp" type="image/webp">
               <img
-                src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo_footer.png"
+                src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/logo_footer.png"
                 alt="株式会社トータルスマート"
                 width="397" height="84"
                 decoding="async">
@@ -194,14 +180,14 @@ if (function_exists('wp_robots_no_robots')) {
         </div>
 
         <div class="footer--info">
-          <p>〒461-0002 愛知県名古屋市東区代官町16-17<br>アーク代官町ビルディング2F</p>
+          <p>〒461-0002 愛知県名古屋市東区代官町16-17<br>代官町ビルディング2F</p>
           <p>TEL:052-932-5450</p>
           <p>FAX:052-932-5451</p>
         </div>
       </div>
 
       <div class="footer--catch">
-        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/footer_catch.jpg" alt="トータルスマート" width="357" height="349" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/footer_catch.jpg" alt="トータルスマート" width="357" height="349" decoding="async">
       </div>
     </div>
     <p class="footer--copy"><small>Copyright© 株式会社トータルスマート All Rights Reserved.</small></p>

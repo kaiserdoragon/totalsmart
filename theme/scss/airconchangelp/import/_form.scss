@@ -5,93 +5,9 @@
 //  contact form
 // ---------------------------------------------
 
-.wpcf7 input::placeholder,
-.wpcf7 textarea::placeholder {
-  color: #c8c8c8;
-}
-
-span.wpcf7-list-item {
-  margin: 0 10px 0 0;
-}
-
-.contact {
-  // .contact--lead
-  &--lead {
-    margin-bottom: 30px;
-    font-size: var(--fz20);
-    font-weight: 600;
-    text-align: center;
-
-    @include max-mq {
-      font-size: var(--fz16);
-    }
-  }
-
-  // .contact--step
-  &--step {
-    display: flex;
-    gap: 50px;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto 60px;
-
-    li {
-      position: relative;
-      box-sizing: border-box;
-      flex-grow: 1;
-      padding: 10px 0;
-      font-weight: bold;
-      color: #00479d;
-      text-align: center;
-      border-top: 1px solid #00479d;
-      border-bottom: 1px solid #00479d;
-      border-left: 1px solid #00479d;
-
-      &:first-child {
-        color: #fff;
-        background: #00479d;
-
-        &::after {
-          position: absolute;
-          top: 50%;
-          right: -50px;
-          content: "";
-          border: 13px solid rgb(0 0 0 / 0%);
-          border-left: 20px solid #00479d;
-          transform: translate(0%, -50%);
-        }
-      }
-
-      &:last-child {
-        border-right: 1px solid #00479d;
-      }
-    }
-  }
-
-  // .contact--remarks
-  &--remarks {
-    margin-bottom: 40px;
-    font-size: var(--fz23);
-    font-weight: 700;
-    text-align: center;
-
-    span {
-      padding: 0 8px 0 15px;
-      font-size: 40px;
-      color: mintcream;
-      letter-spacing: 0.2em;
-      background: linear-gradient(to bottom, transparent 0%, transparent 70%, #fff100 70%, #fff100 100%);
-      -webkit-text-stroke: 9px #00479d;
-      paint-order: stroke;
-    }
-  }
-}
-
 .contact_form {
   textarea {
-    height: 240px;
+    height: 130px;
   }
 
   input[type="text"],
@@ -103,9 +19,14 @@ span.wpcf7-list-item {
   textarea {
     box-sizing: border-box;
     width: 100%;
-    padding: 10px;
+    padding: 4px;
+    font-family: inherit;
     font-size: var(--fz16);
-    border: solid 1px #c8c8c8;
+    font-weight: normal;
+    color: #000;
+    background: #e6edf2;
+    border: solid 1px #e6edf2;
+    border-radius: 3px;
     box-shadow: none;
 
     &:focus {
@@ -133,127 +54,76 @@ span.wpcf7-list-item {
     }
   }
 
+  // MW WP form向け
+  .mwform-tel-field input[type="text"],
+  .mwform-zip-field input[type="text"] {
+    width: 5em;
+  }
+
   // contact_form--table
   &--table {
-    max-width: 900px;
-    margin: auto;
+    width: 100%;
+    margin-top: 30px;
+    border-collapse: collapse;
+    background: #fff;
 
     td {
-      padding: 15px 0;
+      padding: 10px;
       vertical-align: middle;
-    }
-
-    tr {
-      &:last-child {
-        th {
-          padding-top: 5px;
-          vertical-align: top;
-        }
-
-        th,
-        td {
-          padding: 15px 0 0;
-        }
-      }
     }
 
     th {
       position: relative;
-      width: 300px;
-      padding: 15px 0;
+      width: 225px;
       font-weight: bold;
       text-align: left;
-      vertical-align: middle;
+      vertical-align: top;
+      background-clip: padding-box !important;
 
       &::after {
         position: absolute;
-        right: 70px;
-        padding: 7px;
-        font-size: var(--fz16);
+        top: 17px;
+        right: 15px;
+        padding: 4px 5px;
+        font-size: var(--fz12);
         font-weight: normal;
         line-height: 1;
       }
     }
 
     .is-required::after {
-      top: 50%;
       color: #fff;
       content: "必須";
-      background: #f00;
-      transform: translateY(-50%);
+      background: #c90000;
     }
 
     .is-option::after {
-      top: 15px;
       color: #fff;
       content: "任意";
-      background: #b0b0b0;
+      background: #999;
     }
 
     @include max-mq {
-      th,
       td {
-        display: block;
-        padding: 0;
-      }
-
-      tr {
-        &:first-child {
-          th,
-          td {
-            padding: 0;
-          }
-        }
-
-        &:last-child {
-          th {
-            padding-top: 0;
-          }
-
-          th,
-          td {
-            padding: 0;
-          }
-        }
+        padding: 10px 5px;
       }
 
       th {
-        width: fit-content;
-        margin-bottom: 5px;
+        padding: 5px;
 
         &::after {
-          right: -75px;
-          font-size: var(--fz14);
+          top: 5px;
+          right: 10px;
         }
-      }
-
-      td {
-        margin-bottom: 30px;
-      }
-
-      .is-option::after {
-        top: 50%;
-        transform: translateY(-50%);
       }
     }
   }
 
-  // .contact_form--btn
+  // contact_form--btn
   &--btn {
-    display: block;
-    width: 100%;
-    max-width: 250px;
-    padding: 10px 0;
-    margin: 60px auto 0;
+    margin-top: 30px;
     overflow: hidden;
-    font-size: var(--fz24);
-    font-weight: 500;
-    color: #fff;
     text-align: center;
-    cursor: pointer;
-    background: #1352c3;
-    border: none;
-    border-radius: 1000px;
 
     input[type="submit"],
     input[type="button"],
@@ -278,15 +148,5 @@ span.wpcf7-list-item {
         max-width: 80%;
       }
     }
-
-    @include max-mq {
-      margin: 30px auto 0;
-    }
-  }
-
-  // .contact_form--privacy
-  &--privacy {
-    margin-top: 30px;
-    text-align: center;
   }
 }
