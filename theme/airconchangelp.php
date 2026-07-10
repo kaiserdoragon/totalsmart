@@ -821,487 +821,267 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       </picture>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <section class="catch sec -sm">
+    <section class="flow sec">
       <div class="contents">
-        <h2>業界最安値に<br class="is-hidden_pc">挑戦</h2>
-        <div class="catch--inner">
-          <div class="catch--item">
-            <span>簡単クリーニング</span>
-            <picture>
-              <source
-                srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_01.avif"
-                type="image/avif">
-              <source
-                srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_01.webp"
-                type="image/webp">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_01.jpg" alt="簡単クリーニング" width="430" height="271" fetchpriority="high" decoding="async">
-            </picture>
-            <p>フィルター清掃・風速測定・温度測定</p>
-            <div class="catch--price">
-              <p>5<span class="catch--period">,</span>000</p><span class="catch--unit"><span class="catch--jpy">円～</span><span class="catch--tax">（税抜）</span></span>
-            </div>
-          </div>
-          <div class="catch--item">
-            <span>しっかりクリーニング</span>
-            <picture>
-              <source
-                srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_02.avif"
-                type="image/avif">
-              <source
-                srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_02.webp"
-                type="image/webp">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_02.jpg" alt="業務用エアコン" width="430" height="271" loading="lazy" decoding="async">
-            </picture>
-            <div class="catch--price">
-              <p>18<span class="catch--period">,</span>000</p><span class="catch--unit"><span class="catch--jpy">円～</span><span class="catch--tax">（税抜）</span></span>
-            </div>
-            <small>※お掃除機能付きの場合は＋6,000円<br>※分解洗浄</small>
-          </div>
-        </div>
-        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_03.jpg" alt="" width="283" height="178" decoding="async">
-        <p class="catch--txt">エアコンのクリーニング・掃除は<br class="is-hidden_pc">全てお任せ下さい。</p>
-        <p>専門の技術スタッフが、エアコンの悩みを解消します！</p>
-      </div>
-    </section>
-
-    <section class="lead sec -sm bg_blue">
-      <div class="contents -md">
-        <h2>
-          <picture>
-            <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt_sp.avif" type="image/avif">
-            <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt_sp.webp" type="image/webp">
-            <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt_sp.png">
-
-            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt.avif" type="image/avif">
-            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt.webp" type="image/webp">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt.png" alt="愛知県・岐阜県・三重県・静岡県なら最短当日・即日での訪問も可能です。" width="621" height="114" loading="lazy" decoding="async">
-          </picture>
-        </h2>
-        <div class="lead--inner">
-          <h3>エアコンクリーニングのご予約・ご相談はこちら</h3>
-          <div class="lead--txt">
-            <p>
-              <span>汚れ・カビ・ニオイ・効きの悪さ</span>が気になったら、<br class="is-hidden_sp">
-              まずはお電話でお気軽にご相談ください。
-            </p>
-            <div class="header--btns">
-              <div class="header--btn-item">
-                <a href="tel:<?php echo esc_attr($tracking_tel_href); ?>" class="cv_button gtm-click-tel">
-                  <picture>
-                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.avif" type="image/avif">
-                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.webp" type="image/webp">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.png" alt="お電話でのご相談はこちら: <?php echo esc_attr($tracking_tel_local); ?>" width="270" height="70" decoding="async">
-                  </picture>
-                </a>
-              </div>
-              <div class="header--btn-item">
-                <a href="#contact" class="cv_button gtm-click-mail">
-                  <picture>
-                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.avif" type="image/avif">
-                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.webp" type="image/webp">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.png" alt="メールでお問い合わせ" width="270" height="70" decoding="async">
-                  </picture>
-                </a>
-              </div>
-              <div class="header--btn-item">
-                <a href="https://lin.ee/fXrKQyq" class="cv_button gtm-click-line">
-                  <picture>
-                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.avif" type="image/avif">
-                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.webp" type="image/webp">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.png" alt="LINEでお問い合わせ" width="270" height="70" decoding="async">
-                  </picture>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <p class="lead--supplement">
-          まずはお電話にて事前に概算のお見積りをご案内いたします。<br>
-          不当な追加料金や高額請求は一切ございませんので、安心してお問い合わせください。
+        <h2>ご依頼・作業までの流れ</h2>
+        <p>
+          初めてご依頼の方も、既存設備の入れ替えをお考えの方も、<br class="is-hidden_sp">
+          まずはお気軽にご連絡ください。
         </p>
-        <p class="lead--supplement -sm">
-          ※設置状況（機種・汚れ具合・作業環境）により、<br class="is-hidden_sp">
-          当日ご案内する金額が事前の概算見積りから変動する場合がございます。
+        <article class="flow--item">
+          <div>
+            <span class="flow--num">STEP<span>01</span></span>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_01.jpg" alt="" width="450" height="250" decoding="async">
+          </div>
+          <h3>お問い合わせ・見積もり（無料）</h3>
+          <p>
+            まずはフォームまたはお電話にてお問い合わせください。<br>
+            設置先の市区町村、施設の種類、現在の業務用エアコンの状況、台数、導入 ・<br class="is-hidden_sp">
+            交換希望時期など、分かる範囲でお知らせください。現在の機器の型番や、<br class="is-hidden_sp">
+            室内機・室外機の写真がある場合は、 あわせて共有いただくと確認がスムーズです。
+          </p>
+        </article>
+        <article class="flow--item">
+          <div>
+            <span class="flow--num">STEP<span>02</span></span>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_02.jpg" alt="" width="450" height="250" decoding="async">
+          </div>
+          <h3>メール・電話でヒアリング</h3>
+          <p>
+            お問い合わせ内容をもとに、担当者がメールまたは電話で詳しく状況を確認します。<br>
+            現在の機器が交換時期か、新規導入か、複数台の更新か、<br class="is-hidden_sp">
+            工事時期の希望があるかなどを整理します。<br>
+            この段階で、対応エリア・対象施設・工事内容を確認し、<br class="is-hidden_sp">
+            導入・交換のご相談として進められるかを確認します。
+          </p>
+        </article>
+        <article class="flow--item">
+          <div>
+            <span class="flow--num">STEP<span>03</span></span>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_03.jpg" alt="" width="450" height="250" decoding="async">
+          </div>
+          <h3>現地調査・日程調整</h3>
+          <p>
+            必要に応じて現地調査を行い、設置場所、天井高、配管ルート、<br class="is-hidden_sp">
+            電源、 室外機の設置場所、搬入経路、既存機器の撤去条件などを確認します。<br>
+            現場状況を踏まえて、施設用途や使用環境に合った<br class="is-hidden_sp">
+            機種・馬力・台数を ご提案します。
+          </p>
+        </article>
+        <article class="flow--item">
+          <div>
+            <span class="flow--num">STEP<span>04</span></span>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_04.jpg" alt="" width="450" height="250" decoding="async">
+          </div>
+          <h3>工事日調整</h3>
+          <p>
+            現地状況とご希望内容をもとに、機器本体・工事内容・撤去・<br class="is-hidden_sp">
+            フロン回収まわりを含めたお見積もりをご案内します。<br>
+            内容にご納得いただけましたら、工事日程を調整し、機器手配へ進みます。<br>
+            店舗や施設の営業・業務への影響を抑えたい場合は、希望日程もあわせてご相談ください。
+          </p>
+        </article>
+        <article class="flow--item">
+          <div>
+            <span class="flow--num">STEP<span>05</span></span>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_05.jpg" alt="" width="450" height="250" decoding="async">
+          </div>
+          <h3>工事・既存機器の撤去</h3>
+          <p>
+            工事当日は、作業箇所の養生を行ったうえで、<br class="is-hidden_sp">
+            既存の業務用エアコンを撤去し、新しい機器を設置します。<br>
+            室内機・室外機の取付、配管接続、ドレン配管、電源まわりの確認など、<br class="is-hidden_sp">
+            現場状況に応じて必要な工事を進めます。<br>
+            安全面や周辺環境に配慮しながら、<br class="is-hidden_sp">
+            店舗や施設の営業・業務への影響をできる限り抑えて作業を行います。
+          </p>
+        </article>
+        <article class="flow--item">
+          <div>
+            <span class="flow--num">STEP<span>06</span></span>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_06.jpg" alt="" width="450" height="250" decoding="async">
+          </div>
+          <h3>試運転・動作確認</h3>
+          <p>
+            設置工事が完了しましたら、試運転を行い、冷暖房の運転状況、<br class="is-hidden_sp">
+            風量、異音、水漏れ、リモコン操作などを確認します。<br>
+            配管・電源まわりにも問題がないかを確認し、<br class="is-hidden_sp">
+            正常に運転できる状態であることを確認します。<br>
+            問題がないことを確認したうえで、お客様へお引き渡しします。
+          </p>
+        </article>
+        <article class="flow--item">
+          <div>
+            <span class="flow--num">STEP<span>07</span></span>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_07.jpg" alt="" width="450" height="250" decoding="async">
+          </div>
+          <h3>工事完了・お引き渡し</h3>
+          <p>
+            試運転・動作確認が完了しましたら、<br class="is-hidden_sp">
+            設置状態や運転状況に問題がないことを確認し、お客様へお引き渡しします。<br>
+            作業後は、担当者様にリモコン操作、運転時の注意点、<br class="is-hidden_sp">
+            今後のメンテナンスについてわかりやすくご説明します。<br>
+            設置後に気になる点や不具合がございましたら、お気軽にご相談ください。<br>
+            工事完了後も、業務用エアコンを安心して<br class="is-hidden_sp">
+            お使いいただけるようサポートいたします。
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="question sec">
+      <div class="contents">
+        <h2>よくある質問</h2>
+        <p>
+          お問い合わせ前に気になる点を、まとめてお答えします。<br>
+          ご不明な点は、お気軽にお問い合わせください。
         </p>
-      </div>
-    </section>
-
-    <section class="sign bg_skyblue" id="symptoms">
-      <div class="contents">
-        <span class="sign--catch">こんなサインが出てきたら</span>
-        <h2><span>エアコンクリーニング</span><br class="is-hidden_pc">のタイミングです</h2>
-        <ul class="sign--list">
-          <li><span>吹き出し口の黒い点々やホコリの塊</span>が目につくようになってきた</li>
-          <li>スイッチを入れると、<span>カビっぽいニオイ・ホコリっぽさを感じる</span></li>
-          <li><span>冷房／暖房の効きが前より悪くなった</span>気がして、設定温度を下げがち</li>
-          <li>フィルター掃除はしているのに、<span>電気代の明細が年々高くなっている</span></li>
-          <li>小さなお子さまやペットがいて、<span>エアコンの風やお部屋の空気が少し心配</span></li>
-          <li><span>高い場所の作業や分解が不安</span>で、自分で中まで掃除するのは難しいと感じている</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="price sec" id="price">
-      <div class="contents">
-        <span class="sign--catch">他社との比較でわかる！</span>
-        <h2>
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_logo.png" alt="株式会社トータルスマート" width="401" height="44" loading="lazy" decoding="async">の<br>圧倒的なコスパ
-        </h2>
-        <div class="price--img js-scrollable">
-          <picture>
-            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.avif" type="image/avif">
-            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.webp" type="image/webp">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.png" alt="エアコンクリーニングの比較料金表" width="1509" height="834" loading="lazy" decoding="async">
-          </picture>
-        </div>
-      </div>
-    </section>
-
-    <section class="merit sec bg_skyblue">
-      <div class="contents -md">
-        <h2>エアコンクリーニングをする<br><span>5</span>つのメリット</h2>
-        <ul>
-          <li>
-            <p>不具合の<br>早期発見</p>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_01.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
-          </li>
-          <li>
-            <p>大きな故障の<br>防止</p>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_02.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
-          </li>
-          <li>
-            <p>電気代の<br>削減</p>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_03.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
-          </li>
-          <li>
-            <p>エアコンの<br>寿命UP</p>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_04.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
-          </li>
-          <li>
-            <p>エアコンの<br>機能安定</p>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_05.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="select sec" id="reasons">
-      <div class="contents">
-        <h2>
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_logo.png" alt="株式会社トータルスマート" width="401" height="44" loading="lazy" decoding="async">が<br>選ばれる<span>4</span>つの理由
-        </h2>
-        <ol>
-          <li>
-            <h3>確かな技術力・品質</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_01.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
-            <p>エアコン本体を分解し、アルミフィン・送風ファン・ドレンパンなど自分では触れない内部まで徹底洗浄します。
-              お掃除機能付きエアコンにも対応しているので、ご自宅の機種も安心してお任せください。</p>
-          </li>
-          <li>
-            <h3>明確な料金体系</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_02.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
-            <p>1台だけのご依頼から、複数台のご依頼まで、台数ごとのお得なセット料金をご用意しています。
-              お掃除機能付きや室外機洗浄など、追加オプションも事前に料金をお伝えするため、当日になって突然金額が増えることはありません。</p>
-          </li>
-          <li>
-            <h3>スピード対応</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_03.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
-            <p>移動時間を含めたスケジュール調整がしやすく、繁忙期を除けば最短当日〜数日以内のご訪問が可能です。</p>
-          </li>
-          <li>
-            <h3>安心・安全への配慮</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_04.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
-            <p>作業中の思わぬトラブルにも備え、損害賠償保険に加入しています。
-              室内はビニールシートでしっかり養生し、壁や床・家具に水や汚れが飛び散らないよう配慮して作業します。</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="case sec -sm">
-      <div class="contents">
-        <span class="sign--catch">エアコンクリーニングするとここまできれいになります</span>
-        <h2 class="ttl">施工事例</h2>
-
-        <div class="case--item">
-          <h3>まさか、この空気を吸っていたなんて…</h3>
-          <div class="case--inner">
-            <p>長年蓄積されたホコリと汚れで、フィルターが完全に目詰まりしていました。<br>
-              「最近、風がカビ臭い」「効きが悪い」と感じたら、<br class="is-hidden_sp">
-              内部はもっと汚れているサインかもしれません。<br>
-              プロの分解洗浄なら、ご家庭では落としきれない汚れもスッキリ除去。<br>
-              アレルギー対策や、小さなお子様のいるご家庭にもおすすめです。</p>
-            <div class="case--comparison">
-              <div class="case--before">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_02.jpg" alt="エアコンクリーニングの前の画像" width="380" height="400" loading="lazy" decoding="async">
-                <p>BEFORE</p>
-              </div>
-              <div class="case--after">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_01.jpg" alt="エアコンクリーニングの後の画像" width="380" height="400" loading="lazy" decoding="async">
-                <p>AFTER</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="case--item">
-          <h3>その黒ずみ、お客様に見られています。</h3>
-          <div class="case--inner">
-            <p>
-              エアコンの吹き出し口が黒く汚れていませんか？<br>
-              それはホコリとカビが結合した頑固な汚れです。<br>
-              大切なお客様に「不潔」な印象を与えかねません。<br>
-              プロの技術でパーツを分解・洗浄すれば、見違えるような白さと清潔さが復活。<br>
-              「空気が澄んで、お店が明るくなった！」と、オーナー様からも好評です。
-            </p>
-            <div class="case--comparison">
-              <div class="case--before">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_03.jpg" alt="エアコンクリーニングの前の画像" width="380" height="400" loading="lazy" decoding="async">
-                <p>BEFORE</p>
-              </div>
-              <div class="case--after">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_04.jpg" alt="エアコンクリーニングの後の画像" width="380" height="400" loading="lazy" decoding="async">
-                <p>AFTER</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="case--item">
-          <h3>黄ばみを一掃してお店の好感度アップ！</h3>
-          <div class="case--inner">
-            <p>
-              吹き出し口の黒カビや、全体的に茶色くくすんだ汚れは、<br class="is-hidden_sp">
-              長年のホコリと油煙が原因です。<br>
-              不潔な印象を与えるだけでなく、嫌なニオイの元凶にもなります。<br>
-              プロの洗浄技術なら、パネルの裏側から徹底クリーニング。<br>
-              お客様が心地よく過ごせる空間へと生まれ変わらせます。<br>
-            </p>
-            <div class="case--comparison">
-              <div class="case--before">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_05.jpg" alt="エアコンクリーニングの前の画像" width="380" height="400" loading="lazy" decoding="async">
-                <p>BEFORE</p>
-              </div>
-              <div class="case--after">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_06.jpg" alt="エアコンクリーニングの後の画像" width="380" height="400" loading="lazy" decoding="async">
-                <p>AFTER</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="voice sec bg_skyblue" id="reviews">
-      <div class="contents">
-        <h2 class="ttl">お客様からの評価も頂いています</h2>
-        <div class="voice--inner">
-          <div class="voice--item">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/voice_01.jpg" alt="" width="380" height="200" loading="lazy" decoding="async">
-            <div>
-              <h3>オフィスの空気が一気に軽くなりました</h3>
-              <span>名古屋市　IT企業　A様</span>
-            </div>
-            <p>クリーニング後は同じ設定温度でもムラなく冷え、
-              会議室のこもったニオイも解消。<br>
-              社員から「空気が変わった」と好評で、
-              来客対応にも自信が持てるようになりました。</p>
-          </div>
-          <div class="voice--item">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/voice_02.jpg" alt="" width="380" height="200" loading="lazy" decoding="async">
-            <div>
-              <h3>「前より居心地がいい」と言われました</h3>
-              <span>岐阜市　飲食店　I様</span>
-            </div>
-            <p>油煙まじりの風がサラッと変わり、客席の
-              カビっぽさもなくなりました。営業前後の
-              冷暖房効率も上がり、ピークタイムでも安定
-              して快適な温度を保てています。</p>
-          </div>
-          <div class="voice--item">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/voice_03.jpg" alt="" width="380" height="200" loading="lazy" decoding="async">
-            <div>
-              <h3>「清潔感が増した」と評判です</h3>
-              <span>四日市市　クリニック　T様</span>
-            </div>
-            <p>天井カセットを分解洗浄してもらったところ、
-              見えない内部の汚れに驚きました。<br>
-              クリーニング後は空気がすっきりし、
-              患者様やスタッフからも好印象の声が
-              増えています。</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="use bg_blue sec">
-      <div class="contents">
-        <h2 class="ttl">ご利用の流れ</h2>
-        <ol>
-          <li>
-            <div class="use--txt">
-              <h3>お問い合わせ</h3>
-              <img class="is-hidden_pc" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/use_01.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
-              <p>サービスの詳細、気になっている汚れやお掃除したい箇所についてなど、
-                お電話またはメールフォームにてお気軽にお問い合わせください。</p>
-            </div>
-            <div>
-              <img class="is-hidden_sp" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/use_01.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
-            </div>
-          </li>
-          <li>
-            <div class="use--txt">
-              <h3>ヒアリング</h3>
-              <img class="is-hidden_pc" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/use_02.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
-              <p>
-                お見積り訪問日時などを相談させていただきます。<br>
-                ご希望のサービス内容を詳しくお伺いし、お掃除・お手伝いする
-                箇所の確認をいたします。
-              </p>
-            </div>
-            <div>
-              <img class="is-hidden_sp" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/use_02.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
-            </div>
-          </li>
-          <li>
-            <div class="use--txt">
-              <h3>お見積りご提示</h3>
-              <img class="is-hidden_pc" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/use_03.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
-              <p>
-                担当スタッフが訪問し、お掃除対象箇所を確認後無料でお見積りを
-                ご提示します。<br>
-                お掃除の際の注意事項などもご説明します。
-              </p>
-            </div>
-            <div>
-              <img class="is-hidden_sp" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/use_03.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
-            </div>
-          </li>
-          <li>
-            <div class="use--txt">
-              <h3>スケジュールの相談</h3>
-              <img class="is-hidden_pc" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/use_04.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
-              <p>お見積りから正式にご依頼をいただいたのち、サービス実施日時やスケジュールについて相談させていただきます。</p>
-            </div>
-            <div>
-              <img class="is-hidden_sp" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/use_04.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
-            </div>
-          </li>
-          <li>
-            <div class="use--txt">
-              <h3>サービス実施</h3>
-              <img class="is-hidden_pc" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/use_05.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
-              <p>担当スタッフが訪問し、サービスを実施します。お見積り以上の請求が発生することはありませんが、追加のご要望などがあれば請求額が変わる場合もございます。</p>
-            </div>
-            <div>
-              <img class="is-hidden_sp" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/use_05.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="region sec" id="area">
-      <div class="contents -md">
-        <h2 class="ttl">対応エリア</h2>
-        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/map.png" alt="" width="518" height="534" loading="lazy" decoding="async">
         <dl>
-          <div>
-            <dt>愛知エリア</dt>
-            <dd>
-              名古屋市（天白区・北区・昭和区・千種区・中区・中川区・西区・東区・瑞穂区・緑区・南区・港区・名東区・守山区）・
-              愛西市・あま市・安城市・一宮市・稲沢市・大府市・岡崎市・尾張旭市・春日井市・刈谷市・北名古屋市・清須市・江南市・
-              小牧市・瀬戸市・高浜市・知多市・知立市・津島市・東海市・常滑市・豊明市・豊田市・長久手市・西尾市・日進市・半田市・
-              碧南市・みよし市・弥富市・東郷町・大治町・蟹江町・阿久比町・美浜町・扶桑町・新城市・豊川市・豊橋市・蒲郡市・幸田町
-            </dd>
-          </div>
-          <div>
-            <dt>岐阜エリア</dt>
-            <dd>
-              岐阜市・羽島市・各務原市・山県市・瑞穂市・本巣市・羽島郡・本巣郡・大垣市・海津市・養老郡・不破郡・安八郡・揖斐郡・
-              関市・美濃市・美濃加茂市・可児市・多治見市・瑞浪市・恵那市
-            </dd>
-          </div>
-          <div>
-            <dt>三重エリア</dt>
-            <dd>
-              桑名市・いなべ市・木曽岬町・東員町・四日市市・朝日町・川越町・鈴鹿市・亀山市・津市・松阪市・多気町・明和町・大台町・伊勢市・
-              鳥羽市・志摩市・玉城町・度会町・伊賀市・名張市
-            </dd>
-          </div>
-          <div>
-            <dt>静岡エリア</dt>
-            <dd>
-              浜松市・磐田市・掛川市・袋井市・湖西市・御前崎市・菊川市・森町・静岡市・島田市・焼津市・藤枝市・牧之原市・吉田町・
-              川根本町・沼津市・熱海市・三島市・富士宮市・伊東市・富士市・御殿場市・裾野市・伊豆市・伊豆の国市・函南町・清水町・
-              長泉町・小山町・下田市・東伊豆町・河津町・南伊豆町・松崎町・西伊豆町
-            </dd>
-          </div>
+          <dt>対応エリアはどこですか？？</dt>
+          <dd>
+            愛知県・岐阜県・三重県・静岡県の法人・店舗・施設を基本対象としています。<br>
+            まずは設置場所をお知らせください。
+          </dd>
+          <dt>どのような施設に対応していますか？</dt>
+          <dd>
+            店舗、オフィス、工場、倉庫、クリニック、介護施設、商業施設、事務所など、法人・店舗・施設向けの業務用エアコン導入・交換に対応しています。
+          </dd>
+          <dt>現地調査や見積もりは必要ですか？</dt>
+          <dd>
+            業務用エアコンは、機器の馬力や台数だけでなく、配管、電源、搬入経路、室外機の設置場所、 既存機器の撤去条件によって費用が変わります。<br>
+            事前に型番・設置写真・室外機写真・台数を共有頂けるとスムーズです。
+          </dd>
+          <dt>業務用エアコンの交換時期を相談できますか？</dt>
+          <dd>
+            はい、相談可能です。<br>
+            設置から10年以上経過している場合や、修理を繰り返している場合は、交換を検討するタイミングです。<br>
+            使用状況を確認したうえで、交換したほうがよいかをご案内します。
+          </dd>
+          <dt>修理と交換のどちらがいいかわからないです</dt>
+          <dd>
+            是非一度私たちにご相談をしてください。<br>
+            使用年数、故障頻度、修理費用、部品供給の状況、電気代、現在の効き具合などを確認し、修理を続けるべきか、交換・買い替えを検討すべきかを整理します。
+          </dd>
+          <dt>機種や馬力の選び方が分かりません</dt>
+          <dd>
+            業務用エアコンは、部屋の広さだけで機種を決めると、能力不足や過剰設備につながる場合があります。<br>
+            施設の用途、稼働時間、天井高、熱源、利用人数、設置環境を確認し、現場に合った機種・馬力・形状をご提案します。
+          </dd>
+          <dt>対応できる業務用エアコンの種類は何ですか？</dt>
+          <dd>
+            天井カセット形、天井吊形、床置形、壁掛形業務用エアコン、ビルトイン形、ダクト形、パッケージエアコンなど、各種業務用エアコンの導入・交換をご相談いただけます。<br>
+            現在の機器タイプが分からない場合は、一度ご相談ください。
+          </dd>
+          <dt>本体の販売から取付工事までまとめて依頼できますか？</dt>
+          <dd>
+            はい、機器選定、本体販売、取付工事、試運転までまとめてご相談いただけます。<br>
+            既存機器の交換の場合は、撤去やフロン回収まわりも含めて、現場条件を確認しながらご提案します。
+          </dd>
+          <dt>営業中の店舗や稼働中の施設でも工事できますか？</dt>
+          <dd>
+            工事内容や現場状況によって異なります。店舗・オフィス・工場・施設の営業や業務への影響を抑えられるよう、工事日程や作業時間を確認しながら調整します。<br>
+            休日・営業時間外の工事をご希望の場合も、事前にご相談ください。
+          </dd>
+          <dt>他メーカーからの入れ替えもできますか？</dt>
+          <dd>
+            はい、他メーカーの業務用エアコンからの入れ替えにも対応しています。<br>
+            現在設置されているメーカーや機種を確認したうえで、設置環境や配管・電源の状況に合わせて、最適な交換機種をご提案します。
+          </dd>
+          <dt>支払い方法やリースは相談できますか？</dt>
+          <dd>
+            支払い方法やリースについては、案件内容や条件により確認が必要です。<br>
+            導入台数、機器内容、工事範囲、希望時期を確認したうえで、対応可能な方法をご案内します。
+          </dd>
+          <dt>保証やアフター対応はありますか？</dt>
+          <dd>
+            メーカー保証や工事後の対応については、選定する機器や工事内容により異なります。<br>
+            正式見積もり時に、保証範囲やアフター対応についても確認できるようご案内します。
+          </dd>
         </dl>
       </div>
     </section>
 
-    <section class="faq sec bg_skyblue" id="faq">
-      <div class="contents -md">
-        <h2 class="ttl">よくある質問</h2>
-        <dl>
-          <div>
-            <dt>表示されている料金以外に、追加でかかる費用はありますか？</dt>
-            <dd>
-              エアコン本体の料金＋オプション（ご希望時のみ）が総額です。<br>
-              出張費・基本的な養生・洗浄作業料はすべて含まれています。<br>
-              勝手に追加請求することは一切ございません。<br>
-              お客様にとって一番負担の少ない方法をご提案し、無理な工事を押しつけることもありません。
-            </dd>
-          </div>
-          <div>
-            <dt>出張料はかかりますか？？</dt>
-            <dd>出張料はいただきません。</dd>
-          </div>
-          <div>
-            <dt>キャンセル料はかかりますか？</dt>
-            <dd>
-              お見積りをした後でも、納得がいかなければキャンセルいただけます。<br>
-              作業着手前のキャンセルに関しては代金をいただいておりません。
-            </dd>
-          </div>
-          <div>
-            <dt>事前に準備しておくことはありますか？</dt>
-            <dd>
-              下記のご協力をお願いしています。
-              <ul>
-                <li>・エアコンの真下や周辺にある小物・壊れやすいものの移動</li>
-                <li>・作業スペースとして1〜2畳ほどの空きスペースの確保</li>
-                <li>・お風呂場またはベランダなど、部品洗浄に使用できる場所のご提供</li>
-              </ul>
-            </dd>
-          </div>
-          <div>
-            <dt>猫や犬などのペットがいますが大丈夫ですか？</dt>
-            <dd>
-              エアコンクリーニングなどの作業には基本的にはオーガニック洗剤を使用しています。<br>
-              安心して下さい。
-            </dd>
-          </div>
-        </dl>
+
+    <section class="area sec">
+      <div class="contents">
+        <h2>
+          <b>愛知県・岐阜県・三重県・静岡県</b>へ迅速に対応します
+        </h2>
+        <p>
+          愛知県・岐阜県・三重県・静岡県で、<br class="is-hidden_sp">
+          業務用エアコンの取り換え・交換・入れ替えをご検討中の方はお気軽にご相談ください。<br>
+          店舗・オフィス・工場・倉庫・医療施設・福祉施設・飲食店など、<br class="is-hidden_sp">
+          施設の用途や使用環境に合わせて、 最適な業務用エアコンの入れ替えをご提案します。<br>
+          既存機器の状況確認、現地調査、機器選定、撤去工事、<br class="is-hidden_sp">
+          フロン回収、設置工事、試運転まで一括対応します。<br>
+          老朽化した業務用エアコンの交換や、効きが悪くなった空調設備の入れ替えもご相談いただけます。<br>
+          東海エリアでの業務用エアコン工事に迅速に対応し、<br class="is-hidden_sp">
+          店舗や施設の営業・業務への影響をできる限り抑えた施工をご案内します。
+        </p>
+
+        <article class="area--list">
+          <span>愛知県</span>
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_01.jpg" alt="" width="500" height="375" decoding="async">
+          <p>
+            名古屋市を中心とした店舗・オフィス・商業施設をはじめ、<br class="is-hidden_sp">
+            三河エリアの工場・倉庫・物流施設など、<br class="is-hidden_sp">
+            幅広い現場の業務用エアコン取り換え・交換に対応しています。<br>
+            製造業が盛んな地域では、作業環境の温度管理や設備稼働への影響を抑えることが重要です。<br>
+            飲食店や小売店、事務所では、来店されるお客様や従業員の快適性を維持するためにも、<br class="is-hidden_sp">
+            空調設備の安定した運転が欠かせません。<br>
+            古くなった業務用エアコンの入れ替え、効きが悪くなった空調設備の交換、<br class="is-hidden_sp">
+            複数台の一括更新など、現場の使用状況に合わせてご提案します。<br>
+            既存機器の撤去、フロン回収、新しい機器の設置、試運転まで一貫して対応し、<br class="is-hidden_sp">
+            営業や業務への影響をできる限り抑えた施工を行います。
+          </p>
+        </article>
+        <article class="area--list">
+          <span>岐阜県</span>
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_02.jpg" alt="" width="500" height="375" decoding="async">
+          <p>
+            岐阜市・大垣市・各務原市周辺の店舗・事務所・工場・物流施設をはじめ、<br class="is-hidden_sp">
+            地場産業の作業場、医療施設、福祉施設、宿泊施設などの<br class="is-hidden_sp">
+            業務用エアコン取り換え・交換に対応しています。
+            内陸部の事業所や工場では、夏場・冬場ともに空調への負荷が大きくなりやすく、<br class="is-hidden_sp">
+            業務用エアコンの能力選定や設置環境の確認が重要です。<br>
+            観光地や宿泊施設では、利用者が快適に過ごせる空調環境づくりが求められます。<br>
+            現地調査では、設置場所、配管ルート、室外機の設置スペース、搬入経路、<br class="is-hidden_sp">
+            既存機器の撤去条件などを確認し、施設の用途に合った機種・馬力・台数をご提案します。<br>
+            老朽化した空調設備の交換から、複数台の入れ替えまで丁寧に対応いたします。
+          </p>
+        </article>
+        <article class="area--list">
+          <span>三重県</span>
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_03.jpg" alt="" width="500" height="375" decoding="async">
+          <p>
+            四日市市・鈴鹿市・いなべ市周辺の工場・倉庫・事業所をはじめ、<br class="is-hidden_sp">
+            津市・松阪市・桑名市・伊勢志摩エリアの店舗・飲食店・宿泊施設・医療施設など、<br class="is-hidden_sp">
+            さまざまな現場の業務用エアコン取り換え・交換に対応しています。<br>
+            工業エリアでは、作業環境や設備稼働に支障が出ないよう、<br class="is-hidden_sp">
+            現場状況に合わせた空調設備の選定が重要です。<br>
+            観光施設や飲食店、宿泊施設では、お客様の快適性に直結するため、<br class="is-hidden_sp">
+            故障前の早めの入れ替えや計画的な更新もおすすめです。<br>
+            既存機器の状況を確認したうえで、撤去工事、フロン回収、新しい業務用エアコンの設置、<br class="is-hidden_sp">
+            配管・電源まわりの確認、試運転まで一括対応します。 海沿いの地域や屋外設置環境についても、<br class="is-hidden_sp">
+            室外機の設置場所や使用環境を踏まえてご案内します。
+          </p>
+        </article>
+        <article class="area--list">
+          <span>静岡県</span>
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_04.jpg" alt="" width="500" height="375" decoding="async">
+          <p>
+            浜松市・静岡市・沼津市・富士市周辺をはじめ、<br class="is-hidden_sp">
+            県内各地の店舗・オフィス・工場・倉庫・飲食店・医療施設・福祉施設などの<br class="is-hidden_sp">
+            業務用エアコン取り換え・交換に対応しています。<br>
+            東西に広い静岡県では、地域や施設によって空調設備に求められる条件が異なります。
+            製造業の工場や倉庫では作業環境に合わせた能力選定が必要になり、<br class="is-hidden_sp">
+            店舗や飲食店では来店客の快適性、医療・福祉施設では安定した室内環境が重要になります。<br>
+            古くなった業務用エアコンの交換、冷暖房の効きが悪い空調設備の入れ替え、<br class="is-hidden_sp">
+            複数台の更新など、現場ごとの課題に合わせてご提案します。<br>
+            現地調査から機器選定、撤去、フロン回収、設置、試運転までスムーズに対応し、<br class="is-hidden_sp">
+            安心して使える空調環境づくりをサポートします。
+          </p>
+        </article>
       </div>
     </section>
 
