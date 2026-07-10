@@ -73,6 +73,7 @@
   // .contact_form--confirm
   &--confirm {
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
     justify-content: center;
   }
