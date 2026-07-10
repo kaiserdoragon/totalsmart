@@ -1,12 +1,11 @@
 @charset "UTF-8";
 @use "../variables"as *;
 
-// ---------------------------------------------
-//  contact form
-// ---------------------------------------------
 
 //------------------------
 // SNOW MONKEY フォーム
+// -----------------------
+
 
 .snow-monkey-form {
   margin-bottom: 100px;
@@ -227,3 +226,15 @@
 //     }
 //   }
 // }
+
+
+// 確認画面に遷移した時のCSS
+[data-screen="confirm"] {
+  .smf-placeholder {
+    background-color: red;
+  }
+
+  .smf-form {
+    padding-top: 170px;
+  }
+}

@@ -1093,6 +1093,11 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           こちらのフォームからご連絡ください。<br>
           無料でお見積もり・ご提案いたします。
         </p>
+        <ul class="contact--step">
+          <li>項目の入力</li>
+          <li>入力内容の確認</li>
+          <li>送信完了</li>
+        </ul>
         <?php echo apply_filters('the_content', '<!-- wp:snow-monkey-forms/snow-monkey-form {"formId":756} /-->'); ?>
       </div>
     </section>
