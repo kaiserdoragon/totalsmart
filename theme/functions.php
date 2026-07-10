@@ -543,7 +543,7 @@ add_filter('wp_robots', 'ts_adjust_robots_meta', 20);
 
 add_action('wp_enqueue_scripts', function () {
 
-  $lp_pages = ['cleaninglp', 'shuurilp', 'cleaning_thanks', 'shuuri_thanks', 'airconchangelp', 'airconchange_thanks'];
+  $lp_pages = ['cleaninglp', 'shuurilp', 'cleaning_thanks', 'shuuri_thanks', 'airconchangelp', 'airconchangelp_confirm', 'airconchangelp_thanks'];
   $is_lp    = is_page($lp_pages);
 
   $uri  = fn($file) => get_theme_file_uri($file);
@@ -589,7 +589,7 @@ add_action('wp_enqueue_scripts', function () {
     return;
   }
 
-  if (is_page(['airconchangelp', 'airconchange_thanks'])) {
+  if (is_page(['airconchangelp', 'airconchangelp_confirm', 'airconchangelp_thanks'])) {
     $folder = 'airconchangelp';
 
     $enqueue('lp-airconchange-reset',      "{$folder}/css/reset.css", []);
@@ -698,7 +698,7 @@ if (!function_exists('theme_enqueue_js_only_optimized_assets')) {
         $folder = 'cleaninglp';
       } elseif (is_page(array('shuurilp', 'shuuri_thanks'))) {
         $folder = 'shuurilp';
-      } elseif (is_page(array('airconchangelp', 'airconchange_thanks'))) {
+      } elseif (is_page(array('airconchangelp', 'airconchangelp_confirm', 'airconchangelp_thanks'))) {
         $folder = 'airconchangelp';
       } else {
         return;
@@ -1149,7 +1149,7 @@ add_action(
       'load', // ページ全体の読み込み完了後に実行
       function() {
         // 対象のフォーム要素を取得（'snow-monkey-form-9' の部分は実際のフォームIDに合わせてください）
-        const form = document.getElementById('snow-monkey-form-9');
+        const form = document.getElementById('snow-monkey-form-756');
 
         // フォーム要素が存在する場合のみ処理を実行
         if (form) {
@@ -1166,7 +1166,7 @@ add_action(
               if ('complete' === event.detail.status) {
                 // 指定したサンクスページへリダイレクト
                 // '/thanks/' の部分は実際のサンクスページのスラッグ等に合わせてください
-                window.location.href = '<?php echo esc_url(home_url("/thanks/")); ?>';
+                window.location.href = '<?php echo esc_url(home_url("/airconchangelp_thanks/")); ?>';
               }
             }
           );
