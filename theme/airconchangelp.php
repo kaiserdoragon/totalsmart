@@ -326,7 +326,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
 
       <div class="header--btns">
         <div class="header--btn-item">
-          <a href="tel:<?php echo esc_attr($tracking_tel_href); ?>" class="cv_button gtm-click-tel">
+          <a href="tel:0529325450" class="cv_button gtm-click-tel">
             <picture>
               <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.avif" type="image/avif">
               <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.webp" type="image/webp">
@@ -447,7 +447,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_txt_2.png" alt="" width="683" height="59" decoding="async">
             <div class="header--btns">
               <div class="header--btn-item">
-                <a href="tel:<?php echo esc_attr($tracking_tel_href); ?>" class="cv_button gtm-click-tel">
+                <a href="tel:0529325450" class="cv_button gtm-click-tel">
                   <picture>
                     <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.avif" type="image/avif">
                     <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.webp" type="image/webp">
@@ -765,7 +765,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       <div class="cvarea--btn">
         <div class="header--btns">
           <div class="header--btn-item">
-            <a href="tel:<?php echo esc_attr($tracking_tel_href); ?>" class="cv_button gtm-click-tel">
+            <a href="tel:0529325450" class="cv_button gtm-click-tel">
               <picture>
                 <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.avif" type="image/avif">
                 <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.webp" type="image/webp">
@@ -1101,7 +1101,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
   </main>
 
   <div class="footer_btn_fixed" id="js_fixed-btn">
-    <p class="footer_btn_fixed--tel"><a href="tel:<?php echo esc_attr($tracking_tel_href); ?>">電話で<br>予約する</a></p>
+    <p class="footer_btn_fixed--tel"><a href="tel:0529325450">電話で<br>予約する</a></p>
     <p class="footer_btn_fixed--mail"><a href="#contact">メールで<br>無料見積り</a></p>
   </div>
 
