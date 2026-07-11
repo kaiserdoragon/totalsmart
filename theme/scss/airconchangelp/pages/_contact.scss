@@ -24,3 +24,38 @@
   font-size: var(--fz18);
   text-align: center;
 }
+
+
+
+.contact {
+  background: #eefaff;
+
+  h2 {
+    width: fit-content;
+    padding: 0 40px 5px;
+    margin: 0 auto 60px;
+    font-size: var(--fz45);
+    font-weight: 900;
+    color: #004ba6;
+    border-bottom: 1px solid #004ba6;
+  }
+
+  .contents {
+    width: min(1250px, 100%);
+  }
+
+  // .contact--lead
+  &--lead {
+    margin-bottom: 40px;
+    font-size: var(--fz20);
+    font-weight: 700;
+    text-align: center;
+  }
+
+  // .contact--inner
+  &--inner {
+    padding: 80px 100px 100px;
+    background: #fff;
+    border: 3px solid #004ba6;
+  }
+}

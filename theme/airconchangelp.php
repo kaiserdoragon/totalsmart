@@ -1087,18 +1087,15 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
 
     <section class="contact sec" id="contact">
       <div class="contents">
-        <h2 class="ttl">お問い合わせフォーム</h2>
+        <h2 class="ttl">お問い合わせはこちらから！</h2>
         <p class="contact--lead">
           料金の目安を知りたい方・具体的な日程のご相談をされたい方は、<br class="is-hidden_sp">
           こちらのフォームからご連絡ください。<br>
           無料でお見積もり・ご提案いたします。
         </p>
-        <ul class="contact--step">
-          <li>項目の入力</li>
-          <li>入力内容の確認</li>
-          <li>送信完了</li>
-        </ul>
-        <?php echo apply_filters('the_content', '<!-- wp:snow-monkey-forms/snow-monkey-form {"formId":756} /-->'); ?>
+        <div class="contact--inner">
+          <?php echo apply_filters('the_content', '<!-- wp:snow-monkey-forms/snow-monkey-form {"formId":756} /-->'); ?>
+        </div>
       </div>
     </section>
   </main>
@@ -1121,7 +1118,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
                 width="397" height="84"
                 decoding="async">
             </picture>
-            <p>愛知県・岐阜県・三重県・静岡県のエアコンクリーニングはトータルスマート株式会社</p>
+            <p>業務用エアコンの交換・買い替え・取り換え・入れ替えは<br>トータルスマート株式会社</p>
           </a>
         </div>
         <div class="footer--info">
@@ -1130,6 +1127,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           </p>
           <p>TEL:<?php echo esc_html($main_tel_local); ?></p>
           <p>FAX:052-932-5451</p>
+          <p>URL:<a href="https://total-smart-ltd.com/">https://total-smart-ltd.com</a></p>
         </div>
       </div>
       <div class="footer--catch">

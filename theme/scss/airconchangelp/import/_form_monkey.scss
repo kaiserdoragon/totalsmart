@@ -6,16 +6,8 @@
 // SNOW MONKEY フォーム
 // -----------------------
 
-
-.snow-monkey-form {
-  margin-bottom: 100px;
-
-  @include max-mq {
-    margin-bottom: 60px;
-  }
-}
-
 .smf-form {
+  padding-top: 40px;
   margin-bottom: 80px;
 
   @include max-mq {
@@ -35,20 +27,24 @@
   textarea {
     box-sizing: border-box;
     width: 100%;
-    padding: 10px 4px !important;
+    padding: 15px !important;
     font-family: inherit;
     font-size: var(--fz16);
     font-weight: normal;
     color: #000;
     background: #eff1f4 !important;
     border: none !important;
-    border-radius: 5px;
+    border-radius: 5px !important;
     box-shadow: none;
 
     &:focus {
       background: #fff;
       border: solid 1px #e6edf2;
       outline: none;
+    }
+
+    &::placeholder {
+      color: #9b9b9b;
     }
   }
 
@@ -73,8 +69,8 @@
 
 .smf-item {
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
+  gap: 60px;
+  align-items: center;
   margin-bottom: 30px;
 
   @include max-mq {
@@ -88,20 +84,23 @@
       span::after {
         color: #fff;
         content: "必須";
-        background: $color-secondary;
+        background: #f06;
       }
     }
   }
-
 
   &.is-option {
     .smf-item__col--label {
       span::after {
         color: #fff;
         content: "任意";
-        background: #999;
+        background: #737373;
       }
     }
+  }
+
+  &.smf-item--textarea {
+    align-items: flex-start;
   }
 }
 
@@ -120,9 +119,9 @@
         position: absolute;
         top: 50%;
         right: 0;
-        padding: 4px 5px 5px;
+        padding: 7px 10px 9px;
         font-size: var(--fz15);
-        font-weight: 400;
+        font-weight: 700;
         line-height: 1;
         border-radius: 5px;
         transform: translate(0, -50%);
@@ -177,15 +176,14 @@
     font-size: var(--fz21);
     font-weight: bold;
     color: #fff;
-    letter-spacing: 0.1em;
     cursor: pointer;
-    background: $color-secondary;
+    background: #004ba6;
     border: none;
     border-radius: 45px;
     transition: 0.3s;
 
     &:hover {
-      background-color: $color-primary;
+      background: #0bf;
       opacity: 0.8;
     }
 
@@ -228,13 +226,25 @@
 // }
 
 
-// 確認画面に遷移した時のCSS
-[data-screen="confirm"] {
-  .smf-placeholder {
-    background-color: red;
-  }
+#your-file--input-description {
+  font-size: var(--fz14);
+}
 
-  .smf-form {
-    padding-top: 170px;
-  }
+.smf-action .smf-button-control__control[disabled] {
+  color: #fff !important;
+}
+
+.smf-progress-tracker {
+  margin-bottom: 0 !important;
+}
+
+.smf-progress-tracker__item[aria-current="true"] .smf-progress-tracker__item__number {
+  width: 40px !important;
+  height: 40px !important;
+  background: #00479d !important;
+}
+
+.smf-progress-tracker__item__number {
+  width: 40px !important;
+  height: 40px !important;
 }
