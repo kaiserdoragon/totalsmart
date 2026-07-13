@@ -13,13 +13,13 @@
 
 .issue {
   position: relative;
+  padding: 120px 0;
   background: #eee;
 
   h2 {
     margin-bottom: 40px;
     font-size: var(--fz75);
     font-weight: 900;
-    line-height: 1.4;
     color: #001f52;
     text-align: center;
 
@@ -105,6 +105,20 @@
         transform: translateY(-50%);
       }
     }
+
+    @include max-mq {
+      padding: 30px;
+
+      li {
+        padding: 15px 15px 15px 30px;
+        font-size: var(--fz20);
+
+        &::before {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
   }
 
   &::after {
@@ -118,6 +132,31 @@
     content: "";
     background: url(../img/arrow_blue.png) no-repeat center / 100%;
     transform: translateX(-50%);
+  }
+
+  @include tb-mq {
+    h2 {
+      font-size: var(--fz45);
+
+      span {
+        &::before {
+          padding-top: 15px;
+          background: radial-gradient(circle 12px, #f00 50%, transparent 50%);
+        }
+      }
+    }
+
+    p {
+      font-size: var(--fz25);
+    }
+  }
+
+  @include max-mq {
+    padding: 100px 0 60px;
+
+    &::after {
+      width: 100px;
+    }
   }
 }
 
@@ -142,6 +181,16 @@
     font-weight: 800;
     color: #001f52;
     text-align: center;
+
+    @include tb-mq {
+      margin-bottom: 30px;
+      font-size: var(--fz40);
+
+      b {
+        display: block;
+        margin-bottom: 15px;
+      }
+    }
   }
 
   // .solution--item
@@ -154,10 +203,18 @@
 
     span {
       padding: 0 25px 7px;
-      font-size: 50px;
+      font-size: var(--fz50);
       color: #fff;
       background: #001f52;
       border-radius: 10px;
+    }
+
+    @include max-mq {
+      span {
+        width: 70%;
+        padding: 5px 25px 7px;
+        font-size: var(--fz35);
+      }
     }
   }
 
@@ -173,6 +230,10 @@
       padding: 0 15px;
       color: #ff004e;
       background: linear-gradient(to bottom, transparent 0%, transparent 70%, #f0ff00 70%, #f0ff00 100%);
+    }
+
+    @include max-mq {
+      font-size: var(--fz45);
     }
   }
 
@@ -210,9 +271,52 @@
     }
 
     p {
-      margin-bottom: 60px;
+      position: relative;
+      width: fit-content;
+      margin: 0 auto 60px;
       font-size: var(--fz25);
       font-weight: 800;
+
+      &::before,
+      &::after {
+        position: absolute;
+        display: inline-block;
+        content: "";
+      }
+
+      &::before {
+        top: 115px;
+        left: -145px;
+        width: 194px;
+        height: 105px;
+        background: url(../img/solution_aircon_03.png) no-repeat center / contain;
+      }
+
+      &::after {
+        top: 120px;
+        right: -145px;
+        width: 203px;
+        height: 96px;
+        background: url(../img/solution_aircon_04.png) no-repeat center / contain;
+      }
+    }
+
+    @include tb-mq {
+      font-size: var(--fz20);
+
+      div {
+        &::before,
+        &::after {
+          content: none;
+        }
+      }
+
+      p {
+        &::before,
+        &::after {
+          content: none;
+        }
+      }
     }
   }
 
@@ -253,6 +357,24 @@
         margin: 0 auto 30px;
       }
     }
+
+    @include max-mq {
+      p {
+        font-size: var(--fz25);
+
+        &::before,
+        &::after {
+          width: 1px;
+          height: 25px;
+          content: "";
+          background: #001f52;
+        }
+      }
+
+      .header--btns {
+        flex-direction: column;
+      }
+    }
   }
 
   // .solution--inner
@@ -262,6 +384,10 @@
     background: rgb(255 255 255 / 50%);
     border: 5px solid rgb(0 183 255 / 50%);
     border-radius: 15px;
+
+    @include max-mq {
+      padding: 100px min(4vw, 25px) 30px;
+    }
   }
 
   // .solution--img
@@ -269,6 +395,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
+    @include max-mq {
+      img {
+        width: 50%;
+      }
+    }
   }
 }
 
@@ -336,6 +468,10 @@
     article {
       border: 3px solid #049;
       border-radius: 20px;
+    }
+
+    @include max-mq {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 
@@ -539,6 +675,10 @@
     gap: 40px;
     width: 100%;
     margin: 0 auto 100px;
+
+    @include max-mq {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 }
 
@@ -558,8 +698,8 @@
     top: -45px;
     left: 50%;
     box-sizing: border-box;
-    width: max-content;
-    padding: 20px 60px;
+    width: 90%;
+    padding: 20px 0;
     font-size: 30px;
     font-weight: 800;
     color: #fff;

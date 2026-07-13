@@ -46,9 +46,13 @@ main {
   display: block;
   padding-top: 170px;
 
-  // @media (width <= 485px) {
-  //   padding-top: 190px;
-  // }
+  @include tb-mq {
+    padding-top: 300px;
+  }
+
+  @include max-mq {
+    padding-top: 0;
+  }
 
   @media (min-width: 768px) and (max-width: 769px) and (orientation: portrait) {
     min-height: 95vh;
@@ -92,7 +96,6 @@ main {
   // .header--btns
   &--btns {
     display: flex;
-    flex-wrap: nowrap;
     gap: 15px;
     align-items: center;
     justify-content: center;

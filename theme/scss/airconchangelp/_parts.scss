@@ -97,10 +97,6 @@ table {
   &.-sm {
     padding: 80px 0;
   }
-
-  @include max-mq {
-    padding: 80px 0;
-  }
 }
 
 .bg_blue {

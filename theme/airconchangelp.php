@@ -367,12 +367,10 @@ add_action('wp_head', static function () use ($ld_json) {
       </h1>
     </div>
 
-    <section class="issue sec">
+    <section class="issue">
       <div class="contents">
         <h2>
-          業務用エアコンの<br class="is-hidden_sp">
-          <strong><b><span>不</span><span>調</span></b></strong>や<strong><b><span>老</span><span>朽</span><span>化</span></b></strong>を<br class="is-hidden_sp">
-          そのままにしていませんか？？
+          業務用エアコンの<br><strong><b><span>不</span><span>調</span></b></strong>や<strong><b><span>老</span><span>朽</span><span>化</span></b></strong>を<br class="is-hidden_sp">そのままにしていませんか？？
         </h2>
         <p>
           業務用エアコンは、故障してから慌てて交換しようとすると、<br class="is-hidden_sp">
@@ -406,12 +404,11 @@ add_action('wp_head', static function () use ($ld_json) {
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_ttl.png" alt="そのお悩み、ご相談ください！" width="1194" height="120" loading="lazy" decoding="async">
           </h2>
           <div class="solution--lead">
-            業務用エアコンの<br class="is-hidden_sp">
+            <b>業務用エアコンの</b><br class="is-hidden_sp">
             <p class="solution--item"><span>交換</span><span>取り換え</span><span>入れ替え</span><span>買い替え</span></p>は
           </div>
           <p class="solution--strong">
-            <strong>トータルスマート株式会社</strong>に<br class="is-hidden_sp">
-            お任せください
+            <strong>トータルスマート株式会社</strong>に<br class="is-hidden_sp">お任せください
           </p>
           <div class="solution--guide">
             <div>
@@ -419,7 +416,7 @@ add_action('wp_head', static function () use ($ld_json) {
             </div>
             <p>
               現在のエアコンの写真、設置場所、台数、使用年数など、<br class="is-hidden_sp">
-              分かる範囲の情報だけでご相談いただけます。<br class="is-hidden_sp">
+              分かる範囲の情報だけでご相談いただけます。<br>
               修理を続けるべきか、交換した方がよいか、<br class="is-hidden_sp">
               現地状況を確認したうえでご案内します。
             </p>
