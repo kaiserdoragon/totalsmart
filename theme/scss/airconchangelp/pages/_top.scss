@@ -624,7 +624,7 @@
     }
 
     @for $i from 1 through 6 {
-      $number: if($i < 10, "0#{$i}", "#{$i}");
+      $number: if(sass($i < 10): "0#{$i}"; else: "#{$i}");
 
       &:nth-child(#{$i})::before {
         background: url("../img/reason_num_#{$number}.png") no-repeat center /contain;
