@@ -931,7 +931,6 @@ add_action('wp_head', static function () use ($ld_json) {
       </div>
     </section>
 
-
     <section class="area sec">
       <div class="contents">
         <h2>
@@ -1017,7 +1016,7 @@ add_action('wp_head', static function () use ($ld_json) {
 
     <section class="contact sec" id="contact">
       <div class="contents">
-        <h2 class="ttl">お問い合わせはこちらから！</h2>
+        <h2 class="ttl">お問い合わせは<br class="is-hidden_pc">こちらから！</h2>
         <p class="contact--lead">
           料金の目安を知りたい方・具体的な日程のご相談をされたい方は、<br class="is-hidden_sp">
           こちらのフォームからご連絡ください。<br>

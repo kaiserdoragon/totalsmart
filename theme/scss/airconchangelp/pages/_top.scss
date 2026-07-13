@@ -1197,7 +1197,6 @@
   }
 }
 
-
 .area {
   h2 {
     margin-bottom: 40px;
@@ -1256,6 +1255,33 @@
 
     &:not(:last-child) {
       margin-bottom: 100px;
+    }
+
+    @include max-mq {
+      padding: 50px 20px 30px;
+
+      img {
+        margin: 0 auto 30px;
+      }
+
+      p {
+        padding-top: 30px;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 80px;
+      }
+    }
+  }
+
+  @include max-mq {
+    h2 {
+      margin-bottom: 30px;
+      font-size: var(--fz35);
+
+      +p {
+        font-size: var(--fz20);
+      }
     }
   }
 }

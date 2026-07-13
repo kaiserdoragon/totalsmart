@@ -57,5 +57,17 @@
     padding: 80px 100px 100px;
     background: #fff;
     border: 3px solid #004ba6;
+
+    @include max-mq {
+      padding: 60px 15px;
+    }
+  }
+
+  @include max-mq {
+    h2 {
+      width: 100%;
+      padding: 0 15px 5px;
+      font-size: var(--fz35);
+    }
   }
 }
