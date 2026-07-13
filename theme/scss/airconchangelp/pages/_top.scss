@@ -1037,6 +1037,23 @@
         }
       }
     }
+
+    @include max-mq {
+      h3 {
+        margin: 0 auto 15px;
+        font-size: var(--fz25);
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 100px;
+
+        &::after {
+          bottom: -65px;
+          width: 80px;
+          height: 40px;
+        }
+      }
+    }
   }
 
   // .flow--num
@@ -1051,6 +1068,16 @@
 
     span {
       margin-left: 5px;
+    }
+  }
+
+  @include max-mq {
+    h2 {
+      font-size: var(--fz30);
+
+      +p {
+        font-size: var(--fz20);
+      }
     }
   }
 }
@@ -1076,7 +1103,7 @@
   dt {
     position: relative;
     padding: 20px 30px 20px 80px;
-    font-size: 25px;
+    font-size: var(--fz25);
     font-weight: 800;
     color: #fff;
     background: #049;
@@ -1133,6 +1160,40 @@
 
   .content {
     width: min(850px, 100%);
+  }
+
+  @include max-mq {
+    h2 {
+      margin-bottom: 30px;
+      font-size: var(--fz35);
+
+      +p {
+        font-size: var(--fz20);
+      }
+    }
+
+    dt {
+      padding: 15px 15px 15px 60px;
+      font-size: var(--fz22);
+
+      &::before {
+        width: 40px;
+        height: 40px;
+        padding-bottom: 3px;
+        font-size: var(--fz25);
+      }
+    }
+
+    dd {
+      padding: 15px 15px 15px 60px;
+
+      &::before {
+        width: 40px;
+        height: 40px;
+        padding-bottom: 3px;
+        font-size: var(--fz25);
+      }
+    }
   }
 }
 
