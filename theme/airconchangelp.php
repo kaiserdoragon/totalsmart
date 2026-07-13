@@ -336,17 +336,17 @@ add_action('wp_head', static function () use ($ld_json) {
       <h1>
         <picture>
           <source
-            media="(max-width: 767px)"
+            media="(max-width: 1024px)"
             srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv_sp.avif"
             type="image/avif"
             width="750" height="1789">
           <source
-            media="(max-width: 767px)"
+            media="(max-width: 1024px)"
             srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv_sp.webp"
             type="image/webp"
             width="750" height="1789">
           <source
-            media="(max-width: 767px)"
+            media="(max-width: 1024px)"
             srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv_sp.jpg"
             width="750" height="1789">
 
@@ -382,7 +382,10 @@ add_action('wp_head', static function () use ($ld_json) {
         <img class="issue--img" src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/issue_catch.png" alt="" width="674" height="520" loading="lazy" decoding="async">
 
         <div class="issue--inner">
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/issue_txt.png" alt="こんなお悩みはありませんか？" width="900" height="100" loading="lazy" decoding="async">
+          <picture>
+            <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/issue_txt_sp.png" width="724" height="175">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/issue_txt.png" alt="こんなお悩みはありませんか？" width="900" height="100" loading="lazy" decoding="async">
+          </picture>
           <ul>
             <li>10年以上使用していて、交換時期が分からない</li>
             <li>冷えない・暖まらないなど、空調の効きが悪い</li>
@@ -397,14 +400,17 @@ add_action('wp_head', static function () use ($ld_json) {
       </div>
     </section>
 
-    <section class="solution sec">
+    <section class="solution">
       <div class="contents">
         <div class="solution--inner">
           <h2>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_ttl.png" alt="そのお悩み、ご相談ください！" width="1194" height="120" loading="lazy" decoding="async">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_ttl_sp.png" width="730" height="245">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_ttl.png" alt="そのお悩み、ご相談ください！" width="1194" height="120" loading="lazy" decoding="async">
+            </picture>
           </h2>
           <div class="solution--lead">
-            <b>業務用エアコンの</b><br class="is-hidden_sp">
+            <b>業務用エアコンの</b>
             <p class="solution--item"><span>交換</span><span>取り換え</span><span>入れ替え</span><span>買い替え</span></p>は
           </div>
           <p class="solution--strong">
@@ -540,7 +546,10 @@ add_action('wp_head', static function () use ($ld_json) {
 
         <section class="service--maker">
           <h3>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_txt.png" alt="様々な種類の業務用エアコンに対応可能" width="776" height="76" loading="lazy" decoding="async">
+            <picture>
+              <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_txt_sp.png" width="697" height="220">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_txt.png" alt="様々な種類の業務用エアコンに対応可能" width="776" height="76" loading="lazy" decoding="async">
+            </picture>
           </h3>
           <div>
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_01.png" alt="パナソニック" width="397" height="61" loading="lazy" decoding="async">

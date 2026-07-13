@@ -58,7 +58,7 @@
     background: #fff;
     border: 3px solid #004ba6;
 
-    @include max-mq {
+    @include tb-mq {
       padding: 60px 15px;
     }
   }

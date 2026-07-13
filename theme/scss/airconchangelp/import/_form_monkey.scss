@@ -76,6 +76,7 @@
   @include max-mq {
     flex-direction: column;
     gap: 8px;
+    align-items: flex-start;
     margin-bottom: 20px;
   }
 
@@ -129,13 +130,15 @@
     }
 
     @include max-mq {
+      width: fit-content;
       max-width: 100%;
       font-size: var(--fz18);
 
       span {
         &::after {
-          padding: 4px 5px 5px;
-          font-size: var(--fz12);
+          right: -55px;
+          padding: 6px 7px 7px;
+          font-size: var(--fz14);
         }
       }
     }
