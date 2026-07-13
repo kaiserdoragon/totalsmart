@@ -10,6 +10,7 @@ $home_url = esc_url_raw(home_url('/'));
 
 $logo_url = esc_url_raw(get_theme_file_uri('airconchangelp/img/logo.png'));
 $mv_url   = esc_url_raw(get_theme_file_uri('airconchangelp/img/mv.jpg'));
+$page_modified = get_post_modified_time('c', true, $page_id);
 
 // NAP（代表番号）と、広告計測等で使う番号（表示している番号）を分離
 $main_tel_local     = '052-932-5450';
@@ -21,90 +22,75 @@ $main_tel_href     = preg_replace('/[^0-9]/', '', $main_tel_local);     // 05293
 // SEOプラグインの有無（重複出力回避）
 $has_seo_plugin = defined('WPSEO_VERSION') || defined('RANK_MATH_VERSION') || defined('AIOSEO_VERSION');
 
-// このテンプレート用のdescription（必要なら固定文→カスタムフィールド化推奨）
-$meta_description = '愛知・岐阜・三重・静岡で業務用エアコンの交換・取り換え・入れ替え・買い替え。電話・メールで無料見積り。';
+// このLP専用の検索結果向けタイトル・説明文
+$meta_description = '愛知・岐阜・三重・静岡の業務用エアコン交換・入れ替え・買い替え。機器選定、本体販売、撤去・フロン回収、取付工事、試運転まで一括対応。法人・店舗・工場・施設向けに無料でお見積もりします。';
 $meta_description = wp_strip_all_tags($meta_description);
 if (function_exists('mb_strimwidth')) {
-  $meta_description = mb_strimwidth($meta_description, 0, 120, '…', 'UTF-8');
+  $meta_description = mb_strimwidth($meta_description, 0, 200, '…', 'UTF-8');
 }
 
-// title-tag 非対応テーマのための保険（テーマが対応ならwp_head側で出る）
-$meta_title = '業務用エアコンの交換・取り換え・入れ替え・買い替え｜株式会社トータルスマート';
+$meta_title = '業務用エアコン交換・入れ替え・買い替え｜東海4県対応｜トータルスマート株式会社';
 
-// ---------------------------
-// JSON-LD（表示内容と整合）
-// ※SEOプラグインがschemaを出す場合が多いのでガード
-// ---------------------------
-$offers = [
+// 表示中のFAQと構造化データを同じ配列から生成し、内容のずれを防ぐ。
+$faq_items = [
   [
-    '@type' => 'Offer',
-    'name'  => '簡単クリーニング（フィルター清掃・風速測定・温度測定）',
-    'url'   => $page_url . '#price',
-    'price' => '5000',
-    'priceCurrency' => 'JPY',
-    'priceSpecification' => [
-      '@type' => 'UnitPriceSpecification',
-      'price' => '5000',
-      'priceCurrency' => 'JPY',
-      'valueAddedTaxIncluded' => false, // LP表記が「税抜」
-    ],
+    'question' => '対応エリアはどこですか？',
+    'answer'   => '愛知県・岐阜県・三重県・静岡県の法人・店舗・施設を基本対象としています。まずは設置場所をお知らせください。',
   ],
   [
-    '@type' => 'Offer',
-    'name'  => 'しっかりクリーニング（分解洗浄）',
-    'url'   => $page_url . '#price',
-    'price' => '18000',
-    'priceCurrency' => 'JPY',
-    'priceSpecification' => [
-      '@type' => 'UnitPriceSpecification',
-      'price' => '18000',
-      'priceCurrency' => 'JPY',
-      'valueAddedTaxIncluded' => false,
-    ],
+    'question' => 'どのような施設に対応していますか？',
+    'answer'   => '店舗、オフィス、工場、倉庫、クリニック、介護施設、商業施設、事務所など、法人・店舗・施設向けの業務用エアコン導入・交換に対応しています。',
   ],
   [
-    '@type' => 'Offer',
-    'name'  => 'お掃除機能付きオプション',
-    'url'   => $page_url . '#price',
-    'price' => '6000',
-    'priceCurrency' => 'JPY',
-    'priceSpecification' => [
-      '@type' => 'UnitPriceSpecification',
-      'price' => '6000',
-      'priceCurrency' => 'JPY',
-      'valueAddedTaxIncluded' => false,
-    ],
+    'question' => '現地調査や見積もりは必要ですか？',
+    'answer'   => '業務用エアコンは、機器の馬力や台数だけでなく、配管、電源、搬入経路、室外機の設置場所、既存機器の撤去条件によって費用が変わります。事前に型番・設置写真・室外機写真・台数を共有いただけるとスムーズです。',
   ],
-];
-
-$website = [
-  '@type' => 'WebSite',
-  '@id'   => $home_url . '#website',
-  'url'   => $home_url,
-  'name'  => '株式会社トータルスマート',
-  'inLanguage' => 'ja-JP',
-];
-
-$primary_image = [
-  '@type' => 'ImageObject',
-  '@id'   => $page_url . '#primaryimage',
-  'url'   => $mv_url,
+  [
+    'question' => '業務用エアコンの交換時期を相談できますか？',
+    'answer'   => 'はい、相談可能です。設置から10年以上経過している場合や、修理を繰り返している場合は、交換を検討するタイミングです。使用状況を確認したうえで、交換したほうがよいかをご案内します。',
+  ],
+  [
+    'question' => '修理と交換のどちらがよいか分かりません。',
+    'answer'   => '使用年数、故障頻度、修理費用、部品供給の状況、電気代、現在の効き具合などを確認し、修理を続けるべきか、交換・買い替えを検討すべきかを整理します。ぜひ一度ご相談ください。',
+  ],
+  [
+    'question' => '機種や馬力の選び方が分かりません。',
+    'answer'   => '業務用エアコンは、部屋の広さだけで機種を決めると、能力不足や過剰設備につながる場合があります。施設の用途、稼働時間、天井高、熱源、利用人数、設置環境を確認し、現場に合った機種・馬力・形状をご提案します。',
+  ],
+  [
+    'question' => '対応できる業務用エアコンの種類は何ですか？',
+    'answer'   => '天井カセット形、天井吊形、床置形、壁掛形、ビルトイン形、ダクト形、パッケージエアコンなど、各種業務用エアコンの導入・交換をご相談いただけます。現在の機器タイプが分からない場合もお問い合わせください。',
+  ],
+  [
+    'question' => '本体の販売から取付工事までまとめて依頼できますか？',
+    'answer'   => 'はい、機器選定、本体販売、取付工事、試運転までまとめてご相談いただけます。既存機器の交換では、撤去やフロン回収も含めて、現場条件を確認しながらご提案します。',
+  ],
+  [
+    'question' => '営業中の店舗や稼働中の施設でも工事できますか？',
+    'answer'   => '工事内容や現場状況によって異なります。営業や業務への影響を抑えられるよう、工事日程や作業時間を確認しながら調整します。休日・営業時間外の工事をご希望の場合も事前にご相談ください。',
+  ],
+  [
+    'question' => '他メーカーからの入れ替えもできますか？',
+    'answer'   => 'はい、他メーカーの業務用エアコンからの入れ替えにも対応しています。現在のメーカーや機種を確認し、設置環境や配管・電源の状況に合った交換機種をご提案します。',
+  ],
+  [
+    'question' => '支払い方法やリースは相談できますか？',
+    'answer'   => '支払い方法やリースについては、案件内容や条件により確認が必要です。導入台数、機器内容、工事範囲、希望時期を確認したうえで、対応可能な方法をご案内します。',
+  ],
+  [
+    'question' => '保証やアフター対応はありますか？',
+    'answer'   => 'メーカー保証や工事後の対応は、選定する機器や工事内容により異なります。正式見積もり時に、保証範囲やアフター対応についてもご案内します。',
+  ],
 ];
 
 $business = [
-  // できる限り具体的なLocalBusinessサブタイプ（HVACBusiness）に寄せる
   '@type' => 'HVACBusiness',
   '@id'   => $home_url . '#localbusiness',
   'name'  => '株式会社トータルスマート',
   'url'   => $home_url,
-  // NAPの代表番号
   'telephone' => $main_tel_intl,
   'logo'  => $logo_url,
   'image' => [$mv_url],
-  // LP表示（5,000 / 18,000 + 6,000）に合わせてレンジを上限24,000まで含める
-  'priceRange' => '¥5,000〜¥24,000（税抜）',
-  'paymentAccepted' => '現金',
-  'currenciesAccepted' => 'JPY',
   'address' => [
     '@type' => 'PostalAddress',
     'postalCode' => '461-0002',
@@ -120,92 +106,67 @@ $business = [
     ['@type' => 'AdministrativeArea', 'name' => '静岡県'],
   ],
   'contactPoint' => [
-    [
-      '@type' => 'ContactPoint',
-      'telephone' => $main_tel_intl,
-      'contactType' => 'customer service',
-      'availableLanguage' => ['ja'],
-    ],
+    '@type' => 'ContactPoint',
+    'telephone' => $main_tel_intl,
+    'contactType' => 'customer service',
+    'availableLanguage' => ['ja'],
   ],
-  'makesOffer' => $offers,
 ];
 
 $service = [
   '@type' => 'Service',
   '@id'   => $page_url . '#service',
-  'name'  => 'エアコンクリーニング（エアコン掃除）',
-  'provider' => ['@id' => $home_url . '#localbusiness'],
-  'areaServed' => $business['areaServed'],
-  'offers' => $offers,
-];
-
-$webpage = [
-  '@type' => 'WebPage',
-  '@id'   => $page_url . '#webpage',
   'url'   => $page_url,
-  'name'  => $meta_title,
-  'inLanguage' => 'ja-JP',
-  'isPartOf' => ['@id' => $home_url . '#website'],
-  'primaryImageOfPage' => ['@id' => $page_url . '#primaryimage'],
-  'about' => ['@id' => $page_url . '#service'],
-  'mainEntity' => ['@id' => $page_url . '#service'],
+  'name'  => '業務用エアコンの交換・入れ替え・買い替え工事',
+  'serviceType' => '業務用エアコンの機器選定・販売・撤去・フロン回収・取付工事・試運転',
+  'description' => $meta_description,
+  'provider' => $business,
+  'areaServed' => $business['areaServed'],
+  'image' => $mv_url,
+  'audience' => [
+    '@type' => 'BusinessAudience',
+    'audienceType' => '法人・店舗・工場・施設',
+  ],
 ];
 
 $faqpage = [
   '@type' => 'FAQPage',
   '@id'   => $page_url . '#faq',
-  'mainEntity' => [
-    [
+  'mainEntity' => array_map(static function ($item) {
+    return [
       '@type' => 'Question',
-      'name'  => '表示されている料金以外に、追加でかかる費用はありますか？',
+      'name'  => $item['question'],
       'acceptedAnswer' => [
         '@type' => 'Answer',
-        'text'  => 'エアコン本体の料金＋オプション（ご希望時のみ）が総額です。出張費・基本的な養生・洗浄作業料はすべて含まれています。勝手に追加請求することは一切ございません。お客様にとって一番負担の少ない方法をご提案し、無理な工事を押しつけることもありません。',
+        'text'  => $item['answer'],
       ],
-    ],
-    [
-      '@type' => 'Question',
-      'name'  => '出張料はかかりますか？？',
-      'acceptedAnswer' => [
-        '@type' => 'Answer',
-        'text'  => '出張料はいただきません。',
-      ],
-    ],
-    [
-      '@type' => 'Question',
-      'name'  => 'キャンセル料はかかりますか？',
-      'acceptedAnswer' => [
-        '@type' => 'Answer',
-        'text'  => 'お見積りをした後でも、納得がいかなければキャンセルいただけます。作業着手前のキャンセルに関しては代金をいただいておりません。',
-      ],
-    ],
-    [
-      '@type' => 'Question',
-      'name'  => '事前に準備しておくことはありますか？',
-      'acceptedAnswer' => [
-        '@type' => 'Answer',
-        'text'  => '下記のご協力をお願いしています。エアコンの真下や周辺にある小物・壊れやすいものの移動、作業スペースとして1〜2畳ほどの空きスペースの確保、お風呂場またはベランダなど、部品洗浄に使用できる場所のご提供。',
-      ],
-    ],
-    [
-      '@type' => 'Question',
-      'name'  => '猫や犬などのペットがいますが大丈夫ですか？',
-      'acceptedAnswer' => [
-        '@type' => 'Answer',
-        'text'  => 'エアコンクリーニングなどの作業には基本的にはオーガニック洗剤を使用しています。安心して下さい。',
-      ],
-    ],
-  ],
+    ];
+  }, $faq_items),
 ];
+
+if (!empty($page_modified)) {
+  $faqpage['dateModified'] = $page_modified;
+}
 
 $ld_json = [
   '@context' => 'https://schema.org',
-  '@graph' => [$website, $primary_image, $business, $service, $webpage, $faqpage],
+  '@graph' => [$service, $faqpage],
 ];
 
-add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
+// 共通テーマのcanonical・OGPと、このテンプレートの専用タグの重複を防ぐ。
+remove_action('wp_head', 'ts_output_fallback_seo_meta', 1);
+remove_action('wp_head', 'output_ogp');
+
+if (!$has_seo_plugin) {
+  add_filter('pre_get_document_title', static function ($title) use ($meta_title) {
+    return $meta_title;
+  }, 20);
+}
+
+// Service / FAQはページ固有情報のため、SEOプラグインの有無にかかわらず出力する。
+add_action('wp_head', static function () use ($ld_json) {
   static $printed = false;
-  if ($printed || is_admin() || $has_seo_plugin) {
+  if ($printed || is_admin()) {
     return;
   }
   $printed = true;
@@ -239,24 +200,38 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
   </script>
   <!-- End Google Tag Manager -->
 
-  <script type="text/javascript">
-    (function(c, l, a, r, i, t, y) {
-      c[a] = c[a] || function() {
-        (c[a].q = c[a].q || []).push(arguments)
+  <script>
+    // ヒートマップ計測は主要コンテンツの読込み完了後に開始する。
+    window.addEventListener('load', function() {
+      var loadClarity = function() {
+        (function(c, l, a, r, i, t, y) {
+          c[a] = c[a] || function() {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+          t = l.createElement(r);
+          t.async = 1;
+          t.src = 'https://www.clarity.ms/tag/' + i;
+          y = l.getElementsByTagName(r)[0];
+          y.parentNode.insertBefore(t, y);
+        })(window, document, 'clarity', 'script', 'win4k5tt8k');
       };
-      t = l.createElement(r);
-      t.async = 1;
-      t.src = "https://www.clarity.ms/tag/" + i;
-      y = l.getElementsByTagName(r)[0];
-      y.parentNode.insertBefore(t, y);
-    })(window, document, "clarity", "script", "win4k5tt8k");
+
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(loadClarity, {
+          timeout: 2000
+        });
+      } else {
+        window.setTimeout(loadClarity, 0);
+      }
+    }, {
+      once: true
+    });
   </script>
 
   <meta charset="<?php bloginfo('charset'); ?>" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="format-detection" content="telephone=no">
 
-  <link rel="preload" as="image" href="<?php echo esc_url(get_theme_file_uri('airconchangelp/img/logo.avif')); ?>" type="image/avif">
   <link rel="preload" as="image" href="<?php echo esc_url(get_theme_file_uri('airconchangelp/img/mv_sp.avif')); ?>" type="image/avif" media="(max-width: 767px)">
   <link rel="preload" as="image" href="<?php echo esc_url(get_theme_file_uri('airconchangelp/img/mv.avif')); ?>" type="image/avif" media="(min-width: 768px)">
 
@@ -283,6 +258,9 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
     <meta property="og:description" content="<?php echo esc_attr($meta_description); ?>">
     <meta property="og:url" content="<?php echo esc_url($page_url); ?>">
     <meta property="og:image" content="<?php echo esc_url($mv_url); ?>">
+    <meta property="og:image:width" content="5760">
+    <meta property="og:image:height" content="3042">
+    <meta property="og:image:alt" content="業務用エアコンの交換・入れ替え・買い替えサービス">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?php echo esc_attr($meta_title); ?>">
@@ -307,31 +285,30 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
   <header class="header">
     <div class="contents">
       <div class="header--logo">
-        <a href="<?php echo esc_url(home_url('/airconchangelp/')); ?>">
+        <a href="<?php echo esc_url($page_url); ?>">
           <p>業務用エアコンの交換・取り換え・入れ替え・買い替えは<br>トータルスマート株式会社</p>
 
-          <h1>
+          <div class="header--brand">
             <picture>
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo.avif" type="image/avif">
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo.webp" type="image/webp">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo.png"
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/logo.avif" type="image/avif">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/logo.webp" type="image/webp">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/logo.png"
                 alt="株式会社トータルスマート"
-                width="397" height="262"
-                fetchpriority="high"
+                width="397" height="84"
                 decoding="async">
             </picture>
-          </h1>
+          </div>
         </a>
       </div>
 
       <div class="header--btns">
         <div class="header--btn-item">
-          <a href="tel:0529325450" class="cv_button gtm-click-tel">
+          <a href="tel:<?php echo esc_attr($main_tel_href); ?>" class="cv_button gtm-click-tel">
             <picture>
               <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.avif" type="image/avif">
               <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.webp" type="image/webp">
               <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.png"
-                alt="お電話でのご相談はこちら: <?php echo esc_attr($tracking_tel_local); ?>"
+                alt="お電話でのご相談はこちら: <?php echo esc_attr($main_tel_local); ?>"
                 width="270" height="80"
                 decoding="async">
             </picture>
@@ -356,33 +333,38 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
 
   <main>
     <div class="mv">
-      <picture>
-        <source
-          media="(max-width: 767px)"
-          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv_sp.avif"
-          type="image/avif">
-        <source
-          media="(max-width: 767px)"
-          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv_sp.webp"
-          type="image/webp">
-        <source
-          media="(max-width: 767px)"
-          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv_sp.jpg">
+      <h1>
+        <picture>
+          <source
+            media="(max-width: 767px)"
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv_sp.avif"
+            type="image/avif"
+            width="750" height="1789">
+          <source
+            media="(max-width: 767px)"
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv_sp.webp"
+            type="image/webp"
+            width="750" height="1789">
+          <source
+            media="(max-width: 767px)"
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv_sp.jpg"
+            width="750" height="1789">
 
-        <source
-          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv.avif"
-          type="image/avif">
-        <source
-          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv.webp"
-          type="image/webp">
+          <source
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv.avif"
+            type="image/avif">
+          <source
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv.webp"
+            type="image/webp">
 
-        <img
-          src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv.jpg"
-          alt="エアコンクリーニングなら株式会社トータルスマート"
-          width="1920" height="1778"
-          fetchpriority="high"
-          decoding="async">
-      </picture>
+          <img
+            src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv.jpg"
+            alt="業務用エアコンの交換・入れ替え・買い替え。愛知・岐阜・三重・静岡対応"
+            width="1920" height="1014"
+            fetchpriority="high"
+            decoding="async">
+        </picture>
+      </h1>
     </div>
 
     <section class="issue sec">
@@ -399,10 +381,10 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           特に店舗・工場・オフィス・施設では、<br class="is-hidden_sp">
           空調トラブルがそのまま事業運営のリスクになります。
         </p>
-        <img class="issue--img" src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/issue_catch.png" alt="" width="674" height="520" decoding="async">
+        <img class="issue--img" src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/issue_catch.png" alt="" width="674" height="520" loading="lazy" decoding="async">
 
         <div class="issue--inner">
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/issue_txt.png" alt="" width="900" height="100" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/issue_txt.png" alt="こんなお悩みはありませんか？" width="900" height="100" loading="lazy" decoding="async">
           <ul>
             <li>10年以上使用していて、交換時期が分からない</li>
             <li>冷えない・暖まらないなど、空調の効きが悪い</li>
@@ -421,7 +403,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       <div class="contents">
         <div class="solution--inner">
           <h2>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_ttl.png" alt="" width="1194" height="120" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_ttl.png" alt="そのお悩み、ご相談ください！" width="1194" height="120" loading="lazy" decoding="async">
           </h2>
           <div class="solution--lead">
             業務用エアコンの<br class="is-hidden_sp">
@@ -433,7 +415,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           </p>
           <div class="solution--guide">
             <div>
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_txt_1.png" alt="" width="686" height="163" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_txt_1.png" alt="型番やメーカーが分からなくても大丈夫です" width="686" height="163" loading="lazy" decoding="async">
             </div>
             <p>
               現在のエアコンの写真、設置場所、台数、使用年数など、<br class="is-hidden_sp">
@@ -444,16 +426,17 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           </div>
           <div class="solution--cv">
             <p>お問い合わせはこちらから</p>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_txt_2.png" alt="" width="683" height="59" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_txt_2.png" alt="まずは無料でご相談ください" width="683" height="59" loading="lazy" decoding="async">
             <div class="header--btns">
               <div class="header--btn-item">
-                <a href="tel:0529325450" class="cv_button gtm-click-tel">
+                <a href="tel:<?php echo esc_attr($main_tel_href); ?>" class="cv_button gtm-click-tel">
                   <picture>
                     <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.avif" type="image/avif">
                     <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.webp" type="image/webp">
                     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.png"
-                      alt="お電話でのご相談はこちら: <?php echo esc_attr($tracking_tel_local); ?>"
+                      alt="お電話でのご相談はこちら: <?php echo esc_attr($main_tel_local); ?>"
                       width="487" height="144"
+                      loading="lazy"
                       decoding="async">
                   </picture>
                 </a>
@@ -467,6 +450,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
                     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.png"
                       alt="メールでお問い合わせ"
                       width="487" height="144"
+                      loading="lazy"
                       decoding="async">
                   </picture>
                 </a>
@@ -474,12 +458,12 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             </div>
           </div>
           <div class="solution--img">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_01.jpg" alt="" width="400" height="250" decoding="async">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_02.jpg" alt="" width="400" height="250" decoding="async">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_03.jpg" alt="" width="400" height="250" decoding="async">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_04.jpg" alt="" width="400" height="250" decoding="async">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_05.jpg" alt="" width="400" height="250" decoding="async">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_06.jpg" alt="" width="400" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_01.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_02.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_03.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_04.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_05.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/solution_catch_06.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -503,7 +487,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <div class="service--inner">
           <article>
             <h3>今のエアコンが<br class="is-hidden_sp"><span>交換時期</span>か確認します</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_01.jpg" alt="" width="250" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_01.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
             <p>
               「まだ修理で使えるのか」<br>
               「今のうちに交換したほうがよいのか」<br>
@@ -514,7 +498,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           </article>
           <article>
             <h3>能力不足・過剰設備を<br class="is-hidden_sp">避けた<span>機器選定</span></h3>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_02.jpg" alt="" width="250" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_02.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
             <p>
               部屋の広さだけで選ぶと、冷暖房が効きにくい、電気代が高くなる、必要以上に高額な機器を選んでしまうといった問題につながる場合があります。<br class="is-hidden_sp">
               施設用途、稼働時間、天井高、利用人数、発熱機器の有無を確認し、現場に合った機種・馬力・台数をご提案します。
@@ -522,15 +506,15 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           </article>
           <article>
             <h3>本体販売から取付工事まで<br class="is-hidden_sp"><span>まとめて依頼できます</span></h3>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_03.jpg" alt="" width="250" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_03.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
             <p>
               業務用エアコンの交換では、本体の選定だけでなく、配管、電源、室外機の設置場所、搬入経路、工事可能日まで確認する必要があります。<br class="is-hidden_sp">
               機器の手配から取付工事までまとめて対応し、販売店、工事業者、撤去業者を個別に探す手間を抑えられます。
             </p>
           </article>
           <article>
-            <h3><span>既存機器の撤去・フロン回収</span><br class="is-hidden_sp">本体販売から取付工事まで</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_04.jpg" alt="" width="250" height="250" decoding="async">
+            <h3><span>既存機器の撤去・フロン回収</span><br class="is-hidden_sp">まで一括対応します</h3>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_04.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
             <p>
               古い業務用エアコンを交換する際は、新しい機器の設置だけでなく、既存機器の撤去やフロン回収に関する確認も必要です。<br class="is-hidden_sp">
               交換時に必要となる撤去、回収、処分まわりについても、現在の設置状況に合わせてご相談いただけます。
@@ -538,15 +522,15 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           </article>
           <article>
             <h3><span>業務の影響を抑えた</span><br class="is-hidden_sp">工事計画を提案します</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_05.jpg" alt="" width="250" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_05.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
             <p>
-              古い業務用エアコンを交換する際は、新しい機器の設置だけでなく、既存機器の撤去やフロン回収に関する確認も必要です。<br class="is-hidden_sp">
-              交換時に必要となる撤去、回収、処分まわりについても、現在の設置状況に合わせてご相談いただけます。
+              店舗の営業時間や工場・施設の稼働状況を確認し、営業・業務への影響をできる限り抑えた工事日程と作業手順をご提案します。<br class="is-hidden_sp">
+              休日や営業時間外の工事、複数台を段階的に入れ替える計画についてもご相談いただけます。
             </p>
           </article>
           <article>
             <h3><span>追加の工事・費用</span>は<br class="is-hidden_sp">事前に確認できます</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_06.jpg" alt="" width="250" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_icon_06.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
             <p>
               既存の配管・電源・室外機の位置・搬入経路・天井内の状況によって、必要な工事内容が変わる場合があります。<br class="is-hidden_sp">
               「見積もり後に費用が変わらないか不安」<br>
@@ -559,15 +543,15 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
 
         <section class="service--maker">
           <h3>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_txt.png" alt="" width="776" height="76" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_txt.png" alt="様々な種類の業務用エアコンに対応可能" width="776" height="76" loading="lazy" decoding="async">
           </h3>
           <div>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_01.png" alt="" width="397" height="61" decoding="async">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_02.png" alt="" width="338" height="72" decoding="async">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_03.png" alt="" width="408" height="63" decoding="async">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_04.png" alt="" width="394" height="76" decoding="async">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_05.png" alt="" width="314" height="131" decoding="async">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_06.png" alt="" width="371" height="59" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_01.png" alt="パナソニック" width="397" height="61" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_02.png" alt="ダイキン" width="338" height="72" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_03.png" alt="東芝" width="408" height="63" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_04.png" alt="三菱重工" width="394" height="76" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_05.png" alt="三菱電機" width="314" height="131" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_06.png" alt="日立" width="371" height="59" loading="lazy" decoding="async">
           </div>
         </section>
 
@@ -578,27 +562,27 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           </h3>
           <div class="service--img">
             <div>
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_01.jpg" alt="" width="350" height="250" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_01.jpg" alt="" width="350" height="250" loading="lazy" decoding="async">
               <p>事務所</p>
             </div>
             <div>
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_02.jpg" alt="" width="350" height="250" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_02.jpg" alt="" width="350" height="250" loading="lazy" decoding="async">
               <p>飲食店</p>
             </div>
             <div>
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_03.jpg" alt="" width="350" height="250" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_03.jpg" alt="" width="350" height="250" loading="lazy" decoding="async">
               <p>美容院</p>
             </div>
             <div>
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_04.jpg" alt="" width="350" height="250" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_04.jpg" alt="" width="350" height="250" loading="lazy" decoding="async">
               <p>クリニック</p>
             </div>
             <div>
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_05.jpg" alt="" width="350" height="250" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_05.jpg" alt="" width="350" height="250" loading="lazy" decoding="async">
               <p>工場・倉庫</p>
             </div>
             <div>
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_06.jpg" alt="" width="350" height="250" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_building_06.jpg" alt="" width="350" height="250" loading="lazy" decoding="async">
               <p>塾</p>
             </div>
           </div>
@@ -617,7 +601,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         </p>
         <div class="reason--inner">
           <article>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_01.jpg" alt="" width="500" height="300" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_01.jpg" alt="" width="500" height="300" loading="lazy" decoding="async">
             <h3>省エネ性能まで考えた機種選定</h3>
             <p>
               同じ馬力でも省エネ性能や制御機能によって、長期的な電気代が変わります。<br>
@@ -627,7 +611,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             </p>
           </article>
           <article>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_02.jpg" alt="" width="500" height="300" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_02.jpg" alt="" width="500" height="300" loading="lazy" decoding="async">
             <h3>総額が見える見積り</h3>
             <p>
               交換費用は、本体価格だけでは判断できません。<br>
@@ -637,7 +621,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             </p>
           </article>
           <article>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_03.jpg" alt="" width="500" height="300" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_03.jpg" alt="" width="500" height="300" loading="lazy" decoding="async">
             <h3>業種別に最適な空調を提案</h3>
             <p>
               飲食店、美容室、クリニック、事務所など空調に求められる条件が異なります。<br>
@@ -646,7 +630,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             </p>
           </article>
           <article>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_04.jpg" alt="" width="500" height="300" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_04.jpg" alt="" width="500" height="300" loading="lazy" decoding="async">
             <h3>工事後の保証・アフター対応</h3>
             <p>
               業務用エアコンは、設置して終わりではありません。長く安定して使うには、工事品質、試運転、保証、メンテナンス体制が重要です。<br>
@@ -655,7 +639,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             </p>
           </article>
           <article>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_05.jpg" alt="" width="500" height="300" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_05.jpg" alt="" width="500" height="300" loading="lazy" decoding="async">
             <h3>リース・分割払いの相談ができる</h3>
             <p>
               業務用エアコンの交換や買い替えをするとまとまった初期費用がかかります。<br>
@@ -665,8 +649,8 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             </p>
           </article>
           <article>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_06.jpg" alt="" width="500" height="300" decoding="async">
-            <h3>工事後の保証・アフター対応</h3>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_06.jpg" alt="" width="500" height="300" loading="lazy" decoding="async">
+            <h3>撤去・フロン回収・処分まで一括対応</h3>
             <p>
               使わなくなった業務用エアコンの撤去には、冷媒回収や適切な処分が関わります。<br>
               機器を外して終わりではなく、法令に沿った対応が必要です。<br>
@@ -699,7 +683,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
                 営業にできるだけ影響が 出ないように、早めに入れ替えを相談したいと思っていました。
               </p>
             </div>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/worry_01.jpg" alt="" width="350" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/worry_01.jpg" alt="" width="350" height="250" loading="lazy" decoding="async">
           </div>
         </article>
         <article>
@@ -713,7 +697,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
                 業務中に止まると困るので、今後のことも考えて一度見てほしいとおもっていました。
               </p>
             </div>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/worry_02.jpg" alt="" width="350" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/worry_02.jpg" alt="" width="350" height="250" loading="lazy" decoding="async">
           </div>
         </article>
         <article>
@@ -727,7 +711,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
                 ドライヤーを使うので店内が暑くなりやすいと思いますし、お客様に快適に過ごしてもらえる空調にしたいとおもっていました。
               </p>
             </div>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/worry_03.jpg" alt="" width="350" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/worry_03.jpg" alt="" width="350" height="250" loading="lazy" decoding="async">
           </div>
         </article>
         <article>
@@ -741,7 +725,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
                 どこに、どのくらいのエアコンを追加すればいいのかを相談させ てもらって増設を決めました。
               </p>
             </div>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/worry_04.jpg" alt="" width="350" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/worry_04.jpg" alt="" width="350" height="250" loading="lazy" decoding="async">
           </div>
         </article>
         <article>
@@ -755,7 +739,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
                 初期費用だけでなく、今後のランニングコストも含めてシミュレーションをしてもらって取り換えようとおもいました。
               </p>
             </div>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/worry_05.jpg" alt="" width="350" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/worry_05.jpg" alt="" width="350" height="250" loading="lazy" decoding="async">
           </div>
         </article>
       </div>
@@ -765,13 +749,14 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       <div class="cvarea--btn">
         <div class="header--btns">
           <div class="header--btn-item">
-            <a href="tel:0529325450" class="cv_button gtm-click-tel">
+            <a href="tel:<?php echo esc_attr($main_tel_href); ?>" class="cv_button gtm-click-tel">
               <picture>
                 <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.avif" type="image/avif">
                 <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.webp" type="image/webp">
                 <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.png"
-                  alt="お電話でのご相談はこちら: <?php echo esc_attr($tracking_tel_local); ?>"
+                  alt="お電話でのご相談はこちら: <?php echo esc_attr($main_tel_local); ?>"
                   width="487" height="144"
+                  loading="lazy"
                   decoding="async">
               </picture>
             </a>
@@ -785,6 +770,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
                 <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.png"
                   alt="メールでお問い合わせ"
                   width="487" height="144"
+                  loading="lazy"
                   decoding="async">
               </picture>
             </a>
@@ -795,14 +781,17 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <source
           media="(max-width: 767px)"
           srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/cvarea_sp.avif"
-          type="image/avif">
+          type="image/avif"
+          width="750" height="1258">
         <source
           media="(max-width: 767px)"
           srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/cvarea_sp.webp"
-          type="image/webp">
+          type="image/webp"
+          width="750" height="1258">
         <source
           media="(max-width: 767px)"
-          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/cvarea_sp.jpg">
+          srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/cvarea_sp.jpg"
+          width="750" height="1258">
 
         <source
           srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/cvarea.avif"
@@ -815,8 +804,8 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/cvarea.jpg"
           alt="業務用エアコンの交換・入れ替え！施工から保守まで一括サポート。まずは無料でご相談ください"
           class="cvarea--img"
-          width="1920" height="1778"
-          fetchpriority="high"
+          width="1920" height="641"
+          loading="lazy"
           decoding="async">
       </picture>
     </div>
@@ -831,7 +820,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <article class="flow--item">
           <div>
             <span class="flow--num">STEP<span>01</span></span>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_01.jpg" alt="" width="450" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_01.jpg" alt="" width="450" height="250" loading="lazy" decoding="async">
           </div>
           <h3>お問い合わせ・見積もり（無料）</h3>
           <p>
@@ -844,7 +833,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <article class="flow--item">
           <div>
             <span class="flow--num">STEP<span>02</span></span>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_02.jpg" alt="" width="450" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_02.jpg" alt="" width="450" height="250" loading="lazy" decoding="async">
           </div>
           <h3>メール・電話でヒアリング</h3>
           <p>
@@ -858,7 +847,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <article class="flow--item">
           <div>
             <span class="flow--num">STEP<span>03</span></span>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_03.jpg" alt="" width="450" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_03.jpg" alt="" width="450" height="250" loading="lazy" decoding="async">
           </div>
           <h3>現地調査・日程調整</h3>
           <p>
@@ -871,7 +860,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <article class="flow--item">
           <div>
             <span class="flow--num">STEP<span>04</span></span>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_04.jpg" alt="" width="450" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_04.jpg" alt="" width="450" height="250" loading="lazy" decoding="async">
           </div>
           <h3>工事日調整</h3>
           <p>
@@ -884,7 +873,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <article class="flow--item">
           <div>
             <span class="flow--num">STEP<span>05</span></span>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_05.jpg" alt="" width="450" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_05.jpg" alt="" width="450" height="250" loading="lazy" decoding="async">
           </div>
           <h3>工事・既存機器の撤去</h3>
           <p>
@@ -899,7 +888,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <article class="flow--item">
           <div>
             <span class="flow--num">STEP<span>06</span></span>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_06.jpg" alt="" width="450" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_06.jpg" alt="" width="450" height="250" loading="lazy" decoding="async">
           </div>
           <h3>試運転・動作確認</h3>
           <p>
@@ -913,7 +902,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <article class="flow--item">
           <div>
             <span class="flow--num">STEP<span>07</span></span>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_07.jpg" alt="" width="450" height="250" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/flow_07.jpg" alt="" width="450" height="250" loading="lazy" decoding="async">
           </div>
           <h3>工事完了・お引き渡し</h3>
           <p>
@@ -936,67 +925,11 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           お問い合わせ前に気になる点を、まとめてお答えします。<br>
           ご不明な点は、お気軽にお問い合わせください。
         </p>
-        <dl>
-          <dt>対応エリアはどこですか？？</dt>
-          <dd>
-            愛知県・岐阜県・三重県・静岡県の法人・店舗・施設を基本対象としています。<br>
-            まずは設置場所をお知らせください。
-          </dd>
-          <dt>どのような施設に対応していますか？</dt>
-          <dd>
-            店舗、オフィス、工場、倉庫、クリニック、介護施設、商業施設、事務所など、法人・店舗・施設向けの業務用エアコン導入・交換に対応しています。
-          </dd>
-          <dt>現地調査や見積もりは必要ですか？</dt>
-          <dd>
-            業務用エアコンは、機器の馬力や台数だけでなく、配管、電源、搬入経路、室外機の設置場所、 既存機器の撤去条件によって費用が変わります。<br>
-            事前に型番・設置写真・室外機写真・台数を共有頂けるとスムーズです。
-          </dd>
-          <dt>業務用エアコンの交換時期を相談できますか？</dt>
-          <dd>
-            はい、相談可能です。<br>
-            設置から10年以上経過している場合や、修理を繰り返している場合は、交換を検討するタイミングです。<br>
-            使用状況を確認したうえで、交換したほうがよいかをご案内します。
-          </dd>
-          <dt>修理と交換のどちらがいいかわからないです</dt>
-          <dd>
-            是非一度私たちにご相談をしてください。<br>
-            使用年数、故障頻度、修理費用、部品供給の状況、電気代、現在の効き具合などを確認し、修理を続けるべきか、交換・買い替えを検討すべきかを整理します。
-          </dd>
-          <dt>機種や馬力の選び方が分かりません</dt>
-          <dd>
-            業務用エアコンは、部屋の広さだけで機種を決めると、能力不足や過剰設備につながる場合があります。<br>
-            施設の用途、稼働時間、天井高、熱源、利用人数、設置環境を確認し、現場に合った機種・馬力・形状をご提案します。
-          </dd>
-          <dt>対応できる業務用エアコンの種類は何ですか？</dt>
-          <dd>
-            天井カセット形、天井吊形、床置形、壁掛形業務用エアコン、ビルトイン形、ダクト形、パッケージエアコンなど、各種業務用エアコンの導入・交換をご相談いただけます。<br>
-            現在の機器タイプが分からない場合は、一度ご相談ください。
-          </dd>
-          <dt>本体の販売から取付工事までまとめて依頼できますか？</dt>
-          <dd>
-            はい、機器選定、本体販売、取付工事、試運転までまとめてご相談いただけます。<br>
-            既存機器の交換の場合は、撤去やフロン回収まわりも含めて、現場条件を確認しながらご提案します。
-          </dd>
-          <dt>営業中の店舗や稼働中の施設でも工事できますか？</dt>
-          <dd>
-            工事内容や現場状況によって異なります。店舗・オフィス・工場・施設の営業や業務への影響を抑えられるよう、工事日程や作業時間を確認しながら調整します。<br>
-            休日・営業時間外の工事をご希望の場合も、事前にご相談ください。
-          </dd>
-          <dt>他メーカーからの入れ替えもできますか？</dt>
-          <dd>
-            はい、他メーカーの業務用エアコンからの入れ替えにも対応しています。<br>
-            現在設置されているメーカーや機種を確認したうえで、設置環境や配管・電源の状況に合わせて、最適な交換機種をご提案します。
-          </dd>
-          <dt>支払い方法やリースは相談できますか？</dt>
-          <dd>
-            支払い方法やリースについては、案件内容や条件により確認が必要です。<br>
-            導入台数、機器内容、工事範囲、希望時期を確認したうえで、対応可能な方法をご案内します。
-          </dd>
-          <dt>保証やアフター対応はありますか？</dt>
-          <dd>
-            メーカー保証や工事後の対応については、選定する機器や工事内容により異なります。<br>
-            正式見積もり時に、保証範囲やアフター対応についても確認できるようご案内します。
-          </dd>
+        <dl id="faq">
+          <?php foreach ($faq_items as $faq_item): ?>
+            <dt><?php echo esc_html($faq_item['question']); ?></dt>
+            <dd><?php echo esc_html($faq_item['answer']); ?></dd>
+          <?php endforeach; ?>
         </dl>
       </div>
     </section>
@@ -1021,7 +954,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
 
         <article class="area--list">
           <span>愛知県</span>
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_01.jpg" alt="" width="500" height="375" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_01.jpg" alt="" width="500" height="375" loading="lazy" decoding="async">
           <p>
             名古屋市を中心とした店舗・オフィス・商業施設をはじめ、<br class="is-hidden_sp">
             三河エリアの工場・倉庫・物流施設など、<br class="is-hidden_sp">
@@ -1037,7 +970,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         </article>
         <article class="area--list">
           <span>岐阜県</span>
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_02.jpg" alt="" width="500" height="375" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_02.jpg" alt="" width="500" height="375" loading="lazy" decoding="async">
           <p>
             岐阜市・大垣市・各務原市周辺の店舗・事務所・工場・物流施設をはじめ、<br class="is-hidden_sp">
             地場産業の作業場、医療施設、福祉施設、宿泊施設などの<br class="is-hidden_sp">
@@ -1052,7 +985,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         </article>
         <article class="area--list">
           <span>三重県</span>
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_03.jpg" alt="" width="500" height="375" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_03.jpg" alt="" width="500" height="375" loading="lazy" decoding="async">
           <p>
             四日市市・鈴鹿市・いなべ市周辺の工場・倉庫・事業所をはじめ、<br class="is-hidden_sp">
             津市・松阪市・桑名市・伊勢志摩エリアの店舗・飲食店・宿泊施設・医療施設など、<br class="is-hidden_sp">
@@ -1068,7 +1001,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         </article>
         <article class="area--list">
           <span>静岡県</span>
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_04.jpg" alt="" width="500" height="375" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_04.jpg" alt="" width="500" height="375" loading="lazy" decoding="async">
           <p>
             浜松市・静岡市・沼津市・富士市周辺をはじめ、<br class="is-hidden_sp">
             県内各地の店舗・オフィス・工場・倉庫・飲食店・医療施設・福祉施設などの<br class="is-hidden_sp">
@@ -1101,7 +1034,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
   </main>
 
   <div class="footer_btn_fixed" id="js_fixed-btn">
-    <p class="footer_btn_fixed--tel"><a href="tel:0529325450">電話で<br>予約する</a></p>
+    <p class="footer_btn_fixed--tel"><a href="tel:<?php echo esc_attr($main_tel_href); ?>">電話で<br>相談する</a></p>
     <p class="footer_btn_fixed--mail"><a href="#contact">メールで<br>無料見積り</a></p>
   </div>
 
@@ -1111,11 +1044,12 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <div class="footer--logo">
           <a href="<?php echo esc_url(home_url('/')); ?>">
             <picture>
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo_footer.avif" type="image/avif">
-              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo_footer.webp" type="image/webp">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo_footer.png"
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/logo_footer.avif" type="image/avif">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/logo_footer.webp" type="image/webp">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/logo_footer.png"
                 alt="株式会社トータルスマート"
                 width="397" height="84"
+                loading="lazy"
                 decoding="async">
             </picture>
             <p>業務用エアコンの交換・買い替え・取り換え・入れ替えは<br>トータルスマート株式会社</p>
@@ -1128,10 +1062,14 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           <p>TEL:<?php echo esc_html($main_tel_local); ?></p>
           <p>FAX:052-932-5451</p>
           <p>URL:<a href="https://total-smart-ltd.com/">https://total-smart-ltd.com</a></p>
+          <p>
+            <a href="<?php echo esc_url(home_url('/company/')); ?>">会社概要</a>｜
+            <a href="<?php echo esc_url(home_url('/privacy/')); ?>">プライバシーポリシー</a>
+          </p>
         </div>
       </div>
       <div class="footer--catch">
-        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/footer_catch.jpg" alt="トータルスマート" width="357" height="349" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/footer_catch.jpg" alt="トータルスマート" width="357" height="350" loading="lazy" decoding="async">
       </div>
     </div>
     <p class="footer--copy"><small>Copyright© 株式会社トータルスマート All Rights Reserved.</small></p>

@@ -1,8 +1,14 @@
 "use strict";
 
-console.log("エアコン買い替え");
+// .js-scrollableが追加された場合だけScrollHintを初期化する。
+window.addEventListener("DOMContentLoaded", () => {
+  if (
+    typeof ScrollHint !== "function" ||
+    !document.querySelector(".js-scrollable")
+  ) {
+    return;
+  }
 
-window.addEventListener("DOMContentLoaded", function () {
   new ScrollHint(".js-scrollable", {
     scrollHintIconAppendClass: "scroll-hint-icon-white",
     suggestiveShadow: true,
@@ -77,45 +83,6 @@ if (Header) {
   }
 }
 
-// SP(<=767px)のときだけヘッダーのフェードで消去
-// const header = document.querySelector(".header");
-// const mediaQuery = window.matchMedia("(max-width: 767px)");
-// let lastScrollY = window.scrollY;
-
-// if (header) {
-//   window.addEventListener(
-//     "scroll",
-//     () => {
-//       const currentScrollY = window.scrollY;
-
-//       // スマホ幅以外では発動しない
-//       if (!mediaQuery.matches) {
-//         header.classList.remove("is-hide");
-//         lastScrollY = currentScrollY;
-//         return;
-//       }
-
-//       if (currentScrollY > 100 && currentScrollY > lastScrollY) {
-//         // 下スクロール
-//         header.classList.add("is-hide");
-//       } else {
-//         // 上スクロール、またはページ上部
-//         header.classList.remove("is-hide");
-//       }
-
-//       lastScrollY = currentScrollY;
-//     },
-//     { passive: true }
-//   );
-
-//   mediaQuery.addEventListener("change", () => {
-//     if (!mediaQuery.matches) {
-//       header.classList.remove("is-hide");
-//     }
-
-//     lastScrollY = window.scrollY;
-//   });
-// }
 
 // グローバルナビゲーション //////////////////////////////////////////////////////
 const Gnav_btn = document.getElementById("js-gnav_btn");
@@ -141,23 +108,19 @@ if (Totop) {
   });
 }
 
-(function ($, root, undefined) {
-  // #ページ内リンク
-  $(function () {
-    $('a[href^="#"]').click(function () {
-      var speed = 600;
-      var href = $(this).attr("href");
-      var target = $(href === "#" || href === "" ? "html" : href);
+// ページ内リンクを固定ヘッダーの高さを考慮してスクロールする。
+document.addEventListener("click", (event) => {
+  const anchor = event.target.closest('a[href^="#"]');
+  if (!anchor) return;
 
-      if (target.length) {
-        var headerHeight = $(".header").outerHeight();
-        if (!headerHeight) {
-          headerHeight = 0;
-        }
-        var position = target.offset().top - headerHeight;
-        $("body,html").stop().animate({ scrollTop: position }, speed, "swing");
-      }
-      return false;
-    });
-  });
-})(jQuery, this);
+  const href = anchor.getAttribute("href");
+  const target = href === "#" ? document.documentElement : document.querySelector(href);
+  if (!target) return;
+
+  event.preventDefault();
+  const header = document.querySelector(".header");
+  const headerHeight = header ? header.offsetHeight : 0;
+  const top = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+  window.scrollTo({ top, behavior: "smooth" });
+});

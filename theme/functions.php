@@ -163,7 +163,7 @@ function custom_pre_get_document_title($title)
     return 'お問い合わせ確認画面 | ' . $site_name;
   }
 
-  if (is_page(array('contact_corporate-thanks', 'cleaning_thanks', 'shuuri_thanks', 'airconchange_thanks'))) {
+  if (is_page(array('contact_corporate-thanks', 'cleaning_thanks', 'shuuri_thanks', 'airconchangelp_thanks'))) {
     return 'お問い合わせありがとうございました | ' . $site_name;
   }
 
@@ -543,7 +543,7 @@ add_filter('wp_robots', 'ts_adjust_robots_meta', 20);
 
 add_action('wp_enqueue_scripts', function () {
 
-  $lp_pages = ['cleaninglp', 'shuurilp', 'cleaning_thanks', 'shuuri_thanks', 'airconchangelp', 'airconchangelp_confirm', 'airconchangelp_thanks'];
+  $lp_pages = ['cleaninglp', 'shuurilp', 'cleaning_thanks', 'shuuri_thanks', 'airconchangelp', 'airconchangelp_thanks'];
   $is_lp    = is_page($lp_pages);
 
   $uri  = fn($file) => get_theme_file_uri($file);
@@ -589,7 +589,7 @@ add_action('wp_enqueue_scripts', function () {
     return;
   }
 
-  if (is_page(['airconchangelp', 'airconchangelp_confirm', 'airconchangelp_thanks'])) {
+  if (is_page(['airconchangelp', 'airconchangelp_thanks'])) {
     $folder = 'airconchangelp';
 
     $enqueue('lp-airconchange-reset',      "{$folder}/css/reset.css", []);
@@ -641,7 +641,7 @@ add_filter('style_loader_tag', function ($html, $handle, $href, $media) {
 if (!function_exists('theme_is_lp_page')) {
   function theme_is_lp_page()
   {
-    return is_page(array('cleaninglp', 'shuurilp', 'cleaning_thanks', 'shuuri_thanks', 'airconchangelp', 'airconchange_thanks'));
+    return is_page(array('cleaninglp', 'shuurilp', 'cleaning_thanks', 'shuuri_thanks', 'airconchangelp', 'airconchangelp_thanks'));
   }
 }
 
@@ -698,13 +698,13 @@ if (!function_exists('theme_enqueue_js_only_optimized_assets')) {
         $folder = 'cleaninglp';
       } elseif (is_page(array('shuurilp', 'shuuri_thanks'))) {
         $folder = 'shuurilp';
-      } elseif (is_page(array('airconchangelp', 'airconchangelp_confirm', 'airconchangelp_thanks'))) {
+      } elseif (is_page(array('airconchangelp', 'airconchangelp_thanks'))) {
         $folder = 'airconchangelp';
       } else {
         return;
       }
 
-      // 1) LP用 scroll-hint（ローカルのみ。CDNは使わない）
+      // LP用ScrollHintを常時用意し、.js-scrollable追加時に利用できる状態にする。
       $scrollhint_handle = "lp-{$folder}-scrollhint";
       $scrollhint_loaded = $register_local_script(
         $scrollhint_handle,
@@ -713,12 +713,12 @@ if (!function_exists('theme_enqueue_js_only_optimized_assets')) {
         'defer'
       );
 
-      // 2) LP用メインJS（scroll-hint がある時だけ依存に入れる）
       $deps = array('jquery');
       if ($scrollhint_loaded) {
         $deps[] = $scrollhint_handle;
       }
 
+      // LP用メインJS
       $register_local_script(
         "lp-{$folder}-scripts",
         "{$folder}/js/scripts.js",
