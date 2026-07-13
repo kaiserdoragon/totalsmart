@@ -587,7 +587,7 @@ add_action('wp_head', static function () use ($ld_json) {
       </div>
     </section>
 
-    <section class="reason sec">
+    <section class="reason">
       <div class="contents">
         <h2>選ばれる<span>6</span>つの理由</h2>
         <p class="reason--lead">
