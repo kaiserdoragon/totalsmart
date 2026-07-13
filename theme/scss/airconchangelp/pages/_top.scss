@@ -711,9 +711,10 @@
     top: -45px;
     left: 50%;
     box-sizing: border-box;
-    width: 90%;
-    padding: 20px 0;
-    font-size: 30px;
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+    font-size: var(--fz30);
     font-weight: 800;
     color: #fff;
     text-align: center;
@@ -775,6 +776,11 @@
     padding: 100px 60px 60px;
     margin: auto;
     background: #fff;
+
+    @include max-mq {
+      flex-direction: column-reverse;
+      padding: 100px 30px 30px;
+    }
   }
 
   // .worry--txt
@@ -791,14 +797,33 @@
 
     span {
       display: inline-block;
-      width: 90px;
+      width: 100px;
       padding: 5px 10px;
-      margin-right: 10px;
+      margin: 0 10px 0 0;
       font-size: var(--fz18);
       color: #333;
       text-align: center;
       background: #eee;
       border-radius: 5px;
+    }
+
+    @include max-mq {
+      font-size: var(--fz23);
+
+      span {
+        display: block;
+        width: 90px;
+        padding: 5px 10px;
+        margin: 0 0 10px;
+        font-size: var(--fz16);
+      }
+    }
+  }
+
+  @include max-mq {
+    h3 {
+      max-width: 90%;
+      font-size: var(--fz25);
     }
   }
 }
