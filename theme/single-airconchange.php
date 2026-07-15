@@ -252,7 +252,7 @@ get_header('service');
     <div class="container">
       <h2>
         ひとつでも当てはまる方は、<br class="is-hidden_sp">
-        是非ごご相談ください！！
+        是非ご相談ください！！
       </h2>
       <p>
         業務用エアコンの不調や老朽化は、<br class="is-hidden_sp">
