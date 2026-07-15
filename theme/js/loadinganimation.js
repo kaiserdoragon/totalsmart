@@ -1,1 +1,0 @@
-window.addEventListener("load",function(){let e=document.getElementById("js_loadinganimation");var t=document.getElementById("main-content");e.classList.add("is_load-delete"),t&&t.classList.add("is_show"),setTimeout(function(){e.remove()},1e3)});

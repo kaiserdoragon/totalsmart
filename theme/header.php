@@ -53,8 +53,6 @@
   <meta name="format-detection" content="telephone=no">
 
   <?php
-  $ts_is_front_like = is_home() || is_front_page();
-
   $ts_has_seo_plugin = (
     defined('WPSEO_VERSION') ||
     defined('RANK_MATH_VERSION') ||
@@ -179,74 +177,6 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKC4PWHS"
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
-  <!-- ローディングアニメーション -->
-  <?php if ($ts_is_front_like) : ?>
-    <div class="loadinganimation" id="js_loadinganimation">
-
-      <div class="loadinganimation--bg-effects">
-
-        <div class="loadinganimation--honeycomb"></div>
-
-        <div class="loadinganimation--pulse-wave"></div>
-        <div class="loadinganimation--pulse-wave" style="animation-delay: 1s;"></div>
-        <div class="loadinganimation--pulse-wave" style="animation-delay: 2s;"></div>
-
-      </div>
-
-      <div class="loadinganimation--laser-beams">
-        <div class="loadinganimation--laser loadinganimation--laser-1"></div>
-        <div class="loadinganimation--laser loadinganimation--laser-2"></div>
-        <div class="loadinganimation--laser loadinganimation--laser-3"></div>
-        <div class="loadinganimation--laser loadinganimation--laser-4"></div>
-      </div>
-
-      <div class="loadinganimation--particles">
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-
-      <div class="loadinganimation--rings">
-        <div class="loadinganimation--ring loadinganimation--ring-1"></div>
-        <div class="loadinganimation--ring loadinganimation--ring-2"></div>
-        <div class="loadinganimation--ring loadinganimation--ring-3"></div>
-        <div class="loadinganimation--ring loadinganimation--ring-4"></div>
-        <div class="loadinganimation--ring loadinganimation--ring-5"></div>
-
-        <div class="loadinganimation--orbit-light loadinganimation--orbit-light-1"></div>
-        <div class="loadinganimation--orbit-light loadinganimation--orbit-light-2"></div>
-        <div class="loadinganimation--orbit-light loadinganimation--orbit-light-3"></div>
-      </div>
-
-      <div class="loadinganimation--logo-wrapper">
-        <div class="loadinganimation--hologram-effect"></div>
-        <picture>
-          <source srcset="<?php echo esc_url(get_template_directory_uri() . '/img/common/logo_white.avif'); ?>" type="image/avif">
-          <source srcset="<?php echo esc_url(get_template_directory_uri() . '/img/common/logo_white.webp'); ?>" type="image/webp">
-          <img
-            src="<?php echo esc_url(get_template_directory_uri() . '/img/common/logo_white.png'); ?>"
-            alt="トータルスマート株式会社"
-            width="1034"
-            height="216"
-            decoding="async">
-        </picture>
-      </div>
-
-      <div class="loadinganimation--status">
-        <p>
-          トータルスマート株式会社の<br>
-          ホームページへようこそ
-        </p>
-        <div class="loadinganimation--status-bars">
-          <div class="loadinganimation--status-bar"></div>
-          <div class="loadinganimation--status-bar"></div>
-          <div class="loadinganimation--status-bar"></div>
-        </div>
-      </div>
-    </div>
-  <?php endif; ?>
 
   <div class="wrap" id="main-content">
     <header class="header">
