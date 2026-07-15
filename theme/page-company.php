@@ -10,7 +10,6 @@ $page_url       = get_permalink($page_id);
 $home_url       = home_url('/');
 $slug_name      = get_post_field('post_name', $page_id);
 $hero_image_url = get_template_directory_uri() . '/img/common/logo.png';
-$company_image  = get_template_directory_uri() . '/img/top/company.png';
 
 $raw_content = $page_id ? get_post_field('post_content', $page_id) : '';
 $page_description_source = wp_strip_all_tags(strip_shortcodes((string) $raw_content));
@@ -100,73 +99,13 @@ $schema_graph = [
       '@id' => $page_url . '#breadcrumb',
     ],
     'about'       => [
-      '@id' => $home_url . '#organization',
+      '@id' => $home_url . '#localbusiness',
+    ],
+    'mainEntity'  => [
+      '@id' => $home_url . '#localbusiness',
     ],
   ],
-  [
-    '@type'         => 'Organization',
-    '@id'           => $home_url . '#organization',
-    'name'          => 'トータルスマート株式会社',
-    'alternateName' => 'Total Smart Co., Ltd.',
-    'url'           => $home_url,
-    'logo'          => get_theme_file_uri('/img/common/logo.png'),
-    'image'         => $company_image,
-    'description'   => '名古屋市を中心に愛知・岐阜・三重・静岡で、防犯カメラ、LED照明、光回線、エアコン、OA機器などオフィス・店舗の設備工事を一括対応する総合設備会社です。',
-    'foundingDate'  => '2014-09',
-    'telephone'     => '+81-52-932-5450',
-    'faxNumber'     => '+81-52-932-5451',
-    'address'       => [
-      '@type'           => 'PostalAddress',
-      'postalCode'      => '461-0002',
-      'addressRegion'   => '愛知県',
-      'addressLocality' => '名古屋市東区',
-      'streetAddress'   => '代官町16-17 代官町ビルディング2F',
-      'addressCountry'  => 'JP',
-    ],
-    'contactPoint'  => [
-      [
-        '@type'             => 'ContactPoint',
-        'telephone'         => '+81-52-932-5450',
-        'contactType'       => 'customer service',
-        'areaServed'        => ['JP', '愛知県', '岐阜県', '三重県', '静岡県'],
-        'availableLanguage' => ['ja'],
-      ],
-    ],
-  ],
-  [
-    '@type'         => 'LocalBusiness',
-    '@id'           => $page_url . '#localbusiness',
-    'name'          => 'トータルスマート株式会社',
-    'url'           => $home_url,
-    'image'         => $company_image,
-    'telephone'     => '+81-52-932-5450',
-    'faxNumber'     => '+81-52-932-5451',
-    'address'       => [
-      '@type'           => 'PostalAddress',
-      'postalCode'      => '461-0002',
-      'addressRegion'   => '愛知県',
-      'addressLocality' => '名古屋市東区',
-      'streetAddress'   => '代官町16-17 代官町ビルディング2F',
-      'addressCountry'  => 'JP',
-    ],
-    'openingHoursSpecification' => [
-      [
-        '@type'    => 'OpeningHoursSpecification',
-        'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        'opens'    => '09:00',
-        'closes'   => '18:00',
-      ],
-    ],
-    'areaServed' => [
-      ['@type' => 'AdministrativeArea', 'name' => '愛知県'],
-      ['@type' => 'AdministrativeArea', 'name' => '岐阜県'],
-      ['@type' => 'AdministrativeArea', 'name' => '三重県'],
-      ['@type' => 'AdministrativeArea', 'name' => '静岡県'],
-    ],
-    'parentOrganization' => [
-      '@id' => $home_url . '#organization',
-    ],
-  ],
+  ts_get_local_business_schema(),
 ];
 ?>
 <script type="application/ld+json">

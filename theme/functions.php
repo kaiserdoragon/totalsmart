@@ -465,6 +465,88 @@ if (!function_exists('ts_save_seo_meta_box')) {
 }
 add_action('save_post', 'ts_save_seo_meta_box');
 
+if (!function_exists('ts_get_local_business_schema')) {
+  /**
+   * サイト内で共通利用する事業者情報を返す。
+   *
+   * 同一事業者をページごとに別の @id で定義すると、検索エンジンが
+   * 別エンティティとして解釈する可能性があるため、#localbusiness に統一する。
+   *
+   * @param array $overrides ページ固有の上書き値。
+   * @return array
+   */
+  function ts_get_local_business_schema($overrides = array())
+  {
+    $home_url = home_url('/');
+
+    $schema = array(
+      '@type'         => 'LocalBusiness',
+      '@id'           => $home_url . '#localbusiness',
+      'name'          => 'トータルスマート株式会社',
+      'alternateName' => 'Total Smart Co., Ltd.',
+      'url'           => $home_url,
+      'logo'          => get_theme_file_uri('/img/common/logo.png'),
+      'image'         => array(
+        get_theme_file_uri('/img/top/company.png'),
+      ),
+      'description'   => '名古屋市を中心に愛知・岐阜・三重・静岡で、防犯カメラ、LED照明、光回線、業務用エアコン、OA機器などオフィス・店舗の設備工事を一括対応する総合設備会社です。',
+      'foundingDate'  => '2014-09',
+      'telephone'     => '+81-52-932-5450',
+      'faxNumber'     => '+81-52-932-5451',
+      'priceRange'    => '要見積',
+      'address'       => array(
+        '@type'           => 'PostalAddress',
+        'postalCode'      => '461-0002',
+        'addressRegion'   => '愛知県',
+        'addressLocality' => '名古屋市東区',
+        'streetAddress'   => '代官町16-17 代官町ビルディング2F',
+        'addressCountry'  => 'JP',
+      ),
+      'geo'           => array(
+        '@type'    => 'GeoCoordinates',
+        'latitude' => 35.178535,
+        'longitude' => 136.919224,
+      ),
+      'hasMap'        => 'https://maps.app.goo.gl/Dh57s5aHyVMs9oi68',
+      'openingHoursSpecification' => array(
+        array(
+          '@type'     => 'OpeningHoursSpecification',
+          'dayOfWeek' => array(
+            'https://schema.org/Monday',
+            'https://schema.org/Tuesday',
+            'https://schema.org/Wednesday',
+            'https://schema.org/Thursday',
+            'https://schema.org/Friday',
+          ),
+          'opens'  => '09:00:00',
+          'closes' => '18:00:00',
+        ),
+      ),
+      'areaServed'    => array(
+        array('@type' => 'AdministrativeArea', 'name' => '愛知県'),
+        array('@type' => 'AdministrativeArea', 'name' => '岐阜県'),
+        array('@type' => 'AdministrativeArea', 'name' => '三重県'),
+        array('@type' => 'AdministrativeArea', 'name' => '静岡県'),
+      ),
+      'contactPoint'  => array(
+        array(
+          '@type'             => 'ContactPoint',
+          'telephone'         => '+81-52-932-5450',
+          'contactType'       => 'customer service',
+          'areaServed'        => 'JP',
+          'availableLanguage' => array('ja'),
+        ),
+      ),
+    );
+
+    if (!empty($overrides)) {
+      $schema = array_replace($schema, $overrides);
+    }
+
+    return apply_filters('ts_local_business_schema', $schema, $overrides);
+  }
+}
+
 if (!function_exists('ts_output_website_schema_json_ld')) {
   function ts_output_website_schema_json_ld()
   {
@@ -475,8 +557,13 @@ if (!function_exists('ts_output_website_schema_json_ld')) {
     $schema = array(
       '@context' => 'https://schema.org',
       '@type'    => 'WebSite',
+      '@id'      => home_url('/') . '#website',
       'url'      => home_url('/'),
       'name'     => get_bloginfo('name'),
+      'inLanguage' => 'ja-JP',
+      'publisher' => array(
+        '@id' => home_url('/') . '#localbusiness',
+      ),
     );
 
     $description = ts_normalize_meta_text(get_bloginfo('description'), 160);

@@ -62,45 +62,16 @@ $faq_data = [
 $home_schema = [
   '@context' => 'https://schema.org',
   '@graph'   => [
-    [
-      '@type'         => 'Organization',
-      '@id'           => $site_home_url . '#organization',
-      'name'          => 'トータルスマート株式会社',
-      'alternateName' => 'Total Smart Co., Ltd.',
-      'url'           => $site_home_url,
-      'logo'          => get_theme_file_uri('/img/common/logo.png'),
-      'description'   => '名古屋市を中心に愛知・岐阜・三重・静岡で、オフィス・店舗のコスト削減や設備工事をワンストップで支援する会社です。',
-      'telephone'     => '+81-52-932-5450',
-      'address'       => [
-        '@type'           => 'PostalAddress',
-        'postalCode'      => '461-0002',
-        'addressRegion'   => '愛知県',
-        'addressLocality' => '名古屋市東区',
-        'streetAddress'   => '代官町16-17 代官町ビルディング2F',
-        'addressCountry'  => 'JP',
-      ],
-      'areaServed'    => [
-        ['@type' => 'AdministrativeArea', 'name' => '愛知県'],
-        ['@type' => 'AdministrativeArea', 'name' => '岐阜県'],
-        ['@type' => 'AdministrativeArea', 'name' => '三重県'],
-        ['@type' => 'AdministrativeArea', 'name' => '静岡県'],
-      ],
-      'contactPoint'  => [
-        [
-          '@type'             => 'ContactPoint',
-          'telephone'         => '+81-52-932-5450',
-          'contactType'       => 'customer service',
-          'areaServed'        => ['JP', '愛知県', '岐阜県', '三重県', '静岡県'],
-          'availableLanguage' => ['ja'],
-        ],
-      ],
-    ],
+    ts_get_local_business_schema(),
     [
       '@type'      => 'WebSite',
       '@id'        => $site_home_url . '#website',
       'name'       => 'トータルスマート株式会社',
       'url'        => $site_home_url,
-      'inLanguage' => 'ja',
+      'inLanguage' => 'ja-JP',
+      'publisher'  => [
+        '@id' => $site_home_url . '#localbusiness',
+      ],
     ],
     [
       '@type'       => 'WebPage',
@@ -112,7 +83,7 @@ $home_schema = [
         '@id' => $site_home_url . '#website',
       ],
       'about'       => [
-        '@id' => $site_home_url . '#organization',
+        '@id' => $site_home_url . '#localbusiness',
       ],
     ],
   ],

@@ -91,7 +91,7 @@ get_header('service');
   <?php
   if (is_singular('service')) :
     $website_id    = home_url('/') . '#website';
-    $organization_id = home_url('/') . '#organization';
+    $organization_id = home_url('/') . '#localbusiness';
     $webpage_id    = $service_url . '#webpage';
     $breadcrumb_id = $service_url . '#breadcrumb';
     $service_id    = $service_url . '#service';

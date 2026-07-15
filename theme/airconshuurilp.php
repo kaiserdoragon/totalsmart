@@ -38,8 +38,9 @@ $website = [
   '@type' => 'WebSite',
   '@id'   => $home_url . '#website',
   'url'   => $home_url,
-  'name'  => '株式会社トータルスマート',
+  'name'  => 'トータルスマート株式会社',
   'inLanguage' => 'ja-JP',
+  'publisher' => ['@id' => $home_url . '#localbusiness'],
 ];
 
 $primary_image = [
@@ -48,32 +49,13 @@ $primary_image = [
   'url'   => $og_image,
 ];
 
-$business = [
+$business = array_replace(ts_get_local_business_schema(), [
   '@type' => 'HVACBusiness',
-  '@id'   => $home_url . '#localbusiness',
-  'name'  => '株式会社トータルスマート',
-  'url'   => $home_url,
-  'telephone' => '+81-52-932-5450',
-  'faxNumber' => '+81-52-932-5451',
   'logo'  => $logo_url,
   'image' => [$og_image],
   'currenciesAccepted' => 'JPY',
   'paymentAccepted' => '現金, 銀行振込, クレジットカード',
   'priceRange' => '要見積',
-  'address' => [
-    '@type' => 'PostalAddress',
-    'postalCode' => '461-0002',
-    'addressRegion' => '愛知県',
-    'addressLocality' => '名古屋市東区',
-    'streetAddress' => '代官町16-17 代官町ビルディング2F',
-    'addressCountry' => 'JP',
-  ],
-  'areaServed' => [
-    ['@type' => 'AdministrativeArea', 'name' => '愛知県'],
-    ['@type' => 'AdministrativeArea', 'name' => '岐阜県'],
-    ['@type' => 'AdministrativeArea', 'name' => '三重県'],
-    ['@type' => 'AdministrativeArea', 'name' => '静岡県'],
-  ],
   'contactPoint' => [
     [
       '@type' => 'ContactPoint',
@@ -88,7 +70,7 @@ $business = [
       'availableLanguage' => ['ja'],
     ],
   ],
-];
+]);
 
 $service = [
   '@type' => 'Service',

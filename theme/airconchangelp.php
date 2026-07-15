@@ -83,35 +83,11 @@ $faq_items = [
   ],
 ];
 
-$business = [
+$business = array_replace(ts_get_local_business_schema(), [
   '@type' => 'HVACBusiness',
-  '@id'   => $home_url . '#localbusiness',
-  'name'  => '株式会社トータルスマート',
-  'url'   => $home_url,
-  'telephone' => $main_tel_intl,
   'logo'  => $logo_url,
   'image' => [$mv_url],
-  'address' => [
-    '@type' => 'PostalAddress',
-    'postalCode' => '461-0002',
-    'addressRegion' => '愛知県',
-    'addressLocality' => '名古屋市東区',
-    'streetAddress' => '代官町16-17 代官町ビルディング2F',
-    'addressCountry' => 'JP',
-  ],
-  'areaServed' => [
-    ['@type' => 'AdministrativeArea', 'name' => '愛知県'],
-    ['@type' => 'AdministrativeArea', 'name' => '岐阜県'],
-    ['@type' => 'AdministrativeArea', 'name' => '三重県'],
-    ['@type' => 'AdministrativeArea', 'name' => '静岡県'],
-  ],
-  'contactPoint' => [
-    '@type' => 'ContactPoint',
-    'telephone' => $main_tel_intl,
-    'contactType' => 'customer service',
-    'availableLanguage' => ['ja'],
-  ],
-];
+]);
 
 $service = [
   '@type' => 'Service',

@@ -1,114 +1,55 @@
-<?php get_header(); ?>
+<?php
+get_header();
 
+$recruit_url = get_permalink(get_queried_object_id());
+$local_business_id = home_url('/') . '#localbusiness';
+$job_description = '<p>既存の法人顧客を訪問し、状況やお困りごとをヒアリングして社内の各部署へ連携するお客様サポートの仕事です。営業業務はありません。</p>'
+  . '<h2>仕事内容</h2><ul><li>既存顧客への訪問・ヒアリング</li><li>新規営業部・営業部・工事部などへの連携</li><li>必要に応じたフォロー対応</li></ul>'
+  . '<h2>応募資格</h2><p>未経験歓迎、学歴不問。業界・職種未経験、第二新卒、社会人経験10年以上の方も応募できます。</p>'
+  . '<h2>勤務地</h2><p>愛知県・岐阜県・静岡県・三重県の担当エリア。本社は愛知県名古屋市東区代官町16-17 代官町ビルディング2Fです。転勤はなく、直行直帰が可能です。</p>'
+  . '<h2>勤務条件</h2><p>正社員。勤務時間は9:00〜18:00（実働8時間、休憩60分）、月給25万円以上。完全週休2日制（土日）、祝日休み、年間休日120日以上です。</p>';
+
+$recruit_schema = [
+  '@context' => 'https://schema.org',
+  '@graph'   => [
+    ts_get_local_business_schema(),
+    [
+      '@type'       => 'JobPosting',
+      '@id'         => $recruit_url . '#customer-support-job',
+      'title'       => 'お客様サポートスタッフ',
+      'url'         => $recruit_url . '#tab-2',
+      'description' => $job_description,
+      'datePosted'  => get_the_time('c'),
+      'employmentType' => 'FULL_TIME',
+      'hiringOrganization' => [
+        '@id' => $local_business_id,
+      ],
+      'jobLocation' => [
+        '@type'  => 'Place',
+        'address' => [
+          '@type'           => 'PostalAddress',
+          'streetAddress'   => '代官町16-17 代官町ビルディング2F',
+          'addressLocality' => '名古屋市東区',
+          'addressRegion'   => '愛知県',
+          'postalCode'      => '461-0002',
+          'addressCountry'  => 'JP',
+        ],
+      ],
+      'baseSalary' => [
+        '@type'    => 'MonetaryAmount',
+        'currency' => 'JPY',
+        'value'    => [
+          '@type'    => 'QuantitativeValue',
+          'minValue' => 250000,
+          'unitText' => 'MONTH',
+        ],
+      ],
+    ],
+  ],
+];
+?>
 <script type="application/ld+json">
-  [{
-      "@context": "https://schema.org",
-      "@type": "GeneralContractor",
-      "name": "トータルスマート株式会社",
-      "alternateName": "Total Smart Co., Ltd.",
-      "url": "<?php echo esc_url(home_url('/')); ?>",
-      "logo": "<?php echo get_template_directory_uri(); ?>/img/common/logo.png",
-      "image": "<?php echo get_template_directory_uri(); ?>/img/top/recruit.png",
-      "description": "名古屋市を中心に愛知・岐阜・三重・静岡でエアコン修理・クリーニング、防犯カメラ、LED照明、光回線、OA機器などオフィス・店舗の設備工事を一括対応する総合設備会社。",
-      "foundingDate": "2014",
-      "address": {
-        "@type": "PostalAddress",
-        "postalCode": "461-0002",
-        "addressRegion": "愛知県",
-        "addressLocality": "名古屋市東区",
-        "streetAddress": "代官町16-17 代官町ビルディング2F",
-        "addressCountry": "JP"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "35.1763",
-        "longitude": "136.9205"
-      },
-      "telephone": "052-932-5450",
-      "faxNumber": "052-932-5451",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "052-932-5450",
-        "contactType": "customer service",
-        "areaServed": ["JP", "愛知県", "岐阜県", "三重県", "静岡県"],
-        "availableLanguage": "Japanese"
-      }
-    },
-    {
-      "@context": "https://schema.org/",
-      "@type": "JobPosting",
-      "title": "電気工事スタッフ",
-      "url": "<?php echo esc_url(home_url('/recruit/')); ?>#tab-1",
-      "description": "<p>オフィスや店舗などの「業務用エアコン」「LED照明」の設置・交換・修理や「通信工事」をお任せします。</p><ul><li>古いエアコンや照明器具などの取り外し、新しい機器への交換</li><li>新店舗・オフィスの開設に伴う新設・増設工事</li><li>LED照明の設置作業</li><li>オフィスネットワーク工事など</li></ul><p><strong>【対象となる方】</strong><br>未経験歓迎／学歴不問。経験よりも人柄とやる気を重視した採用を行います！</p><p><strong>【勤務地】</strong><br>愛知県・岐阜県・静岡県・三重県の担当エリア（基本直行直帰OK）</p>",
-      "datePosted": "<?php echo get_the_time('c'); ?>",
-      "validThrough": "<?php echo date('c', strtotime('+3 months')); ?>",
-      "employmentType": "FULL_TIME",
-      "hiringOrganization": {
-        "@type": "Organization",
-        "name": "トータルスマート株式会社",
-        "sameAs": "<?php echo esc_url(home_url('/')); ?>",
-        "logo": "<?php echo get_template_directory_uri(); ?>/img/common/logo.png"
-      },
-      "jobLocation": {
-        "@type": "Place",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "代官町16-17 代官町ビルディング2F",
-          "addressLocality": "名古屋市東区",
-          "addressRegion": "愛知県",
-          "postalCode": "461-0002",
-          "addressCountry": "JP"
-        }
-      },
-      "baseSalary": {
-        "@type": "MonetaryAmount",
-        "currency": "JPY",
-        "value": {
-          "@type": "QuantitativeValue",
-          "minValue": 250000,
-          "maxValue": 500000,
-          "unitText": "MONTH"
-        }
-      }
-    },
-    {
-      "@context": "https://schema.org/",
-      "@type": "JobPosting",
-      "title": "お客様サポートスタッフ",
-      "url": "<?php echo esc_url(home_url('/recruit/')); ?>#tab-2",
-      "description": "<p>既存顧客先に訪問して、フォーマットに沿ってヒアリングを行うお仕事です。</p><p>1万社以上の法人のお客様に対して、訪問サポートを中心に行っています。営業ではなく、お客様の「困った」を解決することに専念できるポジションです。</p><ul><li>既存のお客様を訪問し、状況やお困りごとをヒアリング</li><li>内容に応じて各部署へ連携</li><li>必要に応じたフォロー対応</li></ul><p><strong>【勤務地】</strong><br>愛知県・岐阜県・静岡県・三重県の担当エリア（基本直行直帰OK）</p>",
-      "datePosted": "<?php echo get_the_time('c'); ?>",
-      "validThrough": "<?php echo date('c', strtotime('+3 months')); ?>",
-      "employmentType": "FULL_TIME",
-      "hiringOrganization": {
-        "@type": "Organization",
-        "name": "トータルスマート株式会社",
-        "sameAs": "<?php echo esc_url(home_url('/')); ?>",
-        "logo": "<?php echo get_template_directory_uri(); ?>/img/common/logo.png"
-      },
-      "jobLocation": {
-        "@type": "Place",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "代官町16-17 代官町ビルディング2F",
-          "addressLocality": "名古屋市東区",
-          "addressRegion": "愛知県",
-          "postalCode": "461-0002",
-          "addressCountry": "JP"
-        }
-      },
-      "baseSalary": {
-        "@type": "MonetaryAmount",
-        "currency": "JPY",
-        "value": {
-          "@type": "QuantitativeValue",
-          "minValue": 250000,
-          "maxValue": 400000,
-          "unitText": "MONTH"
-        }
-      }
-    }
-  ]
+  <?php echo wp_json_encode($recruit_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
 </script>
 
 <div class="eyecatch">

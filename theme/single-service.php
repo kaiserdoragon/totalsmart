@@ -110,6 +110,7 @@ get_header();
 
         $schema_graph[] = [
           '@type'           => 'BreadcrumbList',
+          '@id'             => get_permalink() . '#breadcrumb',
           'itemListElement' => [
             [
               '@type'    => 'ListItem',
@@ -145,8 +146,7 @@ get_header();
             'name'  => $site_name,
           ],
           'breadcrumb'  => [
-            '@type' => 'BreadcrumbList',
-            '@id'   => get_permalink() . '#breadcrumb',
+            '@id' => get_permalink() . '#breadcrumb',
           ],
           'mainEntity'  => [
             '@id' => get_permalink() . '#service',
@@ -162,7 +162,7 @@ get_header();
           'url'         => get_permalink(),
           'provider'    => [
             '@type' => 'Organization',
-            '@id'   => home_url('/') . '#organization',
+            '@id'   => home_url('/') . '#localbusiness',
             'name'  => 'トータルスマート株式会社',
             'url'   => home_url('/'),
           ],

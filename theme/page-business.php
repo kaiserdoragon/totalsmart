@@ -99,25 +99,10 @@ $schema_graph = [
       '@id' => $page_url . '#breadcrumb',
     ],
     'about'       => [
-      '@id' => $home_url . '#organization',
+      '@id' => $home_url . '#localbusiness',
     ],
   ],
-  [
-    '@type'         => 'Organization',
-    '@id'           => $home_url . '#organization',
-    'name'          => 'トータルスマート株式会社',
-    'alternateName' => 'Total Smart Co., Ltd.',
-    'url'           => $home_url,
-    'logo'          => get_theme_file_uri('/img/common/logo.png'),
-    'description'   => '愛知・岐阜・三重・静岡を中心に、防犯、通信、省エネ、OA機器、空調、集客支援などをワンストップで提供する企業です。',
-    'telephone'     => '+81-52-932-5450',
-    'areaServed'    => [
-      ['@type' => 'AdministrativeArea', 'name' => '愛知県'],
-      ['@type' => 'AdministrativeArea', 'name' => '岐阜県'],
-      ['@type' => 'AdministrativeArea', 'name' => '三重県'],
-      ['@type' => 'AdministrativeArea', 'name' => '静岡県'],
-    ],
-  ],
+  ts_get_local_business_schema(),
 ];
 ?>
 <script type="application/ld+json">

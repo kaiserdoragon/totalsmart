@@ -84,8 +84,9 @@ $website = [
   '@type' => 'WebSite',
   '@id'   => $home_url . '#website',
   'url'   => $home_url,
-  'name'  => '株式会社トータルスマート',
+  'name'  => 'トータルスマート株式会社',
   'inLanguage' => 'ja-JP',
+  'publisher' => ['@id' => $home_url . '#localbusiness'],
 ];
 
 $primary_image = [
@@ -94,34 +95,15 @@ $primary_image = [
   'url'   => $mv_url,
 ];
 
-$business = [
-  // できる限り具体的なLocalBusinessサブタイプ（HVACBusiness）に寄せる
+$business = array_replace(ts_get_local_business_schema(), [
+  // エアコンLPでは、LocalBusinessの具体的なサブタイプを使用する。
   '@type' => 'HVACBusiness',
-  '@id'   => $home_url . '#localbusiness',
-  'name'  => '株式会社トータルスマート',
-  'url'   => $home_url,
-  // NAPの代表番号
-  'telephone' => $main_tel_intl,
   'logo'  => $logo_url,
   'image' => [$mv_url],
-  // LP表示（5,000 / 18,000 + 6,000）に合わせてレンジを上限24,000まで含める
+  // LP表示（5,000 / 18,000 + 6,000）に合わせてレンジを上限24,000まで含める。
   'priceRange' => '¥5,000〜¥24,000（税抜）',
   'paymentAccepted' => '現金',
   'currenciesAccepted' => 'JPY',
-  'address' => [
-    '@type' => 'PostalAddress',
-    'postalCode' => '461-0002',
-    'addressRegion' => '愛知県',
-    'addressLocality' => '名古屋市東区',
-    'streetAddress' => '代官町16-17 代官町ビルディング2F',
-    'addressCountry' => 'JP',
-  ],
-  'areaServed' => [
-    ['@type' => 'AdministrativeArea', 'name' => '愛知県'],
-    ['@type' => 'AdministrativeArea', 'name' => '岐阜県'],
-    ['@type' => 'AdministrativeArea', 'name' => '三重県'],
-    ['@type' => 'AdministrativeArea', 'name' => '静岡県'],
-  ],
   'contactPoint' => [
     [
       '@type' => 'ContactPoint',
@@ -137,7 +119,7 @@ $business = [
     ],
   ],
   'makesOffer' => $offers,
-];
+]);
 
 $service = [
   '@type' => 'Service',

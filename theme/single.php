@@ -209,7 +209,7 @@ get_header();
             'url'         => get_permalink(),
             'provider'    => [
               '@type' => 'Organization',
-              '@id'   => home_url('/') . '#organization',
+              '@id'   => home_url('/') . '#localbusiness',
               'name'  => 'トータルスマート株式会社',
               'url'   => home_url('/'),
             ],
@@ -231,7 +231,7 @@ get_header();
           $author_schema = $is_introduction
             ? [
               '@type' => 'Organization',
-              '@id'   => home_url('/') . '#organization',
+              '@id'   => home_url('/') . '#localbusiness',
               'name'  => 'トータルスマート株式会社',
               'url'   => home_url('/'),
             ]
@@ -252,7 +252,7 @@ get_header();
             'author'           => $author_schema,
             'publisher'        => [
               '@type' => 'Organization',
-              '@id'   => home_url('/') . '#organization',
+              '@id'   => home_url('/') . '#localbusiness',
               'name'  => 'トータルスマート株式会社',
               'url'   => home_url('/'),
             ],
