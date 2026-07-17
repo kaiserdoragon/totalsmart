@@ -170,9 +170,12 @@
     width: fit-content;
     margin: auto;
     font-weight: 700;
-    color: #0052a7;
+    color: #002c59;
 
     li {
+      padding-left: 20px;
+      text-indent: -20px;
+
       &:not(:last-child) {
         margin-bottom: 15px;
       }
