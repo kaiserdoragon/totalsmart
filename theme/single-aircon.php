@@ -682,7 +682,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_qa bg_gray sec" id="aircon_qa">
+  <section class="camera_qa bg_gray sec aircon_qa" id="aircon_qa">
     <div class="container -md">
       <h2>よくある質問</h2>
       <p>
