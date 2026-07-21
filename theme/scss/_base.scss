@@ -237,7 +237,7 @@ main {
     }
   }
 
-  // header--tel
+  // .header--tel
   &--tel {
     box-sizing: border-box;
     display: flex !important;
@@ -247,6 +247,7 @@ main {
     padding: 13px 0;
     padding-left: 20px;
     font-size: var(--fz28);
+    font-weight: 800;
     line-height: 1;
     color: #fff;
     background: url(../img/common/icon_tel.png) no-repeat left 27px top 17px / 7%, #0054a4;
@@ -325,6 +326,7 @@ main {
       padding-top: 0;
       padding-left: 20px;
       font-size: var(--fz25);
+      font-weight: 800;
       background: url(../img/common/icon_mail.png) no-repeat center left 35px / 28px 20px, #ff8206;
       border-radius: 1000px;
     }
