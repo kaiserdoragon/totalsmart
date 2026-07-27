@@ -450,7 +450,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           <div class="lead--txt">
             <p>
               <span>汚れ・カビ・ニオイ・効きの悪さ</span>が気になったら、<br class="is-hidden_sp">
-              まずはお電話でお気軽にご相談ください。
+              まずはお気軽にご相談ください。
             </p>
             <div class="header--btns">
               <div class="header--btn-item">
