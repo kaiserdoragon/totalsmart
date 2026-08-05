@@ -5,12 +5,26 @@
 
 $ts_archive_title       = 'お役立ち情報';
 $ts_archive_slug        = 'information';
+$ts_taxonomy_slug       = 'infomation_item';
 $ts_archive_img_file    = 'eyecatch_information.jpg';
 $ts_archive_base_url    = get_post_type_archive_link('information') ?: home_url('/information/');
 $ts_current_paged       = max(1, get_query_var('paged'), get_query_var('page'));
-$ts_archive_url         = ($ts_current_paged > 1) ? get_pagenum_link($ts_current_paged) : $ts_archive_base_url;
-$ts_archive_description = 'お役立ち情報一覧ページです。業務改善、コスト削減、設備導入、防犯、通信、省エネなどに役立つ情報をまとめてご紹介しています。';
+$ts_is_tax              = is_tax($ts_taxonomy_slug);
+$ts_current_term        = $ts_is_tax ? get_queried_object() : null;
+$ts_archive_url         = ($ts_current_paged > 1)
+  ? get_pagenum_link($ts_current_paged)
+  : (($ts_is_tax && $ts_current_term instanceof WP_Term) ? get_term_link($ts_current_term) : $ts_archive_base_url);
+$ts_doc_title           = ($ts_is_tax && $ts_current_term instanceof WP_Term)
+  ? $ts_current_term->name . 'のお役立ち情報'
+  : $ts_archive_title;
+$ts_archive_description = ($ts_is_tax && $ts_current_term instanceof WP_Term)
+  ? $ts_current_term->name . 'に関するお役立ち情報一覧ページです。'
+  : 'お役立ち情報一覧ページです。業務改善、コスト削減、設備導入、防犯、通信、省エネなどに役立つ情報をまとめてご紹介しています。';
 $ts_site_name           = get_bloginfo('name');
+
+if ($ts_current_paged > 1) {
+  $ts_doc_title .= ' ' . $ts_current_paged . 'ページ目';
+}
 
 $GLOBALS['ts_meta_description_override'] = $ts_archive_description;
 
@@ -26,25 +40,20 @@ $ts_has_seo_plugin = (
  * SEOプラグインがある場合はそちらを優先
  */
 if (!$ts_has_seo_plugin) {
-  add_filter('pre_get_document_title', function ($title) use ($ts_archive_title, $ts_site_name, $ts_current_paged) {
-    if (!is_post_type_archive('information')) {
+  add_filter('pre_get_document_title', function ($title) use ($ts_doc_title, $ts_site_name, $ts_taxonomy_slug) {
+    if (!(is_post_type_archive('information') || is_tax($ts_taxonomy_slug))) {
       return $title;
     }
 
-    $doc_title = $ts_archive_title;
-    if ($ts_current_paged > 1) {
-      $doc_title .= ' ' . $ts_current_paged . 'ページ目';
-    }
-
-    return $doc_title . ' | ' . $ts_site_name;
+    return $ts_doc_title . ' | ' . $ts_site_name;
   }, 20);
 
   /**
    * このアーカイブ専用の canonical を付与
    * SEOプラグインがある場合はそちらを優先
    */
-  add_action('wp_head', function () use ($ts_archive_url) {
-    if (!is_post_type_archive('information')) {
+  add_action('wp_head', function () use ($ts_archive_url, $ts_taxonomy_slug) {
+    if (!(is_post_type_archive('information') || is_tax($ts_taxonomy_slug))) {
       return;
     }
     echo '<link rel="canonical" href="' . esc_url($ts_archive_url) . '">' . "\n";
@@ -80,6 +89,32 @@ get_header();
         </h1>
 
         <?php
+        $ts_information_terms = get_terms([
+          'taxonomy'   => $ts_taxonomy_slug,
+          'hide_empty' => false,
+        ]);
+        ?>
+
+        <?php if (!empty($ts_information_terms) && !is_wp_error($ts_information_terms)) : ?>
+          <ul class="category_list">
+            <li<?php echo !$ts_is_tax ? ' class="is-active"' : ''; ?>>
+              <a href="<?php echo esc_url($ts_archive_base_url); ?>">すべて</a>
+            </li>
+
+            <?php foreach ($ts_information_terms as $ts_information_term) : ?>
+              <?php $ts_information_term_url = get_term_link($ts_information_term); ?>
+              <?php if (!is_wp_error($ts_information_term_url)) : ?>
+                <li<?php echo is_tax($ts_taxonomy_slug, $ts_information_term->term_id) ? ' class="is-active"' : ''; ?>>
+                  <a href="<?php echo esc_url($ts_information_term_url); ?>">
+                    <?php echo esc_html($ts_information_term->name); ?>
+                  </a>
+                </li>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          </ul>
+        <?php endif; ?>
+
+        <?php
         $ts_item_list_elements = [];
         $ts_position = 0;
         ?>
@@ -88,13 +123,13 @@ get_header();
           <ul class="<?php echo esc_attr($ts_archive_slug . '_page--inner'); ?>">
             <?php while (have_posts()) : the_post(); ?>
               <?php
-              $terms = get_the_terms(get_the_ID(), 'information_cat');
+              $terms = get_the_terms(get_the_ID(), $ts_taxonomy_slug);
               $top_term_name = '';
 
               if ($terms && !is_wp_error($terms)) {
                 $top_term = $terms[0];
                 while (!empty($top_term->parent)) {
-                  $top_term = get_term($top_term->parent, 'information_cat');
+                  $top_term = get_term($top_term->parent, $ts_taxonomy_slug);
                 }
                 if ($top_term && !is_wp_error($top_term)) {
                   $top_term_name = $top_term->name;
@@ -162,31 +197,46 @@ get_header();
   </div>
 
   <?php
+  $ts_breadcrumb_items = [
+    [
+      '@type'    => 'ListItem',
+      'position' => 1,
+      'name'     => 'TOP',
+      'item'     => home_url('/'),
+    ],
+    [
+      '@type'    => 'ListItem',
+      'position' => 2,
+      'name'     => $ts_archive_title,
+      'item'     => $ts_archive_base_url,
+    ],
+  ];
+
+  if ($ts_is_tax && $ts_current_term instanceof WP_Term) {
+    $ts_current_term_url = get_term_link($ts_current_term);
+
+    if (!is_wp_error($ts_current_term_url)) {
+      $ts_breadcrumb_items[] = [
+        '@type'    => 'ListItem',
+        'position' => 3,
+        'name'     => $ts_current_term->name,
+        'item'     => $ts_current_term_url,
+      ];
+    }
+  }
+
   $ts_schema = [
     '@context' => 'https://schema.org',
     '@graph'   => [
       [
         '@type'           => 'BreadcrumbList',
-        'itemListElement' => [
-          [
-            '@type'    => 'ListItem',
-            'position' => 1,
-            'name'     => 'TOP',
-            'item'     => home_url('/'),
-          ],
-          [
-            '@type'    => 'ListItem',
-            'position' => 2,
-            'name'     => $ts_archive_title,
-            'item'     => $ts_archive_base_url,
-          ],
-        ],
+        'itemListElement' => $ts_breadcrumb_items,
       ],
       [
         '@type'       => 'CollectionPage',
         '@id'         => $ts_archive_url . '#webpage',
         'url'         => $ts_archive_url,
-        'name'        => ($ts_current_paged > 1) ? $ts_archive_title . ' ' . $ts_current_paged . 'ページ目' : $ts_archive_title,
+        'name'        => $ts_doc_title,
         'description' => $ts_archive_description,
         'isPartOf'    => [
           '@type' => 'WebSite',
@@ -201,7 +251,7 @@ get_header();
       [
         '@type'           => 'ItemList',
         '@id'             => $ts_archive_url . '#itemlist',
-        'name'            => $ts_archive_title . '一覧',
+        'name'            => $ts_doc_title . '一覧',
         'numberOfItems'   => count($ts_item_list_elements),
         'itemListElement' => $ts_item_list_elements,
       ],

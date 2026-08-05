@@ -1069,7 +1069,7 @@ function my_customize_query_total_posts($query)
   // 対象とする投稿タイプ
   $post_types = ['question', 'information', 'introduction', 'post'];
 
-  if (is_post_type_archive($post_types) || is_home() || is_category()) {
+  if (is_post_type_archive($post_types) || is_home() || is_category() || $query->is_tax('infomation_item')) {
     $query->set('posts_per_page', 9);
   }
 }
