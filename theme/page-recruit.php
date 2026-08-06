@@ -22,7 +22,11 @@ $recruit_schema = [
       'datePosted'  => get_the_time('c'),
       'employmentType' => 'FULL_TIME',
       'hiringOrganization' => [
-        '@id' => $local_business_id,
+        '@type'  => 'Organization',
+        '@id'    => $local_business_id,
+        'name'   => 'トータルスマート株式会社',
+        'sameAs' => home_url('/'),
+        'logo'   => get_theme_file_uri('/img/common/logo.png'),
       ],
       'jobLocation' => [
         '@type'  => 'Place',
