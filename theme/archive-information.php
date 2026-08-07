@@ -93,6 +93,23 @@ get_header();
           'taxonomy'   => $ts_taxonomy_slug,
           'hide_empty' => false,
         ]);
+
+        if (!empty($ts_information_terms) && !is_wp_error($ts_information_terms)) {
+          $ts_information_other_terms = [];
+          $ts_information_terms = array_values(array_filter(
+            $ts_information_terms,
+            function ($ts_information_term) use (&$ts_information_other_terms) {
+              if ('その他' === trim($ts_information_term->name)) {
+                $ts_information_other_terms[] = $ts_information_term;
+                return false;
+              }
+
+              return true;
+            }
+          ));
+
+          $ts_information_terms = array_merge($ts_information_terms, $ts_information_other_terms);
+        }
         ?>
 
         <?php if (!empty($ts_information_terms) && !is_wp_error($ts_information_terms)) : ?>
