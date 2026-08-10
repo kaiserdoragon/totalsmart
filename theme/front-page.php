@@ -717,13 +717,13 @@ $home_schema = [
         <div class="information--list">
           <?php while ($information_query->have_posts()) : $information_query->the_post(); ?>
             <?php
-            $information_terms = get_the_terms(get_the_ID(), 'information_cat');
+            $information_terms = get_the_terms(get_the_ID(), 'infomation_item');
             $top_term_name     = '';
 
             if ($information_terms && !is_wp_error($information_terms)) {
               $top_term = $information_terms[0];
               while (!empty($top_term->parent)) {
-                $top_term = get_term($top_term->parent, 'information_cat');
+                $top_term = get_term($top_term->parent, 'infomation_item');
               }
               if ($top_term && !is_wp_error($top_term)) {
                 $top_term_name = $top_term->name;
@@ -758,9 +758,14 @@ $home_schema = [
 
                 <div class="information--meta">
                   <?php if ('' !== $top_term_name) : ?>
-                    <span class="information--cat"><?php echo esc_html($top_term_name); ?></span>
+                    <span class="information--cat">
+                      <?php echo esc_html($top_term_name); ?>
+                    </span>
                   <?php endif; ?>
-                  <time datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
+
+                  <time datetime="<?php echo esc_attr(get_the_date('c')); ?>">
+                    <?php echo esc_html(get_the_date('Y.m.d')); ?>
+                  </time>
                 </div>
 
                 <h3><?php echo esc_html(get_the_title()); ?></h3>
