@@ -820,7 +820,7 @@ if (!function_exists('theme_enqueue_js_only_optimized_assets')) {
     $register_local_script('swiperjs',     'js/swiper-bundle.min.js', array(), 'defer');
     $register_local_script('scrollhint',   'js/scroll-hint.min.js',   array(), 'defer');
     $register_local_script('mainscripts',  'js/scripts.js',           array('jquery'), 'defer');
-    // $register_local_script('prohibited',  'js/prohibited.js',         array('jquery'), 'defer');
+    $register_local_script('prohibited',  'js/prohibited.js',         array('jquery'), 'defer');
     $register_local_script('slider',       'js/slider.js',            array('jquery', 'swiperjs'), 'defer');
 
     if (is_page('costaircon')) {
@@ -1484,3 +1484,27 @@ function question_live_search()
 
   wp_send_json_success(['html' => $html]); //
 }
+
+
+// 【管理画面】お役立ち情報の並び方を最新投稿順に
+add_action('pre_get_posts', function ($query) {
+
+  // 管理画面のメイン一覧だけを対象
+  if (! is_admin() || ! $query->is_main_query()) {
+    return;
+  }
+
+  // information の投稿一覧だけを対象
+  if ('information' !== $query->get('post_type')) {
+    return;
+  }
+
+  // 日付やタイトルを手動クリックした場合は、その並び順を優先
+  if (isset($_GET['orderby'])) {
+    return;
+  }
+
+  // 初期表示は投稿日が新しい順
+  $query->set('orderby', 'date');
+  $query->set('order', 'DESC');
+}, 999);
