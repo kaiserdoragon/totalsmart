@@ -222,23 +222,23 @@ get_header('service');
     <img class="camera_mv--bg" src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_bg.jpg'); ?>" alt="" width="1920" height="750" loading="eager" fetchpriority="high" decoding="async">
   </section>
 
-  <section class="camera_lead">
+  <section class="camera_lead hukugouki_lead">
     <div class="container -md">
       <h2>
-        防犯・監視カメラ導入で<br>
+        複合機の見直し・導入で<br>
         このような<span>お悩み</span>はありませんか？
       </h2>
       <ul>
-        <li>古いカメラのままで画質が悪く、<span>いざという時に顔や車のナンバーが判別できない</span></li>
-        <li>システム一式の入れ替えを検討しているが、<span>配線工事費が高額で予算が合わない</span></li>
-        <li>動物や木の揺れによる誤報が多く、<span>本当に必要な通知が埋もれてしまう</span></li>
-        <li>建設現場や資材置き場、農地など<span>電源もインターネット回線もない場所を監視したい</span></li>
-        <li>トラブル発生時に<span>すぐ駆けつけてくれる地元の業者がわからない</span></li>
+        <li>毎月のリース料金や印刷の<span>料金が高い気がする</span></li>
+        <li><span>購入・リース・レンタル</span>のどれを選べばいいのかわからない</li>
+        <li>自社に合う<span>機種がわからない</span></li>
+        <li>故障時やトナー交換など<span>保守対応が不安</span></li>
+        <li><span>紙書類の管理やスキャン業務</span>を効率化したい</li>
       </ul>
       <p>
-        防犯カメラは「ただ設置すればよい」というものではありません。<br>
-        現場の環境（明るさ、広さ、配線状況、電源の有無）や目的に合っていない機器を選んでしまうと、
-        本来の役割を果たせないだけでなく、無駄なコストがかかってしまいます。
+        複合機は、単に安い機種を選べばよいわけではありません。<br>
+        月間の印刷枚数、A3利用の有無、カラー比率、設置スペース、保守内容まで含めて、
+        自社に合った機種と契約方法を選ぶことが重要です。
       </p>
     </div>
   </section>
@@ -260,30 +260,25 @@ get_header('service');
       <div class="container camera_reason--inner">
         <ol>
           <li>
-            <h3>地域密着・迅速対応</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_01.png'); ?>" alt="地域密着・迅速対応のイメージ" width="240" height="240" loading="lazy" decoding="async">
+            <h3>最適な複合機を提案</h3>
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_02.png'); ?>" alt="地域密着・迅速対応のイメージ" width="240" height="240" loading="lazy" decoding="async">
             <p>
-              愛知・岐阜・三重・静岡の商圏に絞り、現地調査から
-              施工、運用相談までスピーディーに対応。<br>
-              「名古屋の店舗」「四日市の工場」「岐阜の倉庫」
-              「浜松の資材置き場」など、地域特有の設置条件も
-              踏まえて提案します。
+              複合機は、会社の規模や印刷枚数、A3利用の有無、設置スペースによって最適な機種が変わります。<br>
+              必要以上に高い機種をすすめるのではなく、現在の利用状況やご希望を確認したうえで、中小企業に合った複合機をご提案します。
             </p>
           </li>
           <li>
-            <h3>現場課題に合わせての提案</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_02.png'); ?>" alt="現場課題に合わせた提案のイメージ" width="240" height="240" loading="lazy" decoding="async">
+            <h3>リース・購入をまとめて相談</h3>
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_03.png'); ?>" alt="現場課題に合わせた提案のイメージ" width="240" height="240" loading="lazy" decoding="async">
             <p>
-              防犯カメラは、どこにでも同じものを付ければよいわけ
-              ではありません。<br>
-              建物の形、見たい場所、夜の明るさ、今ある配線、
-              予算の考え方によって、合う設備は変わります。
-              それぞれの環境に合った設置方法をご提案します。
+              現在利用中の複合機のコスト見直しにも対応しています。<br>
+              月額リース料、カウンター料金、保守内容、機種スペックなどを整理し、無駄なコストが発生していないか確認できます。
+              リースと購入のどちらがよいか迷っている場合も、導入条件に合わせて比較できます。
             </p>
           </li>
           <li>
             <h3>圧倒的なコスト最適化</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_03.png'); ?>" alt="コスト最適化のイメージ" width="240" height="240" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_04.png'); ?>" alt="コスト最適化のイメージ" width="240" height="240" loading="lazy" decoding="async">
             <p>
               「入れ替えたいけど工事費が…」というご担当者様に
               喜ばれているのが、既存の同軸ケーブルを流用できる
@@ -294,15 +289,11 @@ get_header('service');
             </p>
           </li>
           <li>
-            <h3>使いやすさまで考えます</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_04.png'); ?>" alt="使いやすさを考えた提案のイメージ" width="240" height="240" loading="lazy" decoding="async">
+            <h3>愛知・岐阜・三重・静岡に対応</h3>
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_01.png'); ?>" alt="使いやすさを考えた提案のイメージ" width="240" height="240" loading="lazy" decoding="async">
             <p>
-              防犯カメラは、性能が高ければそれで十分というもの
-              ではありません。<br>
-              当社では、映像のきれいさや見える範囲だけでなく、
-              導入のしやすさまで含めて考えます。<br>
-              現場に合っていて、導入後も使いやすいことまで考えて
-              ご提案します。
+              愛知県・岐阜県・三重県・静岡県の中小企業様向けに、複合機の新規導入・リース・購入・コスト見直しのご相談に対応しています。<br>
+              事務所、店舗、工場、士業事務所など、利用環境に合わせて、導入前の機種選定から費用の確認までご相談いただけます。
             </p>
           </li>
         </ol>
@@ -320,8 +311,7 @@ get_header('service');
       </div>
       <article>
         <h3>
-          AIネットワークカメラ<br>
-          （NEXT AIシリーズ / Sシリーズ）
+          SHARP BP-61C26
         </h3>
         <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_01.jpg'); ?>" alt="AIネットワークカメラの導入イメージ" width="600" height="327" loading="lazy" decoding="async">
         <div class="camera_assignment--inner">

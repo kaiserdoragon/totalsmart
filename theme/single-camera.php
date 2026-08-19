@@ -323,7 +323,7 @@ get_header('service');
           AIネットワークカメラ<br>
           （NEXT AIシリーズ / Sシリーズ）
         </h3>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_01.jpg'); ?>" alt="AIネットワークカメラの導入イメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_01.jpg'); ?>" alt="AIネットワークカメラの導入イメージ" width="600" height="400" loading="lazy" decoding="async">
         <div class="camera_assignment--inner">
           <ul>
             <li>誤検知が多すぎてアラートを信頼できない</li>
@@ -350,7 +350,7 @@ get_header('service');
           5M AHDカメラシステム<br>
           （同軸ケーブル流用ソリューション）
         </h3>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_02.jpg'); ?>" alt="同軸ケーブル流用による5M AHDカメラ更新のイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_02.jpg'); ?>" alt="同軸ケーブル流用による5M AHDカメラ更新のイメージ" width="600" height="400" loading="lazy" decoding="async">
         <div class="camera_assignment--inner">
           <ul>
             <li>古いアナログカメラを高画質に更新したいが、配線工事費が高すぎる</li>
@@ -376,7 +376,7 @@ get_header('service');
           MOBITY BOX<br>
           （モバイル遠隔監視システム）
         </h3>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_03.jpg'); ?>" alt="MOBITY BOXによる遠隔監視のイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_03.jpg'); ?>" alt="MOBITY BOXによる遠隔監視のイメージ" width="600" height="400" loading="lazy" decoding="async">
         <div class="camera_assignment--inner">
           <ul>
             <li>建設現場や農地など、電源もネット回線もない場所を監視したい</li>

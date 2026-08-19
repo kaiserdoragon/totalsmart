@@ -566,7 +566,7 @@
   }
 
   .single_detail_page--ttl {
-    margin-bottom: 60px;
+    margin-bottom: 100px;
   }
 
   @include tb-mq {
@@ -591,6 +591,8 @@
 }
 
 .camera_assignment {
+  background: #eef6ff;
+
   .u-txt_center {
     margin-bottom: 80px;
   }
@@ -1963,3 +1965,11 @@
   }
 }
 
+
+// ---------------------------------------------
+//  複合機特化ページ　専用
+// ---------------------------------------------
+
+.hukugouki_lead {
+  background: url(../img/service/lead_bg_hukugouki.jpg) no-repeat center / cover;
+}
