@@ -202,21 +202,21 @@ get_header('service');
     <div class="camera_mv--contents container -lg">
       <div class="camera_mv--block">
         <span class="camera_mv--area">愛知・岐阜・三重・静岡対応</span>
-        <p class="camera_mv--lead">不審者対策も、内部トラブル対策もこれで解決！</p>
+        <p class="camera_mv--lead">複合機の新規導入・コスト見直しを検討中の中小企業様</p>
         <h1 class="camera_mv--ttl">
-          <span class="camera_mv--txt"><span class="camera_mv--strong">防犯カメラ</span>の設置・工事は</span>
-          <span class="camera_mv--txt">お任せください！！</span>
+          <span class="camera_mv--txt"><span class="camera_mv--strong">複合機</span>の見直しで</span>
+          <span class="camera_mv--txt"><span class="camera_mv--strong">コスト</span>や<span class="camera_mv--strong">無駄</span>を削減！</span>
         </h1>
-        <p class="camera_mv--supplement">オフィス・店舗・施設の環境に合わせた、<br>防犯カメラをご提案します</p>
+        <p class="camera_mv--supplement">複合機の購入・リース・入れ替え相談に対応<br>最適な導入プランをご提案します</p>
         <ul>
-          <li>出張費・お見積り<br><span>無料</span></li>
-          <li>アフターサポートまで<br>すべて<span>自社対応</span></li>
-          <li><span>電源・回線のない現場</span><br>にも対応可能</li>
-          <li><span>既存の配線を活かした</span><br>リプレイスにも対応</li>
+          <li>毎月の固定コストを<br><span>しっかり削減</span></li>
+          <li>無駄のない契約内容へ<br><span>最適化</span></li>
+          <li><span>日々の業務ロスを</span><br>大幅に改善</li>
+          <li>複合機のコストを<br><span>明確に見える化</span></li>
         </ul>
       </div>
       <div class="camera_mv--image">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_catch.png'); ?>" alt="防犯カメラ設置サービスのイメージ" width="515" height="645" loading="eager" fetchpriority="high" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_catch_hukugouki.png'); ?>" alt="複合機の見直しサービスのイメージ" width="667" height="490" loading="eager" fetchpriority="high" decoding="async">
       </div>
     </div>
     <img class="camera_mv--bg" src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_bg.jpg'); ?>" alt="" width="1920" height="750" loading="eager" fetchpriority="high" decoding="async">
