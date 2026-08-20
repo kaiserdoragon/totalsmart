@@ -605,49 +605,51 @@ get_header('service');
       </p>
       <article>
         <span>愛知県</span>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_01.jpg'); ?>" alt="愛知県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_01_hukugouki.jpg'); ?>" alt="愛知県の対応エリアイメージ" width="600" height="360" loading="lazy" decoding="async">
         <p>
-          名古屋市・豊田市・岡崎市・一宮市・春日井市・<br class="is-hidden_sp">
-          豊橋市・安城市・刈谷市・小牧市・半田市・<br class="is-hidden_sp">
-          および愛知県内全域に対応しております。<br class="is-hidden_sp">
-          製造業が盛んな豊田市・刈谷市・安城市のエリアの工場や倉庫、<br>
-          名古屋市内の店舗・事務所からの<br class="is-hidden_sp">
-          ご相談も多数いただいています。
+          名古屋市をはじめ、豊田市、岡崎市、一宮市、豊橋市、春日井市など、<br class="is-hidden_sp">
+          事務所・店舗・工場・士業事務所など幅広い業種でご相談いただけます。<br>
+          製造業や自動車関連企業、営業所、店舗運営会社など、<br class="is-hidden_sp">
+          紙資料やA3書類を扱う機会が多い企業様には、<br class="is-hidden_sp">
+          利用状況に合わせたA3対応複合機をご提案可能です。<br>
+          月間印刷枚数、カラー印刷の頻度、設置スペース、<br class="is-hidden_sp">
+          現在のリース料金などを確認したうえで、<br class="is-hidden_sp">
+          必要以上に高い機種を選ばない導入プランをご案内します。
         </p>
       </article>
       <article>
         <span>岐阜県</span>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_02.jpg'); ?>" alt="岐阜県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_02_hukugouki.jpg'); ?>" alt="岐阜県の対応エリアイメージ" width="600" height="360" loading="lazy" decoding="async">
         <p>
-          岐阜県・大垣市・各務原市・多治見市・可児市・<br class="is-hidden_sp">
-          関市・高山市・および岐阜県全域に<br class="is-hidden_sp">
-          対応しています。<br>
-          岐阜市・大垣市周辺の倉庫や工場、<br class="is-hidden_sp">
-          山間部の建設現場・農地での<br class="is-hidden_sp">
-          無電源監視のご相談も承っています。
+          岐阜市、大垣市、各務原市、多治見市、可児市など、<br class="is-hidden_sp">
+          事務所・工場・士業事務所・店舗などの利用環境に合わせてご提案します。<br>
+          「今の複合機コストが適正かわからない」「A3対応機が必要か判断したい」<br class="is-hidden_sp">
+          「リースと購入のどちらがよいか知りたい」といった段階でもご相談可能です。<br>
+          印刷枚数や利用人数、スキャン・FAXの使用状況を確認し、<br class="is-hidden_sp">
+          業務に合った複合機選びをサポートします。
         </p>
       </article>
       <article>
         <span>三重県</span>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_03.jpg'); ?>" alt="三重県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_03_hukugouki.jpg'); ?>" alt="三重県の対応エリアイメージ" width="600" height="360" loading="lazy" decoding="async">
         <p>
-          四日市市・津市・鈴鹿市・桑名市・松阪市・<br class="is-hidden_sp">
-          伊勢市・伊賀市、および三重県全域に<br class="is-hidden_sp">
-          対応しています。<br>
-          四日市市・鈴鹿市のコンビナート・<br class="is-hidden_sp">
-          工場エリアや伊賀市・松阪市の農地・<br class="is-hidden_sp">
-          建設現場での実績があります。
+          津市、四日市市、鈴鹿市、桑名市、松阪市など、<br class="is-hidden_sp">
+          建設会社、製造業、店舗、事務所など、業種や設置環境に合わせたご提案が可能です。<br>
+          図面や資料の印刷が多い企業様にはA3対応複合機を、<br class="is-hidden_sp">
+          A4中心で設置スペースを抑えたい企業様には省スペース型の複合機をご提案します。<br>
+          導入前に、月額費用・カウンター料金・保守内容・設置場所を整理し、<br class="is-hidden_sp">
+          無理のない複合機導入をサポートします。
         </p>
       </article>
       <article>
         <span>静岡県</span>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_04.jpg'); ?>" alt="静岡県の対応エリアイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/area_04_hukugouki.jpg'); ?>" alt="静岡県の対応エリアイメージ" width="600" height="360" loading="lazy" decoding="async">
         <p>
-          静岡市・浜松市・沼津市・富士市・焼津市・<br class="is-hidden_sp">
-          藤枝市・磐田市・掛川市・三島市・<br class="is-hidden_sp">
-          および静岡県全域に対応しています。<br>
-          浜松市・磐田市の工場、富士市・焼津市の<br class="is-hidden_sp">
-          倉庫・物流拠点からのご相談も対応しています。
+          静岡市、浜松市、沼津市、富士市、磐田市など、<br class="is-hidden_sp">
+          事務所・店舗・工場・営業所など、さまざまな利用環境に合わせてご案内します。<br>
+          新規開設の事務所や、現在利用中の複合機の費用を見直したい企業様にも対応可能です。
+          A3利用の有無、月間印刷枚数、カラー印刷の頻度、設置スペースなどを確認し、<br class="is-hidden_sp">
+          自社に合った複合機の機種選定からお見積もりまでサポートします。
         </p>
       </article>
     </div>
