@@ -2008,3 +2008,39 @@
     padding-top: 40px;
   }
 }
+
+
+.hukugouki_introduction {
+  h2 {
+    margin-bottom: 40px;
+    font-size: var(--fz35);
+    font-weight: bold;
+    color: #ff0;
+    text-align: center;
+  }
+
+  p {
+    font-size: var(--fz20);
+  }
+
+  // .hukugouki_introduction--inner
+  &--inner {
+    background: url(../img/service/introduction_hukugouki.png) center center / contain no-repeat;
+
+    @include max-mq {
+      padding: 100px min(4vw, 25px);
+      background: url(../img/service/introduction_hukugouki_sp.png) center center / contain no-repeat;
+    }
+  }
+
+
+  @include max-mq {
+    h2 {
+      font-size: var(--fz30);
+    }
+
+    p {
+      font-size: var(--fz18);
+    }
+  }
+}

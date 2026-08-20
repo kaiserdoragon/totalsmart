@@ -378,20 +378,17 @@ get_header('service');
     </div>
   </section>
 
-  <div class="camera_introduction bg_blue">
-    <div class="camera_introduction--inner">
+  <section class="camera_introduction hukugouki_introduction bg_blue">
+    <div class="camera_introduction--inner hukugouki_introduction--inner">
+      <h2>自社に合う複合機は、使い方によって変わります</h2>
       <p>
-        他にも熱源を検知するサーマルカメラ（夜間・視界不良時の不審者対策など）や、<br class="is-hidden_sp">
-        既存の同軸ケーブルにPoE給電を可能にするPoC対応カメラ、<br class="is-hidden_sp">
-        複数の録画方式に対応するハイブリッドレコーダーなども取り扱っています。
-      </p>
-      <p>
-        「この現場に何が合うかわからない」という場合も、<br class="is-hidden_sp">
-        まず無料現地調査でご相談ください。<br>
-        現場を直接確認したうえで、最適な構成をご提案します。
+        複合機選びで大切なのは、人気機種をそのまま選ぶことではありません。<br>
+        月間の印刷枚数、A3利用の有無、カラー印刷の頻度、設置スペース、スキャン・FAXの利用状況によって、<br class="is-hidden_sp">最適な機種は変わります。<br>
+        当社では、愛知県・岐阜県・三重県・静岡県の中小企業様向けに、<br class="is-hidden_sp">複合機の新規導入・リース・購入・コスト見直しのご相談に対応しています。<br>
+        現在の利用状況をお聞きしたうえで、必要以上に高い機種を選ばない、<br class="is-hidden_sp">現場に合った複合機をご提案します。
       </p>
     </div>
-  </div>
+  </section>
 
   <section class="camera_construction sec" id="camera_construction">
     <div class="container -md">
