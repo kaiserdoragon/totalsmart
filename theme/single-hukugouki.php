@@ -394,68 +394,80 @@ get_header('service');
     <div class="container -md">
       <h2>施工・導入実績</h2>
       <p>
-        工場・倉庫・店舗・建設現場など、現場ごとに求められる監視体制は異なります。<br>
-        私たちは、防犯カメラを一律にご提案するのではなく、<br class="is-hidden_sp">
-        課題・設置環境・既存設備に合わせて、最適な機器構成と工事方法をご提案しています。
+        複合機の新規導入・入れ替え・リース・コスト見直しのご相談に対応しています。<br>
+        事務所の規模、印刷枚数、A3利用の有無、設置スペース、保守条件などを確認したうえで、<br class="is-hidden_sp">
+        現場に合った複合機をご提案しています。
       </p>
       <article>
-        <h3>誤報の嵐から解放され、業務管理も劇的に改善</h3>
+        <h3>製造業の事務所にA3カラー複合機を導入</h3>
         <div class="camera_construction--inner">
           <dl>
             <dt>愛知県名古屋市 自動車部品工場様</dt>
-            <dd>敷地外周に設置していた従来の動体検知カメラが、
-              野良猫や風で揺れる木々に反応してしまい、夜間の誤報が多発。<br>
-              警備システムとの連動で無駄な出動コストがかかっていました。<br>
-              導入後は動物や天候による誤報が「ゼロ」になり、本当に必要な
-              不審者の侵入時のみ正確にアラートが鳴る仕組みが完成しました。<br>
-              画質な映像を活用し、日中は工場内の安全管理や作業工程の確認
-              など、防犯以外の業務改善にも役立てています。
+            <dd>
+              自動車部品工場のお客様では、見積書・納品書・図面・検査書類など、
+              日常的に紙資料を扱う場面が多く、既存のプリンターではA3資料の
+              印刷やスキャンに対応しづらいことが課題でした。<br>
+              月間の印刷枚数やA3利用の頻度、設置スペースを確認したうえで、
+              A3対応のカラー複合機をご提案。<br>
+              導入後は、コピー・プリント・スキャンを1台に集約でき、
+              図面や社内資料の出力、書類共有がスムーズになりました。
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_01.jpg'); ?>" alt="自動車部品工場での防犯カメラ導入事例" width="500" height="348" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_01_hukugouki.jpg'); ?>" alt="自動車部品工場での防犯カメラ導入事例" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
       <article>
-        <h3>他社の高額見積もりを覆す、低コストな高画質化</h3>
+        <h3>士業事務所の複合機コストを見直し</h3>
         <div class="camera_construction--inner">
           <dl>
-            <dt>岐阜県岐阜市　小売店様</dt>
+            <dt>岐阜県岐阜市　税理士事務所様</dt>
             <dd>
-              駐車場での当て逃げトラブルが起きた際、古いアナログカメラ
-              の画質では車のナンバープレートが読み取れませんでした。<br>
-              システム一式の入れ替えを検討したものの、他社からは「配線
-              をすべてLANケーブルに引き直す必要がある」と高額な見積も
-              りを出され、予算が合わず困っていました。<br>
-              今回配線工事費を大幅にカットできたため、他社見積もりの
-              約半分のコストでフルハイビジョンを超える高画質監視ができ
-              ました。<br>
-              ナンバープレートもくっきりと録画できるようになり、トラ
-              ブルの早期解決と犯罪抑止力が飛躍的に向上しました。
+              顧問先の資料、申告書類、契約書、控え書類などの印刷・コピーが
+              日常的に発生していましたが、現在利用している複合機の
+              月額リース料やカウンター料金が適正なのか判断しづらい状況でした。<br>
+              印刷枚数、カラー利用の頻度、A3利用の有無、保守内容を
+              確認したうえで、業務量に合った複合機プランをご提案。<br>
+              導入後は、必要な機能を確保しながら、毎月の費用構造を見直す
+              ことができました。
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_02.jpg'); ?>" alt="小売店での高画質カメラ更新事例" width="500" height="348" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_02_hukugouki.jpg'); ?>" alt="小売店での高画質カメラ更新事例" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
       <article>
-        <h3>電源なし・ネットなしの過酷な環境を即日監視</h3>
+        <h3>建設業の事務所に図面対応のA3複合機を導入</h3>
         <div class="camera_construction--inner">
           <dl>
             <dt>三重県四日市市　建設会社様</dt>
             <dd>
-              郊外の仮設資材置き場で、夜間に銅線ケーブルなどの盗難被害
-              が出ていました。<br>
-              すぐに監視カメラを設置したかったものの、現場には100V電源
-              もインターネット回線もなく、通常のカメラでは対応できない
-              状態でした。<br>
-              お問い合わせをしてから最短で現場まで来てもらって、その日
-              のうちに稼働ができました。<br>
-              スマートフォンからいつでも現地の状況を遠隔監視できるよう
-              になりました。<br>
-              カメラの存在自体が強力な威嚇となり、導入以降は盗難被害が
-              一切発生していません。
+              見積書・請求書・工程表・図面などを印刷する機会が多く、
+              A3対応の複合機が必要でした。一方で、事務所スペースには限りが
+              あり、設置場所や使いやすさも考慮する必要がありました。<br>
+              業務内容、A3利用の頻度、図面出力の有無、設置スペースを確認し、
+              日常業務で使いやすいA3カラー複合機をご提案。<br>
+              導入後は、書類作成から図面の印刷・スキャンまでを社内で
+              対応しやすくなり、事務作業の効率化につながりました。
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_03.jpg'); ?>" alt="無電源現場での遠隔監視導入事例" width="500" height="348" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_03_hukugouki.jpg'); ?>" alt="無電源現場での遠隔監視導入事例" width="500" height="348" loading="lazy" decoding="async">
+        </div>
+      </article>
+      <article>
+        <h3>店舗兼事務所に省スペース型の複合機を導入</h3>
+        <div class="camera_construction--inner">
+          <dl>
+            <dt>静岡県浜松市　店舗運営会社様</dt>
+            <dd>
+              請求書・納品書・販促資料・社内資料などの印刷は必要でしたが、
+              A3印刷の頻度は少なく、床置きの大型複合機を導入すべきか
+              迷われていました。設置スペース、月間印刷枚数、A3利用の有無、
+              スキャン利用の頻度を確認したうえで、過剰なスペックにならない
+              省スペース型の複合機をご提案。<br>
+              導入後は、日常的な印刷・コピー・スキャン業務を無理なく
+              行えるようになり、店舗兼事務所の限られたスペースでも使いやすい環境を整えることができました。
+            </dd>
+          </dl>
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_04_hukugouki.jpg'); ?>" alt="無電源現場での遠隔監視導入事例" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
     </div>
