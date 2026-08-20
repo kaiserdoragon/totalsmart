@@ -301,7 +301,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_assignment sec" id="camera_assignment">
+  <section class="camera_assignment hukugouki_assignment sec" id="camera_assignment">
     <div class="container -md">
       <div class="u-txt_center">
         <h2 class="single_detail_page--ttl -double">
@@ -313,81 +313,66 @@ get_header('service');
         <h3>
           SHARP BP-61C26
         </h3>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_01.jpg'); ?>" alt="AIネットワークカメラの導入イメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_01_huugouki.jpg'); ?>" alt="AIネットワークカメラの導入イメージ" width="600" height="327" loading="lazy" decoding="async">
         <div class="camera_assignment--inner">
+          <h4>標準的なA3カラー複合機を導入したい企業へ</h4>
           <ul>
-            <li>誤検知が多すぎてアラートを信頼できない</li>
-            <li>画質が悪くて証拠映像として使えない</li>
-            <li>来客数や動線の把握にも活用したい</li>
+            <li>A3サイズの印刷やコピーを使う</li>
+            <li>標準的で使いやすい複合機を選びたい</li>
+            <li>コストと性能のバランスを重視したい</li>
           </ul>
           <p>
-            人と車をAIが高精度に識別するネットワークカメラです。<br>
-            風で揺れる木や通過する虫などによる誤検知を大幅に削減し、<br>
-            「本当に注意すべき動き」だけを通知します。<br>
-            また、高解像度の映像は万が一の際に明確な証拠映像となります。<br>
-            誤報を抑えながら、必要なアラートに集中しやすくなります。<br>
-            工場・倉庫では侵入監視や搬入口確認、店舗では来店状況や導線把握、<br class="is-hidden_sp">
-            事務所や駐車場ではトラブル時の確認性向上につながります。
+            「A3も使いたい」「カラー印刷も必要」「でも必要以上に高い機種は避けたい」<br>
+            そのような場合には「SHARP BP-61C26」です。<br>
+            <br>
+            BP-61C26は、A4ヨコで1分間に26枚のコピー・プリントに<br class="is-hidden_sp">対応したA3カラー複合機です。<br>
+            日常的な見積書、請求書、契約書、社内資料、図面、提案資料など、<br class="is-hidden_sp">幅広いオフィス業務に対応できます。<br>
+            印刷速度が高い上位機種もありますが、一般的な中小企業では、<br class="is-hidden_sp">必要以上に高速な機種を選ぶよりも、利用頻度と月額コストの<br class="is-hidden_sp">バランスを重視することが重要です。
           </p>
-          <strong>
-            名古屋市や豊橋市の店舗、刈谷市・安城市の工場など、<br>
-            用途の幅広いお客様に特に喜ばれているシリーズです。
-          </strong>
         </div>
       </article>
       <article>
         <h3>
-          5M AHDカメラシステム<br>
-          （同軸ケーブル流用ソリューション）
+          KYOCERA TASKalfa MZ2501ci
         </h3>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_02.jpg'); ?>" alt="同軸ケーブル流用による5M AHDカメラ更新のイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_02_huugouki.jpg'); ?>" alt="同軸ケーブル流用による5M AHDカメラ更新のイメージ" width="600" height="327" loading="lazy" decoding="async">
         <div class="camera_assignment--inner">
+          <h4>クラウド連携・文書管理・DXを進めたい企業へ</h4>
           <ul>
-            <li>古いアナログカメラを高画質に更新したいが、配線工事費が高すぎる</li>
-            <li>なるべく工事の手間とコストを抑えてリプレイスしたい</li>
-            <li>映像の遅延が気になるので、シンプルな構成がいい</li>
+            <li>紙書類をPDF化して管理したい</li>
+            <li>経理・総務・事務作業を効率化したい</li>
+            <li>クラウド保存や文書共有を活用したい</li>
           </ul>
           <p>
-            既存のアナログカメラ用配線（同軸ケーブル）をそのまま流用しながら、<br class="is-hidden_sp">
-            5メガピクセル級の高画質カメラシステムに更新できます。<br>
-            新たに配線を引き直す必要がないため、工事費を大幅に抑えることができます。<br>
-            配線工事費を抑えやすく、更新コストの最適化につながります。<br>
-            遅延の少ない映像で見やすく、既存環境を活用できるため、<br class="is-hidden_sp">
-            工場・倉庫・店舗・事務所の入れ替え時にも現実的な選択肢になります。
+            「紙書類をデータ化したい」「スキャンした書類をクラウドで管理したい」<br>「文書管理や業務効率化も考えたい」<br class="is-hidden_sp">そのような企業には「KYOCERA TASKalfa MZ2501ci」です。<br>
+            TASKalfa MZ2501ciは、A3対応のカラー複合機として、<br class="is-hidden_sp">コピー・プリント・スキャン・FAX業務に対応できます。<br>
+            さらに、クラウド連携や文書管理、スキャンデータの活用など、<br class="is-hidden_sp">紙文書を扱う業務の効率化にもつなげやすい機種です。<br>
+            経理書類、請求書、契約書、社内申請書、図面、顧客資料などを<br class="is-hidden_sp">紙のまま管理している企業では、<br class="is-hidden_sp">複合機の見直しをきっかけに、<br class="is-hidden_sp">スキャン・保存・共有の流れを整えることができます。<br>
           </p>
-          <strong>
-            「岐阜市・各務原市の製造業の倉庫や、<br>
-            大垣市・多治見市の工場などで多くご採用いただいています。
-          </strong>
         </div>
       </article>
       <article>
         <h3>
-          MOBITY BOX<br>
-          （モバイル遠隔監視システム）
+          卓上複合機
         </h3>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_03.jpg'); ?>" alt="MOBITY BOXによる遠隔監視のイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_03_huugouki.jpg'); ?>" alt="MOBITY BOXによる遠隔監視のイメージ" width="600" height="327" loading="lazy" decoding="async">
         <div class="camera_assignment--inner">
+          <h4>A3を使わない・設置スペースを抑えたい企業へ</h4>
           <ul>
-            <li>建設現場や農地など、電源もネット回線もない場所を監視したい</li>
-            <li>資材の盗難・不法投棄が心配だが、固定設備を引くのが難しい</li>
-            <li>工期に合わせて設置場所を移動させたい</li>
+            <li>A4中心の印刷・コピーで足りる</li>
+            <li>事務所や店舗のスペースが限られている</li>
+            <li>月額コストをできるだけ抑えたい</li>
           </ul>
           <p>
-            4G LTEルーターとバッテリーを内蔵した、可搬型の遠隔監視システムです。<br>
-            電源工事も回線工事も不要で、<br class="is-hidden_sp">
-            現場にそのまま設置するだけでスマートフォンや<br class="is-hidden_sp">
-            PCからリアルタイムに映像を確認できます。<br>
-            ソーラーパネルとの組み合わせにより、長期間の無電源監視にも対応します。<br>
-            建設現場では夜間の侵入対策や進捗確認、資材置き場では盗難抑止、<br class="is-hidden_sp">
-            農地では離れた場所の状況確認など、<br class="is-hidden_sp">
-            これまで設置が難しかった場所にも監視体制を構築できます。<br>
-            「電源がないから無理」と諦めていた現場に、実用的な選択肢をつくれます。
+            「A3はほとんど使わない」「事務所が狭い」「床置きの大型複合機までは必要ない」<br>
+            そのような企業には、卓上複合機が向いている場合があります。<br>
+            複合機というと大型の床置きタイプをイメージされることが多いですが、<br class="is-hidden_sp">
+            すべての企業にA3対応機が必要なわけではありません。<br>
+            A4中心の印刷・コピー・スキャンで十分な場合は、<br class="is-hidden_sp">
+            卓上型を選ぶことで設置スペースを抑えながら、必要な機能を確保できます。<br>
+            小規模な事務所、店舗、士業事務所、開業直後の法人などでは、<br class="is-hidden_sp">
+            床置き複合機ではなく、卓上複合機の方が現場に合うケースもあります。
           </p>
-          <strong>
-            三重県の伊賀市・松阪市、静岡県の掛川市・藤枝市など、<br>
-            比較的郊外や山間部での建設現場・農地でご採用いただいています。
-          </strong>
         </div>
       </article>
     </div>
