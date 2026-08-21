@@ -29,7 +29,13 @@ $default_description = sprintf(
   $site_name
 );
 
-$description_source = $raw_excerpt;
+$description_source = $post_id && function_exists('ts_get_custom_seo_description')
+  ? ts_get_custom_seo_description($post_id)
+  : '';
+
+if ('' === trim((string) $description_source)) {
+  $description_source = $raw_excerpt;
+}
 if ('' === trim((string) $description_source)) {
   $description_source = wp_strip_all_tags(strip_shortcodes((string) $raw_content));
 }
@@ -37,50 +43,51 @@ if ('' === trim((string) $description_source)) {
   $description_source = $default_description;
 }
 
-$description_source = html_entity_decode((string) $description_source, ENT_QUOTES, get_bloginfo('charset') ?: 'UTF-8');
-$description_source = wp_strip_all_tags($description_source);
-$description_source = preg_replace('/\s+/u', ' ', $description_source);
-$description_source = trim((string) $description_source);
-
-if (function_exists('mb_strimwidth')) {
-  $service_description = mb_strimwidth($description_source, 0, 140, '...', 'UTF-8');
+if (function_exists('ts_normalize_meta_text')) {
+  $service_description = ts_normalize_meta_text($description_source, 140);
 } else {
-  $service_description = wp_trim_words($description_source, 60, '...');
+  $description_source = html_entity_decode((string) $description_source, ENT_QUOTES, get_bloginfo('charset') ?: 'UTF-8');
+  $description_source = wp_strip_all_tags($description_source);
+  $description_source = preg_replace('/\s+/u', ' ', $description_source);
+  $description_source = trim((string) $description_source);
+
+  if (function_exists('mb_strimwidth')) {
+    $service_description = mb_strimwidth($description_source, 0, 140, '...', 'UTF-8');
+  } else {
+    $service_description = wp_trim_words($description_source, 60, '...');
+  }
 }
 
 if ('' === $service_description) {
   $service_description = $default_description;
 }
 
-//タイトルタグ生成
+// タイトルタグ生成
 $seo_title = sprintf(
   '%sの設置・工事 | %s',
   $service_title ?: '防犯カメラ',
   $site_name
 );
 
-$has_seo_plugin = (
-  defined('WPSEO_VERSION') ||
-  defined('RANK_MATH_VERSION') ||
-  defined('AIOSEO_VERSION') ||
-  defined('SEOPRESS_VERSION')
-);
+$has_seo_plugin = function_exists('ts_is_major_seo_plugin_active')
+  ? ts_is_major_seo_plugin_active()
+  : (
+    defined('WPSEO_VERSION') ||
+    defined('RANK_MATH_VERSION') ||
+    defined('AIOSEO_VERSION') ||
+    defined('SEOPRESS_VERSION') ||
+    defined('SLIM_SEO_VERSION') ||
+    class_exists('The_SEO_Framework\\Load') ||
+    function_exists('rank_math')
+  );
 
-//タイトルタグの差し替え
+// タイトルタグの差し替え。robots は functions.php の wp_robots に一本化する。
 if (!$has_seo_plugin) {
   add_filter('pre_get_document_title', function ($document_title) use ($seo_title) {
     if (is_singular('service')) {
       return $seo_title;
     }
     return $document_title;
-  }, 20);
-
-  add_action('wp_head', function () {
-    if (!is_singular('service')) {
-      return;
-    }
-    echo '<meta name="robots" content="max-image-preview:large">' . "
-";
   }, 20);
 }
 
@@ -96,6 +103,19 @@ get_header('service');
     $breadcrumb_id = $service_url . '#breadcrumb';
     $service_id    = $service_url . '#service';
 
+    $service_provider = [
+      '@id' => $organization_id,
+    ];
+
+    // SEOプラグイン利用時は、テーマ側の LocalBusiness ノードが出ない場合でも provider を自己完結させる。
+    if ($has_seo_plugin) {
+      $service_provider = [
+        '@type' => 'Organization',
+        'name'  => $site_name,
+        'url'   => home_url('/'),
+      ];
+    }
+
     $service_schema = [
       '@type'       => 'Service',
       '@id'         => $service_id,
@@ -103,9 +123,7 @@ get_header('service');
       'serviceType' => $service_title,
       'description' => $service_description,
       'url'         => $service_url,
-      'provider'    => [
-        '@id' => $organization_id,
-      ],
+      'provider'    => $service_provider,
       'areaServed'  => [
         ['@type' => 'AdministrativeArea', 'name' => '愛知県'],
         ['@type' => 'AdministrativeArea', 'name' => '岐阜県'],
@@ -121,13 +139,17 @@ get_header('service');
     $schema_graph = [$service_schema];
 
     if (!$has_seo_plugin) {
-      $schema_graph = [
-        [
+      $organization_schema = function_exists('ts_get_local_business_schema')
+        ? ts_get_local_business_schema()
+        : [
           '@type' => 'Organization',
           '@id'   => $organization_id,
           'name'  => $site_name,
           'url'   => home_url('/'),
-        ],
+        ];
+
+      $schema_graph = [
+        $organization_schema,
         [
           '@type'     => 'WebSite',
           '@id'       => $website_id,
