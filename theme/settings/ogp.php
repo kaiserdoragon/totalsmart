@@ -1,7 +1,7 @@
 <?php
 
 /**
- * OGP を echo する
+ * OGP / Twitter Card 用の description を整形する。
  */
 if (!function_exists('ts_ogp_clean_description')) {
   function ts_ogp_clean_description($text, $limit = 160)
@@ -24,79 +24,96 @@ if (!function_exists('ts_ogp_clean_description')) {
   }
 }
 
+/**
+ * OGP / Twitter Card を一か所から出力する。
+ * SEOプラグイン利用時はプラグイン側の出力を優先する。
+ */
 function output_ogp()
 {
-  global $post, $wp;
+  global $wp;
 
-  # デフォルト値（トップページ）
-  $og_site_name   = get_bloginfo('name');
-  $og_title       = get_bloginfo('name');
-  $og_type        = 'website';
-  $og_url         = home_url();
-  $default_og_image = get_theme_file_uri('/img/ogp.png');
-  $og_image       = $default_og_image; //できるだけpng
-  $og_description = get_bloginfo('description');
-  $og_description_override = isset($GLOBALS['ts_meta_description_override'])
+  $has_seo_plugin = function_exists('ts_is_major_seo_plugin_active')
+    ? ts_is_major_seo_plugin_active()
+    : (
+      defined('WPSEO_VERSION') ||
+      defined('RANK_MATH_VERSION') ||
+      defined('AIOSEO_VERSION') ||
+      defined('SEOPRESS_VERSION') ||
+      defined('SLIM_SEO_VERSION') ||
+      class_exists('The_SEO_Framework\\Load') ||
+      function_exists('rank_math')
+    );
+
+  if (is_admin() || $has_seo_plugin) {
+    return;
+  }
+
+  $og_site_name = get_bloginfo('name');
+  $og_title     = is_front_page() ? $og_site_name : wp_get_document_title();
+  $og_type      = is_singular('post') ? 'article' : 'website';
+  $og_url       = home_url('/');
+  $og_image     = get_theme_file_uri('/img/ogp.png');
+
+  if (function_exists('ts_get_fallback_canonical_url')) {
+    $canonical_url = ts_get_fallback_canonical_url();
+    if ($canonical_url !== '') {
+      $og_url = $canonical_url;
+    }
+  } elseif (is_singular()) {
+    $og_url = get_permalink();
+  } elseif (!empty($wp->request)) {
+    $og_url = home_url('/' . ltrim($wp->request, '/'));
+  }
+
+  $og_description = isset($GLOBALS['ts_meta_description_override'])
     ? (string) $GLOBALS['ts_meta_description_override']
     : '';
-  $has_og_description_override = '' !== trim($og_description_override);
 
-  if ($has_og_description_override) {
-    $og_description = $og_description_override;
-  } elseif (!is_front_page()) {
-    //TOPページ以外は、og_titleに「ページのタイトル|サイト名」
-    //og_urlに現在のページのURLを入れる
-    //og_descriptionにページ名＋基本のdescriptionの文章を入れる
-    $og_title       = trim(wp_title('', false)) . '|' . get_bloginfo('name');
-    $og_url = home_url($wp->request);
-    $og_description = get_bloginfo('name') . 'の' . trim(wp_title('', false)) . 'のページです。' . get_bloginfo('description');
+  if ('' === trim($og_description) && function_exists('ts_get_fallback_meta_description')) {
+    $og_description = ts_get_fallback_meta_description();
   }
 
-  if (is_singular()) {
-    //投稿 or 固定ページの時は og_typeをarticleにする
-    $og_type = 'article';
-    setup_postdata($post);
-    if (is_single() && !$has_og_description_override) {
-      $post_id = get_queried_object_id();
-      $description_source = function_exists('ts_get_custom_seo_description')
-        ? ts_get_custom_seo_description($post_id)
-        : '';
+  if ('' === trim($og_description) && is_singular()) {
+    $post_id = get_queried_object_id();
+    $og_description = get_post_field('post_excerpt', $post_id);
 
-      if ('' === trim((string) $description_source)) {
-        $description_source = get_post_field('post_excerpt', $post_id);
-      }
-
-      if ('' === trim((string) $description_source)) {
-        $description_source = get_post_field('post_content', $post_id);
-      }
-
-      //本文データのある記事ページなら、あれば記事の本文抜粋を入れる
-      $clean_description = ts_ogp_clean_description($description_source, 160);
-      if ($clean_description !== '') {
-        $og_description = $clean_description;
-      }
+    if ('' === trim((string) $og_description)) {
+      $og_description = get_post_field('post_content', $post_id);
     }
-    if (is_single() && !is_singular('service') && has_post_thumbnail()) {
-      //アイキャッチ画像のある記事ページなら、og_imageにはアイキャッチ画像を入れる
-      $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
-      if (!empty($thumbnail[0])) {
-        $og_image = $thumbnail[0];
-      }
-    }
-    wp_reset_postdata();
   }
 
-  //管理画面以外のとき、以下のコードを出力
+  if ('' === trim((string) $og_description)) {
+    $og_description = get_bloginfo('description');
+  }
+
+  if (is_singular() && has_post_thumbnail()) {
+    $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
+    if (!empty($thumbnail[0])) {
+      $og_image = $thumbnail[0];
+    }
+  }
+
   $og_description = ts_ogp_clean_description($og_description, 160);
-
-  if (!is_admin()): ?>
-    <meta property="og:title" content="<?php echo esc_attr($og_title); ?>">
-    <meta property="og:type" content="<?php echo $og_type; ?>" />
-    <meta property="og:url" content="<?php echo esc_url($og_url); ?>">
-    <meta property="og:image" content="<?php echo esc_url($og_image); ?>">
+  ?>
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="<?php echo esc_attr($og_title); ?>">
+  <meta property="og:type" content="<?php echo esc_attr($og_type); ?>">
+  <meta property="og:url" content="<?php echo esc_url($og_url); ?>">
+  <meta property="og:image" content="<?php echo esc_url($og_image); ?>">
+  <?php if ($og_description !== '') : ?>
     <meta property="og:description" content="<?php echo esc_attr($og_description); ?>">
-    <meta property="og:site_name" content="<?php echo esc_attr($og_site_name); ?>">
-<?php endif;
+  <?php endif; ?>
+  <meta property="og:site_name" content="<?php echo esc_attr($og_site_name); ?>">
+
+  <meta name="twitter:card" content="<?php echo $og_image ? 'summary_large_image' : 'summary'; ?>">
+  <meta name="twitter:title" content="<?php echo esc_attr($og_title); ?>">
+  <?php if ($og_description !== '') : ?>
+    <meta name="twitter:description" content="<?php echo esc_attr($og_description); ?>">
+  <?php endif; ?>
+  <?php if ($og_image) : ?>
+    <meta name="twitter:image" content="<?php echo esc_url($og_image); ?>">
+  <?php endif; ?>
+  <?php
 }
 
 // <head> 要素に追加
