@@ -196,6 +196,7 @@
 // ---------------------------------------------
 //  防犯カメラ特化ページ　専用
 // ---------------------------------------------
+
 .camera_mv {
   position: relative;
 
@@ -783,9 +784,15 @@
     align-items: flex-start;
     justify-content: center;
 
-    @include max-mq {
+    @include tb-mq {
       flex-direction: column-reverse;
       align-items: center;
+    }
+  }
+
+  @include tb-mq {
+    dl {
+      max-width: 100%;
     }
   }
 
@@ -2006,6 +2013,21 @@
 
   .camera_assignment--inner {
     padding-top: 40px;
+  }
+
+  @include tb-mq {
+    ul {
+      width: 55%;
+    }
+
+    article {
+      &:nth-of-type(2),
+      &:nth-of-type(3) {
+        ul {
+          width: 65%;
+        }
+      }
+    }
   }
 }
 

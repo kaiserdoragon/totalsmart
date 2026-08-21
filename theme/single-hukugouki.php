@@ -252,7 +252,7 @@ get_header('service');
     </div>
   </div>
 
-  <section class="camera_reason sec" id="camera_reason">
+  <section class="camera_reason sec" id="hukugouki_reason">
     <div class="container -md">
       <h2 class="single_detail_page--ttl">
         選ばれる<span>4</span>つの理由
@@ -301,12 +301,12 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_assignment hukugouki_assignment sec" id="camera_assignment">
+  <section class="camera_assignment hukugouki_assignment sec" id="hukugouki_assignment">
     <div class="container -md">
       <div class="u-txt_center">
         <h2 class="single_detail_page--ttl -double">
           現場の課題を解決する<br>
-          <span>3</span>つの課題
+          <span>3</span>つの提案
         </h2>
       </div>
       <article>
@@ -390,7 +390,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_construction sec" id="camera_construction">
+  <section class="camera_construction sec" id="hukugouki_construction">
     <div class="container -md">
       <h2>施工・導入実績</h2>
       <p>
@@ -473,7 +473,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_flow bg_gray sec" id="camera_flow">
+  <section class="camera_flow bg_gray sec" id="hukugouki_flow">
     <div class="container -md">
       <h2>導入・施工までの流れ</h2>
       <p>
@@ -538,7 +538,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_qa sec" id="camera_qa">
+  <section class="camera_qa sec" id="hukugouki_qa">
     <div class="container -md">
       <h2>よくある質問</h2>
       <p>
@@ -593,7 +593,7 @@ get_header('service');
     </div>
   </section>
 
-  <section class="camera_area bg_skyblue sec" id="camera_area">
+  <section class="camera_area bg_skyblue sec" id="hukugouki_area">
     <div class="container -md">
       <h2>
         <span>愛知県・岐阜県・三重県・静岡県</span>

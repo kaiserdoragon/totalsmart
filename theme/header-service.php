@@ -177,11 +177,11 @@
         elseif ($post->post_name === 'hukugouki') :
         ?>
           <ul>
-            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_reason')); ?>">メニュー名1</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_assignment')); ?>">メニュー名2</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_construction')); ?>">メニュー名3</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_flow')); ?>">メニュー名4</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_qa')); ?>">メニュー名5</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_reason')); ?>">選ばれる4つの理由</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_assignment')); ?>">3つの提案</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_construction')); ?>">導入事例</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_flow')); ?>">施工の流れ</a></li>
+            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_qa')); ?>">よくある質問</a></li>
             <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_area')); ?>">対応エリア</a></li>
           </ul>
         <?php endif; ?>
