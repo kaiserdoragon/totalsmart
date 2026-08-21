@@ -33,7 +33,7 @@
       defined('AIOSEO_VERSION') ||
       defined('SEOPRESS_VERSION') ||
       defined('SLIM_SEO_VERSION') ||
-      class_exists('The_SEO_Framework\Load') ||
+      class_exists('The_SEO_Framework\\Load') ||
       function_exists('rank_math')
     );
 
@@ -46,27 +46,30 @@
       ? (string) $GLOBALS['ts_meta_description_override']
       : '';
 
+    if ('' === trim((string) $ts_meta_desc) && $ts_object_id && function_exists('ts_get_custom_seo_description')) {
+      $ts_meta_desc = ts_get_custom_seo_description($ts_object_id);
+    }
+
     $custom_descriptions = [
       'camera' => '「防犯対策を強化したい」「どのカメラを選べばいいかわからない」そんな悩みはトータルスマートが解決します。AI検知、夜間カラー撮影、長期録画など多様なニーズに対応。施工後の保守管理も万全で、導入後も長く安心してご利用いただけます。現地調査・見積もり無料。防犯のプロによる最適な提案を今すぐご確認ください。',
       'hukugouki' => '愛知・岐阜・三重・静岡で法人向け複合機の新規導入・入れ替え・リース・購入ならトータルスマート株式会社。月間印刷枚数やA3利用、カウンター料金、保守内容を確認し、自社に合う機種と契約をご提案します。現地調査・見積もりは無料です。',
       'aircon' => '愛知・岐阜・三重・静岡で業務用エアコンのクリーニング・掃除・修理ならトータルスマート株式会社。店舗・オフィス・クリニックのカビ臭・汚れ・水漏れ・効きの悪さを現地調査・無料見積りで確認します。',
     ];
 
-    //特定のスラッグに合致するかチェック
-    if ('' === trim((string) $ts_meta_desc)) {
-      if (array_key_exists($ts_post_slug, $custom_descriptions)) {
-        $ts_meta_desc = $custom_descriptions[$ts_post_slug];
-      } elseif ($ts_object_id) {
-        $ts_meta_desc = get_post_field('post_excerpt', $ts_object_id);
+    if ('' === trim((string) $ts_meta_desc) && array_key_exists($ts_post_slug, $custom_descriptions)) {
+      $ts_meta_desc = $custom_descriptions[$ts_post_slug];
+    }
 
-        if (empty($ts_meta_desc)) {
-          $content       = get_post_field('post_content', $ts_object_id);
-          $clean_content = wp_strip_all_tags(strip_shortcodes((string) $content));
+    if ('' === trim((string) $ts_meta_desc) && function_exists('ts_get_fallback_meta_description')) {
+      $ts_meta_desc = ts_get_fallback_meta_description();
+    }
 
-          $ts_meta_desc = mb_strlen($clean_content, 'UTF-8') > 120
-            ? mb_substr($clean_content, 0, 120, 'UTF-8') . '...'
-            : $clean_content;
-        }
+    if ('' === trim((string) $ts_meta_desc) && $ts_object_id) {
+      $ts_meta_desc = get_post_field('post_excerpt', $ts_object_id);
+
+      if (empty($ts_meta_desc)) {
+        $content = get_post_field('post_content', $ts_object_id);
+        $ts_meta_desc = wp_strip_all_tags(strip_shortcodes((string) $content));
       }
     }
 
@@ -76,12 +79,25 @@
         ? "{$title}について。トータルスマート株式会社のサービスページです。"
         : 'トータルスマート株式会社のサービスページです。';
     }
-  }
 
-  $ts_meta_desc = html_entity_decode((string) $ts_meta_desc, ENT_QUOTES, get_bloginfo('charset'));
-  $ts_meta_desc = wp_strip_all_tags($ts_meta_desc);
-  $ts_meta_desc = preg_replace('/\s+/u', ' ', $ts_meta_desc);
-  $ts_meta_desc = trim((string) $ts_meta_desc);
+    if (function_exists('ts_normalize_meta_text')) {
+      $ts_meta_desc = ts_normalize_meta_text($ts_meta_desc, 160);
+    } else {
+      $ts_meta_desc = html_entity_decode((string) $ts_meta_desc, ENT_QUOTES, get_bloginfo('charset') ?: 'UTF-8');
+      $ts_meta_desc = wp_strip_all_tags($ts_meta_desc);
+      $ts_meta_desc = preg_replace('/\s+/u', ' ', $ts_meta_desc);
+      $ts_meta_desc = trim((string) $ts_meta_desc);
+
+      if (function_exists('mb_strlen') && mb_strlen($ts_meta_desc, 'UTF-8') > 160) {
+        $ts_meta_desc = rtrim(mb_substr($ts_meta_desc, 0, 160, 'UTF-8')) . '…';
+      }
+    }
+
+    // OGP 側も同じ description を使う。
+    if ('' !== $ts_meta_desc) {
+      $GLOBALS['ts_meta_description_override'] = $ts_meta_desc;
+    }
+  }
   ?>
 
   <?php if (!current_theme_supports('title-tag')) : ?>
@@ -90,37 +106,6 @@
 
   <?php if (!$ts_has_seo_plugin && !empty($ts_meta_desc)) : ?>
     <meta name="description" content="<?php echo esc_attr($ts_meta_desc); ?>">
-  <?php endif; ?>
-
-  <?php if (!$ts_has_seo_plugin && is_singular()) : ?>
-    <?php
-    $ts_social_title = wp_get_document_title();
-    $ts_social_url   = $ts_object_id ? get_permalink($ts_object_id) : '';
-    $ts_social_image = $ts_object_id && has_post_thumbnail($ts_object_id)
-      ? get_the_post_thumbnail_url($ts_object_id, 'full')
-      : '';
-    ?>
-    <meta property="og:locale" content="ja_JP">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="<?php echo esc_attr($ts_social_title); ?>">
-    <?php if (!empty($ts_meta_desc)) : ?>
-      <meta property="og:description" content="<?php echo esc_attr($ts_meta_desc); ?>">
-    <?php endif; ?>
-    <?php if (!empty($ts_social_url)) : ?>
-      <meta property="og:url" content="<?php echo esc_url($ts_social_url); ?>">
-    <?php endif; ?>
-    <meta property="og:site_name" content="<?php echo esc_attr(get_bloginfo('name')); ?>">
-    <?php if (!empty($ts_social_image)) : ?>
-      <meta property="og:image" content="<?php echo esc_url($ts_social_image); ?>">
-    <?php endif; ?>
-    <meta name="twitter:card" content="<?php echo $ts_social_image ? 'summary_large_image' : 'summary'; ?>">
-    <meta name="twitter:title" content="<?php echo esc_attr($ts_social_title); ?>">
-    <?php if (!empty($ts_meta_desc)) : ?>
-      <meta name="twitter:description" content="<?php echo esc_attr($ts_meta_desc); ?>">
-    <?php endif; ?>
-    <?php if (!empty($ts_social_image)) : ?>
-      <meta name="twitter:image" content="<?php echo esc_url($ts_social_image); ?>">
-    <?php endif; ?>
   <?php endif; ?>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -144,6 +129,78 @@
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+  <?php
+  $service_post = is_singular() ? get_post() : null;
+  $service_page_url = $service_post ? get_permalink($service_post) : '';
+  $service_nav_map = [
+    'camera' => [
+      ['anchor' => 'camera_reason', 'label' => '選ばれる4つの理由'],
+      ['anchor' => 'camera_assignment', 'label' => '3つの最適解'],
+      ['anchor' => 'camera_construction', 'label' => '施工実績'],
+      ['anchor' => 'camera_flow', 'label' => '導入・施工までの流れ'],
+      ['anchor' => 'camera_qa', 'label' => 'よくある質問'],
+      ['anchor' => 'camera_area', 'label' => '対応エリア'],
+    ],
+    'aircon' => [
+      ['anchor' => 'aircon_improvement', 'label' => 'エアコンの症状改善'],
+      ['anchor' => 'aircon_reason', 'label' => '選ばれる4つの理由'],
+      ['anchor' => 'aircon_construction', 'label' => '施工実績'],
+      ['anchor' => 'aircon_flow', 'label' => '導入・施工までの流れ'],
+      ['anchor' => 'aircon_qa', 'label' => 'よくある質問'],
+      ['anchor' => 'aircon_area', 'label' => '対応エリア'],
+    ],
+    'airconchange' => [
+      ['anchor' => 'airconchange_improvement', 'label' => '機器選定から一括対応'],
+      ['anchor' => 'airconchange_reason', 'label' => '選ばれる6つの理由'],
+      ['anchor' => 'airconchange_construction', 'label' => '施工・導入実績'],
+      ['anchor' => 'airconchange_flow', 'label' => '導入・施工までの流れ'],
+      ['anchor' => 'airconchange_qa', 'label' => 'よくある質問'],
+      ['anchor' => 'airconchange_area', 'label' => '対応エリア'],
+    ],
+    'hukugouki' => [
+      ['anchor' => 'hukugouki_reason', 'label' => '選ばれる4つの理由'],
+      ['anchor' => 'hukugouki_assignment', 'label' => '3つの提案'],
+      ['anchor' => 'hukugouki_construction', 'label' => '導入事例'],
+      ['anchor' => 'hukugouki_flow', 'label' => '導入までの流れ'],
+      ['anchor' => 'hukugouki_qa', 'label' => 'よくある質問'],
+      ['anchor' => 'hukugouki_area', 'label' => '対応エリア'],
+    ],
+  ];
+  $service_nav_items = $service_post
+    ? ($service_nav_map[$service_post->post_name] ?? [])
+    : [];
+
+  $render_service_nav = static function ($items, $page_url) {
+    if (empty($items) || empty($page_url)) {
+      return;
+    }
+    ?>
+    <ul>
+      <?php foreach ($items as $item) : ?>
+        <li>
+          <a href="<?php echo esc_url($page_url . '#' . $item['anchor']); ?>">
+            <?php echo esc_html($item['label']); ?>
+          </a>
+        </li>
+      <?php endforeach; ?>
+    </ul>
+    <?php
+  };
+
+  $render_service_header_buttons = static function () {
+    ?>
+    <div class="header--btn">
+      <a href="tel:0529325450" class="header--tel">052-932-5450
+        <span>営業時間 9:00～18:00</span>
+      </a>
+      <a href="<?php echo esc_url(home_url('/contact_corporate/')); ?>" class="header--contact">
+        お問い合わせ
+      </a>
+    </div>
+    <?php
+  };
+  ?>
+
   <div class="wrap" id="main-content">
     <header class="header header_single_detail">
       <div class="header--inner">
@@ -160,130 +217,18 @@
               decoding="async">
           </a>
         </p>
-        <div class="header--btn">
-          <a href="tel:0529325450" class="header--tel">052-932-5450
-            <span>営業時間 9:00～18:00</span>
-          </a>
-          <a href="<?php echo esc_url(home_url('/contact_corporate/')); ?>" class="header--contact">
-            お問い合わせ
-          </a>
-        </div>
+        <?php $render_service_header_buttons(); ?>
       </div>
+
       <nav class="header_single_detail--menu">
-        <?php
-        $post = get_post();
-
-        if (!is_singular() || !$post) {
-          return;
-        }
-
-        if ($post->post_name === 'camera') :
-        ?>
-          <ul>
-            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_reason')); ?>">選ばれる4つの理由</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_assignment')); ?>">3つの最適解</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_construction')); ?>">施工実績</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_flow')); ?>">導入・施工までの流れ</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_qa')); ?>">よくある質問</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_area')); ?>">対応エリア</a></li>
-          </ul>
-        <?php
-        elseif ($post->post_name === 'aircon') :
-        ?>
-          <ul>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_improvement')); ?>">エアコンの症状改善</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_reason')); ?>">選ばれる4つの理由</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_construction')); ?>">施工実績</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_flow')); ?>">導入・施工までの流れ</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_qa')); ?>">よくある質問</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_area')); ?>">対応エリア</a></li>
-          </ul>
-        <?php
-        elseif ($post->post_name === 'airconchange') :
-        ?>
-          <ul>
-            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_improvement')); ?>">機器選定から一括対応</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_reason')); ?>">選ばれる6つの理由</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_construction')); ?>">施工・導入実績</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_flow')); ?>">導入・施工までの流れ</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_qa')); ?>">よくある質問</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_area')); ?>">対応エリア</a></li>
-          </ul>
-        <?php
-        elseif ($post->post_name === 'hukugouki') :
-        ?>
-          <ul>
-            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_reason')); ?>">選ばれる4つの理由</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_assignment')); ?>">3つの提案</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_construction')); ?>">導入事例</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_flow')); ?>">導入までの流れ</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_qa')); ?>">よくある質問</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_area')); ?>">対応エリア</a></li>
-          </ul>
-        <?php endif; ?>
+        <?php $render_service_nav($service_nav_items, $service_page_url); ?>
       </nav>
 
       <nav class="service_nav" id="service_nav">
-        <?php
-        $post = get_post();
-
-        if (!is_singular() || !$post) {
-          return;
-        }
-
-        if ($post->post_name === 'camera') :
-        ?>
-          <ul>
-            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_reason')); ?>">選ばれる4つの理由</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_assignment')); ?>">3つの最適解</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_construction')); ?>">施工実績</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_flow')); ?>">導入・施工までの流れ</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_qa')); ?>">よくある質問</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/camera/#camera_area')); ?>">対応エリア</a></li>
-          </ul>
-        <?php
-        elseif ($post->post_name === 'aircon') :
-        ?>
-          <ul>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_improvement')); ?>">エアコンの症状改善</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_reason')); ?>">選ばれる4つの理由</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_construction')); ?>">施工実績</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_flow')); ?>">導入・施工までの流れ</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_qa')); ?>">よくある質問</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/aircon/#aircon_area')); ?>">対応エリア</a></li>
-          </ul>
-        <?php
-        elseif ($post->post_name === 'hukugouki') :
-        ?>
-          <ul>
-            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_reason')); ?>">選ばれる4つの理由</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_assignment')); ?>">3つの提案</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_construction')); ?>">導入事例</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_flow')); ?>">導入までの流れ</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_qa')); ?>">よくある質問</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/hukugouki/#hukugouki_area')); ?>">対応エリア</a></li>
-          </ul>
-        <?php
-        elseif ($post->post_name === 'airconchange') :
-        ?>
-          <ul>
-            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_improvement')); ?>">機器選定から一括対応</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_reason')); ?>">選ばれる6つの理由</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_construction')); ?>">施工・導入実績</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_flow')); ?>">導入・施工までの流れ</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_qa')); ?>">よくある質問</a></li>
-            <li><a href="<?php echo esc_url(home_url('/service/airconchange/#airconchange_area')); ?>">対応エリア</a></li>
-          </ul>
-        <?php endif; ?>
-        <div class="header--btn">
-          <a href="tel:0529325450" class="header--tel">052-932-5450
-            <span>営業時間 9:00～18:00</span>
-          </a>
-          <a href="<?php echo esc_url(home_url('/contact_corporate/')); ?>" class="header--contact">
-            お問い合わせ
-          </a>
-        </div>
+        <?php $render_service_nav($service_nav_items, $service_page_url); ?>
+        <?php $render_service_header_buttons(); ?>
       </nav>
+
       <div id="service_nav_btn" class="service_nav_btn">
         <span class="service_nav--line service_nav--line1"></span>
         <span class="service_nav--line service_nav--line2"></span>
