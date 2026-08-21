@@ -20,51 +20,72 @@ $service_image_url   = $post_id && has_post_thumbnail($post_id)
   : '';
 $post_slug = $post_id ? get_post_field('post_name', $post_id) : 'service';
 
-$raw_excerpt = $post_id ? get_the_excerpt($post_id) : '';
-$raw_content = $post_id ? get_post_field('post_content', $post_id) : '';
-
-$default_description = sprintf(
-  '%sの設置・工事なら%s。愛知・岐阜・三重・静岡に対応し、現地調査・見積り無料。既存配線を活かした更新や無電源現場の遠隔監視にも対応します。',
-  $service_title ?: '複合機',
+$default_seo_title = sprintf(
+  '複合機のリース・購入・入れ替え | 愛知・岐阜・三重・静岡 | %s',
   $site_name
 );
 
-$description_source = $raw_excerpt;
-if ('' === trim((string) $description_source)) {
-  $description_source = wp_strip_all_tags(strip_shortcodes((string) $raw_content));
-}
-if ('' === trim((string) $description_source)) {
-  $description_source = $default_description;
-}
+$default_description = sprintf(
+  '愛知・岐阜・三重・静岡で法人向け複合機の新規導入・入れ替え・リース・購入なら%s。月間印刷枚数やA3利用、カウンター料金、保守内容を確認し、自社に合う機種と契約をご提案します。現地調査・見積もりは無料です。',
+  $site_name
+);
 
-$description_source = html_entity_decode((string) $description_source, ENT_QUOTES, get_bloginfo('charset') ?: 'UTF-8');
-$description_source = wp_strip_all_tags($description_source);
-$description_source = preg_replace('/\s+/u', ' ', $description_source);
-$description_source = trim((string) $description_source);
-
-if (function_exists('mb_strimwidth')) {
-  $service_description = mb_strimwidth($description_source, 0, 140, '...', 'UTF-8');
-} else {
-  $service_description = wp_trim_words($description_source, 60, '...');
+$seo_title = function_exists('ts_get_custom_seo_title') ? ts_get_custom_seo_title($post_id) : '';
+if ('' === $seo_title) {
+  $seo_title = $default_seo_title;
 }
 
+$service_description = function_exists('ts_get_custom_seo_description') ? ts_get_custom_seo_description($post_id) : '';
 if ('' === $service_description) {
   $service_description = $default_description;
 }
 
-//タイトルタグ生成
-$seo_title = sprintf(
-  '%sの設置・工事 | %s',
-  $service_title ?: '複合機',
-  $site_name
-);
+$GLOBALS['ts_meta_description_override'] = $service_description;
 
-$has_seo_plugin = (
-  defined('WPSEO_VERSION') ||
-  defined('RANK_MATH_VERSION') ||
-  defined('AIOSEO_VERSION') ||
-  defined('SEOPRESS_VERSION')
-);
+$service_schema_name = '法人向け複合機の導入・入れ替え・リース・購入';
+
+$faq_items = [
+  [
+    'question' => '複合機とコピー機の違いは何ですか？',
+    'answer'   => 'コピー機は主に紙の原稿を複写する機器ですが、複合機はコピーに加えて、プリント、スキャン、FAXなど複数の機能を1台で利用できるオフィス機器です。中小企業では、見積書・請求書・契約書・図面・社内資料などを扱う機会が多いため、コピーだけでなく印刷やスキャンまでまとめて使える複合機が選ばれるケースが多くあります。',
+  ],
+  [
+    'question' => '複合機とプリンターの違いは何ですか？',
+    'answer'   => 'プリンターは、パソコンやスマートフォンからデータを印刷することが主な役割です。一方、複合機は印刷だけでなく、コピー、スキャン、FAX、A3印刷、ネットワーク共有など、法人利用に必要な機能をまとめて使える点が特徴です。印刷枚数が多い会社や、複数人で共有して使う事務所では、家庭用・小型プリンターよりも複合機の方が業務に合う場合があります。',
+  ],
+  [
+    'question' => '複合機は購入とリースのどちらがよいですか？',
+    'answer'   => '購入は初期費用が必要ですが、機器を所有でき、長く使うほど総支払額を抑えやすい方法です。リースは初期費用を抑えて月額費用を平準化しやすい一方、原則として契約途中で解約できません。機種、本体構成、契約期間、カウンター料金、保守内容を含めた総コストで比較することが大切です。',
+  ],
+  [
+    'question' => '卓上複合機と床置き複合機の違いは何ですか？',
+    'answer'   => '卓上複合機は、設置スペースを抑えやすく、A4中心の業務や小規模オフィスに向いています。床置き複合機は、A3対応、大容量給紙、印刷速度、複数人での共有利用などに強く、事務所全体で使う場合に向いています。A3を使うか、月間印刷枚数がどの程度あるか、設置スペースに余裕があるかによって選び方が変わります。',
+  ],
+  [
+    'question' => '複合機の設置や初期設定も相談できますか？',
+    'answer'   => 'はい、複合機の搬入・設置・初期設定までご相談いただけます。設置場所の確認、ネットワーク接続、プリンター設定、スキャン設定など、業務で使い始めるために必要な内容を確認しながら進めます。対応内容は機種や契約条件によって異なるため、事前にお見積もり時にご案内します。',
+  ],
+  [
+    'question' => '保守や故障時の対応もありますか？',
+    'answer'   => '複合機は導入後の保守内容も重要です。トナー、部品交換、故障時の対応、メンテナンス範囲などは契約内容によって異なります。導入前に保守条件を確認することで、運用開始後のトラブルや想定外の費用を防ぎやすくなります。',
+  ],
+  [
+    'question' => 'まだ導入するか決まっていなくても相談できますか？',
+    'answer'   => 'はい、検討段階でもご相談いただけます。「複合機が必要か判断したい」「リース料金の目安を知りたい」「今の費用が高いのか確認したい」「A3対応機と卓上型で迷っている」といった段階でも問題ありません。現在の状況をお聞きしたうえで、無理のない導入方法をご案内します。',
+  ],
+];
+
+$has_seo_plugin = function_exists('ts_is_major_seo_plugin_active')
+  ? ts_is_major_seo_plugin_active()
+  : (
+    defined('WPSEO_VERSION') ||
+    defined('RANK_MATH_VERSION') ||
+    defined('AIOSEO_VERSION') ||
+    defined('SEOPRESS_VERSION') ||
+    defined('SLIM_SEO_VERSION') ||
+    class_exists('The_SEO_Framework\Load') ||
+    function_exists('rank_math')
+  );
 
 //タイトルタグの差し替え
 if (!$has_seo_plugin) {
@@ -75,13 +96,6 @@ if (!$has_seo_plugin) {
     return $document_title;
   }, 20);
 
-  add_action('wp_head', function () {
-    if (!is_singular('service')) {
-      return;
-    }
-    echo '<meta name="robots" content="max-image-preview:large">' . "
-";
-  }, 20);
 }
 
 get_header('service');
@@ -95,12 +109,13 @@ get_header('service');
     $webpage_id    = $service_url . '#webpage';
     $breadcrumb_id = $service_url . '#breadcrumb';
     $service_id    = $service_url . '#service';
+    $faq_id        = $service_url . '#faq';
 
     $service_schema = [
       '@type'       => 'Service',
       '@id'         => $service_id,
-      'name'        => $service_title,
-      'serviceType' => $service_title,
+      'name'        => $service_schema_name,
+      'serviceType' => $service_schema_name,
       'description' => $service_description,
       'url'         => $service_url,
       'provider'    => [
@@ -118,21 +133,44 @@ get_header('service');
       $service_schema['image'] = $service_image_url;
     }
 
-    $schema_graph = [$service_schema];
+    $faq_schema = [
+      '@type'      => 'FAQPage',
+      '@id'        => $faq_id,
+      'url'        => $service_url . '#hukugouki_qa',
+      'name'       => '複合機の導入・リース・購入に関するよくある質問',
+      'inLanguage' => 'ja-JP',
+      'mainEntity' => array_map(function ($faq_item) {
+        return [
+          '@type'          => 'Question',
+          'name'           => $faq_item['question'],
+          'acceptedAnswer' => [
+            '@type' => 'Answer',
+            'text'  => $faq_item['answer'],
+          ],
+        ];
+      }, $faq_items),
+    ];
+
+    $schema_graph = [$service_schema, $faq_schema];
 
     if (!$has_seo_plugin) {
-      $schema_graph = [
-        [
-          '@type' => 'Organization',
+      $provider_schema = function_exists('ts_get_local_business_schema')
+        ? ts_get_local_business_schema()
+        : [
+          '@type' => 'LocalBusiness',
           '@id'   => $organization_id,
           'name'  => $site_name,
           'url'   => home_url('/'),
-        ],
+        ];
+
+      $schema_graph = [
+        $provider_schema,
         [
           '@type'     => 'WebSite',
           '@id'       => $website_id,
           'url'       => home_url('/'),
           'name'      => $site_name,
+          'inLanguage' => 'ja-JP',
           'publisher' => [
             '@id' => $organization_id,
           ],
@@ -165,8 +203,9 @@ get_header('service');
           '@type'       => 'WebPage',
           '@id'         => $webpage_id,
           'url'         => $service_url,
-          'name'        => $service_title,
+          'name'        => $service_schema_name,
           'description' => $service_description,
+          'inLanguage'  => 'ja-JP',
           'isPartOf'    => [
             '@id' => $website_id,
           ],
@@ -176,8 +215,12 @@ get_header('service');
           'mainEntity'  => [
             '@id' => $service_id,
           ],
+          'hasPart'     => [
+            '@id' => $faq_id,
+          ],
         ],
         $service_schema,
+        $faq_schema,
       ];
 
       if ($service_image_url) {
@@ -261,7 +304,7 @@ get_header('service');
         <ol>
           <li>
             <h3>最適な複合機を提案</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_02.png'); ?>" alt="地域密着・迅速対応のイメージ" width="240" height="240" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_02.png'); ?>" alt="利用状況に合った複合機提案のイメージ" width="240" height="240" loading="lazy" decoding="async">
             <p>
               複合機は、会社の規模や印刷枚数、A3利用の有無、設置スペースによって最適な機種が変わります。<br>
               必要以上に高い機種をすすめるのではなく、現在の利用状況やご希望を確認したうえで、中小企業に合った複合機をご提案します。
@@ -269,7 +312,7 @@ get_header('service');
           </li>
           <li>
             <h3>リース・購入をまとめて相談</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_03.png'); ?>" alt="現場課題に合わせた提案のイメージ" width="240" height="240" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_03.png'); ?>" alt="複合機のリース・購入相談のイメージ" width="240" height="240" loading="lazy" decoding="async">
             <p>
               現在利用中の複合機のコスト見直しにも対応しています。<br>
               月額リース料、カウンター料金、保守内容、機種スペックなどを整理し、無駄なコストが発生していないか確認できます。
@@ -280,17 +323,14 @@ get_header('service');
             <h3>圧倒的なコスト最適化</h3>
             <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_04.png'); ?>" alt="コスト最適化のイメージ" width="240" height="240" loading="lazy" decoding="async">
             <p>
-              「入れ替えたいけど工事費が…」というご担当者様に
-              喜ばれているのが、既存の同軸ケーブルを流用できる
-              5MAHDカメラシステムです。<br>
-              アナログカメラ時代の配線をそのままに、高画質なシス
-              テムへ更新できます。<br>
-              現有資産を活かしたコスト最適化を実現します。
+              複合機の費用は、本体価格や月額リース料だけでなく、カウンター料金、保守料金、消耗品まで含めて判断する必要があります。<br>
+              現在の契約内容と月間印刷枚数、カラー比率などを整理し、必要な機能を確保しながら総コストを見直します。<br>
+              過剰なスペックや使っていないオプションを省き、無駄の少ない導入プランをご提案します。
             </p>
           </li>
           <li>
             <h3>愛知・岐阜・三重・静岡に対応</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_01.png'); ?>" alt="使いやすさを考えた提案のイメージ" width="240" height="240" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/reason_01.png'); ?>" alt="東海4県への複合機導入対応のイメージ" width="240" height="240" loading="lazy" decoding="async">
             <p>
               愛知県・岐阜県・三重県・静岡県の中小企業様向けに、複合機の新規導入・リース・購入・コスト見直しのご相談に対応しています。<br>
               事務所、店舗、工場、士業事務所など、利用環境に合わせて、導入前の機種選定から費用の確認までご相談いただけます。
@@ -313,7 +353,7 @@ get_header('service');
         <h3>
           SHARP BP-61C26
         </h3>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_01_huugouki.jpg'); ?>" alt="AIネットワークカメラの導入イメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_01_huugouki.jpg'); ?>" alt="SHARP BP-61C26 A3カラー複合機" width="600" height="327" loading="lazy" decoding="async">
         <div class="camera_assignment--inner">
           <h4>標準的なA3カラー複合機を導入したい企業へ</h4>
           <ul>
@@ -335,7 +375,7 @@ get_header('service');
         <h3>
           KYOCERA TASKalfa MZ2501ci
         </h3>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_02_huugouki.jpg'); ?>" alt="同軸ケーブル流用による5M AHDカメラ更新のイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_02_huugouki.jpg'); ?>" alt="KYOCERA TASKalfa MZ2501ci A3カラー複合機" width="600" height="327" loading="lazy" decoding="async">
         <div class="camera_assignment--inner">
           <h4>クラウド連携・文書管理・DXを進めたい企業へ</h4>
           <ul>
@@ -355,7 +395,7 @@ get_header('service');
         <h3>
           卓上複合機
         </h3>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_03_huugouki.jpg'); ?>" alt="MOBITY BOXによる遠隔監視のイメージ" width="600" height="327" loading="lazy" decoding="async">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/assignment_03_huugouki.jpg'); ?>" alt="省スペース型の卓上複合機" width="600" height="327" loading="lazy" decoding="async">
         <div class="camera_assignment--inner">
           <h4>A3を使わない・設置スペースを抑えたい企業へ</h4>
           <ul>
@@ -392,7 +432,7 @@ get_header('service');
 
   <section class="camera_construction sec" id="hukugouki_construction">
     <div class="container -md">
-      <h2>施工・導入実績</h2>
+      <h2>複合機の導入事例</h2>
       <p>
         複合機の新規導入・入れ替え・リース・コスト見直しのご相談に対応しています。<br>
         事務所の規模、印刷枚数、A3利用の有無、設置スペース、保守条件などを確認したうえで、<br class="is-hidden_sp">
@@ -413,7 +453,7 @@ get_header('service');
               図面や社内資料の出力、書類共有がスムーズになりました。
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_01_hukugouki.jpg'); ?>" alt="自動車部品工場での防犯カメラ導入事例" width="500" height="348" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_01_hukugouki.jpg'); ?>" alt="名古屋市の自動車部品工場に導入したA3カラー複合機" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
       <article>
@@ -431,7 +471,7 @@ get_header('service');
               ことができました。
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_02_hukugouki.jpg'); ?>" alt="小売店での高画質カメラ更新事例" width="500" height="348" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_02_hukugouki.jpg'); ?>" alt="岐阜市の税理士事務所で複合機コストを見直した事例" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
       <article>
@@ -449,7 +489,7 @@ get_header('service');
               対応しやすくなり、事務作業の効率化につながりました。
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_03_hukugouki.jpg'); ?>" alt="無電源現場での遠隔監視導入事例" width="500" height="348" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_03_hukugouki.jpg'); ?>" alt="四日市市の建設会社に導入した図面対応A3複合機" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
       <article>
@@ -467,7 +507,7 @@ get_header('service');
               行えるようになり、店舗兼事務所の限られたスペースでも使いやすい環境を整えることができました。
             </dd>
           </dl>
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_04_hukugouki.jpg'); ?>" alt="無電源現場での遠隔監視導入事例" width="500" height="348" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/construction_04_hukugouki.jpg'); ?>" alt="浜松市の店舗兼事務所に導入した省スペース型複合機" width="500" height="348" loading="lazy" decoding="async">
         </div>
       </article>
     </div>
@@ -475,7 +515,7 @@ get_header('service');
 
   <section class="camera_flow bg_gray sec" id="hukugouki_flow">
     <div class="container -md">
-      <h2>導入・施工までの流れ</h2>
+      <h2>お問い合わせから複合機導入までの流れ</h2>
       <p>
         複合機の新規導入・入れ替え・コスト見直しまで、専門知識がない方にもわかりやすくご案内します。<br>
         現在の利用状況やご希望を確認したうえで、<br class="is-hidden_sp">
@@ -546,49 +586,10 @@ get_header('service');
         ご不明な点は、お気軽にお問い合わせください。
       </p>
       <dl>
-        <dt>複合機とコピー機の違いは何ですか？</dt>
-        <dd>
-          コピー機は主に紙の原稿を複写する機器ですが、複合機はコピーに加えて、プリント、スキャン、FAXなど複数の機能を1台で利用できるオフィス機器です。<br>
-          中小企業では、見積書・請求書・契約書・図面・社内資料などを扱う機会が多いため、コピーだけでなく印刷やスキャンまでまとめて使える複合機が選ばれるケースが多くあります。
-        </dd>
-        <dt>複合機とプリンターの違いは何ですか？</dt>
-        <dd>
-          プリンターは、パソコンやスマートフォンからデータを印刷することが主な役割です。<br>
-          一方、複合機は印刷だけでなく、コピー、スキャン、FAX、A3印刷、ネットワーク共有など、
-          法人利用に必要な機能をまとめて使える点が特徴です。<br>
-          印刷枚数が多い会社や、複数人で共有して使う事務所では、家庭用・小型プリンターよりも
-          複合機の方が業務に合う場合があります。<br>
-        </dd>
-        <dt>複合機は購入とリースのどちらがよいですか？</dt>
-        <dd>
-          複合機のリース料金は、機種、本体構成、契約期間、オプション、保守内容などによって変わります。<br>
-          また、月額リース料とは別に、印刷枚数に応じたカウンター料金が発生する場合があります。<br>
-          そのため、単純に月額だけを見るのではなく、カウンター料金や保守条件も含めて確認することが大切です。
-        </dd>
-        <dt>卓上複合機と床置き複合機の違いは何ですか？</dt>
-        <dd>
-          卓上複合機は、設置スペースを抑えやすく、A4中心の業務や小規模オフィスに向いています。<br>
-          床置き複合機は、A3対応、大容量給紙、印刷速度、複数人での共有利用などに強く、事務所全体で使う場合に向いています。<br>
-          A3を使うか、月間印刷枚数がどの程度あるか、設置スペースに余裕があるかによって選び方が変わります。
-        </dd>
-        <dt>複合機の設置や初期設定も相談できますか？</dt>
-        <dd>
-          はい、複合機の搬入・設置・初期設定までご相談いただけます。<br>
-          設置場所の確認、ネットワーク接続、プリンター設定、スキャン設定など、業務で使い始めるために必要な内容を確認しながら進めます。<br>
-          対応内容は機種や契約条件によって異なるため、事前にお見積もり時にご案内します。
-        </dd>
-        <dt>保守や故障時の対応もありますか？</dt>
-        <dd>
-          複合機は導入後の保守内容も重要です。<br>
-          トナー、部品交換、故障時の対応、メンテナンス範囲などは、契約内容によって異なります。<br>
-          導入前に保守条件を確認することで、運用開始後のトラブルや想定外の費用を防ぎやすくなります。
-        </dd>
-        <dt>まだ導入するか決まっていなくても相談できますか？</dt>
-        <dd>
-          はい、検討段階でもご相談いただけます。<br>
-          「複合機が必要か判断したい」「リース料金の目安を知りたい」「今の費用が高いのか確認したい」「A3対応機と卓上型で迷っている」といった段階でも問題ありません。<br>
-          現在の状況をお聞きしたうえで、無理のない導入方法をご案内します。
-        </dd>
+        <?php foreach ($faq_items as $faq_item) : ?>
+          <dt><?php echo esc_html($faq_item['question']); ?></dt>
+          <dd><?php echo esc_html($faq_item['answer']); ?></dd>
+        <?php endforeach; ?>
       </dl>
     </div>
   </section>
@@ -600,8 +601,8 @@ get_header('service');
         へ迅速に対応します
       </h2>
       <p>
-        東海エリアに密着した防犯カメラ設置・販売の会社として、<br>
-        愛知県・岐阜県・三重県・静岡県での現地調査・施工・アフターサポートを行っています。
+        東海エリアに密着した法人向け複合機の導入・入れ替え支援会社として、<br>
+        愛知県・岐阜県・三重県・静岡県で機種選定、見積もり、設置・初期設定、導入後の保守相談まで対応しています。
       </p>
       <article>
         <span>愛知県</span>
