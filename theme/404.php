@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div class="eyecatch">
-  <h1>404 NOT FOUND</h1>
+  <h1>404</h1>
   <img src="<?php echo get_template_directory_uri(); ?>/img/page/eyecatch_404.jpg" alt="404 NOT FOUND" width="1920" height="600" loading="lazy" decoding="async">
 </div>
 <main class="notfound_page bg_gray">
