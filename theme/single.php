@@ -369,7 +369,7 @@ get_header();
           $related_information_args = [
             'post_type'              => 'information',
             'post_status'            => 'publish',
-            'posts_per_page'         => 3,
+            'posts_per_page'         => 6,
             'post__not_in'           => [get_the_ID()],
             'orderby'                => 'date',
             'order'                  => 'DESC',
