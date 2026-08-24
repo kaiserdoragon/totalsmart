@@ -366,39 +366,188 @@ get_header();
 
         <?php if ($is_information) : ?>
           <?php
-          $related_information_args = [
+          /**
+           * 関連記事を関連度スコアで選定する。
+           *
+           * 優先順位:
+           * 1. お役立ち情報一覧で利用している infomation_item の完全一致
+           * 2. information_cat の完全一致（既存運用との互換）
+           * 3. 同じ親カテゴリ配下
+           * 4. 同点なら新しい記事
+           */
+          $related_information_limit = 3;
+          $related_information_current_id = get_the_ID();
+          $related_information_taxonomies = ['infomation_item', 'information_cat'];
+          $related_information_current_terms = [];
+          $related_information_current_parents = [];
+
+          foreach ($related_information_taxonomies as $taxonomy) {
+            if (!taxonomy_exists($taxonomy)) {
+              continue;
+            }
+
+            $terms = wp_get_post_terms($related_information_current_id, $taxonomy);
+            if (is_wp_error($terms) || empty($terms)) {
+              continue;
+            }
+
+            $related_information_current_terms[$taxonomy] = [];
+            $related_information_current_parents[$taxonomy] = [];
+
+            foreach ($terms as $term) {
+              $term_id = (int) $term->term_id;
+              $related_information_current_terms[$taxonomy][$term_id] = true;
+
+              $ancestors = get_ancestors($term_id, $taxonomy, 'taxonomy');
+              foreach ($ancestors as $ancestor_id) {
+                $related_information_current_parents[$taxonomy][(int) $ancestor_id] = true;
+              }
+
+              if (!empty($term->parent)) {
+                $related_information_current_parents[$taxonomy][(int) $term->parent] = true;
+              }
+            }
+          }
+
+          // 候補は一度広めに取得し、PHP側で関連度を算出する。
+          // 全件取得を避けるため、最新60件を候補上限とする。
+          $related_information_candidate_query = new WP_Query([
             'post_type'              => 'information',
             'post_status'            => 'publish',
-            'posts_per_page'         => 3,
-            'post__not_in'           => [get_the_ID()],
+            'posts_per_page'         => 60,
+            'post__not_in'           => [$related_information_current_id],
             'orderby'                => 'date',
             'order'                  => 'DESC',
             'ignore_sticky_posts'    => true,
             'no_found_rows'          => true,
             'update_post_meta_cache' => false,
             'update_post_term_cache' => true,
-          ];
+            'fields'                 => 'ids',
+          ]);
 
-          $related_information_term_ids = wp_get_post_terms(get_the_ID(), 'information_cat', ['fields' => 'ids']);
-          $has_related_information_terms = (!is_wp_error($related_information_term_ids) && !empty($related_information_term_ids));
+          $related_information_scored = [];
 
-          if ($has_related_information_terms) {
-            $related_information_args['tax_query'] = [
-              [
-                'taxonomy' => 'information_cat',
-                'field'    => 'term_id',
-                'terms'    => array_map('absint', $related_information_term_ids),
-              ],
-            ];
+          foreach ($related_information_candidate_query->posts as $candidate_id) {
+            $score = 0;
+            $shared_exact_terms = 0;
+            $shared_parent_terms = 0;
+
+            foreach ($related_information_taxonomies as $taxonomy) {
+              if (empty($related_information_current_terms[$taxonomy]) || !taxonomy_exists($taxonomy)) {
+                continue;
+              }
+
+              $candidate_terms = wp_get_post_terms($candidate_id, $taxonomy);
+              if (is_wp_error($candidate_terms) || empty($candidate_terms)) {
+                continue;
+              }
+
+              $candidate_term_ids = [];
+              $candidate_parent_ids = [];
+
+              foreach ($candidate_terms as $candidate_term) {
+                $candidate_term_id = (int) $candidate_term->term_id;
+                $candidate_term_ids[$candidate_term_id] = true;
+
+                $candidate_ancestors = get_ancestors($candidate_term_id, $taxonomy, 'taxonomy');
+                foreach ($candidate_ancestors as $ancestor_id) {
+                  $candidate_parent_ids[(int) $ancestor_id] = true;
+                }
+
+                if (!empty($candidate_term->parent)) {
+                  $candidate_parent_ids[(int) $candidate_term->parent] = true;
+                }
+              }
+
+              $exact_matches = array_intersect_key(
+                $related_information_current_terms[$taxonomy],
+                $candidate_term_ids
+              );
+              $parent_matches = array_intersect_key(
+                $related_information_current_parents[$taxonomy] ?? [],
+                $candidate_parent_ids
+              );
+
+              $exact_count = count($exact_matches);
+              $parent_count = count($parent_matches);
+
+              $shared_exact_terms += $exact_count;
+              $shared_parent_terms += $parent_count;
+
+              // 一覧側で使われている infomation_item を主分類として重く評価。
+              if ('infomation_item' === $taxonomy) {
+                $score += $exact_count * 100;
+                $score += $parent_count * 25;
+              } else {
+                // information_cat は既存互換用の補助分類。
+                $score += $exact_count * 50;
+                $score += $parent_count * 10;
+              }
+            }
+
+            // 複数分類が一致する記事は、単一一致より明確に上位へ。
+            if ($shared_exact_terms >= 2) {
+              $score += ($shared_exact_terms - 1) * 30;
+            }
+
+            // 完全一致がなくても親カテゴリが共通なら関連候補として残す。
+            if ($score > 0) {
+              $related_information_scored[] = [
+                'id'    => (int) $candidate_id,
+                'score' => $score,
+                'date'  => (int) get_post_time('U', true, $candidate_id),
+              ];
+            }
           }
 
-          $related_information_query = new WP_Query($related_information_args);
+          usort($related_information_scored, function ($a, $b) {
+            if ($a['score'] === $b['score']) {
+              return $b['date'] <=> $a['date'];
+            }
+            return $b['score'] <=> $a['score'];
+          });
 
-          if (!$related_information_query->have_posts() && $has_related_information_terms) {
-            wp_reset_postdata();
-            unset($related_information_args['tax_query']);
-            $related_information_query = new WP_Query($related_information_args);
+          $related_information_ids = array_slice(
+            array_column($related_information_scored, 'id'),
+            0,
+            $related_information_limit
+          );
+
+          // 関連記事が3件に満たない場合のみ、新着記事で補完する。
+          if (count($related_information_ids) < $related_information_limit) {
+            $fallback_exclude_ids = array_merge(
+              [$related_information_current_id],
+              $related_information_ids
+            );
+
+            $fallback_ids = get_posts([
+              'post_type'              => 'information',
+              'post_status'            => 'publish',
+              'posts_per_page'         => $related_information_limit - count($related_information_ids),
+              'post__not_in'           => $fallback_exclude_ids,
+              'orderby'                => 'date',
+              'order'                  => 'DESC',
+              'ignore_sticky_posts'    => true,
+              'no_found_rows'          => true,
+              'update_post_meta_cache' => false,
+              'update_post_term_cache' => false,
+              'fields'                 => 'ids',
+            ]);
+
+            $related_information_ids = array_merge($related_information_ids, $fallback_ids);
           }
+
+          $related_information_query = new WP_Query([
+            'post_type'              => 'information',
+            'post_status'            => 'publish',
+            'posts_per_page'         => $related_information_limit,
+            'post__in'               => $related_information_ids ?: [0],
+            'orderby'                => 'post__in',
+            'ignore_sticky_posts'    => true,
+            'no_found_rows'          => true,
+            'update_post_meta_cache' => false,
+            'update_post_term_cache' => true,
+          ]);
           ?>
 
           <?php if ($related_information_query->have_posts()) : ?>
@@ -409,12 +558,16 @@ get_header();
                 <?php while ($related_information_query->have_posts()) : $related_information_query->the_post(); ?>
                   <?php
                   $related_terms = get_the_terms(get_the_ID(), 'information_cat');
+                  if ((!$related_terms || is_wp_error($related_terms)) && taxonomy_exists('infomation_item')) {
+                    $related_terms = get_the_terms(get_the_ID(), 'infomation_item');
+                  }
                   $related_top_term_name = '';
 
                   if ($related_terms && !is_wp_error($related_terms)) {
                     $related_top_term = $related_terms[0];
+                    $related_taxonomy = $related_top_term->taxonomy;
                     while (!empty($related_top_term->parent)) {
-                      $related_top_term = get_term($related_top_term->parent, 'information_cat');
+                      $related_top_term = get_term($related_top_term->parent, $related_taxonomy);
                     }
                     if ($related_top_term && !is_wp_error($related_top_term)) {
                       $related_top_term_name = $related_top_term->name;
@@ -422,42 +575,40 @@ get_header();
                   }
                   ?>
                   <li>
-                    <article>
-                      <a href="<?php echo esc_url(get_permalink()); ?>">
-                        <div class="related_information--image">
-                          <?php if (has_post_thumbnail()) : ?>
-                            <?php
-                            echo get_the_post_thumbnail(
-                              get_the_ID(),
-                              'info-thumb',
-                              [
-                                'alt'      => wp_strip_all_tags(get_the_title()),
-                                'loading'  => 'lazy',
-                                'decoding' => 'async',
-                              ]
-                            );
-                            ?>
-                          <?php else : ?>
-                            <img
-                              src="<?php echo esc_url(get_theme_file_uri('/img/top/information.jpg')); ?>"
-                              alt=""
-                              width="345"
-                              height="220"
-                              loading="lazy"
-                              decoding="async">
-                          <?php endif; ?>
-                        </div>
+                    <a href="<?php the_permalink(); ?>">
+                      <div class="related_information--thumb">
+                        <?php if (has_post_thumbnail()) : ?>
+                          <?php
+                          the_post_thumbnail('info-thumb', [
+                            'alt'      => the_title_attribute(['echo' => false]),
+                            'loading'  => 'lazy',
+                            'decoding' => 'async',
+                          ]);
+                          ?>
+                        <?php else : ?>
+                          <img
+                            src="<?php echo esc_url(get_theme_file_uri('/img/top/information.jpg')); ?>"
+                            alt=""
+                            width="345"
+                            height="220"
+                            loading="lazy"
+                            decoding="async">
+                        <?php endif; ?>
+                      </div>
 
-                        <div class="information--meta">
-                          <?php if ('' !== $related_top_term_name) : ?>
-                            <span class="information--cat"><?php echo esc_html($related_top_term_name); ?></span>
-                          <?php endif; ?>
-                          <time datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
-                        </div>
+                      <div class="related_information--meta">
+                        <?php if ('' !== $related_top_term_name) : ?>
+                          <span class="related_information--cat">
+                            <?php echo esc_html($related_top_term_name); ?>
+                          </span>
+                        <?php endif; ?>
+                        <time datetime="<?php echo esc_attr(get_the_date('c')); ?>">
+                          <?php echo esc_html(get_the_date('Y.m.d')); ?>
+                        </time>
+                      </div>
 
-                        <h3><?php echo esc_html(get_the_title()); ?></h3>
-                      </a>
-                    </article>
+                      <h3><?php echo esc_html(get_the_title()); ?></h3>
+                    </a>
                   </li>
                 <?php endwhile; ?>
               </ul>
@@ -466,8 +617,6 @@ get_header();
 
           <?php wp_reset_postdata(); ?>
         <?php endif; ?>
-
-
 
       <?php endwhile; ?>
     <?php endif; ?>
