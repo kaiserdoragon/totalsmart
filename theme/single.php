@@ -375,7 +375,7 @@ get_header();
            * 3. 同じ親カテゴリ配下
            * 4. 同点なら新しい記事
            */
-          $related_information_limit = 3;
+          $related_information_limit = 6;
           $related_information_current_id = get_the_ID();
           $related_information_taxonomies = ['infomation_item', 'information_cat'];
           $related_information_current_terms = [];
@@ -552,7 +552,7 @@ get_header();
 
           <?php if ($related_information_query->have_posts()) : ?>
             <section class="related_information" aria-labelledby="related-information-title">
-              <h2 id="related-information-title" class="related_information--ttl">関連記事</h2>
+              <h2 class="related_information--ttl">関連記事</h2>
 
               <ul class="related_information--list">
                 <?php while ($related_information_query->have_posts()) : $related_information_query->the_post(); ?>
@@ -576,7 +576,7 @@ get_header();
                   ?>
                   <li>
                     <a href="<?php the_permalink(); ?>">
-                      <div class="related_information--thumb">
+                      <div class="information--thumb">
                         <?php if (has_post_thumbnail()) : ?>
                           <?php
                           the_post_thumbnail('info-thumb', [
@@ -596,9 +596,9 @@ get_header();
                         <?php endif; ?>
                       </div>
 
-                      <div class="related_information--meta">
+                      <div class="information--meta">
                         <?php if ('' !== $related_top_term_name) : ?>
-                          <span class="related_information--cat">
+                          <span class="information--cat">
                             <?php echo esc_html($related_top_term_name); ?>
                           </span>
                         <?php endif; ?>
