@@ -935,7 +935,7 @@ add_action('wp_head', static function () use ($ld_json) {
 
         <article class="area--list">
           <span>愛知県</span>
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_01.jpg" alt="" width="500" height="375" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_01.jpg" alt="" width="476" height="380" loading="lazy" decoding="async">
           <p>
             名古屋市を中心とした店舗・オフィス・商業施設をはじめ、<br class="is-hidden_sp">
             三河エリアの工場・倉庫・物流施設など、<br class="is-hidden_sp">
@@ -951,7 +951,7 @@ add_action('wp_head', static function () use ($ld_json) {
         </article>
         <article class="area--list">
           <span>岐阜県</span>
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_02.jpg" alt="" width="500" height="375" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_02.jpg" alt="" width="476" height="380" loading="lazy" decoding="async">
           <p>
             岐阜市・大垣市・各務原市周辺の店舗・事務所・工場・物流施設をはじめ、<br class="is-hidden_sp">
             地場産業の作業場、医療施設、福祉施設、宿泊施設などの<br class="is-hidden_sp">
@@ -966,7 +966,7 @@ add_action('wp_head', static function () use ($ld_json) {
         </article>
         <article class="area--list">
           <span>三重県</span>
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_03.jpg" alt="" width="500" height="375" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_03.jpg" alt="" width="476" height="380" loading="lazy" decoding="async">
           <p>
             四日市市・鈴鹿市・いなべ市周辺の工場・倉庫・事業所をはじめ、<br class="is-hidden_sp">
             津市・松阪市・桑名市・伊勢志摩エリアの店舗・飲食店・宿泊施設・医療施設など、<br class="is-hidden_sp">
@@ -982,7 +982,7 @@ add_action('wp_head', static function () use ($ld_json) {
         </article>
         <article class="area--list">
           <span>静岡県</span>
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_04.jpg" alt="" width="500" height="375" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/area_04.jpg" alt="" width="476" height="380" loading="lazy" decoding="async">
           <p>
             浜松市・静岡市・沼津市・富士市周辺をはじめ、<br class="is-hidden_sp">
             県内各地の店舗・オフィス・工場・倉庫・飲食店・医療施設・福祉施設などの<br class="is-hidden_sp">
