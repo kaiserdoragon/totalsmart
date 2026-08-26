@@ -237,7 +237,7 @@ $home_schema = [
       </p>
       <ul>
         <li>
-          <img src="<?php echo esc_url(get_theme_file_uri('/img/top/reason_02.png')); ?>" alt="" width="136" height="117" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_theme_file_uri('/img/top/reason_01.jpg')); ?>" alt="" width="300" height="300" loading="lazy" decoding="async">
           <h3>店舗・オフィスの<br class="is-hidden_sp">窓口を一本化</h3>
           <p>
             業務用エアコン、通信、防犯、IT、電気、OA機器など、<span>店舗・オフィスに関するさまざまなお困りごとをまとめてご相談いただけます。</span><br>
@@ -245,15 +245,15 @@ $home_schema = [
           </p>
         </li>
         <li>
-          <img src="<?php echo esc_url(get_theme_file_uri('/img/top/reason_03.png')); ?>" alt="" width="171" height="103" loading="lazy" decoding="async">
-          <h3>販売から施工・保守まで<br class="is-hidden_sp">一貫対応</h3>
+          <img src="<?php echo esc_url(get_theme_file_uri('/img/top/reason_02.jpg')); ?>" alt="" width="300" height="300" loading="lazy" decoding="async">
+          <h3>販売から施工・保守まで一貫対応</h3>
           <p>
             商品のご提案や販売だけでなく、設置工事、各種設定、導入後の保守・修理まで一貫してサポートします。<br>
             導入前から導入後まで継続して対応することで、<span>安心して設備やサービスをご利用いただける環境を提供します。</span>
           </p>
         </li>
         <li>
-          <img src="<?php echo esc_url(get_theme_file_uri('/img/top/reason_01.png')); ?>" alt="" width="129" height="129" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_theme_file_uri('/img/top/reason_03.jpg')); ?>" alt="" width="300" height="300" loading="lazy" decoding="async">
           <h3>複数の課題を<br class="is-hidden_sp">まとめて最適化</h3>
           <p>
             コスト削減、設備改善、通信環境、IT、防犯・セキュリティ、業務効率化など、お客様が抱える課題を総合的に確認します。<br>
