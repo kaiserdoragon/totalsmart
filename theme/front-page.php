@@ -186,34 +186,28 @@ $home_schema = [
       <ul>
         <li>
           <img src="<?php echo esc_url(get_theme_file_uri('/img/top/feature_catch_01.png')); ?>" alt="" width="400" height="210" loading="lazy" decoding="async">
-          <h3>コスト削減</h3>
+          <h3>コスト削減・固定費の見直し</h3>
           <p>
-            オフィスで必須なOA機器やインターネット回線
-            ビジネスフォンをトータルスマートに変えて
-            お得に経費削減。<br>
-            面倒な初期の手続き工事もお任せで安心。
+            電気代や通信費、設備費など、店舗・オフィスの運営にかかるコストを総合的に見直します。<br>
+            LED照明、新電力、電子ブレーカー、通信回線など、現在の利用状況を確認したうえで、無理のないコスト削減をご提案します。
           </p>
           <img src="<?php echo esc_url(get_theme_file_uri('/img/top/feature_icon_01.png')); ?>" alt="" width="246" height="87" loading="lazy" decoding="async">
         </li>
         <li>
           <img src="<?php echo esc_url(get_theme_file_uri('/img/top/feature_catch_02.png')); ?>" alt="" width="400" height="210" loading="lazy" decoding="async">
-          <h3>業務効率化</h3>
+          <h3>設備・セキュリティの改善</h3>
           <p>
-            リモートサポートはブロードバンド回線を
-            通じてお客様のパソコン画面を
-            技術スタッフのパソコンに表示し、
-            画面を確認しながらご対応します。
+            業務用エアコンやWi-Fi、防犯カメラ、UTM、OA機器など、店舗・オフィスに欠かせない設備をまとめてサポートします。<br>
+            導入から施工、設定、保守まで一括して対応し、安心して業務を続けられる環境づくりを支援します。
           </p>
           <img src="<?php echo esc_url(get_theme_file_uri('/img/top/feature_icon_02.png')); ?>" alt="" width="245" height="105" loading="lazy" decoding="async">
         </li>
         <li>
           <img src="<?php echo esc_url(get_theme_file_uri('/img/top/feature_catch_03.png')); ?>" alt="" width="400" height="210" loading="lazy" decoding="async">
-          <h3>売上・収益向上</h3>
+          <h3>業務効率化・集客支援</h3>
           <p>
-            ITを駆使して、企業の可能性を見極め、
-            最適な成長の道筋を設計します。<br>
-            データに基づいた継続的な進化を通じて、
-            企業の成長や売上増加を支援します。
+            POSレジや配膳ロボット、キャッシュレス決済、Googleビジネスプロフィール、Web制作などを活用し、日々の業務効率化や人手不足対策、集客力向上を支援します。<br>
+            店舗や企業ごとの課題に合わせて、必要なサービスを組み合わせてご提案します。
           </p>
           <img src="<?php echo esc_url(get_theme_file_uri('/img/top/feature_icon_03.png')); ?>" alt="" width="164" height="117" loading="lazy" decoding="async">
         </li>
@@ -232,49 +226,38 @@ $home_schema = [
   <section class="reason bg_orange">
     <div class="container">
       <h2 class="ttl">
-        トータルスマートが選ばれる理由
+        「どこに相談すればいい？」をまとめて解決します
         <span>REASON</span>
       </h2>
       <p class="reason--lead">
-        最新のテクノロジーと革新的なソリューションを融合し、<br class="is-hidden_sp">
-        企業の成長を力強く支援するパートナーです。<br>
-        市場の変化に柔軟に対応し、企業に最適なシステムとカスタマイズ可能なサービスを提供することで、<br class="is-hidden_sp">
-        業務の効率化と持続的な発展を実現します。<br>
-        豊富な導入実績と継続的な技術革新に裏打ちされた信頼性が私たちの大きな魅力です。<br>
-        未来を切り拓く確かな基盤として、あらゆる企業の成功をサポートします。<br>
+        店舗・オフィスでは、業務用エアコンや通信、防犯、IT、電気、OA機器など、さまざまな設備やサービスが必要になります。<br>
+        そのたびに別々の業者を探し、相談・手配するのは大きな負担です。<br>
+        トータルスマートなら、店舗・オフィスに関する幅広いお困りごとを、ひとつの窓口でまとめてご相談いただけます。<br>
+        お客様の状況や課題に合わせて必要なサービスをご提案し、導入から施工、設定、保守まで一貫してサポートします。<br>
       </p>
       <ul>
         <li>
           <img src="<?php echo esc_url(get_theme_file_uri('/img/top/reason_02.png')); ?>" alt="" width="136" height="117" loading="lazy" decoding="async">
-          <h3>一括契約の提供</h3>
+          <h3>店舗・オフィスの<br class="is-hidden_sp">窓口を一本化</h3>
           <p>
-            工事を行った後に発生する保守やメンテナ
-            ンスなどのサービスも含めて、<span>一つの契約で
-              提供しています。</span><br>
-            工事の費用と保守の費用を別々に考える必要
-            はありません。
+            業務用エアコン、通信、防犯、IT、電気、OA機器など、<span>店舗・オフィスに関するさまざまなお困りごとをまとめてご相談いただけます。</span><br>
+            複数の業者へ個別に問い合わせる手間を減らし、トータルスマートがひとつの窓口となってスムーズに対応します。
           </p>
         </li>
         <li>
           <img src="<?php echo esc_url(get_theme_file_uri('/img/top/reason_03.png')); ?>" alt="" width="171" height="103" loading="lazy" decoding="async">
-          <h3>総合的なサポート</h3>
+          <h3>販売から施工・保守まで<br class="is-hidden_sp">一貫対応</h3>
           <p>
-            工事だけでなく、その後の保守や修理、サポー
-            トも含めて一括で対応することで、<span>便利で経済
-              的な提案をいたします。</span><br>
-            別々の業者との契約や交渉をする手間を省くこ
-            とができます。
+            商品のご提案や販売だけでなく、設置工事、各種設定、導入後の保守・修理まで一貫してサポートします。<br>
+            導入前から導入後まで継続して対応することで、<span>安心して設備やサービスをご利用いただける環境を提供します。</span>
           </p>
         </li>
         <li>
           <img src="<?php echo esc_url(get_theme_file_uri('/img/top/reason_01.png')); ?>" alt="" width="129" height="129" loading="lazy" decoding="async">
-          <h3>透明性と予測可能性</h3>
+          <h3>複数の課題を<br class="is-hidden_sp">まとめて最適化</h3>
           <p>
-            一括契約の場合、費用が明確に提示されるた
-            め、将来の費用や予算をより<span>正確に見積もる
-              ことができます。</span><br>
-            リースと保守金額が一緒になることで、予測
-            可能性が高まります。
+            コスト削減、設備改善、通信環境、IT、防犯・セキュリティ、業務効率化など、お客様が抱える課題を総合的に確認します。<br>
+            幅広いサービスの中から必要なものを組み合わせ、<span>店舗・オフィス全体を見据えた最適なプランをご提案します。</span>
           </p>
         </li>
       </ul>
