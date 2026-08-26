@@ -172,33 +172,9 @@ $home_schema = [
     </div>
   </section>
 
-  <?php
-  $page_data     = get_page_by_path('attention', OBJECT, 'page');
-  $content_check = '';
 
-  if ($page_data instanceof WP_Post) {
-    $content_check = trim(preg_replace('/[\x{00a0}\s]+/u', '', wp_strip_all_tags((string) $page_data->post_content)));
-  }
 
-  if ($page_data instanceof WP_Post && '' !== $content_check) :
-  ?>
-    <section class="attention sec bg_orange">
-      <div class="container">
-        <h2 class="ttl">
-          注目情報
-          <span>PICKUP</span>
-        </h2>
-        <p class="ttl--lead">
-          トータルスマートから最新情報・注目情報をお伝えします。<br>
-          情報収集にご活用ください。
-        </p>
 
-        <div class="attention--inner">
-          <?php echo apply_filters('the_content', $page_data->post_content); ?>
-        </div>
-      </div>
-    </section>
-  <?php endif; ?>
 
   <section class="feature bg_white sec">
     <div class="container">
@@ -441,6 +417,46 @@ $home_schema = [
       <a class="btn_link" href="<?php echo esc_url(home_url('/service/')); ?>">サービス一覧を見る</a>
     </div>
   </section>
+
+
+  <?php
+  /**
+   * 注目情報
+   */
+  ?>
+  <?php
+  $attention_page = get_page_by_path('attention', OBJECT, 'page');
+
+  if (
+    $attention_page instanceof WP_Post
+    && 'publish' === $attention_page->post_status
+    && '' !== trim($attention_page->post_content)
+  ) :
+  ?>
+    <section class="attention sec bg_orange">
+      <div class="container">
+        <h2 class="ttl">
+          注目情報
+          <span>PICKUP</span>
+        </h2>
+
+        <p class="ttl--lead">
+          トータルスマートから最新情報・注目情報をお伝えします。<br>
+          情報収集にご活用ください。
+        </p>
+
+        <div class="attention--inner">
+          <?php
+          echo apply_filters(
+            'the_content',
+            $attention_page->post_content
+          );
+          ?>
+        </div>
+      </div>
+    </section>
+  <?php endif; ?>
+
 
   <?php
   /**
