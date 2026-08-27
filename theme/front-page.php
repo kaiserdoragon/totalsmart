@@ -97,17 +97,17 @@ $home_schema = [
 
   <section class="mv">
     <h1>
-      <span>賢く安く簡単に最適なコスト削減</span>
-      ワンストップで<br class="is-hidden_sp">全部解決！
+      <span>施工・保守まで、ひとつの窓口で。</span>
+      コスト削減・設備の<br class="is-hidden_sp">悩みを解決
     </h1>
 
     <div class="mv_scroll" aria-hidden="true">
       <div class="mv_scroll--inner">
         <div class="mv_scroll--left">
-          <p><?php echo esc_html(str_repeat('Total Smartは経費削減を専門とする会社です。 ', 20)); ?></p>
+          <p><?php echo esc_html(str_repeat('Total Smartはコスト削減を専門とする会社です。 ', 20)); ?></p>
         </div>
         <div class="mv_scroll--right">
-          <p><?php echo esc_html(str_repeat('Total Smartは経費削減を専門とする会社です。 ', 20)); ?></p>
+          <p><?php echo esc_html(str_repeat('Total Smartはコスト削減を専門とする会社です。 ', 20)); ?></p>
         </div>
       </div>
     </div>
