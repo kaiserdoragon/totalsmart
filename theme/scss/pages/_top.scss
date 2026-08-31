@@ -251,6 +251,13 @@
     }
   }
 
+  p {
+    margin-bottom: 40px;
+    font-size: var(--fz20);
+    font-weight: 700;
+    text-align: center;
+  }
+
   ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

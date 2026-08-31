@@ -133,6 +133,12 @@ $home_schema = [
   <section class="lead_worry bg_white sec">
     <div class="container -md">
       <h2>店舗・オフィス運営の<span class="lead_txt">お悩み</span>を解決します！</h2>
+      <p>
+        「コストを下げたい」「設備を見直したい」<br class="is-hidden_sp">
+        「セキュリティを強化したい」「業務を効率化したい」<br>
+        店舗・オフィスのさまざまなお悩みに、<br class="is-hidden_sp">
+        トータルスマートが最適な解決策をご提案します。
+      </p>
       <ul role="list">
         <li>業務が忙しすぎる…<br>もっと<span class="lead_txt">効率化</span>をしたい！！</li>
         <li>無駄な<br><span class="lead_txt">コスト・費用</span>を削りたい</li>
@@ -182,7 +188,11 @@ $home_schema = [
         トータルスマートの主なサービス
         <span>FEATURE</span>
       </h2>
-      <p class="ttl--lead">コストを抑えて成果を伸ばす、最適な業務改善をご提案します！！</p>
+      <p class="ttl--lead">
+        コスト削減・固定費の見直しから、設備・セキュリティ環境の改善、業務効率化・集客支援まで。<br>
+        店舗・オフィスが抱えるさまざまな課題に合わせて、幅広いサービスの中から必要な解決策をご提案します。<br>
+        日々の運営をより快適に、効率的にする環境づくりをトータルでサポートします。
+      </p>
       <ul>
         <li>
           <img src="<?php echo esc_url(get_theme_file_uri('/img/top/feature_catch_01.png')); ?>" alt="" width="400" height="210" loading="lazy" decoding="async">
@@ -212,13 +222,15 @@ $home_schema = [
           <img src="<?php echo esc_url(get_theme_file_uri('/img/top/feature_icon_03.png')); ?>" alt="" width="164" height="117" loading="lazy" decoding="async">
         </li>
       </ul>
-      <div class="feature--inner">
+
+      <!-- <div class="feature--inner">
         <p>OA機器や配線など、オフィスに関わること全て</p>
         <strong class="underline">トータルで依頼可能！</strong><br>
         <strong class="underline">一本の電話ですべて解決する</strong>
         <p>お客様にとってストレスのない業務形態です。</p>
       </div>
-      <img src="<?php echo esc_url(get_theme_file_uri('/img/top/feature_anima.jpg')); ?>" alt="" width="800" height="1200" loading="lazy" decoding="async">
+      <img src="<?php echo esc_url(get_theme_file_uri('/img/top/feature_anima.jpg')); ?>" alt="" width="800" height="1200" loading="lazy" decoding="async"> -->
+
       <a class="btn_link" href="<?php echo esc_url(home_url('/company/')); ?>" rel="noopener">トータルスマートについて詳しく知る</a>
     </div>
   </section>
