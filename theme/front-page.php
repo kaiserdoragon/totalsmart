@@ -168,7 +168,7 @@ $home_schema = [
         </p>
         <div class="lead_solution--txt">
           <span>複数の業者に電話して、<br class="is-hidden_pc">たらい回しにあう…</span>
-          <p class="underline">もうそんな必要はありません！</p>
+          <p class="underline">そんな必要はありません！</p>
         </div>
         <p>一本化により、沢山の業者に連絡する手間を省き</p>
         <strong>一本の電話で全て<span>解決！</span></strong>
