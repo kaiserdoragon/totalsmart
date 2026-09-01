@@ -442,7 +442,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
 
             <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt.avif" type="image/avif">
             <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt.webp" type="image/webp">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt.png" alt="愛知県・岐阜県・三重県・静岡県なら最短当日・即日での訪問も可能です。" width="621" height="114" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt.png" alt="愛知県・岐阜県・三重県・静岡県なら最短当日・即日での訪問も可能です。" width="808" height="131" loading="lazy" decoding="async">
           </picture>
         </h2>
         <div class="lead--inner">
@@ -463,7 +463,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
                   <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.webp" type="image/webp">
                   <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.png"
                     alt="お電話でのご相談はこちら: <?php echo esc_attr($tracking_tel_local); ?>"
-                    width="270" height="70"
+                    width="350" height="90"
                     decoding="async">
                 </picture>
               </a>
@@ -476,7 +476,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
                   <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.webp" type="image/webp">
                   <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.png"
                     alt="メールでお問い合わせ"
-                    width="270" height="70"
+                    width="350" height="90"
                     decoding="async">
                 </picture>
               </a>
@@ -489,13 +489,17 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
                   <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.webp" type="image/webp">
                   <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.png"
                     alt="LINEでお問い合わせ"
-                    width="270" height="70"
+                    width="350" height="90"
                     decoding="async">
                 </picture>
               </a>
             </div>
           </div>
 
+        </div>
+        <div class="lead--supplement">
+          <p>事前に概算のお見積りをご案内いたします。<br>不当な追加料金や高額請求は一切ございませんので、安心してお問い合わせください。</p>
+          <p>※設置状況（機種・汚れ具合・作業環境）により、<br>当日ご案内する金額が事前の概算見積りから変動する場合がございます。</p>
         </div>
       </div>
     </section>
