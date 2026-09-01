@@ -392,14 +392,13 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
     <section class="catch sec -sm">
       <div class="catch--inner">
         <img class="catch--ttl" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_ttl.png" alt="" width="872" height="192" loading="lazy" decoding="async">
-
         <div class="catch--contents">
           <div class="catch--item">
             <span>簡単クリーニング</span>
             <picture>
               <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_01.avif" type="image/avif">
               <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_01.webp" type="image/webp">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_01.jpg" alt="簡単クリーニング" width="430" height="271" fetchpriority="high" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_01.jpg" alt="簡単クリーニング" width="450" height="300" fetchpriority="high" decoding="async">
             </picture>
             <div class="catch--price">
               <p>5<span class="catch--period">,</span>000</p><span class="catch--unit"><span class="catch--jpy">円～</span><span class="catch--tax">（税抜）</span></span>
@@ -411,7 +410,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             <picture>
               <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_02.avif" type="image/avif">
               <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_02.webp" type="image/webp">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_02.jpg" alt="業務用エアコン" width="430" height="271" loading="lazy" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_02.jpg" alt="しっかりクリーニング" width="450" height="300" fetchpriority="high" loading="lazy" decoding="async">
             </picture>
             <div class="catch--price -pink">
               <p>18<span class="catch--period">,</span>000</p><span class="catch--unit"><span class="catch--jpy">円～</span><span class="catch--tax">（税抜）</span></span>
@@ -433,8 +432,8 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       </div>
     </section>
 
-    <section class="lead sec -sm bg_blue">
-      <div class="contents -md">
+    <section class="lead sec -sm">
+      <div class="contents">
         <h2>
           <picture>
             <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt_sp.avif" type="image/avif">
@@ -447,51 +446,57 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           </picture>
         </h2>
         <div class="lead--inner">
-          <h3>エアコンクリーニングのご予約・ご相談はこちら</h3>
-          <div class="lead--txt">
-            <p>
-              <span>汚れ・カビ・ニオイ・効きの悪さ</span>が気になったら、<br class="is-hidden_sp">
-              まずはお気軽にご相談ください。
-            </p>
-            <div class="header--btns">
-              <div class="header--btn-item">
-                <a href="tel:<?php echo esc_attr($tracking_tel_href); ?>" class="cv_button gtm-click-tel">
-                  <picture>
-                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.avif" type="image/avif">
-                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.webp" type="image/webp">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.png" alt="お電話でのご相談はこちら: <?php echo esc_attr($tracking_tel_local); ?>" width="270" height="70" decoding="async">
-                  </picture>
-                </a>
-              </div>
-              <div class="header--btn-item">
-                <a href="#contact" class="cv_button gtm-click-mail">
-                  <picture>
-                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.avif" type="image/avif">
-                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.webp" type="image/webp">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.png" alt="メールでお問い合わせ" width="270" height="70" decoding="async">
-                  </picture>
-                </a>
-              </div>
-              <div class="header--btn-item">
-                <a href="https://lin.ee/fXrKQyq" class="cv_button gtm-click-line">
-                  <picture>
-                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.avif" type="image/avif">
-                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.webp" type="image/webp">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.png" alt="LINEでお問い合わせ" width="270" height="70" decoding="async">
-                  </picture>
-                </a>
-              </div>
+          <p class="lead--ttl">エアコンクリーニングの<span>ご予約・ご相談</span>はこちらから</p>
+          <div class="lead--contents">
+            <div class="lead--txt">
+              <b> <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt_02.png" alt="汚れ・カビ・ニオイ効きの悪さ" width="621" height="114" loading="lazy" decoding="async"></b>
+              <p>が気になったら<br>まずは<span>お気軽にご相談ください</span></p>
+            </div>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_catch.png" alt="" width="438" height="376" loading="lazy" decoding="async">
+          </div>
+
+          <div class="header--btns">
+            <div class="header--btn-item">
+              <a href="tel:<?php echo esc_attr($tracking_tel_href); ?>" class="cv_button gtm-click-tel">
+                <picture>
+                  <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.avif" type="image/avif">
+                  <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.webp" type="image/webp">
+                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.png"
+                    alt="お電話でのご相談はこちら: <?php echo esc_attr($tracking_tel_local); ?>"
+                    width="270" height="70"
+                    decoding="async">
+                </picture>
+              </a>
+            </div>
+
+            <div class="header--btn-item">
+              <a href="#contact" class="cv_button gtm-click-mail">
+                <picture>
+                  <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.avif" type="image/avif">
+                  <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.webp" type="image/webp">
+                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.png"
+                    alt="メールでお問い合わせ"
+                    width="270" height="70"
+                    decoding="async">
+                </picture>
+              </a>
+            </div>
+
+            <div class="header--btn-item">
+              <a href="https://lin.ee/fXrKQyq" class="cv_button gtm-click-line">
+                <picture>
+                  <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.avif" type="image/avif">
+                  <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.webp" type="image/webp">
+                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.png"
+                    alt="LINEでお問い合わせ"
+                    width="270" height="70"
+                    decoding="async">
+                </picture>
+              </a>
             </div>
           </div>
+
         </div>
-        <p class="lead--supplement">
-          まずはお電話にて事前に概算のお見積りをご案内いたします。<br>
-          不当な追加料金や高額請求は一切ございませんので、安心してお問い合わせください。
-        </p>
-        <p class="lead--supplement -sm">
-          ※設置状況（機種・汚れ具合・作業環境）により、<br class="is-hidden_sp">
-          当日ご案内する金額が事前の概算見積りから変動する場合がございます。
-        </p>
       </div>
     </section>
 
