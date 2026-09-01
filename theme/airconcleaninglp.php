@@ -390,45 +390,46 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
     </div>
 
     <section class="catch sec -sm">
-      <div class="contents">
-        <h2>業界最安値に<br class="is-hidden_pc">挑戦</h2>
-        <div class="catch--inner">
+      <div class="catch--inner">
+        <img class="catch--ttl" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_ttl.png" alt="" width="872" height="192" loading="lazy" decoding="async">
+
+        <div class="catch--contents">
           <div class="catch--item">
             <span>簡単クリーニング</span>
             <picture>
-              <source
-                srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_01.avif"
-                type="image/avif">
-              <source
-                srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_01.webp"
-                type="image/webp">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_01.avif" type="image/avif">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_01.webp" type="image/webp">
               <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_01.jpg" alt="簡単クリーニング" width="430" height="271" fetchpriority="high" decoding="async">
             </picture>
-            <p>フィルター清掃・風速測定・温度測定</p>
             <div class="catch--price">
               <p>5<span class="catch--period">,</span>000</p><span class="catch--unit"><span class="catch--jpy">円～</span><span class="catch--tax">（税抜）</span></span>
             </div>
+            <small>※フィルター清掃・風速測定・温度測定を実施</small>
           </div>
           <div class="catch--item">
             <span>しっかりクリーニング</span>
             <picture>
-              <source
-                srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_02.avif"
-                type="image/avif">
-              <source
-                srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_02.webp"
-                type="image/webp">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_02.avif" type="image/avif">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_02.webp" type="image/webp">
               <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_02.jpg" alt="業務用エアコン" width="430" height="271" loading="lazy" decoding="async">
             </picture>
-            <div class="catch--price">
+            <div class="catch--price -pink">
               <p>18<span class="catch--period">,</span>000</p><span class="catch--unit"><span class="catch--jpy">円～</span><span class="catch--tax">（税抜）</span></span>
             </div>
-            <small>※お掃除機能付きの場合は＋6,000円<br>※分解洗浄</small>
+            <small>※お掃除機能付きの場合は＋6,000円<br>※分解洗浄を実施します</small>
           </div>
         </div>
-        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_03.jpg" alt="" width="283" height="178" decoding="async">
-        <p class="catch--txt">エアコンのクリーニング・掃除は<br class="is-hidden_pc">全てお任せ下さい。</p>
-        <p>専門の技術スタッフが、エアコンの悩みを解消します！</p>
+        <img class="catch--ttl u-mb60" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_03.jpg" alt="" width="381" height="254" loading="lazy" decoding="async">
+        <img class="catch--ttl u-mb30" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_ttl_sub.png" alt="" width="798" height="191" loading="lazy" decoding="async">
+        <img class="catch--ttl u-mb40" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_txt.png" alt="" width="1164" height="277" loading="lazy" decoding="async">
+        <div class="catch--img">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_img_01.jpg" alt="" width="320" height="230" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_img_02.jpg" alt="" width="320" height="230" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_img_03.jpg" alt="" width="320" height="230" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_img_04.jpg" alt="" width="320" height="230" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_img_05.jpg" alt="" width="320" height="230" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_img_06.jpg" alt="" width="320" height="230" loading="lazy" decoding="async">
+        </div>
       </div>
     </section>
 
