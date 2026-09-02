@@ -558,6 +558,11 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             <p><span>1台</span>あたり</p>
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_ttl.png" alt="" width="710" height="235" loading="lazy" decoding="async">
           </div>
+          <b class="cvarea--strong">
+            エアコンのクリーニングなら<br>
+            トータルスマートにお任せください
+          </b>
+          <span class="cvarea--contact">お問い合わせはこちらから</span>
           <div class="header--btns">
             <div class="header--btn-item">
               <a href="tel:<?php echo esc_attr($tracking_tel_href); ?>" class="cv_button gtm-click-tel">

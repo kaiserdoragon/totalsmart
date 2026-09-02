@@ -451,6 +451,56 @@
       font-size: var(--fz45);
     }
   }
+
+  // .cvarea--strong
+  &--strong {
+    position: relative;
+    display: block;
+    width: fit-content;
+    padding: 0 155px;
+    margin: 0 auto 60px;
+    font-size: var(--fz45);
+    font-weight: 900;
+    color: #00479d;
+    text-align: center;
+
+    &::before,
+    &::after {
+      position: absolute;
+      display: inline-block;
+      content: "";
+    }
+
+    &::before {
+      top: 50%;
+      left: 0;
+      width: 144px;
+      height: 98px;
+      background: url(../img/cvarea_icon_left.png) no-repeat center center / contain;
+      transform: translateY(-50%);
+    }
+
+    &::after {
+      top: 50%;
+      right: 0;
+      width: 123px;
+      height: 115px;
+      background: url(../img/cvarea_icon_right.png) no-repeat center center / contain;
+      transform: translateY(-50%);
+    }
+  }
+
+  // .cvarea--contact
+  &--contact {
+    display: block;
+    margin-bottom: 30px;
+    font-size: var(--fz45);
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    paint-order: stroke;
+    -webkit-text-stroke: 10px #00479d;
+  }
 }
 
 .price {
