@@ -504,7 +504,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       </div>
     </section>
 
-    <section class="sign bg_skyblue" id="symptoms">
+    <section class="sign" id="symptoms">
       <div class="contents">
         <span class="sign--catch">こんなサインが出てきたら</span>
         <h2><span>エアコンクリーニング</span><br class="is-hidden_pc">のタイミングです</h2>
@@ -519,50 +519,85 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       </div>
     </section>
 
-    <section class="cvarea bg_blue">
+    <section class="cvarea bg_skyblue">
       <div class="contents">
         <picture>
-          <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_sp.png">
-          <img class="cvarea--bg" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea.png" alt="エアコンクリーニングならトータルスマートにお任せください" width="1366" height="618" loading="lazy" decoding="async">
+          <source
+            media="(max-width: 767px)"
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv_sp.avif"
+            type="image/avif">
+          <source
+            media="(max-width: 767px)"
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv_sp.webp"
+            type="image/webp">
+          <source
+            media="(max-width: 767px)"
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv_sp.jpg">
+
+          <source
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_catch.avif"
+            type="image/avif">
+          <source
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_catch.webp"
+            type="image/webp">
+          <img
+            class="cvarea--catch"
+            src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_catch.png"
+            alt=""
+            width="1210" height="792"
+            fetchpriority="high"
+            decoding="async">
         </picture>
-        <div class="header--btns">
-          <div class="header--btn-item">
-            <a href="tel:<?php echo esc_attr($tracking_tel_href); ?>" class="cv_button gtm-click-tel">
-              <picture>
-                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.avif" type="image/avif">
-                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.webp" type="image/webp">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.png"
-                  alt="お電話でのご相談はこちら: <?php echo esc_attr($tracking_tel_local); ?>"
-                  width="270" height="70"
-                  decoding="async">
-              </picture>
-            </a>
+        <div class="cvarea--inner">
+          <p class="cvarea--txt">
+            出張料金・お見積り・追加料金
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_num.png" alt="" width="86" height="121" loading="lazy" decoding="async">
+            <span>円</span>
+          </p>
+          <div class="cvarea--ttl">
+            <p><span>1台</span>あたり</p>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_ttl.png" alt="" width="710" height="235" loading="lazy" decoding="async">
           </div>
-          <div class="header--btn-item">
-            <a href="#contact" class="cv_button gtm-click-mail">
-              <picture>
-                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.avif" type="image/avif">
-                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.webp" type="image/webp">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.png"
-                  alt="メールでお問い合わせ"
-                  width="270" height="70"
-                  decoding="async">
-              </picture>
-            </a>
-          </div>
-          <div class="header--btn-item">
-            <a href="https://lin.ee/fXrKQyq" class="cv_button gtm-click-line">
-              <picture>
-                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.avif" type="image/avif">
-                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.webp" type="image/webp">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.png"
-                  alt="LINEでお問い合わせ"
-                  width="270" height="70"
-                  decoding="async">
-              </picture>
-            </a>
+          <div class="header--btns">
+            <div class="header--btn-item">
+              <a href="tel:<?php echo esc_attr($tracking_tel_href); ?>" class="cv_button gtm-click-tel">
+                <picture>
+                  <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.avif" type="image/avif">
+                  <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.webp" type="image/webp">
+                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/tel.png"
+                    alt="お電話でのご相談はこちら: <?php echo esc_attr($tracking_tel_local); ?>"
+                    width="350" height="90"
+                    decoding="async">
+                </picture>
+              </a>
+            </div>
+            <div class="header--btn-item">
+              <a href="#contact" class="cv_button gtm-click-mail">
+                <picture>
+                  <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.avif" type="image/avif">
+                  <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.webp" type="image/webp">
+                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mail.png"
+                    alt="メールでお問い合わせ"
+                    width="350" height="90"
+                    decoding="async">
+                </picture>
+              </a>
+            </div>
+            <div class="header--btn-item">
+              <a href="https://lin.ee/fXrKQyq" class="cv_button gtm-click-line">
+                <picture>
+                  <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.avif" type="image/avif">
+                  <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.webp" type="image/webp">
+                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/line.png"
+                    alt="LINEでお問い合わせ"
+                    width="350" height="90"
+                    decoding="async">
+                </picture>
+              </a>
+            </div>
           </div>
         </div>
+
       </div>
     </section>
 
