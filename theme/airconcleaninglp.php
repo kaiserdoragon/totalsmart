@@ -606,23 +606,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       </div>
     </section>
 
-    <section class="price sec" id="price">
-      <div class="contents">
-        <span class="sign--catch">他社との比較でわかる！</span>
-        <h2>
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_logo.png" alt="株式会社トータルスマート" width="401" height="44" loading="lazy" decoding="async">の<br>圧倒的なコスパ
-        </h2>
-        <div class="price--img js-scrollable">
-          <picture>
-            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.avif" type="image/avif">
-            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.webp" type="image/webp">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.png" alt="エアコンクリーニングの比較料金表" width="1509" height="834" loading="lazy" decoding="async">
-          </picture>
-        </div>
-      </div>
-    </section>
-
-    <section class="merit sec bg_skyblue">
+    <section class="merit sec">
       <div class="contents -md">
         <h2>エアコンクリーニングをする<br><span>5</span>つのメリット</h2>
         <ul>
@@ -649,6 +633,22 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         </ul>
       </div>
     </section>
+
+    <section class="price sec" id="price">
+      <div class="contents">
+        <span class="sign--catch">他社との比較でわかる！</span>
+        <h2>トータルスマートの圧倒的なコスパ</h2>
+        <div class="price--img js-scrollable">
+          <picture>
+            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.avif" type="image/avif">
+            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.webp" type="image/webp">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.png" alt="エアコンクリーニングの比較料金表" width="1503" height="689" loading="lazy" decoding="async">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+
 
     <section class="select sec" id="reasons">
       <div class="contents">

@@ -373,7 +373,7 @@
 }
 
 .cvarea {
-  padding: 80px 0 0;
+  padding: 80px 0 120px;
 
   // .cvarea--catch
   &--catch {
@@ -506,30 +506,21 @@
 .price {
   h2 {
     margin-bottom: 60px;
-    font-size: var(--fz40);
+    font-size: var(--fz45);
     font-weight: 900;
     color: #004ba6;
     text-align: center;
-
-    img {
-      vertical-align: baseline;
-    }
   }
 
   .sign--catch {
-    margin: 0 auto 40px;
+    margin: 0 auto 30px;
   }
 
   // .price--img
   &--img {
     @include max-mq {
-      width: 100%;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-
       img {
-        display: block;
-        width: 180%;
+        width: 130%;
         max-width: none;
       }
     }
@@ -554,10 +545,10 @@
 .merit {
   h2 {
     margin-bottom: 60px;
-    font-size: var(--fz40);
+    font-size: var(--fz45);
     font-weight: 900;
     line-height: 1.3;
-    color: #1543b3;
+    color: #004ba6;
     text-align: center;
     filter: drop-shadow(4px 4px 4px rgb(0 41 108 / 30%));
     -webkit-text-stroke: 8px #fff;
