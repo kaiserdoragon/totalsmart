@@ -684,21 +684,66 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             </div>
           </li>
           <li>
-            <h3>明確な料金体系</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_02.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
-            <p>1台だけのご依頼から、複数台のご依頼まで、台数ごとのお得なセット料金をご用意しています。
-              お掃除機能付きや室外機洗浄など、追加オプションも事前に料金をお伝えするため、当日になって突然金額が増えることはありません。</p>
+            <h3>機種や設置状況に合わせて最適な方法で洗浄</h3>
+            <div class="select--contents">
+              <p>
+                業務用エアコンは、天井埋込型や天井吊型、壁掛型など、機種によって構造や適切な洗浄方法が異なります。<br>
+                設置場所や汚れの状態も確認したうえで、それぞれに適した手順で分解と洗浄を実施します。<br>
+                型式が分からない場合も、確認可能な情報をもとに作業内容をご案内します。<br>
+                また、現場の状況に応じて、無理のない進め方をご提案します。
+              </p>
+              <div class="select--img">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_02_01.jpg" alt="" width="310" height="250" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_02_02.jpg" alt="" width="310" height="250" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_02_03.jpg" alt="" width="310" height="250" loading="lazy" decoding="async">
+              </div>
+            </div>
           </li>
           <li>
-            <h3>スピード対応</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_03.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
-            <p>移動時間を含めたスケジュール調整がしやすく、繁忙期を除けば最短当日〜数日以内のご訪問が可能です。</p>
+            <h3>業務への影響を抑えた柔軟な作業方法を提案</h3>
+            <div class="select--contents">
+              <p>
+                オフィスの営業時間や従業員の勤務状況を確認し、<br class="is-hidden_sp">通常業務への影響をできる限り抑えられる作業方法をご提案します。<br>
+                複数台を洗浄する場合も、作業するエリアや順番を事前に調整し、<br class="is-hidden_sp">空調をすべて止める時間を減らしながら、職場環境に配慮して計画的に施工します。<br>
+                さらに、事前に担当者様との確認を重ね、当日の進行も円滑に整えます。
+              </p>
+              <div class="select--img">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_03_01.jpg" alt="" width="310" height="250" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_03_02.jpg" alt="" width="310" height="250" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_03_03.jpg" alt="" width="310" height="250" loading="lazy" decoding="async">
+              </div>
+            </div>
           </li>
           <li>
-            <h3>安心・安全への配慮</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_04.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
-            <p>作業中の思わぬトラブルにも備え、損害賠償保険に加入しています。
-              室内はビニールシートでしっかり養生し、壁や床・家具に水や汚れが飛び散らないよう配慮して作業します。</p>
+            <h3>作業内容と料金を事前に明確にご案内します</h3>
+            <div class="select--contents">
+              <p>
+                エアコンの種類や台数、設置状況を確認したうえで、<br class="is-hidden_sp">洗浄する範囲と必要な作業、料金の内訳を事前に分かりやすくご案内します。<br>
+                どこまで洗浄するのか、何に費用がかかるのかを確認できるため、<br class="is-hidden_sp">法人のお客様も社内稟議や予算申請を進めやすく、安心して依頼できます。<br>
+                また、必ず見積もり内容を確認してから、正式にご依頼いただけます。
+              </p>
+              <div class="select--img">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_04_01.jpg" alt="" width="310" height="250" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_04_02.jpg" alt="" width="310" height="250" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_04_03.jpg" alt="" width="310" height="250" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </li>
+          <li>
+            <h3>台数や型式が不明でも気軽にご相談できます</h3>
+            <div class="select--contents">
+              <p>
+                設置されているエアコンの型式や正確な台数、必要な洗浄内容が分からない場合でもご相談いただけます。<br>
+                分かる範囲の情報や設置状況を確認し、必要な作業内容をご案内します。<br>
+                専門的な知識がなくてもお問い合わせできるため、まずは現在のお困りごとを気軽にお聞かせください。<br>
+                ご相談の段階からも、分かりやすく丁寧に対応いたします。
+              </p>
+              <div class="select--img">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_05_01.jpg" alt="" width="310" height="250" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_05_02.jpg" alt="" width="310" height="250" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_05_03.jpg" alt="" width="310" height="250" loading="lazy" decoding="async">
+              </div>
+            </div>
           </li>
         </ol>
       </div>
@@ -717,10 +762,6 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         </div>
       </div>
     </section>
-
-
-
-
 
     <section class="case sec -sm">
       <div class="contents">
@@ -840,8 +881,8 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
     </section>
 
     <section class="flow sec">
-      <div class="contents">
-        <h2 class="ttl">エアコンクリーニングの流れ</h2>
+      <div class="flow--inner">
+        <h2>エアコンクリーニングの流れ</h2>
         <ol>
           <li>
             <span>STEP1</span>
@@ -849,7 +890,10 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
               <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/flow_01.jpg" alt="" width="180" height="100" loading="lazy" decoding="async">
               <dl>
                 <dt>エアコンの分解</dt>
-                <dd>パーツを分解して<br class="is-hidden_sp">いきます。</dd>
+                <dd>
+                  パーツを分解していきます。<br>
+                  内部の汚れを確認します。
+                </dd>
               </dl>
             </div>
           </li>
@@ -859,7 +903,10 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
               <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/flow_02.jpg" alt="" width="180" height="100" loading="lazy" decoding="async">
               <dl>
                 <dt>ホコリ除去</dt>
-                <dd>ホコリや汚れを<br class="is-hidden_sp">除去します。</dd>
+                <dd>
+                  ホコリや汚れを<br>
+                  丁寧に取り除きます。
+                </dd>
               </dl>
             </div>
           </li>
@@ -869,7 +916,10 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
               <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/flow_03.jpg" alt="" width="180" height="100" loading="lazy" decoding="async">
               <dl>
                 <dt>エアコン内部洗浄</dt>
-                <dd>高圧洗浄機で<br class="is-hidden_sp">きれいにします。</dd>
+                <dd>
+                  専用洗剤で熱交換器や<br>
+                  内部を洗浄します。
+                </dd>
               </dl>
             </div>
           </li>
@@ -879,7 +929,10 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
               <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/flow_04.jpg" alt="" width="180" height="100" loading="lazy" decoding="async">
               <dl>
                 <dt>パーツの汚れ除去</dt>
-                <dd>分解したパーツも<br class="is-hidden_sp">洗浄します。</dd>
+                <dd>
+                  分解したパーツも<br>
+                  細部まで洗浄します。
+                </dd>
               </dl>
             </div>
           </li>
@@ -889,11 +942,19 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
               <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/flow_05.jpg" alt="" width="180" height="100" loading="lazy" decoding="async">
               <dl>
                 <dt>最終確認</dt>
-                <dd>正常に動くかの<br class="is-hidden_sp">最終確認をします。</dd>
+                <dd>
+                  正常に動くか確認し、<br>
+                  拭き上げまで行います。
+                </dd>
               </dl>
             </div>
           </li>
         </ol>
+        <ul class="flow--icons">
+          <li>養成して丁寧に作業</li>
+          <li>営業前・営業後も相談可</li>
+          <li>作業内容は事前にご案内</li>
+        </ul>
       </div>
     </section>
 

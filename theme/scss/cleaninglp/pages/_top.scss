@@ -610,6 +610,18 @@
 .select {
   background: #ffffe2;
 
+  ol {
+    counter-reset: num;
+  }
+
+  li {
+    counter-increment: num;
+
+    &:not(:last-child) {
+      margin-bottom: 60px;
+    }
+  }
+
   h2 {
     margin-bottom: 60px;
     font-size: var(--fz50);
@@ -641,7 +653,6 @@
     font-weight: 800;
     color: #fff;
     text-align: center;
-    counter-increment: num;
     background: #004ba6;
 
     &::before {
@@ -663,11 +674,7 @@
     text-align: center;
   }
 
-  li {
-    &:not(:last-child) {
-      margin-bottom: 60px;
-    }
-  }
+
 
   // .select--inner
   &--inner {
@@ -932,50 +939,127 @@
 }
 
 .flow {
+  background: #ffffe2;
+
+  h2 {
+    width: fit-content;
+    padding: 0 40px 5px;
+    margin: 0 auto 60px;
+    font-size: var(--fz50);
+    font-weight: 900;
+    color: #1352c3;
+  }
+
   span {
     box-sizing: border-box;
     display: block;
     padding: 10px 0;
-    font-size: var(--fz18);
+    font-size: var(--fz25);
+    font-weight: 800;
     color: #fff;
     text-align: center;
     background: #0675f3;
   }
 
   dt {
-    font-size: var(--fz20);
+    margin-bottom: 5px;
+    font-size: var(--fz23);
     font-weight: 800;
     color: #004ba6;
   }
 
   ol {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 15px;
+    justify-content: center;
+    margin-bottom: 60px;
+
+    li {
+      width: 100%;
+      max-width: 300px;
+      background: #fff;
+      box-shadow: 6.293px 7.771px 25px 0 rgb(0 42 93 / 40%);
+
+      div {
+        padding: 14px;
+        text-align: center;
+      }
+    }
   }
 
-  li {
-    background: #fff;
-    box-shadow: 6.293px 7.771px 25px 0 rgb(0 42 93 / 40%);
-  }
 
-  div {
-    padding: 14px;
-    text-align: center;
-  }
 
   img {
     width: 100%;
     margin-bottom: 15px;
   }
 
-  @include max-mq {
-    ol {
-      grid-template-columns: 1fr;
-    }
+  // .flow--inner
+  &--inner {
+    box-sizing: border-box;
+    width: min(1650px, 100%);
+    padding: 0 min(4vw, 25px);
+    margin: auto;
+  }
 
-    img {
-      width: 100%;
+  // .flow--icons
+  &--icons {
+    box-sizing: border-box;
+    display: flex;
+    gap: 120px;
+    justify-content: center;
+    max-width: 1200px;
+    padding: 30px 40px 30px 100px;
+    margin: auto;
+    background: #f0f7fd;
+    border: 3px solid #e3edf6;
+    border-radius: 15px;
+
+    li {
+      position: relative;
+      font-size: var(--fz25);
+      font-weight: 800;
+      color: #004ba6;
+
+      &:first-child {
+        &::before {
+          position: absolute;
+          top: 50%;
+          left: -75px;
+          width: 65px;
+          height: 65px;
+          content: "";
+          background: url(../img/flow_icon_01.png) no-repeat center center / contain;
+          transform: translateY(-50%);
+        }
+      }
+
+      &:nth-child(2) {
+        &::before {
+          position: absolute;
+          top: 50%;
+          left: -75px;
+          width: 65px;
+          height: 65px;
+          content: "";
+          background: url(../img/flow_icon_02.png) no-repeat center center / contain;
+          transform: translateY(-50%);
+        }
+      }
+
+      &:last-child {
+        &::before {
+          position: absolute;
+          top: 50%;
+          left: -75px;
+          width: 65px;
+          height: 65px;
+          content: "";
+          background: url(../img/flow_icon_03.png) no-repeat center center / contain;
+          transform: translateY(-50%);
+        }
+      }
     }
   }
 }
