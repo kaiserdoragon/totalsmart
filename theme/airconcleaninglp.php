@@ -607,60 +607,81 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
     </section>
 
     <section class="merit sec">
-      <div class="contents -md">
+      <div class="merit--inner">
         <h2>エアコンクリーニングをする<br><span>5</span>つのメリット</h2>
         <ul>
           <li>
-            <p>不具合の<br>早期発見</p>
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_01.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
+            <div>
+              <h3>汚れによるエアコンの負荷を軽減し、<br class="is-hidden_sp">電気代のムダを抑えます。</h3>
+              <p>
+                業務用エアコンのフィルターを月に1回か2回清掃するだけでも、年間で約300k〜1,500kWh以上の省エネ、約10,000円〜45,000円以上の電気代節約になります！<br>
+                エアコンのお掃除は、店舗やオフィスの大幅なコストダウンにつながります。
+              </p>
+            </div>
           </li>
           <li>
-            <p>大きな故障の<br>防止</p>
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_02.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
+            <div>
+              <h3>カビ臭・ホコリ臭・油っぽいニオイの原因<br class="is-hidden_sp">を徹底除去</h3>
+              <p>
+                業務用エアコンのフィルターを月に1回か2回清掃するだけでも、年間で約300k〜1,500kWh以上の省エネ、約10,000円〜45,000円以上の電気代節約になります！<br>
+                エアコンのお掃除は、店舗やオフィスの大幅なコストダウンにつながります。
+              </p>
+            </div>
           </li>
           <li>
-            <p>電気代の<br>削減</p>
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_03.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
+            <div>
+              <h3>風量や効きの悪さにつながる汚れを除去<br class="is-hidden_sp">快適な空間へ整えます</h3>
+              <p>
+                熱交換器や送風ファンにホコリや汚れがたまると、空気の流れが妨げられ、「設定温度にしても効きにくい」「風が弱い」といった状態につながります。内部まで分解して丁寧に洗浄することで、本来の風量や冷暖房効率を取り戻しやすい状態へ。<br>
+                店舗やオフィス全体を、より快適な室温に保ちやすくします。
+              </p>
+            </div>
           </li>
           <li>
-            <p>エアコンの<br>寿命UP</p>
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_04.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
+            <div>
+              <h3>水漏れ・異音・能力低下などの<br class="is-hidden_sp">トラブル予防につなげます。</h3>
+              <p>
+                エアコン内部にたまったホコリや汚れ、ドレン部分の詰まりは、水漏れや動作不良を引き起こす原因の一つです。内部まで分解して洗浄し、汚れや詰まりを早めに取り除くことで、営業中の突然の停止や水漏れなどのトラブル予防につなげます。<br>
+                定期的なメンテナンスで設備を良好な状態に保ちます。
+              </p>
+            </div>
           </li>
           <li>
-            <p>エアコンの<br>機能安定</p>
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_05.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
+            <div>
+              <h3>定期的に汚れを除去して、<br class="is-hidden_sp">設備を良好な状態に保ちやすくなります。</h3>
+              <p>
+                エアコン内部に汚れがたまると、空気の流れが悪くなり、機器に余計な負荷がかかりやすくなります。定期的に熱交換器や送風ファンなどを洗浄し、負担を抑えることで、設備を良好な状態に保ちやすくなります。<br>
+                突然の高額な修理や早期の買い替えリスクを抑え、中長期的な設備コストの削減につなげます。
+              </p>
+            </div>
           </li>
         </ul>
       </div>
     </section>
 
-    <section class="price sec" id="price">
-      <div class="contents">
-        <span class="sign--catch">他社との比較でわかる！</span>
-        <h2>トータルスマートの圧倒的なコスパ</h2>
-        <div class="price--img js-scrollable">
-          <picture>
-            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.avif" type="image/avif">
-            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.webp" type="image/webp">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.png" alt="エアコンクリーニングの比較料金表" width="1503" height="689" loading="lazy" decoding="async">
-          </picture>
-        </div>
-      </div>
-    </section>
-
-
-
-    <section class="select sec" id="reasons">
-      <div class="contents">
-        <h2>
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_logo.png" alt="株式会社トータルスマート" width="401" height="44" loading="lazy" decoding="async">が<br>選ばれる<span>4</span>つの理由
-        </h2>
+    <section class="select sec">
+      <div class="select--inner">
+        <h2>トータルスマートが<br>選ばれる<span>4</span>つの理由</h2>
         <ol>
           <li>
-            <h3>確かな技術力・品質</h3>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_01.jpg" alt="" width="400" height="250" loading="lazy" decoding="async">
-            <p>エアコン本体を分解し、アルミフィン・送風ファン・ドレンパンなど自分では触れない内部まで徹底洗浄します。
-              お掃除機能付きエアコンにも対応しているので、ご自宅の機種も安心してお任せください。</p>
+            <h3>カビやニオイの原因まで内部を徹底分解洗浄</h3>
+            <div class="select--contents">
+              <p>
+                エアコンの表面だけを清掃するのではなく、外装パネルやフィルターなどを取り外し、<br class="is-hidden_sp">内部に付着したホコリやカビ汚れまで高圧洗浄します。<br>
+                ニオイや汚れの原因になりやすい熱交換器や送風部分にも丁寧にアプローチし、<br class="is-hidden_sp">オフィス内の空気環境を清潔で快適な状態へ整えます。<br>
+                さらに、洗浄後は、作業箇所の状態も分かりやすくご説明します。
+              </p>
+              <div class="select--img">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_01_01.jpg" alt="" width="310" height="250" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_01_02.jpg" alt="" width="310" height="250" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/select_01_03.jpg" alt="" width="310" height="250" loading="lazy" decoding="async">
+              </div>
+            </div>
           </li>
           <li>
             <h3>明確な料金体系</h3>
@@ -682,6 +703,24 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         </ol>
       </div>
     </section>
+
+    <section class="price sec" id="price">
+      <div class="contents">
+        <span class="sign--catch">他社との比較でわかる！</span>
+        <h2>トータルスマートの圧倒的なコスパ</h2>
+        <div class="price--img js-scrollable">
+          <picture>
+            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.avif" type="image/avif">
+            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.webp" type="image/webp">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.png" alt="エアコンクリーニングの比較料金表" width="1503" height="689" loading="lazy" decoding="async">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+
+
+
 
     <section class="case sec -sm">
       <div class="contents">
