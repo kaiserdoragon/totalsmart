@@ -1203,6 +1203,15 @@
 }
 
 .region {
+  h2 {
+    width: fit-content;
+    padding: 0 40px 5px;
+    margin: 0 auto 60px;
+    font-size: var(--fz45);
+    font-weight: 900;
+    color: #1352c3;
+  }
+
   img {
     display: block;
     margin: 0 auto 60px;
