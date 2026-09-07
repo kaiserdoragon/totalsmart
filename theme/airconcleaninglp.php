@@ -21,62 +21,90 @@ $tracking_tel_intl  = '+81-800-111-3816';
 $tracking_tel_href = preg_replace('/[^0-9]/', '', $tracking_tel_local); // 08001113816
 $main_tel_href     = preg_replace('/[^0-9]/', '', $main_tel_local);     // 0529325450
 
-// SEOプラグインの有無（重複出力回避）
-$has_seo_plugin = defined('WPSEO_VERSION') || defined('RANK_MATH_VERSION') || defined('AIOSEO_VERSION');
+// SEOの制御はこのテンプレート内で完結させる。共通ファイルは変更しない。
+$has_seo_plugin = (
+  defined('WPSEO_VERSION')
+  || defined('RANK_MATH_VERSION')
+  || defined('AIOSEO_VERSION')
+  || defined('SEOPRESS_VERSION')
+  || defined('SLIM_SEO_VERSION')
+  || class_exists('The_SEO_Framework\Load')
+  || function_exists('rank_math')
+);
 
-// このテンプレート用のdescription（必要なら固定文→カスタムフィールド化推奨）
-$meta_description = '愛知・岐阜・三重・静岡でエアコンクリーニング（分解洗浄）。最短当日対応、明朗会計。電話・メール・LINEで無料見積り。';
+// 本文で案内している対象・作業内容・対応地域に合わせる。
+$meta_title = '業務用エアコンクリーニング｜愛知・岐阜・三重・静岡｜トータルスマート株式会社';
+$meta_description = '愛知・岐阜・三重・静岡の店舗・オフィス・施設向け業務用エアコンクリーニング。天井カセット形・天井吊形など、機種や設置状況に合わせて分解洗浄します。料金・作業の流れ・施工事例をご案内。トータルスマート株式会社が無料見積もりを承ります。';
 $meta_description = wp_strip_all_tags($meta_description);
-if (function_exists('mb_strimwidth')) {
-  $meta_description = mb_strimwidth($meta_description, 0, 120, '…', 'UTF-8');
-}
 
-// title-tag 非対応テーマのための保険（テーマが対応ならwp_head側で出る）
-$meta_title = 'エアコンクリーニング（エアコン掃除）｜株式会社トータルスマート';
+if (!$has_seo_plugin) {
+  // title-tag 対応時にも、このLPのタイトルをWordPress標準出力へ反映する。
+  // 共通のタイトルフィルター（優先度10）の後に適用する。
+  add_filter('pre_get_document_title', static function ($title) use ($page_id, $meta_title) {
+    if (!is_page() || (int) get_queried_object_id() !== (int) $page_id) {
+      return $title;
+    }
+    return $meta_title;
+  }, 20);
+
+  // このLPには既存のcanonical・OGP・JSON-LD出力があるため、
+  // 同じリクエストの共通出力のみ止める。他のテンプレートには影響しない。
+  // robots/noindex、CSS/JS、フォーム、計測用のフックは変更しない。
+  remove_action('wp_head', 'ts_output_fallback_seo_meta', 1);
+  remove_action('wp_head', 'rel_canonical', 10);
+  remove_action('wp_head', 'output_ogp', 10);
+  remove_action('wp_head', 'ts_output_website_schema_json_ld', 20);
+}
 
 // ---------------------------
 // JSON-LD（表示内容と整合）
 // ※SEOプラグインがschemaを出す場合が多いのでガード
 // ---------------------------
+// オプションは単独のクリーニング料金ではなく、分解洗浄への追加料金。
+$cleaning_option = [
+  '@type' => 'Offer',
+  'name'  => 'お掃除機能付きオプション',
+  'url'   => $page_url . '#price',
+  'price' => 6000,
+  'priceCurrency' => 'JPY',
+  'priceSpecification' => [
+    '@type' => 'UnitPriceSpecification',
+    'price' => 6000,
+    'priceCurrency' => 'JPY',
+    'valueAddedTaxIncluded' => false,
+  ],
+];
+
+// 「円〜」を固定料金や上限額として表現しない。
 $offers = [
   [
     '@type' => 'Offer',
     'name'  => '簡単クリーニング（フィルター清掃・風速測定・温度測定）',
     'url'   => $page_url . '#price',
-    'price' => '5000',
     'priceCurrency' => 'JPY',
+    'description' => '5,000円〜（税抜）。フィルター清掃・風速測定・温度測定を実施します。機種や設置状況により料金が異なります。',
+    'itemOffered' => ['@id' => $page_url . '#service'],
     'priceSpecification' => [
       '@type' => 'UnitPriceSpecification',
-      'price' => '5000',
+      'minPrice' => 5000,
       'priceCurrency' => 'JPY',
-      'valueAddedTaxIncluded' => false, // LP表記が「税抜」
+      'valueAddedTaxIncluded' => false,
     ],
   ],
   [
     '@type' => 'Offer',
     'name'  => 'しっかりクリーニング（分解洗浄）',
     'url'   => $page_url . '#price',
-    'price' => '18000',
     'priceCurrency' => 'JPY',
+    'description' => '18,000円〜（税抜）。分解洗浄を実施します。お掃除機能付きの場合は追加6,000円です。機種や設置状況により料金が異なります。',
+    'itemOffered' => ['@id' => $page_url . '#service'],
     'priceSpecification' => [
       '@type' => 'UnitPriceSpecification',
-      'price' => '18000',
+      'minPrice' => 18000,
       'priceCurrency' => 'JPY',
       'valueAddedTaxIncluded' => false,
     ],
-  ],
-  [
-    '@type' => 'Offer',
-    'name'  => 'お掃除機能付きオプション',
-    'url'   => $page_url . '#price',
-    'price' => '6000',
-    'priceCurrency' => 'JPY',
-    'priceSpecification' => [
-      '@type' => 'UnitPriceSpecification',
-      'price' => '6000',
-      'priceCurrency' => 'JPY',
-      'valueAddedTaxIncluded' => false,
-    ],
+    'addOn' => $cleaning_option,
   ],
 ];
 
@@ -100,9 +128,8 @@ $business = array_replace(ts_get_local_business_schema(), [
   '@type' => 'HVACBusiness',
   'logo'  => $logo_url,
   'image' => [$mv_url],
-  // LP表示（5,000 / 18,000 + 6,000）に合わせてレンジを上限24,000まで含める。
-  'priceRange' => '¥5,000〜¥24,000（税抜）',
-  'paymentAccepted' => '現金',
+  // 上限額や、本文に記載のない支払方法は断定しない。
+  'priceRange' => '5,000円〜（税抜・作業内容により見積もり）',
   'currenciesAccepted' => 'JPY',
   'contactPoint' => [
     [
@@ -124,7 +151,12 @@ $business = array_replace(ts_get_local_business_schema(), [
 $service = [
   '@type' => 'Service',
   '@id'   => $page_url . '#service',
-  'name'  => 'エアコンクリーニング（エアコン掃除）',
+  'name'  => '業務用エアコンクリーニング',
+  'serviceType' => '業務用エアコンクリーニング・分解洗浄',
+  'url' => $page_url,
+  'description' => '店舗・オフィス・施設の業務用エアコンを、機種や設置状況に合わせて清掃・分解洗浄します。',
+  'image' => ['@id' => $page_url . '#primaryimage'],
+  'mainEntityOfPage' => ['@id' => $page_url . '#webpage'],
   'provider' => ['@id' => $home_url . '#localbusiness'],
   'areaServed' => $business['areaServed'],
   'offers' => $offers,
@@ -135,6 +167,7 @@ $webpage = [
   '@id'   => $page_url . '#webpage',
   'url'   => $page_url,
   'name'  => $meta_title,
+  'description' => $meta_description,
   'inLanguage' => 'ja-JP',
   'isPartOf' => ['@id' => $home_url . '#website'],
   'primaryImageOfPage' => ['@id' => $page_url . '#primaryimage'],
@@ -142,56 +175,11 @@ $webpage = [
   'mainEntity' => ['@id' => $page_url . '#service'],
 ];
 
-$faqpage = [
-  '@type' => 'FAQPage',
-  '@id'   => $page_url . '#faq',
-  'mainEntity' => [
-    [
-      '@type' => 'Question',
-      'name'  => '表示されている料金以外に、追加でかかる費用はありますか？',
-      'acceptedAnswer' => [
-        '@type' => 'Answer',
-        'text'  => 'エアコン本体の料金＋オプション（ご希望時のみ）が総額です。出張費・基本的な養生・洗浄作業料はすべて含まれています。勝手に追加請求することは一切ございません。お客様にとって一番負担の少ない方法をご提案し、無理な工事を押しつけることもありません。',
-      ],
-    ],
-    [
-      '@type' => 'Question',
-      'name'  => '出張料はかかりますか？？',
-      'acceptedAnswer' => [
-        '@type' => 'Answer',
-        'text'  => '出張料はいただきません。',
-      ],
-    ],
-    [
-      '@type' => 'Question',
-      'name'  => 'キャンセル料はかかりますか？',
-      'acceptedAnswer' => [
-        '@type' => 'Answer',
-        'text'  => 'お見積りをした後でも、納得がいかなければキャンセルいただけます。作業着手前のキャンセルに関しては代金をいただいておりません。',
-      ],
-    ],
-    [
-      '@type' => 'Question',
-      'name'  => '事前に準備しておくことはありますか？',
-      'acceptedAnswer' => [
-        '@type' => 'Answer',
-        'text'  => '下記のご協力をお願いしています。エアコンの真下や周辺にある小物・壊れやすいものの移動、作業スペースとして1〜2畳ほどの空きスペースの確保、お風呂場またはベランダなど、部品洗浄に使用できる場所のご提供。',
-      ],
-    ],
-    [
-      '@type' => 'Question',
-      'name'  => '猫や犬などのペットがいますが大丈夫ですか？',
-      'acceptedAnswer' => [
-        '@type' => 'Answer',
-        'text'  => 'エアコンクリーニングなどの作業には基本的にはオーガニック洗剤を使用しています。安心して下さい。',
-      ],
-    ],
-  ],
-];
-
+// 本文と異なる旧FAQデータは出力しない。表示中のFAQはそのまま本文に残す。
+// FAQリッチリザルト向けのデータではなく、このページのサービスを中心に記述する。
 $ld_json = [
   '@context' => 'https://schema.org',
-  '@graph' => [$website, $primary_image, $business, $service, $webpage, $faqpage],
+  '@graph' => [$website, $primary_image, $business, $service, $webpage],
 ];
 
 add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
@@ -199,10 +187,18 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
   if ($printed || is_admin() || $has_seo_plugin) {
     return;
   }
+  $json = wp_json_encode(
+    $ld_json,
+    JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+      | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+  );
+  if (false === $json) {
+    return;
+  }
   $printed = true;
 
   echo "\n" . '<script type="application/ld+json">'
-    . wp_json_encode($ld_json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
+    . $json
     . '</script>' . "\n";
 }, 1);
 
@@ -269,7 +265,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
     <!-- OG（SEOプラグイン導入時は重複回避） -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ja_JP">
-    <meta property="og:site_name" content="株式会社トータルスマート">
+    <meta property="og:site_name" content="トータルスマート株式会社">
     <meta property="og:title" content="<?php echo esc_attr($meta_title); ?>">
     <meta property="og:description" content="<?php echo esc_attr($meta_description); ?>">
     <meta property="og:url" content="<?php echo esc_url($page_url); ?>">
@@ -299,14 +295,14 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
     <div class="contents">
       <div class="header--logo">
         <a href="<?php echo esc_url(home_url('/cleaninglp/')); ?>">
-          <p>愛知県・岐阜県・三重県・静岡県の<br>エアコンクリーニング・掃除はトータルスマート株式会社</p>
+          <p>愛知県・岐阜県・三重県・静岡県の<br>業務用エアコンクリーニングはトータルスマート株式会社</p>
 
           <h1>
             <picture>
               <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo.avif" type="image/avif">
               <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo.webp" type="image/webp">
               <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo.png"
-                alt="株式会社トータルスマート"
+                alt="トータルスマート株式会社"
                 width="397" height="262"
                 fetchpriority="high"
                 decoding="async">
@@ -382,7 +378,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
 
         <img
           src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv.jpg"
-          alt="エアコンクリーニングなら株式会社トータルスマート"
+          alt="エアコンクリーニングならトータルスマート株式会社"
           width="1920" height="800"
           fetchpriority="high"
           decoding="async">
@@ -468,7 +464,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           </picture>
         </h2>
         <div class="lead--inner">
-          <p class="lead--ttl">エアコンクリーニングの<span>ご予約・ご相談</span>はこちらから</p>
+          <p class="lead--ttl">業務用エアコンクリーニングの<span>ご予約・ご相談</span>はこちらから</p>
           <div class="lead--contents">
             <div class="lead--txt">
               <b> <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt_02.png" alt="汚れ・カビ・ニオイ効きの悪さ" width="621" height="114" loading="lazy" decoding="async"></b>
@@ -543,7 +539,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           <li>スイッチを入れると、<span>カビっぽいニオイ・ホコリっぽさを感じる</span></li>
           <li><span>冷房／暖房の効きが前より悪くなった</span>気がして、設定温度を下げがち</li>
           <li>フィルター掃除はしているのに、<span>電気代の明細が年々高くなっている</span></li>
-          <li>小さなお子さまやペットがいて、<span>エアコンの風やお部屋の空気が少し心配</span></li>
+          <li>店舗やオフィスで、<span>エアコンの風や室内の空気が気になる</span></li>
           <li><span>高い場所の作業や分解が不安</span>で、自分で中まで掃除するのは難しいと感じている</li>
         </ul>
       </div>
@@ -580,7 +576,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         </picture>
         <div class="cvarea--inner">
           <p class="cvarea--txt">
-            出張料金・お見積り・追加料金
+            出張料金・お見積り・ご相談
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_num.png" alt="" width="86" height="121" loading="lazy" decoding="async">
             <span>円</span>
           </p>
@@ -589,7 +585,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_ttl.png" alt="" width="710" height="235" loading="lazy" decoding="async">
           </div>
           <b class="cvarea--strong">
-            エアコンのクリーニングなら<br>
+            業務用エアコンのクリーニングなら<br>
             トータルスマートにお任せください
           </b>
           <span class="cvarea--contact">お問い合わせはこちらから</span>
@@ -638,25 +634,25 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
 
     <section class="merit sec">
       <div class="merit--inner">
-        <h2>エアコンクリーニングをする<br><span>5</span>つのメリット</h2>
+        <h2>業務用エアコンの洗浄で得られる<br><span>5</span>つのメリット</h2>
         <ul>
           <li>
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_01.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
             <div>
               <h3>汚れによるエアコンの負荷を軽減し、<br class="is-hidden_sp">電気代のムダを抑えます。</h3>
               <p>
-                業務用エアコンのフィルターを月に1回か2回清掃するだけでも、年間で約300k〜1,500kWh以上の省エネ、約10,000円〜45,000円以上の電気代節約になります！<br>
-                エアコンのお掃除は、店舗やオフィスの大幅なコストダウンにつながります。
+                フィルターや熱交換器に付着した汚れを除去し、風の通りを整えることで、機器にかかる余分な負担を抑えます。<br>
+                節電効果は機種や使用環境、汚れの状態によって異なり、一定の削減額を保証するものではありません。
               </p>
             </div>
           </li>
           <li>
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_02.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
             <div>
-              <h3>カビ臭・ホコリ臭・油っぽいニオイの原因<br class="is-hidden_sp">を徹底除去</h3>
+              <h3>カビ臭・ホコリ臭・油っぽいニオイの原因<br class="is-hidden_sp">となる汚れを洗浄します</h3>
               <p>
-                業務用エアコンのフィルターを月に1回か2回清掃するだけでも、年間で約300k〜1,500kWh以上の省エネ、約10,000円〜45,000円以上の電気代節約になります！<br>
-                エアコンのお掃除は、店舗やオフィスの大幅なコストダウンにつながります。
+                エアコン内部に付着したホコリ、カビ、油汚れなど、ニオイの原因になりやすい汚れを分解洗浄で取り除きます。<br>
+                ニオイの原因や機種によって対応範囲が異なるため、現在の症状と設置状況を確認してご案内します。
               </p>
             </div>
           </li>
@@ -696,7 +692,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
 
     <section class="select sec">
       <div class="select--inner">
-        <h2>トータルスマートが<br>選ばれる<span>4</span>つの理由</h2>
+        <h2>トータルスマートが<br>選ばれる<span>5</span>つの理由</h2>
         <ol>
           <li>
             <h3>カビやニオイの原因まで内部を徹底分解洗浄</h3>
@@ -781,8 +777,8 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
 
     <section class="price sec" id="price">
       <div class="contents">
-        <span class="sign--catch">他社との比較でわかる！</span>
-        <h2>トータルスマートの圧倒的なコスパ</h2>
+        <span class="sign--catch">作業内容と料金をご確認ください</span>
+        <h2>業務用エアコンのクリーニング料金</h2>
         <div class="price--img js-scrollable">
           <picture>
             <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.avif" type="image/avif">
@@ -796,7 +792,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
     <section class="case sec">
       <div class="contents">
         <span class="sign--catch">エアコンクリーニングするとここまできれいになります</span>
-        <h2 class="ttl">施工事例</h2>
+        <h2 class="ttl">クリーニングの施工事例</h2>
 
         <div class="case--item">
           <h3>その黒ずみ、お客様に見られています。</h3>
@@ -810,11 +806,11 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             </p>
             <div class="case--comparison">
               <div class="case--before">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_03.jpg" alt="エアコンクリーニングの前の画像" width="380" height="400" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_03.jpg" alt="吹き出し口のクリーニング前" width="380" height="400" loading="lazy" decoding="async">
                 <p>BEFORE</p>
               </div>
               <div class="case--after">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_04.jpg" alt="エアコンクリーニングの後の画像" width="380" height="400" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_04.jpg" alt="吹き出し口のクリーニング後" width="380" height="400" loading="lazy" decoding="async">
                 <p>AFTER</p>
               </div>
             </div>
@@ -833,11 +829,11 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             </p>
             <div class="case--comparison">
               <div class="case--before">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_05.jpg" alt="エアコンクリーニングの前の画像" width="380" height="400" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_05.jpg" alt="パネルのクリーニング前" width="380" height="400" loading="lazy" decoding="async">
                 <p>BEFORE</p>
               </div>
               <div class="case--after">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_06.jpg" alt="エアコンクリーニングの後の画像" width="380" height="400" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_06.jpg" alt="パネルのクリーニング後" width="380" height="400" loading="lazy" decoding="async">
                 <p>AFTER</p>
               </div>
             </div>
@@ -845,20 +841,20 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         </div>
 
         <div class="case--item">
-          <h3>まさか、この空気を吸っていたなんて…</h3>
+          <h3>フィルターに蓄積したホコリを除去</h3>
           <div class="case--inner">
             <p>長年蓄積されたホコリと汚れで、フィルターが完全に目詰まりしていました。<br>
               「最近、風がカビ臭い」「効きが悪い」と感じたら、<br class="is-hidden_sp">
               内部はもっと汚れているサインかもしれません。<br>
-              プロの分解洗浄なら、ご家庭では落としきれない汚れもスッキリ除去。<br>
-              アレルギー対策や、小さなお子様のいるご家庭にもおすすめです。</p>
+              分解洗浄では、日常のフィルター清掃だけでは落としにくい内部の汚れにも対応します。<br>
+              店舗やオフィスの空調を清潔に保つため、機種と設置状況に合った洗浄方法をご案内します。</p>
             <div class="case--comparison">
               <div class="case--before">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_02.jpg" alt="エアコンクリーニングの前の画像" width="380" height="400" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_02.jpg" alt="フィルターのクリーニング前" width="380" height="400" loading="lazy" decoding="async">
                 <p>BEFORE</p>
               </div>
               <div class="case--after">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_01.jpg" alt="エアコンクリーニングの後の画像" width="380" height="400" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_01.jpg" alt="フィルターのクリーニング後" width="380" height="400" loading="lazy" decoding="async">
                 <p>AFTER</p>
               </div>
             </div>
@@ -969,7 +965,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
 
     <section class="flow sec">
       <div class="flow--inner">
-        <h2>エアコンクリーニングの流れ</h2>
+        <h2>分解洗浄の作業手順</h2>
         <ol>
           <li>
             <span>STEP1</span>
@@ -1038,7 +1034,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           </li>
         </ol>
         <ul class="flow--icons">
-          <li>養成して丁寧に作業</li>
+          <li>養生して丁寧に作業</li>
           <li>営業前・営業後も相談可</li>
           <li>作業内容は事前にご案内</li>
         </ul>
@@ -1053,8 +1049,8 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             <div class="use--txt">
               <h3>お問い合わせ</h3>
               <img class="is-hidden_pc" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/use_01.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
-              <p>サービスの詳細、気になっている汚れやお掃除したい箇所についてなど、
-                お電話またはメールフォームにてお気軽にお問い合わせください。</p>
+              <p>業務用エアコンの型番・台数・設置場所や、汚れ・ニオイなどのお困りごとを、
+                お電話またはメールフォームにてお知らせください。</p>
             </div>
             <div>
               <img class="is-hidden_sp" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/use_01.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
@@ -1066,8 +1062,8 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
               <img class="is-hidden_pc" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/use_02.jpg" alt="" width="250" height="250" loading="lazy" decoding="async">
               <p>
                 お見積り訪問日時などを相談させていただきます。<br>
-                ご希望のサービス内容を詳しくお伺いし、お掃除・お手伝いする
-                箇所の確認をいたします。
+                エアコンの機種や台数、汚れの状態、店舗・施設の営業時間などを伺い、
+                必要な洗浄内容と作業条件を確認します。
               </p>
             </div>
             <div>
@@ -1154,7 +1150,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
 
     <section class="faq sec">
       <div class="contents -md">
-        <h2>よくある質問</h2>
+        <h2>クリーニングのよくある質問</h2>
         <p>
           業務用エアコンのクリーニングについて、よくいただくご質問をまとめました。<br>
           設置状況や機種によって異なる場合がありますので、まずはお気軽にお問い合わせください。
@@ -1165,9 +1161,9 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             まずはエアコンの設置場所をお知らせください。</dd>
           <dt>どのような施設のエアコンクリーニングに対応していますか？</dt>
           <dd>店舗、オフィス、工場、倉庫、クリニック、介護施設、商業施設、事務所など、法人・店舗・施設向けの業務用エアコンクリーニングに対応しています。</dd>
-          <dt>クリーニング料金はどのくらいかかりますか？</dt>
-          <dd>料金は、エアコンの種類、台数、設置状況、汚れの程度、作業環境などによって異なります。<br>
-            事前に型番・設置写真・台数などを共有いただけると、スムーズにお見積もりできます。</dd>
+          <dt>業務用エアコンのクリーニング料金はいくらですか？</dt>
+          <dd>簡単クリーニングは5,000円〜、分解洗浄は18,000円〜（いずれも税抜）です。<br>
+            お掃除機能付きは＋6,000円です。機種・台数・設置状況によって金額が変わるため、型番や写真をもとにお見積もりします。</dd>
           <dt>業務用エアコンはどのくらいの頻度でクリーニングしたほうがよいですか？</dt>
           <dd>使用環境や稼働時間によって異なりますが、定期的なクリーニングをおすすめしています。<br>
             飲食店や工場など、油・ホコリ・粉じんが多い環境では汚れやすいため、使用状況を確認したうえで適切なクリーニング時期をご案内します。</dd>
@@ -1201,11 +1197,11 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
 
     <section class="contact sec" id="contact">
       <div class="contents">
-        <h2 class="ttl">お問い合わせフォーム</h2>
+        <h2 class="ttl">無料見積もり・お問い合わせ</h2>
         <p class="contact--lead">
-          料金の目安を知りたい方・具体的な日程のご相談をされたい方は、<br class="is-hidden_sp">
-          こちらのフォームからご連絡ください。<br>
-          無料でお見積もり・ご提案いたします。
+          店舗・オフィスのエアコンの型番や台数、汚れ・ニオイなどのお困りごとを、<br class="is-hidden_sp">
+          こちらのフォームからお知らせください。<br>
+          内容を確認し、無料でお見積もり・ご提案いたします。
         </p>
         <p class="contact--remarks">簡単入力<span>1分</span>で完了</p>
         <ul class="contact--step">
@@ -1233,11 +1229,11 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
               <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo_footer.avif" type="image/avif">
               <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo_footer.webp" type="image/webp">
               <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/logo_footer.png"
-                alt="株式会社トータルスマート"
+                alt="トータルスマート株式会社"
                 width="397" height="84"
                 decoding="async">
             </picture>
-            <p>愛知県・岐阜県・三重県・静岡県のエアコンクリーニングはトータルスマート株式会社</p>
+            <p>愛知県・岐阜県・三重県・静岡県の業務用エアコンクリーニングはトータルスマート株式会社</p>
           </a>
         </div>
         <div class="footer--info">
@@ -1252,7 +1248,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/footer_catch.jpg" alt="トータルスマート" width="357" height="349" decoding="async">
       </div>
     </div>
-    <p class="footer--copy"><small>Copyright© 株式会社トータルスマート All Rights Reserved.</small></p>
+    <p class="footer--copy"><small>Copyright© トータルスマート株式会社 All Rights Reserved.</small></p>
   </footer>
 
   <?php wp_footer(); ?>

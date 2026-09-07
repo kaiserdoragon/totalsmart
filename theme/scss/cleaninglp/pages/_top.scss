@@ -241,7 +241,7 @@
   // .sign--catch
   &--catch {
     display: block;
-    width: 380px;
+    max-width: 430px;
     padding: 15px 0;
     margin: 0 auto 15px;
     font-size: var(--fz25);
@@ -455,7 +455,7 @@
     position: relative;
     display: block;
     width: fit-content;
-    padding: 0 155px;
+    padding: 0 180px;
     margin: 0 auto 60px;
     font-size: var(--fz50);
     font-weight: 900;
@@ -471,18 +471,18 @@
 
     &::before {
       top: 50%;
-      left: 0;
-      width: 144px;
-      height: 98px;
+      left: -55px;
+      width: 220px;
+      height: 150px;
       background: url(../img/cvarea_icon_left.png) no-repeat center center / contain;
       transform: translateY(-50%);
     }
 
     &::after {
       top: 50%;
-      right: 0;
-      width: 123px;
-      height: 115px;
+      right: -43px;
+      width: 200px;
+      height: 185px;
       background: url(../img/cvarea_icon_right.png) no-repeat center center / contain;
       transform: translateY(-50%);
     }
