@@ -420,7 +420,29 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         </div>
         <img class="catch--ttl u-mb60" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_03.jpg" alt="" width="381" height="254" loading="lazy" decoding="async">
         <img class="catch--ttl u-mb30" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_ttl_sub.png" alt="" width="798" height="191" loading="lazy" decoding="async">
-        <img class="catch--ttl u-mb40" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_txt.png" alt="" width="1164" height="277" loading="lazy" decoding="async">
+        <picture>
+          <source
+            media="(max-width: 767px)"
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv_sp.avif"
+            type="image/avif">
+          <source
+            media="(max-width: 767px)"
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv_sp.webp"
+            type="image/webp">
+          <source
+            media="(max-width: 767px)"
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv_sp.jpg">
+
+          <source
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_txt.avif"
+            type="image/avif">
+          <source
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_txt.webp"
+            type="image/webp">
+
+          <img class="catch--ttl u-mb40" src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_txt.png" alt="" width="1164" height="277" loading="lazy" decoding="async">
+        </picture>
+
         <div class="catch--img">
           <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_img_01.jpg" alt="" width="320" height="230" loading="lazy" decoding="async">
           <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_img_02.jpg" alt="" width="320" height="230" loading="lazy" decoding="async">
@@ -452,7 +474,15 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
               <b> <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_txt_02.png" alt="汚れ・カビ・ニオイ効きの悪さ" width="621" height="114" loading="lazy" decoding="async"></b>
               <p>が気になったら<br>まずは<span>お気軽にご相談ください</span></p>
             </div>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_catch.png" alt="" width="438" height="376" loading="lazy" decoding="async">
+            <picture>
+              <source
+                srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_catch.avif"
+                type="image/avif">
+              <source
+                srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_catch.webp"
+                type="image/webp">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/lead_catch.png" alt="" width="438" height="376" loading="lazy" decoding="async">
+            </picture>
           </div>
 
           <div class="header--btns">
@@ -763,31 +793,10 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       </div>
     </section>
 
-    <section class="case sec -sm">
+    <section class="case sec">
       <div class="contents">
         <span class="sign--catch">エアコンクリーニングするとここまできれいになります</span>
         <h2 class="ttl">施工事例</h2>
-
-        <div class="case--item">
-          <h3>まさか、この空気を吸っていたなんて…</h3>
-          <div class="case--inner">
-            <p>長年蓄積されたホコリと汚れで、フィルターが完全に目詰まりしていました。<br>
-              「最近、風がカビ臭い」「効きが悪い」と感じたら、<br class="is-hidden_sp">
-              内部はもっと汚れているサインかもしれません。<br>
-              プロの分解洗浄なら、ご家庭では落としきれない汚れもスッキリ除去。<br>
-              アレルギー対策や、小さなお子様のいるご家庭にもおすすめです。</p>
-            <div class="case--comparison">
-              <div class="case--before">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_02.jpg" alt="エアコンクリーニングの前の画像" width="380" height="400" loading="lazy" decoding="async">
-                <p>BEFORE</p>
-              </div>
-              <div class="case--after">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_01.jpg" alt="エアコンクリーニングの後の画像" width="380" height="400" loading="lazy" decoding="async">
-                <p>AFTER</p>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div class="case--item">
           <h3>その黒ずみ、お客様に見られています。</h3>
@@ -835,16 +844,41 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
           </div>
         </div>
 
+        <div class="case--item">
+          <h3>まさか、この空気を吸っていたなんて…</h3>
+          <div class="case--inner">
+            <p>長年蓄積されたホコリと汚れで、フィルターが完全に目詰まりしていました。<br>
+              「最近、風がカビ臭い」「効きが悪い」と感じたら、<br class="is-hidden_sp">
+              内部はもっと汚れているサインかもしれません。<br>
+              プロの分解洗浄なら、ご家庭では落としきれない汚れもスッキリ除去。<br>
+              アレルギー対策や、小さなお子様のいるご家庭にもおすすめです。</p>
+            <div class="case--comparison">
+              <div class="case--before">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_02.jpg" alt="エアコンクリーニングの前の画像" width="380" height="400" loading="lazy" decoding="async">
+                <p>BEFORE</p>
+              </div>
+              <div class="case--after">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/case_01.jpg" alt="エアコンクリーニングの後の画像" width="380" height="400" loading="lazy" decoding="async">
+                <p>AFTER</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <section class="voice sec bg_skyblue" id="reviews">
-      <div class="contents">
-        <h2 class="ttl">お客様からの評価も頂いています</h2>
-        <div class="voice--inner">
+      <div class="voice--inner">
+        <h2>お客様からの評価も頂いています</h2>
+        <div class="voice--contents">
           <div class="voice--item">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/voice_01.jpg" alt="" width="380" height="200" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/voice_01.jpg" alt="" width="380" height="230" loading="lazy" decoding="async">
             <div>
+              <ul>
+                <li>オフィス</li>
+                <li>天井カセット</li>
+              </ul>
               <h3>オフィスの空気が一気に軽くなりました</h3>
               <span>名古屋市　IT企業　A様</span>
             </div>
@@ -854,8 +888,12 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
               来客対応にも自信が持てるようになりました。</p>
           </div>
           <div class="voice--item">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/voice_02.jpg" alt="" width="380" height="200" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/voice_02.jpg" alt="" width="380" height="230" loading="lazy" decoding="async">
             <div>
+              <ul>
+                <li>飲食店</li>
+                <li>油汚れ</li>
+              </ul>
               <h3>「前より居心地がいい」と言われました</h3>
               <span>岐阜市　飲食店　I様</span>
             </div>
@@ -865,8 +903,12 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
               して快適な温度を保てています。</p>
           </div>
           <div class="voice--item">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/voice_03.jpg" alt="" width="380" height="200" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/voice_03.jpg" alt="" width="380" height="230" loading="lazy" decoding="async">
             <div>
+              <ul>
+                <li>クリニック</li>
+                <li>天吊り</li>
+              </ul>
               <h3>「清潔感が増した」と評判です</h3>
               <span>四日市市　クリニック　T様</span>
             </div>
@@ -875,6 +917,51 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
               クリーニング後は空気がすっきりし、
               患者様やスタッフからも好印象の声が
               増えています。</p>
+          </div>
+          <div class="voice--item">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/voice_04.jpg" alt="" width="380" height="230" loading="lazy" decoding="async">
+            <div>
+              <ul>
+                <li>クリニック</li>
+                <li>天吊り</li>
+              </ul>
+              <h3>気になっていたニオイが改善しました</h3>
+              <span>岡崎市　美容院　C様</span>
+            </div>
+            <p>
+              ニオイと、以前より冷房の効きが悪くなっていることが気になり、クリーニングをお願いしました。<br>
+              店内の空気もすっきりして、より快適な空間を提供できるようになりました。。
+            </p>
+          </div>
+          <div class="voice--item">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/voice_05.jpg" alt="" width="380" height="230" loading="lazy" decoding="async">
+            <div>
+              <ul>
+                <li>倉庫</li>
+                <li>風量低下</li>
+              </ul>
+              <h3>倉庫内での作業が快適になりました</h3>
+              <span>羽島市　配送業　H様</span>
+            </div>
+            <p>
+              倉庫内が涼しくならず、吹き出す風も以前より弱く感じるようになったためお願いをしました。<br>
+              クリーニング後は風量が以前より安定し、倉庫内の温度も下がりやすくなったようになりました。
+            </p>
+          </div>
+          <div class="voice--item">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/voice_06.jpg" alt="" width="380" height="230" loading="lazy" decoding="async">
+            <div>
+              <ul>
+                <li>クリニック</li>
+                <li>天吊り</li>
+              </ul>
+              <h3>清潔感のある教室になりました</h3>
+              <span>津市　教育　E様</span>
+            </div>
+            <p>
+              湿ったようなニオイがすることがあり、お客様に不快な印象を与えないか心配になったため、クリーニングをお願いしました。<br>クリーニング後は清潔で
+              快適な環境を整えられたことに満足しています。
+            </p>
           </div>
         </div>
       </div>
@@ -958,9 +1045,9 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       </div>
     </section>
 
-    <section class="use bg_blue sec">
+    <section class="use sec">
       <div class="contents">
-        <h2 class="ttl">ご利用の流れ</h2>
+        <h2>ご利用の流れ</h2>
         <ol>
           <li>
             <div class="use--txt">
