@@ -577,8 +577,10 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <div class="cvarea--inner">
           <p class="cvarea--txt">
             出張料金・お見積り・ご相談
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_num.png" alt="" width="86" height="121" loading="lazy" decoding="async">
-            <span>円</span>
+            <b>
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_num.png" alt="" width="86" height="121" loading="lazy" decoding="async">
+              <span>円</span>
+            </b>
           </p>
           <div class="cvarea--ttl">
             <p><span>1台</span>あたり</p>
@@ -636,8 +638,10 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <h2>業務用エアコンの洗浄で得られる<br><span>5</span>つのメリット</h2>
         <ul>
           <li>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_01.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
-            <div>
+            <div class="merit--img">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_01.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
+            </div>
+            <div class="merit--txt">
               <h3>汚れによるエアコンの負荷を軽減し、<br class="is-hidden_sp">電気代のムダを抑えます。</h3>
               <p>
                 フィルターや熱交換器に付着した汚れを除去し、風の通りを整えることで、機器にかかる余分な負担を抑えます。<br>
@@ -646,8 +650,10 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             </div>
           </li>
           <li>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_02.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
-            <div>
+            <div class="merit--img">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_02.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
+            </div>
+            <div class="merit--txt">
               <h3>カビ臭・ホコリ臭・油っぽいニオイの原因<br class="is-hidden_sp">となる汚れを洗浄します</h3>
               <p>
                 エアコン内部に付着したホコリ、カビ、油汚れなど、ニオイの原因になりやすい汚れを分解洗浄で取り除きます。<br>
@@ -656,8 +662,10 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             </div>
           </li>
           <li>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_03.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
-            <div>
+            <div class="merit--img">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_03.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
+            </div>
+            <div class="merit--txt">
               <h3>風量や効きの悪さにつながる汚れを除去<br class="is-hidden_sp">快適な空間へ整えます</h3>
               <p>
                 熱交換器や送風ファンにホコリや汚れがたまると、空気の流れが妨げられ、「設定温度にしても効きにくい」「風が弱い」といった状態につながります。内部まで分解して丁寧に洗浄することで、本来の風量や冷暖房効率を取り戻しやすい状態へ。<br>
@@ -666,8 +674,10 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             </div>
           </li>
           <li>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_04.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
-            <div>
+            <div class="merit--img">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_04.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
+            </div>
+            <div class="merit--txt">
               <h3>水漏れ・異音・能力低下などの<br class="is-hidden_sp">トラブル予防につなげます。</h3>
               <p>
                 エアコン内部にたまったホコリや汚れ、ドレン部分の詰まりは、水漏れや動作不良を引き起こす原因の一つです。内部まで分解して洗浄し、汚れや詰まりを早めに取り除くことで、営業中の突然の停止や水漏れなどのトラブル予防につなげます。<br>
@@ -676,8 +686,10 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             </div>
           </li>
           <li>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_05.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
-            <div>
+            <div class="merit--img">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/merit_05.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
+            </div>
+            <div class="merit--txt">
               <h3>定期的に汚れを除去して、<br class="is-hidden_sp">設備を良好な状態に保ちやすくなります。</h3>
               <p>
                 エアコン内部に汚れがたまると、空気の流れが悪くなり、機器に余計な負荷がかかりやすくなります。定期的に熱交換器や送風ファンなどを洗浄し、負担を抑えることで、設備を良好な状態に保ちやすくなります。<br>
@@ -691,7 +703,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
 
     <section class="select sec">
       <div class="select--inner">
-        <h2>トータルスマートが<br>選ばれる<span>5</span>つの理由</h2>
+        <h2>トータルスマートが<br class="is-hidden_sp">選ばれる<span>5</span>つの理由</h2>
         <ol>
           <li>
             <h3>カビやニオイの原因まで内部を徹底分解洗浄</h3>
@@ -791,7 +803,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
     <section class="case sec">
       <div class="contents">
         <span class="sign--catch">エアコンクリーニングするとここまできれいになります</span>
-        <h2 class="ttl">クリーニングの施工事例</h2>
+        <h2>クリーニングの施工事例</h2>
 
         <div class="case--item">
           <h3>その黒ずみ、お客様に見られています。</h3>
@@ -904,7 +916,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
                 <li>クリニック</li>
                 <li>天吊り</li>
               </ul>
-              <h3>「清潔感が増した」と評判です</h3>
+              <h3>「清潔感が増した」と評判がいいです</h3>
               <span>四日市市　クリニック　T様</span>
             </div>
             <p>天井カセットを分解洗浄してもらったところ、
@@ -950,7 +962,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
                 <li>クリニック</li>
                 <li>天吊り</li>
               </ul>
-              <h3>清潔感のある教室になりました</h3>
+              <h3>清潔感のある教室になったと言われます</h3>
               <span>津市　教育　E様</span>
             </div>
             <p>
