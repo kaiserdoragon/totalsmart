@@ -419,15 +419,15 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         <picture>
           <source
             media="(max-width: 767px)"
-            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv_sp.avif"
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_txt_sp.avif"
             type="image/avif">
           <source
             media="(max-width: 767px)"
-            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv_sp.webp"
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_txt_sp.webp"
             type="image/webp">
           <source
             media="(max-width: 767px)"
-            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv_sp.jpg">
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_txt_sp.png">
 
           <source
             srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/catch_txt.avif"
@@ -525,7 +525,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
         </div>
         <div class="lead--supplement">
           <p>事前に概算のお見積りをご案内いたします。<br>不当な追加料金や高額請求は一切ございませんので、安心してお問い合わせください。</p>
-          <p>※設置状況（機種・汚れ具合・作業環境）により、<br>当日ご案内する金額が事前の概算見積りから変動する場合がございます。</p>
+          <p>※設置状況（機種・汚れ具合・作業環境）により、<br class="is-hidden_sp">当日ご案内する金額が事前の概算見積りから変動する場合がございます。</p>
         </div>
       </div>
     </section>
@@ -585,8 +585,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_ttl.png" alt="" width="710" height="235" loading="lazy" decoding="async">
           </div>
           <b class="cvarea--strong">
-            業務用エアコンのクリーニングなら<br>
-            トータルスマートにお任せください
+            業務用エアコンのクリーニングなら<br class="cvarea--br">トータルスマートにお任せください
           </b>
           <span class="cvarea--contact">お問い合わせはこちらから</span>
           <div class="header--btns">
