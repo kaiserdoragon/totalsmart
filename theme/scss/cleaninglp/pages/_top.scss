@@ -34,6 +34,7 @@
 
     @include max-mq {
       width: 95%;
+      padding: 40px min(4vw, 25px);
     }
   }
 
@@ -84,6 +85,20 @@
         background: #ff289d;
       }
     }
+
+    @include max-mq {
+      &:first-of-type {
+        >span {
+          font-size: var(--fz30);
+        }
+      }
+
+      &:last-of-type {
+        >span {
+          font-size: var(--fz30);
+        }
+      }
+    }
   }
 
   // .catch--price {
@@ -108,6 +123,7 @@
 
     @include max-mq {
       gap: 5px;
+      padding: 0 5px;
       font-size: var(--fz70);
     }
   }
@@ -149,7 +165,7 @@
 
     @include max-mq {
       img {
-        width: calc((100% / 2) - 15px);
+        width: calc((100% / 2) - 5px);
       }
     }
   }
@@ -270,7 +286,7 @@
     justify-content: center;
     margin-bottom: 40px;
 
-    @media (width <= 1024px) {
+    @include tb-mq {
       flex-direction: column;
       gap: 30px;
       align-items: center;
@@ -437,6 +453,10 @@
         font-size: var(--fz35);
       }
     }
+
+    li {
+      font-size: var(--fz20);
+    }
   }
 }
 
@@ -495,17 +515,31 @@
       font-size: var(--fz60);
     }
 
-    @media (width <= 1024px) {
+    @include tb-mq {
       font-size: var(--fz25);
     }
 
     @include max-mq {
-      flex-direction: column;
       gap: 15px;
       align-items: center;
+      padding: 15px 50px 15px 30px;
       margin: 0 auto 60px;
-      font-size: var(--fz30);
+      font-size: var(--fz23);
       text-align: center;
+
+      img {
+        width: 60px;
+        object-fit: contain;
+      }
+
+      span {
+        font-size: var(--fz40);
+      }
+
+      b {
+        display: flex;
+        align-items: flex-end;
+      }
     }
   }
 
@@ -542,6 +576,7 @@
 
     @include max-mq {
       padding-left: 0;
+      margin: 0 auto 30px;
 
       p {
         top: -5%;
@@ -888,7 +923,7 @@
 
   @include max-mq {
     h2 {
-      font-size: var(--fz45);
+      font-size: var(--fz35);
     }
 
     h3 {
@@ -910,11 +945,11 @@
 
   h2 {
     width: fit-content;
-    padding: 0 40px 5px;
     margin: 0 auto 60px;
     font-size: var(--fz45);
     font-weight: 900;
     color: #1352c3;
+    text-align: center;
   }
 
   .sign--catch {
@@ -1092,8 +1127,8 @@
 
   @include max-mq {
     h2 {
+      margin-bottom: 40px;
       font-size: var(--fz35);
-      text-align: center;
     }
 
     .sign--catch {
@@ -1108,11 +1143,11 @@
 .voice {
   h2 {
     width: fit-content;
-    padding: 0 40px 5px;
     margin: 0 auto 60px;
     font-size: var(--fz45);
     font-weight: 900;
     color: #1352c3;
+    text-align: center;
   }
 
   ul {
@@ -1190,8 +1225,8 @@
 
   @include max-mq {
     h2 {
+      margin-bottom: 40px;
       font-size: var(--fz35);
-      text-align: center;
     }
   }
 }
@@ -1201,11 +1236,11 @@
 
   h2 {
     width: fit-content;
-    padding: 0 40px 5px;
     margin: 0 auto 60px;
     font-size: var(--fz50);
     font-weight: 900;
     color: #1352c3;
+    text-align: center;
   }
 
   span {
@@ -1246,8 +1281,6 @@
     }
   }
 
-
-
   img {
     width: 100%;
     margin-bottom: 15px;
@@ -1282,31 +1315,25 @@
 
       &:first-child {
         &::before {
-          position: absolute;
-          top: 50%;
-          left: -75px;
-          width: 65px;
-          height: 65px;
-          content: "";
           background: url(../img/flow_icon_01.png) no-repeat center center / contain;
-          transform: translateY(-50%);
         }
       }
 
       &:nth-child(2) {
         &::before {
-          position: absolute;
-          top: 50%;
-          left: -75px;
-          width: 65px;
-          height: 65px;
-          content: "";
           background: url(../img/flow_icon_02.png) no-repeat center center / contain;
-          transform: translateY(-50%);
         }
       }
 
       &:last-child {
+        &::before {
+          background: url(../img/flow_icon_03.png) no-repeat center center / contain;
+        }
+      }
+
+      &:first-child,
+      &:nth-child(2),
+      &:nth-child(3) {
         &::before {
           position: absolute;
           top: 50%;
@@ -1314,9 +1341,40 @@
           width: 65px;
           height: 65px;
           content: "";
-          background: url(../img/flow_icon_03.png) no-repeat center center / contain;
           transform: translateY(-50%);
         }
+      }
+    }
+
+    @include tb-mq {
+      flex-direction: column;
+      gap: 30px;
+      padding: 40px 20px 40px 100px;
+
+      li {
+        font-size: var(--fz20);
+
+        &:first-child,
+        &:nth-child(2),
+        &:nth-child(3) {
+          &::before {
+            width: 55px;
+            height: 55px;
+          }
+        }
+      }
+    }
+  }
+
+  @include max-mq {
+    h2 {
+      margin-bottom: 40px;
+      font-size: var(--fz35);
+    }
+
+    ol {
+      li {
+        max-width: 100%;
       }
     }
   }
@@ -1327,12 +1385,12 @@
 
   h2 {
     width: fit-content;
-    padding: 0 40px 5px;
     margin: 0 auto 60px;
     font-size: var(--fz45);
     font-weight: 900;
-    color: #004ba6;
+    color: #1352c3;
   }
+
 
   ol {
     max-width: 1000px;
@@ -1405,6 +1463,11 @@
   }
 
   @include max-mq {
+    h2 {
+      margin: 0 auto 40px;
+      font-size: var(--fz35);
+    }
+
     h3 {
       font-size: var(--fz20);
 
@@ -1432,7 +1495,6 @@
 .region {
   h2 {
     width: fit-content;
-    padding: 0 40px 5px;
     margin: 0 auto 60px;
     font-size: var(--fz45);
     font-weight: 900;
@@ -1485,6 +1547,11 @@
   }
 
   @include max-mq {
+    h2 {
+      margin: 0 auto 40px;
+      font-size: var(--fz35);
+    }
+
     dl {
       div {
         padding: 30px;
@@ -1504,11 +1571,11 @@
 
   h2 {
     width: fit-content;
-    padding: 0 40px 5px;
     margin: 0 auto 60px;
     font-size: var(--fz45);
     font-weight: 900;
     color: rgb(19 82 195);
+    text-align: center;
   }
 
   p {
@@ -1573,6 +1640,59 @@
       background: #ffa800;
       border-radius: 50%;
       transform: translateY(-50%);
+    }
+  }
+
+  @include max-mq {
+    h2 {
+      margin: 0 auto 40px;
+      font-size: var(--fz35);
+    }
+
+    p {
+      margin-bottom: 60px;
+      font-size: var(--fz20);
+    }
+
+    dt {
+      padding: 20px 30px 20px 60px;
+      font-size: var(--fz23);
+
+      &::before {
+        top: 40px;
+        width: 40px;
+        height: 40px;
+        font-size: var(--fz25);
+      }
+    }
+
+    dd {
+      padding: 20px 30px 30px 60px;
+
+      &::before {
+        top: 40px;
+        width: 40px;
+        height: 40px;
+        font-size: var(--fz25);
+      }
+    }
+  }
+}
+
+.contact {
+  h2 {
+    width: fit-content;
+    margin: 0 auto 60px;
+    font-size: var(--fz45);
+    font-weight: 900;
+    color: rgb(19 82 195);
+    text-align: center;
+  }
+
+  @include max-mq {
+    h2 {
+      margin: 0 auto 40px;
+      font-size: var(--fz35);
     }
   }
 }

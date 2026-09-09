@@ -549,18 +549,6 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       <div class="contents">
         <picture>
           <source
-            media="(max-width: 767px)"
-            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv_sp.avif"
-            type="image/avif">
-          <source
-            media="(max-width: 767px)"
-            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv_sp.webp"
-            type="image/webp">
-          <source
-            media="(max-width: 767px)"
-            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/mv_sp.jpg">
-
-          <source
             srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_catch.avif"
             type="image/avif">
           <source
@@ -1208,7 +1196,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
 
     <section class="contact sec" id="contact">
       <div class="contents">
-        <h2 class="ttl">無料見積もり・お問い合わせ</h2>
+        <h2>無料見積もり・お問い合わせ</h2>
         <p class="contact--lead">
           店舗・オフィスのエアコンの型番や台数、汚れ・ニオイなどのお困りごとを、<br class="is-hidden_sp">
           こちらのフォームからお知らせください。<br>
