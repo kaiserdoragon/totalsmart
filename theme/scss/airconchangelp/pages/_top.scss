@@ -183,7 +183,7 @@
     text-align: center;
 
     @include tb-mq {
-      margin-bottom: 30px;
+      margin-bottom: 15px;
       font-size: var(--fz40);
 
       b {
@@ -240,6 +240,7 @@
     }
 
     @include max-mq {
+      margin-bottom: 30px;
       font-size: var(--fz35);
     }
   }
@@ -1227,6 +1228,7 @@
       padding: 15px 15px 15px 60px;
 
       &::before {
+        top: 35px;
         width: 40px;
         height: 40px;
         padding-bottom: 3px;
@@ -1305,6 +1307,7 @@
 
       p {
         padding-top: 30px;
+        font-size: var(--fz18);
       }
 
       &:not(:last-child) {
@@ -1322,6 +1325,18 @@
         font-size: var(--fz20);
       }
     }
+  }
+}
+
+.contact {
+  h2 {
+    width: fit-content;
+    padding: 0 40px 5px;
+    margin: 0 auto 40px;
+    font-size: var(--fz45);
+    font-weight: 900;
+    color: #004ba6;
+    text-align: center;
   }
 }
 
