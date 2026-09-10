@@ -1194,8 +1194,8 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       </div>
     </section>
 
-    <section class="contact sec" id="contact">
-      <div class="contents">
+    <section class="contact sec">
+      <div class="contents" id="contact">
         <h2>無料見積もり・お問い合わせ</h2>
         <p class="contact--lead">
           店舗・オフィスのエアコンの型番や台数、汚れ・ニオイなどのお困りごとを、<br class="is-hidden_sp">

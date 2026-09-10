@@ -1680,6 +1680,15 @@
 }
 
 .contact {
+  // セクションの余白ではなく、見出しから始まる内容を移動先にする。
+  #contact {
+    scroll-margin-top: calc(var(--lp-header-height, 170px) + 120px);
+
+    @include max-mq {
+      scroll-margin-top: 80px;
+    }
+  }
+
   h2 {
     width: fit-content;
     margin: 0 auto 60px;
