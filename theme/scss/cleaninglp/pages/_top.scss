@@ -667,11 +667,13 @@
     text-align: center;
     paint-order: stroke;
     -webkit-text-stroke: 10px #00479d;
+
+    @include max-mq {
+      -webkit-text-stroke: 7px #00479d;
+    }
   }
 
   @include max-mq {
-    -webkit-text-stroke: 7px #00479d;
-
     .header--btns {
       flex-direction: column;
     }
