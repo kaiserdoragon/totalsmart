@@ -549,6 +549,18 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
       <div class="contents">
         <picture>
           <source
+            media="(max-width: 767px)"
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_catch_sp.avif"
+            type="image/avif">
+          <source
+            media="(max-width: 767px)"
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_catch_sp.webp"
+            type="image/webp">
+          <source
+            media="(max-width: 767px)"
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_catch_sp.jpg">
+
+          <source
             srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_catch.avif"
             type="image/avif">
           <source
@@ -777,7 +789,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
     <section class="price sec" id="price">
       <div class="contents">
         <span class="sign--catch">作業内容と料金をご確認ください</span>
-        <h2>業務用エアコンのクリーニング料金</h2>
+        <h2>業務用エアコンの<br class="is-hidden_sp">クリーニング料金</h2>
         <div class="price--img js-scrollable">
           <picture>
             <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/price.avif" type="image/avif">
@@ -791,7 +803,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
     <section class="case sec">
       <div class="contents">
         <span class="sign--catch">エアコンクリーニングするとここまできれいになります</span>
-        <h2>クリーニングの施工事例</h2>
+        <h2>クリーニングの<br class="is-hidden_sp">施工事例</h2>
 
         <div class="case--item">
           <h3>その黒ずみ、お客様に見られています。</h3>
@@ -1149,7 +1161,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
 
     <section class="faq sec">
       <div class="contents -md">
-        <h2>クリーニングのよくある質問</h2>
+        <h2>クリーニングの<br class="is-hidden_sp">よくある質問</h2>
         <p>
           業務用エアコンのクリーニングについて、よくいただくご質問をまとめました。<br>
           設置状況や機種によって異なる場合がありますので、まずはお気軽にお問い合わせください。
@@ -1196,7 +1208,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
 
     <section class="contact sec">
       <div class="contents" id="contact">
-        <h2>無料見積もり・お問い合わせ</h2>
+        <h2>無料見積もり・<br class="is-hidden_sp">お問い合わせ</h2>
         <p class="contact--lead">
           店舗・オフィスのエアコンの型番や台数、汚れ・ニオイなどのお困りごとを、<br class="is-hidden_sp">
           こちらのフォームからお知らせください。<br>
