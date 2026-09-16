@@ -871,7 +871,7 @@
 .cvarea {
   position: relative;
 
-  // .cv_area--btn
+  // .cvarea--btn
   &--btn {
     position: absolute;
     bottom: 10px;
@@ -879,13 +879,13 @@
     transform: translate(-50%, 0);
 
     @include max-mq {
-      bottom: 14%;
+      bottom: 25%;
       width: 100%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, 0%);
     }
   }
 
-  // .cv_area--img
+  // .cvarea--img
   &--img {
     width: 100%;
   }
@@ -1339,30 +1339,6 @@
     text-align: center;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .catch {
