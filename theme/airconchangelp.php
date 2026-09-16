@@ -290,7 +290,6 @@ add_action('wp_head', static function () use ($ld_json) {
             </picture>
           </a>
         </div>
-
         <div class="header--btn-item">
           <a href="#contact" class="cv_button gtm-click-mail">
             <picture>
@@ -298,6 +297,18 @@ add_action('wp_head', static function () use ($ld_json) {
               <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.webp" type="image/webp">
               <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.png"
                 alt="メールでお問い合わせ"
+                width="270" height="80"
+                decoding="async">
+            </picture>
+          </a>
+        </div>
+        <div class="header--btn-item">
+          <a href="https://lin.ee/fXrKQyq" class="cv_button gtm-click-mail">
+            <picture>
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/line.avif" type="image/avif">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/line.webp" type="image/webp">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/line.png"
+                alt="LINEでお問い合わせ"
                 width="270" height="80"
                 decoding="async">
             </picture>
@@ -428,6 +439,20 @@ add_action('wp_head', static function () use ($ld_json) {
                     <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.webp" type="image/webp">
                     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.png"
                       alt="メールでお問い合わせ"
+                      width="487" height="144"
+                      loading="lazy"
+                      decoding="async">
+                  </picture>
+                </a>
+              </div>
+
+              <div class="header--btn-item">
+                <a href="https://lin.ee/fXrKQyq" class="cv_button gtm-click-mail">
+                  <picture>
+                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/line.avif" type="image/avif">
+                    <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/line.webp" type="image/webp">
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/line.png"
+                      alt="LINEでお問い合わせ"
                       width="487" height="144"
                       loading="lazy"
                       decoding="async">
@@ -757,6 +782,20 @@ add_action('wp_head', static function () use ($ld_json) {
               </picture>
             </a>
           </div>
+
+          <div class="header--btn-item">
+            <a href="#contact" class="cv_button gtm-click-mail">
+              <picture>
+                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/line.avif" type="image/avif">
+                <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/line.webp" type="image/webp">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/line.png"
+                  alt="LINEでお問い合わせ"
+                  width="487" height="144"
+                  loading="lazy"
+                  decoding="async">
+              </picture>
+            </a>
+          </div>
         </div>
       </div>
       <picture>
@@ -1017,6 +1056,7 @@ add_action('wp_head', static function () use ($ld_json) {
   <div class="footer_btn_fixed" id="js_fixed-btn">
     <p class="footer_btn_fixed--tel"><a href="tel:<?php echo esc_attr($main_tel_href); ?>">電話で<br>相談する</a></p>
     <p class="footer_btn_fixed--mail"><a href="#contact">メールで<br>無料見積り</a></p>
+    <p class="footer_btn_fixed--line"><a href="https://lin.ee/fXrKQyq">LINEで<br>問い合わせ</a></p>
   </div>
 
   <footer class="footer">
