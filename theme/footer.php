@@ -1,7 +1,16 @@
 <div class="footer_btn_fixed" id="js_fixed-btn">
   <p class="footer_btn_fixed--tel"><a href="tel:0529325450">電話で<br>お問い合わせ</a></p>
   <p class="footer_btn_fixed--mail"><a href="<?php echo esc_url(home_url('/contact_corporate/')); ?>#contact">メールで<br>お問い合わせ</a></p>
-  <!-- <p class="footer_btn_fixed--line"><a href="https://lin.ee/fXrKQyq">LINEで<br>問い合わせ</a></p> -->
+  <p class="footer_btn_fixed--line"><a href="#">LINEで<br>無料相談をする</a></p>
+</div>
+
+<!-- フローティングバナー -->
+<div class="floatingbanner" id="floatingbanner">
+  <div class="floatingbanner--close" id="closebtn"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/common/icon_close.png" /></div>
+  <div>
+    <p>LINEで無料相談受付中</p>
+    <a href="">LINEで無料相談をする</a>
+  </div>
 </div>
 
 <footer class="footer">
