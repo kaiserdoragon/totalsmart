@@ -63,6 +63,12 @@
   .cat-pr.is-active {
     background: #ff903a;
   }
+
+  @include max-mq {
+    li {
+      max-width: 47%;
+    }
+  }
 }
 
 .news_page,
