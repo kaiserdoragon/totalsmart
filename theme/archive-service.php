@@ -3,7 +3,7 @@
 サービス一覧ページ
 \*------------------------------------*/
 
-$ts_archive_title       = 'サービス';
+$ts_archive_title       = 'サービス一覧';
 $ts_archive_slug        = 'service';
 $ts_archive_img_file    = 'eyecatch_service.jpg';
 $ts_archive_base_url    = get_post_type_archive_link('service') ?: home_url('/service/');
