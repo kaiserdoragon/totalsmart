@@ -8,8 +8,11 @@
 <div class="floatingbanner" id="floatingbanner">
   <div class="floatingbanner--close" id="closebtn"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/common/icon_close.png" /></div>
   <div>
-    <p>LINEで無料相談受付中</p>
-    <a href="">LINEで無料相談をする</a>
+    <div class="floatingbanner--txt">
+      <p>設備の<span>お困りごと</span>を</p>
+      <p><span>LINE</span>で<span>相談する</span></p>
+    </div>
+    <a href="https://lin.ee/sHD1I4R">無料相談をする</a>
   </div>
 </div>
 

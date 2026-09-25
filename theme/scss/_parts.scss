@@ -432,8 +432,8 @@ img {
   z-index: 1000;
   box-sizing: border-box;
   width: 100%;
-  max-width: 450px;
-  padding: 30px;
+  max-width: 500px;
+  padding: 50px 30px 40px;
   line-height: 1;
   visibility: hidden;
   background: #fff;
@@ -448,44 +448,18 @@ img {
     max-width: 100%;
   }
 
-  p {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    margin-bottom: 15px;
-    font-size: var(--fz23);
-    font-weight: 800;
-    color: #0052a7;
-    text-align: center;
-
-    &::before,
-    &::after {
-      width: 3px;
-      height: 20px;
-      content: "";
-      background: #f11f8d;
-    }
-
-    &::before {
-      margin-right: 15px;
-      transform: rotate(-30deg);
-    }
-
-    &::after {
-      margin-left: 15px;
-      transform: rotate(30deg);
-    }
-  }
-
   a {
     box-sizing: border-box;
     display: block;
-    padding: 20px 20px 20px 65px;
-    font-size: var(--fz25);
+    width: 100%;
+    max-width: 400px;
+    padding: 20px 20px 23px 90px;
+    margin: auto;
+    font-size: var(--fz33);
     font-weight: 900;
     color: #fff;
-    background: url(../img/common/icon_line.png) no-repeat left 20px center / 35px, url(../img/common/icon_arrow.png) no-repeat right 25px center / 15px, #03c755;
-    border-radius: 10px;
+    background: url(../img/common/icon_hukidashi.png) no-repeat left 30px center / 50px, url(../img/common/icon_arrow.png) no-repeat right 25px center / 15px, #03c755;
+    border-radius: 1000px;
   }
 
   &.is-active {
@@ -493,7 +467,52 @@ img {
     opacity: 1;
   }
 
-  /* 閉じるボタンのスタイル */
+  // .floatingbanner--txt
+  &--txt {
+    position: relative;
+    padding-left: 125px;
+    margin-bottom: 20px;
+
+    &::before {
+      position: absolute;
+      bottom: 0;
+      left: 10px;
+      display: inline-block;
+      width: 99px;
+      height: 97px;
+      content: "";
+      background: url(../img/common/icon_line.png) no-repeat center/contain;
+    }
+
+    p {
+      font-size: var(--fz30);
+      font-weight: 900;
+
+      &:first-of-type {
+        margin-bottom: 10px;
+
+        span {
+          color: #003973;
+        }
+      }
+
+      &:last-of-type {
+        span {
+          color: #03c755;
+
+          &:first-of-type {
+            font-size: var(--fz40);
+          }
+
+          &:last-of-type {
+            font-size: var(--fz35);
+          }
+        }
+      }
+    }
+  }
+
+  // .floatingbanner--close
   &--close {
     position: absolute;
     top: -18px;
