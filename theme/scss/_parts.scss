@@ -515,13 +515,12 @@ img {
   // .floatingbanner--close
   &--close {
     position: absolute;
-    top: -18px;
-    right: -10px;
-    z-index: 1010;
+    top: 5px;
+    right: 5px;
+    z-index: 1000;
     width: 40px;
     height: 40px;
     cursor: pointer;
-    border: 0;
   }
 }
 
