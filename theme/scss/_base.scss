@@ -235,6 +235,11 @@ main {
     @media (width <= 1024px) {
       flex-direction: column;
     }
+
+    @include max-mq {
+      width: 100%;
+      max-width: 320px;
+    }
   }
 
   // .header--tel
@@ -257,6 +262,10 @@ main {
       display: block;
       margin-top: 5px;
       font-size: var(--fz12);
+    }
+
+    @include max-mq {
+      width: 100%;
     }
   }
 
@@ -283,6 +292,10 @@ main {
       font-size: var(--fz25);
       background: url(../img/common/icon_mail.png) no-repeat center left 35px / 28px 20px, #ff8206;
       border-radius: 1000px;
+    }
+
+    @include max-mq {
+      width: 100%;
     }
   }
 
