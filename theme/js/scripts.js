@@ -248,9 +248,9 @@ document.addEventListener("DOMContentLoaded", function () {
       banner.classList.remove("is-active");
 
       // 閉じる押すとローカルストレージ保存で一定期間出ない機能⇒現在時刻 + 3時間
-      // const hideUntil = Date.now() + 3 * 60 * 60 * 1000;
+      const hideUntil = Date.now() + 1 * 60 * 60 * 1000;
 
-      // localStorage.setItem("hideBannerUntil", String(hideUntil));
+      localStorage.setItem("hideBannerUntil", String(hideUntil));
     });
   }
 });
