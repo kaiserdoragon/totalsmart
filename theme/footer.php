@@ -1,6 +1,6 @@
 <div class="footer_btn_fixed" id="js_fixed-btn">
   <p class="footer_btn_fixed--line">
-    <a href="#">
+    <a href="https://lin.ee/pDEPv7a">
       設備のお困りごとを<br>
       LINEで無料相談をする
     </a>
