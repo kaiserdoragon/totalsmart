@@ -1,7 +1,12 @@
 <div class="footer_btn_fixed" id="js_fixed-btn">
+  <p class="footer_btn_fixed--line">
+    <a href="#">
+      設備のお困りごとを<br>
+      LINEで無料相談をする
+    </a>
+  </p>
   <p class="footer_btn_fixed--tel"><a href="tel:0529325450">電話で<br>お問い合わせ</a></p>
   <p class="footer_btn_fixed--mail"><a href="<?php echo esc_url(home_url('/contact_corporate/')); ?>#contact">メールで<br>お問い合わせ</a></p>
-  <p class="footer_btn_fixed--line"><a href="#">LINEで<br>無料相談をする</a></p>
 </div>
 
 <!-- フローティングバナー -->
