@@ -548,8 +548,8 @@ add_action('wp_head', static function () use ($ld_json) {
         <section class="service--maker">
           <h3>
             <picture>
-              <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_txt_sp.png" width="697" height="220">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_txt.png" alt="様々な種類の業務用エアコンに対応可能" width="776" height="76" loading="lazy" decoding="async">
+              <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_txt_1_sp.png" width="524" height="180">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_txt_1.png" alt="様々なメーカーに対応可能" width="686" height="81" loading="lazy" decoding="async">
             </picture>
           </h3>
           <div>
@@ -560,6 +560,82 @@ add_action('wp_head', static function () use ($ld_json) {
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_05.png" alt="三菱電機" width="314" height="131" loading="lazy" decoding="async">
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_maker_06.png" alt="日立" width="371" height="59" loading="lazy" decoding="async">
           </div>
+        </section>
+
+
+        <section class="service--model">
+          <h3>
+            <picture>
+              <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_txt_2_sp.png" width="607" height="180">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/service_txt_2.png" alt="様々な形状・機種に対応可能" width="741" height="82" loading="lazy" decoding="async">
+            </picture>
+          </h3>
+          <?php
+          $service_models = [
+            [
+              'name'  => '天井カセット4方向',
+              'image' => 'service_model_1.png',
+            ],
+            [
+              'name'  => '天井カセット1方向',
+              'image' => 'service_model_2.png',
+            ],
+            [
+              'name'  => '天井カセット2方向',
+              'image' => 'service_model_3.png',
+            ],
+            [
+              'name'  => '天井吊り形',
+              'image' => 'service_model_4.png',
+            ],
+            [
+              'name'  => '壁掛け形',
+              'image' => 'service_model_5.png',
+            ],
+            [
+              'name'  => '床置き形',
+              'image' => 'service_model_6.png',
+            ],
+            [
+              'name'  => 'ビルトイン形',
+              'image' => 'service_model_7.png',
+            ],
+            [
+              'name'  => 'ダクト形',
+              'image' => 'service_model_8.png',
+            ],
+            [
+              'name'  => '天吊自在形ワンダ',
+              'image' => 'service_model_9.png',
+            ],
+            [
+              'name'  => '厨房用',
+              'image' => 'service_model_10.png',
+            ],
+          ];
+
+          $image_dir = get_template_directory_uri() . '/airconchangelp/img/';
+          ?>
+
+          <ul>
+            <?php foreach ($service_models as $model) : ?>
+              <li>
+                <figure>
+                  <figcaption>
+                    <?php echo esc_html($model['name']); ?>
+                  </figcaption>
+
+                  <img
+                    src="<?php echo esc_url($image_dir . $model['image']); ?>"
+                    alt=""
+                    width="195"
+                    height="145"
+                    loading="lazy"
+                    decoding="async">
+                </figure>
+              </li>
+            <?php endforeach; ?>
+          </ul>
         </section>
 
 

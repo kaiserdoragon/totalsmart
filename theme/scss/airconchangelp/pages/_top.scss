@@ -435,6 +435,8 @@
 }
 
 .service {
+  padding: 120px 0 200px;
+
   // .service--ttl
   &--ttl {
     margin-bottom: 60px;
@@ -560,6 +562,74 @@
     }
   }
 
+  // .service--model
+  &--model {
+    margin-bottom: 120px;
+
+    h3 {
+      img {
+        display: block;
+        margin: 0 auto 30px;
+      }
+    }
+
+    figure {
+      box-shadow: 0 0 8px rgba(#042278, 0.5);
+    }
+
+    figcaption {
+      padding: 10px;
+      font-size: var(--fz25);
+      font-weight: 800;
+      color: #fff;
+      text-align: center;
+      background: #042278;
+    }
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    li {
+      width: calc((100% / 5) - 15px);
+
+      img {
+        display: block;
+        width: 195px;
+        height: 200px;
+        padding: 15px;
+        margin: auto;
+        object-fit: contain;
+      }
+    }
+
+    @include tb-mq {
+      h3 {
+        img {
+          margin: 0 auto 40px;
+        }
+      }
+
+      li {
+        width: calc((100% / 2) - 10px);
+
+        img {
+          height: 165px;
+        }
+      }
+
+      figcaption {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100px;
+      }
+    }
+  }
+
   // .service--building
   &--building {
     h3 {
@@ -614,7 +684,7 @@
 }
 
 .reason {
-  padding: 120px 0;
+  padding: 100px 0 120px;
   background: #eefaff;
 
   h2 {
