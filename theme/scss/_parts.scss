@@ -435,6 +435,7 @@ img {
   max-width: 500px;
   padding: 50px 30px 40px;
   line-height: 1;
+  // 初回描画時のFOUC対策として、theme/style.css にも同じ初期非表示を定義
   visibility: hidden;
   background: #fff;
   border: 3px solid #333;
