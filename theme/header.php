@@ -203,7 +203,7 @@
           <div class="gnav--inner">
             <ul>
               <li><a href="<?php echo esc_url(home_url('/business/')); ?>">事業内容</a></li>
-              <li><a href="<?php echo esc_url(home_url('/service/')); ?>">サービス</a></li>
+              <li><a href="<?php echo esc_url(home_url('/service/')); ?>">サービス一覧</a></li>
               <li><a href="<?php echo esc_url(home_url('/introduction/')); ?>">導入実績</a></li>
               <li><a href="<?php echo esc_url(home_url('/company/')); ?>">会社概要</a></li>
               <li><a href="<?php echo esc_url(home_url('/information/')); ?>">お役立ち情報</a></li>

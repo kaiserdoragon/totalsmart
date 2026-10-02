@@ -95,7 +95,6 @@ if (!$has_seo_plugin) {
     }
     return $document_title;
   }, 20);
-
 }
 
 get_header('service');
@@ -241,7 +240,7 @@ get_header('service');
     </script>
   <?php endif; ?>
 
-  <section class="camera_mv">
+  <section class="camera_mv hukugouki_mv">
     <div class="camera_mv--contents container -lg">
       <div class="camera_mv--block">
         <span class="camera_mv--area">愛知・岐阜・三重・静岡対応</span>
@@ -262,7 +261,7 @@ get_header('service');
         <img src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_catch_hukugouki.png'); ?>" alt="複合機の見直しサービスのイメージ" width="667" height="490" loading="eager" fetchpriority="high" decoding="async">
       </div>
     </div>
-    <img class="camera_mv--bg" src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_bg.jpg'); ?>" alt="" width="1920" height="750" loading="eager" fetchpriority="high" decoding="async">
+    <img class="camera_mv--bg hukugouki_mv--bg" src="<?php echo esc_url(get_template_directory_uri() . '/img/service/mv_bg.jpg'); ?>" alt="" width="1920" height="750" loading="eager" fetchpriority="high" decoding="async">
   </section>
 
   <section class="camera_lead hukugouki_lead">

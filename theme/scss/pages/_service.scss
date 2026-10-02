@@ -367,7 +367,7 @@
   &--bg {
     width: 100%;
     object-fit: cover;
-    height: 1200px;
+    height: 1000px;
   }
 
   @media (1025px <= width <= 1480px) {
@@ -485,7 +485,7 @@
 }
 
 .camera_middle {
-  padding: 150px 0;
+  padding: 100px 0;
 
   p {
     position: relative;
@@ -2003,8 +2003,20 @@
 //  複合機特化ページ　専用
 // ---------------------------------------------
 
+.hukugouki_mv {
+  // .hukugouki_mv--bg
+  .hukugouki_mv--bg {
+    height: 800px;
+  }
+}
+
 .hukugouki_lead {
   background: url(../img/service/lead_bg_hukugouki.jpg) no-repeat center / cover;
+
+  ul {
+    max-width: 900px;
+    margin: 0 auto 30px;
+  }
 }
 
 .hukugouki_assignment {
@@ -2053,7 +2065,6 @@
     }
   }
 }
-
 
 .hukugouki_introduction {
   h2 {
