@@ -698,29 +698,6 @@ add_filter('style_loader_tag', function ($tag) {
 
 
 // -------------------------------------
-//　非クリティカルCSSを非ブロッキング化（プリロード + noscript）
-// -------------------------------------
-
-add_filter('style_loader_tag', function ($html, $handle, $href, $media) {
-  if (is_admin()) return $html;
-
-  $preload_handles = ['mytheme-custom'];
-
-  if (!in_array($handle, $preload_handles, true)) {
-    return $html;
-  }
-
-  $orig  = trim($html);
-  $href  = esc_url($href);
-  $id    = esc_attr("{$handle}-css");
-  $media = $media ? ' media="' . esc_attr($media) . '"' : '';
-
-  return "<link rel=\"preload\" id=\"{$id}\" href=\"{$href}\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\"{$media}>\n"
-    . "<noscript>{$orig}</noscript>\n";
-}, 10, 4);
-
-
-// -------------------------------------
 //　読み込まれるjs関連
 // -------------------------------------
 

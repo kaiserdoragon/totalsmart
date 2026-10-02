@@ -129,8 +129,3 @@ a img.aligncenter {
     /* Above WP toolbar. */
 }
 
-/* Prevent floating banner FOUC before async custom CSS is loaded. */
-.floatingbanner {
-    visibility: hidden;
-    opacity: 0;
-}
