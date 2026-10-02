@@ -5,8 +5,8 @@
 //  サービス　専用
 // ---------------------------------------------
 
-// サービス一覧
-.service_page {
+// サービス一覧ページ
+.service_archive {
   p {
     margin-bottom: 80px;
     text-align: center;
@@ -14,13 +14,14 @@
 
   ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 210px);
+    grid-template-columns: repeat(auto-fit, 280px);
     row-gap: 40px;
     column-gap: 15px;
     justify-content: center;
   }
 
   figcaption {
+    font-size: var(--fz20);
     font-weight: 800;
     color: #0052a7;
     text-align: center;
@@ -29,6 +30,7 @@
   }
 
   img {
+    width: 100%;
     margin-bottom: 5px;
   }
 
@@ -42,6 +44,7 @@
     }
   }
 }
+
 
 // サービス詳細
 .single_service {
@@ -190,6 +193,26 @@
 
   @include tb-mq {
     padding-top: 0;
+  }
+}
+
+
+// 電気代シュミレーション
+.mitumori {
+  .container {
+    margin: 0 auto 100px;
+  }
+
+  a {
+    display: block;
+    width: fit-content;
+    margin: auto;
+  }
+
+  // .mitumori--lead
+  &--lead {
+    margin-bottom: 60px;
+    text-align: center;
   }
 }
 

@@ -147,8 +147,8 @@ $home_schema = [
     </div>
   </section>
 
-  <section class="lead_solution bg_gray">
-    <div class="lead_solution--inner container sec">
+  <section class="lead_solution sec">
+    <div class="lead_solution--inner">
       <div class="container -sm">
         <div class="lead_solution--ttl">
           <h2>
@@ -177,10 +177,6 @@ $home_schema = [
       <img src="<?php echo get_template_directory_uri(); ?>/img/top/solution_catch.png" alt="" width="724" height="489" loading="lazy" decoding="async">
     </div>
   </section>
-
-
-
-
 
   <section class="feature bg_white sec">
     <div class="container">
@@ -296,7 +292,7 @@ $home_schema = [
    */
   ?>
   <section class="service bg_white">
-    <div class="container">
+    <div class="service--inner">
       <h2 class="ttl">
         サービス一覧
         <span>SERVICE</span>

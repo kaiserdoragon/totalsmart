@@ -69,8 +69,8 @@ get_header();
     <?php get_template_part('include/common', 'breadcrumb'); ?>
   </div>
 
-  <section class="archive_page">
-    <div class="container">
+  <section class="service_archive archive_page">
+    <div class="service--inner">
 
       <h1 class="ttl">
         <?php echo esc_html($ts_archive_title); ?>
