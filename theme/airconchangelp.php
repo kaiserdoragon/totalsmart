@@ -326,16 +326,16 @@ add_action('wp_head', static function () use ($ld_json) {
             media="(max-width: 1024px)"
             srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv_sp.avif"
             type="image/avif"
-            width="750" height="1789">
+            width="750" height="2503">
           <source
             media="(max-width: 1024px)"
             srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv_sp.webp"
             type="image/webp"
-            width="750" height="1789">
+            width="750" height="2503">
           <source
             media="(max-width: 1024px)"
             srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv_sp.jpg"
-            width="750" height="1789">
+            width="750" height="2503">
 
           <source
             srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv.avif"
@@ -347,7 +347,7 @@ add_action('wp_head', static function () use ($ld_json) {
           <img
             src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv.jpg"
             alt="業務用エアコンの交換・入れ替え・買い替え。愛知・岐阜・三重・静岡対応"
-            width="1920" height="1014"
+            width="1920" height="1017"
             fetchpriority="high"
             decoding="async">
         </picture>
