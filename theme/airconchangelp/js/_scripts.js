@@ -2,10 +2,7 @@
 
 // .js-scrollableが追加された場合だけScrollHintを初期化する。
 window.addEventListener("DOMContentLoaded", () => {
-  if (
-    typeof ScrollHint !== "function" ||
-    !document.querySelector(".js-scrollable")
-  ) {
+  if (typeof ScrollHint !== "function" || !document.querySelector(".js-scrollable")) {
     return;
   }
 
@@ -83,7 +80,6 @@ if (Header) {
   }
 }
 
-
 // グローバルナビゲーション //////////////////////////////////////////////////////
 const Gnav_btn = document.getElementById("js-gnav_btn");
 const Gnav = document.getElementById("js-gnav");
@@ -115,12 +111,20 @@ document.addEventListener("click", (event) => {
 
   const href = anchor.getAttribute("href");
   const target = href === "#" ? document.documentElement : document.querySelector(href);
+
   if (!target) return;
 
-  // event.preventDefault();
-  // const header = document.querySelector(".header");
-  // const headerHeight = header ? header.offsetHeight : 0;
-  // const top = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+  event.preventDefault();
 
-  window.scrollTo({ top, behavior: "smooth" });
+  const header = document.querySelector(".header");
+  const isFixedHeader = header && window.getComputedStyle(header).position === "fixed";
+
+  const headerHeight = isFixedHeader ? header.getBoundingClientRect().height : 0;
+
+  const top = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+  window.scrollTo({
+    top: Math.max(0, top),
+    behavior: "smooth",
+  });
 });
