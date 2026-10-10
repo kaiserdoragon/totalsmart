@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: エアコンの交換・買い替えLP
+Template Name: エアコンの交換・入れ替えLP
 */
 defined('ABSPATH') || exit;
 
@@ -23,13 +23,13 @@ $main_tel_href     = preg_replace('/[^0-9]/', '', $main_tel_local);     // 05293
 $has_seo_plugin = defined('WPSEO_VERSION') || defined('RANK_MATH_VERSION') || defined('AIOSEO_VERSION');
 
 // このLP専用の検索結果向けタイトル・説明文
-$meta_description = '愛知・岐阜・三重・静岡の業務用エアコン交換・入れ替え・買い替え。機器選定、本体販売、撤去・フロン回収、取付工事、試運転まで一括対応。法人・店舗・工場・施設向けに無料でお見積もりします。';
+$meta_description = '愛知・岐阜・三重・静岡の業務用エアコン交換・入れ替え。機器選定、本体販売、撤去・フロン回収、取付工事、試運転まで一括対応。法人・店舗・工場・施設向けに無料でお見積もりします。';
 $meta_description = wp_strip_all_tags($meta_description);
 if (function_exists('mb_strimwidth')) {
   $meta_description = mb_strimwidth($meta_description, 0, 200, '…', 'UTF-8');
 }
 
-$meta_title = '業務用エアコン交換・入れ替え・買い替え｜東海4県対応｜トータルスマート株式会社';
+$meta_title = '業務用エアコン交換・入れ替え。東海4県対応｜トータルスマート株式会社';
 
 // 表示中のFAQと構造化データを同じ配列から生成し、内容のずれを防ぐ。
 $faq_items = [
@@ -51,7 +51,7 @@ $faq_items = [
   ],
   [
     'question' => '修理と交換のどちらがよいか分かりません。',
-    'answer'   => "使用年数、故障頻度、修理費用、部品供給の状況、電気代、現在の効き具合などを確認し、修理を続けるべきか、交換・買い替えを検討すべきかを整理します。\nぜひ一度ご相談ください。",
+    'answer'   => "使用年数、故障頻度、修理費用、部品供給の状況、電気代、現在の効き具合などを確認し、修理を続けるべきか、交換・入れ替えを検討すべきかを整理します。\nぜひ一度ご相談ください。",
   ],
   [
     'question' => '機種や馬力の選び方が分かりません。',
@@ -93,7 +93,7 @@ $service = [
   '@type' => 'Service',
   '@id'   => $page_url . '#service',
   'url'   => $page_url,
-  'name'  => '業務用エアコンの交換・入れ替え・買い替え工事',
+  'name'  => '業務用エアコンの交換・入れ替え工事',
   'serviceType' => '業務用エアコンの機器選定・販売・撤去・フロン回収・取付工事・試運転',
   'description' => $meta_description,
   'provider' => $business,
@@ -236,7 +236,7 @@ add_action('wp_head', static function () use ($ld_json) {
     <meta property="og:image" content="<?php echo esc_url($mv_url); ?>">
     <meta property="og:image:width" content="5760">
     <meta property="og:image:height" content="3042">
-    <meta property="og:image:alt" content="業務用エアコンの交換・入れ替え・買い替えサービス">
+    <meta property="og:image:alt" content="業務用エアコンの交換・入れ替えサービス">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?php echo esc_attr($meta_title); ?>">
@@ -262,7 +262,7 @@ add_action('wp_head', static function () use ($ld_json) {
     <div class="contents">
       <div class="header--logo">
         <a href="<?php echo esc_url($page_url); ?>">
-          <p>業務用エアコンの交換・取り換え・入れ替え・買い替えは<br>トータルスマート株式会社</p>
+          <p>業務用エアコンの交換・取り換え・入れ替えは<br>トータルスマート株式会社</p>
 
           <div class="header--brand">
             <picture>
@@ -346,7 +346,7 @@ add_action('wp_head', static function () use ($ld_json) {
 
           <img
             src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mv.jpg"
-            alt="業務用エアコンの交換・入れ替え・買い替え。愛知・岐阜・三重・静岡対応"
+            alt="業務用エアコンの交換・入れ替え。愛知・岐阜・三重・静岡対応"
             width="1920" height="1017"
             fetchpriority="high"
             decoding="async">
@@ -725,7 +725,7 @@ add_action('wp_head', static function () use ($ld_json) {
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/reason_05.jpg" alt="" width="500" height="300" loading="lazy" decoding="async">
             <h3>リース・分割払いの相談ができる</h3>
             <p>
-              業務用エアコンの交換や買い替えをするとまとまった初期費用がかかります。<br>
+              業務用エアコンの交換や入れ替えをするとまとまった初期費用がかかります。<br>
               一括での支払いが難しい場合にはリース、分割払いなどを検討することが重要です。<br>
               初期費用を抑えたい、月額化したいといったご相談にも対応します。<br>
               購入がよいのか、リースがよいのかも、使用年数や台数、会社の資金計画に合わせてご提案します。
@@ -1149,7 +1149,7 @@ add_action('wp_head', static function () use ($ld_json) {
                 loading="lazy"
                 decoding="async">
             </picture>
-            <p>業務用エアコンの交換・買い替え・取り換え・入れ替えは<br>トータルスマート株式会社</p>
+            <p>業務用エアコンの交換・入れ替え・取り換え・は<br>トータルスマート株式会社</p>
           </a>
         </div>
         <div class="footer--info">

@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: エアコンの交換・買い替えのサンクスページ
+Template Name: エアコンの交換・入れ替えのサンクスページ
 */
 defined('ABSPATH') || exit;
 
@@ -78,7 +78,7 @@ if (function_exists('wp_robots_no_robots')) {
     <div class="contents">
       <div class="header--logo">
         <a href="<?php echo $lp_url; ?>">
-          <p>愛知県・岐阜県・三重県・静岡県のエアコンの交換・買い替えはトータルスマート株式会社</p>
+          <p>愛知県・岐阜県・三重県・静岡県のエアコンの交換・入れ替えはトータルスマート株式会社</p>
           <picture>
             <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/logo.avif" type="image/avif">
             <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/logo.webp" type="image/webp">
@@ -102,7 +102,7 @@ if (function_exists('wp_robots_no_robots')) {
               <img
                 src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/tel.png"
                 alt="お電話でのご相談はこちら: <?php echo esc_attr($tel_display); ?>"
-                width="270" height="70"
+                width="270" height="80"
                 decoding="async">
             </picture>
           </a>
@@ -115,8 +115,21 @@ if (function_exists('wp_robots_no_robots')) {
               <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.webp" type="image/webp">
               <img
                 src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/mail.png"
-                alt="メールでお問い合わせ（LPへ戻ります）"
-                width="270" height="70"
+                alt="メールでお問い合わせ"
+                width="270" height="80"
+                decoding="async">
+            </picture>
+          </a>
+        </div>
+
+        <div class="header--btn-item">
+          <a href="https://lin.ee/fXrKQyq" class="cv_button gtm-click-mail">
+            <picture>
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/line.avif" type="image/avif">
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/line.webp" type="image/webp">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/airconchangelp/img/line.png"
+                alt="LINEでお問い合わせ"
+                width="270" height="80"
                 decoding="async">
             </picture>
           </a>
