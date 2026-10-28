@@ -558,7 +558,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             type="image/webp">
           <source
             media="(max-width: 767px)"
-            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_catch_sp.jpg">
+            srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_catch_sp.png">
 
           <source
             srcset="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_catch.avif"
@@ -570,7 +570,7 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
             class="cvarea--catch"
             src="<?php echo esc_url(get_template_directory_uri()); ?>/cleaninglp/img/cvarea_catch.png"
             alt=""
-            width="1210" height="792"
+            width="1210 px" height="786"
             fetchpriority="high"
             decoding="async">
         </picture>
