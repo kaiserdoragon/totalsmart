@@ -638,7 +638,13 @@ add_action('wp_enqueue_scripts', function () {
 
   $enqueue = function ($handle, $file, $deps = [], $media = 'all') use ($uri, $path) {
     $p = $path($file);
-    if (!file_exists($p)) return;
+    if (!is_file($p) || !is_readable($p)) {
+      // 欠損時も依存関係を保ち、他のCSSの読み込みを妨げない。
+      // URLなしの登録のため、欠損ファイルへのlinkタグは出力されない。
+      wp_register_style($handle, false, $deps, null, $media);
+      wp_enqueue_style($handle);
+      return;
+    }
     wp_enqueue_style($handle, $uri($file), $deps, (string) filemtime($p), $media);
   };
 
