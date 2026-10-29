@@ -1172,18 +1172,54 @@ add_filter('ngettext_with_context', 'trans_custom_gettext', 10, 6);
 
 
 // -------------------------------------
-// ショートコードでphpファイルを呼び出す
+// ショートコードで許可済みのPHPファイルだけを呼び出す
 // -------------------------------------
-// includeフォルダ内にphpを追加　例）include/shortcode.php
-// [myphp file="shortcode.php"]を記述
+// 使用例: [myphp file="common-breadcrumb"]
+// .php付きも許可: [myphp file="common-breadcrumb.php"]
 function Include_my_php($params = array())
 {
-  extract(shortcode_atts(array(
-    'file' => 'default'
-  ), $params));
+  $atts = shortcode_atts(
+    array('file' => ''),
+    is_array($params) ? $params : array()
+  );
+
+  // 追加時は安全性を確認し、識別子と固定ファイル名を明示的に登録する。
+  $allowed_files = array(
+    'common-breadcrumb'     => 'common-breadcrumb.php',
+    'common-breadcrumb.php' => 'common-breadcrumb.php',
+  );
+
+  if (!is_string($atts['file']) || !isset($allowed_files[$atts['file']])) {
+    return '';
+  }
+
+  // 従来と同じく親テーマ内を参照し、入力値をパスに連結しない。
+  $theme_dir = realpath(get_template_directory());
+  if ($theme_dir === false) {
+    return '';
+  }
+
+  $include_dir = $theme_dir . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR;
+  $file_path = realpath($include_dir . $allowed_files[$atts['file']]);
+
+  // シンボリックリンクなどでinclude/の外側へ出るファイルも拒否する。
+  if (
+    $file_path === false
+    || strpos($file_path, $include_dir) !== 0
+    || !is_file($file_path)
+    || !is_readable($file_path)
+  ) {
+    return '';
+  }
+
   ob_start();
-  include(get_theme_root() . '/' . get_template() . "/include/$file.php");
-  return ob_get_clean();
+  try {
+    include $file_path;
+    return (string) ob_get_contents();
+  } finally {
+    // 例外発生時もこの関数が開始した出力バッファを閉じる。
+    ob_end_clean();
+  }
 }
 add_shortcode('myphp', 'Include_my_php');
 
