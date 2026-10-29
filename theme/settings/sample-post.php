@@ -64,7 +64,7 @@ function setting_pages($val)
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>画像とテキストはきちんと横並びになりますか？</p>
+<p>画像とテキストはきちんと横並びになりましたか？</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
@@ -117,4 +117,5 @@ function setting_pages($val)
   }
 }
 
-add_action('after_switch_theme', 'create_pages_and_setting');
+// テーマ有効化時にサンプル投稿を自動作成しない。
+// 検証用投稿が必要な場合は、開発環境で手動作成する。
