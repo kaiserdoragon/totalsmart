@@ -32,17 +32,7 @@ function output_ogp()
 {
   global $wp;
 
-  $has_seo_plugin = function_exists('ts_is_major_seo_plugin_active')
-    ? ts_is_major_seo_plugin_active()
-    : (
-      defined('WPSEO_VERSION') ||
-      defined('RANK_MATH_VERSION') ||
-      defined('AIOSEO_VERSION') ||
-      defined('SEOPRESS_VERSION') ||
-      defined('SLIM_SEO_VERSION') ||
-      class_exists('The_SEO_Framework\\Load') ||
-      function_exists('rank_math')
-    );
+  $has_seo_plugin = ts_is_major_seo_plugin_active();
 
   if (is_admin() || $has_seo_plugin) {
     return;

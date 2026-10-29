@@ -25,17 +25,7 @@
   <meta name="format-detection" content="telephone=no">
 
   <?php
-  $ts_has_seo_plugin = function_exists('ts_is_major_seo_plugin_active')
-    ? ts_is_major_seo_plugin_active()
-    : (
-      defined('WPSEO_VERSION') ||
-      defined('RANK_MATH_VERSION') ||
-      defined('AIOSEO_VERSION') ||
-      defined('SEOPRESS_VERSION') ||
-      defined('SLIM_SEO_VERSION') ||
-      class_exists('The_SEO_Framework\\Load') ||
-      function_exists('rank_math')
-    );
+  $ts_has_seo_plugin = ts_is_major_seo_plugin_active();
 
   $ts_object_id = get_queried_object_id();
   $ts_post_slug = $ts_object_id ? get_post_field('post_name', $ts_object_id) : '';

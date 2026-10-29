@@ -11,7 +11,7 @@ $home_url = esc_url_raw(home_url('/'));
 $logo_url = esc_url_raw(get_theme_file_uri('shuurilp/img/logo.png'));
 $mv_url   = esc_url_raw(get_theme_file_uri('shuurilp/img/mv.jpg'));
 
-$has_seo_plugin = defined('WPSEO_VERSION') || defined('RANK_MATH_VERSION') || defined('AIOSEO_VERSION');
+$has_seo_plugin = ts_is_major_seo_plugin_active();
 
 // タイトル（テーマがtitle-tag対応なら wp_get_document_title() が最適）
 $meta_title = wp_get_document_title();

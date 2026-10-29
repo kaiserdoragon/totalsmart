@@ -47,12 +47,7 @@ $service_schema_name = sprintf(
   $service_title ?: '業務用エアコン'
 );
 
-$has_seo_plugin = (
-  defined('WPSEO_VERSION') ||
-  defined('RANK_MATH_VERSION') ||
-  defined('AIOSEO_VERSION') ||
-  defined('SEOPRESS_VERSION')
-);
+$has_seo_plugin = ts_is_major_seo_plugin_active();
 
 //タイトルタグの差し替え
 if (!$has_seo_plugin) {

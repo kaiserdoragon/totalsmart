@@ -20,7 +20,7 @@ $main_tel_intl      = '+81-52-932-5450';
 $main_tel_href     = preg_replace('/[^0-9]/', '', $main_tel_local);     // 0529325450
 
 // SEOプラグインの有無（重複出力回避）
-$has_seo_plugin = defined('WPSEO_VERSION') || defined('RANK_MATH_VERSION') || defined('AIOSEO_VERSION');
+$has_seo_plugin = ts_is_major_seo_plugin_active();
 
 // このLP専用の検索結果向けタイトル・説明文
 $meta_description = '愛知・岐阜・三重・静岡の業務用エアコン交換・入れ替え。機器選定、本体販売、撤去・フロン回収、取付工事、試運転まで一括対応。法人・店舗・工場・施設向けに無料でお見積もりします。';

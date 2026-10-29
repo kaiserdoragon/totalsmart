@@ -22,15 +22,7 @@ $tracking_tel_href = preg_replace('/[^0-9]/', '', $tracking_tel_local); // 08001
 $main_tel_href     = preg_replace('/[^0-9]/', '', $main_tel_local);     // 0529325450
 
 // SEOの制御はこのテンプレート内で完結させる。共通ファイルは変更しない。
-$has_seo_plugin = (
-  defined('WPSEO_VERSION')
-  || defined('RANK_MATH_VERSION')
-  || defined('AIOSEO_VERSION')
-  || defined('SEOPRESS_VERSION')
-  || defined('SLIM_SEO_VERSION')
-  || class_exists('The_SEO_Framework\Load')
-  || function_exists('rank_math')
-);
+$has_seo_plugin = ts_is_major_seo_plugin_active();
 
 // 本文で案内している対象・作業内容・対応地域に合わせる。
 $meta_title = '業務用エアコンクリーニング｜愛知・岐阜・三重・静岡｜トータルスマート株式会社';

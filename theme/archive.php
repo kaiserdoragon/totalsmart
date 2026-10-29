@@ -38,12 +38,7 @@ if ($ts_current_paged > 1) {
   $ts_doc_title .= ' ' . $ts_current_paged . 'ページ目';
 }
 
-$ts_has_seo_plugin = (
-  defined('WPSEO_VERSION') ||
-  defined('RANK_MATH_VERSION') ||
-  defined('AIOSEO_VERSION') ||
-  defined('SEOPRESS_VERSION')
-);
+$ts_has_seo_plugin = ts_is_major_seo_plugin_active();
 
 if (!$ts_has_seo_plugin) {
   add_filter('pre_get_document_title', function ($document_title) use ($ts_doc_title, $ts_site_name) {

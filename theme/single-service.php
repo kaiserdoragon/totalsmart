@@ -52,12 +52,7 @@ if ('' === $service_description) {
 
 $service_description = ts_resolve_saved_seo_description($service_description);
 
-$has_seo_plugin = (
-  defined('WPSEO_VERSION') ||
-  defined('RANK_MATH_VERSION') ||
-  defined('AIOSEO_VERSION') ||
-  defined('SEOPRESS_VERSION')
-);
+$has_seo_plugin = ts_is_major_seo_plugin_active();
 
 /**
  * この詳細ページ専用の title を付与

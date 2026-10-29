@@ -10,12 +10,7 @@ $ts_archive_url         = get_post_type_archive_link('introduction') ?: home_url
 $ts_archive_description = '導入実績一覧ページです。最新設備を導入いただいた企業の事例や活用方法、業務効率化や顧客満足度向上につながった実例をご紹介しています。';
 $ts_site_name           = get_bloginfo('name');
 
-$ts_has_seo_plugin = (
-  defined('WPSEO_VERSION') ||
-  defined('RANK_MATH_VERSION') ||
-  defined('AIOSEO_VERSION') ||
-  defined('SEOPRESS_VERSION')
-);
+$ts_has_seo_plugin = ts_is_major_seo_plugin_active();
 
 /**
  * このアーカイブ専用の title を付与

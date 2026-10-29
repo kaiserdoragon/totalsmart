@@ -12,12 +12,7 @@ $ts_archive_url         = ($ts_current_paged > 1) ? get_pagenum_link($ts_current
 $ts_archive_description = 'サービス一覧ページです。オフィスや店舗向けに、防犯、通信、省エネ、OA機器などの各種サービスをワンストップでご紹介しています。';
 $ts_site_name           = get_bloginfo('name');
 
-$ts_has_seo_plugin = (
-  defined('WPSEO_VERSION') ||
-  defined('RANK_MATH_VERSION') ||
-  defined('AIOSEO_VERSION') ||
-  defined('SEOPRESS_VERSION')
-);
+$ts_has_seo_plugin = ts_is_major_seo_plugin_active();
 
 /**
  * このアーカイブ専用の title を付与

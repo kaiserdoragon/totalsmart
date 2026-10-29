@@ -2,12 +2,7 @@
 $site_home_url   = home_url('/');
 $ts_site_name    = get_bloginfo('name');
 $ts_poster_url   = get_theme_file_uri('/img/top/mv_video.jpg');
-$ts_has_seo_plugin = (
-  defined('WPSEO_VERSION') ||
-  defined('RANK_MATH_VERSION') ||
-  defined('AIOSEO_VERSION') ||
-  defined('SEOPRESS_VERSION')
-);
+$ts_has_seo_plugin = ts_is_major_seo_plugin_active();
 
 /**
  * フロントページ専用の title を付与

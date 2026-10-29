@@ -53,12 +53,7 @@
   <meta name="format-detection" content="telephone=no">
 
   <?php
-  $ts_has_seo_plugin = (
-    defined('WPSEO_VERSION') ||
-    defined('RANK_MATH_VERSION') ||
-    defined('AIOSEO_VERSION') ||
-    defined('SEOPRESS_VERSION')
-  );
+  $ts_has_seo_plugin = ts_is_major_seo_plugin_active();
 
   $ts_meta_desc = '';
   $ts_robots    = '';

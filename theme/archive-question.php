@@ -50,12 +50,7 @@ $ts_archive_description = ($ts_is_tax && $ts_current_term instanceof WP_Term)
   ? $ts_current_term->name . 'カテゴリのよくある質問一覧ページです。'
   : 'よくある質問一覧ページです。サービス内容、契約、料金、導入までの流れなど、よくあるご質問をまとめています。';
 
-$ts_has_seo_plugin = (
-  defined('WPSEO_VERSION') ||
-  defined('RANK_MATH_VERSION') ||
-  defined('AIOSEO_VERSION') ||
-  defined('SEOPRESS_VERSION')
-);
+$ts_has_seo_plugin = ts_is_major_seo_plugin_active();
 
 /**
  * このアーカイブ専用の title を付与
