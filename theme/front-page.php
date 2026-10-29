@@ -21,15 +21,7 @@ if (!$ts_has_seo_plugin) {
     return $document_title;
   }, 20);
 
-  /**
-   * フロントページ専用の canonical を付与
-   */
-  add_action('wp_head', function () use ($site_home_url) {
-    if (!is_front_page()) {
-      return;
-    }
-    echo '<link rel="canonical" href="' . esc_url($site_home_url) . '">' . "\n";
-  }, 20);
+  // canonical は functions.php の共通処理で出力する。
 }
 
 /**

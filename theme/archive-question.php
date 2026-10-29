@@ -69,16 +69,7 @@ if (!$ts_has_seo_plugin) {
     return $document_title;
   }, 20);
 
-  /**
-   * このアーカイブ専用の canonical を付与
-   * SEOプラグインがある場合はそちらを優先
-   */
-  add_action('wp_head', function () use ($ts_current_url, $taxonomy_slug) {
-    if (!(is_post_type_archive('question') || is_tax($taxonomy_slug))) {
-      return;
-    }
-    echo '<link rel="canonical" href="' . esc_url($ts_current_url) . '">' . "\n";
-  }, 20);
+  // canonical は functions.php の共通処理で出力する。
 }
 
 // カテゴリ一覧は「投稿が0件でも」出す

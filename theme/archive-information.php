@@ -48,16 +48,7 @@ if (!$ts_has_seo_plugin) {
     return $ts_doc_title . ' | ' . $ts_site_name;
   }, 20);
 
-  /**
-   * このアーカイブ専用の canonical を付与
-   * SEOプラグインがある場合はそちらを優先
-   */
-  add_action('wp_head', function () use ($ts_archive_url, $ts_taxonomy_slug) {
-    if (!(is_post_type_archive('information') || is_tax($ts_taxonomy_slug))) {
-      return;
-    }
-    echo '<link rel="canonical" href="' . esc_url($ts_archive_url) . '">' . "\n";
-  }, 20);
+  // canonical は functions.php の共通処理で出力する。
 }
 
 get_header();

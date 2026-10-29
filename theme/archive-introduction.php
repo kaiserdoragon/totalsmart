@@ -29,16 +29,7 @@ if (! $ts_has_seo_plugin) {
     return $title;
   }, 20);
 
-  /**
-   * このアーカイブ専用の canonical を付与
-   * SEOプラグインがある場合はそちらを優先
-   */
-  add_action('wp_head', function () use ($ts_archive_url) {
-    if (!is_post_type_archive('introduction')) {
-      return;
-    }
-    echo '<link rel="canonical" href="' . esc_url($ts_archive_url) . '">' . "\n";
-  }, 20);
+  // canonical は functions.php の共通処理で出力する。
 }
 
 get_header();

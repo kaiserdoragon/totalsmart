@@ -53,12 +53,7 @@ if (!$ts_has_seo_plugin) {
     return $document_title;
   }, 20);
 
-  add_action('wp_head', function () use ($ts_current_url) {
-    if (!(is_home() || is_post_type_archive('post') || is_category())) {
-      return;
-    }
-    echo '<link rel="canonical" href="' . esc_url($ts_current_url) . '">' . "\n";
-  }, 20);
+  // canonical は functions.php の共通処理で出力する。
 }
 
 get_header();

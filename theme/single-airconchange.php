@@ -63,12 +63,11 @@ if (!$has_seo_plugin) {
     return $document_title;
   }, 20);
 
-  add_action('wp_head', function () use ($service_url) {
+  // canonical は functions.php の共通処理で出力する。
+  add_action('wp_head', function () {
     if (!is_singular('service')) {
       return;
     }
-    echo '<link rel="canonical" href="' . esc_url($service_url) . '">' . "
-";
     echo '<meta name="robots" content="max-image-preview:large">' . "
 ";
   }, 20);

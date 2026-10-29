@@ -184,7 +184,6 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
   <?php if (!$has_seo_plugin): ?>
     <title><?php echo esc_html($meta_title); ?></title>
     <meta name="description" content="<?php echo esc_attr($meta_description); ?>">
-    <link rel="canonical" href="<?php echo esc_url($page_url); ?>">
 
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ja_JP">

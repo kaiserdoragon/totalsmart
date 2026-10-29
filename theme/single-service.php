@@ -71,16 +71,7 @@ if (!$has_seo_plugin) {
     return $document_title;
   }, 20);
 
-  /**
-   * この詳細ページ専用の canonical を付与
-   * SEOプラグインがある場合はそちらを優先
-   */
-  add_action('wp_head', function () use ($service_url) {
-    if (!is_singular('service')) {
-      return;
-    }
-    echo '<link rel="canonical" href="' . esc_url($service_url) . '">' . "\n";
-  }, 20);
+  // canonical は functions.php の共通処理で出力する。
 }
 
 get_header();

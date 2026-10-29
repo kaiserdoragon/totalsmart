@@ -102,16 +102,7 @@ if (!$has_seo_plugin) {
     return $document_title;
   }, 20);
 
-  /**
-   * この詳細ページ専用の canonical を付与
-   * SEOプラグインがある場合はそちらを優先
-   */
-  add_action('wp_head', function () use ($current_url, $post_type) {
-    if (!is_singular($post_type)) {
-      return;
-    }
-    echo '<link rel="canonical" href="' . esc_url($current_url) . '">' . "\n";
-  }, 20);
+  // canonical は functions.php の共通処理で出力する。
 }
 
 get_header();
