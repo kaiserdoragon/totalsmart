@@ -170,7 +170,7 @@ function custom_pre_get_document_title($title)
     return 'お問い合わせありがとうございました | ' . $site_name;
   }
 
-  return '';
+  return $title;
 }
 add_filter('pre_get_document_title', 'custom_pre_get_document_title');
 
