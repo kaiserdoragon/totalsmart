@@ -580,7 +580,7 @@ if (!function_exists('ts_output_website_schema_json_ld')) {
       'query-input' => 'required name=search_term_string',
     );
 
-    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . '</script>' . "\n";
   }
 }
 add_action('wp_head', 'ts_output_website_schema_json_ld', 20);

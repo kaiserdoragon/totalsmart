@@ -106,7 +106,7 @@ $schema_graph = [
 ];
 ?>
 <script type="application/ld+json">
-  <?php echo wp_json_encode(['@context' => 'https://schema.org', '@graph' => $schema_graph], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
+  <?php echo wp_json_encode(['@context' => 'https://schema.org', '@graph' => $schema_graph], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>
 </script>
 
 <div class="eyecatch">

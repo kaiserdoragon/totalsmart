@@ -156,7 +156,7 @@ if (!$has_seo_plugin) {
 add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
   if ($has_seo_plugin) return;
   echo "\n" . '<script type="application/ld+json">'
-    . wp_json_encode($ld_json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
+    . wp_json_encode($ld_json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT)
     . '</script>' . "\n";
 }, 1);
 

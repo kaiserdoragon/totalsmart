@@ -77,7 +77,7 @@ $home_schema = [
 ];
 ?>
 <script type="application/ld+json">
-  <?php echo wp_json_encode($home_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
+  <?php echo wp_json_encode($home_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>
 </script>
 
 <main>
@@ -388,7 +388,7 @@ $home_schema = [
             '@id'             => $site_home_url . '#service-list',
             'name'            => 'サービス一覧',
             'itemListElement' => $json_ld_services,
-          ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
+          ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>
         </script>
       <?php endif; ?>
 
@@ -572,7 +572,7 @@ $home_schema = [
           '@id'             => $site_home_url . '#works-list',
           'name'            => '導入実績一覧',
           'itemListElement' => $json_ld_works,
-        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>
       </script>
     <?php endif; ?>
 
