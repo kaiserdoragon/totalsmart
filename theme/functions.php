@@ -105,6 +105,9 @@ require_once locate_template('settings/ogp.php', true);
 // あまり変更しない触らない関数たち（ウィジェットなど）
 require_once locate_template('settings/settings-import.php', true);
 
+// 管理画面で保存したSEO設定を各テンプレートへ反映する。
+require_once __DIR__ . '/settings/seo-meta.php';
+
 // 通常投稿にサンプル投稿を自動追加
 require_once locate_template('settings/sample-post.php', true);
 

@@ -50,6 +50,8 @@ if ('' === $service_description) {
   $service_description = $service_title . 'の詳細ページです。';
 }
 
+$service_description = ts_resolve_saved_seo_description($service_description);
+
 $has_seo_plugin = (
   defined('WPSEO_VERSION') ||
   defined('RANK_MATH_VERSION') ||

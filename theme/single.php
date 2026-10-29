@@ -70,12 +70,7 @@ if ('' === $page_description) {
   $page_description = $current_title . 'の詳細ページです。';
 }
 
-if ($is_information && function_exists('ts_get_custom_seo_description')) {
-  $custom_description = ts_get_custom_seo_description($post_id);
-  if ($custom_description !== '') {
-    $page_description = $custom_description;
-  }
-}
+$page_description = ts_resolve_saved_seo_description($page_description);
 
 if ($is_information) {
   $GLOBALS['ts_meta_description_override'] = $page_description;

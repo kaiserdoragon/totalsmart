@@ -94,6 +94,7 @@
     }
 
     // OGP 側も同じ description を使う。
+    $ts_meta_desc = ts_resolve_saved_seo_description($ts_meta_desc);
     if ('' !== $ts_meta_desc) {
       $GLOBALS['ts_meta_description_override'] = $ts_meta_desc;
     }
@@ -104,7 +105,7 @@
     <title><?php echo esc_html(wp_get_document_title()); ?></title>
   <?php endif; ?>
 
-  <?php if (!$ts_has_seo_plugin && !empty($ts_meta_desc)) : ?>
+  <?php if (!$ts_has_seo_plugin && $ts_meta_desc !== '') : ?>
     <meta name="description" content="<?php echo esc_attr($ts_meta_desc); ?>">
   <?php endif; ?>
 

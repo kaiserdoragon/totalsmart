@@ -30,6 +30,8 @@ if (function_exists('mb_strimwidth')) {
 }
 
 $meta_title = '業務用エアコン交換・入れ替え。東海4県対応｜トータルスマート株式会社';
+$meta_title = ts_resolve_saved_seo_title($meta_title);
+$meta_description = ts_resolve_saved_seo_description($meta_description);
 
 // 表示中のFAQと構造化データを同じ配列から生成し、内容のずれを防ぐ。
 $faq_items = [

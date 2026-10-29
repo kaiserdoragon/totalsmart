@@ -36,6 +36,8 @@ $has_seo_plugin = (
 $meta_title = '業務用エアコンクリーニング｜愛知・岐阜・三重・静岡｜トータルスマート株式会社';
 $meta_description = '愛知・岐阜・三重・静岡の店舗・オフィス・施設向け業務用エアコンクリーニング。天井カセット形・天井吊形など、機種や設置状況に合わせて分解洗浄します。料金・作業の流れ・施工事例をご案内。トータルスマート株式会社が無料見積もりを承ります。';
 $meta_description = wp_strip_all_tags($meta_description);
+$meta_title = ts_resolve_saved_seo_title($meta_title);
+$meta_description = ts_resolve_saved_seo_description($meta_description);
 
 if (!$has_seo_plugin) {
   // title-tag 対応時にも、このLPのタイトルをWordPress標準出力へ反映する。

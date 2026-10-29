@@ -49,7 +49,7 @@ function output_ogp()
   }
 
   $og_site_name = get_bloginfo('name');
-  $og_title     = is_front_page() ? $og_site_name : wp_get_document_title();
+  $og_title     = ts_resolve_saved_seo_title(is_front_page() ? $og_site_name : wp_get_document_title());
   $og_type      = is_singular('post') ? 'article' : 'website';
   $og_url       = home_url('/');
   $og_image     = get_theme_file_uri('/img/ogp.png');
@@ -94,6 +94,7 @@ function output_ogp()
   }
 
   $og_description = ts_ogp_clean_description($og_description, 160);
+  $og_description = ts_resolve_saved_seo_description($og_description);
   ?>
   <meta property="og:locale" content="ja_JP">
   <meta property="og:title" content="<?php echo esc_attr($og_title); ?>">

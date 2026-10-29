@@ -27,7 +27,10 @@ if (function_exists('mb_strimwidth')) {
 }
 
 // OGP/Twitter（OGタイトルはページ主題と一致させる）
-$og_title       = $meta_title ?: 'エアコン修理｜株式会社トータルスマート';
+$meta_title = ts_resolve_saved_seo_title($meta_title);
+$meta_description = ts_resolve_saved_seo_description($meta_description);
+
+$og_title       = $meta_title !== '' ? $meta_title : 'エアコン修理｜株式会社トータルスマート';
 $og_description = $meta_description;
 $og_image       = $mv_url;
 
@@ -146,6 +149,10 @@ $ld_json = [
   '@graph' => [$website, $primary_image, $business, $service, $webpage, $faqpage],
 ];
 
+if (!$has_seo_plugin) {
+  remove_action('wp_head', 'output_ogp');
+}
+
 add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
   if ($has_seo_plugin) return;
   echo "\n" . '<script type="application/ld+json">'
@@ -182,7 +189,9 @@ add_action('wp_head', static function () use ($ld_json, $has_seo_plugin) {
   <meta name="format-detection" content="telephone=no">
 
   <?php if (!$has_seo_plugin): ?>
-    <title><?php echo esc_html($meta_title); ?></title>
+    <?php if (!current_theme_supports('title-tag')): ?>
+      <title><?php echo esc_html($meta_title); ?></title>
+    <?php endif; ?>
     <meta name="description" content="<?php echo esc_attr($meta_description); ?>">
 
     <meta property="og:type" content="website">
