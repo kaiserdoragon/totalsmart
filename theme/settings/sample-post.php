@@ -64,7 +64,7 @@ function setting_pages($val)
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>画像とテキストはきちんと横並びになりましたか？</p>
+<p>画像とテキストはきちんと横並びになりますか？</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
