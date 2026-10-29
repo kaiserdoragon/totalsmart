@@ -115,12 +115,6 @@ function wpdocs_update_option_new_admin_email($old_value, $value)
 add_action('add_option_new_admin_email', 'wpdocs_update_option_new_admin_email', 10, 2);
 add_action('update_option_new_admin_email', 'wpdocs_update_option_new_admin_email', 10, 2);
 
-//テーマの更新通知をしない
-remove_action('load-update-core.php', 'wp_update_themes');
-add_filter('pre_site_transient_update_themes', function ($a) {
-  return null;
-});
-
 /*------------------------------------*\
 	headタグ内に表示する情報の設定 Remove Actions
 \*------------------------------------*/
