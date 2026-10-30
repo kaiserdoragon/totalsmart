@@ -2,7 +2,7 @@
 
 <div class="eyecatch">
   <h1>プライバシーポリシー</h1>
-  <img src="<?php echo get_template_directory_uri(); ?>/img/page/eyecatch_404.jpg" alt="404 NOT FOUND" width="1920" height="600" loading="lazy" decoding="async">
+  <img src="<?php echo get_template_directory_uri(); ?>/img/page/eyecatch_404.jpg" alt="プライバシーポリシー" width="1920" height="600" loading="lazy" decoding="async">
 </div>
 <main class="notfound_page bg_gray privacy_page">
   <div class="breadcrumbs--wrap">
