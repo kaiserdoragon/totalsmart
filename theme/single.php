@@ -367,7 +367,7 @@ get_header();
               continue;
             }
 
-            $terms = wp_get_post_terms($related_information_current_id, $taxonomy);
+            $terms = get_the_terms($related_information_current_id, $taxonomy);
             if (is_wp_error($terms) || empty($terms)) {
               continue;
             }
@@ -392,6 +392,8 @@ get_header();
 
           // 候補は一度広めに取得し、PHP側で関連度を算出する。
           // 全件取得を避けるため、最新60件を候補上限とする。
+          // 'fields' => 'ids' にすると分類のキャッシュが作られず、候補ごとに
+          // 問い合わせが発生するため、投稿ごと取得して分類をまとめて読み込む。
           $related_information_candidate_query = new WP_Query([
             'post_type'              => 'information',
             'post_status'            => 'publish',
@@ -403,12 +405,11 @@ get_header();
             'no_found_rows'          => true,
             'update_post_meta_cache' => false,
             'update_post_term_cache' => true,
-            'fields'                 => 'ids',
           ]);
 
           $related_information_scored = [];
 
-          foreach ($related_information_candidate_query->posts as $candidate_id) {
+          foreach (wp_list_pluck($related_information_candidate_query->posts, 'ID') as $candidate_id) {
             $score = 0;
             $shared_exact_terms = 0;
             $shared_parent_terms = 0;
@@ -418,7 +419,7 @@ get_header();
                 continue;
               }
 
-              $candidate_terms = wp_get_post_terms($candidate_id, $taxonomy);
+              $candidate_terms = get_the_terms($candidate_id, $taxonomy);
               if (is_wp_error($candidate_terms) || empty($candidate_terms)) {
                 continue;
               }
@@ -494,7 +495,7 @@ get_header();
             $related_information_limit
           );
 
-          // 関連記事が3件に満たない場合のみ、新着記事で補完する。
+          // 関連記事が6件に満たない場合のみ、新着記事で補完する。
           if (count($related_information_ids) < $related_information_limit) {
             $fallback_exclude_ids = array_merge(
               [$related_information_current_id],
