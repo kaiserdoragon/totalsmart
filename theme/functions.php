@@ -195,6 +195,28 @@ add_filter('document_title_parts', 'edit_document_title_parts');
 // SEOフォールバック設定（SEOプラグイン未使用時にテーマ側で出力）
 // -------------------------------------
 
+if (!function_exists('ts_is_plugin_folder_active')) {
+  /**
+   * 指定フォルダのプラグインが有効かを、有効プラグインの一覧から判定する。
+   * プラグイン側の定数名やクラス名に依存しない。
+   */
+  function ts_is_plugin_folder_active($folder)
+  {
+    $plugins = (array) get_option('active_plugins', array());
+    if (is_multisite()) {
+      $plugins = array_merge($plugins, array_keys((array) get_site_option('active_sitewide_plugins', array())));
+    }
+
+    foreach ($plugins as $plugin) {
+      if (strpos((string) $plugin, $folder . '/') === 0) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+}
+
 if (!function_exists('ts_is_major_seo_plugin_active')) {
   function ts_is_major_seo_plugin_active()
   {
@@ -206,6 +228,7 @@ if (!function_exists('ts_is_major_seo_plugin_active')) {
       || defined('SLIM_SEO_VERSION') // Slim SEO
       || class_exists('The_SEO_Framework\Load') // The SEO Framework
       || function_exists('rank_math')
+      || ts_is_plugin_folder_active('seo-simple-pack') // SEO SIMPLE PACK
     );
   }
 }

@@ -11,11 +11,6 @@ function origintheme_register_required_plugins() {
 			'required'  => false,
 		),
         array(
-          'name'      => 'SEO SIMPLE PACK(description,OGP等)',
-          'slug'      => 'seo-simple-pack',
-          'required'  => false,
-        ),
-        array(
             'name'      => 'MW WP Form(フォーム)',
             'slug'      => 'mw-wp-form',
             'required'  => false,
