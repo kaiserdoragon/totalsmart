@@ -56,18 +56,12 @@
   $ts_has_seo_plugin = ts_is_major_seo_plugin_active();
 
   $ts_meta_desc = '';
-  $ts_robots    = '';
   $ts_meta_desc_override = isset($GLOBALS['ts_meta_description_override'])
     ? (string) $GLOBALS['ts_meta_description_override']
     : '';
 
-  $ts_noindex_pages = [
-    'attention',
-    'contact_corporate-confirm',
-    'contact_corporate-thanks',
-    'cleaning_thanks',
-    'shuuri_thanks',
-  ];
+  // robots（noindex）は functions.php の wp_robots で出力する。
+  $ts_noindex_pages = ts_get_noindex_page_slugs();
 
   if ('' !== trim($ts_meta_desc_override)) {
     $ts_meta_desc = $ts_meta_desc_override;
@@ -81,13 +75,10 @@
     $ts_meta_desc = 'トータルスマート株式会社のお知らせ一覧です。最新情報や重要なお知らせをご案内します。';
   } elseif (is_page($ts_noindex_pages)) {
     $ts_meta_desc = wp_strip_all_tags(get_the_title(get_queried_object_id())) . 'のページです。';
-    $ts_robots    = 'noindex,follow';
   } elseif (is_search()) {
     $ts_meta_desc = '「' . get_search_query() . '」の検索結果ページです。';
-    $ts_robots    = 'noindex,follow';
   } elseif (is_404()) {
     $ts_meta_desc = 'お探しのページは見つかりませんでした。';
-    $ts_robots    = 'noindex,follow';
   } elseif (is_singular()) {
     $ts_object_id = get_queried_object_id();
     $ts_excerpt   = get_the_excerpt($ts_object_id);
@@ -147,10 +138,6 @@
 
   <?php if (!$ts_has_seo_plugin && $ts_meta_desc !== '') : ?>
     <meta name="description" content="<?php echo esc_attr($ts_meta_desc); ?>">
-  <?php endif; ?>
-
-  <?php if (!$ts_has_seo_plugin && !empty($ts_robots)) : ?>
-    <meta name="robots" content="<?php echo esc_attr($ts_robots); ?>">
   <?php endif; ?>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">

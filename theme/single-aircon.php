@@ -58,14 +58,7 @@ if (!$has_seo_plugin) {
     return $document_title;
   }, 20);
 
-  // canonical は functions.php の共通処理で出力する。
-  add_action('wp_head', function () {
-    if (!is_singular('service')) {
-      return;
-    }
-    echo '<meta name="robots" content="max-image-preview:large">' . "
-";
-  }, 20);
+  // canonical と robots は functions.php の共通処理で出力する。
 }
 
 get_header('service');

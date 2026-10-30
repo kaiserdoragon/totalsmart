@@ -280,6 +280,23 @@ if (!function_exists('ts_is_noindex_singular')) {
   }
 }
 
+if (!function_exists('ts_get_noindex_page_slugs')) {
+  /**
+   * 検索結果に表示させない固定ページのスラッグ。
+   * robots は ts_adjust_robots_meta()、description は header.php で参照する。
+   */
+  function ts_get_noindex_page_slugs()
+  {
+    return array(
+      'attention',
+      'contact_corporate-confirm',
+      'contact_corporate-thanks',
+      'cleaning_thanks',
+      'shuuri_thanks',
+    );
+  }
+}
+
 if (!function_exists('ts_get_fallback_meta_description')) {
   function ts_get_fallback_meta_description()
   {
@@ -609,10 +626,11 @@ if (!function_exists('ts_adjust_robots_meta')) {
     }
 
     $robots['max-image-preview'] = 'large';
-    $robots['max-snippet']       = -1;
-    $robots['max-video-preview'] = -1;
+    // 値付きで出力されるよう文字列で指定する（数値だと「max-snippet」だけになる）。
+    $robots['max-snippet']       = '-1';
+    $robots['max-video-preview'] = '-1';
 
-    if (is_search() || is_404() || (is_singular() && ts_is_noindex_singular())) {
+    if (is_search() || is_404() || is_page(ts_get_noindex_page_slugs()) || (is_singular() && ts_is_noindex_singular())) {
       unset($robots['index']);
       $robots['noindex'] = true;
       $robots['follow']  = true;

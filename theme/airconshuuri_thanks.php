@@ -48,9 +48,6 @@ if (function_exists('wp_robots_no_robots')) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0">
   <meta name="format-detection" content="telephone=no">
 
-  <!-- サンクスページは通常インデックス不要。不要ならこの1行を削除 -->
-  <meta name="robots" content="noindex, nofollow">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
