@@ -29,12 +29,7 @@ if ('' === $page_description) {
 
 $seo_title = '会社概要 | ' . $site_name;
 
-$has_seo_plugin = (
-  defined('WPSEO_VERSION') ||
-  defined('RANK_MATH_VERSION') ||
-  defined('AIOSEO_VERSION') ||
-  defined('SEOPRESS_VERSION')
-);
+$has_seo_plugin = ts_is_major_seo_plugin_active();
 
 /**
  * この会社概要ページ専用の title を付与
@@ -48,16 +43,7 @@ if (!$has_seo_plugin) {
     return $document_title;
   }, 20);
 
-  /**
-   * この会社概要ページ専用の canonical を付与
-   * SEOプラグインがある場合はそちらを優先
-   */
-  add_action('wp_head', function () use ($page_url, $page_id) {
-    if (!is_page($page_id)) {
-      return;
-    }
-    echo '<link rel="canonical" href="' . esc_url($page_url) . '">' . "\n";
-  }, 20);
+  // canonical は functions.php の共通処理で出力する。
 }
 
 get_header();
