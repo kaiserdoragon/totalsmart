@@ -11,11 +11,6 @@ function origintheme_register_required_plugins() {
 			'required'  => false,
 		),
         array(
-            'name'      => 'MW WP Form(フォーム)',
-            'slug'      => 'mw-wp-form',
-            'required'  => false,
-        ),
-        array(
             'name'      => 'Advanced Custom Fields(カスタムフィールド)',
             'slug'      => 'advanced-custom-fields',
             'required'  => false,
