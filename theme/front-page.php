@@ -310,12 +310,13 @@ $home_schema = [
 
       if (!empty($service_posts)) {
         foreach ($service_posts as $service_post) {
-          $term_ids = wp_get_post_terms($service_post->ID, 'service_cat', ['fields' => 'ids']);
-          if (empty($term_ids) || is_wp_error($term_ids)) {
+          // get_posts で読み込み済みの分類キャッシュを使う（wp_get_post_terms は毎回DBに問い合わせる）。
+          $service_post_terms = get_the_terms($service_post, 'service_cat');
+          if (empty($service_post_terms) || is_wp_error($service_post_terms)) {
             continue;
           }
 
-          foreach ($term_ids as $term_id) {
+          foreach (wp_list_pluck($service_post_terms, 'term_id') as $term_id) {
             $services_by_term[$term_id][] = $service_post;
           }
         }
