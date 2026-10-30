@@ -1369,12 +1369,27 @@ function ts_enqueue_yubinbango()
     return;
   }
 
+  // 外部サイトに依存しないよう、テーマ内に置いたライブラリと住所データを使う。
+  // 住所データの更新手順は js/yubinbango/README.md を参照。
+  $rel_path  = 'js/yubinbango/yubinbango.js';
+  $file_path = get_theme_file_path($rel_path);
+  if (!file_exists($file_path)) {
+    return;
+  }
+
   wp_enqueue_script(
     'yubinbango',
-    'https://yubinbango.github.io/yubinbango/yubinbango.js',
+    get_theme_file_uri($rel_path),
     array(),
-    null,
+    (string) filemtime($file_path),
     true
+  );
+
+  // yubinbango.js が住所データを読み込む先
+  wp_add_inline_script(
+    'yubinbango',
+    'window.tsYubinbangoDataUrl = ' . wp_json_encode(get_theme_file_uri('js/yubinbango/data')) . ';',
+    'before'
   );
 }
 add_action('wp_enqueue_scripts', 'ts_enqueue_yubinbango', 20);
