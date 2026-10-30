@@ -314,6 +314,8 @@ if (!function_exists('ts_get_noindex_page_slugs')) {
       'attention',
       'contact_corporate-confirm',
       'contact_corporate-thanks',
+      'recruit-confirm',
+      'recruit-thanks',
       'cleaning_thanks',
       'shuuri_thanks',
     );
