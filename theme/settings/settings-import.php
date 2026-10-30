@@ -100,21 +100,6 @@ function remove_admin_bar()
 
 add_filter('show_admin_bar', 'remove_admin_bar');
 
-
-//管理者メールの確認を実施せずに、メールアドレス変更
-/**
- * @see http://codex.wordpress.com/Function_Reference/update_option_new_admin_email
- */
-remove_action('add_option_new_admin_email', 'update_option_new_admin_email');
-remove_action('update_option_new_admin_email', 'update_option_new_admin_email');
-function wpdocs_update_option_new_admin_email($old_value, $value)
-{
-  update_option('admin_email', $value);
-}
-
-add_action('add_option_new_admin_email', 'wpdocs_update_option_new_admin_email', 10, 2);
-add_action('update_option_new_admin_email', 'wpdocs_update_option_new_admin_email', 10, 2);
-
 /*------------------------------------*\
 	headタグ内に表示する情報の設定 Remove Actions
 \*------------------------------------*/
