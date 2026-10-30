@@ -1437,12 +1437,8 @@ function question_live_search()
 
   $keyword = trim($keyword);
 
-  // 超短時間キャッシュ（同じ検索語の連打対策）
-  $cache_key = 'q_live_' . md5($term . '|' . $keyword);
-  $cached = get_transient($cache_key);
-  if ($cached !== false) {
-    wp_send_json_success(['html' => $cached]); // JSON返して終了 :contentReference[oaicite:9]{index=9}
-  }
+  // 検索語ごとに一時データ（transient）を保存すると wp_options が肥大化するため、
+  // サーバー側ではキャッシュしない。同じ検索語の結果はブラウザ側のJSで再利用している。
 
   $args = [
     'post_type'              => 'question',
@@ -1501,10 +1497,7 @@ function question_live_search()
 
   $html = ob_get_clean();
 
-  // 60秒だけキャッシュ（必要なら短く/長く調整）
-  set_transient($cache_key, $html, 30);
-
-  wp_send_json_success(['html' => $html]); //
+  wp_send_json_success(['html' => $html]);
 }
 
 
