@@ -1581,3 +1581,21 @@ add_action('pre_get_posts', function ($query) {
   $query->set('orderby', 'date');
   $query->set('order', 'DESC');
 }, 999);
+
+
+// WordPressに登録されているユーザーの情報を取得API制御
+add_filter('rest_pre_dispatch', function ($result, $server, $request) {
+
+  if (
+    !is_user_logged_in() &&
+    preg_match('#^/wp/v2/users(?:/|$)#i', $request->get_route())
+  ) {
+    return new WP_Error(
+      'rest_users_blocked',
+      'ユーザー情報へのアクセスは禁止されています。',
+      array('status' => 403)
+    );
+  }
+
+  return $result;
+}, 10, 3);
