@@ -1599,3 +1599,21 @@ add_filter('rest_pre_dispatch', function ($result, $server, $request) {
 
   return $result;
 }, 10, 3);
+
+
+
+// -------------------------------------
+// Snow Monkey Formsの管理者宛てメールに送信日時追加
+// -------------------------------------
+
+add_filter(
+  'snow_monkey_forms/custom_mail_tag',
+  function ($value, $name) {
+    if ('send_datetime' === $name) {
+      return wp_date('Y/m/d H:i:s');
+    }
+    return $value;
+  },
+  10,
+  2
+);
