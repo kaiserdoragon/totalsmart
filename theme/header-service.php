@@ -40,12 +40,6 @@
       $ts_meta_desc = ts_get_custom_seo_description($ts_object_id);
     }
 
-    $custom_descriptions = [
-      'camera' => '「防犯対策を強化したい」「どのカメラを選べばいいかわからない」そんな悩みはトータルスマートが解決します。AI検知、夜間カラー撮影、長期録画など多様なニーズに対応。施工後の保守管理も万全で、導入後も長く安心してご利用いただけます。現地調査・見積もり無料。防犯のプロによる最適な提案を今すぐご確認ください。',
-      'hukugouki' => '愛知・岐阜・三重・静岡で法人向け複合機の新規導入・入れ替え・リース・購入ならトータルスマート株式会社。月間印刷枚数やA3利用、カウンター料金、保守内容を確認し、自社に合う機種と契約をご提案します。現地調査・見積もりは無料です。',
-      'aircon' => '愛知・岐阜・三重・静岡で業務用エアコンのクリーニング・掃除・修理ならトータルスマート株式会社。店舗・オフィス・クリニックのカビ臭・汚れ・水漏れ・効きの悪さを現地調査・無料見積りで確認します。',
-    ];
-
     if ('' === trim((string) $ts_meta_desc) && array_key_exists($ts_post_slug, $custom_descriptions)) {
       $ts_meta_desc = $custom_descriptions[$ts_post_slug];
     }
@@ -156,6 +150,14 @@
       ['anchor' => 'hukugouki_qa', 'label' => 'よくある質問'],
       ['anchor' => 'hukugouki_area', 'label' => '対応エリア'],
     ],
+    'utm' => [
+      ['anchor' => 'utm_reason', 'label' => '選ばれる4つの理由'],
+      ['anchor' => 'utm_assignment', 'label' => '3つの提案'],
+      ['anchor' => 'utm_construction', 'label' => '導入事例'],
+      ['anchor' => 'utm_flow', 'label' => '導入までの流れ'],
+      ['anchor' => 'utm_qa', 'label' => 'よくある質問'],
+      ['anchor' => 'utm_area', 'label' => '対応エリア'],
+    ]
   ];
   $service_nav_items = $service_post
     ? ($service_nav_map[$service_post->post_name] ?? [])
@@ -165,7 +167,7 @@
     if (empty($items) || empty($page_url)) {
       return;
     }
-    ?>
+  ?>
     <ul>
       <?php foreach ($items as $item) : ?>
         <li>
@@ -175,11 +177,11 @@
         </li>
       <?php endforeach; ?>
     </ul>
-    <?php
+  <?php
   };
 
   $render_service_header_buttons = static function () {
-    ?>
+  ?>
     <div class="header--btn">
       <a href="tel:0529325450" class="header--tel">052-932-5450
         <span>営業時間 9:00～18:00</span>
@@ -188,7 +190,7 @@
         お問い合わせ
       </a>
     </div>
-    <?php
+  <?php
   };
   ?>
 
