@@ -1402,7 +1402,7 @@ add_action('pre_get_posts', function ($q) {
 
   // archive-service.php（post_type=service のアーカイブ）だけ
   if ($q->is_post_type_archive('service')) {
-    $q->set('posts_per_page', 20);
+    $q->set('posts_per_page', 25);
 
     // 並び替え用SQLを追加
     add_filter('posts_clauses', 'service_archive_orderby_service_cat_description', 10, 2);
