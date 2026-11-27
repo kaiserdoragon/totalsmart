@@ -525,7 +525,9 @@
 //  お役立ち情報　専用
 // ---------------------------------------------
 .related_information {
+  width: min(1150px, 100%);
   padding: 70px 0 60px;
+  margin: auto;
   border-top: 1px solid #d1d1d1;
 
   // .related_information--ttl
@@ -554,15 +556,21 @@
 
   // .related_information--list
   &--list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 30px;
+    justify-content: center;
+    margin-bottom: 60px;
 
     h3 {
       font-size: var(--fz20);
       font-weight: 700;
       line-height: 1.5;
       text-decoration: underline;
+    }
+
+    li {
+      width: calc((100% / 3) - 30px);
     }
   }
 
