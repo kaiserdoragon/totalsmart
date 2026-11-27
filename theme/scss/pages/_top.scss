@@ -253,37 +253,67 @@
 
   p {
     margin-bottom: 40px;
-    font-size: var(--fz20);
+    font-size: var(--fz25);
     font-weight: 700;
     text-align: center;
   }
 
-  ul {
+  // .lead_worry--item
+  &--item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    font-size: var(--fz20);
+    font-weight: 700;
+
+    li {
+      position: relative;
+      padding-left: 30px;
+
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        content: "";
+        background: url(../img/top/lead_icon.png) no-repeat center center / 100%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  // .lead_worry--list
+  &--list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-  }
 
-  li {
-    padding: 170px 0 30px;
-    font-size: var(--fz23);
-    font-weight: 700;
-    text-align: center;
-    background: #fff 0% 0% no-repeat padding-box;
-    border: 3px solid #0052a7;
-    border-radius: 10px;
-    box-shadow: 0 0 15px #3db6ff40;
+    li {
+      padding: 170px 0 30px;
+      font-size: var(--fz23);
+      font-weight: 700;
+      text-align: center;
+      background: #fff 0% 0% no-repeat padding-box;
+      border: 3px solid #0052a7;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #3db6ff40;
 
-    &:nth-child(1) {
-      background: url(../img/top/worry_01.png) no-repeat top 20px center / 180px;
-    }
+      &:nth-child(1) {
+        background: url(../img/top/worry_01.png) no-repeat top 20px center / 180px;
+      }
 
-    &:nth-child(2) {
-      background: url(../img/top/worry_02.png) no-repeat top 20px center / 180px;
-    }
+      &:nth-child(2) {
+        background: url(../img/top/worry_02.png) no-repeat top 20px center / 180px;
+      }
 
-    &:nth-child(3) {
-      background: url(../img/top/worry_03.png) no-repeat top 20px center / 180px;
+      &:nth-child(3) {
+        background: url(../img/top/worry_03.png) no-repeat top 20px center / 180px;
+      }
     }
   }
 

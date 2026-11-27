@@ -120,13 +120,17 @@ $home_schema = [
   <section class="lead_worry bg_white sec">
     <div class="container -md">
       <h2>店舗・オフィス運営の<span class="lead_txt">お悩み</span>を解決します！</h2>
+      <ul class="lead_worry--item">
+        <li>コストを下げたい</li>
+        <li>設備を見直したい</li>
+        <li>セキュリティを強化したい</li>
+        <li>業務を効率化したい</li>
+      </ul>
       <p>
-        「コストを下げたい」「設備を見直したい」<br class="is-hidden_sp">
-        「セキュリティを強化したい」「業務を効率化したい」<br>
         店舗・オフィスのさまざまなお悩みに、<br class="is-hidden_sp">
         トータルスマートが最適な解決策をご提案します。
       </p>
-      <ul role="list">
+      <ul class="lead_worry--list" role="list">
         <li>業務が忙しすぎる…<br>もっと<span class="lead_txt">効率化</span>をしたい！！</li>
         <li>無駄な<br><span class="lead_txt">コスト・費用</span>を削りたい</li>
         <li>情報の<span class="lead_txt">セキュリティ管理</span>を<br>徹底したい！</li>
